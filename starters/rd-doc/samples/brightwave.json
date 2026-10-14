@@ -1,0 +1,128 @@
+{
+  "account": {
+    "name": "Brightwave",
+    "domain": "brightwave.example",
+    "industry": "software development",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Brightwave sells churn forecasting to B2B SaaS finance and customer success teams. It reads billing and product usage data and flags accounts likely to downgrade 60 days ahead. Customers named on the site include Ledgerline and Fieldhouse.",
+      "why_now": "Launched a Stripe Billing integration last month and is hiring two account executives."
+    }
+  },
+  "person": { "first_name": "Leo", "last_name": "Park", "title": "VP of Sales" },
+  "sender": { "name": "Cristian Frunze", "title": null, "signature_html": null },
+  "brand": { "name": "Ken", "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "offer": "Ken can run this whole plan for you: research, segments, copy, sending and follow-ups, done for you from $597 a month. Same motion you see here, we just operate it.",
+    "strategy": {
+      "intro": "Brightwave wins when a finance leader sees next quarter's churn before the board does. So the campaign goes after the people who own the revenue forecast at SaaS companies that bill through Stripe, and leads with the 60-day warning instead of the dashboard.",
+      "audience": "CFOs, VPs of Finance and heads of revenue operations at B2B SaaS companies with 50 to 500 people. We skip companies on annual contracts only, since their churn shows up once a year and the warning matters less.",
+      "offer": "A free churn read on their own Stripe data: connect read-only billing, get the 20 accounts most likely to downgrade in the next 60 days. It costs them ten minutes and shows the product working on numbers they already trust.",
+      "channels": "Email first, because finance leaders still read it and the offer needs a sentence of context. LinkedIn follows a day later with a short connect note, and a message once they accept.",
+      "goal": "Twelve to fifteen conversations with finance leaders in the first two weeks, and at least five churn reads connected. Those reads are the pipeline."
+    },
+    "segments": [
+      {
+        "label": "Stripe SaaS finance",
+        "sub": "CFO or VP Finance, 50-500 people",
+        "value": 450,
+        "tests": [
+          { "name": "Pain: churn vs forecast", "hypothesis": "Forecast misses hurt more" },
+          { "name": "Offer: churn read vs call", "hypothesis": "A free read pulls replies" },
+          { "name": "Angle: board vs team", "hypothesis": "Board pressure lands first" },
+          { "name": "Ask: link vs reply", "hypothesis": "Reply asks feel lighter" }
+        ]
+      },
+      {
+        "label": "RevOps leaders",
+        "sub": "Head of RevOps at usage-based SaaS",
+        "value": 250,
+        "tests": [
+          { "name": "Pain: manual vs late", "hypothesis": "Late signals sting more" },
+          { "name": "Angle: usage vs billing", "hypothesis": "Usage data is the hook" }
+        ]
+      },
+      {
+        "label": "CS leaders",
+        "sub": "VP Customer Success, 100+ accounts",
+        "value": 200,
+        "tests": [
+          { "name": "Pain: churn vs downgrade", "hypothesis": "Downgrades are missed" },
+          { "name": "Offer: list vs playbook", "hypothesis": "A named list wins" }
+        ]
+      },
+      {
+        "label": "Recently funded",
+        "sub": "Raised Series A or B this year",
+        "value": 100,
+        "tests": [
+          { "name": "Angle: plan vs risk", "hypothesis": "New boards want plans" }
+        ]
+      }
+    ],
+    "segment_notes": "Finance leaders at Stripe-billed SaaS go first because the free churn read works on day one for them. RevOps and CS come next once we know which pain gets replies.",
+    "funnel": [
+      { "label": "People reached", "value": 1000 },
+      { "label": "Opened or accepted", "value": 510 },
+      { "label": "Replied", "value": 55 },
+      { "label": "Positive replies", "value": 22 },
+      { "label": "Meetings booked", "value": 11 }
+    ],
+    "funnel_notes": "The churn read is the lever. If more than a third of positive replies connect Stripe, meetings roughly double.",
+    "sampling_criteria": "Finance leaders at US and UK SaaS companies with 50 to 500 people that bill through Stripe and sell subscriptions to other businesses.",
+    "leads": [
+      { "name": "Dana Okafor", "title": "CFO", "company": "Ledgerpoint", "linkedin_url": "https://www.linkedin.com/in/sample-dana-okafor", "website": "ledgerpoint.example", "why": "Runs finance at a 140-person Stripe-billed SaaS that moved to usage pricing this year." },
+      { "name": "Marcus Lindqvist", "title": "VP of Finance", "company": "Tallyhaus", "linkedin_url": "https://www.linkedin.com/in/sample-marcus-lindqvist", "website": "https://www.tallyhaus.example/", "why": "Owns the revenue forecast and posts about net revenue retention most weeks." },
+      { "name": "Priya Raman", "title": "Head of Finance", "company": "Coursekit", "linkedin_url": "https://www.linkedin.com/in/sample-priya-raman", "website": "coursekit.example", "why": "Sole finance lead at an 80-person company, so churn surprises land on her desk." },
+      { "name": "Tom Achterberg", "title": "CFO", "company": "Shiftboard", "linkedin_url": "https://www.linkedin.com/in/sample-tom-achterberg", "website": "shiftboard.example", "why": "Monthly billing across 3,000 small teams, where downgrades show up late." },
+      { "name": "Grace Whitfield", "title": "VP Finance and Operations", "company": "Parcelwise", "linkedin_url": "https://www.linkedin.com/in/sample-grace-whitfield", "website": "parcelwise.example", "why": "Just raised a Series B, so the board now asks for a churn forecast." },
+      { "name": "Andre Moreau", "title": "Director of FP&A", "company": "Northdesk", "linkedin_url": "https://www.linkedin.com/in/sample-andre-moreau", "website": "northdesk.example", "why": "Builds the forecast by hand in spreadsheets, per his own posts." },
+      { "name": "Hannah Cole", "title": "CFO", "company": "Brightline Health", "linkedin_url": "https://www.linkedin.com/in/sample-hannah-cole", "website": "brightlinehealth.example", "why": "B2B SaaS for clinics with a usage add-on that churns separately from the core plan." },
+      { "name": "Sam Iwu", "title": "VP of Finance", "company": "Rostermade", "linkedin_url": "https://www.linkedin.com/in/sample-sam-iwu", "website": "rostermade.example", "why": "Moved from annual to monthly plans last year, so churn is now a monthly number." }
+    ],
+    "emails": [
+      {
+        "name": "Dana Okafor",
+        "title": "CFO",
+        "linkedin_url": "https://www.linkedin.com/in/sample-dana-okafor",
+        "subject": "Ledgerpoint usage pricing churn",
+        "body": [
+          "Hey Dana,",
+          "Ledgerpoint moved to usage pricing this year, which usually means downgrades show up a month after usage drops.",
+          "Brightwave reads your Stripe billing and product usage and flags the accounts likely to downgrade 60 days out, so the forecast stops getting surprised.",
+          "Want me to run a free churn read on your Stripe data? Read-only, ten minutes to connect."
+        ],
+        "ps": "PS: Your pricing page lists three usage tiers. The middle one is usually where downgrades start, so it is worth watching first.",
+        "linkedin": "Dana, I work on churn forecasting for usage-priced SaaS. Ledgerpoint's switch to usage tiers is the exact case we built for. Happy to connect."
+      },
+      {
+        "name": "Marcus Lindqvist",
+        "title": "VP of Finance",
+        "linkedin_url": "https://www.linkedin.com/in/sample-marcus-lindqvist",
+        "subject": "Tallyhaus net revenue retention",
+        "body": [
+          "Hey Marcus,",
+          "You post about Tallyhaus net revenue retention most weeks, so the downgrade side of that number is probably on your mind.",
+          "Brightwave flags the accounts likely to downgrade 60 days before it hits the forecast, using the billing data you already have in Stripe.",
+          "Worth a free read on your accounts? It takes ten minutes to connect."
+        ],
+        "ps": "PS: Ledgerline used the same read to catch 14 downgrades before renewal last quarter.",
+        "linkedin": "Marcus, I work on the downgrade side of net revenue retention at Brightwave, the part your weekly posts keep coming back to. Happy to connect."
+      },
+      {
+        "name": "Priya Raman",
+        "title": "Head of Finance",
+        "linkedin_url": "https://www.linkedin.com/in/sample-priya-raman",
+        "subject": "Coursekit monthly churn",
+        "body": [
+          "Hey Priya,",
+          "Coursekit sells to training teams on monthly plans, and you run finance alone, so churn surprises land on you first.",
+          "Brightwave gives you the 20 accounts most likely to downgrade in the next 60 days, straight from Stripe, without a new spreadsheet.",
+          "Open to a free churn read on your own numbers?"
+        ],
+        "ps": "",
+        "linkedin": "Priya, I help solo finance leads at SaaS companies see churn earlier. Coursekit's monthly model is a good fit for what we do. Happy to connect."
+      }
+    ]
+  }
+}

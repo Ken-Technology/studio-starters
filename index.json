@@ -1,1 +1,77 @@
-{"kenStudio":"1","starters":[]}
+{
+  "kenStudio": "1",
+  "starters": [
+    {
+      "slug": "rd-doc",
+      "name": "Sample outbound campaign doc",
+      "type": "reverse_demo",
+      "format": "doc",
+      "description": "A multi-page doc with a campaign built for one account: strategy, segment and funnel charts, sample leads from Ken Search, and graded first emails. Downloads as a PDF.",
+      "showcases": ["tool", "bind", "prompt", "grade", "ken/chart", "doc"],
+      "version": "1.0.0"
+    },
+    {
+      "slug": "rd-ken-native",
+      "name": "We built you a campaign",
+      "type": "reverse_demo",
+      "format": "page",
+      "description": "A one-page campaign preview for an account: the people Ken Search found for them and the first emails, written by Ken's copy step.",
+      "showcases": ["tool", "ken_search.people", "ken.copy", "prompt"],
+      "version": "1.0.0"
+    },
+    {
+      "slug": "rd-your-product",
+      "name": "Your product, run on their data",
+      "type": "reverse_demo",
+      "format": "page",
+      "description": "Shows an account what your product finds when it runs on their own data. Your endpoint does the work through a webhook step.",
+      "showcases": ["webhook", "prompt"],
+      "version": "1.0.0"
+    },
+    {
+      "slug": "benchmark-report",
+      "name": "Peer benchmark report",
+      "type": "report",
+      "format": "doc",
+      "description": "A short report that puts one account next to its peers, from a CSV you upload to the template. Downloads as a PDF.",
+      "showcases": ["dataset", "prompt", "ken/chart", "doc"],
+      "version": "1.0.0"
+    },
+    {
+      "slug": "audit-rewrites",
+      "name": "Website audit with rewrites",
+      "type": "audit",
+      "format": "page",
+      "description": "Scrapes an account's site, lists what gets in a buyer's way, and rewrites three pieces of copy. A grader checks the rewrites before the page goes out.",
+      "showcases": ["tool", "scrape.page", "prompt", "grade"],
+      "version": "1.0.0"
+    },
+    {
+      "slug": "event-invite",
+      "name": "Dinner or webinar invite",
+      "type": "event",
+      "format": "page",
+      "description": "A personal invite to a dinner or webinar with a form that saves the seat. Each submission becomes a signal on the account.",
+      "showcases": ["ken/form", "bind", "prompt"],
+      "version": "1.0.0"
+    },
+    {
+      "slug": "roi-calculator",
+      "name": "ROI calculator",
+      "type": "calculator",
+      "format": "page",
+      "description": "An interactive calculator prefilled with the account's own numbers, with a booking calendar under the result.",
+      "showcases": ["alpine", "ken/booking", "prompt"],
+      "version": "1.0.0"
+    },
+    {
+      "slug": "case-study",
+      "name": "Built for you case study",
+      "type": "landing_page",
+      "format": "page",
+      "description": "Picks the customer story closest to each account from a CSV of your case studies and retells it for them.",
+      "showcases": ["dataset", "prompt", "ken/cta"],
+      "version": "1.0.0"
+    }
+  ]
+}

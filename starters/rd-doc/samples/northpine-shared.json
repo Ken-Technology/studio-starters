@@ -1,0 +1,81 @@
+{
+  "account": {
+    "name": "Northpine",
+    "domain": "northpine.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Northpine audits freight invoices for mid-market shippers and recovers overcharges from carriers. It charges a share of what it recovers. The site names Harlow Foods and Copperleaf Home as customers.",
+      "why_now": "Added parcel invoice audits for FedEx and UPS in September."
+    }
+  },
+  "person": null,
+  "sender": { "name": "Maya Brennan", "title": "Founder", "signature_html": null },
+  "brand": {
+    "name": "Outpost Growth",
+    "logo_url": null,
+    "colors": { "primary": "#0f5f4a", "secondary": "#c2410c" },
+    "fonts": { "heading": "Fraunces", "body": "Source Sans 3" }
+  },
+  "data": {
+    "strategy": {
+      "intro": "Northpine gets paid out of money shippers already lost, so the pitch can be close to risk-free. The campaign goes after the people who sign off on freight invoices and asks one question: how much of last quarter's freight spend did anyone check line by line?",
+      "audience": "Logistics and finance managers at manufacturers and distributors shipping more than 2 million dollars of freight a year. We skip retailers with in-house audit teams; they already do this.",
+      "offer": "A free overcharge scan on 90 days of invoices. Northpine only gets paid on what it recovers, so the scan has no downside for them.",
+      "channels": "Email leads, since freight managers live in their inbox. LinkedIn is the second touch for the finance side, who are easier to reach there.",
+      "goal": "Ten scans started in the first two weeks. Each scan that finds money turns into a contract almost on its own."
+    },
+    "segments": [
+      { "label": "Mid-market shippers", "sub": "Logistics manager, 2-20M in freight", "value": 550, "tests": [ { "name": "Pain: overcharges vs time", "hypothesis": "Lost money beats lost hours" }, { "name": "Offer: scan vs estimate", "hypothesis": "A scan feels concrete" } ] },
+      { "label": "Finance controllers", "sub": "Controller at a distributor", "value": 300, "tests": [ { "name": "Angle: cash vs control", "hypothesis": "Recovered cash wins" } ] },
+      { "label": "Parcel-heavy brands", "sub": "Ecommerce ops, FedEx or UPS", "value": 150, "tests": [ { "name": "Pain: surcharges vs errors", "hypothesis": "Surcharges are the pain" } ] }
+    ],
+    "segment_notes": "Logistics managers go first because they see the invoices every week and can say yes to a scan without a meeting.",
+    "funnel": [
+      { "label": "People reached", "value": 1000 },
+      { "label": "Opened or accepted", "value": 440 },
+      { "label": "Replied", "value": 41 },
+      { "label": "Positive replies", "value": 17 },
+      { "label": "Meetings booked", "value": 8 }
+    ],
+    "sampling_criteria": "Logistics and transportation managers at US manufacturers and distributors with 100 to 1,000 people.",
+    "leads": [
+      { "name": "Rosa Delgado", "title": "Logistics Manager", "company": "Harrow Valve", "linkedin_url": "https://www.linkedin.com/in/sample-rosa-delgado", "website": "harrowvalve.example", "why": "Ships heavy parts by LTL across 30 states, where accessorial charges pile up." },
+      { "name": "Ken Matsuda", "title": "Director of Transportation", "company": "Bluecrest Supply", "linkedin_url": "https://www.linkedin.com/in/sample-ken-matsuda", "website": "bluecrestsupply.example", "why": "Runs a 6-carrier network for a distributor, so invoice errors hide well." },
+      { "name": "Lena Fischer", "title": "Supply Chain Manager", "company": "Gardenly", "linkedin_url": "https://www.linkedin.com/in/sample-lena-fischer", "website": "gardenly.example", "why": "Parcel-heavy ecommerce brand that just added UPS as a second carrier." },
+      { "name": "Victor Osei", "title": "Logistics Manager", "company": "Ironfield Tools", "linkedin_url": "https://www.linkedin.com/in/sample-victor-osei", "website": "ironfieldtools.example", "why": "Posts about fuel surcharges, the line item audits most often recover." },
+      { "name": "Claire Dunmore", "title": "Controller", "company": "Pacific Mill Supply", "linkedin_url": "https://www.linkedin.com/in/sample-claire-dunmore", "website": "pacificmill.example", "why": "Signs off on freight invoices at a distributor with thin margins." },
+      { "name": "Omar Haddad", "title": "Transportation Manager", "company": "Stonebridge Foods", "linkedin_url": "https://www.linkedin.com/in/sample-omar-haddad", "website": "stonebridgefoods.example", "why": "Refrigerated freight, where detention fees are common and rarely checked." }
+    ],
+    "emails": [
+      {
+        "name": "Rosa Delgado",
+        "title": "Logistics Manager",
+        "linkedin_url": "https://www.linkedin.com/in/sample-rosa-delgado",
+        "subject": "Harrow Valve LTL accessorials",
+        "body": [
+          "Hey Rosa,",
+          "Harrow Valve ships heavy parts by LTL across 30 states, which is where accessorial charges slip through.",
+          "Northpine checks every freight invoice line against your carrier contracts and gets the overcharges back. We only get paid from what we recover.",
+          "Want a free scan of your last 90 days of invoices?"
+        ],
+        "ps": "PS: Liftgate and residential fees are the two lines worth checking first on heavy freight.",
+        "linkedin": "Rosa, I work on freight invoice audits for manufacturers shipping LTL. Your network is the kind we know well. Happy to connect."
+      },
+      {
+        "name": "Ken Matsuda",
+        "title": "Director of Transportation",
+        "linkedin_url": "https://www.linkedin.com/in/sample-ken-matsuda",
+        "subject": "Bluecrest six carrier invoices",
+        "body": [
+          "Hey Ken,",
+          "Bluecrest runs six carriers for one distribution network, and invoice errors hide well in that mix.",
+          "Northpine audits each invoice against the contract and recovers what was overbilled, for a share of the recovery and nothing up front.",
+          "Open to a free 90-day scan?"
+        ],
+        "ps": "PS: Harlow Foods recovered 3.1 percent of freight spend in their first quarter with us.",
+        "linkedin": "Ken, I help distributors running several carriers check what they're billed. Would like to connect."
+      }
+    ]
+  }
+}

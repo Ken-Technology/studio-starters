@@ -1,0 +1,245 @@
+{%- assign accent = brand.colors.primary | default: '#4f00d0' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#ff3e00' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Inter' -%}
+{%- assign font_body = brand.fonts.body | default: font_head -%}
+{%- assign first = person.first_name | default: 'there' -%}
+{%- capture signature -%}
+{%- if person.first_name -%}{{ person.first_name | escape }}<br>{% if person.title %}{{ person.title | escape }}, {% endif %}{{ account.name | escape }}
+{%- else -%}Your name<br>{{ account.name | escape }}
+{%- endif -%}
+{%- endcapture -%}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | replace: ' ', '+' }}:wght@400;600;700{% if font_body != font_head %}&family={{ font_body | replace: ' ', '+' }}:wght@400;600{% endif %}&display=swap">
+<style>
+.kd{--a:{{ accent }};--a2:{{ accent2 }};--ink:#262626;--mute:#62615c;--line:#e7e5dd;--paper:#f4f4f0;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.62;color:var(--ink);max-width:46rem;margin:0 auto;padding:.5rem 1.1rem 4rem;-webkit-font-smoothing:antialiased}
+.kd h1,.kd h2,.kd h3{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;line-height:1.2;letter-spacing:-.012em;color:var(--ink)}
+.kd h2{font-size:1.4rem;margin:0 0 1rem;padding-bottom:.75rem;border-bottom:1px solid var(--line)}
+.kd h3{font-size:.98rem;color:var(--a);margin:1.7rem 0 .3rem}
+.kd p{margin:0 0 .9rem}
+.kd a{color:var(--a)}
+.kd-page{padding:2.6rem 0 .5rem}
+.kd-page+.kd-page{border-top:1px solid var(--line)}
+.kd-mark{font-weight:700;font-size:.9rem;color:var(--a);margin:0}
+.kd-logo{height:28px;width:auto;display:block}
+.kd-cover h1{font-size:2rem;margin:1.6rem 0 .5rem}
+.kd-by{color:var(--mute);margin-bottom:2.2rem!important}
+.kd-inside{background:var(--paper);border-radius:12px;padding:1rem 1.2rem .4rem;margin:1.4rem 0 0}
+.kd-inside ol{margin:.2rem 0 .8rem;padding-left:1.25rem}
+.kd-inside li{margin:.25rem 0}
+.kd-chart{margin:1.6rem 0;padding:1rem;background:var(--paper);border-radius:14px}
+.kd-chart svg{display:block;width:100%;height:auto}
+.kd-chart figcaption{font-size:.82rem;color:var(--mute);margin-top:.7rem}
+.kd-segs{display:grid;gap:.75rem;margin:1.4rem 0}
+.kd-seg{border:1px solid var(--line);border-left:4px solid var(--a);border-radius:10px;padding:.85rem 1rem}
+.kd-seg:nth-child(even){border-left-color:var(--a2)}
+.kd-seg b{display:block;font-size:1rem}
+.kd-seg small{display:block;color:var(--mute);font-size:.84rem}
+.kd-seg ul{list-style:none;margin:.6rem 0 0;padding:0;font-size:.86rem}
+.kd-seg li{padding:.35rem 0;border-top:1px dashed var(--line)}
+.kd-seg li span{display:block;color:var(--mute)}
+.kd-steps{padding-left:1.25rem}
+.kd-steps li{margin:.45rem 0}
+.kd-leads{width:100%;border-collapse:collapse;font-size:.88rem;margin:1rem 0 1.5rem}
+.kd-leads thead{display:none}
+.kd-leads tr{display:block;padding:.8rem 0;border-bottom:1px solid var(--line)}
+.kd-leads td{display:block;padding:.05rem 0}
+.kd-leads td.kd-why{color:var(--mute);margin-top:.25rem}
+.kd-leads td.kd-links a{margin-right:.8rem}
+.kd-mail{border:1px solid var(--line);border-radius:14px;margin:1.5rem 0;overflow:hidden;break-inside:avoid}
+.kd-mail header{padding:.9rem 1.1rem;background:var(--paper)}
+.kd-mail header a,.kd-mail header b{font-weight:700;font-size:1.08rem}
+.kd-mail header span{display:block;color:var(--mute);font-size:.88rem}
+.kd-subj{padding:.75rem 1.1rem;border-bottom:1px solid var(--line);font-size:.93rem;margin:0!important}
+.kd-body{padding:1rem 1.1rem .2rem}
+.kd-sig{color:var(--mute)}
+.kd-li{margin:0 1.1rem 1.1rem;padding:.8rem 1rem;background:var(--paper);border-radius:10px;font-size:.92rem}
+.kd-li b{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin-bottom:.3rem}
+.kd-li p{margin:0}
+.kd-cta{margin:1.8rem 0}
+@media (min-width:640px){
+.kd{padding:1rem 2rem 5rem}
+.kd-cover h1{font-size:2.6rem}
+.kd-segs{grid-template-columns:1fr 1fr}
+.kd-leads thead{display:table-header-group}
+.kd-leads tr{display:table-row;padding:0}
+.kd-leads th{text-align:left;font-weight:600;padding:.5rem .5rem .5rem 0;border-bottom:2px solid var(--ink)}
+.kd-leads td{display:table-cell;padding:.65rem .5rem .65rem 0;border-bottom:1px solid var(--line);vertical-align:top}
+.kd-leads td.kd-why{margin:0}
+}
+@media print{
+.kd{max-width:none;padding:0}
+.kd-page{break-before:page;border-top:0!important}
+.kd-cover{break-before:auto}
+}
+</style>
+
+<div class="kd">
+
+<section data-section="cover" class="kd-page kd-cover">
+{%- if brand.logo_url %}
+<img class="kd-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
+{%- elsif brand.name %}
+<p class="kd-mark">{{ brand.name | escape }}</p>
+{%- endif %}
+<h1>An outbound campaign for {{ account.name | escape }}</h1>
+<p class="kd-by">Prepared by {{ sender.name | default: 'our team' | escape }}{% if sender.title %}, {{ sender.title | escape }}{% endif %}</p>
+
+Hi {{ first | escape }},
+
+I put this together for {{ account.name | escape }}. It's a campaign I would run for you. It isn't perfect, but I did as much research as I could to make it useful.
+
+It's free, so you can see the kind of emails, LinkedIn notes and strategy I think would work for {{ account.name | escape }}. The goal is simple: more meetings booked, more pipeline, more clients.
+
+Yours either way. Even if we never work together, I hope it helps.
+
+<div class="kd-inside">
+
+**What's inside**
+
+1. Who we go after, what we say, and why it should land
+2. How I would cut the market, and what we try in each cut
+3. The sequence across email and LinkedIn
+4. A sample of leads, with the first emails written
+5. What happens next
+
+</div>
+
+</section>
+
+<section data-section="strategy" class="kd-page">
+
+## 1. Strategy
+
+<p>{{ data.strategy.intro | escape | newline_to_br | strip_newlines }}</p>
+
+### Who this is for
+
+<p>{{ data.strategy.audience | escape | newline_to_br | strip_newlines }}</p>
+
+### What we offer
+
+<p>{{ data.strategy.offer | escape | newline_to_br | strip_newlines }}</p>
+
+### How we reach them
+
+<p>{{ data.strategy.channels | escape | newline_to_br | strip_newlines }}</p>
+
+### What we want
+
+<p>{{ data.strategy.goal | escape | newline_to_br | strip_newlines }}</p>
+
+</section>
+
+<section data-section="segments" class="kd-page">
+
+## 2. Segments
+
+Here is how I would split {{ account.name | escape }}'s market. The first cut is the one we sample below. The others are ready, so we can grow without rewriting the plan.
+
+<figure class="kd-chart">
+{% render 'ken/chart', type: 'bar', data: data.segments, title: 'Where the first 1,000 sends go' %}
+<figcaption>Sends per segment out of the first 1,000.</figcaption>
+</figure>
+
+<div class="kd-segs">
+{%- for s in data.segments %}
+<div class="kd-seg"><b>{{ s.label | escape }}</b><small>{{ s.sub | escape }}</small>
+{%- if s.tests.size > 0 %}<ul>{% for t in s.tests %}<li>{{ t.name | escape }}<span>{{ t.hypothesis | escape }}</span></li>{% endfor %}</ul>{% endif -%}
+</div>
+{%- endfor %}
+</div>
+
+Each segment carries up to four A vs B ideas: the pain, the offer, the angle and the ask. No vanity subject-line splits. If we run one, it has a hypothesis.
+
+{% if data.segment_notes %}<p>{{ data.segment_notes | escape | newline_to_br | strip_newlines }}</p>{% endif %}
+
+</section>
+
+<section data-section="funnel" class="kd-page">
+
+## 3. Funnel
+
+Same sequence on email and LinkedIn for every person in the sample. If they click an email, we lean into LinkedIn. If they reply on either channel, we ask for a meeting.
+
+<figure class="kd-chart">
+{% render 'ken/chart', type: 'funnel', data: data.funnel, title: 'What 1,000 sends should turn into' %}
+<figcaption>Planning numbers for the first segment, not a promise.</figcaption>
+</figure>
+
+<ol class="kd-steps">
+<li><b>Day 0.</b> Email 1 and a LinkedIn connect request.</li>
+<li><b>Follow-ups.</b> Emails 2 and 3, plus a LinkedIn message a few days after they accept.</li>
+<li><b>Convert.</b> A reply turns into a meeting ask, a discovery call, then a booked deal.</li>
+</ol>
+
+{% if data.funnel_notes %}<p>{{ data.funnel_notes | escape | newline_to_br | strip_newlines }}</p>{% endif %}
+
+</section>
+
+<section data-section="leads" class="kd-page">
+
+## 4. Sample leads
+
+This sample is a small slice of who we could target. The strategy above covers the wider map. The leads and copy below are written for these people.
+
+{% if data.sampling_criteria %}<p>{{ data.sampling_criteria | escape | newline_to_br | strip_newlines }}</p>{% endif %}
+
+<table class="kd-leads">
+<thead><tr><th>Name</th><th>Title</th><th>Company</th><th>Why them</th><th>Links</th></tr></thead>
+<tbody>
+{%- for l in data.leads %}
+{%- assign li_head = l.linkedin_url | slice: 0, 8 %}
+{%- assign site = l.website | remove: 'https://' | remove: 'http://' | remove: 'www.' | split: '/' | first %}
+<tr><td><b>{{ l.name | escape }}</b></td><td>{{ l.title | escape }}</td><td>{{ l.company | escape }}</td><td class="kd-why">{{ l.why | escape }}</td><td class="kd-links">{% if li_head == 'https://' and l.linkedin_url contains 'linkedin.com/' %}<a href="{{ l.linkedin_url | escape }}">LinkedIn</a>{% endif %}{% if site %}<a href="https://{{ site | escape }}">{{ site | escape }}</a>{% endif %}</td></tr>
+{%- endfor %}
+</tbody>
+</table>
+
+</section>
+
+<section data-section="outreach" class="kd-page">
+
+## 5. The outreach
+
+{% case data.emails.size %}{% when 1 %}One person{% when 2 %}Two people{% else %}Three people{% endcase %} from the list above. Email 1 and a LinkedIn note for each, written the way I would send them for {{ account.name | escape }}.
+
+{% for e in data.emails -%}
+{%- assign li_head = e.linkedin_url | slice: 0, 8 -%}
+<article class="kd-mail">
+<header>{% if li_head == 'https://' and e.linkedin_url contains 'linkedin.com/' %}<a href="{{ e.linkedin_url | escape }}">{{ e.name | escape }}</a>{% else %}<b>{{ e.name | escape }}</b>{% endif %}{% if e.title %}<span>{{ e.title | escape }}</span>{% endif %}</header>
+<p class="kd-subj"><b>Subject:</b> {{ e.subject | escape }}</p>
+<div class="kd-body">
+{%- for p in e.body %}<p>{{ p | escape }}</p>{% endfor -%}
+<p class="kd-sig">{{ signature }}</p>
+{%- if e.ps and e.ps != '' %}<p>{{ e.ps | escape }}</p>{% endif -%}
+</div>
+{%- if e.linkedin and e.linkedin != '' %}<div class="kd-li"><b>LinkedIn connect note</b><p>{{ e.linkedin | escape }}</p></div>{% endif -%}
+</article>
+{% endfor %}
+
+</section>
+
+<section data-section="next_steps" class="kd-page">
+
+## 6. What happens next
+
+I'm confident this would get results for {{ account.name | escape }}. That's why I spent the time on the strategy, the cuts and the sample copy instead of sending a generic one-pager.
+
+{% if data.offer %}<p>{{ data.offer | escape | newline_to_br | strip_newlines }}</p>{% endif %}
+
+It would be great to hop on a call. I want your feedback so we can improve this campaign for {{ account.name | escape }}: what feels right, what's off, and what to change before anything goes out.
+
+I'll walk you through the sample, the A vs B ideas, and what the first two weeks look like.
+
+<div class="kd-cta">
+{% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking' %}
+</div>
+
+Worth half an hour this week?
+
+Best,<br>
+{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<br>
+<span class="kd-sig">{{ sender.title | escape }}</span>{% endif %}
+
+</section>
+
+</div>

@@ -1,0 +1,53 @@
+{
+  "account": {
+    "name": "Fieldnote",
+    "domain": "fieldnote.example",
+    "industry": "software development",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Fieldnote makes a mobile app for field service crews to log jobs, photos and signatures on site.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Tomas",
+    "last_name": "Reyes",
+    "title": null
+  },
+  "sender": {
+    "name": "Morgan Hale",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": null,
+    "logo_url": null,
+    "colors": {
+      "primary": "#9a3412"
+    },
+    "fonts": null
+  },
+  "data": {
+    "metric": {
+      "label": "Home page weight on mobile",
+      "value": "8.4 MB"
+    },
+    "findings": [
+      {
+        "title": "A background video autoplays on phones",
+        "detail": "The home page video is 6.1 MB and starts on every phone visit.",
+        "severity": "high"
+      },
+      {
+        "title": "Product screenshots are PNG files",
+        "severity": "medium",
+        "where": "/features"
+      },
+      {
+        "title": "Two analytics tags load the same script",
+        "severity": "low"
+      }
+    ]
+  }
+}

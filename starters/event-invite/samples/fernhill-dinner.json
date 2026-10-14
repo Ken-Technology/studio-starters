@@ -1,0 +1,34 @@
+{
+  "account": {
+    "name": "Fernhill Analytics",
+    "domain": "fernhill.example",
+    "industry": "software development",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Fernhill Analytics sells pipeline forecasting to B2B sales teams. It reads CRM and email activity and flags deals likely to slip a quarter. The site names Ledgerline and Corvo as customers.",
+      "why_now": "Opened a Chicago office in September and is hiring four SDRs."
+    }
+  },
+  "person": { "first_name": "Priya", "last_name": "Raman", "title": "VP of Sales" },
+  "sender": { "name": "Maya Brennan", "title": "Founder", "signature_html": null },
+  "brand": { "name": "Outpost Growth", "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "event_name": "Outbound, over dinner",
+    "format": "dinner",
+    "date_text": "Wednesday, November 19",
+    "time_text": "6:30 pm to 9:30 pm",
+    "city": "Chicago",
+    "venue": "The upstairs room at Pellmell Tavern, West Randolph Street",
+    "host": "Maya Brennan, Outpost Growth",
+    "guests": "Fourteen people: heads of sales, SDR managers and two founders, all from B2B software teams in Chicago.",
+    "seats_left": 4,
+    "agenda": [
+      { "time": "6:30 pm", "title": "Drinks and hellos", "note": "No name tags and no slides. Come as you are." },
+      { "time": "7:15 pm", "title": "Dinner, family style", "note": "One question on the table: what booked meetings for you this quarter, and what stopped working?" },
+      { "time": "8:30 pm", "title": "Open table", "note": "Bring the problem you haven't cracked yet. Someone in the room has seen it before." },
+      { "time": "9:30 pm", "title": "Last drinks" }
+    ],
+    "why_now": "Opened a Chicago office in September and is hiring four SDRs.",
+    "why_you": "You're opening a Chicago office and hiring four SDRs at once. Half this table has built an SDR team from scratch in the last year, and they'll have opinions on the first ninety days."
+  }
+}

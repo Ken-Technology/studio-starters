@@ -1,0 +1,140 @@
+{
+  "kenStudio": "1",
+  "name": "Built for you case study",
+  "type": "landing_page",
+  "format": "page",
+  "slug": "customer-story",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "stories": {
+        "type": "array",
+        "maxItems": 10,
+        "items": {
+          "type": "object",
+          "properties": {
+            "customer": { "type": "string", "maxLength": 80 },
+            "industry": { "type": "string", "maxLength": 120 },
+            "size_band": { "type": "string", "maxLength": 20 },
+            "problem": { "type": "string", "maxLength": 600 },
+            "approach": { "type": "string", "maxLength": 600 },
+            "result_metric": { "type": "string", "maxLength": 80 },
+            "result_value": { "type": "string", "maxLength": 40 },
+            "timeframe": { "type": "string", "maxLength": 40 },
+            "quote": { "type": "string", "maxLength": 320 },
+            "quote_author_title": { "type": "string", "maxLength": 80 }
+          },
+          "required": ["customer", "industry", "problem", "approach", "result_metric", "result_value"]
+        }
+      },
+      "size_matches": {
+        "type": "array",
+        "maxItems": 10,
+        "items": {
+          "type": "object",
+          "properties": {
+            "customer": { "type": "string", "maxLength": 80 },
+            "industry": { "type": "string", "maxLength": 120 },
+            "size_band": { "type": "string", "maxLength": 20 },
+            "problem": { "type": "string", "maxLength": 600 },
+            "approach": { "type": "string", "maxLength": 600 },
+            "result_metric": { "type": "string", "maxLength": 80 },
+            "result_value": { "type": "string", "maxLength": 40 },
+            "timeframe": { "type": "string", "maxLength": 40 },
+            "quote": { "type": "string", "maxLength": 320 },
+            "quote_author_title": { "type": "string", "maxLength": 80 }
+          },
+          "required": ["customer", "industry", "problem", "approach", "result_metric", "result_value"]
+        }
+      },
+      "headline": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 90,
+        "fallback": "A customer story picked for {{ account.name }}"
+      },
+      "dek": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 240,
+        "fallback": "One of our customers was in a similar spot to {{ account.name }}. Here is what they changed and what happened next."
+      },
+      "customer": { "type": "string", "maxLength": 80 },
+      "customer_about": { "type": "string", "maxLength": 140 },
+      "parallel": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string", "maxLength": 28 },
+            "them": { "type": "string", "maxLength": 200 },
+            "you": { "type": "string", "maxLength": 200 }
+          },
+          "required": ["label", "them", "you"]
+        }
+      },
+      "before": { "type": "string", "minLength": 40, "maxLength": 600 },
+      "after": { "type": "string", "minLength": 40, "maxLength": 600 },
+      "result": {
+        "type": "object",
+        "properties": {
+          "metric": { "type": "string", "maxLength": 80 },
+          "value": { "type": "string", "maxLength": 40 },
+          "timeframe": { "type": "string", "maxLength": 40 }
+        },
+        "required": ["metric", "value"]
+      },
+      "quote": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "string", "maxLength": 320 },
+          "author_title": { "type": "string", "maxLength": 80 }
+        },
+        "required": ["text"]
+      },
+      "fit": {
+        "type": "string",
+        "minLength": 60,
+        "maxLength": 700,
+        "fallback": "Every story we tell started with a team that looked a lot like {{ account.name }} from the outside. On a short call I can tell you which parts would carry over to you, and which would not."
+      }
+    },
+    "required": ["headline", "dek", "fit"]
+  },
+  "recipe": [
+    {
+      "id": "same_industry",
+      "kind": "dataset",
+      "dataset": "case-studies",
+      "where": [{ "column": "industry", "op": "eq", "value": "account.industry" }],
+      "limit": 5,
+      "to": "data.stories"
+    },
+    {
+      "id": "same_size",
+      "kind": "dataset",
+      "dataset": "case-studies",
+      "where": [{ "column": "size_band", "op": "eq", "value": "account.size_band" }],
+      "limit": 8,
+      "to": "data.size_matches"
+    },
+    {
+      "id": "story",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "account.dossier.why_now", "brand.name", "data.stories", "data.size_matches"],
+      "to": ["data.headline", "data.dek", "data.customer", "data.customer_about", "data.parallel", "data.before", "data.after", "data.result", "data.quote", "data.fit"],
+      "prompt": "You are writing a customer story page for {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it. The page retells one story about one of our customers, so that {{ account.name }} can see their own situation in it. \"We\" and \"us\" mean {{ brand.name | default: 'our company' }}.\n\nInputs: data.stories are our customer stories from the same industry as {{ account.name }}. data.size_matches are stories from companies the same size. Each row has customer, industry, size_band, problem, approach, result_metric, result_value, timeframe, quote and quote_author_title. What we know about {{ account.name }}: account.industry, account.size_band, account.dossier.summary and account.dossier.why_now. Nothing else.\n\nStep 1, pick one story. Prefer data.stories, and among them the row whose size_band is {{ account.size_band }} and whose problem fits the dossier best. If data.stories is empty, pick the row in data.size_matches whose problem is closest to what a company in {{ account.industry }} deals with, judged from the dossier. If both lists are empty, return {} and nothing else.\n\nStep 2, return JSON with these keys, all about that one story:\n- headline: at most 90 characters. What the customer got, said so it speaks to {{ account.name }}, like \"How a builder your size cut invoice approvals from 19 days to 4\". Numbers come from result_value exactly as written.\n- dek: 1 or 2 sentences, 40 to 240 characters, on why this story is worth two minutes of {{ account.name }}'s time.\n- customer: the customer name, copied exactly.\n- customer_about: who the customer is, at most 140 characters, from their industry and size_band only, like \"A construction company with 51 to 200 people\".\n- parallel: 2 or 3 items {label, them, you} on what the customer and {{ account.name }} have in common. label is at most 28 characters. them is at most 200 characters, from the story row. you is at most 200 characters, from what we know about {{ account.name }}. Leave out any line where we know nothing about {{ account.name }}; never guess.\n- before: 2 to 4 sentences, at most 600 characters, retelling the problem from the row.\n- after: 2 to 4 sentences, at most 600 characters, retelling what they changed with us, from the approach column, and how it went.\n- result: {metric, value, timeframe}, copied exactly from result_metric, result_value and timeframe.\n- quote: {text, author_title}, copied word for word from quote and quote_author_title. Leave the key out if the row has no quote.\n- fit: 2 to 4 sentences, 60 to 700 characters, on why this story applies to {{ account.name }}, plus one honest line on what is different for them.\n\nFacts: use only what the chosen row and the inputs say. Never invent customers, people, names, numbers, tools or results, and never add a number that is not in the row. Do not name the person behind the quote; use the title only.\n\nVoice: one person telling a peer about a customer. Plain, specific, a little warm. Short sentences a person would say out loud. Sentence case for the headline.\n\nRules for every string: no em dashes or en dashes. No email addresses or phone numbers. No hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, transform, game changer). Never \"real\" as emphasis."
+    }
+  ],
+  "sections": [
+    { "id": "hero", "label": "Hero" },
+    { "id": "story", "label": "The story" },
+    { "id": "result", "label": "Result and quote" },
+    { "id": "fit", "label": "Why it applies" },
+    { "id": "cta", "label": "Book a call" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

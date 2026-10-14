@@ -1,0 +1,138 @@
+{
+  "kenStudio": "1",
+  "name": "Peer benchmark report",
+  "type": "report",
+  "format": "doc",
+  "slug": "peer-benchmark",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "benchmarks": {
+        "type": "array",
+        "maxItems": 12,
+        "items": {
+          "type": "object",
+          "properties": {
+            "industry": { "type": "string", "maxLength": 120 },
+            "size_band": { "type": "string", "maxLength": 20 },
+            "metric": { "type": "string", "maxLength": 60 },
+            "unit": { "type": "string", "maxLength": 20 },
+            "better": { "type": "string", "maxLength": 10 },
+            "p25": { "type": "number" },
+            "median": { "type": "number" },
+            "p75": { "type": "number" },
+            "sample_size": { "type": "integer" },
+            "source": { "type": "string", "maxLength": 120 }
+          },
+          "required": ["metric", "p25", "median", "p75"]
+        },
+        "fallback": []
+      },
+      "site": { "type": "object" },
+      "headline": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 110,
+        "fallback": "How companies like {{ account.name }} compare on the numbers that matter"
+      },
+      "summary": {
+        "type": "string",
+        "minLength": 80,
+        "maxLength": 800,
+        "fallback": "This report puts {{ account.name }} next to companies in the same industry and size band. Each metric shows the spread across that peer group, from the 25th percentile to the 75th, so you can drop your own number in and see where you land."
+      },
+      "focus": {
+        "type": "object",
+        "properties": {
+          "metric": { "type": "string", "maxLength": 60 },
+          "why": { "type": "string", "minLength": 40, "maxLength": 400 }
+        },
+        "required": ["metric", "why"]
+      },
+      "chart": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string", "maxLength": 28 },
+            "value": { "type": "number" }
+          },
+          "required": ["label", "value"]
+        }
+      },
+      "observations": {
+        "type": "array",
+        "maxItems": 2,
+        "items": { "type": "string", "maxLength": 200 }
+      },
+      "takeaways": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "maxLength": 70 },
+            "body": { "type": "string", "minLength": 40, "maxLength": 420 }
+          },
+          "required": ["title", "body"]
+        },
+        "fallback": [
+          { "title": "Put your own number next to each metric", "body": "The ranges only help once your figure sits beside them. Last quarter is enough, and most of it lives in the tools you already use." },
+          { "title": "Read the middle half before the median", "body": "Half of your peers sit between the 25th and the 75th percentile. Landing inside that band is normal. Landing outside it, on either side, is where the useful questions start." },
+          { "title": "Pick one metric to move, not all of them", "body": "Moving one number a full band in a quarter does more than nudging every number a little. Start with the one where you sit furthest from the median." }
+        ]
+      },
+      "next_steps": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 4,
+        "items": { "type": "string", "maxLength": 260 },
+        "fallback": [
+          "Write your own figure next to each metric in section 2. Last quarter is enough.",
+          "Circle the metric where you sit furthest from the median. That is the one to work on first.",
+          "Pick one thing to change this month and note today's number, so you can see whether it moved."
+        ]
+      }
+    },
+    "required": ["benchmarks", "headline", "summary", "takeaways", "next_steps"]
+  },
+  "recipe": [
+    {
+      "id": "peers",
+      "kind": "dataset",
+      "dataset": "peers",
+      "where": [
+        { "column": "industry", "op": "eq", "value": "account.industry" },
+        { "column": "size_band", "op": "eq", "value": "account.size_band" }
+      ],
+      "limit": 12,
+      "to": "data.benchmarks"
+    },
+    {
+      "id": "site",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}" },
+      "to": "data.site"
+    },
+    {
+      "id": "report",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "data.benchmarks", "data.site"],
+      "to": ["data.headline", "data.summary", "data.focus", "data.chart", "data.observations", "data.takeaways", "data.next_steps"],
+      "prompt": "You are writing a short peer benchmark report for {{ account.name }} ({{ account.domain }}), a company in {{ account.industry }} with {{ account.size_band }} employees. {{ sender.name | default: 'The sender' }} sends it to them.\n\nInputs: data.benchmarks is the peer data. Each row is one metric for companies in the same industry and size band as {{ account.name }}, with the columns metric, unit, better (\"higher\" or \"lower\" is better), p25 (25th percentile), median, p75 (75th percentile), sample_size and source. data.site is their website. account.dossier.summary is our research on them.\n\nWe do not know {{ account.name }}'s own numbers. Never say or imply where they rank. Say what the peer numbers mean for a company like them and what they should check.\n\nNumbers: every number you write must be copied exactly from one row of data.benchmarks, with its unit. Do no arithmetic: no differences, ratios, multiples, averages or rounding. When better is \"lower\", the 25th percentile is the strong end. Never invent customers, numbers, tools or claims. If data.benchmarks is empty, return {} and nothing else.\n\nReturn JSON with these keys:\n- headline: one sentence, at most 110 characters, on the single most useful thing in the data for {{ account.name }}.\n- summary: 3 to 5 sentences, at most 800 characters. What stands out in these peer numbers for a company like {{ account.name }}, and which metric to check first.\n- focus: {metric, why}. metric is the metric name copied exactly from the row that matters most for {{ account.name }}, judged from data.site and the dossier. why is 2 or 3 sentences, at most 400 characters, quoting that row's numbers.\n- chart: exactly 3 items for the focus row, in this order: {\"label\": \"25th percentile\", \"value\": p25}, {\"label\": \"Median\", \"value\": median}, {\"label\": \"75th percentile\", \"value\": p75}. Each value is the number from that row, as a JSON number.\n- observations: 0 to 2 sentences, each at most 200 characters. Each is one thing a visitor can see on data.site that bears on one metric, such as open sales roles and the sales cycle. Return an empty list if the site shows nothing relevant.\n- takeaways: exactly 3, each {title, body}. title is at most 70 characters and states the point. body is 2 or 3 sentences, at most 420 characters, built on one or two rows and quoting their numbers.\n- next_steps: 2 to 4 actions {{ account.name }} could take this month, each at most 260 characters. Leave out calls or meetings with us; the report ends with that.\n\nVoice: one person writing to one person. Direct and specific. Short sentences a person would say out loud to a peer. Sentence case for the headline and titles.\n\nRules for every string: no em dashes or en dashes. No email addresses or phone numbers. No hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, game changer). Never \"real\" as emphasis."
+    }
+  ],
+  "sections": [
+    { "id": "cover", "label": "Cover" },
+    { "id": "summary", "label": "Summary" },
+    { "id": "benchmarks", "label": "Benchmarks" },
+    { "id": "takeaways", "label": "Takeaways" },
+    { "id": "next_steps", "label": "Next steps" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

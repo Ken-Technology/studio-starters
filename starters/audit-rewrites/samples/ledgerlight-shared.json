@@ -1,0 +1,75 @@
+{
+  "account": {
+    "name": "Ledgerlight",
+    "domain": "ledgerlight.example",
+    "industry": "accounting",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Ledgerlight does monthly bookkeeping for dental practices. Each practice gets one bookkeeper who only works with dentists. Plans start at 450 dollars a month.",
+      "why_now": null
+    }
+  },
+  "person": null,
+  "sender": { "name": "Maya Brennan", "title": "Founder", "signature_html": null },
+  "brand": { "name": "Outpost Growth", "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "headline": "Ledgerlight keeps its best line on the pricing page",
+    "summary": "The pricing page says it plainly: one bookkeeper who only works with dental practices. The homepage says none of that. A practice owner lands on a line about financial clarity and has to click twice to learn what they would get.",
+    "findings": [
+      {
+        "where": "Homepage headline",
+        "quote": "Financial clarity for growing businesses.",
+        "cost": "A dentist can't tell you only work with dental practices, which is the one reason to pick you over the general bookkeeper down the street.",
+        "severity": "high"
+      },
+      {
+        "where": "How it works",
+        "quote": "We leverage cutting-edge technology and proven processes to keep your books accurate.",
+        "cost": "This could describe any firm. It doesn't say who does the books, how often, or what the owner gets each month.",
+        "severity": "high"
+      },
+      {
+        "where": "Main button",
+        "quote": "Schedule a consultation",
+        "cost": "A consultation sounds like a sales call. Owners who want a price and a name first will put it off until next quarter.",
+        "severity": "medium"
+      },
+      {
+        "where": "Pricing page",
+        "quote": "Custom plans available for multi-location groups. Contact us.",
+        "cost": "Groups with three or more offices are your biggest accounts, and this line makes them wait for a call to learn the price.",
+        "severity": "medium"
+      },
+      {
+        "where": "Footer tagline",
+        "quote": "Your numbers, simplified.",
+        "cost": "Fine on its own, but it's the third vague line on the page. By here the reader wants one concrete thing.",
+        "severity": "low"
+      }
+    ],
+    "rewrites": [
+      {
+        "where": "Homepage headline",
+        "before": "Financial clarity for growing businesses.",
+        "after": "Bookkeeping for dental practices, by a bookkeeper who only works with dentists.",
+        "why": "A practice owner knows in one line why you and not the firm down the street."
+      },
+      {
+        "where": "How it works",
+        "before": "We leverage cutting-edge technology and proven processes to keep your books accurate.",
+        "after": "One bookkeeper keeps your books and sends you a report every month.",
+        "why": "It names who does the work and what lands in the owner's inbox."
+      },
+      {
+        "where": "Main button",
+        "before": "Schedule a consultation",
+        "after": "See plans and prices",
+        "why": "Owners want a number before a call, and your pricing page already has one."
+      }
+    ],
+    "next_steps": [
+      "Put \"only works with dental practices\" next to the headline. It's your strongest line and it's on page two.",
+      "Show a price range for multi-location groups so your biggest buyers don't have to call to get one."
+    ]
+  }
+}

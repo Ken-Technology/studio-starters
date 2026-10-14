@@ -1,0 +1,99 @@
+{
+  "account": {
+    "name": "Oakhurst Learning",
+    "domain": "oakhurstlearning.example",
+    "industry": "e-learning providers",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Oakhurst Learning sells online prep courses for the NCLEX nursing exam. Most students find it through a free practice test, which asks them to sign up first.",
+      "why_now": "Launched a second course for the NCLEX-PN in August.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Priya Shah",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Pagepace",
+    "logo_url": null,
+    "colors": {
+      "primary": "#7a1f3d",
+      "secondary": "#e9a23b"
+    },
+    "fonts": {
+      "heading": "Playfair Display",
+      "body": "Karla"
+    }
+  },
+  "data": {
+    "metric": {
+      "label": "Mobile speed score, signup page",
+      "value": "41",
+      "unit": "/100",
+      "status": "poor",
+      "context": "Scored on a mid-range phone over 4G. A score of 90 or more counts as fast."
+    },
+    "findings": [
+      {
+        "title": "The practice test signup loads three video players",
+        "detail": "Three embedded videos load in full before the signup form works, even though they sit below it.",
+        "severity": "high",
+        "where": "/practice-test"
+      },
+      {
+        "title": "The form jumps while the page loads",
+        "detail": "The cookie banner and a late font push the form down by about 120 pixels, so people tap the wrong field.",
+        "severity": "high",
+        "where": "/practice-test"
+      },
+      {
+        "title": "Course pages load every course image",
+        "detail": "Each course page pulls in images for all 14 courses, not just the one on screen.",
+        "severity": "medium",
+        "where": "/courses"
+      },
+      {
+        "title": "No text compression on the server",
+        "detail": "Pages and scripts go out uncompressed, so each page is about 60 percent bigger than it needs to be.",
+        "severity": "medium",
+        "where": "All pages"
+      },
+      {
+        "title": "The favicon is a 400 KB image",
+        "detail": "Every visit downloads it. A 10 KB version does the same job.",
+        "severity": "low",
+        "where": "All pages"
+      }
+    ],
+    "chart": [
+      {
+        "label": "Home",
+        "value": 68
+      },
+      {
+        "label": "Practice test signup",
+        "value": 41
+      },
+      {
+        "label": "Courses",
+        "value": 55
+      },
+      {
+        "label": "Study guides",
+        "value": 72
+      },
+      {
+        "label": "Blog",
+        "value": 81
+      }
+    ],
+    "chart_title": "Mobile speed score by page, out of 100",
+    "scope": "5 pages on oakhurstlearning.example, scored from a mid-range phone over 4G on October 13.",
+    "report_url": "https://app.pagepace.example/r/oakhurst-2m9q",
+    "headline": "Oakhurst's practice test signup scores 41 out of 100 on a phone",
+    "meaning": "The free practice test is how students find Oakhurst, and its signup page scores 41 out of 100 on a phone. Most of that is three video players loading before the form, plus a layout jump that moves the form while people are tapping.\n\nI would fix the videos first and load them only when someone scrolls down to them. Then hold space for the cookie banner so the form stays put.\n\nThe home page and the blog already score 68 and up, so the problem is narrow. It just sits on the one page that turns visitors into students."
+  }
+}

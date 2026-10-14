@@ -1,0 +1,199 @@
+{%- assign accent = brand.colors.primary | default: '#2d52c4' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
+{%- assign font_body = brand.fonts.body | default: 'Libre Franklin' -%}
+{%- assign first = person.first_name | default: 'there' -%}
+{%- assign n_find = data.findings | size -%}
+{%- assign n_rw = data.rewrites | size -%}
+{%- assign n_steps = data.next_steps | size -%}
+{%- assign n_high = 0 -%}{%- assign n_med = 0 -%}{%- assign n_low = 0 -%}
+{%- for f in data.findings -%}
+{%- case f.severity -%}
+{%- when 'high' -%}{%- assign n_high = n_high | plus: 1 -%}
+{%- when 'medium' -%}{%- assign n_med = n_med | plus: 1 -%}
+{%- else -%}{%- assign n_low = n_low | plus: 1 -%}
+{%- endcase -%}
+{%- endfor -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Notes on {{ account.domain | default: account.name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;600&display=swap">
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;600&display=swap">
+{%- endif %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap">
+<style>
+:root{--a:{{ accent | escape }};--ink:#1f2329;--mute:#5b616d;--rule:#dde1e6;--strike:#c2341f;--hi:#fbe68a;--fh:'{{ font_head | escape }}',Georgia,serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--fn:'Caveat','Bradley Hand','Segoe Print',cursive}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;padding:.6rem .5rem 2rem;background:#e3e6ea;color:var(--ink);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased}
+a{color:var(--a)}
+.sheet{max-width:60rem;margin:0 auto;background:#fff;padding:1.1rem 1.15rem 2.5rem;box-shadow:0 1px 2px rgba(31,35,41,.08),0 10px 30px rgba(31,35,41,.08)}
+h1,h2,h3{font-family:var(--fh);font-weight:600;line-height:1.15;letter-spacing:-.01em;margin:0}
+p{margin:0 0 .9rem}
+.slug{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-bottom:.8rem;border-bottom:1px solid var(--rule);font-size:.82rem;color:var(--mute)}
+.slug b{color:var(--ink);font-weight:600}
+.logo{height:24px;width:auto;display:block}
+.hero h1{font-weight:400;font-size:2.1rem;margin:1.8rem 0 1.3rem;max-width:20ch}
+.hero .lead{max-width:38rem}
+.tally{list-style:none;margin:1.4rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;font-family:var(--fn);font-size:1.45rem;line-height:1.3;color:var(--a)}
+.mk{display:inline-block;font-family:var(--fn);font-weight:700;font-size:1.4rem;line-height:1.15;color:var(--a);white-space:nowrap}
+.mk-high{padding:.1rem .65rem;border:2px solid var(--a);border-radius:52% 48% 50% 46%/58% 52% 48% 44%;transform:rotate(-3deg)}
+.mk-medium{padding:0 .1rem;border-bottom:2px solid var(--a)}
+.mk-low{font-weight:500;color:var(--mute)}
+.block{padding-top:2.6rem}
+.block h2{font-size:1.6rem;margin-bottom:.4rem}
+.sub{color:var(--mute);margin-bottom:1.6rem}
+.notes{list-style:none;margin:0;padding:0}
+.note{padding:1.3rem 0;border-top:1px solid var(--rule)}
+.note:first-child{border-top:0;padding-top:.4rem}
+.note .margin{margin:0 0 .5rem}
+.where{font-size:.82rem;font-weight:600;color:var(--mute);margin:0 0 .35rem}
+.q{font-family:var(--fh);font-size:1.22rem;line-height:1.5;margin:0 0 .7rem}
+.q mark{color:inherit;background:linear-gradient(transparent 14%,var(--hi) 14%,var(--hi) 90%,transparent 90%);padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.cost{margin:0;max-width:40rem}
+.rewrites{margin:2.6rem -1.15rem 0;padding:2.4rem 1.15rem 1rem;background:#f3f5fb;background:color-mix(in srgb,var(--a) 6%,#fff);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.rw{padding:1.6rem 0 1.4rem;border-top:1px solid var(--rule)}
+.rw:first-of-type{border-top:0;padding-top:.6rem}
+.rw h3{font-family:var(--fb);font-size:.82rem;font-weight:600;color:var(--mute);letter-spacing:0;margin:0 0 .6rem}
+.lbl{font-size:.78rem;color:var(--mute);margin:0 0 .25rem}
+.before{margin:0 0 1.1rem;color:#545a65;font-size:1rem;line-height:1.6}
+.before del{text-decoration-line:line-through;text-decoration-color:var(--strike);text-decoration-thickness:1.5px}
+.after{font-family:var(--fh);font-size:1.5rem;line-height:1.3;margin:0 0 .9rem;padding-left:.85rem;border-left:3px solid var(--a)}
+.why{font-family:var(--fn);font-size:1.4rem;line-height:1.25;color:var(--a);margin:0 0 .3rem}
+.count{font-size:.8rem;color:var(--mute);margin:0}
+.pending{padding:1rem 1.1rem;background:#f6f7f9;border-left:3px solid var(--a);max-width:38rem}
+.todo{list-style:none;margin:0 0 1.4rem;padding:0;max-width:40rem}
+.todo li{position:relative;padding:0 0 .7rem 2rem}
+.todo li::before{content:'';position:absolute;left:.1rem;top:.3rem;width:.95rem;height:.95rem;border:2px solid var(--a);border-radius:2px 4px 3px 5px;transform:rotate(-4deg)}
+.cta{margin:1.6rem 0 2rem}
+.cta a{display:inline-block;background:var(--a)!important;color:#fff!important;text-decoration:none;font-family:var(--fb)!important;font-weight:600;padding:.85rem 1.4rem!important;border-radius:4px!important}
+.sign{margin:0}
+.sign b{display:block;font-family:var(--fn);font-weight:700;font-size:1.9rem;line-height:1;color:var(--ink)}
+.sign span{display:block;font-size:.85rem;color:var(--mute);margin-top:.35rem}
+@media (min-width:760px){
+body{padding:2.5rem 1.5rem 4rem}
+.sheet{padding:1.6rem 3.5rem 3.5rem}
+.hero h1{font-size:3.1rem;margin:3rem 0 1.6rem}
+.hero .lead{font-size:1.06rem}
+.block{padding-top:3.4rem}
+.block h2{font-size:2rem}
+.note{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:1.6rem;padding:1.6rem 0}
+.note .margin{margin:.35rem 0 0;text-align:right}
+.q{font-size:1.38rem}
+.rewrites{margin:3.4rem -3.5rem 0;padding:3rem 3.5rem 1.4rem}
+.rw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:.4rem 2.4rem;padding:2rem 0}
+.rw h3,.rw .foot{grid-column:1/-1}
+.rw .foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:2.4rem}
+.rw .foot .why{grid-column:2}
+.rw .foot .count{grid-column:1;grid-row:1;text-align:right;padding-top:.45rem}
+.before{margin:0}
+.after{font-size:1.85rem;margin:0 0 1rem}
+}
+@media print{body{background:#fff;padding:0}.sheet{box-shadow:none;max-width:none}}
+</style>
+</head>
+<body>
+<main class="sheet">
+
+<section data-section="hero" class="hero">
+<div class="slug">
+{%- if brand.logo_url %}
+<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
+{%- elsif brand.name %}
+<b>{{ brand.name | escape }}</b>
+{%- else %}
+<b>{{ sender.name | default: 'Site notes' | escape }}</b>
+{%- endif %}
+<span>Notes on {{ account.domain | default: account.name | escape }}</span>
+</div>
+<h1>{{ data.headline | escape }}</h1>
+<div class="lead">
+<p>Hi {{ first | escape }},</p>
+{%- if data.summary and data.summary != '' %}
+<p>{{ data.summary | escape | newline_to_br | strip_newlines }}</p>
+{%- endif %}
+<p>I read {{ account.domain | default: 'your site' | escape }} the way a buyer would and marked every line that made me slow down or want to leave. The notes are below, worst first, then three rewrites you can paste in as they are.</p>
+</div>
+{%- if n_find > 0 %}
+<ul class="tally" aria-label="Notes by how much they matter">
+{%- if n_high > 0 %}<li><span class="mk mk-high">{{ n_high }} fix first</span></li>{% endif %}
+{%- if n_med > 0 %}<li><span class="mk mk-medium">{{ n_med }} fix soon</span></li>{% endif %}
+{%- if n_low > 0 %}<li><span class="mk mk-low">{{ n_low }} small</span></li>{% endif %}
+</ul>
+{%- endif %}
+</section>
+
+<section data-section="findings" class="block">
+<h2>What I marked</h2>
+<p class="sub">Each line is quoted from your site as it reads today.</p>
+{%- if n_find > 0 %}
+<ol class="notes">
+{%- for f in data.findings %}
+{%- case f.severity -%}
+{%- when 'high' -%}{%- assign sev = 'high' -%}{%- assign sev_label = 'Fix first' -%}
+{%- when 'medium' -%}{%- assign sev = 'medium' -%}{%- assign sev_label = 'Fix soon' -%}
+{%- else -%}{%- assign sev = 'low' -%}{%- assign sev_label = 'Small' -%}
+{%- endcase %}
+<li class="note">
+<p class="margin"><span class="mk mk-{{ sev }}">{{ sev_label }}</span></p>
+<div>
+<p class="where">{{ f.where | escape }}</p>
+<p class="q">&ldquo;<mark>{{ f.quote | escape }}</mark>&rdquo;</p>
+<p class="cost">{{ f.cost | escape }}</p>
+</div>
+</li>
+{%- endfor %}
+</ol>
+{%- else %}
+<p class="pending">I'm still writing these up. This link stays the same, so check back later today.</p>
+{%- endif %}
+</section>
+
+<section data-section="rewrites" class="block rewrites">
+<h2>Three rewrites</h2>
+<p class="sub">Your copy as it is now, then mine. Use them as they are or as a starting point.</p>
+{%- if n_rw > 0 %}
+{%- for r in data.rewrites %}
+{%- assign wb = r.before | split: ' ' | size -%}
+{%- assign wa = r.after | split: ' ' | size %}
+<article class="rw">
+<h3>{{ r.where | escape }}</h3>
+<div>
+<p class="lbl">Now</p>
+<p class="before"><del>{{ r.before | escape }}</del></p>
+</div>
+<div>
+<p class="lbl">Rewrite</p>
+<p class="after">{{ r.after | escape }}</p>
+</div>
+<div class="foot">
+<p class="why">{{ r.why | escape }}</p>
+{%- if wa < wb %}<p class="count">{{ wb }} words down to {{ wa }}</p>{% endif %}
+</div>
+</article>
+{%- endfor %}
+{%- else %}
+<p class="pending">The rewrites are on their way. Same link, later today.</p>
+{%- endif %}
+</section>
+
+<section data-section="next_steps" class="block">
+<h2>What I'd do next</h2>
+{%- if n_steps > 0 %}
+<ul class="todo">
+{%- for s in data.next_steps %}<li>{{ s | escape }}</li>{% endfor %}
+</ul>
+{%- endif %}
+<p>I have more notes than fit on one page. If you want them, grab 20 minutes and I'll go through the rest of {{ account.name | escape }}'s site with you, page by page.</p>
+<div class="cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+<p class="sign"><b>{{ sender.name | default: 'Our team' | escape }}</b>
+{%- if sender.title or brand.name %}<span>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {% endif %}{% endif %}{% if brand.name %}{{ brand.name | escape }}{% endif %}</span>{% endif %}</p>
+</section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,293 @@
+{
+  "kenStudio": "1",
+  "name": "We built you a campaign",
+  "type": "reverse_demo",
+  "format": "page",
+  "slug": "campaign-preview",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "dossier": {
+        "type": "string",
+        "maxLength": 4000
+      },
+      "why_now": {
+        "type": "string",
+        "maxLength": 1000
+      },
+      "search": {
+        "type": "object"
+      },
+      "brief": {
+        "type": "string",
+        "maxLength": 240
+      },
+      "audience": {
+        "type": "object",
+        "properties": {
+          "summary": {
+            "type": "string",
+            "minLength": 40,
+            "maxLength": 480
+          },
+          "chips": {
+            "type": "array",
+            "maxItems": 8,
+            "items": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 36
+            }
+          }
+        },
+        "required": [
+          "summary"
+        ]
+      },
+      "people": {
+        "type": "array",
+        "maxItems": 12,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "company": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "linkedin_url": {
+              "type": "string",
+              "maxLength": 200
+            }
+          }
+        }
+      },
+      "draft": {
+        "type": "string",
+        "maxLength": 1500
+      },
+      "headline": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 80,
+        "fallback": "We built {{ account.name }} a campaign"
+      },
+      "intro": {
+        "type": "string",
+        "maxLength": 420,
+        "fallback": "I looked for the people most likely to buy from {{ account.name }}, picked a few to start with, and wrote the first email to them. It's a first pass, so tell me what you would change."
+      },
+      "shortlist": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 80
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "company": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "linkedin_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "why": {
+              "type": "string",
+              "maxLength": 120
+            }
+          },
+          "required": [
+            "name",
+            "title",
+            "company",
+            "why"
+          ]
+        }
+      },
+      "emails": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 80
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "company": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "linkedin_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "subject": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 60
+            },
+            "body": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 5,
+              "items": {
+                "type": "string",
+                "maxLength": 420
+              }
+            },
+            "ps": {
+              "type": "string",
+              "maxLength": 240
+            }
+          },
+          "required": [
+            "name",
+            "subject",
+            "body"
+          ]
+        }
+      }
+    },
+    "required": [
+      "shortlist",
+      "emails"
+    ]
+  },
+  "recipe": [
+    {
+      "id": "dossier",
+      "kind": "bind",
+      "from": "account.dossier.summary",
+      "to": "data.dossier"
+    },
+    {
+      "id": "why_now",
+      "kind": "bind",
+      "from": "account.dossier.why_now",
+      "to": "data.why_now"
+    },
+    {
+      "id": "target",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": [
+        "account.name",
+        "account.domain",
+        "account.industry",
+        "account.size_band",
+        "data.dossier",
+        "data.why_now"
+      ],
+      "to": [
+        "data.search",
+        "data.brief",
+        "data.audience"
+      ],
+      "prompt": "You are planning who {{ account.name }} ({{ account.domain }}) should email first. {{ sender.name | default: 'The sender' }} is building a small campaign for them for free, to show the people and the first emails that would work. The campaign sells {{ account.name }}'s own product to {{ account.name }}'s buyers. It does not sell anything to {{ account.name }}.\n\nInputs: data.dossier is our research summary, data.why_now is a recent reason to reach out, and account.industry and account.size_band describe the company. Use facts from these inputs only. Never invent customers, numbers, funding or claims.\n\nReturn JSON with these keys:\n- search: Ken Search people filters in camelCase that find the buyers to email first: currentTitles, seniorityLevels (Entry, Individual, Senior, Manager, Director, VP, CLevel, Owner), industries (lowercase LinkedIn industries), companyHeadcount {min, max} and countries. Keep currentTitles to the 3 to 6 roles that own the problem, and aim for a few thousand matches.\n- brief: one sentence, at most 240 characters, that tells a copywriter what {{ account.name }} sells, who buys it, and the one fact from the inputs the first email should lean on.\n- audience: {summary, chips}. summary is 2 or 3 sentences, at most 480 characters: who we go after, why they feel the problem, and who we left out. chips is 4 to 8 labels, at most 36 characters each, that say the filters in plain words, like \"Directors of operations\" or \"20 to 500 staff\".\n\nVoice: one person writing to one person. Casual, direct, specific. Short sentences a person would say out loud to a peer.\n\nRules for every string: no em dashes or en dashes. Never the words \"reverse demo\" or \"demo\". No email addresses, phone numbers or prices. Do not name any software, database or vendor used to build this. Labels stay inside their character limits; write them short instead of cutting them."
+    },
+    {
+      "id": "find",
+      "kind": "tool",
+      "tool": "ken_search.people",
+      "args": {
+        "company": "any",
+        "filters": "{{ data.search }}",
+        "limit": 12
+      },
+      "to": "data.people"
+    },
+    {
+      "id": "write",
+      "kind": "tool",
+      "tool": "ken.copy",
+      "args": {
+        "kind": "email",
+        "brief": "{{ data.brief }} It goes to: {{ data.audience.summary }} Write the core of the first email {{ account.name }} sends them, in 2 or 3 short paragraphs: what {{ account.name }} does for them, one proof point from the brief, and one soft ask. No greeting, no first line and no signature; each person gets their own first line later. No em dashes or en dashes, no prices, and never the word demo.",
+        "tone": "plain and direct, one person writing to another",
+        "maxWords": 90
+      },
+      "to": "data.draft"
+    },
+    {
+      "id": "pick",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": [
+        "account.name",
+        "data.dossier",
+        "data.why_now",
+        "data.brief",
+        "data.audience",
+        "data.people",
+        "data.draft"
+      ],
+      "to": [
+        "data.headline",
+        "data.intro",
+        "data.shortlist",
+        "data.emails"
+      ],
+      "prompt": "Pick and personalize what goes on {{ account.name }}'s campaign preview page. data.people are buyers that search found for {{ account.name }}. data.draft is the core of the first email, written once; it is sent by someone at {{ account.name }} and sells {{ account.name }}'s product as described in data.brief and data.dossier.\n\nReturn JSON with these keys:\n- shortlist: the 6 people in data.people who best fit data.audience, best fit first (fewer only if data.people has fewer than 6). Each is {name, title, company, linkedin_url, why}. Copy name, title and linkedin_url from the person as given, and leave linkedin_url out when they have none. For company use the name people say (drop Inc, LLC, Ltd, GmbH). why is one sentence, at most 120 characters, on why this person should hear about {{ account.name }}, based on their title and company only.\n- emails: the first email to the top 2 or 3 people on the shortlist, in shortlist order, built from data.draft. Each is {name, title, company, linkedin_url, subject, body, ps}; name, title, company and linkedin_url repeat the shortlist entry. body is a list of 3 to 5 short paragraphs: \"Hi <first name>,\", then a first line written for this person, then the paragraphs of data.draft. The first line is under 20 words, states one fact about this person's role or company from data.people, and says why that fact is the reason for the email. Never open it with \"I noticed\", \"I saw\", \"I came across\", \"As a\" or a compliment. Change data.draft only to fit the person or to fix a rule below. subject is fewer than 6 words, built on the first line's fact, lowercase except the first letter and names; never \"quick question\", \"introduction\" or \"partnership\". ps starts with \"PS: \" and adds one more fact from the inputs that fits this person, or is an empty string. No signature; the page adds one.\n- headline: at most 80 characters. Says what is on the page for {{ account.name }}, plainly, like \"Six people who should hear about {{ account.name }} first\". No hype, no question.\n- intro: 2 or 3 sentences, at most 420 characters, from {{ sender.name | default: 'the sender' }} to the person reading the page at {{ account.name }}. Say who you looked for and what is below, then ask what they would change. No greeting and no name; the page adds both. Use the fact in data.why_now if there is one.\n\nUse facts from the inputs only. Never invent customers, numbers or claims.\n\nRules for every string: no em dashes or en dashes. Never the words \"reverse demo\" or \"demo\". No email addresses, phone numbers or prices. Do not name any software, database or vendor used to build this. Plain words a person would say out loud."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": [
+        "data.emails"
+      ],
+      "retries": 1,
+      "pass_score": 7.5,
+      "rubric": "Grade each email the way its recipient reads it: subject, body, then PS. 10 is an email a busy buyer reads in one pass and answers.\nScore these, 0 to 10 each:\n- quick_read: it reads in under 20 seconds, in short paragraphs.\n- specific: the first line states one fact about the recipient's company or role, and the email could not go to another company unchanged.\n- makes_sense: every sentence follows from the one before.\n- cta: one soft ask that is easy to say yes to, not a meeting demand.\nAnswer yes or no:\n- would_reply: would a buyer in this role plausibly answer?\n- weird_word: is there a phrase a person would not say out loud (jargon, marketing adjectives, a clever subject line, stacked nouns)? Quote it.\nAutomatic fail for that email: an em dash or en dash, the words \"reverse demo\" or \"demo\", an email address or phone number, a price, a subject of 6 words or more, or a first line that opens with \"I noticed\", \"I saw\" or \"I came across\".\nPass when the overall score is 7.5 or higher, no 0 to 10 check is 6 or lower, would_reply is yes, and weird_word is no. On a fail, name the check and quote the phrase to change."
+    }
+  ],
+  "sections": [
+    {
+      "id": "hero",
+      "label": "Hero"
+    },
+    {
+      "id": "audience",
+      "label": "Who we looked for"
+    },
+    {
+      "id": "people",
+      "label": "Shortlist"
+    },
+    {
+      "id": "emails",
+      "label": "First emails"
+    },
+    {
+      "id": "cta",
+      "label": "Next step"
+    }
+  ],
+  "cta": {
+    "primary": "booking",
+    "label": "Book 20 minutes"
+  }
+}

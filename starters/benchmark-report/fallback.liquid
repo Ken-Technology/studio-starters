@@ -1,0 +1,54 @@
+{%- assign accent = brand.colors.primary | default: '#a3361b' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
+{%- assign font_body = brand.fonts.body | default: 'Public Sans' -%}
+{%- assign first = person.first_name | default: 'there' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ account.name | escape }} next to its peers</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600;700&display=swap">
+<style>
+html,body{margin:0;background:#fff}
+.pb{--a:{{ accent }};--ink:#1f1e1b;--mute:#69655c;--line:#e2dccf;--paper:#f5f1e8;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.6;color:var(--ink);max-width:46rem;margin:0 auto;padding:.5rem 1.15rem 4rem;-webkit-font-smoothing:antialiased}
+.pb h1{font-family:'{{ font_head }}',Georgia,serif;font-weight:600;letter-spacing:-.01em;font-size:2.35rem;line-height:1.06;margin:2.2rem 0 1.5rem}
+.pb p{margin:0 0 .9rem}
+.pb a{color:var(--a)}
+.pb-page{padding:1.2rem 0 .6rem}
+.pb-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-bottom:.8rem;border-bottom:3px solid var(--a)}
+.pb-logo{height:26px;width:auto;display:block}
+.pb-mark{font-weight:700;font-size:.92rem;margin:0!important}
+.pb-kicker{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--a);margin:0!important}
+.pb-note{background:var(--paper);border-left:3px solid var(--a);padding:1rem 1.2rem .1rem;margin:1.4rem 0}
+.pb-cta{margin:1.8rem 0}
+@media (min-width:700px){.pb{padding:1rem 2rem 5rem}.pb h1{font-size:3.3rem}}
+</style>
+</head>
+<body>
+<div class="pb">
+
+<section data-section="cover" class="pb-page">
+<div class="pb-top">
+{%- if brand.logo_url %}<img class="pb-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="pb-mark">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="pb-kicker">Peer benchmark</p>
+</div>
+<h1>{{ account.name | escape }} next to its peers</h1>
+<p>Hi {{ first | escape }},</p>
+<p>I'm putting together a short report that sets {{ account.name | escape }} next to companies in the same industry and size band, metric by metric, with the range across the group so you can see where you would land.</p>
+<div class="pb-note"><p>I'm still pulling the numbers. This link stays the same, so check back later today and the full report will be here.</p></div>
+</section>
+
+<section data-section="next_steps" class="pb-page">
+<p>If you would rather go through it together, grab 20 minutes and I'll walk you through what the peer data shows so far.</p>
+<div class="pb-cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+<p>Best,<br>{{ sender.name | default: 'Our team' | escape }}</p>
+</section>
+
+</div>
+</body>
+</html>

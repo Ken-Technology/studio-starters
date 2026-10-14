@@ -1,0 +1,37 @@
+{
+  "account": {
+    "name": "Copperline Supply",
+    "domain": "copperline.example",
+    "industry": "wholesale building materials",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Copperline Supply distributes plumbing and HVAC parts to contractors across the Mountain West, with eleven branches.",
+      "why_now": "Added a sales team for commercial accounts in October."
+    }
+  },
+  "person": null,
+  "sender": { "name": "Morgan Hale", "title": null, "signature_html": null },
+  "brand": {
+    "name": "Ken",
+    "logo_url": null,
+    "colors": { "primary": "#12355b", "secondary": "#d99a00" },
+    "fonts": { "heading": "Young Serif", "body": "Figtree" }
+  },
+  "data": {
+    "event_name": "Revenue leaders supper",
+    "format": "dinner",
+    "date_text": "Thursday, December 4",
+    "time_text": "7:00 pm to 10:00 pm",
+    "city": "Denver",
+    "venue": "The cellar at Alder and Ash, Larimer Square",
+    "host": "Morgan Hale",
+    "seats_left": 1,
+    "agenda": [
+      { "time": "7:00 pm", "title": "Drinks at the bar", "note": "Meet the room before anyone sits down." },
+      { "time": "7:45 pm", "title": "Supper, one long table", "note": "We go around once: the channel that surprised you this year, good or bad." },
+      { "time": "9:15 pm", "title": "Open questions", "note": "Splitting teams, territories, comp plans. Whatever the table wants." }
+    ],
+    "why_now": "Added a sales team for commercial accounts in October.",
+    "why_you": "Copperline just split off a sales team for commercial accounts. A few people at this table have split a team the same way and can tell you what they would do differently."
+  }
+}

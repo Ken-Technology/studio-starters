@@ -1,0 +1,227 @@
+{%- assign accent = brand.colors.primary | default: '#0b6e5a' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#e3a338' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Big Shoulders Display' -%}
+{%- assign font_body = brand.fonts.body | default: 'IBM Plex Sans' -%}
+{%- assign product = brand.name | default: 'our check' -%}
+{%- assign first = person.first_name | default: 'there' -%}
+{%- assign high = 0 -%}{%- assign medium = 0 -%}{%- assign low = 0 -%}
+{%- for f in data.findings -%}
+{%- case f.severity -%}{%- when 'high' -%}{%- assign high = high | plus: 1 -%}{%- when 'medium' -%}{%- assign medium = medium | plus: 1 -%}{%- else -%}{%- assign low = low | plus: 1 -%}{%- endcase -%}
+{%- endfor -%}
+{%- assign start = data.findings | first -%}
+{%- for f in data.findings -%}{%- if f.severity == 'high' -%}{%- assign start = f -%}{%- break -%}{%- endif -%}{%- endfor -%}
+{%- assign report_head = data.report_url | slice: 0, 8 -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>What we found on {{ account.domain | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | replace: ' ', '+' | escape }}:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | replace: ' ', '+' | escape }}:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{--a:{{ accent | escape }};--a2:{{ accent2 | escape }};--ink:#12161a;--mute:#5a6066;--line:#d5d8cf;--grid:#e3e5dd;--paper:#f1f2ec;--card:#fff;--good:#1d7a46;--fair:#a86b00;--poor:#b4321f;--hf:'{{ font_head | escape }}',Impact,'Arial Narrow',sans-serif;--bf:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--mf:'IBM Plex Mono',ui-monospace,monospace}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);font:16px/1.6 var(--bf);-webkit-font-smoothing:antialiased;background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+a{color:var(--a)}
+.yp{max-width:68rem;margin:0 auto;padding:0 1.1rem 2.5rem}
+.yp-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:2px solid var(--ink);font:600 .72rem/1.3 var(--mf);letter-spacing:.08em;text-transform:uppercase}
+.yp-top span:last-child{color:var(--mute);text-align:right}
+.yp-logo{height:26px;width:auto;display:block}
+.yp h1,.yp h2{font-family:var(--hf);font-weight:700;line-height:1;letter-spacing:.005em;margin:0;text-wrap:balance;overflow-wrap:break-word}
+.yp-hero{padding:2rem 0 2.6rem}
+.yp-eyebrow{font:600 .74rem/1.4 var(--mf);letter-spacing:.08em;text-transform:uppercase;color:var(--a);margin:0 0 .9rem}
+.yp h1{font-size:2.75rem;margin-bottom:1.3rem}
+.yp-hi{margin:0 0 .3rem;font-weight:700}
+.yp-intro{margin:0;max-width:32rem;color:#2b3036}
+.yp-frame{margin:2rem -.35rem 0;padding:.35rem;background:linear-gradient(var(--ink),var(--ink)) 0 0/14px 2px no-repeat,linear-gradient(var(--ink),var(--ink)) 0 0/2px 14px no-repeat,linear-gradient(var(--ink),var(--ink)) 100% 0/14px 2px no-repeat,linear-gradient(var(--ink),var(--ink)) 100% 0/2px 14px no-repeat,linear-gradient(var(--ink),var(--ink)) 0 100%/14px 2px no-repeat,linear-gradient(var(--ink),var(--ink)) 0 100%/2px 14px no-repeat,linear-gradient(var(--ink),var(--ink)) 100% 100%/14px 2px no-repeat,linear-gradient(var(--ink),var(--ink)) 100% 100%/2px 14px no-repeat}
+.yp-read{background:var(--card);border:1.5px solid var(--ink);padding:1.1rem 1.15rem 0}
+.yp-read-top{display:flex;justify-content:space-between;align-items:flex-start;gap:.8rem}
+.yp-label{font:600 .74rem/1.4 var(--mf);letter-spacing:.06em;text-transform:uppercase;margin:0}
+.yp-pill{flex:none;font:600 .68rem/1 var(--mf);letter-spacing:.06em;text-transform:uppercase;color:#fff;padding:.38rem .5rem;border-radius:2px}
+.yp-good{background:var(--good)}.yp-fair{background:var(--fair)}.yp-poor{background:var(--poor)}
+.yp-value{font:700 5.6rem/.9 var(--hf);margin:.9rem 0 .5rem;letter-spacing:-.01em;word-break:break-word}
+.yp-value small{font-size:.38em;margin-left:.15em;color:var(--mute);letter-spacing:0}
+.yp-meter{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:0 0 .9rem}
+.yp-meter i{display:block;height:8px;background:var(--grid)}
+.yp-meter .on.yp-m-good{background:var(--good)}.yp-meter .on.yp-m-fair{background:var(--fair)}.yp-meter .on.yp-m-poor{background:var(--poor)}
+.yp-context{margin:0 0 1rem;color:#2b3036;font-size:.95rem}
+.yp-scope{margin:0 -1.15rem;padding:.75rem 1.15rem .8rem;border-top:1.5px solid var(--ink);font:400 .76rem/1.5 var(--mf);color:var(--mute);background:linear-gradient(90deg,var(--ink) 1px,transparent 1px) 0 0/8px 6px repeat-x}
+.yp-sec{padding:2.4rem 0 2.6rem;border-top:2px solid var(--ink)}
+.yp-kicker{font:600 .72rem/1 var(--mf);letter-spacing:.08em;text-transform:uppercase;color:var(--a);margin:0 0 .7rem}
+.yp h2{font-size:2.3rem;margin-bottom:.9rem}
+.yp-tally{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;margin:0 0 1.6rem;padding:0;list-style:none;font:400 .8rem/1.4 var(--mf)}
+.yp-tally li{display:flex;align-items:center;gap:.4rem}
+.yp-tally b{font-weight:600}
+.yp-dot{width:.6rem;height:.6rem;display:inline-block;background:var(--mute)}
+.yp-d-high{background:var(--poor)}.yp-d-medium{background:var(--fair)}
+.yp-list{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.yp-f{display:grid;grid-template-columns:2.4rem 1fr;gap:.2rem .6rem;padding:1.1rem 0 1.15rem;border-bottom:1px solid var(--line)}
+.yp-idx{grid-column:1;grid-row:1/span 2;font:400 1.7rem/1 var(--hf);color:var(--mute)}
+.yp-sevcol{grid-column:2;grid-row:1;margin-bottom:.3rem}
+.yp-body{grid-column:2;grid-row:2}
+.yp-f h3{font:700 1.06rem/1.35 var(--bf);margin:.1rem 0 .35rem}
+.yp-f p{margin:0}
+.yp-sev{display:inline-block;font:600 .64rem/1 var(--mf);letter-spacing:.07em;text-transform:uppercase;padding:.3rem .4rem;border:1.5px solid currentColor;border-radius:2px}
+.yp-high .yp-sev{color:var(--poor)}.yp-medium .yp-sev{color:var(--fair)}.yp-low .yp-sev{color:var(--mute)}
+.yp-detail{color:#2b3036;font-size:.96rem}
+.yp-where{font:400 .76rem/1.4 var(--mf);color:var(--mute);margin-top:.45rem!important}
+.yp-chart{margin:2rem 0 0;padding:1.1rem 1.1rem 1rem;background:var(--card);border:1.5px solid var(--ink)}
+.yp-chart svg{display:block;width:100%;height:auto}
+.yp-meaning p{font-size:1.1rem;line-height:1.6;margin:0 0 1rem;max-width:38rem}
+.yp-start{margin:1.6rem 0 0;background:var(--card);border:1.5px solid var(--ink);border-left:8px solid var(--a);padding:1rem 1.1rem}
+.yp-start p{margin:0;font-size:1rem}
+.yp-start .yp-kicker{margin-bottom:.45rem;font-size:.72rem}
+.yp-report{display:inline-block;margin-top:1.4rem;font:600 .78rem/1 var(--mf);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid var(--a2);padding-bottom:.25rem;color:var(--ink)}
+.yp-cta{margin:.4rem 0 0;padding:1.7rem 1.25rem 1.6rem;background:var(--card);border:1.5px solid var(--ink);border-top:10px solid var(--a)}
+.yp-cta h2{font-size:2.2rem}
+.yp-cta p{margin:0 0 1.2rem;max-width:34rem}
+.yp-btn{margin:1.3rem 0}
+.yp-from{margin:0!important;font-size:.95rem}
+.yp-from b{display:block}
+.yp-foot{margin:2rem 0 0;font:400 .72rem/1.4 var(--mf);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+@media (min-width:780px){
+.yp{padding:0 2rem 3.5rem}
+.yp-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:3.5rem;align-items:center;padding:3.6rem 0 4rem}
+.yp h1{font-size:4.4rem}
+.yp-intro{font-size:1.08rem}
+.yp-frame{margin:0}
+.yp-read{padding:1.5rem 1.6rem 0}
+.yp-value{font-size:8rem}
+.yp-scope{margin:0 -1.6rem;padding:.8rem 1.6rem .9rem}
+.yp-sec{display:grid;grid-template-columns:16rem minmax(0,1fr);gap:2.5rem;padding:3.2rem 0 3.4rem}
+.yp h2{font-size:3rem}
+.yp-f{grid-template-columns:3.4rem 1fr 8rem;gap:0 1rem;align-items:start}
+.yp-idx{grid-row:1;font-size:2.2rem}
+.yp-sevcol{grid-column:3;grid-row:1;text-align:right;padding-top:.2rem;margin:0}
+.yp-body{grid-column:2;grid-row:1}
+.yp-meaning p{font-size:1.2rem}
+.yp-cta{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:2rem;align-items:end;padding:2.4rem 2.4rem 2.2rem}
+.yp-cta h2{font-size:2.8rem}
+}
+</style>
+</head>
+<body>
+<main class="yp">
+
+<header data-section="hero">
+<div class="yp-top">
+{%- if brand.logo_url %}
+<img class="yp-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
+{%- else %}
+<span>{{ brand.name | default: sender.name | default: 'Our team' | escape }}</span>
+{%- endif %}
+<span>Run on {{ account.domain | escape }}</span>
+</div>
+<div class="yp-hero">
+<div>
+<p class="yp-eyebrow">For {{ account.name | escape }}</p>
+<h1>{{ data.headline | escape }}</h1>
+<p class="yp-hi">Hi {{ first | escape }},</p>
+<p class="yp-intro">I ran {{ product | escape }} on {{ account.domain | escape }} to see what it would find. This is what came back.</p>
+</div>
+<div class="yp-frame">
+<div class="yp-read">
+<div class="yp-read-top">
+<p class="yp-label">{{ data.metric.label | escape }}</p>
+{%- case data.metric.status %}
+{%- when 'good' %}<span class="yp-pill yp-good">Looks good</span>
+{%- when 'fair' %}<span class="yp-pill yp-fair">Worth a look</span>
+{%- when 'poor' %}<span class="yp-pill yp-poor">Needs work</span>
+{%- endcase %}
+</div>
+<p class="yp-value">{{ data.metric.value | escape }}{% if data.metric.unit and data.metric.unit != '' %}<small>{{ data.metric.unit | escape }}</small>{% endif %}</p>
+{%- if data.metric.status and data.metric.status != '' %}
+<div class="yp-meter" aria-hidden="true"><i class="yp-m-good{% if data.metric.status == 'good' %} on{% endif %}"></i><i class="yp-m-fair{% if data.metric.status == 'fair' %} on{% endif %}"></i><i class="yp-m-poor{% if data.metric.status == 'poor' %} on{% endif %}"></i></div>
+{%- endif %}
+{%- if data.metric.context and data.metric.context != '' %}
+<p class="yp-context">{{ data.metric.context | escape }}</p>
+{%- endif %}
+<p class="yp-scope">{% if data.scope and data.scope != '' %}{{ data.scope | escape }}{% else %}Checked on {{ account.domain | escape }}{% endif %}</p>
+</div>
+</div>
+</div>
+</header>
+
+<section data-section="findings" class="yp-sec">
+<div>
+<p class="yp-kicker">Findings</p>
+<h2>What we found</h2>
+<ul class="yp-tally">
+{%- if high > 0 %}<li><span class="yp-dot yp-d-high"></span><b>{{ high }}</b> to fix first</li>{% endif %}
+{%- if medium > 0 %}<li><span class="yp-dot yp-d-medium"></span><b>{{ medium }}</b> to fix soon</li>{% endif %}
+{%- if low > 0 %}<li><span class="yp-dot"></span><b>{{ low }}</b> small</li>{% endif %}
+</ul>
+</div>
+<div>
+<ol class="yp-list">
+{%- for f in data.findings %}
+<li class="yp-f yp-{{ f.severity | escape }}">
+<span class="yp-idx">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+<div class="yp-body">
+<h3>{{ f.title | escape }}</h3>
+{%- if f.detail and f.detail != '' %}
+<p class="yp-detail">{{ f.detail | escape }}</p>
+{%- endif %}
+{%- if f.where and f.where != '' %}
+<p class="yp-where">{{ f.where | escape }}</p>
+{%- endif %}
+</div>
+<div class="yp-sevcol"><span class="yp-sev">{% case f.severity %}{% when 'high' %}Fix first{% when 'medium' %}Fix soon{% else %}Small{% endcase %}</span></div>
+</li>
+{%- endfor %}
+</ol>
+{%- if data.chart.size > 1 %}
+<figure class="yp-chart">
+{% render 'ken/chart', type: 'bar', data: data.chart, title: data.chart_title %}
+</figure>
+{%- endif %}
+</div>
+</section>
+
+<section data-section="meaning" class="yp-sec">
+<div>
+<p class="yp-kicker">What it means</p>
+<h2>What this means for {{ account.name | escape }}</h2>
+</div>
+<div class="yp-meaning">
+{%- assign paras = data.meaning | escape | newline_to_br | strip_newlines | split: '<br /><br />' %}
+{%- for para in paras %}
+{%- assign text = para | strip %}
+{%- if text != '' %}
+<p>{{ text }}</p>
+{%- endif %}
+{%- endfor %}
+{%- if start.title %}
+<div class="yp-start">
+<p class="yp-kicker">Where I would start</p>
+<p><b>{{ start.title | escape }}</b>{% if start.where and start.where != '' %} ({{ start.where | escape }}){% endif %}</p>
+</div>
+{%- endif %}
+{%- if report_head == 'https://' %}
+<a class="yp-report" href="{{ data.report_url | escape }}">Open the full report</a>
+{%- endif %}
+</div>
+</section>
+
+<section data-section="cta" class="yp-cta">
+<div>
+<h2>Want the full picture?</h2>
+<p>This was a quick run. I can run {{ product | escape }} across all of {{ account.domain | escape }} and go through the results with you, starting with what to fix first. It takes 20 minutes.</p>
+</div>
+<div>
+<div class="yp-btn">
+{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}
+</div>
+<p class="yp-from"><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title %}{{ sender.title | escape }}{% endif %}</p>
+</div>
+</section>
+
+<p class="yp-foot">Made for {{ account.name | escape }}{% if sender.name %} by {{ sender.name | escape }}{% endif %}</p>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,72 @@
+{
+  "kenStudio": "1",
+  "name": "Dinner or webinar invite",
+  "type": "event",
+  "format": "page",
+  "slug": "invite",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "event_name": { "type": "string", "minLength": 3, "maxLength": 80, "fallback": "Outbound, over dinner" },
+      "format": { "type": "string", "enum": ["dinner", "webinar"], "fallback": "dinner" },
+      "date_text": { "type": "string", "minLength": 3, "maxLength": 60, "fallback": "Thursday, November 13" },
+      "time_text": { "type": "string", "minLength": 3, "maxLength": 60, "fallback": "6:30 pm to 9:30 pm" },
+      "city": { "type": "string", "maxLength": 60, "fallback": "Austin" },
+      "venue": { "type": "string", "maxLength": 120, "fallback": "The back room at Juniper Table, East Sixth Street" },
+      "platform": { "type": "string", "maxLength": 60, "fallback": "Zoom" },
+      "host": { "type": "string", "minLength": 2, "maxLength": 80, "fallback": "{{ sender.name | default: 'Our team' }}" },
+      "guests": {
+        "type": "string",
+        "maxLength": 200,
+        "fallback": "Twelve people: heads of sales, RevOps leads and a few founders from B2B software teams."
+      },
+      "seats_left": { "type": "integer", "fallback": 5 },
+      "agenda": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "time": { "type": "string", "maxLength": 20 },
+            "title": { "type": "string", "minLength": 2, "maxLength": 80 },
+            "note": { "type": "string", "maxLength": 160 }
+          },
+          "required": ["title"]
+        },
+        "fallback": [
+          { "time": "6:30 pm", "title": "Drinks and hellos", "note": "No name tags and no slides. Come as you are." },
+          { "time": "7:15 pm", "title": "Dinner, family style", "note": "One question on the table: what booked meetings for you this quarter, and what stopped working?" },
+          { "time": "8:30 pm", "title": "Open table", "note": "Bring the problem you haven't cracked yet. Someone in the room has seen it before." },
+          { "time": "9:30 pm", "title": "Last drinks" }
+        ]
+      },
+      "why_now": { "type": "string", "maxLength": 1000 },
+      "why_you": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 320,
+        "fallback": "It's a small table of people who run outbound every day, and I'd like {{ account.name }} to be part of that conversation."
+      }
+    },
+    "required": ["event_name", "format", "date_text", "time_text", "host", "seats_left", "agenda", "why_you"]
+  },
+  "recipe": [
+    { "id": "why_now", "kind": "bind", "from": "account.dossier.why_now", "to": "data.why_now" },
+    {
+      "id": "why_you",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.industry", "account.size_band", "account.dossier.summary", "data.why_now"],
+      "to": ["data.why_you"],
+      "prompt": "Write the personal line on an invite from {{ sender.name | default: 'our team' }} to someone at {{ account.name }}.\n\nThe event (template owners: keep this line in step with the event details in this template): a small dinner or a short webinar for sales and revenue leaders at B2B companies, about what is booking meetings in outbound right now. About twelve people, no slides, no pitch.\n\nInputs: account.name, account.industry and account.size_band describe the company. account.dossier.summary is our research summary. data.why_now is a recent reason to reach out and may be empty. Use facts from these inputs only. Never invent news, numbers, customers or people.\n\nReturn JSON with one key:\n- why_you: one or two sentences, at most 300 characters, on why someone from {{ account.name }} belongs in this room. Tie one specific fact about them, data.why_now if there is one, to what the room will talk about, so it reads like the host wrote it after looking them up. Write to \"you\" or to the company. Never use a first name; the page adds the greeting. No flattery (\"love what you're building\", \"impressive\"), no \"I noticed\", \"I saw\" or \"I came across\", no question.\n\nRules: no em dashes or en dashes. No email addresses or phone numbers. Never name other guests or say who else is coming. Plain words a person would say out loud to a peer; no marketing words."
+    }
+  ],
+  "sections": [
+    { "id": "invite", "label": "Invitation" },
+    { "id": "details", "label": "Details" },
+    { "id": "agenda", "label": "Agenda" },
+    { "id": "rsvp", "label": "RSVP" }
+  ],
+  "cta": { "primary": "form", "label": "Save my seat" }
+}

@@ -1,0 +1,63 @@
+{
+  "account": {
+    "name": "Pennant",
+    "domain": "pennant.example",
+    "industry": "human resources services",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Pennant sells HR, scheduling and tip payout software to restaurants with hourly staff.",
+      "why_now": null
+    }
+  },
+  "person": { "first_name": "Jo", "last_name": "Carver", "title": null },
+  "sender": { "name": "Morgan Hale", "title": null, "signature_html": null },
+  "brand": { "name": null, "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "findings": [
+      {
+        "where": "Homepage headline",
+        "quote": "People-first HR for the modern workforce.",
+        "cost": "A restaurant owner with 40 hourly staff can't tell this handles shifts and tip payouts. It sounds like software for an office.",
+        "severity": "high"
+      },
+      {
+        "where": "Line under the headline",
+        "quote": "Hire, onboard, schedule and pay your team, all in one place.",
+        "cost": "The clearest line on the page, but it never says restaurants, so it reads like every other HR tool.",
+        "severity": "medium"
+      },
+      {
+        "where": "Main button",
+        "quote": "Talk to us",
+        "cost": "Owners run the floor at night. A button that needs a call during the day gets put off for weeks.",
+        "severity": "medium"
+      },
+      {
+        "where": "Customer proof",
+        "quote": "Join 2,000+ businesses",
+        "cost": "Which businesses? If they are restaurants, say so. That is the whole pitch.",
+        "severity": "low"
+      }
+    ],
+    "rewrites": [
+      {
+        "where": "Homepage headline",
+        "before": "People-first HR for the modern workforce.",
+        "after": "HR, scheduling and tip payouts for restaurants with hourly teams.",
+        "why": "A restaurant owner sees their own week in the first line."
+      },
+      {
+        "where": "Line under the headline",
+        "before": "Hire, onboard, schedule and pay your team, all in one place.",
+        "after": "Hire, schedule and pay your restaurant staff, tips included.",
+        "why": "Same promise, but now it names who it is for and the thing other tools miss."
+      },
+      {
+        "where": "Main button",
+        "before": "Talk to us",
+        "after": "See pricing for my team",
+        "why": "Owners can check the price after close, without waiting for a call."
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{%- assign accent = brand.colors.primary | default: '#1f5641' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#e3b23c' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Fraunces' -%}
+{%- assign font_body = brand.fonts.body | default: 'Figtree' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>A customer story for {{ account.name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f4efe6;color:#1e1c18;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.cs{--a:{{ accent }};--a2:{{ accent2 }};--ink:#1e1c18;--mute:#6b655a;--card:#fbf8f2}
+.cs h1,.cs h2{font-family:'{{ font_head }}',Georgia,serif;font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.cs p{margin:0 0 1rem}
+.cs-wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem}
+.cs-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--ink)}
+.cs-logo{height:26px;width:auto;display:block}
+.cs-brand{font-weight:700;font-size:.95rem;margin:0!important}
+.cs-tag{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin:0!important}
+.cs-hero{padding:2.4rem 0 1.6rem}
+.cs-kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--a);border-bottom:3px solid var(--a2);padding-bottom:.2rem;margin:0 0 1.2rem!important}
+.cs h1{font-size:2.25rem;line-height:1.06;margin:0 0 1.1rem}
+.cs-cta{padding:.4rem 0 4rem}
+.cs-box{border:2px solid var(--ink);background:var(--card);padding:1.5rem 1.3rem 1.3rem;box-shadow:6px 6px 0 var(--a)}
+.cs-box h2{font-size:1.45rem;margin:0 0 .7rem}
+.cs-btn{margin:1.3rem 0 1.4rem}
+.cs-sign{font-size:.95rem;margin:0!important}
+.cs-sign span{display:block;color:var(--mute)}
+@media (min-width:760px){body{font-size:18px}.cs-wrap{padding:0 2rem}.cs-hero{padding:4rem 0 2rem}.cs h1{font-size:3.7rem}.cs-box{padding:2.2rem 2.2rem 1.8rem}}
+</style>
+</head>
+<body>
+<main class="cs">
+<div class="cs-wrap">
+<header class="cs-top">
+{%- if brand.logo_url %}<img class="cs-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="cs-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="cs-tag">Customer story</p>
+</header>
+<section data-section="hero" class="cs-hero">
+<p class="cs-kicker">{% if person.first_name %}For {{ person.first_name | escape }} at {{ account.name | escape }}{% else %}Picked for {{ account.name | escape }}{% endif %}</p>
+<h1>A customer story picked for {{ account.name | escape }}</h1>
+<p>Hi {{ person.first_name | default: 'there' | escape }}, I'm going through our customer stories to find the one closest to {{ account.name | escape }}: a team your size, with the same kind of problem, and what changed for them.</p>
+<p>It isn't ready yet. This link stays the same, so check back later today and the story will be here.</p>
+</section>
+<section data-section="cta" class="cs-cta">
+<div class="cs-box">
+<h2>Rather hear it now?</h2>
+<p>Grab 20 minutes and I'll tell you the story myself, and what I think would carry over to {{ account.name | escape }}.</p>
+<div class="cs-btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+<p class="cs-sign">{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</div>
+</section>
+</div>
+</main>
+</body>
+</html>

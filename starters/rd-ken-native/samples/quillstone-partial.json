@@ -1,0 +1,61 @@
+{
+  "account": {
+    "name": "Quillstone",
+    "domain": "quillstone.example",
+    "industry": "legal services",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Quillstone reviews vendor contracts for in-house legal teams and flags clauses that differ from the team's own playbook. Legal teams upload a contract and get a marked-up copy back.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Amara",
+    "last_name": "Diallo",
+    "title": null
+  },
+  "sender": {
+    "name": "Morgan Hale",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": null,
+    "logo_url": null,
+    "colors": { "primary": "#6a4a12" },
+    "fonts": null
+  },
+  "data": {
+    "shortlist": [
+      { "name": "Hannah Brandt", "title": "General Counsel", "company": "Oakmere Logistics", "linkedin_url": "https://www.linkedin.com/in/sample-hannah-brandt", "why": "A one-person legal team that reviews every vendor contract herself." },
+      { "name": "Ravi Menon", "title": "Senior Legal Counsel", "company": "Brightfield Health", "why": "Handles commercial contracts, so redlines against a playbook are his week." },
+      { "name": "Clara Jensen", "title": "Head of Legal Operations", "company": "Tessera Cloud", "linkedin_url": "https://www.linkedin.com/in/sample-clara-jensen", "why": "Owns how legal works, and picks the tools the team uses." }
+    ],
+    "emails": [
+      {
+        "name": "Hannah Brandt",
+        "title": "General Counsel",
+        "company": "Oakmere Logistics",
+        "subject": "Vendor contracts at Oakmere",
+        "body": [
+          "Hi Hannah,",
+          "As the only lawyer at Oakmere, every vendor contract waits on you.",
+          "Quillstone reads each one against your own playbook and sends back a marked-up copy, so you start from the clauses that differ instead of page one.",
+          "Would a sample markup on one of your templates help?"
+        ]
+      },
+      {
+        "name": "Clara Jensen",
+        "subject": "Contract review at Tessera",
+        "body": [
+          "Hi Clara,",
+          "Legal ops at Tessera probably decides how contract review gets done, not just who does it.",
+          "Quillstone checks vendor contracts against your playbook and flags what differs, so the team reviews the exceptions.",
+          "Worth a short look?"
+        ],
+        "ps": "PS: It works from your own playbook, so nothing changes about how the team marks up a contract."
+      }
+    ]
+  }
+}

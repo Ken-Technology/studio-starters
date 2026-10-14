@@ -1,0 +1,29 @@
+{
+  "account": {
+    "name": "Brightwave",
+    "domain": "brightwave.example",
+    "industry": "software development",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Brightwave sells churn forecasting to B2B SaaS finance and customer success teams. It reads billing and product usage data and flags accounts likely to downgrade 60 days ahead. Customers named on the site include Ledgerline and Fieldhouse.",
+      "why_now": "Launched a Stripe Billing integration last month and is hiring two account executives."
+    }
+  },
+  "person": { "first_name": "Leo", "last_name": "Park", "title": "VP of Sales" },
+  "sender": { "name": "Morgan Hale", "title": null, "signature_html": null },
+  "brand": { "name": "Ken", "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "dossier": "Brightwave sells churn forecasting to B2B SaaS finance and customer success teams. It reads billing and product usage data and flags accounts likely to downgrade 60 days ahead. Customers named on the site include Ledgerline and Fieldhouse.",
+    "why_now": "Launched a Stripe Billing integration last month and is hiring two account executives.",
+    "reps": 8,
+    "hours": 10,
+    "rep_cost": 120000,
+    "basis": {
+      "reps": "51 to 200 employees, and the careers page lists two open account executive roles.",
+      "hours": "New reps building their own pipeline usually prospect more than a day a week.",
+      "rep_cost": "Software sales teams in the US, salary plus benefits."
+    },
+    "headline": "What prospecting by hand costs Brightwave",
+    "intro": "Our estimate for Brightwave's sales team, with two new account executives on the way. Change any figure to match how your team works."
+  }
+}

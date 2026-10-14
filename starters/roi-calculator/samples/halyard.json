@@ -1,0 +1,29 @@
+{
+  "account": {
+    "name": "Halyard Freightworks",
+    "domain": "halyard.example",
+    "industry": "truck transportation",
+    "size_band": "501-1000",
+    "dossier": {
+      "summary": "Halyard Freightworks is a truckload and intermodal carrier serving manufacturers in the Midwest. Its sales team sells dedicated fleet contracts. The site lists 14 regional sales offices.",
+      "why_now": "Opened a cross-dock in Columbus and posted six openings for regional sales managers."
+    }
+  },
+  "person": { "first_name": "Dana", "last_name": "Whitlock", "title": "Head of Sales Development" },
+  "sender": { "name": "Jonas Weber", "title": "Partner", "signature_html": null },
+  "brand": { "name": "Northgate Outbound", "logo_url": null, "colors": { "primary": "#7a2e1f", "secondary": "#2f6f62" }, "fonts": { "heading": "DM Serif Display", "body": "IBM Plex Sans" } },
+  "data": {
+    "dossier": "Halyard Freightworks is a truckload and intermodal carrier serving manufacturers in the Midwest. Its sales team sells dedicated fleet contracts. The site lists 14 regional sales offices.",
+    "why_now": "Opened a cross-dock in Columbus and posted six openings for regional sales managers.",
+    "reps": 30,
+    "hours": 12,
+    "rep_cost": 95000,
+    "basis": {
+      "reps": "14 regional offices with about two sellers each, plus six open sales roles.",
+      "hours": "Regional managers who source their own shippers, a bit over a day a week.",
+      "rep_cost": "A typical salary plus benefits for a US freight sales manager."
+    },
+    "headline": "What prospecting by hand costs Halyard's sales team",
+    "intro": "Our estimate for Halyard's regional sales managers, with six more joining after the Columbus cross-dock opened. Change any figure to match yours."
+  }
+}

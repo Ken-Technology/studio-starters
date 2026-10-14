@@ -1,0 +1,128 @@
+{
+  "account": {
+    "name": "Mosswood Veterinary Partners",
+    "domain": "mosswoodvet.example",
+    "industry": "veterinary services",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Mosswood Veterinary Partners runs 11 animal clinics, each ordering its own medical supplies.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Priya",
+    "last_name": "Nair",
+    "title": null
+  },
+  "sender": {
+    "name": "Elena Varga",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Paperwell",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "stories": [],
+    "size_matches": [
+      {
+        "customer": "Granite Ridge Builders",
+        "industry": "construction",
+        "size_band": "51-200",
+        "problem": "Subcontractor invoices came in by mail and email to six project managers, and approvals sat on desks for weeks. Subs called the office every Friday asking when they would be paid.",
+        "approach": "Moved every invoice into one queue, matched each one to its purchase order, and sent approvals to project managers on their phones at the job site.",
+        "result_metric": "Days to approve a subcontractor invoice",
+        "result_value": "19 to 4",
+        "timeframe": "3 months",
+        "quote": "Our PMs approve invoices from the job site now. Nobody chases paper on Friday afternoons anymore.",
+        "quote_author_title": "Controller"
+      },
+      {
+        "customer": "Tern Logistics",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size_band": "51-200",
+        "problem": "Fuel, repair and toll invoices for a fleet of 90 trucks were keyed in by two people, and closing the month took nine working days.",
+        "approach": "Read fuel and repair invoices automatically, coded each one to the right truck, and sent only the exceptions to a person.",
+        "result_metric": "Working days to close the month",
+        "result_value": "9 to 4",
+        "timeframe": "3 months",
+        "quote": "Close used to eat the first two weeks of every month. Now it is done before the first Friday.",
+        "quote_author_title": "Finance Manager"
+      },
+      {
+        "customer": "Brightline Dental Group",
+        "industry": "hospitals and health care",
+        "size_band": "51-200",
+        "problem": "Twenty-two offices ordered their own supplies, and the two-person AP team spent most of the week matching packing slips to invoices.",
+        "approach": "Each office took a photo of the packing slip on delivery, and invoices were matched against it automatically.",
+        "result_metric": "Hours a week spent on AP",
+        "result_value": "30 to 8",
+        "timeframe": "2 months",
+        "quote": "My team gets to do finance work again instead of matching paper.",
+        "quote_author_title": "Director of Finance"
+      },
+      {
+        "customer": "Northline Software",
+        "industry": "software development",
+        "size_band": "51-200",
+        "problem": "Software bills were spread across 40 company cards, and finance only heard about renewals after they were charged.",
+        "approach": "Pulled every vendor bill into one list with an owner and a renewal date, and flagged each renewal 30 days ahead.",
+        "result_metric": "Unused software spend cut",
+        "result_value": "140k USD a year",
+        "timeframe": "4 months",
+        "quote": "We found three tools nobody had opened since spring.",
+        "quote_author_title": "Head of Finance"
+      },
+      {
+        "customer": "Harvest Table Foods",
+        "industry": "food and beverage manufacturing",
+        "size_band": "51-200",
+        "problem": "Ingredient suppliers sent invoices by email, by mail and through portals, and the same invoice sometimes got paid twice.",
+        "approach": "Collected invoices from every channel in one place and checked each new invoice against everything already paid.",
+        "result_metric": "Duplicate payments caught",
+        "result_value": "46k USD",
+        "timeframe": "12 months",
+        "quote": "Every duplicate we paid was money we had to chase back. Now they never go out.",
+        "quote_author_title": "Controller"
+      },
+      {
+        "customer": "Summit Staffing Group",
+        "industry": "staffing and recruiting",
+        "size_band": "51-200",
+        "problem": "Contractor and vendor invoices piled up across nine branch offices, and late fees showed up on almost every statement.",
+        "approach": "Routed invoices from every branch to one approver and scheduled payments by due date instead of by when someone got to them.",
+        "result_metric": "Late fees paid",
+        "result_value": "Down 92%",
+        "timeframe": "3 months",
+        "quote": "Late fees were a line item we had stopped questioning. Now they are close to zero.",
+        "quote_author_title": "Controller"
+      },
+      {
+        "customer": "Oakmont Property Management",
+        "industry": "real estate",
+        "size_band": "51-200",
+        "problem": "Maintenance vendors sent invoices for 60 buildings to property managers, who forwarded them to accounting when they had time.",
+        "approach": "Gave every building its own invoice inbox, coded invoices to the property automatically, and sent approvals to the right manager.",
+        "result_metric": "Days to approve a maintenance invoice",
+        "result_value": "11 to 2",
+        "timeframe": "6 weeks",
+        "quote": "Our plumbers and electricians get paid on time, so they pick up when we call.",
+        "quote_author_title": "Director of Operations"
+      }
+    ],
+    "headline": "How a 22-office dental group cut AP from 30 hours a week to 8",
+    "customer": "Brightline Dental Group",
+    "customer_about": "A health care company with 51 to 200 people",
+    "before": "Twenty-two offices ordered their own supplies, and every order came back as a packing slip and an invoice that had to be matched by hand. The two-person AP team spent most of the week on it.",
+    "after": "Each office now takes a photo of the packing slip when a delivery arrives, and we match the invoice against it. Within two months, the AP team went from 30 hours a week on matching to 8.",
+    "result": {
+      "metric": "Hours a week spent on AP",
+      "value": "30 to 8",
+      "timeframe": "2 months"
+    }
+  }
+}

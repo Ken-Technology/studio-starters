@@ -1,0 +1,63 @@
+{%- assign accent = brand.colors.primary | default: '#2d52c4' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
+{%- assign font_body = brand.fonts.body | default: 'Libre Franklin' -%}
+{%- assign first = person.first_name | default: 'there' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Notes on {{ account.domain | default: account.name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;600&display=swap">
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;600&display=swap">
+{%- endif %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap">
+<style>
+:root{--a:{{ accent | escape }};--ink:#1f2329;--mute:#5b616d;--rule:#dde1e6;--fh:'{{ font_head | escape }}',Georgia,serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--fn:'Caveat','Bradley Hand','Segoe Print',cursive}
+*{box-sizing:border-box}
+body{margin:0;padding:.6rem .5rem 2rem;background:#e3e6ea;color:var(--ink);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased}
+.sheet{max-width:46rem;margin:0 auto;background:#fff;padding:1.1rem 1.15rem 2.5rem;box-shadow:0 1px 2px rgba(31,35,41,.08),0 10px 30px rgba(31,35,41,.08)}
+p{margin:0 0 .9rem;max-width:38rem}
+.slug{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-bottom:.8rem;border-bottom:1px solid var(--rule);font-size:.82rem;color:var(--mute)}
+.slug b{color:var(--ink);font-weight:600}
+.logo{height:24px;width:auto;display:block}
+h1{font-family:var(--fh);font-weight:400;font-size:2.1rem;line-height:1.15;letter-spacing:-.01em;margin:1.8rem 0 1.3rem;max-width:20ch}
+.wip{display:inline-block;font-family:var(--fn);font-weight:700;font-size:1.4rem;color:var(--a);padding:.1rem .65rem;border:2px solid var(--a);border-radius:52% 48% 50% 46%/58% 52% 48% 44%;transform:rotate(-3deg);margin:.4rem 0 1.2rem}
+.cta{margin:1.6rem 0 2rem}
+.cta a{display:inline-block;background:var(--a)!important;color:#fff!important;text-decoration:none;font-family:var(--fb)!important;font-weight:600;padding:.85rem 1.4rem!important;border-radius:4px!important}
+.sign b{display:block;font-family:var(--fn);font-weight:700;font-size:1.9rem;line-height:1}
+@media (min-width:760px){body{padding:2.5rem 1.5rem 4rem}.sheet{padding:1.6rem 3.5rem 3.5rem}h1{font-size:3rem;margin:3rem 0 1.6rem}}
+</style>
+</head>
+<body>
+<main class="sheet">
+
+<section data-section="hero">
+<div class="slug">
+{%- if brand.logo_url %}
+<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
+{%- elsif brand.name %}
+<b>{{ brand.name | escape }}</b>
+{%- else %}
+<b>{{ sender.name | default: 'Site notes' | escape }}</b>
+{%- endif %}
+<span>Notes on {{ account.domain | default: account.name | escape }}</span>
+</div>
+<h1>Notes on the {{ account.name | escape }} website</h1>
+<p class="wip">Still marking it up</p>
+<p>Hi {{ first | escape }},</p>
+<p>I'm reading {{ account.domain | default: 'your site' | escape }} the way a buyer would and marking every line that makes me slow down or want to leave. When I'm done, this page will have the notes, worst first, and three rewrites you can paste in as they are.</p>
+<p>This link stays the same, so check back later today.</p>
+</section>
+
+<section data-section="next_steps">
+<p>If you'd rather hear it in person, grab 20 minutes and I'll walk you through what I've marked so far.</p>
+<div class="cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+<p class="sign"><b>{{ sender.name | default: 'Our team' | escape }}</b></p>
+</section>
+
+</main>
+</body>
+</html>

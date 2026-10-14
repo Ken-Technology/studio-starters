@@ -28,7 +28,14 @@ const STEP_FIELDS = {
   dataset: { required: ['dataset', 'to'], optional: ['where', 'limit'] },
 };
 const KIT = ['ken/cta', 'ken/chart', 'ken/booking', 'ken/form'];
-const SCRIPT_CDNS = ['https://cdn.jsdelivr.net/npm/chart.js@4', 'https://unpkg.com/alpinejs@3', 'https://cdn.jsdelivr.net/npm/motion@11'];
+// The contract's CDN list, plus the Alpine CSP build: the standard Alpine build needs 'unsafe-eval', which the
+// Studio CSP leaves out, so Alpine code in these starters loads the CSP build (contract change proposed in DEV-1740).
+const SCRIPT_CDNS = [
+  'https://cdn.jsdelivr.net/npm/chart.js@4',
+  'https://unpkg.com/alpinejs@3',
+  'https://cdn.jsdelivr.net/npm/motion@11',
+  'https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js',
+];
 const FRAME_HOSTS = [
   'calendly.com', 'cal.com', 'meetings.hubspot.com', 'chilipiper.com', 'savvycal.com',
   'loom.com', 'youtube.com', 'youtube-nocookie.com', 'vimeo.com', 'wistia.com', 'wistia.net',
@@ -253,6 +260,17 @@ function scanHtml(text, file, { err }) {
   for (const m of plain.matchAll(/<[a-z][^>]*\son[a-z]+\s*=/gi)) err(file, `line ${lineOf(plain, m.index)}: inline on* handlers are not allowed; use an inline <script> or Alpine directives`);
 }
 
+// The edge renders a doc's Liquid output as HTML, with no Markdown step. A doc is therefore written as HTML blocks
+// only: every body line starts with a tag or a Liquid tag. CommonMark passes such a document through unchanged.
+function markdownSyntax(text, file, { err }) {
+  const body = text.replace(/<(style|script)\b[\s\S]*?<\/\1>/gi, (m) => m.replace(/[^\n]/g, ''));
+  body.split('\n').forEach((line, i) => {
+    if (/^\s*(#{1,6}\s|\*\*|[-*+]\s|\d+\.\s|>\s)/.test(line)) err(file, `line ${i + 1}: Markdown syntax in a doc; the edge renders HTML, so write it as an HTML element`);
+    else if (/^\S/.test(line) && !/^\s*(<|\{[{%])/.test(line)) err(file, `line ${i + 1}: text outside an HTML element; start every line of a doc with a tag`);
+    else if (/^ {4,}\S/.test(line)) err(file, `line ${i + 1}: four-space indent turns into a code block under Markdown; do not indent doc lines`);
+  });
+}
+
 function sectionIds(text) {
   return [...text.matchAll(/data-section\s*=\s*["']([^"']+)["']/g)].map((m) => m[1]);
 }
@@ -376,7 +394,8 @@ function checkBundle(slug, indexEntry) {
     if (new Set(found).size !== found.length) err('template.liquid', 'a data-section id appears more than once');
     scanLiquid(text, 'template.liquid', c, { allowData: true });
     scanHtml(text, 'template.liquid', c);
-    if (m.format === 'page' && !/<\/body>/i.test(text)) err('template.liquid', 'a page template is a full HTML document with </body> (the tracking script goes before it)');
+    if (!/<\/body>/i.test(text)) err('template.liquid', 'the template is a full HTML document with </body> (Ken injects the tracking script before it)');
+    if (m.format === 'doc') markdownSyntax(text, 'template.liquid', c);
     for (const ref of text.matchAll(/data\.([a-zA-Z0-9_]+)/g)) if (!props[ref[1]]) err('template.liquid', `line ${lineOf(text, ref.index)}: data.${ref[1]} is not a declared slot`);
   }
   if (hasFallbackLiquid) {
@@ -384,7 +403,8 @@ function checkBundle(slug, indexEntry) {
     for (const id of sectionIds(text)) if (!declared.includes(id)) err('fallback.liquid', `data-section="${id}" is not in studio.json sections`);
     scanLiquid(text, 'fallback.liquid', c, { allowData: false });
     scanHtml(text, 'fallback.liquid', c);
-    if (m.format === 'page' && !/<\/body>/i.test(text)) err('fallback.liquid', 'a page fallback is a full HTML document with </body>');
+    if (!/<\/body>/i.test(text)) err('fallback.liquid', 'the fallback is a full HTML document with </body>');
+    if (m.format === 'doc') markdownSyntax(text, 'fallback.liquid', c);
   }
 
   // assets, sizes, text rules
@@ -452,6 +472,7 @@ if (index.kenStudio !== '1') top.push('index.json: kenStudio must be "1"');
 for (const s of listed) if (!folders.includes(s)) top.push(`index.json: lists "${s}" but starters/${s} does not exist`);
 for (const f of folders) if (!listed.includes(f)) top.push(`index.json: starters/${f} is not listed`);
 if (new Set(listed).size !== listed.length) top.push('index.json: duplicate slugs');
+if (DASHES.test(fs.readFileSync(path.join(ROOT, 'index.json'), 'utf8'))) top.push('index.json: em or en dash; use a period or a comma');
 for (const t of top) console.log(`ERROR ${t}`);
 errors += top.length;
 

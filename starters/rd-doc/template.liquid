@@ -8,8 +8,16 @@
 {%- else -%}Your name<br>{{ account.name | escape }}
 {%- endif -%}
 {%- endcapture -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>An outbound campaign for {{ account.name | escape }}</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | replace: ' ', '+' }}:wght@400;600;700{% if font_body != font_head %}&family={{ font_body | replace: ' ', '+' }}:wght@400;600{% endif %}&display=swap">
 <style>
+html,body{margin:0;background:#fff}
 .kd{--a:{{ accent }};--a2:{{ accent2 }};--ink:#262626;--mute:#62615c;--line:#e7e5dd;--paper:#f4f4f0;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.62;color:var(--ink);max-width:46rem;margin:0 auto;padding:.5rem 1.1rem 4rem;-webkit-font-smoothing:antialiased}
 .kd h1,.kd h2,.kd h3{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;line-height:1.2;letter-spacing:-.012em;color:var(--ink)}
 .kd h2{font-size:1.4rem;margin:0 0 1rem;padding-bottom:.75rem;border-bottom:1px solid var(--line)}
@@ -71,9 +79,9 @@
 .kd-cover{break-before:auto}
 }
 </style>
-
-<div class="kd">
-
+</head>
+<body>
+<main class="kd">
 <section data-section="cover" class="kd-page kd-cover">
 {%- if brand.logo_url %}
 <img class="kd-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
@@ -82,64 +90,42 @@
 {%- endif %}
 <h1>An outbound campaign for {{ account.name | escape }}</h1>
 <p class="kd-by">Prepared by {{ sender.name | default: 'our team' | escape }}{% if sender.title %}, {{ sender.title | escape }}{% endif %}</p>
-
-Hi {{ first | escape }},
-
-I put this together for {{ account.name | escape }}. It's a campaign I would run for you. It isn't perfect, but I did as much research as I could to make it useful.
-
-It's free, so you can see the kind of emails, LinkedIn notes and strategy I think would work for {{ account.name | escape }}. The goal is simple: more meetings booked, more pipeline, more clients.
-
-Yours either way. Even if we never work together, I hope it helps.
-
+<p>Hi {{ first | escape }},</p>
+<p>I put this together for {{ account.name | escape }}. It's a campaign I would run for you. It isn't perfect, but I did as much research as I could to make it useful.</p>
+<p>It's free, so you can see the kind of emails, LinkedIn notes and strategy I think would work for {{ account.name | escape }}. The goal is simple: more meetings booked, more pipeline, more clients.</p>
+<p>Yours either way. Even if we never work together, I hope it helps.</p>
 <div class="kd-inside">
-
-**What's inside**
-
-1. Who we go after, what we say, and why it should land
-2. How I would cut the market, and what we try in each cut
-3. The sequence across email and LinkedIn
-4. A sample of leads, with the first emails written
-5. What happens next
-
+<p><strong>What's inside</strong></p>
+<ol>
+<li>Who we go after, what we say, and why it should land</li>
+<li>How I would cut the market, and what we try in each cut</li>
+<li>The sequence across email and LinkedIn</li>
+<li>A sample of leads, with the first emails written</li>
+<li>What happens next</li>
+</ol>
 </div>
-
 </section>
 
 <section data-section="strategy" class="kd-page">
-
-## 1. Strategy
-
+<h2>1. Strategy</h2>
 <p>{{ data.strategy.intro | escape | newline_to_br | strip_newlines }}</p>
-
-### Who this is for
-
+<h3>Who this is for</h3>
 <p>{{ data.strategy.audience | escape | newline_to_br | strip_newlines }}</p>
-
-### What we offer
-
+<h3>What we offer</h3>
 <p>{{ data.strategy.offer | escape | newline_to_br | strip_newlines }}</p>
-
-### How we reach them
-
+<h3>How we reach them</h3>
 <p>{{ data.strategy.channels | escape | newline_to_br | strip_newlines }}</p>
-
-### What we want
-
+<h3>What we want</h3>
 <p>{{ data.strategy.goal | escape | newline_to_br | strip_newlines }}</p>
-
 </section>
 
 <section data-section="segments" class="kd-page">
-
-## 2. Segments
-
-Here is how I would split {{ account.name | escape }}'s market. The first cut is the one we sample below. The others are ready, so we can grow without rewriting the plan.
-
+<h2>2. Segments</h2>
+<p>Here is how I would split {{ account.name | escape }}'s market. The first cut is the one we sample below. The others are ready, so we can grow without rewriting the plan.</p>
 <figure class="kd-chart">
 {% render 'ken/chart', type: 'bar', data: data.segments, title: 'Where the first 1,000 sends go' %}
 <figcaption>Sends per segment out of the first 1,000.</figcaption>
 </figure>
-
 <div class="kd-segs">
 {%- for s in data.segments %}
 <div class="kd-seg"><b>{{ s.label | escape }}</b><small>{{ s.sub | escape }}</small>
@@ -147,42 +133,35 @@ Here is how I would split {{ account.name | escape }}'s market. The first cut is
 </div>
 {%- endfor %}
 </div>
-
-Each segment carries up to four A vs B ideas: the pain, the offer, the angle and the ask. No vanity subject-line splits. If we run one, it has a hypothesis.
-
-{% if data.segment_notes %}<p>{{ data.segment_notes | escape | newline_to_br | strip_newlines }}</p>{% endif %}
-
+<p>Each segment carries up to four A vs B ideas: the pain, the offer, the angle and the ask. No vanity subject-line splits. If we run one, it has a hypothesis.</p>
+{%- if data.segment_notes %}
+<p>{{ data.segment_notes | escape | newline_to_br | strip_newlines }}</p>
+{%- endif %}
 </section>
 
 <section data-section="funnel" class="kd-page">
-
-## 3. Funnel
-
-Same sequence on email and LinkedIn for every person in the sample. If they click an email, we lean into LinkedIn. If they reply on either channel, we ask for a meeting.
-
+<h2>3. Funnel</h2>
+<p>Same sequence on email and LinkedIn for every person in the sample. If they click an email, we lean into LinkedIn. If they reply on either channel, we ask for a meeting.</p>
 <figure class="kd-chart">
 {% render 'ken/chart', type: 'funnel', data: data.funnel, title: 'What 1,000 sends should turn into' %}
 <figcaption>Planning numbers for the first segment, not a promise.</figcaption>
 </figure>
-
 <ol class="kd-steps">
 <li><b>Day 0.</b> Email 1 and a LinkedIn connect request.</li>
 <li><b>Follow-ups.</b> Emails 2 and 3, plus a LinkedIn message a few days after they accept.</li>
 <li><b>Convert.</b> A reply turns into a meeting ask, a discovery call, then a booked deal.</li>
 </ol>
-
-{% if data.funnel_notes %}<p>{{ data.funnel_notes | escape | newline_to_br | strip_newlines }}</p>{% endif %}
-
+{%- if data.funnel_notes %}
+<p>{{ data.funnel_notes | escape | newline_to_br | strip_newlines }}</p>
+{%- endif %}
 </section>
 
 <section data-section="leads" class="kd-page">
-
-## 4. Sample leads
-
-This sample is a small slice of who we could target. The strategy above covers the wider map. The leads and copy below are written for these people.
-
-{% if data.sampling_criteria %}<p>{{ data.sampling_criteria | escape | newline_to_br | strip_newlines }}</p>{% endif %}
-
+<h2>4. Sample leads</h2>
+<p>This sample is a small slice of who we could target. The strategy above covers the wider map. The leads and copy below are written for these people.</p>
+{%- if data.sampling_criteria %}
+<p>{{ data.sampling_criteria | escape | newline_to_br | strip_newlines }}</p>
+{%- endif %}
 <table class="kd-leads">
 <thead><tr><th>Name</th><th>Title</th><th>Company</th><th>Why them</th><th>Links</th></tr></thead>
 <tbody>
@@ -193,17 +172,13 @@ This sample is a small slice of who we could target. The strategy above covers t
 {%- endfor %}
 </tbody>
 </table>
-
 </section>
 
 <section data-section="outreach" class="kd-page">
-
-## 5. The outreach
-
-{% case data.emails.size %}{% when 1 %}One person{% when 2 %}Two people{% else %}Three people{% endcase %} from the list above. Email 1 and a LinkedIn note for each, written the way I would send them for {{ account.name | escape }}.
-
-{% for e in data.emails -%}
-{%- assign li_head = e.linkedin_url | slice: 0, 8 -%}
+<h2>5. The outreach</h2>
+<p>{% case data.emails.size %}{% when 1 %}One person{% when 2 %}Two people{% else %}Three people{% endcase %} from the list above. Email 1 and a LinkedIn note for each, written the way I would send them for {{ account.name | escape }}.</p>
+{%- for e in data.emails %}
+{%- assign li_head = e.linkedin_url | slice: 0, 8 %}
 <article class="kd-mail">
 <header>{% if li_head == 'https://' and e.linkedin_url contains 'linkedin.com/' %}<a href="{{ e.linkedin_url | escape }}">{{ e.name | escape }}</a>{% else %}<b>{{ e.name | escape }}</b>{% endif %}{% if e.title %}<span>{{ e.title | escape }}</span>{% endif %}</header>
 <p class="kd-subj"><b>Subject:</b> {{ e.subject | escape }}</p>
@@ -212,34 +187,25 @@ This sample is a small slice of who we could target. The strategy above covers t
 <p class="kd-sig">{{ signature }}</p>
 {%- if e.ps and e.ps != '' %}<p>{{ e.ps | escape }}</p>{% endif -%}
 </div>
-{%- if e.linkedin and e.linkedin != '' %}<div class="kd-li"><b>LinkedIn connect note</b><p>{{ e.linkedin | escape }}</p></div>{% endif -%}
+{%- if e.linkedin and e.linkedin != '' %}<div class="kd-li"><b>LinkedIn connect note</b><p>{{ e.linkedin | escape }}</p></div>{% endif %}
 </article>
-{% endfor %}
-
+{%- endfor %}
 </section>
 
 <section data-section="next_steps" class="kd-page">
-
-## 6. What happens next
-
-I'm confident this would get results for {{ account.name | escape }}. That's why I spent the time on the strategy, the cuts and the sample copy instead of sending a generic one-pager.
-
-{% if data.offer %}<p>{{ data.offer | escape | newline_to_br | strip_newlines }}</p>{% endif %}
-
-It would be great to hop on a call. I want your feedback so we can improve this campaign for {{ account.name | escape }}: what feels right, what's off, and what to change before anything goes out.
-
-I'll walk you through the sample, the A vs B ideas, and what the first two weeks look like.
-
+<h2>6. What happens next</h2>
+<p>I'm confident this would get results for {{ account.name | escape }}. That's why I spent the time on the strategy, the cuts and the sample copy instead of sending a generic one-pager.</p>
+{%- if data.offer %}
+<p>{{ data.offer | escape | newline_to_br | strip_newlines }}</p>
+{%- endif %}
+<p>It would be great to hop on a call. I want your feedback so we can improve this campaign for {{ account.name | escape }}: what feels right, what's off, and what to change before anything goes out.</p>
+<p>I'll walk you through the sample, the A vs B ideas, and what the first two weeks look like.</p>
 <div class="kd-cta">
 {% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking' %}
 </div>
-
-Worth half an hour this week?
-
-Best,<br>
-{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<br>
-<span class="kd-sig">{{ sender.title | escape }}</span>{% endif %}
-
+<p>Worth half an hour this week?</p>
+<p>Best,<br>{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<br><span class="kd-sig">{{ sender.title | escape }}</span>{% endif %}</p>
 </section>
-
-</div>
+</main>
+</body>
+</html>

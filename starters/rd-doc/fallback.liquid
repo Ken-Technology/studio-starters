@@ -1,8 +1,16 @@
 {%- assign accent = brand.colors.primary | default: '#4f00d0' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Inter' -%}
 {%- assign first = person.first_name | default: 'there' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>An outbound campaign for {{ account.name | escape }}</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | replace: ' ', '+' }}:wght@400;600;700&display=swap">
 <style>
+html,body{margin:0;background:#fff}
 .kd{--a:{{ accent }};--ink:#262626;--mute:#62615c;--line:#e7e5dd;--paper:#f4f4f0;font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.62;color:var(--ink);max-width:46rem;margin:0 auto;padding:.5rem 1.1rem 4rem}
 .kd h1{font-size:2rem;line-height:1.2;letter-spacing:-.012em;margin:1.6rem 0 .5rem}
 .kd p{margin:0 0 .9rem}
@@ -15,9 +23,9 @@
 .kd-cta{margin:1.8rem 0}
 @media (min-width:640px){.kd{padding:1rem 2rem 5rem}.kd h1{font-size:2.6rem}}
 </style>
-
-<div class="kd">
-
+</head>
+<body>
+<main class="kd">
 <section data-section="cover" class="kd-page">
 {%- if brand.logo_url %}
 <img class="kd-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
@@ -26,30 +34,20 @@
 {%- endif %}
 <h1>An outbound campaign for {{ account.name | escape }}</h1>
 <p class="kd-by">Prepared by {{ sender.name | default: 'our team' | escape }}{% if sender.title %}, {{ sender.title | escape }}{% endif %}</p>
-
-Hi {{ first | escape }},
-
-I'm putting together a sample outbound campaign for {{ account.name | escape }}: who to go after, how to cut the market, a sample of leads, and the first emails written for them.
-
+<p>Hi {{ first | escape }},</p>
+<p>I'm putting together a sample outbound campaign for {{ account.name | escape }}: who to go after, how to cut the market, a sample of leads, and the first emails written for them.</p>
 <div class="kd-note">
-
-I'm still finishing it. This link is the right one, so check back later today and the full plan will be here.
-
+<p>I'm still finishing it. This link is the right one, so check back later today and the full plan will be here.</p>
 </div>
-
 </section>
 
 <section data-section="next_steps" class="kd-page">
-
-If you'd rather walk through it together, grab 30 minutes and I'll take you through what I have so far.
-
+<p>If you'd rather walk through it together, grab 30 minutes and I'll take you through what I have so far.</p>
 <div class="kd-cta">
 {% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking' %}
 </div>
-
-Best,<br>
-{{ sender.name | default: 'Our team' | escape }}
-
+<p>Best,<br>{{ sender.name | default: 'Our team' | escape }}</p>
 </section>
-
-</div>
+</main>
+</body>
+</html>

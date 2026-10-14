@@ -121,7 +121,7 @@
       "id": "site",
       "kind": "tool",
       "tool": "scrape.page",
-      "args": { "url": "https://{{ account.domain }}" },
+      "args": { "url": "https://{{ account.domain }}", "maxChars": 12000, "mode": "markdown" },
       "to": "data.site"
     },
     { "id": "dossier", "kind": "bind", "from": "account.dossier.summary", "to": "data.dossier" },
@@ -139,7 +139,7 @@
       "id": "leads",
       "kind": "tool",
       "tool": "ken_search.people",
-      "args": { "filters": "{{ data.search }}", "limit": 30 },
+      "args": { "company": "any", "filters": "{{ data.search }}", "limit": 30 },
       "to": "data.candidates"
     },
     {

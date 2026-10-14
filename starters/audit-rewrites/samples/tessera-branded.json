@@ -1,0 +1,74 @@
+{
+  "account": {
+    "name": "Tessera Labs",
+    "domain": "tessera.example",
+    "industry": "biotechnology research",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Tessera Labs sells sample and reagent inventory software to biotech labs. It maps freezers shelf by shelf and sends reorder alerts. The product tour names Halden Bio as a customer.",
+      "why_now": "Hired a VP of Marketing in September."
+    }
+  },
+  "person": { "first_name": "Ravi", "last_name": "Menon", "title": "VP of Marketing" },
+  "sender": { "name": "Sam Okafor", "title": "Copywriter", "signature_html": null },
+  "brand": {
+    "name": "Copper and Co",
+    "logo_url": null,
+    "colors": { "primary": "#0f5f4a", "secondary": "#c2410c" },
+    "fonts": { "heading": "Fraunces", "body": "Work Sans" }
+  },
+  "data": {
+    "headline": "Tessera's homepage talks to IT, but the buyer is the lab manager",
+    "summary": "The product tour is good: real screens, a freezer map, a reorder alert. The words around it are written for an IT buyer, so the lab manager who signs off on this has to translate.",
+    "findings": [
+      {
+        "where": "Homepage headline",
+        "quote": "Next-generation inventory intelligence for modern life sciences organizations.",
+        "cost": "A lab manager still doesn't know if it tracks samples, reagents or both. They came with a freezer problem and the headline doesn't mention one.",
+        "severity": "high"
+      },
+      {
+        "where": "Line under the headline",
+        "quote": "Unify your data, eliminate silos and accelerate discovery with a robust, scalable platform.",
+        "cost": "These are IT words. The person who loses an afternoon hunting for a reagent lot doesn't see their problem here.",
+        "severity": "high"
+      },
+      {
+        "where": "Main button",
+        "quote": "Request access",
+        "cost": "It sounds like a waitlist. A manager comparing three tools picks the one they can look at today.",
+        "severity": "medium"
+      },
+      {
+        "where": "Customer proof",
+        "quote": "Loved by scientists everywhere",
+        "cost": "The tour names Halden Bio. One named lab with one result would do more than this line.",
+        "severity": "low"
+      }
+    ],
+    "rewrites": [
+      {
+        "where": "Homepage headline",
+        "before": "Next-generation inventory intelligence for modern life sciences organizations.",
+        "after": "Know where every sample and reagent is, down to the freezer shelf.",
+        "why": "The lab manager sees their own Monday morning in the first line."
+      },
+      {
+        "where": "Line under the headline",
+        "before": "Unify your data, eliminate silos and accelerate discovery with a robust, scalable platform.",
+        "after": "Scan it in, find it later, reorder before it runs out.",
+        "why": "Three things a lab does every week, in the order they happen."
+      },
+      {
+        "where": "Main button",
+        "before": "Request access",
+        "after": "Take the product tour",
+        "why": "They know they can look around today, without waiting on anyone."
+      }
+    ],
+    "next_steps": [
+      "Put Halden Bio's name and one result right next to the product tour.",
+      "Caption the freezer map screen with what the lab manager is looking at."
+    ]
+  }
+}

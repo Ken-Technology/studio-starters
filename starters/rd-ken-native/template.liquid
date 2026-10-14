@@ -1,0 +1,227 @@
+{%- assign accent = brand.colors.primary | default: '#b3402a' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#24476b' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Young Serif' -%}
+{%- assign font_body = brand.fonts.body | default: 'Schibsted Grotesk' -%}
+{%- assign first = person.first_name | default: 'there' -%}
+{%- assign found = data.people.size | default: 0 -%}
+{%- assign picked = data.shortlist.size | default: 0 -%}
+{%- assign written = data.emails.size | default: 0 -%}
+{%- capture signature -%}
+{%- if person.first_name -%}{{ person.first_name | escape }}<br>{% if person.title %}{{ person.title | escape }}, {% endif %}{{ account.name | escape }}
+{%- else -%}Your name<br>{{ account.name | escape }}
+{%- endif -%}
+{%- endcapture -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>A campaign for {{ account.name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | replace: ' ', '+' | escape }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | replace: ' ', '+' | escape }}:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap">
+<style>
+:root{--a:{{ accent | escape }};--a2:{{ accent2 | escape }};--ink:#221e19;--mute:#6b6358;--line:#ddd3c2;--paper:#f3ede1;--card:#fffdf8;--hf:'{{ font_head | escape }}',Georgia,serif;--bf:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--mf:'Courier Prime',ui-monospace,monospace}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper) radial-gradient(ellipse at 15% -10%,#fffaf0 0,transparent 55%);color:var(--ink);font:16px/1.6 var(--bf);-webkit-font-smoothing:antialiased}
+a{color:var(--a)}
+.kn{max-width:70rem;margin:0 auto;padding:0 1.15rem 2.5rem}
+.kn-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line);font:700 .74rem/1.2 var(--mf);letter-spacing:.09em;text-transform:uppercase}
+.kn-top span:last-child{color:var(--mute);text-align:right}
+.kn-logo{height:26px;width:auto;display:block}
+.kn-hero{padding:2.2rem 0 2.8rem}
+.kn-eyebrow{font:700 .78rem/1.3 var(--mf);letter-spacing:.1em;text-transform:uppercase;color:var(--a);margin:0 0 .9rem}
+.kn h1,.kn h2{font-family:var(--hf);font-weight:400;color:var(--ink);overflow-wrap:break-word}
+.kn h1{font-size:2.3rem;line-height:1.08;letter-spacing:-.012em;margin:0 0 1.5rem;text-wrap:balance}
+.kn-hi{font-weight:700;margin:0 0 .35rem}
+.kn-lede{font-size:1.07rem;margin:0;max-width:36rem}
+.kn-slip{margin:2.2rem 0 0;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:.4rem 1.1rem .5rem;box-shadow:0 14px 28px -22px rgba(34,30,25,.55);position:relative}
+.kn-slip::before{content:"";position:absolute;left:-1px;right:-1px;top:-7px;height:7px;background:radial-gradient(circle at 5px 7px,var(--paper) 4px,transparent 4.5px) 0 0/10px 7px repeat-x}
+.kn-slip dl{margin:0}
+.kn-slip div{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.6rem 0;border-bottom:1px dashed var(--line)}
+.kn-slip div:last-child{border-bottom:0}
+.kn-slip dt{font:400 .76rem/1.3 var(--mf);text-transform:uppercase;letter-spacing:.07em;color:var(--mute)}
+.kn-slip dd{margin:0;font-weight:700;text-align:right}
+.kn-slip .kn-count dd{font:400 1.55rem/1 var(--hf);color:var(--a)}
+.kn-sec{padding:2.4rem 0 2.6rem;border-top:1.5px solid var(--ink)}
+.kn-no{font:700 .78rem/1 var(--mf);color:var(--a);letter-spacing:.08em;margin:0 0 .6rem}
+.kn h2{font-size:1.75rem;line-height:1.15;margin:0 0 .6rem;text-wrap:balance}
+.kn-sub{color:var(--mute);margin:0 0 1.5rem;max-width:34rem}
+.kn-summary{font-size:1.12rem;margin:0 0 1.3rem;max-width:40rem}
+.kn-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+.kn-chips li{display:flex;align-items:center;gap:.45rem;background:var(--card);border:1px solid var(--ink);border-radius:999px;padding:.32rem .8rem .32rem .55rem;font-size:.9rem;line-height:1.3}
+.kn-chips li::before{content:"";width:.5rem;height:.5rem;border-radius:50%;border:1.5px solid var(--a);flex:none}
+.kn-cards{list-style:none;margin:0;padding:0;display:grid;gap:.9rem}
+.kn-card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:1rem 1.1rem 1.05rem;box-shadow:0 12px 22px -20px rgba(34,30,25,.6)}
+.kn-card-top{display:flex;gap:.8rem;align-items:center;padding:0 2rem .8rem 0;border-bottom:1.5px solid var(--a);margin:0 0 .75rem}
+.kn-mono{flex:none;width:2.6rem;height:2.6rem;border-radius:50%;display:grid;place-items:center;background:var(--a2);color:#fff;font:400 .98rem/1 var(--hf);letter-spacing:.02em}
+.kn-card b{display:block;line-height:1.25}
+.kn-card small{display:block;color:var(--mute);font-size:.86rem;line-height:1.35;margin-top:.1rem}
+.kn-n{position:absolute;top:.75rem;right:.85rem;font:400 .74rem/1 var(--mf);color:var(--mute)}
+.kn-why{margin:0;font-size:.95rem;line-height:1.5}
+.kn-li{display:inline-block;margin-top:.65rem;font:700 .74rem/1 var(--mf);text-transform:uppercase;letter-spacing:.08em;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
+.kn-letters{display:grid;gap:1.6rem}
+.kn-letter{position:relative;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:1.5rem 1.15rem 1.2rem;box-shadow:0 16px 30px -24px rgba(34,30,25,.6);overflow:hidden}
+.kn-letter::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(-45deg,var(--a) 0 9px,transparent 9px 15px,var(--a2) 15px 24px,transparent 24px 30px)}
+.kn-stamp{position:absolute;top:1.15rem;right:.8rem;width:3.6rem;height:3.6rem;border:2px dashed var(--a);border-radius:50%;display:grid;place-content:center;text-align:center;color:var(--a);transform:rotate(-12deg);font:700 .5rem/1.15 var(--mf);text-transform:uppercase;letter-spacing:.1em}
+.kn-stamp b{display:block;font:400 1.2rem/1 var(--hf);letter-spacing:0}
+.kn-env{margin:0 4rem 1rem 0;font:.88rem/1.4 var(--mf)}
+.kn-env div{padding:.45rem 0;border-bottom:1px solid var(--line)}
+.kn-env dt{color:var(--mute);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em}
+.kn-env dd{margin:0;font-weight:700}
+.kn-env dd span{font-weight:400}
+.kn-body p{margin:0 0 .85rem}
+.kn-sig{color:var(--mute);margin-top:1.1rem!important}
+.kn-ps{border-top:1px dashed var(--line);padding-top:.8rem;margin-bottom:0!important}
+.kn-cta{margin:.6rem 0 0;padding:1.8rem 1.3rem 1.6rem;background:var(--card);border:1.5px solid var(--ink);border-radius:4px;box-shadow:6px 6px 0 var(--a)}
+.kn-cta h2{font-size:1.8rem}
+.kn-cta p{max-width:36rem;margin:0 0 1.3rem}
+.kn-btn{margin:1.4rem 0 1.4rem}
+.kn-from{font-size:.95rem;margin:0!important}
+.kn-from b{display:block}
+.kn-foot{margin:2.4rem 0 0;font:400 .74rem/1.4 var(--mf);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+@media (min-width:760px){
+.kn{padding:0 2rem 3.5rem}
+.kn-hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(16rem,1fr);gap:3.5rem;align-items:end;padding:4rem 0 4rem}
+.kn h1{font-size:3.5rem}
+.kn-lede{font-size:1.15rem}
+.kn-slip{margin:0}
+.kn-sec{display:grid;grid-template-columns:14rem minmax(0,1fr);gap:2.5rem;padding:3.2rem 0 3.4rem}
+.kn-cards{grid-template-columns:1fr 1fr;gap:1.1rem}
+.kn-card:nth-child(3n+1){transform:rotate(-.35deg)}
+.kn-card:nth-child(3n+2){transform:rotate(.3deg)}
+.kn-letters{max-width:44rem}
+.kn-letter{padding:2rem 2rem 1.6rem}
+.kn-stamp{top:1.6rem;right:1.6rem;width:4.8rem;height:4.8rem;font-size:.58rem}
+.kn-stamp b{font-size:1.5rem}
+.kn-env{margin-right:6rem;font-size:.9rem}
+.kn-env div{display:grid;grid-template-columns:4.4rem 1fr;gap:.3rem;align-items:baseline}
+.kn-env dt{font-size:.9rem;text-transform:none;letter-spacing:0}
+.kn-cta{padding:2.6rem 2.6rem 2.3rem;box-shadow:10px 10px 0 var(--a)}
+.kn-cta h2{font-size:2.3rem}
+}
+</style>
+</head>
+<body>
+<main class="kn">
+
+<header data-section="hero">
+<div class="kn-top">
+{%- if brand.logo_url %}
+<img class="kn-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
+{%- else %}
+<span>{{ brand.name | default: sender.name | default: 'Our team' | escape }}</span>
+{%- endif %}
+<span>Campaign preview</span>
+</div>
+<div class="kn-hero">
+<div>
+<p class="kn-eyebrow">For {{ account.name | escape }}</p>
+<h1>{{ data.headline | escape }}</h1>
+<p class="kn-hi">Hi {{ first | escape }},</p>
+<p class="kn-lede">{{ data.intro | escape | newline_to_br | strip_newlines }}</p>
+</div>
+<aside class="kn-slip">
+<dl>
+<div><dt>Prepared for</dt><dd>{{ account.name | escape }}</dd></div>
+<div><dt>By</dt><dd>{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}, {{ sender.title | escape }}{% endif %}</dd></div>
+{%- if found > picked %}
+<div class="kn-count"><dt>People found</dt><dd>{{ found }}</dd></div>
+{%- endif %}
+<div class="kn-count"><dt>On the shortlist</dt><dd>{{ picked }}</dd></div>
+<div class="kn-count"><dt>Emails written</dt><dd>{{ written }}</dd></div>
+</dl>
+</aside>
+</div>
+</header>
+
+<section data-section="audience" class="kn-sec">
+<div>
+<p class="kn-no">01</p>
+<h2>Who we looked for</h2>
+</div>
+<div>
+{%- if data.audience.summary and data.audience.summary != '' %}
+<p class="kn-summary">{{ data.audience.summary | escape | newline_to_br | strip_newlines }}</p>
+{%- if data.audience.chips.size > 0 %}
+<ul class="kn-chips">
+{%- for c in data.audience.chips %}
+<li>{{ c | escape }}</li>
+{%- endfor %}
+</ul>
+{%- endif %}
+{%- else %}
+<p class="kn-summary">The people most likely to buy from {{ account.name | escape }}: the roles that feel the problem it solves, at companies big enough to need it. The shortlist below is where I would start.</p>
+{%- endif %}
+</div>
+</section>
+
+<section data-section="people" class="kn-sec">
+<div>
+<p class="kn-no">02</p>
+<h2>The shortlist</h2>
+<p class="kn-sub">{% if found > picked %}{{ picked }} people I would email first, out of {{ found }} the search turned up.{% else %}The people I would email first.{% endif %}</p>
+</div>
+<ol class="kn-cards">
+{%- for p in data.shortlist %}
+{%- assign li_head = p.linkedin_url | slice: 0, 8 %}
+{%- assign parts = p.name | split: ' ' %}
+<li class="kn-card">
+<span class="kn-n">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+<div class="kn-card-top">
+<span class="kn-mono" aria-hidden="true">{{ p.name | slice: 0 | upcase | escape }}{% if parts.size > 1 %}{{ parts | last | slice: 0 | upcase | escape }}{% endif %}</span>
+<div><b>{{ p.name | escape }}</b><small>{{ p.title | escape }}</small><small>{{ p.company | escape }}</small></div>
+</div>
+<p class="kn-why">{{ p.why | escape }}</p>
+{%- if li_head == 'https://' and p.linkedin_url contains 'linkedin.com/' %}
+<a class="kn-li" href="{{ p.linkedin_url | escape }}">LinkedIn</a>
+{%- endif %}
+</li>
+{%- endfor %}
+</ol>
+</section>
+
+<section data-section="emails" class="kn-sec">
+<div>
+<p class="kn-no">03</p>
+<h2>The first emails</h2>
+<p class="kn-sub">{% case written %}{% when 1 %}One email{% when 2 %}Two emails{% else %}Three emails{% endcase %} to people on the shortlist, written to go out from {{ account.name | escape }}.</p>
+</div>
+<div class="kn-letters">
+{%- for e in data.emails %}
+<article class="kn-letter">
+<div class="kn-stamp" aria-hidden="true">Email<b>{{ forloop.index }}</b>of {{ written }}</div>
+<dl class="kn-env">
+<div><dt>To</dt><dd>{{ e.name | escape }}{% if e.title and e.title != '' %}<span>, {{ e.title | escape }}</span>{% endif %}{% if e.company and e.company != '' %}<span> at {{ e.company | escape }}</span>{% endif %}</dd></div>
+<div><dt>Subject</dt><dd>{{ e.subject | escape }}</dd></div>
+</dl>
+<div class="kn-body">
+{%- for para in e.body %}
+<p>{{ para | escape }}</p>
+{%- endfor %}
+<p class="kn-sig">{{ signature }}</p>
+{%- if e.ps and e.ps != '' %}
+<p class="kn-ps">{{ e.ps | escape }}</p>
+{%- endif %}
+</div>
+</article>
+{%- endfor %}
+</div>
+</section>
+
+<section data-section="cta" class="kn-cta">
+<h2>Should I keep going?</h2>
+<p>This is a first pass from public information. In 20 minutes I can show you who else the search turned up, what I would change in these emails, and what the first two weeks of sending would look like for {{ account.name | escape }}.</p>
+<div class="kn-btn">
+{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}
+</div>
+<p class="kn-from"><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title %}{{ sender.title | escape }}{% endif %}</p>
+</section>
+
+<p class="kn-foot">Made for {{ account.name | escape }}{% if sender.name %} by {{ sender.name | escape }}{% endif %}</p>
+
+</main>
+</body>
+</html>

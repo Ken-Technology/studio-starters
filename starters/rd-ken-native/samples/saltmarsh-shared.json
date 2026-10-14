@@ -1,0 +1,198 @@
+{
+  "account": {
+    "name": "Saltmarsh",
+    "domain": "saltmarsh.example",
+    "industry": "financial services",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Saltmarsh runs payroll and tip pooling for independent restaurants. Managers set the tip rules once and Saltmarsh splits tips by hours and role every shift. The site names Okra and Ash and Little Ferry Oyster Bar as customers, and says setup takes one afternoon.",
+      "why_now": "Launched same-day tip payouts in September.",
+      "angle": "Tip math is where restaurant managers lose a night every week."
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Jules Navarro",
+    "title": "Partner",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northcall",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1d4d4f",
+      "secondary": "#c26a12"
+    },
+    "fonts": {
+      "heading": "Bitter",
+      "body": "Work Sans"
+    }
+  },
+  "data": {
+    "search": {
+      "currentTitles": [
+        "General Manager",
+        "Owner",
+        "Operating Partner",
+        "Director of Operations"
+      ],
+      "seniorityLevels": [
+        "Owner",
+        "Director",
+        "Manager"
+      ],
+      "industries": [
+        "restaurants",
+        "food and beverage services"
+      ],
+      "companyHeadcount": {
+        "min": 15,
+        "max": 200
+      },
+      "countries": [
+        "United States"
+      ]
+    },
+    "brief": "Saltmarsh splits tips and runs payroll for independent restaurants. Lean on same-day tip payouts, launched in September.",
+    "audience": {
+      "summary": "General managers and owners at independent restaurants and small groups with 15 to 200 staff. They do the tip math at the end of the night, and they hear about it when it's wrong. I skipped big chains, which run payroll through head office.",
+      "chips": [
+        "General managers",
+        "Owners and operating partners",
+        "Independent restaurants",
+        "Groups of 2 to 6 locations",
+        "15 to 200 staff"
+      ]
+    },
+    "people": [
+      {
+        "name": "Nina Albright",
+        "title": "General Manager",
+        "company": "Juniper Table",
+        "linkedin_url": "https://www.linkedin.com/in/sample-nina-albright"
+      },
+      {
+        "name": "Calvin Brooks",
+        "title": "Owner",
+        "company": "Brooks and Bramble",
+        "linkedin_url": "https://www.linkedin.com/in/sample-calvin-brooks"
+      },
+      {
+        "name": "Sofia Lindqvist",
+        "title": "Operating Partner",
+        "company": "Harbor Street Hospitality",
+        "linkedin_url": "https://www.linkedin.com/in/sample-sofia-lindqvist"
+      },
+      {
+        "name": "Jamal Ortiz",
+        "title": "Director of Operations",
+        "company": "Ember and Oak Group",
+        "linkedin_url": "https://www.linkedin.com/in/sample-jamal-ortiz"
+      },
+      {
+        "name": "Erin Walsh",
+        "title": "General Manager",
+        "company": "The Copper Kettle"
+      },
+      {
+        "name": "Ben Ashford",
+        "title": "Owner",
+        "company": "Ashford Noodle Bar",
+        "linkedin_url": "https://www.linkedin.com/in/sample-ben-ashford"
+      },
+      {
+        "name": "Leila Haddad",
+        "title": "Assistant General Manager",
+        "company": "Juniper Table"
+      },
+      {
+        "name": "Owen Price",
+        "title": "Bar Manager",
+        "company": "Northside Tavern",
+        "linkedin_url": "https://www.linkedin.com/in/sample-owen-price"
+      },
+      {
+        "name": "Grace Kim",
+        "title": "Owner",
+        "company": "Little Pine Kitchen",
+        "linkedin_url": "https://www.linkedin.com/in/sample-grace-kim"
+      }
+    ],
+    "draft": "Saltmarsh splits tips by hours and role every shift, so nobody does the math at close. Since September it can also pay tips out the same day.\n\nOkra and Ash and Little Ferry Oyster Bar run on it, and setup takes one afternoon. Open to a short look?",
+    "headline": "Who Saltmarsh should email first, and what to say",
+    "intro": "Same-day tip payouts are a good reason to reach out right now, so I looked for the managers who do the tip math at the end of the night. Here are six to start with and the first email to two of them. Tell me what you would change.",
+    "shortlist": [
+      {
+        "name": "Nina Albright",
+        "title": "General Manager",
+        "company": "Juniper Table",
+        "linkedin_url": "https://www.linkedin.com/in/sample-nina-albright",
+        "why": "GMs close out the night, so the tip split is usually theirs to do."
+      },
+      {
+        "name": "Calvin Brooks",
+        "title": "Owner",
+        "company": "Brooks and Bramble",
+        "linkedin_url": "https://www.linkedin.com/in/sample-calvin-brooks",
+        "why": "Owner-operator who decides on payroll and hears it first when tips are off."
+      },
+      {
+        "name": "Sofia Lindqvist",
+        "title": "Operating Partner",
+        "company": "Harbor Street Hospitality",
+        "linkedin_url": "https://www.linkedin.com/in/sample-sofia-lindqvist",
+        "why": "Runs a small group, where every location splits tips its own way."
+      },
+      {
+        "name": "Jamal Ortiz",
+        "title": "Director of Operations",
+        "company": "Ember and Oak Group",
+        "linkedin_url": "https://www.linkedin.com/in/sample-jamal-ortiz",
+        "why": "Owns operations across several locations and picks the back-office tools."
+      },
+      {
+        "name": "Erin Walsh",
+        "title": "General Manager",
+        "company": "The Copper Kettle",
+        "why": "Single-location GM who likely does payroll and tips herself."
+      },
+      {
+        "name": "Grace Kim",
+        "title": "Owner",
+        "company": "Little Pine Kitchen",
+        "linkedin_url": "https://www.linkedin.com/in/sample-grace-kim",
+        "why": "Owner of a small kitchen where staff notice when tips land a day late."
+      }
+    ],
+    "emails": [
+      {
+        "name": "Nina Albright",
+        "title": "General Manager",
+        "company": "Juniper Table",
+        "linkedin_url": "https://www.linkedin.com/in/sample-nina-albright",
+        "subject": "Tip night at Juniper Table",
+        "body": [
+          "Hi Nina,",
+          "As GM at Juniper Table, the tip split at close is probably yours, every night.",
+          "Saltmarsh splits tips by hours and role every shift, so nobody does the math at close. Since September it can also pay tips out the same day.",
+          "Okra and Ash and Little Ferry Oyster Bar run on it, and setup takes one afternoon. Open to a short look?"
+        ],
+        "ps": "PS: You set the tip rules once, and they apply to every shift after that."
+      },
+      {
+        "name": "Calvin Brooks",
+        "title": "Owner",
+        "company": "Brooks and Bramble",
+        "linkedin_url": "https://www.linkedin.com/in/sample-calvin-brooks",
+        "subject": "Brooks and Bramble payroll",
+        "body": [
+          "Hi Calvin,",
+          "At Brooks and Bramble the tip math and payroll probably still meet in a spreadsheet you check.",
+          "Saltmarsh runs payroll and splits tips by hours and role every shift, so nobody does the math at close. Since September it can also pay tips out the same day.",
+          "Okra and Ash and Little Ferry Oyster Bar run on it, and setup takes one afternoon. Open to a short look?"
+        ],
+        "ps": ""
+      }
+    ]
+  }
+}

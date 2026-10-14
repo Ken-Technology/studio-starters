@@ -1,0 +1,319 @@
+{%- comment -%} Shown while the page is still being filled: the same calculator with typical numbers and Ken variables only. Built from template.liquid; keep the two in step. {%- endcomment -%}
+{%- assign reps_in = 6 -%}
+{%- assign hours_in = 8 -%}
+{%- assign cost_in = 90000 -%}
+{%- capture headline -%}What manual prospecting costs {{ account.name }}{%- endcapture -%}
+{%- capture intro -%}We are still working out the numbers for {{ account.name }}. Until then these are typical figures. Change any of them to match your team.{%- endcapture -%}
+{%- assign basis_reps = 'A starting guess. Put in the size of your team.' -%}
+{%- assign basis_hours = 'About a day a week, a common starting point.' -%}
+{%- assign basis_cost = 'A typical salary plus benefits for a B2B sales rep.' -%}
+{%- comment -%} inputs end {%- endcomment -%}
+{%- comment -%} Your claim: the share of prospecting work you take over, 10 to 90. Visitors can still change it. {%- endcomment -%}
+{%- assign share_in = 60 -%}
+{%- assign reps = reps_in | times: 1 | at_least: 1 | at_most: 50 -%}
+{%- assign hours = hours_in | times: 1 | at_least: 1 | at_most: 20 -%}
+{%- assign rep_cost = cost_in | times: 1 | at_least: 30000 | at_most: 300000 -%}
+{%- assign share = share_in | times: 1 | at_least: 10 | at_most: 90 -%}
+{%- comment -%} Same formulas as the script below: 40 hour weeks, 48 weeks a year, 4 weeks a month. {%- endcomment -%}
+{%- assign week_hours = reps | times: hours -%}
+{%- assign raw = week_hours | times: rep_cost -%}
+{%- assign total_year = raw | divided_by: 40.0 | round -%}
+{%- assign saved_year = raw | times: share | divided_by: 4000.0 | round -%}
+{%- assign month_hours = week_hours | times: share | times: 4 | divided_by: 100.0 | round -%}
+{%- assign pct10 = hours | times: 25 -%}
+{%- assign pct_dec = pct10 | modulo: 10 -%}
+{%- capture week_pct -%}{{ pct10 | minus: pct_dec | divided_by: 10 }}{% if pct_dec > 0 %}.{{ pct_dec }}{% endif %}%{%- endcapture -%}
+{%- comment -%} Thousands separators for the no-script render. {%- endcomment -%}
+{%- capture nums -%}{{ rep_cost }} {{ total_year }} {{ saved_year }} {{ month_hours }} {{ week_hours }}{%- endcapture -%}
+{%- assign nums = nums | split: ' ' -%}
+{%- assign fmt = '' -%}
+{%- for v in nums -%}
+{%- assign n = v | plus: 0 -%}
+{%- assign one = n | modulo: 1000 -%}
+{%- assign rest = n | minus: one | divided_by: 1000 -%}
+{%- assign tho = rest | modulo: 1000 -%}
+{%- assign mil = rest | minus: tho | divided_by: 1000 -%}
+{%- capture s -%}
+{%- if mil > 0 -%}{{ mil }},{% if tho < 100 %}0{% endif %}{% if tho < 10 %}0{% endif %}{{ tho }},
+{%- elsif tho > 0 -%}{{ tho }},
+{%- endif -%}
+{%- if mil > 0 or tho > 0 -%}{% if one < 100 %}0{% endif %}{% if one < 10 %}0{% endif %}{%- endif -%}{{ one }}
+{%- endcapture -%}
+{%- assign fmt = fmt | append: s | append: ' ' -%}
+{%- endfor -%}
+{%- assign f = fmt | strip | split: ' ' -%}
+{%- assign rep_cost_f = f[0] -%}
+{%- assign total_year_f = f[1] -%}
+{%- assign saved_year_f = f[2] -%}
+{%- assign month_hours_f = f[3] -%}
+{%- assign week_hours_f = f[4] -%}
+{%- assign accent = brand.colors.primary | default: '#1f5546' | remove: '<' | remove: ';' -%}
+{%- assign red = brand.colors.secondary | default: '#b3442b' | remove: '<' | remove: ';' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Instrument Serif' | remove: '<' | remove: "'" -%}
+{%- assign font_body = brand.fonts.body | default: 'Schibsted Grotesk' | remove: '<' | remove: "'" -%}
+{%- assign sender_name = sender.name | default: 'our team' -%}
+{%- capture prepared_for -%}
+{%- if person.first_name -%}{{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}{% if person.title %}, {{ person.title | escape }}{% endif %}
+{%- else -%}The {{ account.name | escape }} team
+{%- endif -%}
+{%- endcapture -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ headline | escape }}</title>
+{%- comment -%} Every brand-font request includes weight 400, so Google Fonts answers even when 700 is missing. {%- endcomment -%}
+{%- if font_head == 'Instrument Serif' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400&display=swap">
+{%- endif %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root{--a:{{ accent }};--r:{{ red }};--ink:#1c1a15;--soft:#3d382e;--mute:#6a6356;--faint:#9c9483;--paper:#f2eee3;--card:#fbf9f2;--rule:#dcd4c2;--fh:'{{ font_head }}',Georgia,serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--fm:'DM Mono',ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);font:400 16.5px/1.55 var(--fb);-webkit-font-smoothing:antialiased;background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .09 0 0 0 0 .05 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.sheet{max-width:72rem;margin:0 auto;padding:1rem 1.1rem 2.5rem}
+.mast{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.2rem 0 .75rem;border-bottom:3px double var(--ink)}
+.logo{height:26px;width:auto;display:block}
+.brandname{font-weight:700;letter-spacing:-.01em}
+.tag,.fields dt,.no,.kicker,.scale,.u,.tally span,.foot{font-family:var(--fm)}
+.tag{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);text-align:right}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:.8rem 1.4rem;margin:0;padding:.9rem 0;border-bottom:1px solid var(--rule)}
+.fields dt{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.fields dd{margin:.15rem 0 0;font-weight:700;font-size:.95rem;line-height:1.3}
+h1{font:400 clamp(2.6rem,11vw,4.8rem)/.96 var(--fh);letter-spacing:-.018em;margin:1.5rem 0 1rem;max-width:15ch;text-wrap:balance}
+.intro{font-size:1.1rem;line-height:1.5;color:var(--soft);max-width:34rem;margin:0 0 2rem}
+h2{font:400 clamp(1.9rem,7vw,2.5rem)/1.04 var(--fh);letter-spacing:-.01em;margin:0}
+.calc{display:grid;gap:1.4rem}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;padding-bottom:.6rem;border-bottom:2px solid var(--ink)}
+.head p{margin:.3rem 0 0;color:var(--mute);font-size:.92rem}
+.reset{flex:none;font:500 .74rem var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--a);background:transparent;border:1px solid currentColor;border-radius:999px;padding:.55rem .8rem;cursor:pointer}
+.reset[hidden]{display:none}
+.row{padding:1.1rem 0 1rem;border-bottom:1px solid var(--rule)}
+.top{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem}
+.top label{font-weight:700;font-size:1.03rem;line-height:1.25}
+.no{display:block;font-size:.68rem;letter-spacing:.14em;color:var(--r);margin-bottom:.3rem}
+.read{display:flex;align-items:baseline;gap:.25rem;flex:none;border-bottom:2px solid var(--ink);padding:0 .1rem .05rem}
+.read:focus-within{border-bottom-color:var(--a);box-shadow:0 2px 0 var(--a)}
+.read input{font:500 1.75rem/1.15 var(--fm);font-variant-numeric:tabular-nums;width:3.2ch;text-align:right;color:var(--ink);background:transparent;border:0;border-radius:0;padding:0;margin:0;-moz-appearance:textfield;appearance:textfield}
+.read input.wide{width:6.2ch}
+.read input:focus{outline:none}
+.read input::-webkit-outer-spin-button,.read input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.u{font-size:.78rem;color:var(--mute)}
+.help{margin:.35rem 0 0;color:var(--mute);font-size:.9rem;max-width:31rem}
+.dial{display:block;width:100%;height:46px;margin:.35rem 0 0;background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer}
+.dial:focus{outline:none}
+.dial:focus-visible{outline:2px solid var(--a);outline-offset:3px;border-radius:4px}
+.dial::-webkit-slider-runnable-track{height:16px;background:linear-gradient(var(--ink),var(--ink)) bottom/100% 1px no-repeat,repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 10%) bottom/100% 16px no-repeat,repeating-linear-gradient(90deg,var(--faint) 0 1px,transparent 1px 2.5%) bottom/100% 7px no-repeat}
+.dial::-moz-range-track{height:16px;background:linear-gradient(var(--ink),var(--ink)) bottom/100% 1px no-repeat,repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 10%) bottom/100% 16px no-repeat,repeating-linear-gradient(90deg,var(--faint) 0 1px,transparent 1px 2.5%) bottom/100% 7px no-repeat}
+.dial::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:36px;margin-top:-10px;border-radius:4px;border:2px solid var(--card);background:var(--a) linear-gradient(90deg,transparent 10px,rgba(255,255,255,.75) 10px 12px,transparent 12px);box-shadow:0 0 0 1px var(--ink),0 3px 6px rgba(28,26,21,.25)}
+.dial::-moz-range-thumb{width:20px;height:32px;border-radius:4px;border:2px solid var(--card);background:var(--a) linear-gradient(90deg,transparent 8px,rgba(255,255,255,.75) 8px 10px,transparent 10px);box-shadow:0 0 0 1px var(--ink),0 3px 6px rgba(28,26,21,.25)}
+.scale{display:flex;justify-content:space-between;font-size:.7rem;color:var(--faint);margin-top:.1rem}
+.basis{margin:.6rem 0 0;font-size:.84rem;line-height:1.4;color:var(--soft);padding-left:.75rem;border-left:2px solid var(--a)}
+.basis b{font:500 .66rem var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-right:.35rem}
+.tally{position:sticky;bottom:0;z-index:2;display:flex;align-items:baseline;flex-wrap:wrap;gap:.2rem .55rem;margin:1rem -1.1rem 0;padding:.75rem 1.1rem calc(.75rem + env(safe-area-inset-bottom));background:var(--ink);color:#d9d2c1}
+.tally span{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+.tally b{font:500 1.3rem var(--fm);color:#fff}
+.tally .th{margin-left:auto;text-transform:none;letter-spacing:0;font-size:.8rem}
+.tally .th b{font-size:1rem}
+.result{position:relative;background:var(--card);border:1px solid #cdc4ae;padding:1.3rem 1.1rem 1.3rem 1.75rem;box-shadow:0 1px 0 #fff inset,0 12px 30px -18px rgba(28,26,21,.35)}
+.result::before{content:"";position:absolute;top:0;bottom:0;left:.7rem;width:4px;border-left:1px solid var(--r);border-right:1px solid var(--r);opacity:.6}
+.kicker{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0}
+.big{display:flex;align-items:baseline;flex-wrap:wrap;gap:.1rem .55rem;margin:.4rem 0 .15rem}
+.big b{font:500 clamp(2.7rem,13vw,3.9rem)/1 var(--fm);letter-spacing:-.045em;color:var(--a);font-variant-numeric:tabular-nums}
+.big span{font:italic 400 1.35rem var(--fh)}
+.second{margin:0 0 .9rem;font-size:1.02rem}
+.second b{font:500 1.2rem var(--fm)}
+.est{margin:0 0 1.3rem;font-size:.86rem;color:var(--mute)}
+.lh{font:400 1.4rem/1.1 var(--fh);margin:0;padding:0 0 .5rem;border-bottom:2px solid var(--ink)}
+.ln{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:.8rem;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--rule);font-size:.92rem}
+.ln b{font:500 .95rem var(--fm);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ln i{grid-column:1/-1;font:400 .76rem/1.4 var(--fm);font-style:normal;color:var(--mute);margin-top:.2rem}
+.ln.sum{border-bottom:3px double var(--r)}
+.ln.sum>span{font-weight:700}
+.ln.sum b{color:var(--a);font-size:1.05rem}
+.foot{font-size:.7rem;line-height:1.5;color:var(--mute);margin:.9rem 0 1.2rem}
+.go a{display:inline-block}
+.booking{margin-top:2.6rem;padding-top:1.3rem;border-top:3px double var(--ink);display:grid;gap:1.2rem}
+.booking p{color:var(--soft);max-width:30rem;margin:.7rem 0 0}
+.sign{font-weight:700;color:var(--ink)!important}
+.sign span{display:block;font-weight:400;color:var(--mute)}
+.cal{min-width:0}
+.cal iframe{width:100%;border:0}
+.end{margin-top:2rem;padding-top:.8rem;border-top:1px solid var(--rule);font:400 .7rem/1.5 var(--fm);color:var(--mute);letter-spacing:.04em}
+@media (min-width:900px){
+.sheet{padding:1.6rem 2.5rem 3rem}
+.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);column-gap:3.5rem;align-items:end}
+.mast,.fields{grid-column:1/-1}
+.intro{margin-top:1.5rem}
+.calc{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:3.5rem;align-items:start;margin-top:1rem}
+.result{position:sticky;top:1.5rem;padding:1.6rem 1.6rem 1.5rem 2.3rem}
+.result::before{left:1rem}
+.tally{display:none}
+.booking{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:3.5rem;margin-top:4rem}
+}
+@media (prefers-reduced-motion:no-preference){
+.dial::-webkit-slider-thumb{transition:transform .12s ease}
+.dial:active::-webkit-slider-thumb{transform:scaleY(1.12)}
+}
+</style>
+<script>
+document.addEventListener('alpine:init', function () {
+  var RANGE = { reps: [1, 50], hours: [1, 20], cost: [30000, 300000], share: [10, 90] };
+  function fit(value, key, fallback) {
+    if (value === '' || value === null || value === undefined) return fallback;
+    var n = Math.round(Number(value));
+    if (!isFinite(n)) return fallback;
+    return Math.min(RANGE[key][1], Math.max(RANGE[key][0], n));
+  }
+  function num(n) { return n.toLocaleString('en-US', { maximumFractionDigits: 1 }); }
+  window.Alpine.data('roi', function () {
+    return {
+      reps: 6, hours: 8, cost: 90000, share: 60,
+      start: { reps: 6, hours: 8, cost: 90000, share: 60 },
+      init: function () {
+        var d = this.$el.dataset;
+        this.start = { reps: fit(d.reps, 'reps', 6), hours: fit(d.hours, 'hours', 8), cost: fit(d.cost, 'cost', 90000), share: fit(d.share, 'share', 60) };
+        this.reset();
+      },
+      reset: function () {
+        this.reps = this.start.reps; this.hours = this.start.hours; this.cost = this.start.cost; this.share = this.start.share;
+      },
+      tidy: function () {
+        this.reps = this.r; this.hours = this.h; this.cost = this.c; this.share = this.s;
+      },
+      get r() { return fit(this.reps, 'reps', this.start.reps); },
+      get h() { return fit(this.hours, 'hours', this.start.hours); },
+      get c() { return fit(this.cost, 'cost', this.start.cost); },
+      get s() { return fit(this.share, 'share', this.start.share); },
+      get unchanged() { return this.r === this.start.reps && this.h === this.start.hours && this.c === this.start.cost && this.s === this.start.share; },
+      get repsText() { return num(this.r); },
+      get hoursText() { return num(this.h); },
+      get weekHours() { return num(this.r * this.h); },
+      get weekShare() { return num(this.h * 2.5) + '%'; },
+      get repCost() { return '$' + num(this.c); },
+      get yearCost() { return '$' + num(Math.round(this.r * this.h * this.c / 40)); },
+      get sharePct() { return this.s + '%'; },
+      get yearBack() { return '$' + num(Math.round(this.r * this.h * this.c * this.s / 4000)); },
+      get monthHours() { return num(Math.round(this.r * this.h * this.s * 4 / 100)); }
+    };
+  });
+});
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js"></script>
+</head>
+<body>
+<main class="sheet">
+
+<header data-section="hero" class="hero">
+<div class="mast">
+{%- if brand.logo_url %}
+<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
+{%- else %}
+<span class="brandname">{{ brand.name | default: sender_name | escape }}</span>
+{%- endif %}
+<span class="tag">Prospecting cost estimate</span>
+</div>
+<dl class="fields">
+<div><dt>Account</dt><dd>{{ account.name | escape }}</dd></div>
+<div><dt>Prepared for</dt><dd>{{ prepared_for }}</dd></div>
+<div><dt>Prepared by</dt><dd>{{ sender_name | escape }}{% if sender.title %}, {{ sender.title | escape }}{% endif %}</dd></div>
+</dl>
+<h1>{{ headline | escape }}</h1>
+<p class="intro">{{ intro | escape }}</p>
+</header>
+
+<div class="calc" x-data="roi" data-reps="{{ reps }}" data-hours="{{ hours }}" data-cost="{{ rep_cost }}" data-share="{{ share }}">
+
+<section data-section="calculator" class="inputs" aria-labelledby="calc-title">
+<div class="head">
+<div><h2 id="calc-title">Your numbers</h2><p>Our starting estimate. Drag or type to change it.</p></div>
+<button type="button" class="reset" hidden x-bind:hidden="unchanged" x-on:click="reset">Undo changes</button>
+</div>
+
+<div class="row">
+<div class="top">
+<label for="in-reps"><span class="no">01</span>People who prospect</label>
+<span class="read"><input id="in-reps" type="number" inputmode="numeric" min="1" max="50" step="1" value="{{ reps }}" x-model.number="reps" x-on:change="tidy"><span class="u">reps</span></span>
+</div>
+<p class="help">SDRs, account executives and founders who find their own leads.</p>
+<input class="dial" type="range" min="1" max="50" step="1" value="{{ reps }}" x-model.number="reps" aria-label="People who prospect">
+<div class="scale"><span>1</span><span>50</span></div>
+<p class="basis"><b>Basis</b>{{ basis_reps | escape }}</p>
+</div>
+
+<div class="row">
+<div class="top">
+<label for="in-hours"><span class="no">02</span>Hours each spends prospecting a week</label>
+<span class="read"><input id="in-hours" type="number" inputmode="numeric" min="1" max="20" step="1" value="{{ hours }}" x-model.number="hours" x-on:change="tidy"><span class="u">h</span></span>
+</div>
+<p class="help">Finding accounts, building lists, researching people, writing first emails.</p>
+<input class="dial" type="range" min="1" max="20" step="1" value="{{ hours }}" x-model.number="hours" aria-label="Hours each spends prospecting a week">
+<div class="scale"><span>1 h</span><span>20 h</span></div>
+<p class="basis"><b>Basis</b>{{ basis_hours | escape }}</p>
+</div>
+
+<div class="row">
+<div class="top">
+<label for="in-cost"><span class="no">03</span>Yearly cost of one rep</label>
+<span class="read"><span class="u">$</span><input id="in-cost" class="wide" type="number" inputmode="numeric" min="30000" max="300000" step="5000" value="{{ rep_cost }}" x-model.number="cost" x-on:change="tidy"></span>
+</div>
+<p class="help">Salary plus benefits, in US dollars.</p>
+<input class="dial" type="range" min="30000" max="300000" step="5000" value="{{ rep_cost }}" x-model.number="cost" aria-label="Yearly cost of one rep">
+<div class="scale"><span>$30k</span><span>$300k</span></div>
+<p class="basis"><b>Basis</b>{{ basis_cost | escape }}</p>
+</div>
+
+<div class="row">
+<div class="top">
+<label for="in-share"><span class="no">04</span>Share of that work we take over</label>
+<span class="read"><input id="in-share" type="number" inputmode="numeric" min="10" max="90" step="5" value="{{ share }}" x-model.number="share" x-on:change="tidy"><span class="u">%</span></span>
+</div>
+<p class="help">Lower it if you want a cautious number.</p>
+<input class="dial" type="range" min="10" max="90" step="5" value="{{ share }}" x-model.number="share" aria-label="Share of that work we take over">
+<div class="scale"><span>10%</span><span>90%</span></div>
+</div>
+
+<div class="tally" aria-hidden="true"><span>Back each year</span><b x-text="yearBack">${{ saved_year_f }}</b><span class="th"><b x-text="monthHours">{{ month_hours_f }}</b> hours a month</span></div>
+</section>
+
+<section data-section="result" class="result" aria-labelledby="result-title">
+<p class="kicker" id="result-title">What {{ account.name | escape }} gets back</p>
+<p class="big" aria-live="polite"><b x-text="yearBack">${{ saved_year_f }}</b><span>a year</span></p>
+<p class="second"><b x-text="monthHours">{{ month_hours_f }}</b> hours a month back for selling</p>
+<p class="est">An estimate from the numbers on this page, not a quote. Change them to match yours.</p>
+<h3 class="lh">How we got this number</h3>
+<div class="ledger">
+<div class="ln"><span>Time spent prospecting</span><b><span x-text="weekHours">{{ week_hours_f }}</span> h a week</b><i><span x-text="repsText">{{ reps }}</span> people × <span x-text="hoursText">{{ hours }}</span> h a week</i></div>
+<div class="ln"><span>Share of each person's week</span><b x-text="weekShare">{{ week_pct }}</b><i><span x-text="hoursText">{{ hours }}</span> of 40 hours</i></div>
+<div class="ln"><span>What that time costs</span><b><span x-text="yearCost">${{ total_year_f }}</span> a year</b><i><span x-text="weekShare">{{ week_pct }}</span> × <span x-text="repCost">${{ rep_cost_f }}</span> × <span x-text="repsText">{{ reps }}</span> people</i></div>
+<div class="ln sum"><span>Back to you</span><b><span x-text="yearBack">${{ saved_year_f }}</span> a year</b><i><span x-text="yearCost">${{ total_year_f }}</span> × <span x-text="sharePct">{{ share }}%</span> we take over</i></div>
+<div class="ln"><span>Time back</span><b><span x-text="monthHours">{{ month_hours_f }}</span> h a month</b><i><span x-text="weekHours">{{ week_hours_f }}</span> h × <span x-text="sharePct">{{ share }}%</span> × 4 weeks</i></div>
+</div>
+<p class="foot">Assumes a 40 hour week and 48 working weeks a year, so 4 weeks a month. Rep cost is salary plus benefits.</p>
+<div class="go">{% render 'ken/cta', label: 'Check these numbers on a call', kind: 'booking' %}</div>
+</section>
+
+</div>
+
+<section data-section="booking" class="booking" id="booking">
+<div>
+<h2>Go through your numbers with us</h2>
+<p>Book 20 minutes. Bring the figures you changed. We will check them against how {{ account.name | escape }} prospects today and show which part of the work we would take over first.</p>
+<p class="sign">{{ sender_name | escape }}{% if sender.title %}<span>{{ sender.title | escape }}</span>{% endif %}</p>
+</div>
+<div class="cal">
+{% render 'ken/booking' %}
+</div>
+</section>
+
+<p class="end">Prepared for {{ account.name | escape }} by {{ brand.name | default: sender_name | escape }}. Every figure is an estimate you can change.</p>
+
+</main>
+</body>
+</html>

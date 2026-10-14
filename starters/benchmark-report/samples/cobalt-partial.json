@@ -1,0 +1,112 @@
+{
+  "account": {
+    "name": "Cobalt Ledger",
+    "domain": "cobaltledger.example",
+    "industry": "financial services",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Cobalt Ledger builds reconciliation software for credit unions.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Marcus",
+    "last_name": "Lindqvist",
+    "title": null
+  },
+  "sender": {
+    "name": "Jonas Whitfield",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Tallyline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#2f5d3a"
+    },
+    "fonts": null
+  },
+  "data": {
+    "benchmarks": [
+      {
+        "industry": "financial services",
+        "size_band": "11-50",
+        "metric": "Cold email reply rate",
+        "unit": "%",
+        "better": "higher",
+        "p25": 1.7,
+        "median": 2.9,
+        "p75": 4.5,
+        "sample_size": 38,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "financial services",
+        "size_band": "11-50",
+        "metric": "Positive reply rate",
+        "unit": "%",
+        "better": "higher",
+        "p25": 0.5,
+        "median": 0.9,
+        "p75": 1.4,
+        "sample_size": 38,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "financial services",
+        "size_band": "11-50",
+        "metric": "Meetings per 1000 emails",
+        "unit": "meetings",
+        "better": "higher",
+        "p25": 2.8,
+        "median": 5.0,
+        "p75": 8.1,
+        "sample_size": 38,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "financial services",
+        "size_band": "11-50",
+        "metric": "Meeting show rate",
+        "unit": "%",
+        "better": "higher",
+        "p25": 73,
+        "median": 84,
+        "p75": 92,
+        "sample_size": 34,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "financial services",
+        "size_band": "11-50",
+        "metric": "Win rate on outbound deals",
+        "unit": "%",
+        "better": "higher",
+        "p25": 15,
+        "median": 24,
+        "p75": 35,
+        "sample_size": 29,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "financial services",
+        "size_band": "11-50",
+        "metric": "Outbound sales cycle",
+        "unit": "days",
+        "better": "lower",
+        "p25": 40,
+        "median": 59,
+        "p75": 89,
+        "sample_size": 29,
+        "source": "Sample survey, H1 2026"
+      }
+    ],
+    "summary": "Financial services companies with 11-50 employees get a median cold email reply rate of 2.9%, and 0.9% of sends get a positive reply. Meetings that get booked mostly happen, with a median show rate of 84%, and the median win rate on outbound deals is 24%. The weak spot for most of the group is volume: the middle half books between 2.8 and 8.1 meetings per 1000 emails.",
+    "next_steps": [
+      "Write your own reply rate and positive reply rate next to section 2. Together they tell you whether to fix the list or the message.",
+      "If your outbound sales cycle runs past 89 days, list what each open deal is waiting on."
+    ]
+  }
+}

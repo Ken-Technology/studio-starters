@@ -1,0 +1,49 @@
+{
+  "kenStudio": "1",
+  "name": "ROI calculator",
+  "type": "calculator",
+  "format": "page",
+  "slug": "prospecting-roi",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "dossier": { "type": "string", "maxLength": 4000 },
+      "why_now": { "type": "string", "maxLength": 1000 },
+      "site": { "type": "object" },
+      "reps": { "type": "integer", "fallback": 6 },
+      "hours": { "type": "integer", "fallback": 8 },
+      "rep_cost": { "type": "integer", "fallback": 90000 },
+      "basis": {
+        "type": "object",
+        "properties": {
+          "reps": { "type": "string", "maxLength": 120 },
+          "hours": { "type": "string", "maxLength": 120 },
+          "rep_cost": { "type": "string", "maxLength": 120 }
+        }
+      },
+      "headline": { "type": "string", "minLength": 10, "maxLength": 90, "fallback": "What manual prospecting costs {{ account.name }}" },
+      "intro": { "type": "string", "minLength": 20, "maxLength": 300, "fallback": "A rough estimate from typical numbers, not yet tuned to {{ account.name }}. Change any figure below to match yours." }
+    },
+    "required": ["reps", "hours", "rep_cost", "headline", "intro"]
+  },
+  "recipe": [
+    { "id": "dossier", "kind": "bind", "from": "account.dossier.summary", "to": "data.dossier" },
+    { "id": "why_now", "kind": "bind", "from": "account.dossier.why_now", "to": "data.why_now" },
+    { "id": "site", "kind": "tool", "tool": "scrape.page", "args": { "url": "https://{{ account.domain }}" }, "to": "data.site" },
+    {
+      "id": "estimate",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.industry", "account.size_band", "data.dossier", "data.why_now", "data.site"],
+      "to": ["data.reps", "data.hours", "data.rep_cost", "data.basis", "data.headline", "data.intro"],
+      "prompt": "You are filling in an ROI calculator for {{ account.name }}. {{ sender.name | default: 'The sender' }} takes over the manual prospecting a sales team does by hand: finding accounts, building lists, researching people and writing first emails. The calculator shows what that work costs {{ account.name }} today and what they get back. The reader can change every number, so your job is a fair starting point, not a sales pitch.\n\nInputs: account.industry and account.size_band, data.dossier (our research summary), data.why_now (a recent reason to reach out, may be empty) and data.site (their website, may be empty). Use facts from these inputs only. Never invent customers, funding, headcounts, salaries or quotes.\n\nReturn JSON with exactly these keys:\n- reps: integer from 1 to 50. How many people at {{ account.name }} find their own new business (SDRs, account executives, founders who sell). If the inputs name a sales team size or open sales roles, start from that. Otherwise use size_band: 1-10 gives 1, 11-50 gives 3, 51-200 gives 6, 201-500 gives 12, 501-1000 gives 20, anything larger gives 30.\n- hours: integer from 2 to 20. Hours each of them spends a week on manual prospecting. Use 8 unless the inputs say otherwise: 10 to 12 for a team that is hiring reps or just started outbound, 5 for a team that mostly works inbound leads.\n- rep_cost: integer from 40000 to 250000, a multiple of 5000. The yearly cost of one rep in US dollars, salary plus benefits. Use 90000 by default, 110000 to 140000 for software, finance or enterprise sales teams, 60000 to 75000 for teams based outside North America and Western Europe.\n- basis: {reps, hours, rep_cost}. One plain line each, at most 110 characters, saying where the number came from, for example \"51 to 200 employees, and the site lists two open sales roles.\" When no input supports a number, write \"A typical figure for a team this size.\"\n- headline: 10 to 80 characters, sentence case, names {{ account.name }} and the cost of prospecting by hand. No numbers, since the reader can change them. No question marks.\n- intro: 1 or 2 sentences, 20 to 260 characters. Say the figures below are our estimate for {{ account.name }}, and that the reader should change them to match their team. If data.why_now gives a reason this matters now, mention it in a few plain words.\n\nClamp every number to its range. Return integers, not strings.\n\nRules for every string: no em dashes or en dashes. No email addresses or phone numbers. Plain words a person would say to a peer. No hype words such as unlock, supercharge, seamless or game-changing. Never promise a result; the page calls these numbers an estimate."
+    }
+  ],
+  "sections": [
+    { "id": "hero", "label": "Intro" },
+    { "id": "calculator", "label": "Calculator" },
+    { "id": "result", "label": "Result" },
+    { "id": "booking", "label": "Booking" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

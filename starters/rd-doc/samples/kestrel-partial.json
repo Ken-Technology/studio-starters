@@ -1,0 +1,99 @@
+{
+  "account": {
+    "name": "Kestrel Labs",
+    "domain": "kestrellabs.example",
+    "industry": "computer and network security",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Kestrel Labs runs phishing simulations and short security training for dental and medical practices. Practices pay per seat per month.",
+      "why_now": null
+    }
+  },
+  "person": {
+    "first_name": "Amara",
+    "last_name": "Diallo",
+    "title": null
+  },
+  "sender": {
+    "name": "Morgan Hale",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": null,
+    "logo_url": null,
+    "colors": {
+      "primary": "#1d4ed8"
+    },
+    "fonts": null
+  },
+  "data": {
+    "strategy": {
+      "intro": "Small practices know they are a target but have no one whose job is security. Kestrel wins by making the practice manager look prepared before an insurer or auditor asks.",
+      "audience": "Practice managers and office managers at dental groups and clinics with 3 to 30 locations. We skip hospitals; they buy through procurement and want a different product.",
+      "offer": "A free phishing check: one simulated email to the front desk team, with the results sent to the manager the same week.",
+      "channels": "Email first, since practice managers read their inbox between patients. LinkedIn is light here; we use it only for multi-location groups.",
+      "goal": "Eight practices running the free check in two weeks."
+    },
+    "segments": [
+      {
+        "label": "Dental groups",
+        "sub": "Practice manager, 3-30 locations",
+        "value": 600,
+        "tests": [
+          {
+            "name": "Pain: insurer vs breach",
+            "hypothesis": "Insurers move faster"
+          }
+        ]
+      },
+      {
+        "label": "Clinic networks",
+        "sub": "Office manager, primary care",
+        "value": 400,
+        "tests": []
+      }
+    ],
+    "sampling_criteria": "Practice managers at US dental groups with three or more locations.",
+    "leads": [
+      {
+        "name": "Beth Carrow",
+        "title": "Practice Manager",
+        "company": "Lakeside Dental Group",
+        "linkedin_url": "https://www.linkedin.com/in/sample-beth-carrow",
+        "website": "lakesidedental.example",
+        "why": "Runs 12 locations with one shared front desk inbox."
+      },
+      {
+        "name": "Jon Petrakis",
+        "title": "Director of Operations",
+        "company": "Smileworks",
+        "website": "",
+        "why": "Opened four new offices this year, each with new staff to train."
+      },
+      {
+        "name": "Ines Varga",
+        "title": "Office Manager",
+        "company": "Cedar Family Clinic",
+        "linkedin_url": "https://www.linkedin.com/in/sample-ines-varga",
+        "website": "cedarclinic.example",
+        "why": "Handles IT and HR herself for a 40-person clinic network."
+      }
+    ],
+    "emails": [
+      {
+        "name": "Beth Carrow",
+        "title": "Practice Manager",
+        "linkedin_url": "https://www.linkedin.com/in/sample-beth-carrow",
+        "subject": "Lakeside front desk inbox",
+        "body": [
+          "Hey Beth,",
+          "Lakeside runs 12 locations from one shared front desk inbox, which is the first place a phishing email lands.",
+          "Kestrel sends one simulated email to your front desk team and tells you who clicked, the same week, for free."
+        ],
+        "ps": "",
+        "linkedin": ""
+      }
+    ]
+  }
+}

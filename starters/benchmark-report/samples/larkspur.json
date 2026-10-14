@@ -1,0 +1,148 @@
+{
+  "account": {
+    "name": "Larkspur Analytics",
+    "domain": "larkspur.example",
+    "industry": "software development",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Larkspur Analytics sells product analytics to mobile app teams. Its careers page lists three open SDR roles, and the Team plan asks visitors to book a call instead of starting a trial.",
+      "why_now": "Hired a sales director in August and is building an outbound team for the first time.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Nadia",
+    "last_name": "Brooks",
+    "title": "Head of Sales"
+  },
+  "sender": {
+    "name": "Sam Ortega",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Tallyline",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "benchmarks": [
+      {
+        "industry": "software development",
+        "size_band": "51-200",
+        "metric": "Cold email reply rate",
+        "unit": "%",
+        "better": "higher",
+        "p25": 2.0,
+        "median": 3.4,
+        "p75": 5.3,
+        "sample_size": 88,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "software development",
+        "size_band": "51-200",
+        "metric": "Positive reply rate",
+        "unit": "%",
+        "better": "higher",
+        "p25": 0.6,
+        "median": 1.1,
+        "p75": 1.8,
+        "sample_size": 88,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "software development",
+        "size_band": "51-200",
+        "metric": "Meetings per 1000 emails",
+        "unit": "meetings",
+        "better": "higher",
+        "p25": 3.3,
+        "median": 6.0,
+        "p75": 9.6,
+        "sample_size": 88,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "software development",
+        "size_band": "51-200",
+        "metric": "Meeting show rate",
+        "unit": "%",
+        "better": "higher",
+        "p25": 67,
+        "median": 78,
+        "p75": 86,
+        "sample_size": 84,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "software development",
+        "size_band": "51-200",
+        "metric": "Win rate on outbound deals",
+        "unit": "%",
+        "better": "higher",
+        "p25": 12,
+        "median": 19,
+        "p75": 28,
+        "sample_size": 79,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "software development",
+        "size_band": "51-200",
+        "metric": "Outbound sales cycle",
+        "unit": "days",
+        "better": "lower",
+        "p25": 35,
+        "median": 52,
+        "p75": 78,
+        "sample_size": 79,
+        "source": "Sample survey, H1 2026"
+      }
+    ],
+    "headline": "With new SDRs on the way, meetings per 1000 emails is the number to watch",
+    "summary": "Software companies with 51-200 employees get a median reply rate of 3.4% on cold email, but only 1.1% of sends turn into a positive reply. The middle half of the group books between 3.3 and 9.6 meetings per 1000 emails, a wide spread for companies this alike. With three SDR roles open, that is the number I would check first at Larkspur, because it is where a new team's first months show up.",
+    "focus": {
+      "metric": "Meetings per 1000 emails",
+      "why": "The middle half of your peers books between 3.3 and 9.6 meetings per 1000 emails, with a median of 6. Most of that gap comes down to who is on the list and how the follow-ups go, and a new SDR team sets both up in its first month."
+    },
+    "chart": [
+      {
+        "label": "25th percentile",
+        "value": 3.3
+      },
+      {
+        "label": "Median",
+        "value": 6.0
+      },
+      {
+        "label": "75th percentile",
+        "value": 9.6
+      }
+    ],
+    "observations": [
+      "Your careers page lists three open SDR roles, so this quarter's outbound numbers will mostly come from new reps.",
+      "The Team plan asks visitors to book a call, so meeting show rate matters for inbound as much as outbound."
+    ],
+    "takeaways": [
+      {
+        "title": "Replies are common, positive replies are not",
+        "body": "The median peer gets a 3.4% reply rate on cold email, but only 1.1% of sends get a positive reply. Most replies are a no or a not now, so compare your positive replies, not all replies."
+      },
+      {
+        "title": "Meetings get lost between booking and the call",
+        "body": "The median show rate is 78%, and the bottom quarter sits at 67%. A reminder the day before and a clear agenda in the invite are the usual fixes, and both are cheap."
+      },
+      {
+        "title": "A 52 day cycle is normal at your size",
+        "body": "Half of your peers close outbound deals within 52 days, and the slowest quarter takes 78 days or more. If yours runs longer, look at how many people have to sign off."
+      }
+    ],
+    "next_steps": [
+      "Pull last quarter's sends, replies and positive replies from your outbound tool and write them next to section 2.",
+      "Before the new SDRs start, agree on what counts as a positive reply, so their numbers line up with these.",
+      "Add a reminder the day before every first meeting and track show rate for a month."
+    ]
+  }
+}

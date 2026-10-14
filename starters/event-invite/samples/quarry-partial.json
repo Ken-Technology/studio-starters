@@ -1,0 +1,18 @@
+{
+  "account": {
+    "name": "Quarry Health",
+    "domain": "quarryhealth.example",
+    "industry": "hospitals and health care",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Quarry Health sells patient intake software to physical therapy clinics.",
+      "why_now": "Raised a seed round in July."
+    }
+  },
+  "person": { "first_name": "Elena", "last_name": "Ruiz", "title": "Head of Growth" },
+  "sender": { "name": "Maya Brennan", "title": null, "signature_html": null },
+  "brand": { "name": null, "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "why_now": "Raised a seed round in July."
+  }
+}

@@ -1,0 +1,60 @@
+{%- assign accent = brand.colors.primary | default: '#0b6e5a' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Big Shoulders Display' -%}
+{%- assign font_body = brand.fonts.body | default: 'IBM Plex Sans' -%}
+{%- assign product = brand.name | default: 'our check' -%}
+{%- assign first = person.first_name | default: 'there' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>What we found on {{ account.domain | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | replace: ' ', '+' | escape }}:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | replace: ' ', '+' | escape }}:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{--a:{{ accent | escape }};--ink:#12161a;--mute:#5a6066;--grid:#e3e5dd;--paper:#f1f2ec;--card:#fff;--hf:'{{ font_head | escape }}',Impact,'Arial Narrow',sans-serif;--bf:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--mf:'IBM Plex Mono',ui-monospace,monospace}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:16px/1.6 var(--bf);-webkit-font-smoothing:antialiased;background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+.yp{max-width:40rem;margin:0 auto;padding:0 1.1rem 3rem}
+.yp-top{padding:1rem 0;border-bottom:2px solid var(--ink);font:600 .72rem/1.3 var(--mf);letter-spacing:.08em;text-transform:uppercase}
+.yp-logo{height:26px;width:auto;display:block}
+.yp .yp-eyebrow{font:600 .74rem/1.4 var(--mf);letter-spacing:.08em;text-transform:uppercase;color:var(--a);margin:2.6rem 0 .9rem}
+.yp h1{font:700 2.75rem/1 var(--hf);margin:0 0 1.3rem;text-wrap:balance;overflow-wrap:break-word}
+.yp p{margin:0 0 1rem}
+.yp .yp-wait{background:var(--card);border:1.5px solid var(--ink);padding:1rem 1.1rem;margin:1.6rem 0 0;font:400 .9rem/1.55 var(--mf)}
+.yp-cta{margin:2.4rem 0 0;padding:1.6rem 1.25rem 1.4rem;background:var(--card);border:1.5px solid var(--ink);border-top:10px solid var(--a)}
+.yp-btn{margin:1.2rem 0}
+@media (min-width:780px){.yp h1{font-size:3.8rem}.yp .yp-eyebrow{margin-top:4rem}}
+</style>
+</head>
+<body>
+<main class="yp">
+
+<header data-section="hero">
+<div class="yp-top">
+{%- if brand.logo_url %}
+<img class="yp-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
+{%- else %}
+{{ brand.name | default: sender.name | default: 'Our team' | escape }}
+{%- endif %}
+</div>
+<p class="yp-eyebrow">For {{ account.name | escape }}</p>
+<h1>Running {{ product | escape }} on {{ account.domain | escape }}</h1>
+<p>Hi {{ first | escape }},</p>
+<p>I'm running {{ product | escape }} on {{ account.domain | escape }} to see what it finds. When it's done, this page will show the main result, each finding, and what it means for {{ account.name | escape }}.</p>
+<p class="yp-wait">The results aren't back yet. This link stays the same, so check back later today.</p>
+</header>
+
+<section data-section="cta" class="yp-cta">
+<p>If you'd rather see it live, grab 20 minutes and I'll run it with you.</p>
+<div class="yp-btn">
+{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}
+</div>
+<p>{{ sender.name | default: 'Our team' | escape }}</p>
+</section>
+
+</main>
+</body>
+</html>

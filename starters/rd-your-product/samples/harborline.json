@@ -1,0 +1,87 @@
+{
+  "account": {
+    "name": "Harborline",
+    "domain": "harborline.example",
+    "industry": "insurance",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Harborline sells boat and yacht insurance online. Most new customers start on the quote page, and the site runs search ads that point to it.",
+      "why_now": "Added jet ski cover in September and is advertising it on search.",
+      "angle": "The quote page is where the ad money lands."
+    }
+  },
+  "person": {
+    "first_name": "Nadia",
+    "last_name": "Fischer",
+    "title": "Head of Marketing"
+  },
+  "sender": {
+    "name": "Owen Lacey",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Pagepace",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "metric": {
+      "label": "Mobile load time, quote page",
+      "value": "6.2",
+      "unit": "sec",
+      "status": "poor",
+      "context": "Measured on a mid-range phone over 4G. The other three pages we checked load in under 3 seconds."
+    },
+    "findings": [
+      {
+        "title": "The quote form waits on a chat script",
+        "detail": "A 1.9 MB chat widget loads before the form can show. On a phone that adds about 2.4 seconds before anyone can start a quote.",
+        "severity": "high",
+        "where": "/quote"
+      },
+      {
+        "title": "The hero photo ships at full camera size",
+        "detail": "The boat photo on the home page is 3,400 pixels wide. A 1,200 pixel version looks the same on every screen we tested.",
+        "severity": "high",
+        "where": "/"
+      },
+      {
+        "title": "Four font files load before any text shows",
+        "detail": "Two of them are weights the site never uses. Dropping them saves about 180 KB on every page.",
+        "severity": "medium",
+        "where": "All pages"
+      },
+      {
+        "title": "Images are not cached",
+        "detail": "Returning visitors download every image again. One cache header on the image folder fixes it.",
+        "severity": "low",
+        "where": "All pages"
+      }
+    ],
+    "chart": [
+      {
+        "label": "Home",
+        "value": 2.9
+      },
+      {
+        "label": "Quote",
+        "value": 6.2
+      },
+      {
+        "label": "Coverage options",
+        "value": 2.4
+      },
+      {
+        "label": "Claims",
+        "value": 2.1
+      }
+    ],
+    "chart_title": "Mobile load time by page, in seconds",
+    "scope": "4 pages on harborline.example, tested from a mid-range phone over 4G on October 12.",
+    "report_url": "https://app.pagepace.example/r/harborline-7f3k",
+    "headline": "Harborline's quote page takes 6.2 seconds to load on a phone",
+    "meaning": "Most new Harborline customers start on the quote page, and your search ads point straight at it. It's also the slowest page we checked, at 6.2 seconds on a phone. About 2.4 seconds of that is the chat script loading before the form.\n\nI would start there: load the chat after the form, so people can start a quote right away. The hero photo on the home page is the next fix, and it takes minutes.\n\nThe rest is in good shape. Home, coverage options and claims all load in under 3 seconds, so this is one page to fix, not a rebuild."
+  }
+}

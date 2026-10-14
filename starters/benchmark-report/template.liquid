@@ -1,0 +1,196 @@
+{%- assign accent = brand.colors.primary | default: '#a3361b' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#1f3747' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
+{%- assign font_body = brand.fonts.body | default: 'Public Sans' -%}
+{%- assign first = person.first_name | default: 'there' -%}
+{%- assign rows = data.benchmarks -%}
+{%- assign industry = account.industry | default: 'your industry' -%}
+{%- capture peer_group -%}{{ industry | capitalize | escape }}{% if account.size_band %}, {{ account.size_band | escape }} employees{% endif %}{%- endcapture -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ account.name | escape }} next to its peers</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600;700&display=swap">
+<style>
+html,body{margin:0;background:#fff}
+.pb{--a:{{ accent }};--a2:{{ accent2 }};--ink:#1f1e1b;--mute:#69655c;--line:#e2dccf;--paper:#f5f1e8;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.6;color:var(--ink);max-width:46rem;margin:0 auto;padding:.5rem 1.15rem 4rem;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.pb h1,.pb h2,.pb h3,.pb-lede,.pb-focus,.pb-takes li::before{font-family:'{{ font_head }}',Georgia,serif;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.pb p{margin:0 0 .9rem}
+.pb a{color:var(--a)}
+.pb-page{padding:2.4rem 0 .6rem;border-top:1px solid var(--ink)}
+.pb-cover{border-top:0;padding-top:1.2rem}
+.pb-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-bottom:.8rem;border-bottom:3px solid var(--a)}
+.pb-logo{height:26px;width:auto;display:block}
+.pb-mark{font-weight:700;font-size:.92rem;margin:0!important}
+.pb-kicker{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--a);margin:0!important}
+.pb-cover h1{font-size:2.35rem;line-height:1.06;margin:2.2rem 0 1.5rem}
+.pb-meta{margin:0 0 2.2rem;border-top:1px solid var(--line)}
+.pb-meta div{display:grid;grid-template-columns:6.6rem 1fr;gap:.8rem;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.pb-meta dt{color:var(--mute);font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;padding-top:.2rem}
+.pb-meta dd{margin:0;font-weight:600}
+.pb-inside{background:var(--paper);border-left:3px solid var(--a);padding:1rem 1.2rem .3rem;margin:1.6rem 0 0}
+.pb-inside p{margin:0 0 .4rem}
+.pb-inside ol{margin:.2rem 0 .8rem;padding-left:1.25rem}
+.pb-inside li{margin:.2rem 0}
+.pb-sec{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--a);margin:0 0 .35rem!important}
+.pb h1,.pb h2,.pb h3,.pb-lede{text-wrap:balance}
+.pb h2{font-size:1.75rem;line-height:1.15;margin:0 0 1.2rem}
+.pb-lede{font-size:1.4rem;line-height:1.28;margin:0 0 1.1rem!important}
+.pb-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 .45rem!important}
+.pb-seen{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.9rem 0 .3rem;margin:1.5rem 0}
+.pb-seen ul{margin:0 0 .6rem;padding-left:1.1rem}
+.pb-seen li{margin:.25rem 0}
+.pb-chart{margin:1.6rem 0;padding:1.1rem 1.1rem 1rem;background:var(--paper);border-top:3px solid var(--a2)}
+.pb-focus{font-size:1.3rem;line-height:1.25;margin:0 0 1rem!important}
+.pb-chart svg{display:block;width:100%;height:auto}
+.pb-chart figcaption{font-size:.92rem;margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--line)}
+.pb-list{margin:1.4rem 0 1rem;border-top:2px solid var(--ink)}
+.pb-row{padding:1rem 0 .9rem;border-bottom:1px solid var(--line);break-inside:avoid}
+.pb-row.is-focus{box-shadow:inset 3px 0 0 var(--a);padding-left:.9rem;background:var(--paper)}
+.pb-what b{display:block;font-size:1rem;line-height:1.3}
+.pb-what small{display:block;color:var(--mute);font-size:.8rem;margin-top:.1rem}
+.pb-what small::first-letter{text-transform:uppercase}
+.pb-strip{position:relative;height:10px;margin:.85rem 0 .6rem;background:var(--line);border-radius:1px}
+.pb-band{position:absolute;top:0;bottom:0;background:var(--a);opacity:.35}
+.pb-mid{position:absolute;top:-5px;bottom:-5px;width:3px;margin-left:-1px;background:var(--ink)}
+.pb-nums{display:flex;justify-content:space-between;gap:.5rem;font-size:.95rem}
+.pb-nums span{display:flex;flex-direction:column}
+.pb-nums small{font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.pb-nums .pb-med{font-weight:700;color:var(--a);text-align:center}
+.pb-nums span:last-child{text-align:right}
+.pb-yours{display:none}
+.pb-source{font-size:.82rem;color:var(--mute)}
+.pb-takes{list-style:none;padding:0;margin:1rem 0;counter-reset:take}
+.pb-takes li{counter-increment:take;position:relative;padding:1.1rem 0 .5rem 2.4rem;border-top:1px solid var(--line)}
+.pb-takes li::before{content:counter(take);position:absolute;left:0;top:.9rem;font-size:2rem;line-height:1;color:var(--a)}
+.pb-takes h3{font-size:1.2rem;line-height:1.25;margin:0 0 .4rem}
+.pb-steps{padding-left:1.25rem}
+.pb-steps li{margin:.5rem 0;padding-left:.2rem}
+.pb-cta{margin:1.8rem 0}
+.pb-sig{color:var(--mute)}
+@media (min-width:700px){
+.pb{padding:1rem 2rem 5rem}
+.pb-cover h1{font-size:3.3rem}
+.pb-meta div{grid-template-columns:9rem 1fr}
+.pb-row{display:grid;grid-template-columns:13rem 1fr 11.5rem;gap:1.4rem;align-items:center}
+.pb-strip{margin:0}
+}
+@media print{
+.pb{max-width:none;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pb-page{break-before:page;border-top:0}
+.pb-cover{break-before:auto}
+.pb-row{display:grid;grid-template-columns:12rem 1fr 10rem 6rem;gap:1rem;align-items:center}
+.pb-strip{margin:0}
+.pb-yours{display:block;margin:0!important;padding-top:1.1rem;border-bottom:1px dotted var(--ink);font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+}
+</style>
+</head>
+<body>
+<div class="pb">
+
+<section data-section="cover" class="pb-page pb-cover">
+<div class="pb-top">
+{%- if brand.logo_url %}<img class="pb-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="pb-mark">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="pb-kicker">Peer benchmark</p>
+</div>
+<h1>{{ account.name | escape }} next to its peers</h1>
+<dl class="pb-meta">
+<div><dt>Prepared for</dt><dd>{% if person.first_name %}{{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}, {% endif %}{{ account.name | escape }}</dd></div>
+<div><dt>Peer group</dt><dd>{{ peer_group }}</dd></div>
+<div><dt>Prepared by</dt><dd>{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}, {{ sender.title | escape }}{% endif %}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</dd></div>
+</dl>
+<p>Hi {{ first | escape }},</p>
+<p>I pulled the peer numbers for companies like {{ account.name | escape }}: same industry, same size band. Each metric shows the spread across the group, not one average, so you can put your own number next to it and see where you land.</p>
+<p>It takes about five minutes to read. If you download the PDF, section 2 has a line next to each metric for your own figure.</p>
+<div class="pb-inside">
+<p><strong>What's inside</strong></p>
+<ol>
+<li>The short version, and the one metric I would look at first</li>
+<li>Every metric, with the range across your peers</li>
+<li>Three things that stand out</li>
+<li>What to do next</li>
+</ol>
+</div>
+</section>
+
+<section data-section="summary" class="pb-page">
+<p class="pb-sec">Section 1</p>
+<h2>The short version</h2>
+<p class="pb-lede">{{ data.headline | escape }}</p>
+<p>{{ data.summary | escape | newline_to_br | strip_newlines }}</p>
+{%- if data.observations.size > 0 %}
+<div class="pb-seen"><p class="pb-label">What we saw on {{ account.domain | default: 'your site' | escape }}</p><ul>{% for o in data.observations %}<li>{{ o | escape }}</li>{% endfor %}</ul></div>
+{%- endif %}
+{%- if data.focus and data.chart.size > 0 %}
+<figure class="pb-chart">
+<p class="pb-label">Where I would look first</p>
+<p class="pb-focus">{{ data.focus.metric | escape }}</p>
+{% render 'ken/chart', type: 'bar', data: data.chart, title: 'Peers your size' %}
+<figcaption>{{ data.focus.why | escape | newline_to_br | strip_newlines }}</figcaption>
+</figure>
+{%- endif %}
+</section>
+
+<section data-section="benchmarks" class="pb-page">
+<p class="pb-sec">Section 2</p>
+<h2>Every metric, next to your peers</h2>
+{%- if rows.size > 0 %}
+<p>Peer group: {{ peer_group }}. Each bar starts at zero. The shaded band is the middle half of the group, from the 25th percentile to the 75th, and the dark mark is the median.{% if data.focus %} The highlighted line is the one I would look at first.{% endif %}</p>
+<div class="pb-list">
+{%- for r in rows %}
+{%- assign better = r.better | downcase | strip -%}
+{%- assign unit = r.unit | strip -%}
+{%- assign hi = r.p75 | times: 1.0 | at_least: 0.001 -%}
+{%- assign lo = r.p25 | times: 80.0 | divided_by: hi | at_least: 0 | at_most: 80 | round: 1 -%}
+{%- assign mid = r.median | times: 80.0 | divided_by: hi | at_least: 0 | at_most: 100 | round: 1 -%}
+{%- assign band = 80 | minus: lo | round: 1 -%}
+{%- assign pct = '' -%}
+{%- if unit == '%' -%}{%- assign pct = '%' -%}{%- endif %}
+<div class="pb-row{% if data.focus and r.metric == data.focus.metric %} is-focus{% endif %}">
+<div class="pb-what"><b>{{ r.metric | escape }}</b><small>{% if unit == '%' %}percent{% else %}{{ unit | escape }}{% endif %}, {% if better == 'lower' %}lower{% else %}higher{% endif %} is better{% if r.sample_size %}, {{ r.sample_size | escape }} companies{% endif %}</small></div>
+<div class="pb-strip" aria-hidden="true"><i class="pb-band" style="left:{{ lo }}%;width:{{ band }}%"></i><i class="pb-mid" style="left:{{ mid }}%"></i></div>
+<div class="pb-nums"><span><small>25th</small>{{ r.p25 | escape }}{{ pct }}</span><span class="pb-med"><small>Median</small>{{ r.median | escape }}{{ pct }}</span><span><small>75th</small>{{ r.p75 | escape }}{{ pct }}</span></div>
+<p class="pb-yours">Yours</p>
+</div>
+{%- endfor %}
+</div>
+{%- if rows.first.source and rows.first.source != '' %}
+<p class="pb-source">Source: {{ rows.first.source | escape }}. Sample sizes differ by metric because not every company reported every number.</p>
+{%- endif %}
+{%- else %}
+<p>The peer data does not cover {{ industry | escape }}{% if account.size_band %} at {{ account.size_band | escape }} employees{% endif %} yet, so there are no ranges to show here. The points below still apply, and on a call I can pull the closest peer group by hand.</p>
+{%- endif %}
+</section>
+
+<section data-section="takeaways" class="pb-page">
+<p class="pb-sec">Section 3</p>
+<h2>Three things that stand out</h2>
+<ol class="pb-takes">
+{%- for t in data.takeaways %}
+<li><h3>{{ t.title | escape }}</h3><p>{{ t.body | escape | newline_to_br | strip_newlines }}</p></li>
+{%- endfor %}
+</ol>
+</section>
+
+<section data-section="next_steps" class="pb-page">
+<p class="pb-sec">Section 4</p>
+<h2>What to do next</h2>
+<ol class="pb-steps">
+{%- for s in data.next_steps %}
+<li>{{ s | escape }}</li>
+{%- endfor %}
+</ol>
+<p>If it would help, grab 20 minutes and I'll go through the numbers with you, along with what I would check first at {{ account.name | escape }}.</p>
+<div class="pb-cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+<p>Best,<br>{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<br><span class="pb-sig">{{ sender.title | escape }}</span>{% endif %}</p>
+</section>
+
+</div>
+</body>
+</html>

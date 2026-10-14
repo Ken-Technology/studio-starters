@@ -1,0 +1,76 @@
+{
+  "account": {
+    "name": "Fieldnote",
+    "domain": "fieldnote.example",
+    "industry": "software development",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Fieldnote sells scheduling, dispatch and invoicing software to HVAC and plumbing contractors with 5 to 50 technicians. Pricing is per technician per month. The site names Brennan Air and Kowalski Plumbing as customers.",
+      "why_now": "Launched a QuickBooks Online sync in August."
+    }
+  },
+  "person": { "first_name": "Dana", "last_name": "Whitlock", "title": "Head of Marketing" },
+  "sender": { "name": "Theo Lindqvist", "title": null, "signature_html": null },
+  "brand": { "name": "Northline Studio", "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "headline": "A contractor can't tell from your homepage that Fieldnote is for them",
+    "summary": "Your pricing page is the clearest thing on the site: per technician, three plans, no surprises. The homepage is where buyers get lost. It talks about service businesses in general, so an HVAC owner with 12 trucks has to dig to learn this was built for a shop like theirs.",
+    "findings": [
+      {
+        "where": "Homepage headline",
+        "quote": "The all-in-one platform that empowers service businesses to thrive.",
+        "cost": "An HVAC owner can't tell this is for contractors. It reads like every other field service site, so they go back to the search results.",
+        "severity": "high"
+      },
+      {
+        "where": "Line under the headline",
+        "quote": "Fieldnote streamlines your operations, boosts efficiency and helps you deliver exceptional customer experiences at scale.",
+        "cost": "Fifteen words and none of them is scheduling, dispatch or invoicing. After two lines the buyer still doesn't know what the product does.",
+        "severity": "high"
+      },
+      {
+        "where": "Main button",
+        "quote": "Get started",
+        "cost": "It doesn't say what happens next. An owner who only wants to see the dispatch board won't click into a sign-up form blind.",
+        "severity": "medium"
+      },
+      {
+        "where": "Customer proof",
+        "quote": "Trusted by thousands of service pros",
+        "cost": "No names, trades or numbers. Brennan Air and Kowalski Plumbing are further down the page and would do more work up here.",
+        "severity": "medium"
+      },
+      {
+        "where": "Feature list",
+        "quote": "AI-powered smart dispatch",
+        "cost": "Owners want to know if it fills the day without double booking. This line makes them wonder what happens when it gets a job wrong.",
+        "severity": "low"
+      }
+    ],
+    "rewrites": [
+      {
+        "where": "Homepage headline",
+        "before": "The all-in-one platform that empowers service businesses to thrive.",
+        "after": "Scheduling, dispatch and invoicing for HVAC and plumbing shops with 5 to 50 techs.",
+        "why": "An owner knows from the first line that this was built for a shop their size."
+      },
+      {
+        "where": "Line under the headline",
+        "before": "Fieldnote streamlines your operations, boosts efficiency and helps you deliver exceptional customer experiences at scale.",
+        "after": "Book jobs, send the nearest tech, invoice from the van.",
+        "why": "It says what the product does in words an office manager already uses."
+      },
+      {
+        "where": "Main button",
+        "before": "Get started",
+        "after": "See the dispatch board",
+        "why": "The buyer knows what they get before they click."
+      }
+    ],
+    "next_steps": [
+      "Move Brennan Air and Kowalski Plumbing up under the headline, with the trade and fleet size next to each name.",
+      "Swap \"AI-powered smart dispatch\" for one sentence on what dispatch does when two jobs clash.",
+      "Put the per technician price on the homepage. It's your clearest line and it sits on page two."
+    ]
+  }
+}

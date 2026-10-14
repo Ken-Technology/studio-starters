@@ -1,0 +1,181 @@
+{%- assign accent = brand.colors.primary | default: '#1f5641' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#e3b23c' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Fraunces' -%}
+{%- assign font_body = brand.fonts.body | default: 'Figtree' -%}
+{%- assign has_story = false -%}
+{%- if data.customer and data.customer != '' -%}{%- assign has_story = true -%}{%- endif -%}
+{%- assign has_result = false -%}
+{%- if data.result.value and data.result.value != '' -%}{%- assign has_result = true -%}{%- endif -%}
+{%- assign has_quote = false -%}
+{%- if data.quote.text and data.quote.text != '' -%}{%- assign has_quote = true -%}{%- endif -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ data.headline | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f4efe6;color:#1e1c18;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.cs{--a:{{ accent }};--a2:{{ accent2 }};--ink:#1e1c18;--mute:#6b655a;--line:#d9d1c2;--paper:#f4efe6;--card:#fbf8f2}
+.cs h1,.cs h2,.cs h3,.cs-big,.cs-quote p,.cs-mark{font-family:'{{ font_head }}',Georgia,serif;font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.cs p{margin:0 0 1rem}
+.cs-wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem}
+.cs-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--ink)}
+.cs-logo{height:26px;width:auto;display:block}
+.cs-brand{font-weight:700;font-size:.95rem;margin:0!important}
+.cs-tag{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin:0!important}
+.cs-hero{padding:2.4rem 0 2.6rem}
+.cs-kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--a);border-bottom:3px solid var(--a2);padding-bottom:.2rem;margin:0 0 1.2rem!important}
+.cs h1{font-size:2.25rem;line-height:1.06;margin:0 0 1.1rem}
+.cs-dek{font-size:1.15rem;line-height:1.5;color:#3d3a33;max-width:36rem}
+.cs-facts{margin:1.8rem 0 0;padding:0;border-top:2px solid var(--ink)}
+.cs-facts div{display:grid;grid-template-columns:7rem 1fr;gap:.8rem;padding:.65rem 0;border-bottom:1px solid var(--line)}
+.cs-facts dt{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);padding-top:.25rem}
+.cs-facts dd{margin:0;font-weight:600}
+.cs-facts small{display:block;font-weight:400;color:var(--mute);font-size:.88rem}
+.cs-by{font-size:.9rem;color:var(--mute);margin:1.4rem 0 0!important}
+.cs-story{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.6rem 0 2.2rem}
+.cs h2{font-size:1.7rem;line-height:1.15;margin:0 0 1.2rem}
+.cs-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--a);margin:0 0 .5rem!important}
+.cs-par{margin:0 0 2.2rem;border-top:2px solid var(--ink)}
+.cs-row{padding:.9rem 0;border-bottom:1px solid var(--line)}
+.cs-row h3{font-family:inherit;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 .5rem}
+.cs-row p{margin:0 0 .45rem;font-size:.97rem}
+.cs-row b{display:block;font-size:.78rem;color:var(--a)}
+.cs-chap{margin:0 0 1.6rem}
+.cs-chap h3{font-size:1.25rem;margin:0 0 .5rem}
+.cs-drop::first-letter{font-family:'{{ font_head }}',Georgia,serif;float:left;font-size:3.4rem;line-height:.9;padding:.3rem .5rem 0 0;color:var(--a);font-weight:600}
+.cs-result{background:var(--ink);color:#f4efe6;padding:2.8rem 0 2.6rem}
+.cs-result.is-empty{display:none}
+.cs-result .cs-label{color:var(--a2)}
+.cs-big{font-size:3.6rem;line-height:1;margin:.2rem 0 .7rem!important;color:#fff}
+.cs-big span{background:linear-gradient(transparent 72%,var(--a2) 72%,var(--a2) 88%,transparent 88%)}
+.cs-metric{font-size:1.1rem;font-weight:600;margin:0 0 .2rem!important}
+.cs-when{color:#b9b2a4;font-size:.92rem}
+.cs-quote{margin:2.2rem 0 0;padding:1.6rem 0 0;border-top:1px solid #4a463e}
+.cs-quote .cs-mark{font-size:4.5rem;line-height:.6;color:var(--a2);margin:0 0 .4rem!important;height:2.2rem}
+.cs-quote p{font-size:1.45rem;line-height:1.35;font-weight:400}
+.cs-quote footer{font-size:.88rem;color:#b9b2a4}
+.cs-fit{padding:2.8rem 0 1rem}
+.cs-fit .cs-text{font-size:1.08rem}
+.cs-cta{padding:1.6rem 0 4rem}
+.cs-box{border:2px solid var(--ink);background:var(--card);padding:1.5rem 1.3rem 1.3rem;box-shadow:6px 6px 0 var(--a)}
+.cs-box h2{font-size:1.45rem;margin:0 0 .7rem}
+.cs-btn{margin:1.3rem 0 1.4rem}
+.cs-sign{font-size:.95rem;margin:0!important}
+.cs-sign span{display:block;color:var(--mute)}
+.cs-foot{font-size:.78rem;color:var(--mute);padding:0 0 2rem}
+@media (min-width:760px){
+body{font-size:18px}
+.cs-wrap{padding:0 2rem}
+.cs-hero{padding:4rem 0 3.6rem}
+.cs h1{font-size:3.7rem}
+.cs-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0 1.5rem}
+.cs-facts div{grid-template-columns:1fr;gap:.2rem;border-bottom:0;align-content:start}
+.cs-row{display:grid;grid-template-columns:10rem 1fr 1fr;gap:1.4rem}
+.cs-row h3{margin:.2rem 0 0}
+.cs-row p{margin:0}
+.cs-chaps{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem}
+.cs-big{font-size:5.4rem}
+.cs-quote p{font-size:1.75rem}
+.cs-box{padding:2.2rem 2.2rem 1.8rem}
+}
+</style>
+</head>
+<body>
+<main class="cs">
+<div class="cs-wrap">
+<header class="cs-top">
+{%- if brand.logo_url %}<img class="cs-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="cs-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="cs-tag">Customer story</p>
+</header>
+<section data-section="hero" class="cs-hero">
+<p class="cs-kicker">{% if person.first_name %}For {{ person.first_name | escape }} at {{ account.name | escape }}{% else %}Picked for {{ account.name | escape }}{% endif %}</p>
+<h1>{{ data.headline | escape }}</h1>
+<p class="cs-dek">{{ data.dek | escape }}</p>
+{%- if has_story %}
+<dl class="cs-facts">
+<div><dt>Customer</dt><dd>{{ data.customer | escape }}{% if data.customer_about and data.customer_about != '' %}<small>{{ data.customer_about | escape }}</small>{% endif %}</dd></div>
+{%- if has_result %}
+<div><dt>Result</dt><dd>{{ data.result.value | escape }}<small>{{ data.result.metric | escape }}</small></dd></div>
+{%- endif %}
+{%- if data.result.timeframe and data.result.timeframe != '' %}
+<div><dt>Time it took</dt><dd>{{ data.result.timeframe | escape }}</dd></div>
+{%- endif %}
+</dl>
+{%- endif %}
+<p class="cs-by">Picked by {{ sender.name | default: 'our team' | escape }}{% if sender.title %}, {{ sender.title | escape }}{% endif %}{% if brand.name %} at {{ brand.name | escape }}{% endif %}</p>
+</section>
+</div>
+<section data-section="story" class="cs-story">
+<div class="cs-wrap">
+{%- if has_story %}
+{%- if data.parallel.size > 0 %}
+<p class="cs-label">Why this story</p>
+<h2>{{ data.customer | escape }} and {{ account.name | escape }}</h2>
+<div class="cs-par">
+{%- for p in data.parallel %}
+<div class="cs-row"><h3>{{ p.label | escape }}</h3><p><b>{{ data.customer | escape }}</b>{{ p.them | escape }}</p><p><b>{{ account.name | escape }}</b>{{ p.you | escape }}</p></div>
+{%- endfor %}
+</div>
+{%- endif %}
+<div class="cs-chaps">
+{%- if data.before and data.before != '' %}
+<div class="cs-chap"><p class="cs-label">Before</p><h3>Where they started</h3><p class="cs-drop">{{ data.before | escape | newline_to_br | strip_newlines }}</p></div>
+{%- endif %}
+{%- if data.after and data.after != '' %}
+<div class="cs-chap"><p class="cs-label">After</p><h3>What they changed</h3><p>{{ data.after | escape | newline_to_br | strip_newlines }}</p></div>
+{%- endif %}
+</div>
+{%- else %}
+<p class="cs-label">The story</p>
+<h2>Still matching a story to {{ account.name | escape }}</h2>
+<p>I'm going through our customer stories to find the one closest to {{ account.name | escape }}. This link stays the same, so check back later today. If you would rather hear it now, book a time below and I'll tell you the story myself.</p>
+{%- endif %}
+</div>
+</section>
+<section data-section="result" class="cs-result{% unless has_result or has_quote %} is-empty{% endunless %}">
+<div class="cs-wrap">
+{%- if has_result %}
+<p class="cs-label">The result</p>
+<p class="cs-big"><span>{{ data.result.value | escape }}</span></p>
+<p class="cs-metric">{{ data.result.metric | escape }}</p>
+{%- if data.result.timeframe and data.result.timeframe != '' %}
+<p class="cs-when">Over {{ data.result.timeframe | escape }}</p>
+{%- endif %}
+{%- endif %}
+{%- if has_quote %}
+<blockquote class="cs-quote">
+<p class="cs-mark" aria-hidden="true">&ldquo;</p>
+<p>{{ data.quote.text | escape }}</p>
+<footer>{% if data.quote.author_title and data.quote.author_title != '' %}{{ data.quote.author_title | escape }}, {% endif %}{{ data.customer | default: 'one of our customers' | escape }}</footer>
+</blockquote>
+{%- endif %}
+</div>
+</section>
+<div class="cs-wrap">
+<section data-section="fit" class="cs-fit">
+<p class="cs-label">Why it applies</p>
+<h2>What this means for {{ account.name | escape }}</h2>
+<p class="cs-text">{{ data.fit | escape | newline_to_br | strip_newlines }}</p>
+</section>
+<section data-section="cta" class="cs-cta">
+<div class="cs-box">
+<h2>Want to see how this would go at {{ account.name | escape }}?</h2>
+<p>Grab 20 minutes. I'll walk you through what {{ data.customer | default: 'our customer' | escape }} did step by step, and we can work out together whether it fits how {{ account.name | escape }} runs today.</p>
+<div class="cs-btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+<p class="cs-sign">{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</div>
+</section>
+<p class="cs-foot">Written for {{ account.name | escape }} by {{ sender.name | default: 'our team' | escape }}.</p>
+</div>
+</main>
+</body>
+</html>

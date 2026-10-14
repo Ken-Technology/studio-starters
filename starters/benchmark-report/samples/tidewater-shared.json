@@ -1,0 +1,149 @@
+{
+  "account": {
+    "name": "Tidewater Freight",
+    "domain": "tidewater.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Tidewater Freight is a freight broker for regional food and beverage shippers. Its team page lists 14 brokers who each run their own book of shippers.",
+      "why_now": "Moved its sales team onto a new CRM this spring.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Priya Raman",
+    "title": "Head of Partnerships",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Tallyline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#0f4c5c",
+      "secondary": "#d9822b"
+    },
+    "fonts": {
+      "heading": "Fraunces",
+      "body": "IBM Plex Sans"
+    }
+  },
+  "data": {
+    "benchmarks": [
+      {
+        "industry": "transportation, logistics, supply chain and storage",
+        "size_band": "201-500",
+        "metric": "Cold email reply rate",
+        "unit": "%",
+        "better": "higher",
+        "p25": 2.1,
+        "median": 3.6,
+        "p75": 5.6,
+        "sample_size": 29,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "transportation, logistics, supply chain and storage",
+        "size_band": "201-500",
+        "metric": "Positive reply rate",
+        "unit": "%",
+        "better": "higher",
+        "p25": 0.7,
+        "median": 1.2,
+        "p75": 2.0,
+        "sample_size": 29,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "transportation, logistics, supply chain and storage",
+        "size_band": "201-500",
+        "metric": "Meetings per 1000 emails",
+        "unit": "meetings",
+        "better": "higher",
+        "p25": 3.6,
+        "median": 6.6,
+        "p75": 10.6,
+        "sample_size": 29,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "transportation, logistics, supply chain and storage",
+        "size_band": "201-500",
+        "metric": "Meeting show rate",
+        "unit": "%",
+        "better": "higher",
+        "p25": 60,
+        "median": 71,
+        "p75": 79,
+        "sample_size": 25,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "transportation, logistics, supply chain and storage",
+        "size_band": "201-500",
+        "metric": "Win rate on outbound deals",
+        "unit": "%",
+        "better": "higher",
+        "p25": 14,
+        "median": 22,
+        "p75": 32,
+        "sample_size": 20,
+        "source": "Sample survey, H1 2026"
+      },
+      {
+        "industry": "transportation, logistics, supply chain and storage",
+        "size_band": "201-500",
+        "metric": "Outbound sales cycle",
+        "unit": "days",
+        "better": "lower",
+        "p25": 36,
+        "median": 53,
+        "p75": 80,
+        "sample_size": 20,
+        "source": "Sample survey, H1 2026"
+      }
+    ],
+    "headline": "Your peers book plenty of meetings, but getting buyers to show up is the harder part",
+    "summary": "Logistics companies with 201-500 employees get a median reply rate of 3.6% on cold email, and the middle half books between 3.6 and 10.6 meetings per 1000 emails. Show rates are where it slips: the median is 71%, and the bottom quarter sits at 60%. Deals that do start close in a median of 53 days. I would check show rate first, because every missed first meeting is one you already paid to book.",
+    "focus": {
+      "metric": "Meeting show rate",
+      "why": "The median peer gets 71% of booked meetings to happen, and the bottom quarter gets 60%. With 14 brokers each booking their own calls, a few points here adds up fast."
+    },
+    "chart": [
+      {
+        "label": "25th percentile",
+        "value": 60
+      },
+      {
+        "label": "Median",
+        "value": 71
+      },
+      {
+        "label": "75th percentile",
+        "value": 79
+      }
+    ],
+    "observations": [
+      "Your team page lists 14 brokers who each book their own calls, so show rate depends on how each of them confirms a meeting."
+    ],
+    "takeaways": [
+      {
+        "title": "Booking meetings is not the bottleneck",
+        "body": "The middle half of your peers books between 3.6 and 10.6 meetings per 1000 emails. Plenty of those never happen, though: the median show rate is 71%."
+      },
+      {
+        "title": "The meetings that happen are worth a lot",
+        "body": "Once a first meeting takes place, the median win rate on outbound deals is 22%, and the top quarter wins 32%. Every extra meeting that shows up feeds that number."
+      },
+      {
+        "title": "53 days is the middle of the pack",
+        "body": "Half of your peers close outbound deals within 53 days, and the slowest quarter takes 80 days or more. A deal past 80 days is worth a direct question about what is holding it."
+      }
+    ],
+    "next_steps": [
+      "Pull last quarter's show rate for first meetings, per broker, and write the team number next to section 2.",
+      "Have the broker who booked each first meeting send a short confirmation the day before.",
+      "List the open deals older than 80 days and ask each owner what they are waiting on."
+    ]
+  }
+}

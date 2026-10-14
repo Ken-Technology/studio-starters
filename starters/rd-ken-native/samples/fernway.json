@@ -1,0 +1,232 @@
+{
+  "account": {
+    "name": "Fernway",
+    "domain": "fernway.example",
+    "industry": "software development",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Fernway sells scheduling and visit tracking software to home care agencies. Caregivers clock in and pick up open shifts from their phone, and office staff see every visit on one screen. A case study on the site says Brightpath Home Care cut unfilled shifts by a third in its first quarter. Willow Lane Senior Services is also named as a customer.",
+      "why_now": "Opened a Texas office in August and is hiring its first two account executives.",
+      "angle": "Agencies that grow past one office start losing shifts to phone tag."
+    }
+  },
+  "person": {
+    "first_name": "Dana",
+    "last_name": "Okafor",
+    "title": "Head of Growth"
+  },
+  "sender": {
+    "name": "Sam Whitlock",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Ken",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "dossier": "Fernway sells scheduling and visit tracking software to home care agencies. Caregivers clock in and pick up open shifts from their phone, and office staff see every visit on one screen. A case study on the site says Brightpath Home Care cut unfilled shifts by a third in its first quarter. Willow Lane Senior Services is also named as a customer.",
+    "why_now": "Opened a Texas office in August and is hiring its first two account executives.",
+    "search": {
+      "currentTitles": [
+        "Owner",
+        "Administrator",
+        "Director of Operations",
+        "Scheduling Manager",
+        "Staffing Coordinator"
+      ],
+      "seniorityLevels": [
+        "Owner",
+        "Director",
+        "Manager"
+      ],
+      "industries": [
+        "hospitals and health care",
+        "individual and family services"
+      ],
+      "companyHeadcount": {
+        "min": 20,
+        "max": 500
+      },
+      "countries": [
+        "United States"
+      ]
+    },
+    "brief": "Fernway sells shift scheduling to home care agencies. Lean on Brightpath Home Care cutting unfilled shifts by a third in its first quarter.",
+    "audience": {
+      "summary": "Owners and operations leads at home care agencies in Texas with 20 to 500 staff. They are the ones who get the call when a visit has no caregiver. I left out hospital systems, since they buy through procurement and want something else.",
+      "chips": [
+        "Agency owners",
+        "Directors of operations",
+        "Scheduling managers",
+        "Home care and home health",
+        "20 to 500 staff",
+        "Texas first"
+      ]
+    },
+    "people": [
+      {
+        "name": "Rosa Delgado",
+        "title": "Owner",
+        "company": "Lone Star Home Companions",
+        "linkedin_url": "https://www.linkedin.com/in/sample-rosa-delgado"
+      },
+      {
+        "name": "Marcus Bell",
+        "title": "Director of Operations",
+        "company": "Gulf Coast Home Health",
+        "linkedin_url": "https://www.linkedin.com/in/sample-marcus-bell"
+      },
+      {
+        "name": "Priya Raman",
+        "title": "Scheduling Manager",
+        "company": "Hearthside Care Partners",
+        "linkedin_url": "https://www.linkedin.com/in/sample-priya-raman"
+      },
+      {
+        "name": "Tom Whitaker",
+        "title": "Administrator",
+        "company": "Pecan Valley Home Care LLC"
+      },
+      {
+        "name": "Alicia Moreno",
+        "title": "VP of Operations",
+        "company": "Bluebonnet In-Home Care",
+        "linkedin_url": "https://www.linkedin.com/in/sample-alicia-moreno"
+      },
+      {
+        "name": "Grant Holloway",
+        "title": "Owner",
+        "company": "Riverbend Companion Care",
+        "linkedin_url": "https://www.linkedin.com/in/sample-grant-holloway"
+      },
+      {
+        "name": "Keisha Grant",
+        "title": "Office Manager",
+        "company": "Magnolia Home Assist",
+        "linkedin_url": "https://www.linkedin.com/in/sample-keisha-grant"
+      },
+      {
+        "name": "Daniel Ortiz",
+        "title": "Director of Client Services",
+        "company": "Cypress Home Care Inc",
+        "linkedin_url": "https://www.linkedin.com/in/sample-daniel-ortiz"
+      },
+      {
+        "name": "Helen Wu",
+        "title": "Owner",
+        "company": "Golden Hour In-Home Care",
+        "linkedin_url": "https://www.linkedin.com/in/sample-helen-wu"
+      },
+      {
+        "name": "Brian Castillo",
+        "title": "Regional Manager",
+        "company": "Sunpath Home Health",
+        "linkedin_url": "https://www.linkedin.com/in/sample-brian-castillo"
+      },
+      {
+        "name": "Megan Foster",
+        "title": "Staffing Coordinator",
+        "company": "Prairie Rose Caregivers"
+      },
+      {
+        "name": "Victor Nguyen",
+        "title": "Executive Director",
+        "company": "Harborlight Home Care",
+        "linkedin_url": "https://www.linkedin.com/in/sample-victor-nguyen"
+      }
+    ],
+    "draft": "Fernway puts open shifts on your caregivers' phones so one of them can claim it, and your office sees every visit on one screen.\n\nBrightpath Home Care cut unfilled shifts by a third in their first quarter on it. Would it help if I sent over how they set it up?",
+    "headline": "Six people who should hear about Fernway first",
+    "intro": "With the new Texas office, I went looking for home care agencies there that look like Brightpath and Willow Lane. Below are the six people I would email first, and the opening email for three of them. It's a first pass, so tell me what you would change.",
+    "shortlist": [
+      {
+        "name": "Rosa Delgado",
+        "title": "Owner",
+        "company": "Lone Star Home Companions",
+        "linkedin_url": "https://www.linkedin.com/in/sample-rosa-delgado",
+        "why": "Owns the agency, so she feels every unfilled visit and signs off on new software."
+      },
+      {
+        "name": "Marcus Bell",
+        "title": "Director of Operations",
+        "company": "Gulf Coast Home Health",
+        "linkedin_url": "https://www.linkedin.com/in/sample-marcus-bell",
+        "why": "Runs operations, so open shifts and late clock-ins land on his desk."
+      },
+      {
+        "name": "Priya Raman",
+        "title": "Scheduling Manager",
+        "company": "Hearthside Care Partners",
+        "linkedin_url": "https://www.linkedin.com/in/sample-priya-raman",
+        "why": "Filling shifts is her whole job. She would use Fernway every day."
+      },
+      {
+        "name": "Tom Whitaker",
+        "title": "Administrator",
+        "company": "Pecan Valley Home Care",
+        "why": "At a smaller agency the administrator often still builds the schedule by hand."
+      },
+      {
+        "name": "Alicia Moreno",
+        "title": "VP of Operations",
+        "company": "Bluebonnet In-Home Care",
+        "linkedin_url": "https://www.linkedin.com/in/sample-alicia-moreno",
+        "why": "Owns operations across a larger agency, where scheduling by phone starts to break."
+      },
+      {
+        "name": "Grant Holloway",
+        "title": "Owner",
+        "company": "Riverbend Companion Care",
+        "linkedin_url": "https://www.linkedin.com/in/sample-grant-holloway",
+        "why": "Owner of a growing agency, close to the size where Brightpath started."
+      }
+    ],
+    "emails": [
+      {
+        "name": "Rosa Delgado",
+        "title": "Owner",
+        "company": "Lone Star Home Companions",
+        "linkedin_url": "https://www.linkedin.com/in/sample-rosa-delgado",
+        "subject": "Open shifts at Lone Star",
+        "body": [
+          "Hi Rosa,",
+          "When a caregiver calls out at Lone Star, someone has to work the phones until the visit is covered.",
+          "Fernway puts open shifts on your caregivers' phones so one of them can claim it, and your office sees every visit on one screen.",
+          "Brightpath Home Care cut unfilled shifts by a third in their first quarter on it. Would it help if I sent over how they set it up?"
+        ],
+        "ps": "PS: Willow Lane Senior Services runs on Fernway too, if you'd rather hear it from an agency closer to your size."
+      },
+      {
+        "name": "Marcus Bell",
+        "title": "Director of Operations",
+        "company": "Gulf Coast Home Health",
+        "linkedin_url": "https://www.linkedin.com/in/sample-marcus-bell",
+        "subject": "Unfilled visits at Gulf Coast",
+        "body": [
+          "Hi Marcus,",
+          "Running operations at Gulf Coast means the unfilled visits end up on your desk before anyone else's.",
+          "Fernway puts open shifts on your caregivers' phones so one of them can claim it, and your office sees every visit on one screen.",
+          "Brightpath Home Care cut unfilled shifts by a third in their first quarter on it. Would it help if I sent over how they set it up?"
+        ],
+        "ps": ""
+      },
+      {
+        "name": "Priya Raman",
+        "title": "Scheduling Manager",
+        "company": "Hearthside Care Partners",
+        "linkedin_url": "https://www.linkedin.com/in/sample-priya-raman",
+        "subject": "Filling shifts at Hearthside",
+        "body": [
+          "Hi Priya,",
+          "You're the person at Hearthside who finds a caregiver when a visit goes uncovered.",
+          "Fernway puts open shifts on your caregivers' phones so the first one who can take it claims it, and you see every visit on one screen.",
+          "Brightpath Home Care cut unfilled shifts by a third in their first quarter on it. Would it help if I sent over how they set it up?"
+        ],
+        "ps": "PS: Caregivers clock in from the same app, so that's one less thing to chase."
+      }
+    ]
+  }
+}

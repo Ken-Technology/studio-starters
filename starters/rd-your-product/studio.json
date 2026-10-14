@@ -1,0 +1,102 @@
+{
+  "kenStudio": "1",
+  "name": "Your product, run on their data",
+  "type": "reverse_demo",
+  "format": "page",
+  "slug": "what-we-found",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "metric": {
+        "type": "object",
+        "properties": {
+          "label": { "type": "string", "minLength": 2, "maxLength": 48 },
+          "value": { "type": "string", "minLength": 1, "maxLength": 12 },
+          "unit": { "type": "string", "maxLength": 12 },
+          "status": { "type": "string", "enum": ["good", "fair", "poor"] },
+          "context": { "type": "string", "maxLength": 160 }
+        },
+        "required": ["label", "value"]
+      },
+      "findings": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "minLength": 3, "maxLength": 80 },
+            "detail": { "type": "string", "maxLength": 280 },
+            "severity": { "type": "string", "enum": ["high", "medium", "low"] },
+            "where": { "type": "string", "maxLength": 80 }
+          },
+          "required": ["title", "severity"]
+        }
+      },
+      "chart": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string", "minLength": 1, "maxLength": 28 },
+            "value": { "type": "number" }
+          },
+          "required": ["label", "value"]
+        }
+      },
+      "chart_title": {
+        "type": "string",
+        "maxLength": 60,
+        "fallback": "What we measured on {{ account.domain }}"
+      },
+      "scope": { "type": "string", "maxLength": 200 },
+      "report_url": { "type": "string", "format": "uri" },
+      "headline": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 90,
+        "fallback": "What we found on {{ account.domain }}"
+      },
+      "meaning": {
+        "type": "string",
+        "maxLength": 900,
+        "fallback": "These results come straight from the check on {{ account.domain }}. On a call I can show you how each one was measured and which one I would fix first."
+      }
+    },
+    "required": ["metric", "findings"]
+  },
+  "recipe": [
+    {
+      "id": "run",
+      "kind": "webhook",
+      "url": "https://api.your-product.example/ken/studio",
+      "to": ["data.metric", "data.findings", "data.chart", "data.chart_title", "data.scope", "data.report_url"],
+      "timeout_s": 20
+    },
+    {
+      "id": "explain",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.domain", "account.industry", "account.dossier.summary", "account.dossier.why_now", "brand.name", "data.metric", "data.findings", "data.chart", "data.scope"],
+      "to": ["data.headline", "data.meaning"],
+      "prompt": "{{ brand.name | default: 'Our product' }} just ran on {{ account.name }} ({{ account.domain }}). data.metric is the main result, data.findings is what it found, data.chart is the breakdown and data.scope says what was checked. account.dossier.summary says what {{ account.name }} does. Write the part of the page that tells someone at {{ account.name }} what the result means for them.\n\nReturn JSON with these keys:\n- headline: at most 90 characters. States the main result for {{ account.name }} in plain words, with the number from data.metric, like \"Harborline's quote page takes 6.2 seconds to load on a phone\". No hype, no question, no exclamation mark.\n- meaning: 2 or 3 short paragraphs separated by a blank line, at most 900 characters in total. Say what the result means for {{ account.name }}'s business, which finding to fix first and why, and what is already in good shape. Tie it to what {{ account.name }} does, using account.dossier.summary. Write as one person to another, using \"you\".\n\nUse facts and numbers from the inputs only. Every number you write must appear in data.metric, data.findings, data.chart or data.scope. Never invent customers, results, benchmarks or claims, and never promise an outcome.\n\nRules for every string: no em dashes or en dashes. Never the words \"reverse demo\" or \"demo\". No email addresses, phone numbers or prices. Plain words a person would say out loud, with no marketing adjectives."
+    },
+    {
+      "id": "check",
+      "kind": "grade",
+      "on": ["data.headline", "data.meaning"],
+      "retries": 1,
+      "pass_score": 7,
+      "rubric": "Grade the headline and the meaning text the way someone at the account reads them. 10 is a note a busy person reads once and trusts.\nScore these, 0 to 10 each:\n- grounded: every number and claim appears in data.metric, data.findings, data.chart or data.scope. Quote any that does not.\n- specific: it is about this account's site and business, and could not be pasted onto another company.\n- useful: it says which finding to fix first and why.\n- plain: short sentences a person would say out loud, with no jargon or marketing adjectives.\nAutomatic fail: an em dash or en dash, the words \"reverse demo\" or \"demo\", an email address or phone number, a price, a promised outcome, or a number that is not in the inputs.\nPass when the overall score is 7 or higher and no check is 5 or lower. On a fail, name the check and quote the phrase to change."
+    }
+  ],
+  "sections": [
+    { "id": "hero", "label": "Result" },
+    { "id": "findings", "label": "Findings" },
+    { "id": "meaning", "label": "What it means" },
+    { "id": "cta", "label": "Next step" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

@@ -1,0 +1,32 @@
+{
+  "account": {
+    "name": "Tidewater Freight",
+    "domain": "tidewater.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Tidewater Freight sells freight visibility software to mid-market shippers. It tracks loads across carriers and flags late deliveries before the customer calls.",
+      "why_now": "Grew its outbound team from two SDRs to six this quarter."
+    }
+  },
+  "person": { "first_name": "Marcus", "last_name": "Bell", "title": "Director of Revenue Operations" },
+  "sender": { "name": "Jonah Feld", "title": "Head of Partnerships", "signature_html": null },
+  "brand": { "name": "Signalgrid", "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "event_name": "Cold email after this year's inbox rules",
+    "format": "webinar",
+    "date_text": "Tuesday, December 2",
+    "time_text": "11:00 am to 11:45 am Eastern",
+    "platform": "Zoom",
+    "host": "Jonah Feld and Rae Morgan, Signalgrid",
+    "guests": "About forty RevOps and sales leaders from logistics and supply chain software companies.",
+    "seats_left": 18,
+    "agenda": [
+      { "time": "11:00", "title": "What changed in sender rules this year", "note": "What the big mailbox providers check now, and what it means for daily volume." },
+      { "time": "11:15", "title": "Three teams, three setups", "note": "How three outbound teams changed domains, warmup and volume, and what happened to replies." },
+      { "time": "11:35", "title": "Your questions", "note": "Bring a setup you're unsure about. We'll go through as many as we can." }
+    ],
+    "why_now": "Grew its outbound team from two SDRs to six this quarter.",
+    "why_you": "Tidewater went from two SDRs to six this quarter, which usually means more mailboxes, more domains and more ways for replies to drop. This hour is about that exact setup."
+  }
+}

@@ -28,10 +28,10 @@ Starter templates for [Ken](https://getken.ai) Studio. A Studio template is buil
 ```
 starters/<slug>/
   studio.json        manifest
-  template.liquid    a full HTML document, for both formats (see Pages and docs)
+  template.liquid    a full HTML document, for both formats (see Pages and docs); CSS is an inline <style> block here
   fallback.liquid    shown when the fill is not ready; Ken variables only
   README.md          optional notes, such as a webhook or CSV contract
-  assets/            images and files, referenced as {{ asset_url }}/name.svg
+  assets/            images and other files, referenced as {{ asset_url }}/name.svg; never CSS
   samples/           sample data for previews: <name>.json = {account, person, sender, brand, data}
 ```
 
@@ -48,8 +48,7 @@ Limits: `template.liquid` 256 KB, each asset 5 MB, a bundle 20 MB. This repo kee
   "slug": "outbound-campaign",
   "slots": { "type": "object", "properties": { "...": {} }, "required": ["..."] },
   "recipe": [ { "id": "...", "kind": "...", "to": "data.x" } ],
-  "sections": [ { "id": "cover", "label": "Cover" } ],
-  "cta": { "primary": "booking", "label": "Book 30 minutes" }
+  "sections": [ { "id": "cover", "label": "Cover" } ]
 }
 ```
 
@@ -110,9 +109,9 @@ Ken supplies these at render time. Recipes never fill them.
 
 Pages are served with a strict Content Security Policy, and validation rejects anything it would block:
 
-- Scripts are inline, or come from `https://cdn.jsdelivr.net/npm/chart.js@4`, `https://unpkg.com/alpinejs@3`, `https://cdn.jsdelivr.net/npm/motion@11`, and the Alpine CSP build `https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js`. The CSP has no `'unsafe-eval'`, so standard Alpine directives cannot run; use the CSP build and register components with `Alpine.data` (see `roi-calculator`).
+- Scripts are inline, or come from `https://cdn.jsdelivr.net/npm/chart.js@4`, `https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/` (for example `https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js`) and `https://cdn.jsdelivr.net/npm/motion@11`. Nothing else, so no unpkg. The CSP has no `'unsafe-eval'`, so standard Alpine directives cannot run; use the Alpine CSP build and register components with `Alpine.data` (see `roi-calculator`).
 - No `on*=` attributes and no `javascript:` URLs.
-- Images come from `{{ asset_url }}/...`, `brand.logo_url` or `data:` URIs. Stylesheets come from Google Fonts or `assets/`.
+- Images come from `{{ asset_url }}/...`, `brand.logo_url` or `data:` URIs. CSS is an inline `<style>` block in `template.liquid`, never a file under `assets/`. The only external stylesheet is Google Fonts (`https://fonts.googleapis.com`), with the fonts from `https://fonts.gstatic.com`.
 - Iframes only from the booking list (Calendly, Cal.com, HubSpot Meetings, Chili Piper, SavvyCal) and the video list (Loom, YouTube, Vimeo, Wistia). Use `ken/booking` for booking.
 - No `<form>` tags. Forms go through `ken/form`. No password, card or ID-number fields.
 - Filled data never holds email addresses or phone numbers of anyone other than the sender.

@@ -3,11 +3,6 @@
 {%- assign font_head = brand.fonts.heading | default: 'Inter' -%}
 {%- assign font_body = brand.fonts.body | default: font_head -%}
 {%- assign first = person.first_name | default: 'there' -%}
-{%- capture signature -%}
-{%- if person.first_name -%}{{ person.first_name | escape }}<br>{% if person.title %}{{ person.title | escape }}, {% endif %}{{ account.name | escape }}
-{%- else -%}Your name<br>{{ account.name | escape }}
-{%- endif -%}
-{%- endcapture -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -184,8 +179,8 @@ html,body{margin:0;background:#fff}
 <header>{% if li_head == 'https://' and e.linkedin_url contains 'linkedin.com/' %}<a href="{{ e.linkedin_url | escape }}">{{ e.name | escape }}</a>{% else %}<b>{{ e.name | escape }}</b>{% endif %}{% if e.title %}<span>{{ e.title | escape }}</span>{% endif %}</header>
 <p class="kd-subj"><b>Subject:</b> {{ e.subject | escape }}</p>
 <div class="kd-body">
-{%- for p in e.body %}<p>{{ p | escape }}</p>{% endfor -%}
-<p class="kd-sig">{{ signature }}</p>
+{%- for p in e.body %}{% assign p_head = p | strip | slice: 0, 3 %}{% unless p_head == 'PS:' %}<p>{{ p | escape }}</p>{% endunless %}{% endfor -%}
+<p class="kd-sig">{% if person.first_name %}{{ person.first_name | escape }}<br>{% if person.title %}{{ person.title | escape }}, {% endif %}{{ account.name | escape }}{% else %}Your name<br>{{ account.name | escape }}{% endif %}</p>
 {%- if e.ps and e.ps != '' %}<p>{{ e.ps | escape }}</p>{% endif -%}
 </div>
 {%- if e.linkedin and e.linkedin != '' %}<div class="kd-li"><b>LinkedIn connect note</b><p>{{ e.linkedin | escape }}</p></div>{% endif %}

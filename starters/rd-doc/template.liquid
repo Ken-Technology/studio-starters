@@ -15,6 +15,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>An outbound campaign for {{ account.name | escape }}</title>
+<link rel="icon" type="image/svg+xml" href="{{ asset_url }}/favicon.svg">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | replace: ' ', '+' }}:wght@400;600;700{% if font_body != font_head %}&family={{ font_body | replace: ' ', '+' }}:wght@400;600{% endif %}&display=swap">
 <style>
 html,body{margin:0;background:#fff}
@@ -200,10 +201,14 @@ html,body{margin:0;background:#fff}
 {%- endif %}
 <p>It would be great to hop on a call. I want your feedback so we can improve this campaign for {{ account.name | escape }}: what feels right, what's off, and what to change before anything goes out.</p>
 <p>I'll walk you through the sample, the A vs B ideas, and what the first two weeks look like.</p>
+{%- if link.booking_url %}
 <div class="kd-cta">
 {% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking' %}
 </div>
 <p>Worth half an hour this week?</p>
+{%- else %}
+<p>Worth half an hour this week? Reply to my email with a time that works and I'll send an invite.</p>
+{%- endif %}
 <p>Best,<br>{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<br><span class="kd-sig">{{ sender.title | escape }}</span>{% endif %}</p>
 </section>
 </main>

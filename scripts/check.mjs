@@ -28,14 +28,17 @@ const STEP_FIELDS = {
   dataset: { required: ['dataset', 'to'], optional: ['where', 'limit'] },
 };
 const KIT = ['ken/cta', 'ken/chart', 'ken/booking', 'ken/form'];
-// The contract's CDN list, plus the Alpine CSP build: the standard Alpine build needs 'unsafe-eval', which the
-// Studio CSP leaves out, so Alpine code in these starters loads the CSP build (contract change proposed in DEV-1740).
+// The Studio validator's script sources (csp.scriptSources in ken-backend Ken.Redirector.Edge/src/studio/policy.json),
+// matched the way CSP matches them: a source ending in '/' is a path prefix, any other source is one exact URL.
+// Alpine loads only as its CSP build from jsDelivr: the standard build needs 'unsafe-eval', which the Studio CSP leaves out.
 const SCRIPT_CDNS = [
   'https://cdn.jsdelivr.net/npm/chart.js@4',
-  'https://unpkg.com/alpinejs@3',
+  'https://cdn.jsdelivr.net/npm/chart.js@4/',
+  'https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/',
   'https://cdn.jsdelivr.net/npm/motion@11',
-  'https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js',
+  'https://cdn.jsdelivr.net/npm/motion@11/',
 ];
+const scriptAllowed = (src) => SCRIPT_CDNS.some((c) => (c.endsWith('/') ? src.startsWith(c) : src === c));
 const FRAME_HOSTS = [
   'calendly.com', 'cal.com', 'meetings.hubspot.com', 'chilipiper.com', 'savvycal.com',
   'loom.com', 'youtube.com', 'youtube-nocookie.com', 'vimeo.com', 'wistia.com', 'wistia.net',
@@ -219,7 +222,7 @@ function scanHtml(text, file, { err }) {
   const plain = text.replace(/\{%-?\s*comment\s*-?%\}[\s\S]*?\{%-?\s*endcomment\s*-?%\}/g, '');
   for (const m of plain.matchAll(/<script\b[^>]*>/gi)) {
     const src = attr(m[0], 'src');
-    if (src !== undefined && !SCRIPT_CDNS.some((c) => src === c || src.startsWith(`${c}/`))) {
+    if (src !== undefined && !scriptAllowed(src)) {
       err(file, `line ${lineOf(plain, m.index)}: script src "${src}" is not on the CDN allow-list (${SCRIPT_CDNS.join(', ')})`);
     }
   }
@@ -297,7 +300,8 @@ function checkBundle(slug, indexEntry) {
   if (!FORMATS.includes(m.format)) err('studio.json', `format must be one of ${FORMATS.join(', ')}`);
   if (typeof m.slug !== 'string' || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(m.slug) || m.slug.length > 60) err('studio.json', 'slug must be lowercase words joined by hyphens, at most 60 characters');
   for (const k of Object.keys(m)) if (!['kenStudio', 'name', 'type', 'format', 'slug', 'slots', 'recipe', 'sections', 'cta'].includes(k)) err('studio.json', `unknown manifest key "${k}"`);
-  if (!m.cta || typeof m.cta !== 'object' || typeof m.cta.primary !== 'string') err('studio.json', 'cta.primary is required');
+  // cta is optional: the validator accepts it and the renderer ignores it (README). Only its shape is checked.
+  if (m.cta !== undefined && (m.cta === null || typeof m.cta !== 'object' || Array.isArray(m.cta))) err('studio.json', 'cta, when present, must be an object');
 
   const hasFallbackLiquid = fs.existsSync(path.join(dir, 'fallback.liquid'));
   const slots = m.slots;

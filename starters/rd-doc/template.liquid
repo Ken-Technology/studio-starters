@@ -3,13 +3,14 @@
 {%- assign font_head = brand.fonts.heading | default: 'Inter' -%}
 {%- assign font_body = brand.fonts.body | default: font_head -%}
 {%- assign first = person.first_name | default: 'there' -%}
+{%- assign short_name = account.name | split: ' - ' | first | split: ' | ' | first | strip | default: account.name -%}
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>An outbound campaign for {{ account.name | escape }}</title>
+<title>An outbound campaign for {{ short_name | escape }}</title>
 <link rel="icon" type="image/svg+xml" href="{{ asset_url }}/favicon.svg">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | replace: ' ', '+' }}:wght@400;600;700{% if font_body != font_head %}&family={{ font_body | replace: ' ', '+' }}:wght@400;600{% endif %}&display=swap">
 <style>
@@ -84,11 +85,11 @@ html,body{margin:0;background:#fff}
 {%- elsif brand.name %}
 <p class="kd-mark">{{ brand.name | escape }}</p>
 {%- endif %}
-<h1>An outbound campaign for {{ account.name | escape }}</h1>
+<h1>An outbound campaign for {{ short_name | escape }}</h1>
 <p class="kd-by">Prepared by {{ sender.name | default: 'our team' | escape }}{% if sender.title %}, {{ sender.title | escape }}{% endif %}</p>
 <p>Hi {{ first | escape }},</p>
-<p>I put this together for {{ account.name | escape }}. It's a campaign I would run for you. It isn't perfect, but I did as much research as I could to make it useful.</p>
-<p>It's free, so you can see the kind of emails, LinkedIn notes and strategy I think would work for {{ account.name | escape }}. The goal is simple: more meetings booked, more pipeline, more clients.</p>
+<p>I put this together for {{ short_name | escape }}. It's a campaign I would run for you. It isn't perfect, but I did as much research as I could to make it useful.</p>
+<p>It's free, so you can see the kind of emails, LinkedIn notes and strategy I think would work for {{ short_name | escape }}. The goal is simple: more meetings booked, more pipeline, more clients.</p>
 <p>Yours either way. Even if we never work together, I hope it helps.</p>
 <div class="kd-inside">
 <p><strong>What's inside</strong></p>
@@ -117,7 +118,7 @@ html,body{margin:0;background:#fff}
 
 <section data-section="segments" class="kd-page">
 <h2>2. Segments</h2>
-<p>Here is how I would split {{ account.name | escape }}'s market. The first cut is the one we sample below. The others are ready, so we can grow without rewriting the plan.</p>
+<p>Here is how I would split {{ short_name | escape }}'s market. The first cut is the one we sample below. The others are ready, so we can grow without rewriting the plan.</p>
 <figure class="kd-chart">
 {% render 'ken/chart', type: 'bar', data: data.segments, title: 'Where the first 1,000 sends go' %}
 <figcaption>Sends per segment out of the first 1,000.</figcaption>
@@ -172,7 +173,7 @@ html,body{margin:0;background:#fff}
 
 <section data-section="outreach" class="kd-page">
 <h2>5. The outreach</h2>
-<p>{% case data.emails.size %}{% when 1 %}One person{% when 2 %}Two people{% else %}Three people{% endcase %} from the list above. Email 1 and a LinkedIn note for each, written the way I would send them for {{ account.name | escape }}.</p>
+<p>{% case data.emails.size %}{% when 1 %}One person{% when 2 %}Two people{% else %}Three people{% endcase %} from the list above. Email 1 and a LinkedIn note for each, written the way I would send them for {{ short_name | escape }}.</p>
 {%- for e in data.emails %}
 {%- assign li_head = e.linkedin_url | slice: 0, 8 %}
 <article class="kd-mail">
@@ -180,7 +181,7 @@ html,body{margin:0;background:#fff}
 <p class="kd-subj"><b>Subject:</b> {{ e.subject | escape }}</p>
 <div class="kd-body">
 {%- for p in e.body %}{% assign p_head = p | strip | slice: 0, 3 %}{% unless p_head == 'PS:' %}<p>{{ p | escape }}</p>{% endunless %}{% endfor -%}
-<p class="kd-sig">{% if person.first_name %}{{ person.first_name | escape }}<br>{% if person.title %}{{ person.title | escape }}, {% endif %}{{ account.name | escape }}{% else %}Your name<br>{{ account.name | escape }}{% endif %}</p>
+<p class="kd-sig">{% if person.first_name %}{{ person.first_name | escape }}<br>{% if person.title %}{{ person.title | escape }}, {% endif %}{{ short_name | escape }}{% else %}The {{ short_name | escape }} team{% endif %}</p>
 {%- if e.ps and e.ps != '' %}<p>{{ e.ps | escape }}</p>{% endif -%}
 </div>
 {%- if e.linkedin and e.linkedin != '' %}<div class="kd-li"><b>LinkedIn connect note</b><p>{{ e.linkedin | escape }}</p></div>{% endif %}
@@ -190,11 +191,11 @@ html,body{margin:0;background:#fff}
 
 <section data-section="next_steps" class="kd-page">
 <h2>6. What happens next</h2>
-<p>I'm confident this would get results for {{ account.name | escape }}. That's why I spent the time on the strategy, the cuts and the sample copy instead of sending a generic one-pager.</p>
+<p>I'm confident this would get results for {{ short_name | escape }}. That's why I spent the time on the strategy, the cuts and the sample copy instead of sending a generic one-pager.</p>
 {%- if data.offer %}
 <p>{{ data.offer | escape | newline_to_br | strip_newlines }}</p>
 {%- endif %}
-<p>It would be great to hop on a call. I want your feedback so we can improve this campaign for {{ account.name | escape }}: what feels right, what's off, and what to change before anything goes out.</p>
+<p>It would be great to hop on a call. I want your feedback so we can improve this campaign for {{ short_name | escape }}: what feels right, what's off, and what to change before anything goes out.</p>
 <p>I'll walk you through the sample, the A vs B ideas, and what the first two weeks look like.</p>
 {%- if link.booking_url %}
 <div class="kd-cta">

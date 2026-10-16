@@ -1,13 +1,14 @@
 {%- assign accent = brand.colors.primary | default: '#4f00d0' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Inter' -%}
 {%- assign first = person.first_name | default: 'there' -%}
+{%- assign short_name = account.name | split: ' - ' | first | split: ' | ' | first | strip | default: account.name -%}
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>An outbound campaign for {{ account.name | escape }}</title>
+<title>An outbound campaign for {{ short_name | escape }}</title>
 <link rel="icon" type="image/svg+xml" href="{{ asset_url }}/favicon.svg">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | replace: ' ', '+' }}:wght@400;600;700&display=swap">
 <style>
@@ -33,12 +34,12 @@ html,body{margin:0;background:#fff}
 {%- elsif brand.name %}
 <p class="kd-mark">{{ brand.name | escape }}</p>
 {%- endif %}
-<h1>An outbound campaign for {{ account.name | escape }}</h1>
+<h1>An outbound campaign for {{ short_name | escape }}</h1>
 <p class="kd-by">Prepared by {{ sender.name | default: 'our team' | escape }}{% if sender.title %}, {{ sender.title | escape }}{% endif %}</p>
 <p>Hi {{ first | escape }},</p>
-<p>I'm putting together a sample outbound campaign for {{ account.name | escape }}: who to go after, how to cut the market, a sample of leads, and the first emails written for them.</p>
+<p>I'm putting together a sample outbound campaign for {{ short_name | escape }}: who to go after, how to cut the market, a sample of leads, and the first emails written for them.</p>
 <div class="kd-note">
-<p>I'm still finishing it. This link is the right one, so check back later today and the full plan will be here.</p>
+<p>The full plan isn't on this page yet. If you'd like it sooner, reply to my email and I'll send it over.</p>
 </div>
 </section>
 

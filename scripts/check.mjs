@@ -19,13 +19,14 @@ const SLOT_KEYWORDS = new Set(['type', 'properties', 'required', 'items', 'minLe
 const KEN_ROOTS = ['account', 'person', 'sender', 'brand', 'link', 'asset_url', 'data'];
 const BIND_FROM = ['account.', 'person.', 'knowledge.'];
 const TOOLS = ['ken_search.people', 'ken_search.companies', 'enrich.email', 'scrape.page', 'ken.copy', 'chart.data'];
+// `requires` (ken-backend recipe-requires) is on every kind but bind: the step does not run while a listed slot is empty.
 const STEP_FIELDS = {
   bind: { required: ['from', 'to'], optional: [] },
-  tool: { required: ['tool', 'to'], optional: ['args'] },
-  prompt: { required: ['prompt', 'to'], optional: ['inputs', 'model'] },
-  grade: { required: ['rubric', 'on'], optional: ['retries', 'pass_score'] },
-  webhook: { required: ['url', 'to'], optional: ['headers', 'timeout_s'] },
-  dataset: { required: ['dataset', 'to'], optional: ['where', 'limit'] },
+  tool: { required: ['tool', 'to'], optional: ['args', 'requires'] },
+  prompt: { required: ['prompt', 'to'], optional: ['inputs', 'model', 'requires'] },
+  grade: { required: ['rubric', 'on'], optional: ['retries', 'pass_score', 'requires'] },
+  webhook: { required: ['url', 'to'], optional: ['headers', 'timeout_s', 'requires'] },
+  dataset: { required: ['dataset', 'to'], optional: ['where', 'limit', 'requires'] },
 };
 const KIT = ['ken/cta', 'ken/chart', 'ken/booking', 'ken/form'];
 // The Studio validator's script sources (csp.scriptSources in ken-backend Ken.Redirector.Edge/src/studio/policy.json),
@@ -342,6 +343,17 @@ function checkBundle(slug, indexEntry) {
     }
     for (const f of spec.required) if (step[f] === undefined) err('studio.json', `${where}: ${step.kind} needs "${f}"`);
     for (const f of Object.keys(step)) if (!['id', 'kind', ...spec.required, ...spec.optional].includes(f)) err('studio.json', `${where}: unknown field "${f}" for ${step.kind}`);
+    if ('requires' in step && step.kind !== 'bind') {
+      if (!Array.isArray(step.requires) || step.requires.some((r) => typeof r !== 'string')) err('studio.json', `${where}: requires must be an array of data.<slot> paths`);
+      else {
+        for (const r of step.requires) {
+          const s = r.match(/^data\.([A-Za-z0-9_]+)$/)?.[1];
+          if (!s) err('studio.json', `${where}: requires "${r}", which is not a data.<slot> path`);
+          else if (!props[s]) err('studio.json', `${where}: requires "${r}", which is not a declared slot`);
+          else if (!filled.has(s)) err('studio.json', `${where}: requires "${r}", which no earlier step writes`);
+        }
+      }
+    }
     if ('to' in step) {
       const targets = Array.isArray(step.to) ? step.to : [step.to];
       for (const t of targets) {

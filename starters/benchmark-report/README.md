@@ -6,7 +6,7 @@ A short report that puts one account next to companies in the same industry and 
 
 1. `peers` (`dataset`): picks the rows of your `peers` dataset where `industry` equals the account's industry and `size_band` equals the account's size band, up to 12 rows, into `data.benchmarks`.
 2. `site` (`tool scrape.page`): reads the account's homepage into `data.site`, so the report can mention one or two things a visitor can see there.
-3. `report` (`prompt`): writes the headline, summary, focus metric, chart, observations, takeaways and next steps from `data.benchmarks` and `data.site`. It returns nothing when there are no rows, and the slot fallbacks take over.
+3. `report` (`prompt`): writes the headline, summary, focus metric, chart, observations, takeaways and next steps from `data.benchmarks` and `data.site`. It `requires` `data.benchmarks`, so when no row matches the account it does not run and costs nothing, and the link shows `fallback.liquid`: the peer numbers are not there yet, with the booking button.
 
 Section 2 of the page is drawn straight from `data.benchmarks`: one line per row with the 25th percentile, the median and the 75th percentile. The PDF adds a blank line next to each metric for the reader's own number.
 
@@ -32,7 +32,7 @@ Rules that keep the report right:
 - Write plain numbers: `3.4`, not `3.4%` or `3,4`. Use a dot for decimals and no thousands separators.
 - Keep `p25 <= median <= p75` on every row, even when lower is better. The page draws each range from zero to a little past `p75`.
 - At most 12 metrics per industry and size band (the step's `limit`). Six to eight reads best.
-- One row per `(industry, size_band, metric)`. If a peer group is too small to publish, leave its rows out; the report then says it has no peer data for that group and falls back to general advice.
+- One row per `(industry, size_band, metric)`. If a peer group is too small to publish, leave its rows out; accounts in that group then get `fallback.liquid` instead of a report.
 - Quote any value that contains a comma, as `samples/peers.csv` does for `transportation, logistics, supply chain and storage`.
 
 ### Changing the filter

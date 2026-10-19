@@ -79,6 +79,7 @@
       "id": "explain",
       "kind": "prompt",
       "model": "cheap",
+      "requires": ["data.metric", "data.findings"],
       "inputs": ["account.name", "account.domain", "account.industry", "account.dossier.summary", "account.dossier.why_now", "brand.name", "data.metric", "data.findings", "data.chart", "data.scope"],
       "to": ["data.headline", "data.meaning"],
       "prompt": "{{ brand.name | default: 'Our product' }} just ran on {{ account.name }} ({{ account.domain }}). data.metric is the main result, data.findings is what it found, data.chart is the breakdown and data.scope says what was checked. account.dossier.summary says what {{ account.name }} does. Write the part of the page that tells someone at {{ account.name }} what the result means for them.\n\nReturn JSON with these keys:\n- headline: at most 90 characters. States the main result for {{ account.name }} in plain words, with the number from data.metric, like \"Harborline's quote page takes 6.2 seconds to load on a phone\". No hype, no question, no exclamation mark.\n- meaning: 2 or 3 short paragraphs separated by a blank line, at most 900 characters in total. Say what the result means for {{ account.name }}'s business, which finding to fix first and why, and what is already in good shape. Tie it to what {{ account.name }} does, using account.dossier.summary. Write as one person to another, using \"you\".\n\nUse facts and numbers from the inputs only. Every number you write must appear in data.metric, data.findings, data.chart or data.scope. Never invent customers, results, benchmarks or claims, and never promise an outcome.\n\nRules for every string: no em dashes or en dashes. Never the words \"reverse demo\" or \"demo\". No email addresses, phone numbers or prices. Plain words a person would say out loud, with no marketing adjectives."
@@ -86,6 +87,7 @@
     {
       "id": "check",
       "kind": "grade",
+      "requires": ["data.headline", "data.meaning"],
       "on": ["data.headline", "data.meaning"],
       "retries": 1,
       "pass_score": 7,

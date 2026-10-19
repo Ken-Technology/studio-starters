@@ -152,9 +152,9 @@ Online{% if data.platform and data.platform != '' %}, on {{ data.platform | esca
 </div>
 <div class="right">
 {%- if is_webinar %}
-{% render 'ken/form', id: 'rsvp', fields: 'name,email,company,title', submit: 'Save my seat' %}
+{% render 'ken/form', id: 'rsvp', fields: 'name*,email*,company,title', submit: 'Save my seat' %}
 {%- else %}
-{% render 'ken/form', id: 'rsvp', fields: 'name,email,company,dietary', submit: 'Save my seat' %}
+{% render 'ken/form', id: 'rsvp', fields: 'name*,email*,company,dietary', submit: 'Save my seat' %}
 {%- endif %}
 </div>
 <p class="decline">Can't make this one? Reply to my email and I'll send you {% if is_webinar %}the recording{% else %}the notes{% endif %} afterward.</p>

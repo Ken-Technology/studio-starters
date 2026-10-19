@@ -5,8 +5,8 @@ A one-page result for one account: your product runs on the account's own data, 
 ## How the recipe runs
 
 1. `run` (`webhook`): Ken POSTs the account to your endpoint. Your JSON answer fills `metric`, `findings`, `chart`, `chart_title`, `scope` and `report_url`.
-2. `explain` (`prompt`): writes `headline` and `meaning` ("What this means for {account}") from your result and Ken's research on the account. Every number it writes has to come from your result.
-3. `check` (`grade`): rejects a narrative with numbers or claims that are not in your result, and retries once.
+2. `explain` (`prompt`): writes `headline` and `meaning` ("What this means for {account}") from your result and Ken's research on the account. Every number it writes has to come from your result. It `requires` `metric` and `findings`, so it runs only when your endpoint answered.
+3. `check` (`grade`): rejects a narrative with numbers or claims that are not in your result, and retries once. It `requires` `headline` and `meaning`, so it is skipped with `explain`.
 
 To use it, replace `https://api.your-product.example/ken/studio` in `studio.json` with your endpoint, change the copy in `template.liquid` that talks about the check, and keep the slot schema and this README in sync if you rename anything.
 
@@ -117,7 +117,7 @@ Content rules Ken enforces on every filled value: no email addresses or phone nu
 - Each attempt waits up to `timeout_s` seconds (20 in this starter, 30 at most).
 - A timeout, a 5xx or a connection error is retried twice, after 1 second and then 4 seconds. A 4xx is final and is not retried.
 - A successful answer is cached for 24 hours per template version, account and step, so refills and teammates reuse it. Publish a new template version to force fresh calls.
-- If every attempt fails, the slots fall back. Optional slots use their fallback or are hidden. While `metric` or `findings` is missing or invalid, the link shows `fallback.liquid`, which tells the reader the results are on their way and offers the booking link.
+- If every attempt fails, the slots fall back, and `explain` and `check` do not run, so the page ends ready rather than in review. Optional slots use their fallback or are hidden. While `metric` or `findings` is missing or invalid, the link shows `fallback.liquid`, which tells the reader the results are on their way and offers the booking link.
 
 ## Checking the signature
 

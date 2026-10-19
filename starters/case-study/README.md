@@ -6,7 +6,7 @@ A one-page customer story for each account. Ken picks the story from your own ca
 
 1. `same_industry` (`dataset`): rows of your `case-studies` dataset where `industry` equals the account's industry, up to 5, into `data.stories`.
 2. `same_size` (`dataset`): rows where `size_band` equals the account's size band, up to 8, into `data.size_matches`. This is the backup when you have no story from the account's industry.
-3. `story` (`prompt`): picks one row (same industry first, closest size and problem next) and writes the page. The customer name, result and quote are copied from the row word for word; the prompt may not add a number that is not in the row. If both lists are empty, it returns nothing and the page shows its fallbacks: a generic headline and intro, a short "still matching a story" note, and the booking button.
+3. `story` (`prompt`): picks one row (same industry first, closest size and problem next) and writes the page. The customer name, result and quote are copied from the row word for word; the prompt may not add a number that is not in the row. If both lists are empty, it returns nothing and the page shows its fallbacks: a generic headline and intro, a short "the story isn't on this page yet" note, and the booking button.
 
 The account side of the comparison comes only from what Ken knows about the account: `account.industry`, `account.size_band` and the dossier (`account.dossier.summary`, `account.dossier.why_now`). If the dossier is thin, the "Why this story" table shrinks rather than guessing.
 

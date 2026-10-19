@@ -73,7 +73,7 @@ The recipe fills `data.*` for one account. Steps run in order, and each one writ
 
 Conventions these starters follow:
 
-- `prompt` text is Liquid over Ken variables and `data.*`. `inputs` lists the Ken variables and earlier slots the step reads.
+- `prompt` text (and `rubric`, tool `args` and dataset `where`) takes output tags over Ken variables and `data.*`, with the filters `default`, `upcase`, `downcase`, `capitalize`, `strip`, `size`, `join`, `truncate` and `json`, like `{{ data.pricing.url | default: 'none' }}`. Tags such as `{% if %}` fail the step when it runs, and `check.mjs` rejects them. `inputs` lists the Ken variables and earlier slots the step reads.
 - String values in `tool` args are Liquid too. A string that is exactly one `{{ data.x }}` passes that value through with its type, so `"filters": "{{ data.search }}"` hands Ken Search the filter object a `prompt` step wrote.
 - Intermediate results (scraped pages, raw search results) are declared as optional slots, because every `to` must be a declared slot.
 - Every kind except `bind` takes `requires`, a list of `data.<slot>` paths that an earlier step writes. While one of them is empty or failed, the step does not run and costs nothing, and its slots fall back. `rd-doc` uses it so `plan` never writes a strategy without the site, and `copy` never names people when the search found none.
@@ -104,7 +104,7 @@ Ken supplies these at render time. Recipes never fill them.
 | `ken/cta` | `{% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking' %}`, or `href: link.page_url` instead of `kind` |
 | `ken/chart` | `{% render 'ken/chart', type: 'bar', data: data.segments, title: '...' %}`. `type` is `bar`, `funnel`, `line` or `pie`. `data` is a list of `{label, value}`; labels are at most 28 characters. Renders inline SVG, no JavaScript |
 | `ken/booking` | `{% render 'ken/booking' %}`: the sender's booking page, inline |
-| `ken/form` | `{% render 'ken/form', id: 'rsvp', fields: 'name,email,company,dietary', submit: 'Save my seat' %}`. `fields` names come from `name`, `email`, `company`, `title`, `guests`, `dietary`, `note`. Submissions go to Ken and become signals |
+| `ken/form` | `{% render 'ken/form', id: 'rsvp', fields: 'name*,email*,company,dietary', submit: 'Save my seat' %}`. `fields` names come from `name`, `email`, `company`, `title`, `guests`, `dietary`, `note`; a trailing `*` makes the field required. Submissions go to Ken and become signals. Previews have no link, so the form renders only on a real link |
 
 ### What the HTML can do
 

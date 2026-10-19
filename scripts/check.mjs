@@ -24,10 +24,12 @@ const STEP_FIELDS = {
   bind: { required: ['from', 'to'], optional: [] },
   tool: { required: ['tool', 'to'], optional: ['args', 'requires'] },
   prompt: { required: ['prompt', 'to'], optional: ['inputs', 'model', 'requires'] },
-  grade: { required: ['rubric', 'on'], optional: ['retries', 'pass_score', 'requires'] },
+  grade: { required: ['rubric', 'on'], optional: ['retries', 'pass_score', 'requires', 'checks'] },
   webhook: { required: ['url', 'to'], optional: ['headers', 'timeout_s', 'requires'] },
   dataset: { required: ['dataset', 'to'], optional: ['where', 'limit', 'requires'] },
 };
+// A grade step's `checks` (ken-backend recipe-grade-checks): string rules Ken runs on the graded slots before the judge.
+const GRADE_CHECKS = ['no_placeholders', 'no_dashes', 'no_prices', 'no_test_noun', 'no_real_emphasis', 'no_signoff'];
 const KIT = ['ken/cta', 'ken/chart', 'ken/booking', 'ken/form'];
 // The Studio validator's script sources (csp.scriptSources in ken-backend Ken.Redirector.Edge/src/studio/policy.json),
 // matched the way CSP matches them: a source ending in '/' is a path prefix, any other source is one exact URL.
@@ -376,6 +378,19 @@ function checkBundle(slug, indexEntry) {
       for (const on of step.on ?? []) if (!props[slotOf(on)] || !filled.has(slotOf(on))) err('studio.json', `${where}: grades "${on}", which no earlier step fills`);
       if ('retries' in step && !(Number.isInteger(step.retries) && step.retries >= 0)) err('studio.json', `${where}: retries must be a non-negative integer`);
       if ('pass_score' in step && !(typeof step.pass_score === 'number' && step.pass_score >= 0 && step.pass_score <= 10)) err('studio.json', `${where}: pass_score is 0 to 10`);
+      if ('checks' in step) {
+        const c = step.checks;
+        const words = (v, max, len) => Array.isArray(v) && v.length <= max && v.every((w) => typeof w === 'string' && w.trim() && w.trim().length <= len);
+        if (!c || typeof c !== 'object' || Array.isArray(c)) err('studio.json', `${where}: checks must be an object`);
+        else {
+          for (const [k, v] of Object.entries(c)) {
+            if (k === 'banned') { if (!words(v, 100, 80)) err('studio.json', `${where}: checks.banned is at most 100 words or phrases of at most 80 characters`); }
+            else if (k === 'skip') { if (!words(v, 50, Infinity)) err('studio.json', `${where}: checks.skip is at most 50 field names`); }
+            else if (!GRADE_CHECKS.includes(k)) err('studio.json', `${where}: checks.${k} is not a check`);
+            else if (typeof v !== 'boolean') err('studio.json', `${where}: checks.${k} must be true or false`);
+          }
+        }
+      }
     }
     if (step.kind === 'webhook') {
       if (!/^https:\/\//.test(step.url)) err('studio.json', `${where}: webhook url must be https`);

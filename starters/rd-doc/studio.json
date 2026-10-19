@@ -159,6 +159,16 @@
       "on": ["data.emails"],
       "retries": 1,
       "pass_score": 7.5,
+      "checks": {
+        "banned": ["reverse demo", "demo", "caught my attention", "I noticed", "I saw", "I came across"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_test_noun": true,
+        "no_real_emphasis": true,
+        "no_signoff": true,
+        "skip": ["name", "title", "linkedin_url"]
+      },
       "rubric": "Grade each email the way its recipient reads it: subject, body, PS, then the LinkedIn note. 10 is an email a busy buyer reads in one pass and answers.\nScore these, 0 to 10 each:\n- quick_read: it reads in under 20 seconds, in short paragraphs.\n- makes_sense: every sentence follows from the one before, and the first line hands off to the body.\n- cta: one soft ask that is easy to say yes to, not a meeting demand.\n- ps: specific to this company or to a named result; not biography, not a compliment, not reused across leads.\nAnswer yes or no:\n- easy: is the ask low effort?\n- would_reply: would a buyer in this role plausibly answer?\n- weird_word: is there a phrase a person would not say out loud (jargon, marketing adjectives, a clever subject line, stacked nouns)? Quote it.\nAutomatic fail for that email: an em dash or en dash, the words \"reverse demo\" or \"demo\", an email address or phone number, a price, a subject of 6 words or more, a first line that opens with \"I noticed\", \"I saw\" or \"I came across\", or a sign-off or a name at the end of the body (the page adds the signature).\nAutomatic fail for that email too: a claim about {{ account.name }}'s customers, numbers, results or product that the site text below does not support. With no site text, every such claim fails.\nSite text ({{ data.site.url | default: 'no site' }}): {{ data.site.description }} {{ data.site.markdown | truncate: 6000 }}\nPass when the overall score is 7.5 or higher, no 0 to 10 check is 6 or lower, easy and would_reply are yes, and weird_word is no. On a fail, name the check and quote the phrase to change. The fix never supplies replacement sentences, names, numbers, customers or results."
     }
   ],

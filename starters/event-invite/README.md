@@ -29,4 +29,4 @@ If the prompt fails, `why_you` falls back to a general line with the account nam
 
 ## Form
 
-The RSVP uses `{% render 'ken/form' %}`, which posts to Ken. Each submission becomes a signal on the account. Dinners ask for name, email, company and dietary needs; webinars ask for name, email, company and title.
+The RSVP uses `{% render 'ken/form' %}`, which posts to Ken. Each submission becomes a signal on the account. Dinners ask for name, email, company and dietary needs; webinars ask for name, email, company and title. Name and email are required (`name*,email*` in `fields`), so a seat is never saved without them.

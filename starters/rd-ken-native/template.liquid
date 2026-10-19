@@ -6,11 +6,6 @@
 {%- assign found = data.people.size | default: 0 -%}
 {%- assign picked = data.shortlist.size | default: 0 -%}
 {%- assign written = data.emails.size | default: 0 -%}
-{%- capture signature -%}
-{%- if person.first_name -%}{{ person.first_name | escape }}<br>{% if person.title %}{{ person.title | escape }}, {% endif %}{{ account.name | escape }}
-{%- else -%}Your name<br>{{ account.name | escape }}
-{%- endif -%}
-{%- endcapture -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -201,7 +196,7 @@ a{color:var(--a)}
 {%- for para in e.body %}
 <p>{{ para | escape }}</p>
 {%- endfor %}
-<p class="kn-sig">{{ signature }}</p>
+<p class="kn-sig">{% if person.first_name %}{{ person.first_name | escape }}<br>{% if person.title %}{{ person.title | escape }}, {% endif %}{{ account.name | escape }}{% else %}Your name<br>{{ account.name | escape }}{% endif %}</p>
 {%- if e.ps and e.ps != '' %}
 <p class="kn-ps">{{ e.ps | escape }}</p>
 {%- endif %}

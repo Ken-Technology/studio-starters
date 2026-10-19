@@ -20,7 +20,7 @@
       },
       "brief": {
         "type": "string",
-        "maxLength": 240
+        "maxLength": 400
       },
       "audience": {
         "type": "object",
@@ -213,6 +213,9 @@
       "id": "find",
       "kind": "tool",
       "tool": "ken_search.people",
+      "requires": [
+        "data.search"
+      ],
       "args": {
         "company": "any",
         "filters": "{{ data.search }}",
@@ -224,6 +227,10 @@
       "id": "write",
       "kind": "tool",
       "tool": "ken.copy",
+      "requires": [
+        "data.brief",
+        "data.audience"
+      ],
       "args": {
         "kind": "email",
         "brief": "{{ data.brief }} It goes to: {{ data.audience.summary }} Write the core of the first email {{ account.name }} sends them, in 2 or 3 short paragraphs: what {{ account.name }} does for them, one proof point from the brief, and one soft ask. No greeting, no first line and no signature; each person gets their own first line later. No em dashes or en dashes, no prices, and never the word demo.",
@@ -236,6 +243,10 @@
       "id": "pick",
       "kind": "prompt",
       "model": "cheap",
+      "requires": [
+        "data.people",
+        "data.draft"
+      ],
       "inputs": [
         "account.name",
         "data.dossier",
@@ -256,6 +267,9 @@
     {
       "id": "grade",
       "kind": "grade",
+      "requires": [
+        "data.emails"
+      ],
       "on": [
         "data.emails"
       ],

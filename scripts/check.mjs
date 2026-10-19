@@ -342,6 +342,10 @@ function checkBundle(slug, indexEntry) {
       continue;
     }
     for (const f of spec.required) if (step[f] === undefined) err('studio.json', `${where}: ${step.kind} needs "${f}"`);
+    // Recipe text renders output tags only (StudioRecipeText in ken-backend): a {% %} tag fails the step when it runs.
+    for (const f of ['prompt', 'rubric', 'args', 'where']) {
+      if (step[f] !== undefined && stringsIn(step[f]).some((x) => x.includes('{%'))) err('studio.json', `${where}: ${f} uses a {% %} tag; recipe text supports output tags like {{ data.x | default: 'text' }} only`);
+    }
     for (const f of Object.keys(step)) if (!['id', 'kind', ...spec.required, ...spec.optional].includes(f)) err('studio.json', `${where}: unknown field "${f}" for ${step.kind}`);
     if ('requires' in step && step.kind !== 'bind') {
       if (!Array.isArray(step.requires) || step.requires.some((r) => typeof r !== 'string')) err('studio.json', `${where}: requires must be an array of data.<slot> paths`);

@@ -40,11 +40,11 @@ html,body{margin:0;background:#fff}
 <h1>{{ account.name | escape }} next to its peers</h1>
 <p>Hi {{ first | escape }},</p>
 <p>I'm putting together a short report that sets {{ account.name | escape }} next to companies in the same industry and size band, metric by metric, with the range across the group so you can see where you would land.</p>
-<div class="pb-note"><p>I'm still pulling the numbers. This link stays the same, so check back later today and the full report will be here.</p></div>
+<div class="pb-note"><p>The peer numbers aren't on this page yet.</p></div>
 </section>
 
 <section data-section="next_steps" class="pb-page">
-<p>If you would rather go through it together, grab 20 minutes and I'll walk you through what the peer data shows so far.</p>
+<p>If you would rather go through it together, grab 20 minutes and I'll pull the closest peer group for {{ account.name | escape }} by hand.</p>
 <div class="pb-cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
 <p>Best,<br>{{ sender.name | default: 'Our team' | escape }}</p>
 </section>

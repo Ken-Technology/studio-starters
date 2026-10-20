@@ -116,7 +116,7 @@ a{color:var(--a)}
 <p class="kn-eyebrow">For {{ account.name | escape }}</p>
 <h1>{{ data.headline | escape }}</h1>
 <p class="kn-hi">Hi {{ first | escape }},</p>
-<p class="kn-lede">{{ data.intro | escape | newline_to_br | strip_newlines }}</p>
+<p class="kn-lede">{{ data.intro | escape | newline_to_br | strip_newlines | raw }}</p>
 </div>
 <aside class="kn-slip">
 <dl>
@@ -139,7 +139,7 @@ a{color:var(--a)}
 </div>
 <div>
 {%- if data.audience.summary and data.audience.summary != '' %}
-<p class="kn-summary">{{ data.audience.summary | escape | newline_to_br | strip_newlines }}</p>
+<p class="kn-summary">{{ data.audience.summary | escape | newline_to_br | strip_newlines | raw }}</p>
 {%- if data.audience.chips.size > 0 %}
 <ul class="kn-chips">
 {%- for c in data.audience.chips %}

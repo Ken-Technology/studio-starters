@@ -114,7 +114,7 @@ body{padding:2.5rem 1.5rem 4rem}
 <div class="lead">
 <p>Hi {{ first | escape }},</p>
 {%- if data.summary and data.summary != '' %}
-<p>{{ data.summary | escape | newline_to_br | strip_newlines }}</p>
+<p>{{ data.summary | escape | newline_to_br | strip_newlines | raw }}</p>
 {%- endif %}
 <p>I read {{ account.domain | default: 'your site' | escape }} the way a buyer would and marked every line that made me slow down or want to leave. The notes are below, worst first, then three rewrites you can paste in as they are.</p>
 </div>

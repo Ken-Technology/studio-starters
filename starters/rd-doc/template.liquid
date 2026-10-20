@@ -105,15 +105,15 @@ html,body{margin:0;background:#fff}
 
 <section data-section="strategy" class="kd-page">
 <h2>1. Strategy</h2>
-<p>{{ data.strategy.intro | escape | newline_to_br | strip_newlines }}</p>
+<p>{{ data.strategy.intro | escape | newline_to_br | strip_newlines | raw }}</p>
 <h3>Who this is for</h3>
-<p>{{ data.strategy.audience | escape | newline_to_br | strip_newlines }}</p>
+<p>{{ data.strategy.audience | escape | newline_to_br | strip_newlines | raw }}</p>
 <h3>What we offer</h3>
-<p>{{ data.strategy.offer | escape | newline_to_br | strip_newlines }}</p>
+<p>{{ data.strategy.offer | escape | newline_to_br | strip_newlines | raw }}</p>
 <h3>How we reach them</h3>
-<p>{{ data.strategy.channels | escape | newline_to_br | strip_newlines }}</p>
+<p>{{ data.strategy.channels | escape | newline_to_br | strip_newlines | raw }}</p>
 <h3>What we want</h3>
-<p>{{ data.strategy.goal | escape | newline_to_br | strip_newlines }}</p>
+<p>{{ data.strategy.goal | escape | newline_to_br | strip_newlines | raw }}</p>
 </section>
 
 <section data-section="segments" class="kd-page">
@@ -132,7 +132,7 @@ html,body{margin:0;background:#fff}
 </div>
 <p>Each segment carries up to four A vs B ideas: the pain, the offer, the angle and the ask. No vanity subject-line splits. If we run one, it has a hypothesis.</p>
 {%- if data.segment_notes %}
-<p>{{ data.segment_notes | escape | newline_to_br | strip_newlines }}</p>
+<p>{{ data.segment_notes | escape | newline_to_br | strip_newlines | raw }}</p>
 {%- endif %}
 </section>
 
@@ -149,7 +149,7 @@ html,body{margin:0;background:#fff}
 <li><b>Convert.</b> A reply turns into a meeting ask, a discovery call, then a booked deal.</li>
 </ol>
 {%- if data.funnel_notes %}
-<p>{{ data.funnel_notes | escape | newline_to_br | strip_newlines }}</p>
+<p>{{ data.funnel_notes | escape | newline_to_br | strip_newlines | raw }}</p>
 {%- endif %}
 </section>
 
@@ -157,7 +157,7 @@ html,body{margin:0;background:#fff}
 <h2>4. Sample leads</h2>
 <p>This sample is a small slice of who we could target. The strategy above covers the wider map. The leads and copy below are written for these people.</p>
 {%- if data.sampling_criteria %}
-<p>{{ data.sampling_criteria | escape | newline_to_br | strip_newlines }}</p>
+<p>{{ data.sampling_criteria | escape | newline_to_br | strip_newlines | raw }}</p>
 {%- endif %}
 <table class="kd-leads">
 <thead><tr><th>Name</th><th>Title</th><th>Company</th><th>Why them</th><th>Links</th></tr></thead>
@@ -193,7 +193,7 @@ html,body{margin:0;background:#fff}
 <h2>6. What happens next</h2>
 <p>I'm confident this would get results for {{ short_name | escape }}. That's why I spent the time on the strategy, the cuts and the sample copy instead of sending a generic one-pager.</p>
 {%- if data.offer %}
-<p>{{ data.offer | escape | newline_to_br | strip_newlines }}</p>
+<p>{{ data.offer | escape | newline_to_br | strip_newlines | raw }}</p>
 {%- endif %}
 <p>It would be great to hop on a call. I want your feedback so we can improve this campaign for {{ short_name | escape }}: what feels right, what's off, and what to change before anything goes out.</p>
 <p>I'll walk you through the sample, the A vs B ideas, and what the first two weeks look like.</p>

@@ -101,7 +101,7 @@ dd small{display:block;color:var(--mute);font-size:.9rem}
 <p class="hours">{{ data.time_text | escape }}</p>
 <div class="letter">
 <p>Hi {{ first | escape }},</p>
-<p>{{ data.why_you | escape | newline_to_br | strip_newlines }}</p>
+<p>{{ data.why_you | escape | newline_to_br | strip_newlines | raw }}</p>
 {%- if is_webinar %}
 <p>It's a small group with plenty of time for questions, so I'm asking a few people myself before it goes out more widely.</p>
 {%- else %}

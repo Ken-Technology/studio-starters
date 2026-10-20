@@ -120,9 +120,9 @@ Pages are served with a strict Content Security Policy, and validation rejects a
 
 ### Liquid
 
-Templates use the subset that LiquidJS (the edge renderer) and Shopify Liquid share: `if/elsif/else`, `unless`, `for`, `assign`, `capture`, `case`, `render`, `comment`, `raw`, and standard filters (`default`, `escape`, `upcase`, `size`, `date`, `join`, `split`, `round`, `times`, `divided_by`, `newline_to_br` and the like). No custom filters.
+Templates use the subset that LiquidJS (the edge renderer) and Shopify Liquid share: `if/elsif/else`, `unless`, `for`, `assign`, `capture`, `case`, `render`, `comment`, `raw`, and standard filters (`default`, `escape`, `upcase`, `size`, `date`, `join`, `split`, `round`, `times`, `divided_by`, `newline_to_br` and the like), plus LiquidJS's `raw`. No custom filters.
 
-- Escape every value you print in HTML: `{{ data.headline | escape }}`. For prose slots, `{{ data.intro | escape | newline_to_br | strip_newlines }}`.
+- Escape every value you print in HTML: `{{ data.headline | escape }}`. The edge escapes every `{{ }}` output again (existing entities are kept, so `| escape` never escapes twice), which turns markup a filter adds into text. For prose slots, `{{ data.intro | escape | newline_to_br | strip_newlines | raw }}`: `escape` makes the text safe, then `raw` keeps the `<br />` tags. Use `| raw` only on a value you escaped first.
 - An empty string is truthy in Liquid. Test optional strings with `{% if data.ps and data.ps != '' %}`.
 
 ### Pages and docs

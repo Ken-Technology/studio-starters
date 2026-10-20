@@ -110,7 +110,7 @@
             "ps": { "type": "string", "maxLength": 240 },
             "linkedin": { "type": "string", "maxLength": 280 }
           },
-          "required": ["name", "subject", "body", "ps", "linkedin"]
+          "required": ["name", "subject", "body", "linkedin"]
         }
       }
     },

@@ -123,7 +123,7 @@ html,body{margin:0;background:#fff}
 <p class="pb-sec">Section 1</p>
 <h2>The short version</h2>
 <p class="pb-lede">{{ data.headline | escape }}</p>
-<p>{{ data.summary | escape | newline_to_br | strip_newlines }}</p>
+<p>{{ data.summary | escape | newline_to_br | strip_newlines | raw }}</p>
 {%- if data.observations.size > 0 %}
 <div class="pb-seen"><p class="pb-label">What we saw on {{ account.domain | default: 'your site' | escape }}</p><ul>{% for o in data.observations %}<li>{{ o | escape }}</li>{% endfor %}</ul></div>
 {%- endif %}
@@ -132,7 +132,7 @@ html,body{margin:0;background:#fff}
 <p class="pb-label">Where I would look first</p>
 <p class="pb-focus">{{ data.focus.metric | escape }}</p>
 {% render 'ken/chart', type: 'bar', data: data.chart, title: 'Peers your size' %}
-<figcaption>{{ data.focus.why | escape | newline_to_br | strip_newlines }}</figcaption>
+<figcaption>{{ data.focus.why | escape | newline_to_br | strip_newlines | raw }}</figcaption>
 </figure>
 {%- endif %}
 </section>
@@ -173,7 +173,7 @@ html,body{margin:0;background:#fff}
 <h2>Three things that stand out</h2>
 <ol class="pb-takes">
 {%- for t in data.takeaways %}
-<li><h3>{{ t.title | escape }}</h3><p>{{ t.body | escape | newline_to_br | strip_newlines }}</p></li>
+<li><h3>{{ t.title | escape }}</h3><p>{{ t.body | escape | newline_to_br | strip_newlines | raw }}</p></li>
 {%- endfor %}
 </ol>
 </section>

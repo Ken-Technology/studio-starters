@@ -192,7 +192,7 @@ a{color:var(--a)}
 {%- for para in paras %}
 {%- assign text = para | strip %}
 {%- if text != '' %}
-<p>{{ text }}</p>
+<p>{{ text | raw }}</p>
 {%- endif %}
 {%- endfor %}
 {%- if start.title %}

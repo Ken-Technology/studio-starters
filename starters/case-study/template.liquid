@@ -128,10 +128,10 @@ body{font-size:18px}
 {%- endif %}
 <div class="cs-chaps">
 {%- if data.before and data.before != '' %}
-<div class="cs-chap"><p class="cs-label">Before</p><h3>Where they started</h3><p class="cs-drop">{{ data.before | escape | newline_to_br | strip_newlines }}</p></div>
+<div class="cs-chap"><p class="cs-label">Before</p><h3>Where they started</h3><p class="cs-drop">{{ data.before | escape | newline_to_br | strip_newlines | raw }}</p></div>
 {%- endif %}
 {%- if data.after and data.after != '' %}
-<div class="cs-chap"><p class="cs-label">After</p><h3>What they changed</h3><p>{{ data.after | escape | newline_to_br | strip_newlines }}</p></div>
+<div class="cs-chap"><p class="cs-label">After</p><h3>What they changed</h3><p>{{ data.after | escape | newline_to_br | strip_newlines | raw }}</p></div>
 {%- endif %}
 </div>
 {%- else %}
@@ -164,7 +164,7 @@ body{font-size:18px}
 <section data-section="fit" class="cs-fit">
 <p class="cs-label">Why it applies</p>
 <h2>What this means for {{ account.name | escape }}</h2>
-<p class="cs-text">{{ data.fit | escape | newline_to_br | strip_newlines }}</p>
+<p class="cs-text">{{ data.fit | escape | newline_to_br | strip_newlines | raw }}</p>
 </section>
 <section data-section="cta" class="cs-cta">
 <div class="cs-box">

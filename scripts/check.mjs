@@ -53,7 +53,7 @@ const LIQUID_FILTERS = new Set(['default', 'escape', 'escape_once', 'upcase', 'd
   'split', 'round', 'times', 'divided_by', 'plus', 'minus', 'modulo', 'abs', 'ceil', 'floor', 'at_least', 'at_most', 'first',
   'last', 'map', 'sort', 'reverse', 'uniq', 'compact', 'slice', 'truncate', 'truncatewords', 'strip', 'lstrip', 'rstrip',
   'strip_html', 'strip_newlines', 'newline_to_br', 'replace', 'replace_first', 'remove', 'remove_first', 'append',
-  'prepend', 'url_encode']);
+  'prepend', 'url_encode', 'raw']);
 const ASSET_EXT = new Set(['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.woff', '.woff2', '.csv', '.pdf']);
 const BUNDLE_FILES = new Set(['studio.json', 'template.liquid', 'fallback.liquid', 'README.md', 'assets', 'samples']);
 const SAMPLE_KEYS = new Set(['account', 'person', 'sender', 'brand', 'data']);
@@ -193,12 +193,17 @@ function scanLiquid(text, file, { err, warn }, { allowData }) {
   }
   const exprs = [
     ...tags.filter((t) => !/^(render|comment|endcomment|raw|endraw)\b/.test(t.body)).map((t) => ({ ...t, body: t.body.replace(/^\w+\s*/, '') })),
-    ...liquidOutputs(text),
+    ...liquidOutputs(text).map((o) => ({ ...o, output: true })),
   ];
   for (const e of exprs) {
     const body = stripStrings(e.body);
-    for (const f of body.matchAll(/\|\s*([a-z_][a-z0-9_]*)/g)) {
-      if (!LIQUID_FILTERS.has(f[1])) err(file, `line ${lineOf(text, e.index)}: filter "${f[1]}" is not in the portable filter list`);
+    const filters = [...body.matchAll(/\|\s*([a-z_][a-z0-9_]*)/g)].map((f) => f[1]);
+    for (const f of filters) {
+      if (!LIQUID_FILTERS.has(f)) err(file, `line ${lineOf(text, e.index)}: filter "${f}" is not in the portable filter list`);
+    }
+    // The edge escapes every {{ }} output again, so the <br /> that newline_to_br adds shows as text unless the output ends in raw.
+    if (e.output && filters.includes('newline_to_br') && filters.at(-1) !== 'raw') {
+      err(file, `line ${lineOf(text, e.index)}: newline_to_br output is escaped at render, so <br /> shows as text; end it with | raw after | escape`);
     }
     const roots = [...body.replace(/\|\s*[a-z_][a-z0-9_]*(\s*:)?/g, ' ').matchAll(/(?<![\w.'"-])([a-z_][\w]*)(?=[.\[\s,)]|$)/gi)].map((m) => m[1]);
     for (const r of roots) {

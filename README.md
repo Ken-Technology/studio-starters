@@ -122,7 +122,7 @@ Pages are served with a strict Content Security Policy, and validation rejects a
 
 Templates use the subset that LiquidJS (the edge renderer) and Shopify Liquid share: `if/elsif/else`, `unless`, `for`, `assign`, `capture`, `case`, `render`, `comment`, `raw`, and standard filters (`default`, `escape`, `upcase`, `size`, `date`, `join`, `split`, `round`, `times`, `divided_by`, `newline_to_br` and the like), plus LiquidJS's `raw`. No custom filters.
 
-- Escape every value you print in HTML: `{{ data.headline | escape }}`. The edge escapes every `{{ }}` output again (existing entities are kept, so `| escape` never escapes twice), which turns markup a filter adds into text. For prose slots, `{{ data.intro | escape | newline_to_br | strip_newlines | raw }}`: `escape` makes the text safe, then `raw` keeps the `<br />` tags. Use `| raw` only on a value you escaped first.
+- Escape every value you print in HTML: `{{ data.headline | escape }}`. The edge escapes every `{{ }}` output again (existing entities are kept, so `| escape` never escapes twice), which turns markup a filter adds into text. For prose slots, `{{ data.intro | escape | newline_to_br | strip_newlines | raw }}`: `escape` makes the text safe, then `raw` keeps the `<br />` tags. Use `| raw` only on a value you escaped first: `check.mjs` fails an output that ends in `| raw` unless `| escape` comes earlier in its chain or in the `assign` that built the local it prints.
 - An empty string is truthy in Liquid. Test optional strings with `{% if data.ps and data.ps != '' %}`.
 
 ### Pages and docs
@@ -152,6 +152,7 @@ Page copy reads like one person writing to another. Plain words, short sentences
 ```bash
 node scripts/check.mjs            # every bundle and index.json
 node scripts/check.mjs rd-doc     # one bundle
+node --test scripts/check.test.mjs   # tests for check.mjs itself
 ```
 
 `check.mjs` has no dependencies (Node 20 or newer) and runs on every push and pull request. It checks the manifest fields, the slot schema subset, fallbacks, the recipe (known kinds and tools, `to` targets, inputs filled by earlier steps, https webhooks, timeouts), `data-section` against `sections`, the HTML rules above, the portable Liquid tags and filters, sizes, asset types, dashes, and that each sample matches the slot schema and holds no contact details. Ken's validator runs the full set when you push a bundle, including a Liquid parse and the filled-data rules.

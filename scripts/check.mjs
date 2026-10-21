@@ -174,8 +174,17 @@ function stripStrings(s) {
   return s.replace(/'[^']*'|"[^"]*"/g, '""');
 }
 
+// The variable a Liquid expression starts from, and the filters it runs, in order.
+function chainOf(expr) {
+  const body = stripStrings(expr);
+  return { root: body.match(/^\s*([a-z_]\w*)/i)?.[1], filters: [...body.matchAll(/\|\s*([a-z_][a-z0-9_]*)/g)].map((f) => f[1]) };
+}
+
+const escapes = (filters) => filters.includes('escape') || filters.includes('escape_once');
+
 function scanLiquid(text, file, { err, warn }, { allowData }) {
   const locals = new Set(['forloop']);
+  const defs = [];
   const tags = liquidTags(text);
   let inRaw = false;
   for (const t of tags) {
@@ -186,9 +195,29 @@ function scanLiquid(text, file, { err, warn }, { allowData }) {
     if (!LIQUID_TAGS.has(name)) err(file, `line ${lineOf(text, t.index)}: tag "${name}" is not in the portable Liquid subset`);
     if (name === 'assign' || name === 'capture') locals.add(t.body.split(/\s+/)[1]?.replace(/=.*/, ''));
     if (name === 'for') locals.add(t.body.split(/\s+/)[1]);
+    const def = t.body.match(/^assign\s+(\w+)\s*=([\s\S]*)$/) ?? t.body.match(/^for\s+(\w+)\s+in\s+([\s\S]*)$/);
+    if (def) defs.push({ name: def[1], ...chainOf(def[2]) });
     if (name === 'render') {
       const partial = t.body.match(/^render\s+['"]([^'"]+)['"]/)?.[1];
       if (!KIT.includes(partial)) err(file, `line ${lineOf(text, t.index)}: render "${partial}" is not a kit snippet (${KIT.join(', ')})`);
+    }
+  }
+  // A local is escaped when every assign or for that sets it escapes, in its own chain or by reading an escaped local.
+  // It holds <br /> tags when any of them runs newline_to_br or reads a local that holds them.
+  const escaped = new Set();
+  const withBr = new Set();
+  for (let changed = true; changed;) {
+    changed = false;
+    for (const local of new Set(defs.map((d) => d.name))) {
+      const own = defs.filter((d) => d.name === local);
+      if (!escaped.has(local) && own.every((d) => escapes(d.filters) || escaped.has(d.root))) {
+        escaped.add(local);
+        changed = true;
+      }
+      if (!withBr.has(local) && own.some((d) => d.filters.includes('newline_to_br') || withBr.has(d.root))) {
+        withBr.add(local);
+        changed = true;
+      }
     }
   }
   const exprs = [
@@ -197,13 +226,17 @@ function scanLiquid(text, file, { err, warn }, { allowData }) {
   ];
   for (const e of exprs) {
     const body = stripStrings(e.body);
-    const filters = [...body.matchAll(/\|\s*([a-z_][a-z0-9_]*)/g)].map((f) => f[1]);
+    const { root, filters } = chainOf(e.body);
     for (const f of filters) {
       if (!LIQUID_FILTERS.has(f)) err(file, `line ${lineOf(text, e.index)}: filter "${f}" is not in the portable filter list`);
     }
     // The edge escapes every {{ }} output again, so the <br /> that newline_to_br adds shows as text unless the output ends in raw.
-    if (e.output && filters.includes('newline_to_br') && filters.at(-1) !== 'raw') {
+    if (e.output && (filters.includes('newline_to_br') || withBr.has(root)) && filters.at(-1) !== 'raw') {
       err(file, `line ${lineOf(text, e.index)}: newline_to_br output is escaped at render, so <br /> shows as text; end it with | raw after | escape`);
+    }
+    // raw turns that escape off, so the value has to be escaped before it: in this chain, or in the assign that built the local.
+    if (e.output && filters.at(-1) === 'raw' && !escapes(filters) && !escaped.has(root)) {
+      err(file, `line ${lineOf(text, e.index)}: | raw prints the value unescaped; put | escape earlier in the chain, or print a local assigned from an escaped value`);
     }
     const roots = [...body.replace(/\|\s*[a-z_][a-z0-9_]*(\s*:)?/g, ' ').matchAll(/(?<![\w.'"-])([a-z_][\w]*)(?=[.\[\s,)]|$)/gi)].map((m) => m[1]);
     for (const r of roots) {

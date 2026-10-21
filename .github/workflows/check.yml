@@ -19,3 +19,5 @@ jobs:
           node-version: 20
       - name: Check starter bundles
         run: node scripts/check.mjs
+      - name: Test the check
+        run: node --test scripts/check.test.mjs

@@ -1,0 +1,29 @@
+{
+  "account": null,
+  "person": null,
+  "role": { "title": "Senior Backend Engineer", "company": "Northwind Health", "location": "Remote, United States", "remote_policy": "remote", "pay_range": "$150k-$180k a year", "description": "Northwind Health runs the claims and eligibility checks that clinics call while a patient is at the front desk.", "highlights": ["Five or more years building backend services in Go or Java", "Runs PostgreSQL in production"], "job_url": "https://careers.northwind.example/jobs/senior-backend-engineer", "booking_url": null },
+  "roles": [
+    {
+      "title": "Senior Backend Engineer",
+      "company": "Northwind Health",
+      "location": "Remote, United States",
+      "remote_policy": "remote",
+      "pay_range": "$150k-$180k a year",
+      "description": "Northwind Health runs the claims and eligibility checks that clinics call while a patient is at the front desk.",
+      "highlights": ["Five or more years building backend services in Go or Java", "Runs PostgreSQL in production"],
+      "job_url": "https://careers.northwind.example/jobs/senior-backend-engineer",
+      "booking_url": null
+    }
+  ],
+  "sender": { "name": "Jordan Ellis", "title": null, "signature_html": null },
+  "brand": {
+    "name": "Northwind Health",
+    "logo_url": null,
+    "colors": { "primary": "#1f4d3a", "secondary": "#c9a227" },
+    "fonts": { "heading": "Fraunces", "body": "Inter" }
+  },
+  "data": {
+    "headline": "Senior Backend Engineer",
+    "why_you": "We are hiring a senior backend engineer to help split the claims service into smaller ones, and we think the work is a good next step for people who have done that before."
+  }
+}

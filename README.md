@@ -14,6 +14,8 @@ Starter templates for [Ken](https://getken.ai) Studio. A Studio template is buil
 | [`event-invite`](starters/event-invite) | `event` / `page` | A dinner or webinar invite with `ken/form` to save the seat |
 | [`roi-calculator`](starters/roi-calculator) | `calculator` / `page` | An Alpine calculator prefilled with the account's numbers, plus `ken/booking` |
 | [`case-study`](starters/case-study) | `landing_page` / `page` | The closest customer story per account, from a CSV of your case studies (`dataset`) |
+| [`role-pitch`](starters/role-pitch) | `recruiting` / `page` | One page per candidate: why their background fits, the role, the team, the pay range and the process, with a booking button and an optional hiring-manager video |
+| [`roles-for-you`](starters/roles-for-you) | `recruiting` / `page` | One page per candidate listing the open roles that fit them, each with a "why you" line and a book or apply button |
 
 `index.json` lists them for tools (`studio_starters_list` and the Studio gallery read it). Each entry has `slug`, `name`, `type`, `format`, `description`, `showcases` and `version`.
 
@@ -52,7 +54,7 @@ Limits: `template.liquid` 256 KB, each asset 5 MB, a bundle 20 MB. This repo kee
 }
 ```
 
-- `type`: `reverse_demo`, `landing_page`, `audit`, `report`, `event`, `calculator` or `other`. `format`: `page` or `doc`.
+- `type`: `reverse_demo`, `landing_page`, `audit`, `report`, `event`, `calculator`, `recruiting` or `other`. `format`: `page` or `doc`.
 - `slug` names the page in its link: `https://go.acme.com/brightwave/outbound-campaign-for-leo`. Lowercase words joined by hyphens, at most 60 characters.
 - `slots` describe `data.*` with a JSON Schema subset: `type`, `properties`, `required`, `items`, `minLength`, `maxLength`, `minItems`, `maxItems`, `enum`, `format: "uri"`, plus Studio's `fallback`. Nothing else.
 - Every required slot has a `fallback`, or the bundle ships `fallback.liquid`. A fallback is a static JSON value, or a Liquid string that uses only Ken variables (never `data.*`).
@@ -64,7 +66,7 @@ The recipe fills `data.*` for one account. Steps run in order, and each one writ
 
 | Kind | Fields | What it does |
 |---|---|---|
-| `bind` | `from`, `to` | Copies `account.*`, `person.*`, `account.dossier.*` or `knowledge.*` into a slot |
+| `bind` | `from`, `to` | Copies `account.*`, `person.*`, `account.dossier.*`, `role.*` or `knowledge.*` into a slot |
 | `tool` | `tool`, `args`, `to` | `ken_search.people`, `ken_search.companies`, `enrich.email`, `scrape.page`, `ken.copy`, `chart.data` |
 | `prompt` | `prompt`, `inputs`, `to`, `model` | An LLM writes one or more slots; the output is checked against the slot schema. `model` defaults to `cheap` |
 | `grade` | `rubric`, `on`, `retries`, `pass_score`, `checks` | A judge scores slots; it retries the steps that wrote them, then marks the page "Needs review". `checks` run first and fail a hit without calling the judge |
@@ -90,13 +92,17 @@ Ken supplies these at render time. Recipes never fill them.
 | Variable | Fields |
 |---|---|
 | `account` | `name`, `domain`, `industry`, `size_band`, `dossier.summary`, `dossier.why_now`, `dossier.angle` |
-| `person` | `first_name`, `last_name`, `title`. **Null on the shared link**, so always write `{{ person.first_name \| default: 'there' }}` |
+| `person` | `first_name`, `last_name`, `title`. **Null on the shared link**, so always write `{{ person.first_name \| default: 'there' }}`. On a recruiting page also `current_title`, `current_company`, `location`, `skills`, `experience_summary` and `linkedin_url`, set while the page fills too |
 | `sender` | `name`, `title`, `signature_html` |
 | `brand` | `name`, `logo_url`, `colors.primary`, `colors.secondary`, `fonts.heading`, `fonts.body` |
 | `link` | `booking_url`, `refresh_url`, `page_url` |
 | `asset_url` | Base URL for `assets/` |
+| `role` | Recruiting pages only: `title`, `company`, `location`, `remote_policy` (`onsite`, `hybrid` or `remote`), `pay_range` (like "$150k-$180k a year", empty when the role has no pay), `description`, `highlights` (the must-haves), `job_url`, `booking_url` |
+| `roles` | Recruiting pages only: the campaign's roles shaped like `role`, the primary role first, at most 4 |
 
 `brand.colors`, `brand.fonts` and `sender.title` are empty today, so every starter sets a default for them.
+
+A recruiting page (type `recruiting`, behind the workspace's `recruiting` flag) belongs to one candidate on a recruiting campaign, not to an account, so `account` is empty there. Its samples set `"account": null` and carry `role` and `roles`.
 
 ### Kit snippets
 
@@ -155,7 +161,7 @@ node scripts/check.mjs rd-doc     # one bundle
 node --test scripts/check.test.mjs   # tests for check.mjs itself
 ```
 
-`check.mjs` has no dependencies (Node 20 or newer) and runs on every push and pull request. It checks the manifest fields, the slot schema subset, fallbacks, the recipe (known kinds and tools, `to` targets, inputs filled by earlier steps, https webhooks, timeouts), `data-section` against `sections`, the HTML rules above, the portable Liquid tags and filters, sizes, asset types, dashes, and that each sample matches the slot schema and holds no contact details. Ken's validator runs the full set when you push a bundle, including a Liquid parse and the filled-data rules.
+`check.mjs` has no dependencies (Node 20 or newer) and runs on every push and pull request. It checks the manifest fields, the slot schema subset, fallbacks, the recipe (known kinds and tools, `to` targets, inputs filled by earlier steps, https webhooks, timeouts), `data-section` against `sections`, the HTML rules above, the portable Liquid tags and filters, sizes, asset types, dashes, and that each sample has `account.name` (`role.title` on a recruiting starter), matches the slot schema and holds no contact details. Ken's validator runs the full set when you push a bundle, including a Liquid parse and the filled-data rules.
 
 To see a starter rendered, run its samples through LiquidJS with stub kit partials, for example:
 

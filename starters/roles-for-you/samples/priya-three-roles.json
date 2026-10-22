@@ -1,0 +1,74 @@
+{
+  "account": null,
+  "person": {
+    "first_name": "Priya",
+    "last_name": "Raman",
+    "title": "Data Engineer",
+    "current_title": "Data Engineer",
+    "current_company": "Halcyon Retail",
+    "location": "Chicago, Illinois",
+    "skills": ["Python", "dbt", "Airflow", "Snowflake", "SQL"],
+    "experience_summary": "Six years in data engineering, the last three at Halcyon Retail. Rebuilt the nightly sales pipeline in dbt and Airflow and cut its run time from five hours to forty minutes.",
+    "linkedin_url": "https://www.linkedin.com/in/priya-raman-example"
+  },
+  "role": {
+    "title": "Senior Data Engineer",
+    "company": "Northwind Health",
+    "location": "Chicago, Illinois",
+    "remote_policy": "hybrid",
+    "pay_range": "$140k-$165k a year",
+    "description": "The data team moves claims data from clinics into the warehouse every night and keeps it right.",
+    "highlights": ["Builds batch pipelines in Airflow or Dagster", "Writes production SQL and dbt models", "Has owned a pipeline on call"],
+    "job_url": "https://careers.northwind.example/jobs/senior-data-engineer",
+    "booking_url": null
+  },
+  "roles": [
+    {
+      "title": "Senior Data Engineer",
+      "company": "Northwind Health",
+      "location": "Chicago, Illinois",
+      "remote_policy": "hybrid",
+      "pay_range": "$140k-$165k a year",
+      "description": "The data team moves claims data from clinics into the warehouse every night and keeps it right.",
+      "highlights": ["Builds batch pipelines in Airflow or Dagster", "Writes production SQL and dbt models", "Has owned a pipeline on call"],
+      "job_url": "https://careers.northwind.example/jobs/senior-data-engineer",
+      "booking_url": null
+    },
+    {
+      "title": "Analytics Engineer",
+      "company": "Northwind Health",
+      "location": "Remote, United States",
+      "remote_policy": "remote",
+      "pay_range": "$120k-$140k a year",
+      "description": "Turns raw claims data into the models finance and operations read every morning.",
+      "highlights": ["dbt in production", "Works directly with finance and operations teams"],
+      "job_url": "https://careers.northwind.example/jobs/analytics-engineer",
+      "booking_url": null
+    },
+    {
+      "title": "Staff Data Platform Engineer",
+      "company": "Northwind Health",
+      "location": "Remote, United States",
+      "remote_policy": "remote",
+      "pay_range": "$190k-$220k a year",
+      "description": "Leads the streaming platform the claims systems publish to.",
+      "highlights": ["Ten or more years in data infrastructure", "Has run Kafka or Flink at scale", "Has led a platform team"],
+      "job_url": "https://careers.northwind.example/jobs/staff-data-platform-engineer",
+      "booking_url": null
+    }
+  ],
+  "sender": { "name": "Jordan Ellis", "title": null, "signature_html": null },
+  "brand": {
+    "name": "Northwind Health",
+    "logo_url": null,
+    "colors": { "primary": "#2b3a67", "secondary": "#e0a100" },
+    "fonts": { "heading": "Fraunces", "body": "Inter" }
+  },
+  "data": {
+    "intro": "We have three data roles open at Northwind Health, and the pipeline work you did at Halcyon Retail lines up with two of them.",
+    "fits": [
+      { "title": "Senior Data Engineer", "why": "You rebuilt Halcyon's nightly sales pipeline in dbt and Airflow and cut it from five hours to forty minutes. This team owns the same kind of nightly pipelines for claims data." },
+      { "title": "Analytics Engineer", "why": "Your dbt work is the core of this role: the team turns raw claims data into the models finance and operations read every morning." }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "account": null,
+  "person": {
+    "first_name": "Devon",
+    "last_name": "Okafor",
+    "title": "Site Reliability Engineer",
+    "current_title": "Site Reliability Engineer",
+    "current_company": null,
+    "location": null,
+    "skills": ["Terraform", "AWS"],
+    "experience_summary": null,
+    "linkedin_url": null
+  },
+  "role": {
+    "title": "Platform Engineer",
+    "company": "Northwind Health",
+    "location": "Chicago, Illinois",
+    "remote_policy": "hybrid",
+    "pay_range": "",
+    "description": null,
+    "highlights": [],
+    "job_url": null,
+    "booking_url": null
+  },
+  "roles": [
+    {
+      "title": "Platform Engineer",
+      "company": "Northwind Health",
+      "location": "Chicago, Illinois",
+      "remote_policy": "hybrid",
+      "pay_range": "",
+      "description": null,
+      "highlights": [],
+      "job_url": null,
+      "booking_url": null
+    }
+  ],
+  "sender": { "name": "Jordan Ellis", "title": null, "signature_html": null },
+  "brand": { "name": null, "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "team": "Four platform engineers run the shared infrastructure every product team ships on: Terraform, AWS and the deploy pipeline."
+  }
+}

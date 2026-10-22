@@ -1,0 +1,122 @@
+{%- assign accent = brand.colors.primary | default: '#2b3a67' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Fraunces' -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+{%- assign first = person.first_name | default: 'there' -%}
+{%- assign has_fits = false -%}
+{%- if data.fits and data.fits.size > 0 -%}{%- assign has_fits = true -%}{%- endif -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{% if person.first_name %}Roles for {{ person.first_name | escape }}{% else %}Open roles{% endif %}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;600&display=swap">
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;500;600&display=swap">
+{%- endif %}
+<style>
+:root{--a:{{ accent | escape }};--ink:#1a1d29;--mute:#5f6475;--line:#e1e3ea;--bg:#f4f5f8;--card:#fff;--fh:'{{ font_head | escape }}',Georgia,serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased}
+.page{max-width:50rem;margin:0 auto;padding:1.5rem .9rem 3rem;display:grid;gap:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.6rem 1.3rem}
+h1,h2{font-family:var(--fh);font-weight:600;line-height:1.15;margin:0}
+h1{font-size:2rem;margin:.2rem 0 1rem}
+h2{font-size:1.35rem;margin-bottom:.7rem}
+p{margin:0 0 .9rem}
+.logo{height:26px;width:auto;display:block;margin-bottom:1rem}
+.brand{font-weight:600;letter-spacing:.02em;margin:0 0 .8rem}
+.sig{font-family:var(--fh);font-size:1.15rem;margin:1rem 0 0}
+.sig small{display:block;font-family:var(--fb);font-size:.85rem;color:var(--mute)}
+.roles{display:grid;gap:1rem}
+.facts{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
+.facts li{border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;font-size:.88rem}
+.facts .pay{border-color:var(--a);color:var(--a);font-weight:600}
+.why{background:color-mix(in srgb,var(--a) 7%,#fff);border-radius:10px;padding:.8rem 1rem}
+.why b{color:var(--a)}
+.needs{margin:0 0 1.1rem;padding-left:1.1rem;color:var(--mute)}
+.needs li{margin:.15rem 0}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem}
+.empty p{margin:0;color:var(--mute)}
+.book .later{color:var(--mute);font-size:.92rem;margin:1.1rem 0 0}
+@media (min-width:760px){.page{padding:3rem 1.5rem 4rem}.card{padding:2rem 2.2rem}h1{font-size:2.6rem}}
+</style>
+</head>
+<body>
+<main class="page">
+
+<section data-section="intro" class="card intro">
+{%- if brand.logo_url %}
+<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
+{%- elsif brand.name %}
+<p class="brand">{{ brand.name | escape }}</p>
+{%- endif %}
+<h1>{% if person.first_name %}{{ person.first_name | escape }}, a few roles that fit you{% else %}A few roles that might fit you{% endif %}</h1>
+<p>Hi {{ first | escape }},</p>
+<p>{{ data.intro | escape | newline_to_br | strip_newlines | raw }}</p>
+<p class="sig">{{ sender.name | default: 'The hiring team' | escape }}{% if sender.title %}<small>{{ sender.title | escape }}</small>{% endif %}</p>
+</section>
+
+<section data-section="roles" class="roles">
+{%- assign shown = 0 -%}
+{%- for r in roles limit: 4 %}
+{%- assign n = forloop.index -%}
+{%- assign rt = r.title | downcase | strip -%}
+{%- assign why = '' -%}
+{%- for f in data.fits %}
+{%- assign ft = f.title | downcase | strip -%}
+{%- if ft == rt %}{% assign why = f.why %}{% endif -%}
+{%- endfor %}
+{%- if has_fits and why == '' %}{% continue %}{% endif %}
+{%- assign shown = shown | plus: 1 -%}
+{%- assign book_id = 'book-' | append: n -%}
+{%- assign job_id = 'job-' | append: n -%}
+<article class="card role">
+<h2>{{ r.title | escape }}</h2>
+<ul class="facts">
+{%- if r.company %}<li>{{ r.company | escape }}</li>{% endif %}
+{%- if r.location %}<li>{{ r.location | escape }}</li>{% endif %}
+{%- case r.remote_policy %}{% when 'remote' %}<li>Remote</li>{% when 'hybrid' %}<li>Hybrid</li>{% when 'onsite' %}<li>On site</li>{% endcase %}
+{%- if r.pay_range and r.pay_range != '' %}<li class="pay">{{ r.pay_range | escape }}</li>{% endif %}
+</ul>
+{%- if why != '' %}
+<p class="why"><b>Why you:</b> {{ why | escape }}</p>
+{%- endif %}
+{%- if r.highlights and r.highlights.size > 0 %}
+<ul class="needs">
+{%- for h in r.highlights limit: 3 %}
+<li>{{ h | escape }}</li>
+{%- endfor %}
+</ul>
+{%- endif %}
+<div class="actions">
+{% render 'ken/cta', label: 'Book a call about this role', kind: 'booking', id: book_id %}
+{%- if r.job_url %}
+{% render 'ken/cta', label: 'Read the job', href: r.job_url, variant: 'link', id: job_id %}
+{%- endif %}
+</div>
+</article>
+{%- endfor %}
+{%- if shown == 0 %}
+<article class="card role empty">
+<p>The roles we have in mind will show here soon. Reply to my message and I will send them over.</p>
+</article>
+{%- endif %}
+</section>
+
+<section data-section="book" class="card book">
+<h2>Want to talk them through?</h2>
+<p>One 15-minute call covers all of them. Tell us what you want next and we will say which one fits best.</p>
+{%- if link.booking_url %}
+{% render 'ken/cta', label: 'Book a 15-minute intro', kind: 'booking', id: 'book' %}
+{%- else %}
+<p>Reply to my message with a few times that suit you and I will send an invite.</p>
+{%- endif %}
+<p class="later">None of these right? Reply and tell me what you are looking for.</p>
+</section>
+
+</main>
+</body>
+</html>

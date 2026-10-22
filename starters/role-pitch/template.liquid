@@ -1,0 +1,146 @@
+{%- assign accent = brand.colors.primary | default: '#1f4d3a' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Fraunces' -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+{%- assign first = person.first_name | default: 'there' -%}
+{%- assign remote = '' -%}
+{%- case role.remote_policy -%}
+{%- when 'remote' -%}{%- assign remote = 'Remote' -%}
+{%- when 'hybrid' -%}{%- assign remote = 'Hybrid' -%}
+{%- when 'onsite' -%}{%- assign remote = 'On site' -%}
+{%- endcase -%}
+{%- assign has_pay = false -%}
+{%- if role.pay_range and role.pay_range != '' -%}{%- assign has_pay = true -%}{%- endif -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ data.headline | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;600&display=swap">
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;500;600&display=swap">
+{%- endif %}
+<style>
+:root{--a:{{ accent | escape }};--ink:#17201b;--mute:#5d6862;--line:#dfe4e0;--bg:#f5f6f3;--card:#fff;--fh:'{{ font_head | escape }}',Georgia,serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased}
+.page{max-width:46rem;margin:0 auto;padding:1.5rem .9rem 3rem;display:grid;gap:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.6rem 1.3rem}
+h1,h2,h3{font-family:var(--fh);font-weight:600;line-height:1.15;margin:0}
+h1{font-size:2.1rem;margin:.4rem 0 1rem}
+h2{font-size:1.4rem;margin-bottom:.9rem}
+h3{font-size:1.05rem;margin:1.3rem 0 .5rem}
+p{margin:0 0 .9rem}
+.logo{height:26px;width:auto;display:block;margin-bottom:1rem}
+.brand{font-weight:600;letter-spacing:.02em;margin:0 0 .8rem}
+.for{color:var(--mute);font-size:.95rem;margin:0}
+.facts{list-style:none;margin:0 0 1.3rem;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
+.facts li{border:1px solid var(--line);border-radius:999px;padding:.25rem .75rem;font-size:.9rem}
+.facts .pay{border-color:var(--a);color:var(--a);font-weight:600}
+.sig{font-family:var(--fh);font-size:1.15rem;margin:1.1rem 0 0}
+.sig small{display:block;font-family:var(--fb);font-size:.85rem;color:var(--mute)}
+.needs{margin:0;padding-left:1.1rem}
+.needs li{margin:.2rem 0}
+.video{margin:1.4rem 0 0}
+.video iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#000}
+.video figcaption{color:var(--mute);font-size:.9rem;margin-top:.45rem}
+.job{margin:1.2rem 0 0}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.7rem;padding:.7rem 0;border-top:1px solid var(--line)}
+.steps li:first-child{border-top:0;padding-top:0}
+.steps li::before{content:counter(s);font-family:var(--fh);font-size:1.2rem;color:var(--a)}
+.steps b{display:block;font-weight:600}
+.steps p{margin:.1rem 0 0;color:var(--mute);font-size:.95rem}
+.book .later{color:var(--mute);font-size:.92rem;margin:1.1rem 0 0}
+@media (min-width:760px){.page{padding:3rem 1.5rem 4rem}.card{padding:2.2rem 2.4rem}h1{font-size:2.8rem}}
+</style>
+</head>
+<body>
+<main class="page">
+
+<section data-section="intro" class="card intro">
+{%- if brand.logo_url %}
+<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
+{%- elsif brand.name %}
+<p class="brand">{{ brand.name | escape }}</p>
+{%- endif %}
+<p class="for">{% if person.first_name %}For {{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}{% else %}An open role{% endif %}</p>
+<h1>{{ data.headline | escape }}</h1>
+<ul class="facts">
+{%- if role.company %}<li>{{ role.company | escape }}</li>{% endif %}
+{%- if role.location %}<li>{{ role.location | escape }}</li>{% endif %}
+{%- if remote != '' %}<li>{{ remote }}</li>{% endif %}
+{%- if has_pay %}<li class="pay">{{ role.pay_range | escape }}</li>{% endif %}
+</ul>
+{% render 'ken/cta', label: 'Book a 15-minute intro', kind: 'booking', id: 'book-intro' %}
+</section>
+
+<section data-section="why" class="card why">
+<h2>Why we thought of you</h2>
+<p>Hi {{ first | escape }},</p>
+<p>{{ data.why_you | escape | newline_to_br | strip_newlines | raw }}</p>
+<p class="sig">{{ sender.name | default: 'The hiring team' | escape }}{% if sender.title %}<small>{{ sender.title | escape }}</small>{% endif %}</p>
+</section>
+
+<section data-section="role" class="card role">
+<h2>The role</h2>
+{%- if data.team and data.team != '' %}
+<p>{{ data.team | escape | newline_to_br | strip_newlines | raw }}</p>
+{%- elsif role.description %}
+<p>{{ role.description | truncate: 700 | escape | newline_to_br | strip_newlines | raw }}</p>
+{%- endif %}
+{%- if role.highlights and role.highlights.size > 0 %}
+<h3>What the team needs</h3>
+<ul class="needs">
+{%- for h in role.highlights limit: 6 %}
+<li>{{ h | escape }}</li>
+{%- endfor %}
+</ul>
+{%- endif %}
+{%- if has_pay %}
+<h3>Pay</h3>
+<p>{{ role.pay_range | escape }}</p>
+{%- endif %}
+{%- if data.video and data.video.id %}
+<figure class="video">
+{%- case data.video.provider %}
+{%- when 'loom' %}
+<iframe src="https://www.loom.com/embed/{{ data.video.id | url_encode }}" title="A note from the hiring manager" loading="lazy" allowfullscreen></iframe>
+{%- when 'youtube' %}
+<iframe src="https://www.youtube-nocookie.com/embed/{{ data.video.id | url_encode }}" title="A note from the hiring manager" loading="lazy" allowfullscreen></iframe>
+{%- when 'vimeo' %}
+<iframe src="https://player.vimeo.com/video/{{ data.video.id | url_encode }}" title="A note from the hiring manager" loading="lazy" allowfullscreen></iframe>
+{%- endcase %}
+<figcaption>A short note from the hiring manager</figcaption>
+</figure>
+{%- endif %}
+{%- if role.job_url %}
+<p class="job">{% render 'ken/cta', label: 'Read the full job description', href: role.job_url, variant: 'link', id: 'job' %}</p>
+{%- endif %}
+</section>
+
+<section data-section="process" class="card process">
+<h2>How it works</h2>
+<ol class="steps">
+{%- for p in data.process %}
+<li><div><b>{{ p.step | escape }}</b>{% if p.note and p.note != '' %}<p>{{ p.note | escape }}</p>{% endif %}</div></li>
+{%- endfor %}
+</ol>
+</section>
+
+<section data-section="book" class="card book">
+<h2>Want to hear more?</h2>
+<p>Pick a time for a 15-minute call. No CV and no prep: we talk about what you want next and whether this role is it.</p>
+{%- if link.booking_url %}
+{% render 'ken/cta', label: 'Book a 15-minute intro', kind: 'booking', id: 'book' %}
+{%- else %}
+<p>Reply to my message with a few times that suit you and I will send an invite.</p>
+{%- endif %}
+<p class="later">Not looking right now? Reply and say so, and I will keep you in mind for the next one.</p>
+</section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "kenStudio": "1",
+  "name": "Roles for you",
+  "type": "recruiting",
+  "format": "page",
+  "slug": "roles",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "intro": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 400,
+        "fallback": "We are hiring for a few roles right now, and more than one of them could fit your background. Here they are, with what each team needs."
+      },
+      "fits": {
+        "type": "array",
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "minLength": 2, "maxLength": 200 },
+            "why": { "type": "string", "minLength": 20, "maxLength": 320 }
+          },
+          "required": ["title", "why"]
+        }
+      }
+    },
+    "required": ["intro"]
+  },
+  "recipe": [
+    {
+      "id": "fits",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["roles", "person.current_title", "person.current_company", "person.skills", "person.experience_summary"],
+      "to": ["data.intro", "data.fits"],
+      "prompt": "Write the personal parts of a page that shows one candidate the open roles that fit them.\n\nInputs: roles is the list of open roles, each with title, company, location, remote_policy, pay_range, description and highlights (its must-haves). person.current_title, person.current_company, person.skills and person.experience_summary describe the candidate's work. Use facts from these inputs only. Never invent employers, projects, numbers or people. Say nothing about age, gender, looks, family, health, nationality, religion or school dates: only the work counts.\n\nReturn JSON with two keys:\n- intro: one or two sentences, at most 380 characters, on why we are writing: these roles are open and we think their work fits at least one of them. Write to \"you\". Never use their name; the page adds the greeting. No flattery and no question.\n- fits: the roles from roles that fit this person, best fit first, at most 4. Each item is an object with title, copied exactly from that role's title, and why: one or two sentences, at most 300 characters, tying one specific fact from their background to one must-have of that role. Leave a role out when nothing in their background fits it. Return an empty list when none fit.\n\nRules: no em dashes or en dashes. No email addresses or phone numbers. No pay figures; the page shows each role's pay range. Plain words a person would say out loud; no recruiting cliches such as \"exciting opportunity\", \"fast-paced\" or \"dream job\"."
+    }
+  ],
+  "sections": [
+    { "id": "intro", "label": "Intro" },
+    { "id": "roles", "label": "The roles" },
+    { "id": "book", "label": "Book a call" }
+  ],
+  "cta": { "primary": "booking", "label": "Book a 15-minute intro" }
+}

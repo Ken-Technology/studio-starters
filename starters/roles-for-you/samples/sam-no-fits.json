@@ -1,0 +1,52 @@
+{
+  "account": null,
+  "person": {
+    "first_name": "Sam",
+    "last_name": "Ortiz",
+    "title": "Analyst",
+    "current_title": "Analyst",
+    "current_company": null,
+    "location": null,
+    "skills": ["SQL"],
+    "experience_summary": null,
+    "linkedin_url": null
+  },
+  "role": {
+    "title": "Senior Data Engineer",
+    "company": "Northwind Health",
+    "location": "Chicago, Illinois",
+    "remote_policy": "hybrid",
+    "pay_range": "$140k-$165k a year",
+    "description": null,
+    "highlights": ["Builds batch pipelines in Airflow or Dagster"],
+    "job_url": null,
+    "booking_url": null
+  },
+  "roles": [
+    {
+      "title": "Senior Data Engineer",
+      "company": "Northwind Health",
+      "location": "Chicago, Illinois",
+      "remote_policy": "hybrid",
+      "pay_range": "$140k-$165k a year",
+      "description": null,
+      "highlights": ["Builds batch pipelines in Airflow or Dagster"],
+      "job_url": null,
+      "booking_url": null
+    },
+    {
+      "title": "Analytics Engineer",
+      "company": "Northwind Health",
+      "location": "Remote, United States",
+      "remote_policy": "remote",
+      "pay_range": "",
+      "description": null,
+      "highlights": [],
+      "job_url": "https://careers.northwind.example/jobs/analytics-engineer",
+      "booking_url": null
+    }
+  ],
+  "sender": { "name": "Jordan Ellis", "title": null, "signature_html": null },
+  "brand": { "name": null, "logo_url": null, "colors": null, "fonts": null },
+  "data": {}
+}

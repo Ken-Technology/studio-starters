@@ -1,0 +1,57 @@
+{
+  "account": null,
+  "person": {
+    "first_name": "Maya",
+    "last_name": "Chen",
+    "title": "Senior Software Engineer",
+    "current_title": "Senior Software Engineer",
+    "current_company": "Lattice Freight",
+    "location": "Austin, Texas",
+    "skills": ["Go", "PostgreSQL", "Kafka", "Kubernetes"],
+    "experience_summary": "Eight years building backend services, the last four at Lattice Freight on its shipment tracking platform. Led the move from one large service to event-driven Go services on Kafka.",
+    "linkedin_url": "https://www.linkedin.com/in/maya-chen-example"
+  },
+  "role": {
+    "title": "Senior Backend Engineer",
+    "company": "Northwind Health",
+    "location": "Remote, United States",
+    "remote_policy": "remote",
+    "pay_range": "$150k-$180k a year",
+    "description": "Northwind Health runs the claims and eligibility checks that clinics call while a patient is at the front desk. The backend team owns those services end to end, from the API to the database and the on-call rotation.",
+    "highlights": ["Five or more years building backend services in Go or Java", "Runs PostgreSQL in production", "Has split a large service into smaller ones"],
+    "job_url": "https://careers.northwind.example/jobs/senior-backend-engineer",
+    "booking_url": null
+  },
+  "roles": [
+    {
+      "title": "Senior Backend Engineer",
+      "company": "Northwind Health",
+      "location": "Remote, United States",
+      "remote_policy": "remote",
+      "pay_range": "$150k-$180k a year",
+      "description": "Northwind Health runs the claims and eligibility checks that clinics call while a patient is at the front desk. The backend team owns those services end to end, from the API to the database and the on-call rotation.",
+      "highlights": ["Five or more years building backend services in Go or Java", "Runs PostgreSQL in production", "Has split a large service into smaller ones"],
+      "job_url": "https://careers.northwind.example/jobs/senior-backend-engineer",
+      "booking_url": null
+    }
+  ],
+  "sender": { "name": "Jordan Ellis", "title": null, "signature_html": null },
+  "brand": {
+    "name": "Northwind Health",
+    "logo_url": null,
+    "colors": { "primary": "#1f4d3a", "secondary": "#c9a227" },
+    "fonts": { "heading": "Fraunces", "body": "Inter" }
+  },
+  "data": {
+    "headline": "Senior Backend Engineer",
+    "why_you": "You led the move at Lattice Freight from one large service to event-driven Go services on Kafka. That is the work ahead here: claims still run through one large service, and the team wants someone who has split one before and kept it running in production.",
+    "team": "Six backend engineers own the claims and eligibility services end to end. They ship small changes every day, run what they build and share on-call evenly.",
+    "process": [
+      { "step": "A 15-minute intro", "note": "With Jordan, about what you want next. No prep needed." },
+      { "step": "Meet the hiring manager", "note": "45 minutes with the head of backend on the claims work." },
+      { "step": "A working session", "note": "Two hours on a real design problem from the claims service, with two engineers." },
+      { "step": "Offer", "note": "We decide within a week of your last conversation." }
+    ],
+    "video": { "provider": "loom", "id": "4f1c2e9a7b3d4e5f8a6b9c0d1e2f3a4b" }
+  }
+}

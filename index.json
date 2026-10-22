@@ -72,6 +72,24 @@
       "description": "Picks the customer story closest to each account from a CSV of your case studies and retells it for them.",
       "showcases": ["dataset", "prompt", "ken/cta"],
       "version": "1.0.2"
+    },
+    {
+      "slug": "role-pitch",
+      "name": "Role pitch for one candidate",
+      "type": "recruiting",
+      "format": "page",
+      "description": "One page per candidate on a recruiting campaign: why their background fits the role, the role and the team, the pay range and the hiring process, with a booking button and an optional video from the hiring manager.",
+      "showcases": ["bind", "prompt", "person", "role", "ken/cta", "video"],
+      "version": "1.0.0"
+    },
+    {
+      "slug": "roles-for-you",
+      "name": "Roles for you",
+      "type": "recruiting",
+      "format": "page",
+      "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
+      "showcases": ["prompt", "person", "roles", "ken/cta"],
+      "version": "1.0.0"
     }
   ]
 }

@@ -68,3 +68,39 @@ test('raw on a local built from unescaped data fails', () => {
   assert.equal(status, 1, out);
   assert.match(out, /\| raw prints the value unescaped/);
 });
+
+test('role and roles are Ken variables', () => {
+  const { status, out } = check();
+  assert.equal(status, 0, out);
+  assert.doesNotMatch(out, /variable "roles?" is not a Ken variable/);
+});
+
+test('a recruiting sample without role.title fails', () => {
+  const { status, out } = check([[
+    'role-pitch/samples/northwind-shared.json',
+    '"role": { "title": "Senior Backend Engineer"',
+    '"role": { "name": "Senior Backend Engineer"',
+  ]]);
+  assert.equal(status, 1, out);
+  assert.match(out, /samples\/northwind-shared\.json: role\.title is required in a recruiting sample/);
+});
+
+test('a sample of any other type still needs account.name', () => {
+  const { status, out } = check([['event-invite/samples/copperline-shared.json', '"name": "Copperline Supply"', '"label": "Copperline Supply"']]);
+  assert.equal(status, 1, out);
+  assert.match(out, /samples\/copperline-shared\.json: account\.name is required/);
+});
+
+test('a bind from role. passes and a bind from roles fails', () => {
+  const ok = check([['role-pitch/studio.json', '"from": "role.title"', '"from": "role.company"']]);
+  assert.equal(ok.status, 0, ok.out);
+  const bad = check([['role-pitch/studio.json', '"from": "role.title"', '"from": "roles"']]);
+  assert.equal(bad.status, 1, bad.out);
+  assert.match(bad.out, /bind from must start with account\., person\., role\., knowledge\./);
+});
+
+test('an unknown type still fails', () => {
+  const { status, out } = check([['role-pitch/studio.json', '"type": "recruiting"', '"type": "hiring"']]);
+  assert.equal(status, 1, out);
+  assert.match(out, /type must be one of reverse_demo, landing_page, audit, report, event, calculator, recruiting, other/);
+});

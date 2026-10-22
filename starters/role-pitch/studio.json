@@ -1,0 +1,67 @@
+{
+  "kenStudio": "1",
+  "name": "Role pitch for one candidate",
+  "type": "recruiting",
+  "format": "page",
+  "slug": "role",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "headline": { "type": "string", "minLength": 3, "maxLength": 120, "fallback": "{{ role.title | default: 'A role we think fits you' }}" },
+      "why_you": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 600,
+        "fallback": "Your background lines up with what this team needs, and the work is the kind of step people with your experience often look for next. I would like to tell you more about it."
+      },
+      "team": { "type": "string", "maxLength": 500 },
+      "process": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "step": { "type": "string", "minLength": 2, "maxLength": 60 },
+            "note": { "type": "string", "maxLength": 200 }
+          },
+          "required": ["step"]
+        },
+        "fallback": [
+          { "step": "A 15-minute intro", "note": "We talk about what you want next and whether this role is it. No prep needed." },
+          { "step": "Meet the hiring manager", "note": "About 45 minutes on the work, the team and how they run it." },
+          { "step": "Meet the team", "note": "Two or three conversations with the people you would work with." },
+          { "step": "Offer", "note": "We aim to decide within a week of your last conversation." }
+        ]
+      },
+      "video": {
+        "type": "object",
+        "properties": {
+          "provider": { "type": "string", "enum": ["loom", "youtube", "vimeo"] },
+          "id": { "type": "string", "minLength": 3, "maxLength": 64 }
+        },
+        "required": ["provider", "id"]
+      }
+    },
+    "required": ["headline", "why_you"]
+  },
+  "recipe": [
+    { "id": "headline", "kind": "bind", "from": "role.title", "to": "data.headline" },
+    {
+      "id": "pitch",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["person.current_title", "person.current_company", "person.skills", "person.experience_summary", "role.title", "role.company", "role.description", "role.highlights"],
+      "to": ["data.why_you", "data.team"],
+      "prompt": "Write two short parts of a page that invites one candidate to talk about a role: {{ role.title | default: 'an open role' }} at {{ role.company | default: 'our company' }}.\n\nInputs: person.current_title, person.current_company, person.skills and person.experience_summary describe the candidate's work. role.title, role.company and role.description describe the role, and role.highlights lists its must-haves. Use facts from these inputs only. Never invent employers, projects, numbers, teams or people. Say nothing about age, gender, looks, family, health, nationality, religion or school dates: only the work counts.\n\nReturn JSON with two keys:\n- why_you: two or three sentences, at most 560 characters, on why this person's work fits this role. Tie one or two specific facts from their background to one or two of the must-haves. Write to \"you\". Never use their name; the page adds the greeting. No flattery (\"impressive\", \"rockstar\", \"perfect fit\"), no \"I noticed\", \"I saw\" or \"I came across\", no question.\n- team: two or three sentences, at most 480 characters, on the team and the work, taken from role.description. Return an empty string when role.description says nothing about the team or the work.\n\nRules: no em dashes or en dashes. No email addresses or phone numbers. No pay figures; the page shows the pay range itself. Plain words a person would say out loud; no recruiting cliches such as \"exciting opportunity\", \"fast-paced\" or \"dream job\"."
+    }
+  ],
+  "sections": [
+    { "id": "intro", "label": "Intro" },
+    { "id": "why", "label": "Why you" },
+    { "id": "role", "label": "The role" },
+    { "id": "process", "label": "How it works" },
+    { "id": "book", "label": "Book a call" }
+  ],
+  "cta": { "primary": "booking", "label": "Book a 15-minute intro" }
+}

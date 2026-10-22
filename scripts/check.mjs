@@ -12,12 +12,12 @@ import path from 'node:path';
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const STARTERS = path.join(ROOT, 'starters');
 
-const TYPES = ['reverse_demo', 'landing_page', 'audit', 'report', 'event', 'calculator', 'other'];
+const TYPES = ['reverse_demo', 'landing_page', 'audit', 'report', 'event', 'calculator', 'recruiting', 'other'];
 const FORMATS = ['page', 'doc'];
 const SLOT_TYPES = ['string', 'number', 'integer', 'boolean', 'array', 'object'];
 const SLOT_KEYWORDS = new Set(['type', 'properties', 'required', 'items', 'minLength', 'maxLength', 'minItems', 'maxItems', 'enum', 'format', 'fallback']);
-const KEN_ROOTS = ['account', 'person', 'sender', 'brand', 'link', 'asset_url', 'data'];
-const BIND_FROM = ['account.', 'person.', 'knowledge.'];
+const KEN_ROOTS = ['account', 'person', 'sender', 'brand', 'link', 'asset_url', 'data', 'role', 'roles'];
+const BIND_FROM = ['account.', 'person.', 'role.', 'knowledge.'];
 const TOOLS = ['ken_search.people', 'ken_search.companies', 'enrich.email', 'scrape.page', 'ken.copy', 'chart.data'];
 // `requires` (ken-backend recipe-requires) is on every kind but bind: the step does not run while a listed slot is empty.
 const STEP_FIELDS = {
@@ -56,7 +56,7 @@ const LIQUID_FILTERS = new Set(['default', 'escape', 'escape_once', 'upcase', 'd
   'prepend', 'url_encode', 'raw']);
 const ASSET_EXT = new Set(['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.woff', '.woff2', '.csv', '.pdf']);
 const BUNDLE_FILES = new Set(['studio.json', 'template.liquid', 'fallback.liquid', 'README.md', 'assets', 'samples']);
-const SAMPLE_KEYS = new Set(['account', 'person', 'sender', 'brand', 'data']);
+const SAMPLE_KEYS = new Set(['account', 'person', 'sender', 'brand', 'data', 'role', 'roles']);
 const LIMITS = { template: 256 * 1024, asset: 200 * 1024, bundle: 1024 * 1024 };
 const EMAIL = /[\w.+-]+@[\w-]+\.[\w.-]+/;
 const PHONE = /\+?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\b/;
@@ -508,8 +508,12 @@ function checkBundle(slug, indexEntry) {
     const label = `samples/${f}`;
     const s = readJson(path.join(samplesDir, f), err, label);
     if (!s) continue;
-    for (const k of Object.keys(s)) if (!SAMPLE_KEYS.has(k)) err(label, `unknown key "${k}"; a sample is {account, person, sender, brand, data}`);
-    if (!s.account?.name) err(label, 'account.name is required');
+    for (const k of Object.keys(s)) if (!SAMPLE_KEYS.has(k)) err(label, `unknown key "${k}"; a sample is {account, person, sender, brand, data}, plus role and roles on a recruiting starter`);
+    // A recruiting page belongs to one candidate and has no account (ken-backend DEV-3274); it reads role.* instead.
+    if (m.type === 'recruiting') {
+      if (!s.role?.title) err(label, 'role.title is required in a recruiting sample');
+      if (s.roles !== undefined && !Array.isArray(s.roles)) err(label, 'roles must be a list of roles');
+    } else if (!s.account?.name) err(label, 'account.name is required');
     if (!s.data || typeof s.data !== 'object') err(label, 'data is required');
     for (const k of Object.keys(s.data ?? {})) if (!props[k]) err(label, `data.${k} is not a declared slot`);
     for (const p of validateValue({ type: 'object', properties: props }, s.data ?? {}, 'data')) err(label, p);

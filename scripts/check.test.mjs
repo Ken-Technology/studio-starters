@@ -43,6 +43,11 @@ test('an inline script fails', () => {
   assert.match(out, /inline <script> is not allowed/);
 });
 
+test('a JSON-LD data block passes', () => {
+  const { status, out } = check([['event-invite/template.liquid', '</body>', '<script type="application/ld+json">{"@type": "Event"}</script></body>']]);
+  assert.equal(status, 0, out);
+});
+
 test('newline_to_br assigned to a local and printed without raw fails', () => {
   const { status, out } = check([['rd-your-product/template.liquid', '<p>{{ text | raw }}</p>', '<p>{{ text }}</p>']]);
   assert.equal(status, 1, out);

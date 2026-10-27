@@ -263,8 +263,9 @@ function scanHtml(text, file, { err }) {
   const plain = text.replace(/\{%-?\s*comment\s*-?%\}[\s\S]*?\{%-?\s*endcomment\s*-?%\}/g, '');
   for (const m of plain.matchAll(/<script\b[^>]*>/gi)) {
     const src = attr(m[0], 'src');
-    // Only Ken's own scripts run inline (csp-inline-script, ken-backend DEV-3699).
-    if (src === undefined) {
+    // Only Ken's own scripts run inline (csp-inline-script, ken-backend DEV-3699). A JSON data block never runs.
+    const dataBlock = ['application/json', 'application/ld+json'].includes((attr(m[0], 'type') ?? '').trim().toLowerCase());
+    if (src === undefined && !dataBlock) {
       err(file, `line ${lineOf(plain, m.index)}: inline <script> is not allowed; Studio pages run only Ken's scripts. Use the kit, CSS or Alpine directives`);
     }
     if (src !== undefined && !scriptAllowed(src)) {

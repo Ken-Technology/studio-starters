@@ -12,7 +12,6 @@ Starter templates for [Ken](https://getken.ai) Studio. A Studio template is buil
 | [`benchmark-report`](starters/benchmark-report) | `report` / `doc` | The account next to its peers, from a CSV you upload (`dataset`) |
 | [`audit-rewrites`](starters/audit-rewrites) | `audit` / `page` | Scrape their site, list what gets in a buyer's way, rewrite three lines, grade the rewrites |
 | [`event-invite`](starters/event-invite) | `event` / `page` | A dinner or webinar invite with `ken/form` to save the seat |
-| [`roi-calculator`](starters/roi-calculator) | `calculator` / `page` | An Alpine calculator prefilled with the account's numbers, plus `ken/booking` |
 | [`case-study`](starters/case-study) | `landing_page` / `page` | The closest customer story per account, from a CSV of your case studies (`dataset`) |
 | [`role-pitch`](starters/role-pitch) | `recruiting` / `page` | One page per candidate: why their background fits, the role, the team, the pay range and the process, with a booking button and an optional hiring-manager video |
 | [`roles-for-you`](starters/roles-for-you) | `recruiting` / `page` | One page per candidate listing the open roles that fit them, each with a "why you" line and a book or apply button |
@@ -117,7 +116,7 @@ A recruiting page (type `recruiting`, behind the workspace's `recruiting` flag) 
 
 Pages are served with a strict Content Security Policy, and validation rejects anything it would block:
 
-- Scripts are inline, or come from `https://cdn.jsdelivr.net/npm/chart.js@4`, `https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/` (for example `https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js`) and `https://cdn.jsdelivr.net/npm/motion@11`. Nothing else, so no unpkg. The CSP has no `'unsafe-eval'`, so standard Alpine directives cannot run; use the Alpine CSP build and register components with `Alpine.data` (see `roi-calculator`).
+- No inline `<script>`: only Ken's own scripts run inline on a page (each with the response's nonce), so a template's inline script never runs and validation rejects it (`csp-inline-script`). External scripts come only from `https://cdn.jsdelivr.net/npm/chart.js@4`, `https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/` (for example `https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js`) and `https://cdn.jsdelivr.net/npm/motion@11`. Nothing else, so no unpkg. The CSP has no `'unsafe-eval'`, so standard Alpine directives cannot run; use the Alpine CSP build with its state in `x-data` object literals. Use `ken/chart` for charts and `ken/form` for forms.
 - No `on*=` attributes and no `javascript:` URLs.
 - Images come from `{{ asset_url }}/...`, `brand.logo_url` or `data:` URIs. CSS is an inline `<style>` block in `template.liquid`, never a file under `assets/`. The only external stylesheet is Google Fonts (`https://fonts.googleapis.com`), with the fonts from `https://fonts.gstatic.com`.
 - Iframes only from the booking list (Calendly, Cal.com, HubSpot Meetings, Chili Piper, SavvyCal) and the video list (Loom, YouTube, Vimeo, Wistia). Use `ken/booking` for booking.

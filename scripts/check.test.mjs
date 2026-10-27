@@ -37,6 +37,12 @@ test('every starter passes as committed', () => {
   assert.equal(status, 0, out);
 });
 
+test('an inline script fails', () => {
+  const { status, out } = check([['event-invite/template.liquid', '</body>', '<script>document.title = "x";</script></body>']]);
+  assert.equal(status, 1, out);
+  assert.match(out, /inline <script> is not allowed/);
+});
+
 test('newline_to_br assigned to a local and printed without raw fails', () => {
   const { status, out } = check([['rd-your-product/template.liquid', '<p>{{ text | raw }}</p>', '<p>{{ text }}</p>']]);
   assert.equal(status, 1, out);

@@ -56,15 +56,6 @@
       "version": "1.0.2"
     },
     {
-      "slug": "roi-calculator",
-      "name": "ROI calculator",
-      "type": "calculator",
-      "format": "page",
-      "description": "An interactive calculator prefilled with the account's own numbers, with a booking calendar under the result.",
-      "showcases": ["alpine", "ken/booking", "prompt"],
-      "version": "1.0.0"
-    },
-    {
       "slug": "case-study",
       "name": "Built for you case study",
       "type": "landing_page",

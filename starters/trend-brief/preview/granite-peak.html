@@ -5,187 +5,203 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Three things moving in construction this quarter</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600;700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;600;700&amp;display=swap">
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.tb{--p:#0f5f52;--s:#c08a2e;--ink:#15191c;--mute:#5d6871;--rule:#e1e4e7;--tint:color-mix(in srgb,var(--p) 6%,#fff);--track:color-mix(in srgb,var(--p) 14%,#fff);--fh:'Newsreader',Georgia,'Times New Roman',serif;--fb:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;font-family:var(--fb);font-size:16px;line-height:1.6;color:var(--ink);-webkit-font-smoothing:antialiased;padding-bottom:4rem}
+body{margin:0;background:#edccbe;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tb{--p:#351a2b;--s:#edccbe;--g:color-mix(in oklab,var(--s) 100%,#fff);--ink:#2a1422;--ink:oklch(from var(--p) min(l, 0.28) min(c, 0.06) h);--soft:color-mix(in oklab,var(--ink) 80%,var(--g));--on:#efd9cf;--on:oklch(from var(--p) clamp(0.2, (0.6 - l) * 100, 0.9) 0.035 h);--track:color-mix(in oklab,var(--p) 16%,var(--g));--fh:'Brygada 1918',Georgia,'Times New Roman',serif;--fb:'Brygada 1918',Georgia,'Times New Roman',serif;--m:clamp(1.25rem,2.6vw,2.5rem);background:var(--g);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.55;-webkit-font-smoothing:antialiased;font-variant-numeric:lining-nums tabular-nums}
 .tb p{margin:0}
-.tb h1,.tb h2{font-family:var(--fh);font-weight:500;margin:0}
-.tb a{color:var(--p)}
-.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
-.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.tb h1,.tb h2,.tb h3{font-family:var(--fh);margin:0;text-wrap:balance}
+.tb a{color:inherit;text-decoration-thickness:.07em;text-underline-offset:.18em}
+.tb a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.wrap{max-width:84rem;margin:0 auto;padding:0 var(--m)}
+.field{background:var(--p);color:var(--on);--track:color-mix(in oklab,var(--on) 22%,var(--p))}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:1.1rem var(--m) 1rem;font-size:.875rem;line-height:1.4}
 .logo{height:26px;width:auto;display:block}
-.mark{font-weight:600;font-size:1rem;letter-spacing:-.01em}
-.kind{font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-align:right;line-height:1.35}
-.kind span{display:block;font-weight:400;letter-spacing:0;text-transform:none;color:var(--mute);font-size:.82rem}
-.cover{padding:2rem 0 2.25rem;display:grid;gap:2.25rem}
-.kicker{display:flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:1.1rem}
-.kicker::before{content:"";display:block;width:1.75rem;height:3px;background:var(--s)}
-.tb h1{font-size:clamp(2.35rem,9vw,3.9rem);line-height:1;letter-spacing:-.025em;max-width:15ch;text-wrap:balance;margin-bottom:1.1rem}
-.dek{font-size:1.08rem;line-height:1.5;color:var(--mute);max-width:33rem;margin-bottom:1.9rem}
-.plate{display:grid;gap:.9rem;border-top:1px solid var(--rule);padding-top:1rem;font-size:.9rem;line-height:1.45}
-.plate small{display:block;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
-.plate b{font-weight:600}
-.glance{background:var(--tint);padding:1.35rem 1.25rem .3rem;margin:0 -1.25rem}
-.glance h2{font-family:var(--fb);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:.4rem}
-.g{display:grid;grid-template-columns:2.1rem minmax(0,1fr) auto;gap:.1rem .75rem;align-items:start;padding:.95rem 0 1.05rem;border-top:1px solid color-mix(in srgb,var(--p) 22%,#fff)}
-.g .n{font-family:var(--fh);font-size:1.2rem;line-height:1.25;color:var(--p)}
-.g .t{font-family:var(--fh);font-size:1.18rem;line-height:1.25;letter-spacing:-.01em}
-.g .c{font-family:var(--fh);font-size:1.45rem;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
-.g .c small{display:block;font-family:var(--fb);font-size:.72rem;color:var(--mute);letter-spacing:0;margin-top:.25rem}
-.sec{padding:2.5rem 0 1.5rem;border-top:1px solid var(--rule)}
-.num{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:.6rem}
-.sec h2{font-size:clamp(1.75rem,6.5vw,2.6rem);line-height:1.08;letter-spacing:-.02em;max-width:22ch;text-wrap:balance;margin-bottom:1.6rem}
-.grid{display:grid;gap:1.75rem}
-.stat{border-top:2px solid var(--ink);padding-top:.9rem}
-.count{font-family:var(--fh);font-size:clamp(3.2rem,15vw,5rem);line-height:.95;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
-.of{color:var(--mute);font-size:.95rem;margin:.55rem 0 1rem}
-.waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;max-width:11.5rem;margin:0 0 .7rem}
-.waffle i{display:block;aspect-ratio:1;background:var(--track);border-radius:1px}
-.waffle i.on{background:var(--p)}
-.share{font-size:.84rem;line-height:1.45;color:var(--mute);margin:0 0 1.25rem}
-.share b{font-weight:600;color:var(--ink);font-size:1rem;margin-right:.3rem}
-.how{font-size:.86rem;line-height:1.5;color:var(--mute);padding-top:.85rem;border-top:1px solid var(--rule)}
-.how b{display:block;font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:.3rem}
-.how span{display:block;margin-top:.3rem;font-size:.78rem}
-.prose h3{font-family:var(--fb);font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin:0 0 .55rem}
-.prose p{font-size:1.02rem;line-height:1.65;margin-bottom:1.6rem;max-width:40rem}
-.prose p:last-child{margin-bottom:0}
-.so{font-family:var(--fh);font-size:1.32rem!important;line-height:1.4!important;letter-spacing:-.01em;max-width:34rem!important}
-.cta{margin:.25rem 0 1.6rem}
-.cta .ken-cta{border-radius:3px!important;padding:.9rem 1.35rem!important;font-size:1rem}
+.mark{font-family:var(--fh);font-weight:700;font-size:1.375rem;line-height:1}
+.kind{color:var(--soft);text-align:right}
+.mast-in{max-width:84rem;margin:0 auto;display:grid;gap:1.75rem;padding:2rem var(--m) 2.25rem}
+.tb .whole{font-weight:600;font-size:clamp(4rem,17vw,7.5rem);line-height:.9;letter-spacing:-.035em;text-wrap:wrap}
+.whole-of{display:block;font-family:var(--fh);font-weight:400;font-size:1.125rem;line-height:1.3;letter-spacing:0;margin-top:.6rem}
+.cuts{list-style:none;margin:0;padding:0;display:grid;gap:1.25rem}
+.cut{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.15rem 1rem;align-items:baseline}
+.cut b{font-weight:600}
+.cut span{white-space:nowrap}
+.bar{grid-column:1 / -1;height:1.1rem;background:var(--track);position:relative;overflow:hidden}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:currentColor;min-width:3px}
+.cover-text{display:grid;gap:1.75rem;padding:2.25rem 0 3.5rem}
+.headline{font-family:var(--fh);font-weight:700;font-size:1.5rem;line-height:1.12;letter-spacing:-.015em;max-width:24ch;text-wrap:balance}
+.dek{font-size:1.375rem;line-height:1.4;max-width:36rem;margin-top:1.25rem!important}
+.made{display:grid;gap:.6rem;align-content:start;max-width:24rem}
+.sec{padding:4.5rem 0}
+.sec h2{font-weight:700;font-size:clamp(1.25rem,4.6vw,2.5rem);line-height:1.1;letter-spacing:-.015em;max-width:34ch}
+.grid{display:grid;gap:1.5rem}
+.count{font-family:var(--fh);font-weight:600;font-size:clamp(4rem,17vw,7.5rem);line-height:.9;letter-spacing:-.035em}
+.of{font-size:1.125rem;margin-top:.6rem!important}
+.trend .bar{display:block;height:1.4rem}
+.share{font-size:1.375rem;line-height:1.35;max-width:22ch}
+.share b{font-weight:700}
+.how{margin-top:2rem}
+.how p+p{margin-top:.5rem}
+.small{font-size:.875rem;line-height:1.45}
+.tb h3{font-weight:700;font-size:1.125rem;line-height:1.3;margin-bottom:.35rem}
+.prose{display:grid;gap:1.75rem;align-content:start}
+.prose p{max-width:40rem}
+.next .prose{gap:0}
+.wide .bar{height:2.25rem}
+.so{font-size:1.375rem;line-height:1.45;max-width:34rem}
+.next .prose h3{margin-top:2rem}
+.next h2{margin-bottom:.5rem}
+.tb .next h2{font-size:clamp(2rem,6vw,3.5rem);line-height:1;max-width:12ch}
+.cta{margin:1.75rem 0 1.75rem}
+.cta .ken-cta{display:inline-block!important;min-height:52px;padding:15px 26px!important;border-radius:0!important;background:var(--on)!important;color:var(--p)!important;font-family:var(--fh);font-weight:700!important;font-size:1.125rem;line-height:22px}
+.cta .ken-cta:hover{background:var(--g)!important}
 .print-only{display:none}
-.sign{font-size:.95rem;margin-top:.5rem}
-.sign b{display:block;font-weight:600}
-.sign span{display:block;color:var(--mute)}
-.method{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.8rem;line-height:1.55;color:var(--mute);max-width:46rem}
-.method b{color:var(--ink);font-weight:600}
-@media (min-width:760px){
-.tb{font-size:17px}
-.wrap{padding:0 2.5rem}
-.cover{padding:3rem 0}
-.plate{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
-.glance{margin:0;padding:1.5rem 1.5rem .5rem}
-.sec{padding:3.5rem 0 2rem}
-.grid{grid-template-columns:17rem minmax(0,1fr);gap:3.5rem;align-items:start}
-.count{font-size:4.6rem}
+.sign{font-family:var(--fh)}
+.sign b{display:block;font-family:var(--fh);font-weight:700;font-size:1.375rem;line-height:1.2}
+.method{padding:2.5rem 0 3rem;max-width:34rem}
+.method b{font-weight:700}
+@media (prefers-reduced-motion:no-preference){
+.mast .bar i{transform-origin:left center;animation:cut .9s cubic-bezier(.2,.7,.2,1) .15s both}
+.mast .cut:nth-child(2) .bar i{animation-delay:.27s}
+.mast .cut:nth-child(3) .bar i{animation-delay:.39s}
+@keyframes cut{from{transform:scaleX(0)}to{transform:none}}
 }
-@media (min-width:1040px){
-.cover{grid-template-columns:minmax(0,1fr) 23rem;gap:4rem;align-items:start;padding:3.5rem 0}
-.glance{margin-top:.3rem}
+@media (min-width:760px){
+.mast-in{grid-template-columns:minmax(0,42fr) minmax(0,58fr);gap:0;padding:4rem var(--m) 4rem;align-items:end}
+.cuts{padding-left:2.5rem}
+.whole-of{font-size:1.375rem;max-width:20ch}
+.sec{padding:6.5rem 0}
+.headline{font-size:2rem}
+}
+@media (min-width:1000px){
+.cover-text{grid-template-columns:minmax(0,42fr) minmax(0,58fr);gap:0;padding:3rem 0 5rem}
+.cover-text .lead{grid-column:2;grid-row:1}
+.headline{font-size:2.25rem;max-width:30ch}
+.cover-text .made{grid-column:1;grid-row:1;padding-right:2.5rem;padding-top:.6rem}
+.grid{grid-template-columns:minmax(0,42fr) minmax(0,58fr);grid-template-rows:auto auto 1fr;gap:1.25rem 0}
+.grid>h2{grid-column:2;grid-row:1;align-self:end}
+.grid>.num{grid-column:1;grid-row:1}
+.grid>.bar{grid-column:1;grid-row:2;margin-right:3.5rem}
+.grid>.txt{grid-column:1;grid-row:3;padding-right:3.5rem}
+.grid>.prose{grid-column:2;grid-row:2 / span 2}
+.wide .grid>.bar{grid-column:1 / -1;margin:1rem 0 1.5rem}
+.wide .grid>.prose{grid-row:3;grid-template-columns:1fr 1fr;gap:2.5rem}
+.next .grid>h2{grid-column:1;grid-row:1 / span 2;align-self:start;padding-right:2rem}
+.next .grid>.prose{grid-column:2;grid-row:1 / span 3}
 }
 @media print{
-@page{margin:14mm 16mm}
-.tb{padding-bottom:0;font-size:11.5pt}
+@page{margin:14mm 15mm}
+.tb{font-size:11pt}
 .wrap{max-width:none;padding:0}
-.cover{display:block;padding:1.5rem 0 0}
-.glance{margin:2rem 0 0}
-.sec{break-before:page;border-top:0;padding-top:.5rem}
-.grid{grid-template-columns:15rem minmax(0,1fr);gap:2.5rem}
-.stat,.g,.prose p{break-inside:avoid}
+.mast-in{padding:9mm}
+.cover-text{padding:7mm 0 0}
+.sec{break-before:page;padding:6mm 0}
+.field.sec{padding:9mm}
+.tb .count,.tb .whole{font-size:40pt}
 .cta{display:none}
 .print-only{display:block}
+.method{break-inside:avoid;padding:6mm 0 0}
 }
 </style>
 </head>
 <body>
 <main class="tb">
-<div class="wrap">
-<header class="top">
+<header class="top wrap">
 <p class="mark">Fieldstone</p>
-<p class="kind">Trend brief<span>Construction</span></p>
+<p class="kind">Trend brief on construction</p>
 </header>
 <section data-section="cover" class="cover">
+<div class="mast field">
+<div class="mast-in">
+<div>
+<h1 class="whole">41,800<span class="whole-of"> companies in construction</span></h1>
+</div>
+<ul class="cuts" aria-label="The three trends">
+<li class="cut"><b>Contractors are staffing up fast for work already won</b><span>3,260, 8%</span><span class="bar" role="img" aria-label="8 percent of 41,800"><i style="width:8%"></i></span></li>
+<li class="cut"><b>A new set of mid-size competitors has arrived</b><span>1,490, 4%</span><span class="bar" role="img" aria-label="4 percent of 41,800"><i style="width:4%"></i></span></li>
+<li class="cut"><b>Outside money is rare, which makes the few deals worth watching</b><span>370, 1%</span><span class="bar" role="img" aria-label="1 percent of 41,800"><i style="width:1%"></i></span></li>
+</ul>
+</div>
+</div>
+<div class="wrap">
+<div class="cover-text">
 <div class="lead">
-<p class="kicker">Three company counts</p>
-<h1>Three things moving in construction this quarter</h1>
+<p class="headline">Three things moving in construction this quarter</p>
 <p class="dek">We counted 41,800 construction companies. Three signals say something about the market Granite Peak builds in, and about a contractor with 320 people on its payroll.</p>
-<div class="plate">
-<p><small>Prepared for</small><b>Marcus Delgado</b>, VP of Preconstruction, Granite Peak Builders</p>
-<p><small>Written by</small><b>Priya Natarajan</b>, Head of Growth, Fieldstone</p>
-<p><small>Source</small><b>Company profiles and hiring data</b>, 41,800 companies in construction</p>
+</div>
+<div class="made">
+<p>Prepared for Marcus Delgado, VP of Preconstruction, Granite Peak Builders.</p>
+<p>Written by Priya Natarajan, Head of Growth, Fieldstone.</p>
+<p>Source: company profiles and hiring data, 41,800 companies in construction.</p>
 </div>
 </div>
-<aside class="glance">
-<h2>The three trends</h2>
-<div class="g">
-<span class="n">01</span>
-<span class="t">Contractors are staffing up fast for work already won</span>
-<span class="c">3,260<small>8% of the industry</small></span>
 </div>
-<div class="g">
-<span class="n">02</span>
-<span class="t">A new set of mid-size competitors has arrived</span>
-<span class="c">1,490<small>4% of the industry</small></span>
-</div>
-<div class="g">
-<span class="n">03</span>
-<span class="t">Outside money is rare, which makes the few deals worth watching</span>
-<span class="c">370<small>1% of the industry</small></span>
-</div>
-</aside>
 </section>
 <section data-section="trend_1" class="sec trend">
-<p class="num">Trend 01</p>
-<h2>Contractors are staffing up fast for work already won</h2>
+<div class="wrap">
 <div class="grid">
-<div class="stat">
+<h2>Contractors are staffing up fast for work already won</h2>
+<div class="num">
 <p class="count">3,260</p>
 <p class="of">Hiring surge, 3 months</p>
-<div class="waffle" role="img" aria-label="8 percent of 41,800"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<p class="share"><b>8%</b>of 41,800 companies in construction</p>
-<p class="how"><b>How we counted</b>Construction companies that added staff fast in the last three months<span>From company profiles and hiring data, counted on the day this brief was filled.</span></p>
+</div>
+<div class="bar" role="img" aria-label="8 percent of 41,800"><i style="width:8%"></i></div>
+<div class="txt">
+<p class="share"><b>8%</b> of 41,800 companies in construction</p>
+<div class="how"><h3>How we counted</h3><p>Construction companies that added staff fast in the last three months</p><p class="small">From company profiles and hiring data, counted on the day this brief was filled.</p></div>
 </div>
 <div class="prose">
-<h3>What the count says</h3>
-<p>3,260 of the 41,800 construction companies counted added staff fast in the last three months, about 8 percent of the industry. Hiring at that pace usually follows work that is already signed. So roughly one contractor in twelve is building a team for projects it has booked, and competing for the same people to do it.</p>
-<h3>What it means for Granite Peak Builders</h3>
-<p>Granite Peak is part of that 8 percent, with the school district program signed and eleven project engineer roles open. The firms in this count are the ones bidding against you for the same engineers. It is worth deciding now which roles you fill with hires and which scopes you hand to subcontractors, before the next award lands.</p>
+<div><h3>What the count says</h3><p>3,260 of the 41,800 construction companies counted added staff fast in the last three months, about 8 percent of the industry. Hiring at that pace usually follows work that is already signed. So roughly one contractor in twelve is building a team for projects it has booked, and competing for the same people to do it.</p></div>
+<div><h3>What it means for Granite Peak Builders</h3><p>Granite Peak is part of that 8 percent, with the school district program signed and eleven project engineer roles open. The firms in this count are the ones bidding against you for the same engineers. It is worth deciding now which roles you fill with hires and which scopes you hand to subcontractors, before the next award lands.</p></div>
+</div>
 </div>
 </div>
 </section>
-<section data-section="trend_2" class="sec trend">
-<p class="num">Trend 02</p>
-<h2>A new set of mid-size competitors has arrived</h2>
+<section data-section="trend_2" class="sec trend wide field">
+<div class="wrap">
 <div class="grid">
-<div class="stat">
+<h2>A new set of mid-size competitors has arrived</h2>
+<div class="num">
 <p class="count">1,490</p>
 <p class="of">Moved up a size band</p>
-<div class="waffle" role="img" aria-label="4 percent of 41,800"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<p class="share"><b>4%</b>of 41,800 companies in construction</p>
-<p class="how"><b>How we counted</b>Construction companies that crossed into a larger headcount band<span>From company profiles and hiring data, counted on the day this brief was filled.</span></p>
+</div>
+<div class="bar" role="img" aria-label="4 percent of 41,800"><i style="width:4%"></i></div>
+<div class="txt">
+<p class="share"><b>4%</b> of 41,800 companies in construction</p>
+<div class="how"><h3>How we counted</h3><p>Construction companies that crossed into a larger headcount band</p><p class="small">From company profiles and hiring data, counted on the day this brief was filled.</p></div>
 </div>
 <div class="prose">
-<h3>What the count says</h3>
-<p>1,490 construction companies crossed into a larger headcount band, about 4 percent of the industry. These firms were one size smaller not long ago and now show up in the next bracket. A move like that changes what they can bond, what they can bid on and which subcontractors they can keep busy.</p>
-<h3>What it means for Granite Peak Builders</h3>
-<p>At 320 people Granite Peak sits in the middle of the 201 to 500 band, so firms that just entered it are new competition for mid-size healthcare and education work in Colorado. They need the same self-perform crews and project engineers you do. Knowing which of the 1,490 are in your region would sharpen the next pursuit list.</p>
+<div><h3>What the count says</h3><p>1,490 construction companies crossed into a larger headcount band, about 4 percent of the industry. These firms were one size smaller not long ago and now show up in the next bracket. A move like that changes what they can bond, what they can bid on and which subcontractors they can keep busy.</p></div>
+<div><h3>What it means for Granite Peak Builders</h3><p>At 320 people Granite Peak sits in the middle of the 201 to 500 band, so firms that just entered it are new competition for mid-size healthcare and education work in Colorado. They need the same self-perform crews and project engineers you do. Knowing which of the 1,490 are in your region would sharpen the next pursuit list.</p></div>
+</div>
 </div>
 </div>
 </section>
 <section data-section="trend_3" class="sec trend">
-<p class="num">Trend 03</p>
-<h2>Outside money is rare, which makes the few deals worth watching</h2>
+<div class="wrap">
 <div class="grid">
-<div class="stat">
+<h2>Outside money is rare, which makes the few deals worth watching</h2>
+<div class="num">
 <p class="count">370</p>
 <p class="of">Raised money, 6 months</p>
-<div class="waffle" role="img" aria-label="1 percent of 41,800"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<p class="share"><b>1%</b>of 41,800 companies in construction</p>
-<p class="how"><b>How we counted</b>Construction companies that announced funding in the last six months<span>From company profiles and hiring data, counted on the day this brief was filled.</span></p>
+</div>
+<div class="bar" role="img" aria-label="1 percent of 41,800"><i style="width:1%"></i></div>
+<div class="txt">
+<p class="share"><b>1%</b> of 41,800 companies in construction</p>
+<div class="how"><h3>How we counted</h3><p>Construction companies that announced funding in the last six months</p><p class="small">From company profiles and hiring data, counted on the day this brief was filled.</p></div>
 </div>
 <div class="prose">
-<h3>What the count says</h3>
-<p>370 of the 41,800 construction companies announced funding in the last six months, about 1 percent of the industry. Capital from outside is unusual in construction, so a short list like this names the companies with the means to change a market quickly. Small count, high signal.</p>
-<h3>What it means for Granite Peak Builders</h3>
-<p>For Granite Peak this is a watch list rather than a worry. Any of the 370 that moves into Colorado will chase the same school and hospital programs you just won, and can afford to price low in the first year. It is also the list of possible buyers, should that question ever come up for the owners.</p>
+<div><h3>What the count says</h3><p>370 of the 41,800 construction companies announced funding in the last six months, about 1 percent of the industry. Capital from outside is unusual in construction, so a short list like this names the companies with the means to change a market quickly. Small count, high signal.</p></div>
+<div><h3>What it means for Granite Peak Builders</h3><p>For Granite Peak this is a watch list rather than a worry. Any of the 370 that moves into Colorado will chase the same school and hospital programs you just won, and can afford to price low in the first year. It is also the list of possible buyers, should that question ever come up for the owners.</p></div>
+</div>
 </div>
 </div>
 </section>
-<section data-section="next" class="sec next">
-<p class="num">What to do with this</p>
+<section data-section="next" class="sec next field">
+<div class="wrap">
+<div class="grid">
 <h2>Where I would start</h2>
 <div class="prose">
 <p class="so">Start with the hiring count. It is the largest of the three and it touches Granite Peak this quarter, with eleven engineer roles open against 3,260 other contractors hiring at the same time. The size band and funding counts are worth a look once a quarter, mostly as a list of names to watch in Colorado.</p>
@@ -193,12 +209,15 @@ body{margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjus
 <p>Fieldstone runs the bid and buyout process for mid-size general contractors, from subcontractor outreach to signed scopes. The first project is set up in two weeks, and you keep every sub relationship.</p>
 <h3>Talk it through</h3>
 <p>Each count above is a list of companies, filtered the way the line under it says. I can pull the names behind any of the three, cut them to your region, and walk you through them in twenty minutes.</p>
-<div class="cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#0f5f52;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+<div class="cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#351a2b;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
 <p class="print-only">To book the twenty minutes, reply to my email with a time that suits you.</p>
-<p class="sign"><b>Priya Natarajan</b><span>Head of Growth, Fieldstone</span></p>
+<p class="sign"><b>Priya Natarajan</b>Head of Growth, Fieldstone</p>
 </div>
-<p class="method"><b>How this brief was built.</b> Every number is a count of companies, built from company profiles and hiring data on the day this brief was filled. The baseline is every company in construction. Each trend is that baseline with one filter added, named under its count. Shares are rounded to a whole percent. One count is one reading, so the brief says how many, not whether a number went up or down.</p>
+</div>
+</div>
 </section>
+<div class="wrap">
+<p class="method small"><b>How this brief was built.</b> Every number is a count of companies, built from company profiles and hiring data on the day this brief was filled. The baseline is every company in construction. Each trend is that baseline with one filter added, named under its count. Shares are rounded to a whole percent. One count is one reading, so the brief says how many, not whether a number went up or down.</p>
 </div>
 </main>
 </body>

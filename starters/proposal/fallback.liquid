@@ -1,0 +1,55 @@
+{%- assign c_primary = brand.colors.primary | default: '#2a4bd7' | escape -%}
+{%- assign c_secondary = brand.colors.secondary | default: '#0e1530' | escape -%}
+{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' | escape -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' | escape -%}
+{%- assign company = brand.name | default: 'our company' -%}
+{%- assign acct = account.name | default: 'your company' -%}
+{%- assign person_name = person.first_name | append: ' ' | append: person.last_name | strip -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Proposal and pilot plan for {{ acct | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | replace: ' ', '+' }}:wght@500;600;700{% if font_body != font_head %}&family={{ font_body | replace: ' ', '+' }}:wght@400;500;600{% endif %}&display=swap">
+<style>
+:root{--p:{{ c_primary }};--s:{{ c_secondary }};--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--mute:color-mix(in srgb,var(--s) 60%,#fff);--line:color-mix(in srgb,var(--s) 14%,#fff);--tint:color-mix(in srgb,var(--p) 10%,#fff);--p-deep:color-mix(in srgb,var(--p) 72%,var(--s))}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--s);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased}
+h1{font-family:var(--fh);font-size:2.4rem;line-height:1.15;letter-spacing:-.01em;font-weight:600;margin:0 0 1.2rem;padding-left:1.1rem;border-left:5px solid var(--p);overflow-wrap:break-word}
+p{margin:0 0 .9rem}
+.doc{max-width:46rem;margin:0 auto;padding:0 1.1rem 4rem}
+.run{padding:.8rem 0;border-bottom:1px solid var(--line);font-family:var(--fh);font-weight:600;font-size:.95rem}
+.cover{padding:3rem 0 1rem}
+.kind{font-size:.9rem;color:var(--p-deep);font-weight:500;margin:0 0 1.2rem}
+.sub{color:var(--mute);max-width:32rem;margin:0 0 1.6rem}
+.wait{background:var(--tint);border-left:3px solid var(--p);padding:.8rem 1rem;max-width:32rem;font-size:.95rem;margin:0 0 1.4rem}
+.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.5rem;margin:2rem 0 0;border-top:1px solid var(--s)}
+.meta div{padding:.65rem 0;border-bottom:1px solid var(--line)}
+.meta dt{color:var(--mute);font-variant-caps:all-small-caps;letter-spacing:.04em;font-size:.88rem}
+.meta dd{margin:.05rem 0 0;font-weight:500;font-size:.95rem;overflow-wrap:anywhere}
+.meta dd small{display:block;font-weight:400;color:var(--mute);font-size:.82rem}
+.ken-cta{min-height:44px;line-height:1.4;background:var(--p)!important;color:#fff!important}
+.cover .ken-cta{margin:0 0 1.8rem}
+@media (min-width:640px){.doc{padding:0 2rem 5rem}.cover{padding:4rem 0 1rem}h1{font-size:3.2rem}.meta{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media print{.ken-cta{display:none!important}}
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="run">{{ brand.name | default: acct | escape }}</header>
+<section class="cover" data-section="cover">
+<p class="kind">Proposal and pilot plan</p>
+<h1>Proposal and pilot plan for {{ acct | escape }}</h1>
+<p class="sub">A formal proposal for a 30-day pilot: the problem, the scope, the success criteria, a timeline, the team, the investment and the sign-off.</p>
+<p class="wait">The full plan is not ready yet. It follows once the scope is agreed on a short call.</p>
+{%- render 'ken/cta', label: 'Book the scoping call', kind: 'booking' %}
+<dl class="meta">
+<div><dt>Prepared for</dt><dd>{% if person %}{{ person_name | escape }}<small>{{ acct | escape }}</small>{% else %}{{ acct | escape }}{% endif %}</dd></div>
+<div><dt>Prepared by</dt><dd>{{ sender.name | default: company | escape }}<small>{{ company | escape }}</small></dd></div>
+</dl>
+</section>
+</div>
+</body>
+</html>

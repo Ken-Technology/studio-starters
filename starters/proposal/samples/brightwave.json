@@ -1,0 +1,289 @@
+{
+  "account": {
+    "name": "Brightwave Logistics",
+    "domain": "brightwave.example",
+    "industry": "transportation and logistics",
+    "size_band": "1001-5000",
+    "dossier": {
+      "summary": "Regional freight carrier with seven terminals in the Midwest.",
+      "why_now": "Hiring four dispatch coordinators."
+    }
+  },
+  "person": {
+    "first_name": "Leo",
+    "last_name": "Marsh",
+    "title": "VP Operations"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northbeam",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "notes": "Brightwave Logistics (brightwave.example). Regional freight carrier, 7 terminals in the Midwest, about 1,400 people. Champion: Leo Marsh, VP Operations.\nCalls: Oct 14 (Leo Marsh, Dana Whitfield, Maya Chen) and Oct 21 (Leo Marsh, Maya Chen).\nQuotes, Oct 14. Leo Marsh, VP Operations: \"We find out a load slipped when the customer calls. By then there is nothing left to do but apologize.\" Dana Whitfield, Director of Dispatch: \"Every terminal keeps its own handoff sheet. A Milwaukee to Indianapolis load crosses three spreadsheets and nobody owns the middle.\"\nQuote, Oct 21. Leo Marsh: \"I am hiring four coordinators and I cannot tell you which terminal needs them most.\"\nNumbers from Dana's September exception log for Joliet, shared Oct 23: 140 late-load calls at Joliet in September, about 25 minutes of dispatch and service time each; 6 of the 12 Joliet dispatchers worked at least one Saturday to clear the backlog. Late-load calls run about 35 a week.\nPilot site: Joliet cross-dock, 12 dispatchers, Dana Whitfield's team. TMS is read-only for the pilot. SSO through Brightwave's Microsoft Entra tenant. Weekly 30-minute review with Dana and Jordan.\nOut until year one: the other six terminals, customer-facing tracking pages, carrier invoicing and settlement, a capacity planning view across lanes (built on pilot data).\nWants: late-load calls at Joliet down to 20 a week or fewer; a handoff timeline on 90 percent of loads; a dispatcher sees an ETA miss within 20 minutes; 10 of 12 dispatchers on the board on a working day. Today no load has a handoff timeline and dispatchers learn of a miss when the customer calls.\nStakeholders: Priya Okafor, Head of IT Security (security review and SSO, 3 hours in weeks 1 and 2, security pack sent Oct 27); Tomas Reyes, CFO (investment approval and the readout, 2 hours in total). Leo has 30 minutes a week, Dana 2 hours a week.\nDates: proposal sent Oct 29, valid for 30 days. Scoping call Nov 4. Security questions back Nov 7. Proposal version 2 on Nov 10. Decision on the pilot Nov 14. Kickoff at Joliet Nov 18. Pilot Nov 18 to Dec 18. Weekly reviews Nov 25, Dec 2, Dec 9 and Dec 16. Readout Dec 17. Decision on year one Dec 22.",
+    "offer": "Pilot: 30 days at one terminal, fixed fee $4,800. It covers up to 12 users, the TMS connector, training, four weekly reviews and the readout. The pilot fee is credited in full against year one if the customer signs by Dec 31, 2026.\nYear one: all terminals, up to 120 users, from January 2027, $58,000 a year, billed annually. Capacity planning view included. Onboarding for additional terminals is included in year one.\nPrices in US dollars, before tax. More terminals change the user count, not the per-user price. Proposals are valid for 30 days.",
+    "our_team": "Maya Chen, Account Executive: owns the proposal and the commercial side, as needed.\nSam Okoye, Solutions Engineer: connector, SSO and security answers, weeks 1 to 3.\nJordan Lee, Customer Success: training, the weekly review and the readout, through the end of the pilot.",
+    "title": "Operations visibility across Brightwave's seven terminals",
+    "sub": "A 30-day pilot at the Joliet cross-dock, the criteria it has to meet, and what a year-one rollout would involve. Written to be forwarded: everything Tomas and Priya need is in here.",
+    "valid_until": "Nov 28, 2026",
+    "pilot_window": "Nov 18 to Dec 18",
+    "problem_when": "Calls of Oct 14 and 21",
+    "problem_lead": "These are the three things we heard on Oct 14 and Oct 21, as close to how they were said as our notes allow.",
+    "quotes": [
+      {
+        "text": "We find out a load slipped when the customer calls. By then there is nothing left to do but apologize.",
+        "who": "Leo Marsh, VP Operations",
+        "date": "Oct 14"
+      },
+      {
+        "text": "Every terminal keeps its own handoff sheet. A Milwaukee to Indianapolis load crosses three spreadsheets and nobody owns the middle.",
+        "who": "Dana Whitfield, Director of Dispatch",
+        "date": "Oct 14"
+      },
+      {
+        "text": "I am hiring four coordinators and I cannot tell you which terminal needs them most.",
+        "who": "Leo Marsh, VP Operations",
+        "date": "Oct 21"
+      }
+    ],
+    "cost_source": "From Dana's September exception log for Joliet, shared Oct 23.",
+    "cost_today": [
+      {
+        "value": "140",
+        "label": "late-load calls at Joliet in September"
+      },
+      {
+        "value": "58 h",
+        "label": "of dispatch and service time on those calls, at 25 minutes each"
+      },
+      {
+        "value": "6 of 12",
+        "label": "dispatchers worked at least one Saturday to clear the backlog"
+      }
+    ],
+    "problem_close": "None of this is a people problem. The information exists in the TMS and on the terminal sheets. It reaches the wrong person, or reaches the right one too late.",
+    "scope_lead": "One exception board and one handoff timeline for every load, starting at Joliet. The platform reads from your TMS; nothing is written back.",
+    "scope_in": [
+      "Read-only connector to the TMS, inbound and outbound lanes at Joliet",
+      "Exception board for the 12 Joliet dispatchers, with reason codes and next action",
+      "Handoff timeline per load, from pickup to proof of delivery",
+      "Single sign-on through Brightwave's Microsoft Entra tenant",
+      "Weekly 30-minute review with Dana and Jordan"
+    ],
+    "scope_out": [
+      "The other six terminals",
+      "Customer-facing tracking pages",
+      "Carrier invoicing and settlement",
+      "Capacity planning view across lanes (built on pilot data, delivered in year one)"
+    ],
+    "scope_close": "If the pilot passes, year one extends the same setup to all seven terminals, two a week, with the Joliet team training the next site.",
+    "pilot_lead": "Nov 18 to Dec 18 at the Joliet cross-dock with Dana Whitfield's dispatch team. Four criteria, measured against September.",
+    "criteria": [
+      {
+        "name": "Late-load calls per week at Joliet",
+        "baseline": "35",
+        "target": "20 or fewer",
+        "measured_by": "Customer service desk log"
+      },
+      {
+        "name": "Loads with a complete handoff timeline",
+        "baseline": "None",
+        "target": "90 percent",
+        "measured_by": "The platform"
+      },
+      {
+        "name": "Time from ETA miss to a dispatcher seeing it",
+        "baseline": "When the customer calls",
+        "target": "Under 20 minutes",
+        "measured_by": "Board timestamps"
+      },
+      {
+        "name": "Dispatchers using the board on a working day",
+        "baseline": "0 of 12",
+        "target": "10 of 12",
+        "measured_by": "Sign-ins"
+      }
+    ],
+    "pass_rule": "The pilot passes when three of the four criteria are met across the last two weeks, Dec 5 to Dec 18. If it does not pass, there is no year-one commitment and the pilot fee is the only cost.",
+    "timeline_lead": "Seven weeks from the scoping call to a decision on year one. Security review and the connector run in parallel so the pilot can start on Nov 18.",
+    "timeline_span": "Nov 4 to Dec 22",
+    "weeks": [
+      "Nov 2",
+      "Nov 9",
+      "Nov 16",
+      "Nov 23",
+      "Nov 30",
+      "Dec 7",
+      "Dec 14",
+      "Dec 21"
+    ],
+    "tasks": [
+      {
+        "label": "Security review",
+        "who": "Priya, Sam",
+        "side": "them",
+        "span": {
+          "start": 1,
+          "end": 5
+        }
+      },
+      {
+        "label": "Connect TMS and dispatch board",
+        "who": "Sam",
+        "side": "us",
+        "span": {
+          "start": 3,
+          "end": 7
+        }
+      },
+      {
+        "label": "Dispatcher training",
+        "who": "Jordan",
+        "side": "us",
+        "span": {
+          "start": 5,
+          "end": 6
+        }
+      },
+      {
+        "label": "Pilot at Joliet",
+        "who": "Dana's team",
+        "side": "them",
+        "span": {
+          "start": 5,
+          "end": 15
+        }
+      },
+      {
+        "label": "Weekly review",
+        "who": "Dana, Jordan",
+        "side": "us",
+        "marks": [
+          7,
+          9,
+          11,
+          13
+        ]
+      },
+      {
+        "label": "Readout",
+        "who": "Leo, Tomas, Maya",
+        "side": "us",
+        "marks": [
+          14
+        ]
+      },
+      {
+        "label": "Decision on year one",
+        "who": "Leo, Tomas",
+        "side": "them",
+        "marks": [
+          15
+        ]
+      }
+    ],
+    "timeline_note": "Diamonds are single-day events. The Dec 22 decision keeps the pilot credit inside the year.",
+    "team_lead": "Seven people. Leo and Dana give about two and a half hours a week, plus Priya's security review and Tomas's readout.",
+    "team": [
+      {
+        "name": "Leo Marsh",
+        "title": "VP Operations, Brightwave",
+        "role": "Executive sponsor. Owns the pass decision.",
+        "time": "30 min a week"
+      },
+      {
+        "name": "Dana Whitfield",
+        "title": "Director of Dispatch, Brightwave",
+        "role": "Pilot lead. Runs the board with her team, joins the weekly review.",
+        "time": "2 h a week"
+      },
+      {
+        "name": "Priya Okafor",
+        "title": "Head of IT Security, Brightwave",
+        "role": "Security review and SSO setup.",
+        "time": "3 h, weeks 1 and 2"
+      },
+      {
+        "name": "Tomas Reyes",
+        "title": "CFO, Brightwave",
+        "role": "Investment approval and the readout.",
+        "time": "2 h in total"
+      },
+      {
+        "name": "Maya Chen",
+        "title": "Account Executive, Northbeam",
+        "role": "Owns this plan and the commercial side.",
+        "time": "As needed"
+      },
+      {
+        "name": "Sam Okoye",
+        "title": "Solutions Engineer, Northbeam",
+        "role": "Connector, SSO and the security answers.",
+        "time": "Weeks 1 to 3"
+      },
+      {
+        "name": "Jordan Lee",
+        "title": "Customer Success, Northbeam",
+        "role": "Training, the weekly review and the readout.",
+        "time": "Through Dec 18"
+      }
+    ],
+    "investment_lead": "A fixed pilot fee, credited in full against year one if Brightwave signs by Dec 31, 2026.",
+    "investment": [
+      {
+        "item": "30-day pilot at Joliet",
+        "covers": "12 dispatchers, one terminal, TMS connector, training, four weekly reviews, readout",
+        "amount": "$4,800"
+      },
+      {
+        "item": "Year one, all terminals",
+        "covers": "Up to 120 users across seven terminals from January 2027, capacity view included",
+        "amount": "$58,000 a year"
+      },
+      {
+        "item": "Onboarding for the other six terminals",
+        "covers": "Included in year one",
+        "amount": "$0"
+      }
+    ],
+    "investment_total": {
+      "label": "Year one, with the pilot credit applied",
+      "amount": "$53,200"
+    },
+    "investment_note": "Prices in US dollars, before tax. Year one is billed annually. Adding terminals beyond seven changes the user count, not the per-user price.",
+    "next_steps": [
+      {
+        "date": "Nov 4",
+        "title": "Scoping call",
+        "detail": "Agree the criteria and the Joliet lane list. Leo, Dana, Priya, Maya, Sam."
+      },
+      {
+        "date": "Nov 7",
+        "title": "Security questions back",
+        "detail": "Priya returns the review questions on the pack sent Oct 27."
+      },
+      {
+        "date": "Nov 10",
+        "title": "Final proposal",
+        "detail": "Maya sends version 2 with anything that changed on the call."
+      },
+      {
+        "date": "Nov 14",
+        "title": "Decision on the pilot",
+        "detail": "Leo and Tomas approve, below or by reply."
+      },
+      {
+        "date": "Nov 18",
+        "title": "Kickoff at Joliet",
+        "detail": "Dana's team, Jordan and Sam, on site."
+      }
+    ],
+    "signoff_lead": "Approval of the 30-day pilot and its criteria at the fee above. Year one is a separate decision after the readout."
+  }
+}

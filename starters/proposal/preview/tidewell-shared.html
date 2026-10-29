@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="A 30-day pilot at the Riverside and Eastgate clinics, the criteria it has to meet, and what a year-one rollout would involve. Written to be forwarded to operations leadership and compliance.">
+<title>Proposal and pilot plan for Tidewell Dental Group</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap">
+<style>
+:root{
+  --brand-primary:#1b2f5e;
+  --brand-secondary:#1f2429;
+  --brand-heading-font:'Fraunces';
+  --brand-body-font:'Source Sans 3';
+  --p:var(--brand-primary);
+  --s:var(--brand-secondary);
+  --fh:var(--brand-heading-font),ui-sans-serif,system-ui,sans-serif;
+  --fb:var(--brand-body-font),ui-sans-serif,system-ui,sans-serif;
+  --ink:var(--s);
+  --mute:color-mix(in srgb,var(--s) 60%,#fff);
+  --line:color-mix(in srgb,var(--s) 14%,#fff);
+  --hair:color-mix(in srgb,var(--s) 9%,#fff);
+  --paper:color-mix(in srgb,var(--s) 4%,#fff);
+  --tint:color-mix(in srgb,var(--p) 10%,#fff);
+  --tint-line:color-mix(in srgb,var(--p) 30%,#fff);
+  --p-deep:color-mix(in srgb,var(--p) 72%,var(--s));
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+a{color:var(--p-deep)}
+h1,h2,h3{font-family:var(--fh);margin:0;line-height:1.15;letter-spacing:-.01em;font-weight:600}
+p{margin:0 0 .9rem}
+.doc{max-width:46rem;margin:0 auto;padding:0 1.1rem 5rem}
+
+/* running header */
+.run{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line);font-size:.8rem;color:var(--mute)}
+.brand{display:flex;align-items:center;gap:.5rem;font-weight:600;font-family:var(--fh);font-size:.95rem;color:var(--ink);min-width:0}
+.logo{width:24px;height:24px;display:block;flex:none;object-fit:contain}
+.run .ref{text-align:right}
+
+/* cover */
+.cover{padding:3rem 0 2.5rem;min-height:70vh;display:flex;flex-direction:column;justify-content:space-between}
+.cover .kind{font-size:.9rem;color:var(--p-deep);font-weight:500;margin:0 0 1.2rem}
+.cover h1{font-size:2.4rem;max-width:14ch;padding-left:1.1rem;border-left:5px solid var(--p);margin-bottom:1.2rem;overflow-wrap:break-word}
+.cover .for{font-family:var(--fh);font-size:1.35rem;font-weight:500;max-width:28ch;margin:0 0 .4rem}
+.cover .sub{color:var(--mute);max-width:32rem;margin:0 0 2.4rem}
+.cover .wait{background:var(--tint);border-left:3px solid var(--p);padding:.8rem 1rem;max-width:32rem;font-size:.95rem;margin:0 0 1.4rem}
+.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.5rem;margin:0;border-top:1px solid var(--ink)}
+.meta div{padding:.65rem 0;border-bottom:1px solid var(--line)}
+.meta dt{color:var(--mute);font-variant-caps:all-small-caps;letter-spacing:.04em;font-size:.88rem}
+.meta dd{margin:.05rem 0 0;font-weight:500;font-size:.95rem;overflow-wrap:anywhere}
+.meta dd small{display:block;font-weight:400;color:var(--mute);font-size:.82rem}
+.toc{margin:2.2rem 0 0;padding:0;list-style:none;columns:1;font-size:.92rem}
+.toc li{border-bottom:1px solid var(--hair)}
+.toc a{display:flex;gap:.6rem;padding:.65rem 0;color:inherit;text-decoration:none}
+.toc a span:first-child{color:var(--p-deep);font-weight:500;width:1.4rem;flex:none}
+.toc a span:last-child{color:var(--mute);margin-left:auto;flex:none;text-align:right}
+.toc a:focus-visible{outline:2px solid var(--p);outline-offset:2px}
+
+/* sections */
+.sec{padding:2.8rem 0 .5rem;border-top:1px solid var(--line);margin-top:1rem}
+.sec h2{font-size:1.5rem;display:grid;grid-template-columns:2.4rem minmax(0,1fr);align-items:baseline;margin-bottom:1.2rem}
+.sec h2 .n{color:var(--p-deep);font-weight:600;font-size:1.1rem}
+.sec h3{font-size:1.05rem;margin:1.6rem 0 .5rem}
+.sec p{max-width:38rem}
+.lead{font-size:1.05rem}
+.mute{color:var(--mute)}
+.small{font-size:.85rem}
+
+/* quotes and facts */
+.quotes{display:grid;gap:1rem;margin:0 0 1.5rem}
+.quotes blockquote{margin:0;padding:1rem 1.1rem 1rem 1.2rem;border-left:3px solid var(--p);background:var(--paper)}
+.quotes blockquote p{font-family:var(--fh);font-size:1.15rem;line-height:1.35;font-weight:500;margin:0 0 .6rem;max-width:none}
+.quotes cite{font-style:normal;font-size:.85rem;color:var(--mute)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:0 0 1.2rem}
+.facts div{border-top:2px solid var(--ink);padding-top:.5rem}
+.facts b{display:block;font-family:var(--fh);font-size:1.6rem;font-weight:600;line-height:1.1}
+.facts span{font-size:.84rem;color:var(--mute);display:block;margin-top:.2rem}
+
+/* scope */
+.scope{display:grid;gap:1.2rem;margin:0 0 1rem}
+.scope div{padding:1rem 1.1rem;border:1px solid var(--line);border-radius:4px}
+.scope div.in{border-color:var(--tint-line);background:var(--paper)}
+.scope h3{margin:0 0 .5rem;font-size:1rem}
+.scope ul{margin:0;padding-left:1.1rem;font-size:.95rem}
+.scope li{margin:.3rem 0}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:0 0 1rem}
+th{text-align:left;font-weight:500;font-size:.8rem;color:var(--mute);padding:.5rem .6rem .5rem 0;border-bottom:1px solid var(--ink);vertical-align:bottom}
+td{padding:.6rem .9rem .6rem 0;border-bottom:1px solid var(--line);vertical-align:top}
+td.num,th.num{text-align:right;padding-right:0;white-space:nowrap}
+tr.total td{border-bottom:0;border-top:1px solid var(--ink);font-weight:600}
+td small{display:block;color:var(--mute);font-size:.82rem}
+.pass{background:var(--tint);border-left:3px solid var(--p);padding:.7rem .9rem;font-size:.95rem;max-width:38rem}
+
+/* tables stack on phones */
+@media (max-width:639px){
+  .stack thead{display:none}
+  .stack tr{display:block;padding:.6rem 0;border-bottom:1px solid var(--line)}
+  .stack td{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:.6rem;border:0;padding:.12rem 0}
+  .stack td::before{content:attr(data-l);color:var(--mute);font-size:.8rem}
+  .stack td:first-child{display:block;font-weight:500;margin-bottom:.25rem}
+  .stack td:first-child::before{display:none}
+  .stack td.num{text-align:left;white-space:normal}
+  .stack tr.total{border-bottom:0;border-top:1px solid var(--ink)}
+  .stack tr.total td{border:0}
+  .stack tr.total td:first-child{margin:0}
+}
+
+/* gantt: 16 columns, two for each week; the column classes are chosen from slot data */
+.gantt{margin:0 0 1rem;font-size:.82rem}
+.gantt .row{display:grid;grid-template-columns:minmax(0,1fr);gap:.2rem;padding:.45rem 0;border-bottom:1px solid var(--hair)}
+.gantt .lab{color:var(--ink)}
+.gantt .lab small{display:inline;color:var(--mute);margin-left:.3rem;font-size:inherit}
+.gantt .track{display:grid;grid-template-columns:repeat(16,minmax(0,1fr));height:1.1rem;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(12.5% - 1px),var(--hair) calc(12.5% - 1px),var(--hair) 12.5%)}
+.gantt .bar{background:var(--p);border-radius:3px;height:.8rem;align-self:center;opacity:.9}
+.gantt .bar.them{background:var(--ink)}
+.gantt .ms{width:.7rem;height:.7rem;background:var(--p);transform:rotate(45deg);align-self:center;justify-self:center;border-radius:1px}
+.gantt .ms.them{background:var(--ink)}
+.gantt .head{display:grid;grid-template-columns:minmax(0,1fr);padding:.3rem 0 .4rem;border-bottom:1px solid var(--line)}
+.gantt .weeks{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));color:var(--mute);font-size:.68rem}
+.gantt .weeks span{padding-left:.15rem;border-left:1px solid var(--line);white-space:nowrap}
+.gantt .weeks em{font-style:normal}
+@media (max-width:639px){.gantt .weeks span:not(.mo) em{display:none}}
+.cs1{grid-column-start:1}.cs2{grid-column-start:2}.cs3{grid-column-start:3}.cs4{grid-column-start:4}.cs5{grid-column-start:5}.cs6{grid-column-start:6}.cs7{grid-column-start:7}.cs8{grid-column-start:8}
+.cs9{grid-column-start:9}.cs10{grid-column-start:10}.cs11{grid-column-start:11}.cs12{grid-column-start:12}.cs13{grid-column-start:13}.cs14{grid-column-start:14}.cs15{grid-column-start:15}.cs16{grid-column-start:16}
+.ce2{grid-column-end:2}.ce3{grid-column-end:3}.ce4{grid-column-end:4}.ce5{grid-column-end:5}.ce6{grid-column-end:6}.ce7{grid-column-end:7}.ce8{grid-column-end:8}.ce9{grid-column-end:9}
+.ce10{grid-column-end:10}.ce11{grid-column-end:11}.ce12{grid-column-end:12}.ce13{grid-column-end:13}.ce14{grid-column-end:14}.ce15{grid-column-end:15}.ce16{grid-column-end:16}.ce17{grid-column-end:17}
+.key{display:flex;gap:1.2rem;font-size:.8rem;color:var(--mute);margin:0 0 .4rem}
+.key i{display:inline-block;width:.75rem;height:.5rem;border-radius:2px;background:var(--p);margin-right:.35rem}
+.key i.them{background:var(--ink)}
+
+/* team */
+.team td b{font-weight:500;display:block}
+
+/* next steps */
+.next{list-style:none;margin:0 0 1.2rem;padding:0}
+.next li{display:grid;grid-template-columns:4.3rem minmax(0,1fr);gap:.8rem;padding:.6rem 0;border-bottom:1px solid var(--line)}
+.next .d{color:var(--p-deep);font-weight:500;font-size:.92rem}
+.next b{font-weight:500;display:block}
+.next span{color:var(--mute);font-size:.88rem}
+.ken-cta{min-height:44px;line-height:1.4;background:var(--p)!important;color:#fff!important}
+.cover .ken-cta{margin:0 0 1.8rem}
+
+/* sign-off */
+.sign{display:grid;gap:1.5rem;margin:1.2rem 0 1.5rem}
+.sign div{border-top:2px solid var(--ink);padding-top:.6rem}
+.sign h3{margin:0 0 1.4rem;font-size:1rem}
+.sign .l{display:block;border-bottom:1px solid var(--ink);height:1.9rem;margin-bottom:.25rem}
+.sign .k{display:block;font-size:.76rem;color:var(--mute);margin-bottom:.9rem}
+.approve{background:var(--paper);border:1px solid var(--line);padding:1.1rem 1.2rem;border-radius:4px;max-width:30rem}
+.approve h3{margin:0 0 .3rem;font-size:1rem}
+.approve p{font-size:.92rem;color:var(--mute)}
+.approve .ken-form-field{display:block;margin:.6rem 0 0}
+.approve .ken-form-field span{display:block;font-size:.82rem;color:var(--mute);margin:0 0 .25rem}
+.approve input,.approve textarea{display:block;width:100%;min-height:44px;font:inherit;font-size:1rem;padding:.55rem .65rem;border:1px solid var(--line);border-radius:3px;background:#fff;color:var(--ink)}
+.approve textarea{min-height:5rem}
+.approve .ken-form-submit{background:var(--p)!important;display:block;min-height:44px;margin-top:1rem;font:inherit;font-weight:600}
+.approve input:focus-visible,.approve textarea:focus-visible,.approve .ken-form-submit:focus-visible{outline:2px solid var(--p);outline-offset:2px}
+.foot{font-size:.8rem;color:var(--mute);border-top:1px solid var(--line);padding-top:1rem;margin-top:2.5rem}
+
+@media (min-width:640px){
+  .doc{padding:0 2rem 6rem}
+  .cover{padding:4rem 0 3rem}
+  .cover h1{font-size:3.2rem}
+  .meta{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .toc{columns:2;column-gap:2.5rem}
+  .toc li{break-inside:avoid}
+  .toc a{padding:.4rem 0}
+  .sec h2{grid-template-columns:2.8rem minmax(0,1fr);font-size:1.7rem;margin-left:-2.8rem}
+  .scope{grid-template-columns:1fr 1fr}
+  .quotes blockquote p{font-size:1.25rem}
+  .gantt .row,.gantt .head{grid-template-columns:13rem minmax(0,1fr);gap:1rem;align-items:center}
+  .sign{grid-template-columns:1fr 1fr;gap:3rem}
+}
+@media (min-width:900px){
+  .doc{max-width:52rem}
+  .sec h2{grid-template-columns:3.2rem minmax(0,1fr);margin-left:-3.2rem}
+}
+@media print{
+  @page{margin:16mm}
+  body{font-size:11pt;color:#000}
+  .doc{max-width:none;padding:0}
+  .run{display:none}
+  .cover{min-height:auto;padding:2rem 0}
+  .sec{break-before:page;border-top:0;margin-top:0;padding-top:0}
+  .sec h2{margin-left:0;grid-template-columns:2.2rem minmax(0,1fr)}
+  .approve,.ken-cta{display:none!important}
+  .gantt .bar,.gantt .ms,.key i,.quotes blockquote,.scope div.in,.pass,.facts div,.cover h1{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  table,figure,.quotes,.sign,.gantt .row{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="run">
+<div class="brand">
+<svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#1b2f5e"/><text x="16" y="21.5" text-anchor="middle" font-family="Fraunces,sans-serif" font-weight="700" font-size="16" fill="#fff">H</text></svg>
+<span>Halcyon</span>
+</div>
+<span class="ref">Proposal for Tidewell Dental Group<br>Version 1.0</span>
+</header>
+<section class="cover" id="cover" data-section="cover">
+<div>
+<p class="kind">Proposal and pilot plan</p>
+<h1>Referral tracking and digital intake at Tidewell&#39;s 14 clinics</h1>
+<p class="for">Prepared for Tidewell Dental Group</p>
+<p class="sub">A 30-day pilot at the Riverside and Eastgate clinics, the criteria it has to meet, and what a year-one rollout would involve. Written to be forwarded to operations leadership and compliance.</p>
+<dl class="meta">
+<div><dt>Prepared for</dt><dd>Tidewell Dental Group<small>tidewell.example</small></dd></div>
+<div><dt>Prepared by</dt><dd>Nora Vance<small>Account Executive, Halcyon</small></dd></div>
+<div><dt>30-day pilot</dt><dd>Nov 16 to Dec 16<small>Valid until Nov 28, 2026</small></dd></div>
+</dl>
+</div>
+<ol class="toc">
+<li><a href="#problem"><span>1</span>The problem<span>Calls of Oct 12 and 22</span></a></li>
+<li><a href="#scope"><span>2</span>What we propose<span>Scope in and out</span></a></li>
+<li><a href="#pilot"><span>3</span>The 30-day pilot<span>Success criteria</span></a></li>
+<li><a href="#timeline"><span>4</span>Timeline<span>Nov 5 to Dec 21</span></a></li>
+<li><a href="#team"><span>5</span>The team<span>Both sides</span></a></li>
+<li><a href="#investment"><span>6</span>Investment<span>Pilot and year one</span></a></li>
+<li><a href="#next"><span>7</span>Next steps<span>5 dates</span></a></li>
+<li><a href="#signoff"><span>8</span>Sign-off<span>Approval</span></a></li>
+</ol>
+</section>
+<section class="sec" id="problem" data-section="problem">
+<h2><span class="n">1</span>The problem in Tidewell Dental Group&#39;s words</h2>
+<p class="lead">These are the three things we heard on Oct 12 and Oct 22, as close to how they were said as our notes allow.</p>
+<div class="quotes">
+<blockquote><p>A referral goes out the door and we never see it again. The patient tells us three weeks later that nobody called.</p><cite>Ines Calder, Chief Operating Officer, Oct 12</cite></blockquote>
+<blockquote><p>My front desk keeps referrals in a shared inbox and a binder. When someone is off, the binder wins.</p><cite>Rosa Delgado, Regional Clinic Manager, Oct 12</cite></blockquote>
+<blockquote><p>New patients fill in a paper form on arrival. That is ten minutes of the first appointment gone.</p><cite>Marcus Webb, Director of Patient Access, Oct 22</cite></blockquote>
+</div>
+<h3>What it costs today</h3>
+<p class="mute">From Rosa&#39;s September referral log for Riverside and Eastgate, shared Oct 20.</p>
+<div class="facts">
+<div><b>61 of 212</b><span>specialist referrals had no confirmed appointment after 14 days</span></div>
+<div><b>9 h</b><span>a week at each front desk spent chasing referrals</span></div>
+<div><b>38%</b><span>of new patients completed their forms before arrival</span></div>
+</div>
+<p>The referrals are sent. They are not tracked after that. Each clinic keeps its own record, so nobody can see which ones are open.</p>
+</section>
+<section class="sec" id="scope" data-section="scope">
+<h2><span class="n">2</span>What we propose</h2>
+<p class="lead">One referral tracker and one digital intake form for the front desk, starting at two clinics. The platform reads from your scheduling system; nothing is written back.</p>
+<div class="scope">
+<div class="in"><h3>In scope for the pilot</h3><ul>
+<li>Read-only connector to the scheduling system at Riverside and Eastgate</li>
+<li>Referral tracker with an owner and a next step on every open referral</li>
+<li>Digital new-patient form, sent before the first visit</li>
+<li>Single sign-on through Google Workspace</li>
+<li>Weekly 30-minute review with Rosa and Anika</li>
+</ul></div>
+<div><h3>Out of scope until year one</h3><ul>
+<li>The other 12 clinics</li>
+<li>Patient text-message reminders</li>
+<li>Insurance pre-checks</li>
+<li>Billing</li>
+</ul></div>
+</div>
+<p>If the pilot passes, year one extends the same setup to all 14 clinics, with the Riverside team training the next ones.</p>
+</section>
+<section class="sec" id="pilot" data-section="pilot">
+<h2><span class="n">3</span>The 30-day pilot</h2>
+<p class="lead">Nov 16 to Dec 16 at Riverside and Eastgate with Rosa Delgado&#39;s front-desk teams. Four criteria, measured against September.</p>
+<table class="stack">
+<thead><tr><th>Criterion</th><th>Baseline</th><th>Target by day 30</th><th>Measured by</th></tr></thead>
+<tbody>
+<tr><td>Referrals with a confirmed appointment within 14 days</td><td data-l="Baseline">71 percent</td><td data-l="Target by day 30">88 percent</td><td data-l="Measured by">The referral tracker</td></tr>
+<tr><td>Front-desk hours a week spent chasing referrals</td><td data-l="Baseline">9 per clinic</td><td data-l="Target by day 30">4 or fewer</td><td data-l="Measured by">Weekly time check</td></tr>
+<tr><td>New patients who complete forms before arrival</td><td data-l="Baseline">38 percent</td><td data-l="Target by day 30">80 percent</td><td data-l="Measured by">Form submissions</td></tr>
+<tr><td>Front-desk staff using the tracker each working day</td><td data-l="Baseline">0 of 6</td><td data-l="Target by day 30">5 of 6</td><td data-l="Measured by">Sign-ins</td></tr>
+</tbody>
+</table>
+<p class="pass">The pilot passes when three of the four criteria are met across the last two weeks, Dec 3 to Dec 16. If it does not pass, there is no year-one commitment and the pilot fee is the only cost.</p>
+</section>
+<section class="sec" id="timeline" data-section="timeline">
+<h2><span class="n">4</span>Timeline</h2>
+<p class="lead">Seven weeks from the scoping call to a decision on year one. The privacy review and the connector run in parallel so the pilot can start on Nov 16.</p>
+<div class="key"><span><i></i>Halcyon</span><span><i class="them"></i>Tidewell Dental Group</span></div>
+<div class="gantt">
+<div class="head"><span></span><div class="weeks"><span class="mo"><em>Nov </em>2</span><span><em>Nov </em>9</span><span><em>Nov </em>16</span><span><em>Nov </em>23</span><span><em>Nov </em>30</span><span class="mo"><em>Dec </em>7</span><span><em>Dec </em>14</span><span><em>Dec </em>21</span>
+</div></div>
+<div class="row"><span class="lab">Privacy review<small>Elena, Theo</small></span><div class="track">
+<span class="bar them cs2 ce5"></span>
+</div></div>
+<div class="row"><span class="lab">Connect scheduling and tracker<small>Theo</small></span><div class="track">
+<span class="bar cs3 ce6"></span>
+</div></div>
+<div class="row"><span class="lab">Front-desk training<small>Anika</small></span><div class="track">
+<span class="bar cs5 ce7"></span>
+</div></div>
+<div class="row"><span class="lab">Pilot at two clinics<small>Rosa&#39;s teams</small></span><div class="track">
+<span class="bar them cs5 ce14"></span>
+</div></div>
+<div class="row"><span class="lab">Weekly review<small>Rosa, Anika</small></span><div class="track">
+<span class="ms cs7"></span>
+<span class="ms cs9"></span>
+<span class="ms cs11"></span>
+<span class="ms cs13"></span>
+</div></div>
+<div class="row"><span class="lab">Readout<small>Ines, Rosa, Nora</small></span><div class="track">
+<span class="ms cs14"></span>
+</div></div>
+<div class="row"><span class="lab">Decision on year one<small>Ines</small></span><div class="track">
+<span class="ms them cs15"></span>
+</div></div>
+</div>
+<p class="mute small">Diamonds are single-day events. The Dec 21 decision keeps the pilot credit inside the year.</p>
+</section>
+<section class="sec" id="team" data-section="team">
+<h2><span class="n">5</span>The team</h2>
+<p class="lead">Seven people. Tidewell&#39;s part is about three and a half hours a week during the pilot, plus 3 hours of privacy review before it.</p>
+<table class="team stack">
+<thead><tr><th>Name</th><th>Role in the pilot</th><th>Time</th></tr></thead>
+<tbody>
+<tr><td><b>Ines Calder</b><small>Chief Operating Officer, Tidewell</small></td><td data-l="Role">Executive sponsor. Owns the pass decision.</td><td data-l="Time">30 min a week</td></tr>
+<tr><td><b>Rosa Delgado</b><small>Regional Clinic Manager, Tidewell</small></td><td data-l="Role">Pilot lead. Runs the tracker with both front desks.</td><td data-l="Time">2 h a week</td></tr>
+<tr><td><b>Marcus Webb</b><small>Director of Patient Access, Tidewell</small></td><td data-l="Role">Owns the intake form and its wording.</td><td data-l="Time">1 h a week</td></tr>
+<tr><td><b>Elena Park</b><small>Compliance Lead, Tidewell</small></td><td data-l="Role">Privacy review before the pilot starts.</td><td data-l="Time">3 h, weeks 1 and 2</td></tr>
+<tr><td><b>Nora Vance</b><small>Account Executive, Halcyon</small></td><td data-l="Role">Owns this plan and the commercial side.</td><td data-l="Time">As needed</td></tr>
+<tr><td><b>Theo Marsh</b><small>Implementation Lead, Halcyon</small></td><td data-l="Role">Connector, SSO and the privacy answers.</td><td data-l="Time">Weeks 1 to 3</td></tr>
+<tr><td><b>Anika Rao</b><small>Customer Success, Halcyon</small></td><td data-l="Role">Training, the weekly review and the readout.</td><td data-l="Time">Through Dec 16</td></tr>
+</tbody>
+</table>
+</section>
+<section class="sec" id="investment" data-section="investment">
+<h2><span class="n">6</span>Investment</h2>
+<p class="lead">A fixed pilot fee, credited in full against year one if Tidewell signs by Dec 31, 2026.</p>
+<table class="stack">
+<thead><tr><th>Item</th><th>What it covers</th><th class="num">Amount</th></tr></thead>
+<tbody>
+<tr><td>30-day pilot at two clinics</td><td data-l="Covers">Scheduling connector, intake form setup, training, four weekly reviews, readout</td><td class="num" data-l="Amount">$3,600</td></tr>
+<tr><td>Year one, up to 14 clinics</td><td data-l="Covers">All clinics from January 2027, onboarding for each additional clinic included</td><td class="num" data-l="Amount">$41,000 a year</td></tr>
+<tr class="total"><td colspan="2">Year one, with the pilot credit applied</td><td class="num" data-l="Amount">$37,400</td></tr>
+</tbody>
+</table>
+<p class="mute small">Prices in US dollars, before tax. Year one is billed annually.</p>
+</section>
+<section class="sec" id="next" data-section="next">
+<h2><span class="n">7</span>Next steps</h2>
+<ol class="next">
+<li><span class="d">Nov 5</span><div><b>Scoping call</b><span>Agree the criteria and the two clinics. Ines, Rosa, Elena, Nora, Theo.</span></div></li>
+<li><span class="d">Nov 9</span><div><b>Privacy answers back</b><span>Elena returns the review questions.</span></div></li>
+<li><span class="d">Nov 11</span><div><b>Final proposal</b><span>Nora sends version 2 with anything that changed on the call.</span></div></li>
+<li><span class="d">Nov 13</span><div><b>Decision on the pilot</b><span>Ines approves, below or by reply.</span></div></li>
+<li><span class="d">Nov 16</span><div><b>Kickoff at Riverside</b><span>Rosa&#39;s teams, Anika and Theo, on site.</span></div></li>
+</ol><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1b2f5e;color:#fff;text-decoration:none;font-weight:600">Book the scoping call</a>
+</section>
+<section class="sec" id="signoff" data-section="signoff">
+<h2><span class="n">8</span>Sign-off</h2>
+<p class="lead">Approval of the 30-day pilot and its criteria at the fee above. Year one is a separate decision after the readout.</p>
+<div class="sign">
+<div><h3>For Tidewell Dental Group</h3><span class="l"></span><span class="k">Name</span><span class="l"></span><span class="k">Title</span><span class="l"></span><span class="k">Signature</span><span class="l"></span><span class="k">Date</span></div>
+<div><h3>For Halcyon</h3><span class="l"></span><span class="k">Name</span><span class="l"></span><span class="k">Title</span><span class="l"></span><span class="k">Signature</span><span class="l"></span><span class="k">Date</span></div>
+</div>
+<div class="approve">
+<h3>Approve on this page</h3>
+<p>Approving here tells Nora Vance to send the order form for the pilot. It is not a contract.</p><form class="ken-form" data-ken-form="approve" data-ken-preview><input type="hidden" name="_ken_form" value="approve"><label class="ken-form-field"><span>Name</span><input type="text" name="name" maxlength="500" required disabled></label><label class="ken-form-field"><span>Title</span><input type="text" name="title" maxlength="500" required disabled></label><label class="ken-form-field"><span>Note</span><textarea name="note" rows="4" maxlength="2000" disabled></textarea></label><button type="submit" class="ken-form-submit" disabled style="padding:12px 20px;border:0;border-radius:8px;background:#1b2f5e;color:#fff;font-weight:600;cursor:not-allowed">Approve the pilot plan</button><p class="ken-form-preview" role="note" style="margin:8px 0 0;font-size:13px;opacity:.7">Preview: not saved</p></form>
+</div>
+<p class="foot">Prepared by Nora Vance at Halcyon for Tidewell Dental Group. Figures come from Tidewell Dental Group&#39;s own numbers, shared on our calls. This document is for Tidewell Dental Group&#39;s internal use.</p>
+</section>
+</div>
+</body>
+</html>

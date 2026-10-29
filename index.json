@@ -300,6 +300,52 @@
       ]
     },
     {
+      "slug": "proposal",
+      "name": "Proposal and pilot plan",
+      "type": "other",
+      "format": "doc",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/cta",
+        "ken/form",
+        "doc"
+      ],
+      "description": "A forwardable proposal with a 30-day pilot plan, success criteria, timeline, team, pricing and sign-off. Ken fills it from your deal notes and offer.",
+      "category": "deal",
+      "tags": [
+        "proposal",
+        "pilot plan",
+        "sales",
+        "pdf"
+      ],
+      "featured": true,
+      "needs": [
+        "knowledge"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics"
+        },
+        {
+          "id": "tidewell-shared",
+          "label": "Tidewell Dental Group, shared link (no person)"
+        },
+        {
+          "id": "redhill",
+          "label": "Redhill Fabrication"
+        },
+        {
+          "id": "cobalt-harbor",
+          "label": "Cobalt Harbor Foods, no Knowledge yet"
+        }
+      ]
+    },
+    {
       "slug": "signal-note",
       "name": "Three things we noticed",
       "type": "other",

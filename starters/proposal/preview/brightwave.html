@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="A 30-day pilot at the Joliet cross-dock, the criteria it has to meet, and what a year-one rollout would involve. Written to be forwarded: everything Tomas and Priya need is in here.">
+<title>Proposal and pilot plan for Brightwave Logistics</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{
+  --brand-primary:#2a4bd7;
+  --brand-secondary:#0e1530;
+  --brand-heading-font:'Inter Tight';
+  --brand-body-font:'Inter';
+  --p:var(--brand-primary);
+  --s:var(--brand-secondary);
+  --fh:var(--brand-heading-font),ui-sans-serif,system-ui,sans-serif;
+  --fb:var(--brand-body-font),ui-sans-serif,system-ui,sans-serif;
+  --ink:var(--s);
+  --mute:color-mix(in srgb,var(--s) 60%,#fff);
+  --line:color-mix(in srgb,var(--s) 14%,#fff);
+  --hair:color-mix(in srgb,var(--s) 9%,#fff);
+  --paper:color-mix(in srgb,var(--s) 4%,#fff);
+  --tint:color-mix(in srgb,var(--p) 10%,#fff);
+  --tint-line:color-mix(in srgb,var(--p) 30%,#fff);
+  --p-deep:color-mix(in srgb,var(--p) 72%,var(--s));
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+a{color:var(--p-deep)}
+h1,h2,h3{font-family:var(--fh);margin:0;line-height:1.15;letter-spacing:-.01em;font-weight:600}
+p{margin:0 0 .9rem}
+.doc{max-width:46rem;margin:0 auto;padding:0 1.1rem 5rem}
+
+/* running header */
+.run{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line);font-size:.8rem;color:var(--mute)}
+.brand{display:flex;align-items:center;gap:.5rem;font-weight:600;font-family:var(--fh);font-size:.95rem;color:var(--ink);min-width:0}
+.logo{width:24px;height:24px;display:block;flex:none;object-fit:contain}
+.run .ref{text-align:right}
+
+/* cover */
+.cover{padding:3rem 0 2.5rem;min-height:70vh;display:flex;flex-direction:column;justify-content:space-between}
+.cover .kind{font-size:.9rem;color:var(--p-deep);font-weight:500;margin:0 0 1.2rem}
+.cover h1{font-size:2.4rem;max-width:14ch;padding-left:1.1rem;border-left:5px solid var(--p);margin-bottom:1.2rem;overflow-wrap:break-word}
+.cover .for{font-family:var(--fh);font-size:1.35rem;font-weight:500;max-width:28ch;margin:0 0 .4rem}
+.cover .sub{color:var(--mute);max-width:32rem;margin:0 0 2.4rem}
+.cover .wait{background:var(--tint);border-left:3px solid var(--p);padding:.8rem 1rem;max-width:32rem;font-size:.95rem;margin:0 0 1.4rem}
+.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.5rem;margin:0;border-top:1px solid var(--ink)}
+.meta div{padding:.65rem 0;border-bottom:1px solid var(--line)}
+.meta dt{color:var(--mute);font-variant-caps:all-small-caps;letter-spacing:.04em;font-size:.88rem}
+.meta dd{margin:.05rem 0 0;font-weight:500;font-size:.95rem;overflow-wrap:anywhere}
+.meta dd small{display:block;font-weight:400;color:var(--mute);font-size:.82rem}
+.toc{margin:2.2rem 0 0;padding:0;list-style:none;columns:1;font-size:.92rem}
+.toc li{border-bottom:1px solid var(--hair)}
+.toc a{display:flex;gap:.6rem;padding:.65rem 0;color:inherit;text-decoration:none}
+.toc a span:first-child{color:var(--p-deep);font-weight:500;width:1.4rem;flex:none}
+.toc a span:last-child{color:var(--mute);margin-left:auto;flex:none;text-align:right}
+.toc a:focus-visible{outline:2px solid var(--p);outline-offset:2px}
+
+/* sections */
+.sec{padding:2.8rem 0 .5rem;border-top:1px solid var(--line);margin-top:1rem}
+.sec h2{font-size:1.5rem;display:grid;grid-template-columns:2.4rem minmax(0,1fr);align-items:baseline;margin-bottom:1.2rem}
+.sec h2 .n{color:var(--p-deep);font-weight:600;font-size:1.1rem}
+.sec h3{font-size:1.05rem;margin:1.6rem 0 .5rem}
+.sec p{max-width:38rem}
+.lead{font-size:1.05rem}
+.mute{color:var(--mute)}
+.small{font-size:.85rem}
+
+/* quotes and facts */
+.quotes{display:grid;gap:1rem;margin:0 0 1.5rem}
+.quotes blockquote{margin:0;padding:1rem 1.1rem 1rem 1.2rem;border-left:3px solid var(--p);background:var(--paper)}
+.quotes blockquote p{font-family:var(--fh);font-size:1.15rem;line-height:1.35;font-weight:500;margin:0 0 .6rem;max-width:none}
+.quotes cite{font-style:normal;font-size:.85rem;color:var(--mute)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:0 0 1.2rem}
+.facts div{border-top:2px solid var(--ink);padding-top:.5rem}
+.facts b{display:block;font-family:var(--fh);font-size:1.6rem;font-weight:600;line-height:1.1}
+.facts span{font-size:.84rem;color:var(--mute);display:block;margin-top:.2rem}
+
+/* scope */
+.scope{display:grid;gap:1.2rem;margin:0 0 1rem}
+.scope div{padding:1rem 1.1rem;border:1px solid var(--line);border-radius:4px}
+.scope div.in{border-color:var(--tint-line);background:var(--paper)}
+.scope h3{margin:0 0 .5rem;font-size:1rem}
+.scope ul{margin:0;padding-left:1.1rem;font-size:.95rem}
+.scope li{margin:.3rem 0}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:0 0 1rem}
+th{text-align:left;font-weight:500;font-size:.8rem;color:var(--mute);padding:.5rem .6rem .5rem 0;border-bottom:1px solid var(--ink);vertical-align:bottom}
+td{padding:.6rem .9rem .6rem 0;border-bottom:1px solid var(--line);vertical-align:top}
+td.num,th.num{text-align:right;padding-right:0;white-space:nowrap}
+tr.total td{border-bottom:0;border-top:1px solid var(--ink);font-weight:600}
+td small{display:block;color:var(--mute);font-size:.82rem}
+.pass{background:var(--tint);border-left:3px solid var(--p);padding:.7rem .9rem;font-size:.95rem;max-width:38rem}
+
+/* tables stack on phones */
+@media (max-width:639px){
+  .stack thead{display:none}
+  .stack tr{display:block;padding:.6rem 0;border-bottom:1px solid var(--line)}
+  .stack td{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:.6rem;border:0;padding:.12rem 0}
+  .stack td::before{content:attr(data-l);color:var(--mute);font-size:.8rem}
+  .stack td:first-child{display:block;font-weight:500;margin-bottom:.25rem}
+  .stack td:first-child::before{display:none}
+  .stack td.num{text-align:left;white-space:normal}
+  .stack tr.total{border-bottom:0;border-top:1px solid var(--ink)}
+  .stack tr.total td{border:0}
+  .stack tr.total td:first-child{margin:0}
+}
+
+/* gantt: 16 columns, two for each week; the column classes are chosen from slot data */
+.gantt{margin:0 0 1rem;font-size:.82rem}
+.gantt .row{display:grid;grid-template-columns:minmax(0,1fr);gap:.2rem;padding:.45rem 0;border-bottom:1px solid var(--hair)}
+.gantt .lab{color:var(--ink)}
+.gantt .lab small{display:inline;color:var(--mute);margin-left:.3rem;font-size:inherit}
+.gantt .track{display:grid;grid-template-columns:repeat(16,minmax(0,1fr));height:1.1rem;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(12.5% - 1px),var(--hair) calc(12.5% - 1px),var(--hair) 12.5%)}
+.gantt .bar{background:var(--p);border-radius:3px;height:.8rem;align-self:center;opacity:.9}
+.gantt .bar.them{background:var(--ink)}
+.gantt .ms{width:.7rem;height:.7rem;background:var(--p);transform:rotate(45deg);align-self:center;justify-self:center;border-radius:1px}
+.gantt .ms.them{background:var(--ink)}
+.gantt .head{display:grid;grid-template-columns:minmax(0,1fr);padding:.3rem 0 .4rem;border-bottom:1px solid var(--line)}
+.gantt .weeks{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));color:var(--mute);font-size:.68rem}
+.gantt .weeks span{padding-left:.15rem;border-left:1px solid var(--line);white-space:nowrap}
+.gantt .weeks em{font-style:normal}
+@media (max-width:639px){.gantt .weeks span:not(.mo) em{display:none}}
+.cs1{grid-column-start:1}.cs2{grid-column-start:2}.cs3{grid-column-start:3}.cs4{grid-column-start:4}.cs5{grid-column-start:5}.cs6{grid-column-start:6}.cs7{grid-column-start:7}.cs8{grid-column-start:8}
+.cs9{grid-column-start:9}.cs10{grid-column-start:10}.cs11{grid-column-start:11}.cs12{grid-column-start:12}.cs13{grid-column-start:13}.cs14{grid-column-start:14}.cs15{grid-column-start:15}.cs16{grid-column-start:16}
+.ce2{grid-column-end:2}.ce3{grid-column-end:3}.ce4{grid-column-end:4}.ce5{grid-column-end:5}.ce6{grid-column-end:6}.ce7{grid-column-end:7}.ce8{grid-column-end:8}.ce9{grid-column-end:9}
+.ce10{grid-column-end:10}.ce11{grid-column-end:11}.ce12{grid-column-end:12}.ce13{grid-column-end:13}.ce14{grid-column-end:14}.ce15{grid-column-end:15}.ce16{grid-column-end:16}.ce17{grid-column-end:17}
+.key{display:flex;gap:1.2rem;font-size:.8rem;color:var(--mute);margin:0 0 .4rem}
+.key i{display:inline-block;width:.75rem;height:.5rem;border-radius:2px;background:var(--p);margin-right:.35rem}
+.key i.them{background:var(--ink)}
+
+/* team */
+.team td b{font-weight:500;display:block}
+
+/* next steps */
+.next{list-style:none;margin:0 0 1.2rem;padding:0}
+.next li{display:grid;grid-template-columns:4.3rem minmax(0,1fr);gap:.8rem;padding:.6rem 0;border-bottom:1px solid var(--line)}
+.next .d{color:var(--p-deep);font-weight:500;font-size:.92rem}
+.next b{font-weight:500;display:block}
+.next span{color:var(--mute);font-size:.88rem}
+.ken-cta{min-height:44px;line-height:1.4;background:var(--p)!important;color:#fff!important}
+.cover .ken-cta{margin:0 0 1.8rem}
+
+/* sign-off */
+.sign{display:grid;gap:1.5rem;margin:1.2rem 0 1.5rem}
+.sign div{border-top:2px solid var(--ink);padding-top:.6rem}
+.sign h3{margin:0 0 1.4rem;font-size:1rem}
+.sign .l{display:block;border-bottom:1px solid var(--ink);height:1.9rem;margin-bottom:.25rem}
+.sign .k{display:block;font-size:.76rem;color:var(--mute);margin-bottom:.9rem}
+.approve{background:var(--paper);border:1px solid var(--line);padding:1.1rem 1.2rem;border-radius:4px;max-width:30rem}
+.approve h3{margin:0 0 .3rem;font-size:1rem}
+.approve p{font-size:.92rem;color:var(--mute)}
+.approve .ken-form-field{display:block;margin:.6rem 0 0}
+.approve .ken-form-field span{display:block;font-size:.82rem;color:var(--mute);margin:0 0 .25rem}
+.approve input,.approve textarea{display:block;width:100%;min-height:44px;font:inherit;font-size:1rem;padding:.55rem .65rem;border:1px solid var(--line);border-radius:3px;background:#fff;color:var(--ink)}
+.approve textarea{min-height:5rem}
+.approve .ken-form-submit{background:var(--p)!important;display:block;min-height:44px;margin-top:1rem;font:inherit;font-weight:600}
+.approve input:focus-visible,.approve textarea:focus-visible,.approve .ken-form-submit:focus-visible{outline:2px solid var(--p);outline-offset:2px}
+.foot{font-size:.8rem;color:var(--mute);border-top:1px solid var(--line);padding-top:1rem;margin-top:2.5rem}
+
+@media (min-width:640px){
+  .doc{padding:0 2rem 6rem}
+  .cover{padding:4rem 0 3rem}
+  .cover h1{font-size:3.2rem}
+  .meta{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .toc{columns:2;column-gap:2.5rem}
+  .toc li{break-inside:avoid}
+  .toc a{padding:.4rem 0}
+  .sec h2{grid-template-columns:2.8rem minmax(0,1fr);font-size:1.7rem;margin-left:-2.8rem}
+  .scope{grid-template-columns:1fr 1fr}
+  .quotes blockquote p{font-size:1.25rem}
+  .gantt .row,.gantt .head{grid-template-columns:13rem minmax(0,1fr);gap:1rem;align-items:center}
+  .sign{grid-template-columns:1fr 1fr;gap:3rem}
+}
+@media (min-width:900px){
+  .doc{max-width:52rem}
+  .sec h2{grid-template-columns:3.2rem minmax(0,1fr);margin-left:-3.2rem}
+}
+@media print{
+  @page{margin:16mm}
+  body{font-size:11pt;color:#000}
+  .doc{max-width:none;padding:0}
+  .run{display:none}
+  .cover{min-height:auto;padding:2rem 0}
+  .sec{break-before:page;border-top:0;margin-top:0;padding-top:0}
+  .sec h2{margin-left:0;grid-template-columns:2.2rem minmax(0,1fr)}
+  .approve,.ken-cta{display:none!important}
+  .gantt .bar,.gantt .ms,.key i,.quotes blockquote,.scope div.in,.pass,.facts div,.cover h1{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  table,figure,.quotes,.sign,.gantt .row{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="run">
+<div class="brand">
+<svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2a4bd7"/><text x="16" y="21.5" text-anchor="middle" font-family="Inter Tight,sans-serif" font-weight="700" font-size="16" fill="#fff">N</text></svg>
+<span>Northbeam</span>
+</div>
+<span class="ref">Proposal for Brightwave Logistics<br>Version 1.0</span>
+</header>
+<section class="cover" id="cover" data-section="cover">
+<div>
+<p class="kind">Proposal and pilot plan</p>
+<h1>Operations visibility across Brightwave&#39;s seven terminals</h1>
+<p class="for">Prepared for Brightwave Logistics</p>
+<p class="sub">A 30-day pilot at the Joliet cross-dock, the criteria it has to meet, and what a year-one rollout would involve. Written to be forwarded: everything Tomas and Priya need is in here.</p>
+<dl class="meta">
+<div><dt>Prepared for</dt><dd>Leo Marsh<small>VP Operations, Brightwave Logistics</small></dd></div>
+<div><dt>Prepared by</dt><dd>Maya Chen<small>Account Executive, Northbeam</small></dd></div>
+<div><dt>30-day pilot</dt><dd>Nov 18 to Dec 18<small>Valid until Nov 28, 2026</small></dd></div>
+</dl>
+</div>
+<ol class="toc">
+<li><a href="#problem"><span>1</span>The problem<span>Calls of Oct 14 and 21</span></a></li>
+<li><a href="#scope"><span>2</span>What we propose<span>Scope in and out</span></a></li>
+<li><a href="#pilot"><span>3</span>The 30-day pilot<span>Success criteria</span></a></li>
+<li><a href="#timeline"><span>4</span>Timeline<span>Nov 4 to Dec 22</span></a></li>
+<li><a href="#team"><span>5</span>The team<span>Both sides</span></a></li>
+<li><a href="#investment"><span>6</span>Investment<span>Pilot and year one</span></a></li>
+<li><a href="#next"><span>7</span>Next steps<span>5 dates</span></a></li>
+<li><a href="#signoff"><span>8</span>Sign-off<span>Approval</span></a></li>
+</ol>
+</section>
+<section class="sec" id="problem" data-section="problem">
+<h2><span class="n">1</span>The problem in Brightwave Logistics&#39; words</h2>
+<p class="lead">These are the three things we heard on Oct 14 and Oct 21, as close to how they were said as our notes allow.</p>
+<div class="quotes">
+<blockquote><p>We find out a load slipped when the customer calls. By then there is nothing left to do but apologize.</p><cite>Leo Marsh, VP Operations, Oct 14</cite></blockquote>
+<blockquote><p>Every terminal keeps its own handoff sheet. A Milwaukee to Indianapolis load crosses three spreadsheets and nobody owns the middle.</p><cite>Dana Whitfield, Director of Dispatch, Oct 14</cite></blockquote>
+<blockquote><p>I am hiring four coordinators and I cannot tell you which terminal needs them most.</p><cite>Leo Marsh, VP Operations, Oct 21</cite></blockquote>
+</div>
+<h3>What it costs today</h3>
+<p class="mute">From Dana&#39;s September exception log for Joliet, shared Oct 23.</p>
+<div class="facts">
+<div><b>140</b><span>late-load calls at Joliet in September</span></div>
+<div><b>58 h</b><span>of dispatch and service time on those calls, at 25 minutes each</span></div>
+<div><b>6 of 12</b><span>dispatchers worked at least one Saturday to clear the backlog</span></div>
+</div>
+<p>None of this is a people problem. The information exists in the TMS and on the terminal sheets. It reaches the wrong person, or reaches the right one too late.</p>
+</section>
+<section class="sec" id="scope" data-section="scope">
+<h2><span class="n">2</span>What we propose</h2>
+<p class="lead">One exception board and one handoff timeline for every load, starting at Joliet. The platform reads from your TMS; nothing is written back.</p>
+<div class="scope">
+<div class="in"><h3>In scope for the pilot</h3><ul>
+<li>Read-only connector to the TMS, inbound and outbound lanes at Joliet</li>
+<li>Exception board for the 12 Joliet dispatchers, with reason codes and next action</li>
+<li>Handoff timeline per load, from pickup to proof of delivery</li>
+<li>Single sign-on through Brightwave&#39;s Microsoft Entra tenant</li>
+<li>Weekly 30-minute review with Dana and Jordan</li>
+</ul></div>
+<div><h3>Out of scope until year one</h3><ul>
+<li>The other six terminals</li>
+<li>Customer-facing tracking pages</li>
+<li>Carrier invoicing and settlement</li>
+<li>Capacity planning view across lanes (built on pilot data, delivered in year one)</li>
+</ul></div>
+</div>
+<p>If the pilot passes, year one extends the same setup to all seven terminals, two a week, with the Joliet team training the next site.</p>
+</section>
+<section class="sec" id="pilot" data-section="pilot">
+<h2><span class="n">3</span>The 30-day pilot</h2>
+<p class="lead">Nov 18 to Dec 18 at the Joliet cross-dock with Dana Whitfield&#39;s dispatch team. Four criteria, measured against September.</p>
+<table class="stack">
+<thead><tr><th>Criterion</th><th>Baseline</th><th>Target by day 30</th><th>Measured by</th></tr></thead>
+<tbody>
+<tr><td>Late-load calls per week at Joliet</td><td data-l="Baseline">35</td><td data-l="Target by day 30">20 or fewer</td><td data-l="Measured by">Customer service desk log</td></tr>
+<tr><td>Loads with a complete handoff timeline</td><td data-l="Baseline">None</td><td data-l="Target by day 30">90 percent</td><td data-l="Measured by">The platform</td></tr>
+<tr><td>Time from ETA miss to a dispatcher seeing it</td><td data-l="Baseline">When the customer calls</td><td data-l="Target by day 30">Under 20 minutes</td><td data-l="Measured by">Board timestamps</td></tr>
+<tr><td>Dispatchers using the board on a working day</td><td data-l="Baseline">0 of 12</td><td data-l="Target by day 30">10 of 12</td><td data-l="Measured by">Sign-ins</td></tr>
+</tbody>
+</table>
+<p class="pass">The pilot passes when three of the four criteria are met across the last two weeks, Dec 5 to Dec 18. If it does not pass, there is no year-one commitment and the pilot fee is the only cost.</p>
+</section>
+<section class="sec" id="timeline" data-section="timeline">
+<h2><span class="n">4</span>Timeline</h2>
+<p class="lead">Seven weeks from the scoping call to a decision on year one. Security review and the connector run in parallel so the pilot can start on Nov 18.</p>
+<div class="key"><span><i></i>Northbeam</span><span><i class="them"></i>Brightwave Logistics</span></div>
+<div class="gantt">
+<div class="head"><span></span><div class="weeks"><span class="mo"><em>Nov </em>2</span><span><em>Nov </em>9</span><span><em>Nov </em>16</span><span><em>Nov </em>23</span><span><em>Nov </em>30</span><span class="mo"><em>Dec </em>7</span><span><em>Dec </em>14</span><span><em>Dec </em>21</span>
+</div></div>
+<div class="row"><span class="lab">Security review<small>Priya, Sam</small></span><div class="track">
+<span class="bar them cs1 ce5"></span>
+</div></div>
+<div class="row"><span class="lab">Connect TMS and dispatch board<small>Sam</small></span><div class="track">
+<span class="bar cs3 ce7"></span>
+</div></div>
+<div class="row"><span class="lab">Dispatcher training<small>Jordan</small></span><div class="track">
+<span class="bar cs5 ce6"></span>
+</div></div>
+<div class="row"><span class="lab">Pilot at Joliet<small>Dana&#39;s team</small></span><div class="track">
+<span class="bar them cs5 ce15"></span>
+</div></div>
+<div class="row"><span class="lab">Weekly review<small>Dana, Jordan</small></span><div class="track">
+<span class="ms cs7"></span>
+<span class="ms cs9"></span>
+<span class="ms cs11"></span>
+<span class="ms cs13"></span>
+</div></div>
+<div class="row"><span class="lab">Readout<small>Leo, Tomas, Maya</small></span><div class="track">
+<span class="ms cs14"></span>
+</div></div>
+<div class="row"><span class="lab">Decision on year one<small>Leo, Tomas</small></span><div class="track">
+<span class="ms them cs15"></span>
+</div></div>
+</div>
+<p class="mute small">Diamonds are single-day events. The Dec 22 decision keeps the pilot credit inside the year.</p>
+</section>
+<section class="sec" id="team" data-section="team">
+<h2><span class="n">5</span>The team</h2>
+<p class="lead">Seven people. Leo and Dana give about two and a half hours a week, plus Priya&#39;s security review and Tomas&#39;s readout.</p>
+<table class="team stack">
+<thead><tr><th>Name</th><th>Role in the pilot</th><th>Time</th></tr></thead>
+<tbody>
+<tr><td><b>Leo Marsh</b><small>VP Operations, Brightwave</small></td><td data-l="Role">Executive sponsor. Owns the pass decision.</td><td data-l="Time">30 min a week</td></tr>
+<tr><td><b>Dana Whitfield</b><small>Director of Dispatch, Brightwave</small></td><td data-l="Role">Pilot lead. Runs the board with her team, joins the weekly review.</td><td data-l="Time">2 h a week</td></tr>
+<tr><td><b>Priya Okafor</b><small>Head of IT Security, Brightwave</small></td><td data-l="Role">Security review and SSO setup.</td><td data-l="Time">3 h, weeks 1 and 2</td></tr>
+<tr><td><b>Tomas Reyes</b><small>CFO, Brightwave</small></td><td data-l="Role">Investment approval and the readout.</td><td data-l="Time">2 h in total</td></tr>
+<tr><td><b>Maya Chen</b><small>Account Executive, Northbeam</small></td><td data-l="Role">Owns this plan and the commercial side.</td><td data-l="Time">As needed</td></tr>
+<tr><td><b>Sam Okoye</b><small>Solutions Engineer, Northbeam</small></td><td data-l="Role">Connector, SSO and the security answers.</td><td data-l="Time">Weeks 1 to 3</td></tr>
+<tr><td><b>Jordan Lee</b><small>Customer Success, Northbeam</small></td><td data-l="Role">Training, the weekly review and the readout.</td><td data-l="Time">Through Dec 18</td></tr>
+</tbody>
+</table>
+</section>
+<section class="sec" id="investment" data-section="investment">
+<h2><span class="n">6</span>Investment</h2>
+<p class="lead">A fixed pilot fee, credited in full against year one if Brightwave signs by Dec 31, 2026.</p>
+<table class="stack">
+<thead><tr><th>Item</th><th>What it covers</th><th class="num">Amount</th></tr></thead>
+<tbody>
+<tr><td>30-day pilot at Joliet</td><td data-l="Covers">12 dispatchers, one terminal, TMS connector, training, four weekly reviews, readout</td><td class="num" data-l="Amount">$4,800</td></tr>
+<tr><td>Year one, all terminals</td><td data-l="Covers">Up to 120 users across seven terminals from January 2027, capacity view included</td><td class="num" data-l="Amount">$58,000 a year</td></tr>
+<tr><td>Onboarding for the other six terminals</td><td data-l="Covers">Included in year one</td><td class="num" data-l="Amount">$0</td></tr>
+<tr class="total"><td colspan="2">Year one, with the pilot credit applied</td><td class="num" data-l="Amount">$53,200</td></tr>
+</tbody>
+</table>
+<p class="mute small">Prices in US dollars, before tax. Year one is billed annually. Adding terminals beyond seven changes the user count, not the per-user price.</p>
+</section>
+<section class="sec" id="next" data-section="next">
+<h2><span class="n">7</span>Next steps</h2>
+<ol class="next">
+<li><span class="d">Nov 4</span><div><b>Scoping call</b><span>Agree the criteria and the Joliet lane list. Leo, Dana, Priya, Maya, Sam.</span></div></li>
+<li><span class="d">Nov 7</span><div><b>Security questions back</b><span>Priya returns the review questions on the pack sent Oct 27.</span></div></li>
+<li><span class="d">Nov 10</span><div><b>Final proposal</b><span>Maya sends version 2 with anything that changed on the call.</span></div></li>
+<li><span class="d">Nov 14</span><div><b>Decision on the pilot</b><span>Leo and Tomas approve, below or by reply.</span></div></li>
+<li><span class="d">Nov 18</span><div><b>Kickoff at Joliet</b><span>Dana&#39;s team, Jordan and Sam, on site.</span></div></li>
+</ol><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#111827;color:#fff;text-decoration:none;font-weight:600">Book the scoping call</a>
+</section>
+<section class="sec" id="signoff" data-section="signoff">
+<h2><span class="n">8</span>Sign-off</h2>
+<p class="lead">Approval of the 30-day pilot and its criteria at the fee above. Year one is a separate decision after the readout.</p>
+<div class="sign">
+<div><h3>For Brightwave Logistics</h3><span class="l"></span><span class="k">Name</span><span class="l"></span><span class="k">Title</span><span class="l"></span><span class="k">Signature</span><span class="l"></span><span class="k">Date</span></div>
+<div><h3>For Northbeam</h3><span class="l"></span><span class="k">Name</span><span class="l"></span><span class="k">Title</span><span class="l"></span><span class="k">Signature</span><span class="l"></span><span class="k">Date</span></div>
+</div>
+<div class="approve">
+<h3>Approve on this page</h3>
+<p>Approving here tells Maya Chen to send the order form for the pilot. It is not a contract.</p><form class="ken-form" data-ken-form="approve" data-ken-preview><input type="hidden" name="_ken_form" value="approve"><label class="ken-form-field"><span>Name</span><input type="text" name="name" maxlength="500" required disabled></label><label class="ken-form-field"><span>Title</span><input type="text" name="title" maxlength="500" required disabled></label><label class="ken-form-field"><span>Note</span><textarea name="note" rows="4" maxlength="2000" disabled></textarea></label><button type="submit" class="ken-form-submit" disabled style="padding:12px 20px;border:0;border-radius:8px;background:#111827;color:#fff;font-weight:600;cursor:not-allowed">Approve the pilot plan</button><p class="ken-form-preview" role="note" style="margin:8px 0 0;font-size:13px;opacity:.7">Preview: not saved</p></form>
+</div>
+<p class="foot">Prepared by Maya Chen at Northbeam for Leo Marsh at Brightwave Logistics. Figures come from Brightwave Logistics&#39; own numbers, shared on our calls. This document is for Brightwave Logistics&#39; internal use.</p>
+</section>
+</div>
+</body>
+</html>

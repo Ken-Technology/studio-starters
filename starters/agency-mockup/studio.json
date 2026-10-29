@@ -1,0 +1,111 @@
+{
+  "kenStudio": "1",
+  "name": "Your new homepage, sketched",
+  "type": "reverse_demo",
+  "format": "page",
+  "slug": "homepage-sketch",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "site": { "type": "object" },
+      "summary": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 240,
+        "fallback": "The top of {{ account.name }}'s homepage as it reads today, and the same two parts sketched again from the words already on it."
+      },
+      "today": {
+        "type": "object",
+        "properties": {
+          "headline": { "type": "string", "minLength": 2, "maxLength": 160 },
+          "sub": { "type": "string", "maxLength": 320 },
+          "cta": { "type": "string", "maxLength": 40 },
+          "section_name": { "type": "string", "minLength": 2, "maxLength": 40 },
+          "section_heading": { "type": "string", "maxLength": 160 },
+          "section_body": { "type": "string", "maxLength": 500 }
+        },
+        "required": ["headline", "section_name"]
+      },
+      "sketch": {
+        "type": "object",
+        "properties": {
+          "headline": { "type": "string", "minLength": 10, "maxLength": 80 },
+          "sub": { "type": "string", "minLength": 20, "maxLength": 200 },
+          "cta": { "type": "string", "minLength": 2, "maxLength": 40 },
+          "proof": { "type": "string", "maxLength": 90 },
+          "image": { "type": "string", "maxLength": 80 },
+          "section_heading": { "type": "string", "minLength": 6, "maxLength": 80 },
+          "section_intro": { "type": "string", "minLength": 20, "maxLength": 240 },
+          "points": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string", "minLength": 2, "maxLength": 40 },
+                "text": { "type": "string", "minLength": 10, "maxLength": 160 }
+              },
+              "required": ["title", "text"]
+            }
+          }
+        },
+        "required": ["headline", "sub", "cta", "section_heading", "section_intro", "points"]
+      },
+      "notes": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "on": { "type": "string", "enum": ["headline", "sub", "cta", "proof", "image", "section_heading", "section_intro", "points"] },
+            "note": { "type": "string", "minLength": 20, "maxLength": 200 }
+          },
+          "required": ["on", "note"]
+        }
+      }
+    },
+    "required": ["today", "sketch"]
+  },
+  "recipe": [
+    {
+      "id": "site",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}", "maxChars": 12000, "mode": "markdown" },
+      "to": "data.site"
+    },
+    {
+      "id": "sketch",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.site"],
+      "inputs": ["account.name", "account.domain", "account.industry", "account.dossier.summary", "brand.name", "sender.name", "data.site"],
+      "to": ["data.summary", "data.today", "data.sketch", "data.notes"],
+      "prompt": "You are a copywriter at {{ brand.name | default: 'our agency' }} sketching the top of a new homepage for {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The sender' }} sends the sketch to {{ account.name }} to show what their homepage could say, using only words and facts that are already on their site. The sketch has a fixed layout: a hero (headline, line under it, button, proof line, picture) and one section below it (heading, intro, three points).\n\nInputs: data.site is their homepage, read as text. account.industry and account.dossier.summary are our notes on them. Use facts from these inputs only. Never invent customers, numbers, awards, features, places or quotes. Read the homepage as a visitor sees it: leave out Markdown such as **, # and [text](url) links, menus, cookie notices and footers.\n\nReturn JSON with these keys:\n- summary: 1 or 2 sentences, 40 to 240 characters, to {{ account.name }} on what their homepage leads with today and what the sketch leads with instead. State it, do not judge it.\n- today: what is on {{ account.domain }} now, copied word for word from data.site: {headline, sub, cta, section_name, section_heading, section_body}.\n  - headline: the first heading a visitor reads, at most 160 characters.\n  - sub: the line under it, at most 320 characters. Leave the key out when there is none.\n  - cta: the main button label, 1 to 6 words. Leave the key out when there is none.\n  - section_name: a short name for the one section you rewrite, 2 to 5 words, in their own words when the section has a heading, like \"How it works\" or \"Our services\". Pick the first section after the hero that says what they do, who it is for or how it works. Skip logo rows, testimonials and legal text.\n  - section_heading: that section's heading, at most 160 characters.\n  - section_body: the first 1 to 3 sentences of that section, at most 500 characters.\n  The only edit allowed in today is turning an em dash or en dash into a comma. If you cannot quote a part exactly, leave its key out.\n- sketch: the new copy for the fixed layout: {headline, sub, cta, proof, image, section_heading, section_intro, points}.\n  - headline: 10 to 70 characters. What a first-time visitor gets, as a plain promise they can check on the site, like \"Refrigerated freight for grocery distributors, with a live dock schedule\". Sentence case. Not a question.\n  - sub: 1 or 2 sentences, 20 to 180 characters, on who it is for and how it works, from the site.\n  - cta: the main button, 2 to 4 words that say what happens next, like \"See a sample route\". Keep their current button when it already does that.\n  - proof: at most 90 characters, one fact from their site that backs the headline: a year, a count, a place, a named thing they run. Leave the key out when the site has none.\n  - image: at most 80 characters, what the hero picture should show, taken from what their site says they do, like \"Your dispatch board at the Joliet dock\". Never a stock photo idea.\n  - section_heading: 6 to 70 characters, the rewritten heading for the section named in today.section_name.\n  - section_intro: 1 or 2 sentences, 20 to 220 characters.\n  - points: exactly 3 items {title, text}. title is 2 to 36 characters, text is 10 to 150 characters. Each one is a thing they do or a step, from the site, in the order a buyer meets it.\n- notes: 3 to 5 items {on, note}, in the order a reader meets them on the page. on is one of headline, sub, cta, proof, image, section_heading, section_intro, points, and each value appears at most once. note is 1 or 2 sentences, 20 to 200 characters, on what changed and what the reader gets from it, like \"Names the buyer in the first line, so a distributor knows in three seconds the page is for them.\" Never a line on what the writer did.\n\nBefore you answer, read the sketch headline out loud. Would a buyer get it in one read? Could it sit on a competitor's site unchanged? Rewrite it if the answers are no and yes.\n\nVoice: one designer writing to one person. Plain words, short sentences, specific facts. Sentence case for every heading.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No hype words (revolutionize, supercharge, unlock, seamless, game-changer, cutting-edge, leverage, elevate, empower, world-class, best-in-class, all-in-one). Never \"real\" as emphasis. No email addresses, phone numbers or prices. Stay inside the character limits by writing shorter, not by cutting mid-sentence."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.summary", "data.today", "data.sketch", "data.notes"],
+      "retries": 2,
+      "pass_score": 7.5,
+      "requires": ["data.sketch"],
+      "checks": {
+        "banned": ["revolutionize", "supercharge", "unlock", "seamless", "game-changer", "game changer", "cutting-edge", "leverage", "elevate", "empower", "world-class", "best-in-class", "all-in-one", "stock photo", "lorem ipsum"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_real_emphasis": true
+      },
+      "rubric": "Grade the homepage sketch for {{ account.name }} ({{ account.domain }}) the way their head of marketing would read it next to their own homepage. 10 is copy they could put live this week.\nScore 0 to 10 on each check:\n- verbatim: every string in data.today appears word for word in data.site, with at most an em dash or en dash turned into a comma. A paraphrase, a summary or a changed word scores 0.\n- true: every fact in data.sketch and data.notes (a place, a count, a year, a customer, a feature, a named thing) is in data.site or in the account notes. One fact that is not there is an automatic fail.\n- specific: data.sketch.headline says what {{ account.name }} does and for whom, in words that could not sit on a competitor's site unchanged. data.sketch.proof, when present, is a fact from the site and not a claim.\n- clearer: each part of data.sketch says its thing in fewer words than the matching part of data.today, or the same number and easier to read in one pass. data.sketch.cta is 2 to 4 words that name what happens next.\n- notes: each note in data.notes says what the reader gets, not what the writer did, and its on key matches the part it talks about. No two notes share an on key.\n- plain: no hype words, no exclamation marks, headings in sentence case, nothing a person would not say out loud.\nAutomatic fail: an em dash or en dash, an email address or phone number, a placeholder like [company] or lorem ipsum, or a fact that is not on their site.\nThe overall score is the lowest check. Pass at 7.5 or higher with no automatic fail. On a fail, name the key, name the check and quote the words to change."
+    }
+  ],
+  "sections": [
+    { "id": "intro", "label": "Intro" },
+    { "id": "hero", "label": "The hero" },
+    { "id": "section", "label": "The section below" },
+    { "id": "next", "label": "Next step" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 30 minutes" }
+}

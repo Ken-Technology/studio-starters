@@ -81,6 +81,46 @@
       "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
       "showcases": ["prompt", "person", "roles", "ken/cta"],
       "version": "1.0.0"
+    },
+    {
+      "slug": "agency-mockup",
+      "name": "Your new homepage, sketched",
+      "type": "reverse_demo",
+      "format": "page",
+      "showcases": [
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "A redesign of one account's homepage hero and one section, written from their own copy and shown next to what their page says today.",
+      "category": "partners",
+      "tags": [
+        "agency",
+        "homepage",
+        "redesign",
+        "website copy",
+        "mockup"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "marlow",
+          "label": "Marlow Fastening"
+        },
+        {
+          "id": "bellhaven-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "juniper",
+          "label": "Juniper Payroll"
+        }
+      ]
     }
   ]
 }

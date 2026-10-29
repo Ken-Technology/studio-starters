@@ -1,9 +1,10 @@
-{%- assign accent = brand.colors.primary | default: '#0b6e5f' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#17202a' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Schibsted Grotesk' -%}
-{%- assign font_body = brand.fonts.body | default: 'Instrument Sans' -%}
+{%- assign accent = brand.colors.primary | default: '#ed4b44' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Epilogue' -%}
+{%- assign font_body = brand.fonts.body | default: 'Epilogue' -%}
 {%- assign head_q = font_head | replace: ' ', '+' -%}
 {%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- if font_head == 'Epilogue' -%}{%- assign head_w = '400;500;900' -%}{%- else -%}{%- assign head_w = '400;700' -%}{%- endif -%}
+{%- if font_body == 'Epilogue' -%}{%- assign body_w = '400;500;900' -%}{%- else -%}{%- assign body_w = '400;700' -%}{%- endif -%}
 {%- assign brand_name = brand.name | default: 'our team' -%}
 {%- assign sender_name = sender.name | default: 'our team' -%}
 {%- assign sender_first = sender_name | split: ' ' | first -%}
@@ -14,58 +15,52 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>How does {{ account.name | escape }} compare?</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q | escape }}:wght@{{ head_w }}&display=swap">
+{%- if body_q != head_q %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q | escape }}:wght@{{ body_w }}&display=swap">
+{%- endif %}
 <style>
-:root{--p:{{ accent }};--s:{{ accent2 }};--ink:var(--s);--mute:color-mix(in srgb,var(--s) 60%,#fff);--line:color-mix(in srgb,var(--s) 15%,#fff);--paper:color-mix(in srgb,var(--s) 3%,#fbfaf7);--card:#fff;--p-deep:color-mix(in srgb,var(--p) 78%,var(--s))}
+:root{--p:{{ accent | escape }};--on-p:#0f0f0f;--on-p:oklch(from var(--p) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);--fh:'{{ font_head | escape }}','Helvetica Neue',Arial,sans-serif;--fb:'{{ font_body | escape }}','Helvetica Neue',Arial,sans-serif;--bg:#e4e2dc;--ink:#1a1a1a;--muted:#4a4740;--m:clamp(1.125rem,3vw,2.75rem)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-h1,h2{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-weight:600;line-height:1.1;letter-spacing:-.015em;margin:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.125rem/1.5 var(--fb);-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--fh);font-weight:900;line-height:.9;letter-spacing:-.04em;margin:0;text-wrap:balance}
 p{margin:0}
-.wrap{max-width:66rem;margin:0 auto;padding:0 1.15rem}
-.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
-.brand{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
-.logo{height:26px;width:auto;display:block}
-.top-r{font-size:.84rem;color:var(--mute);white-space:nowrap}
-.eyebrow{font-size:.76rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--p-deep);margin-bottom:1rem}
-.intro{padding:2.3rem 0 1.6rem}
-h1{font-size:clamp(2.3rem,9vw,4rem);line-height:1;letter-spacing:-.03em;max-width:13ch;margin-bottom:1.1rem;text-wrap:balance}
-.lede{font-size:1.1rem;line-height:1.5;max-width:36rem}
-.lede+.lede{margin-top:.8rem;color:var(--mute)}
-.cta{padding:.6rem 0 1rem}
-.cta-box{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p);padding:1.5rem 1.3rem 1.4rem;max-width:44rem}
-.cta-box h2{font-size:1.45rem;margin-bottom:.6rem}
-.cta-box p{margin-bottom:1.2rem;max-width:34rem}
-.sign{margin:1.3rem 0 0;font-size:.95rem;font-weight:600}
-.sign span{display:block;color:var(--mute);font-size:.86rem;font-weight:400}
-.foot{padding:1.4rem 0 4rem;font-size:.8rem;color:var(--mute);border-top:1px solid var(--line);margin-top:1.6rem}
-@media (min-width:760px){body{font-size:17px}.wrap{padding:0 2rem}.intro{padding:3.4rem 0 2.4rem}.cta-box{padding:2rem 2.2rem 1.9rem}}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.intro{background:var(--p);color:var(--on-p);padding:1.25rem var(--m) clamp(2rem,5vw,3.5rem);display:grid;gap:1.25rem}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;font-size:.9375rem;margin-bottom:clamp(2rem,8vw,6rem)}
+.brand{font-family:var(--fh);font-weight:900;font-size:1.125rem;letter-spacing:-.03em}
+.logo{height:28px;width:auto;max-width:9rem;display:block}
+.top p{text-align:right}
+.intro h1{font-size:clamp(2.25rem,1.2rem + 5vw,7rem);max-width:14ch;margin-bottom:1rem}
+.lede{font-size:clamp(1.25rem,1.1rem + .5vw,1.5rem);line-height:1.35;max-width:40ch}
+.cta{padding:clamp(2.5rem,6vw,4.5rem) var(--m);display:grid;gap:1.25rem;justify-items:start}
+.cta h2{font-size:clamp(2rem,1.3rem + 3vw,4rem);max-width:14ch}
+.cta p{max-width:44ch}
+.cta .ken-cta{display:inline-flex!important;align-items:center;min-height:56px;padding:1rem 1.6rem!important;border-radius:0!important;background:var(--ink)!important;color:var(--bg)!important;font-family:var(--fh);font-weight:500!important;text-decoration:none}
+.sign{font-weight:500}
+.sign span{display:block;font-weight:400;color:var(--muted)}
+.foot{padding:1.5rem var(--m) 3rem;font-size:.9375rem;color:var(--muted)}
 </style>
 </head>
 <body>
 <main>
-<div class="wrap">
-<header class="top">
-{%- if brand.logo_url %}<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand_name | escape }}">{% else %}<span class="brand">{{ brand_name | escape }}</span>{% endif -%}
-<span class="top-r">Five questions, two minutes</span>
-</header>
 <section data-section="intro" class="intro">
-<p class="eyebrow">{% if person.first_name %}For {{ person.first_name | escape }} {{ person.last_name | escape }}, {{ account.name | escape }}{% else %}For {{ account.name | escape }}{% endif %}</p>
+<header class="top">
+{%- if brand.logo_url %}<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand_name | escape }}">{% elsif brand.name %}<span class="brand">{{ brand.name | escape }}</span>{% else %}<span></span>{% endif -%}
+<p>{% if person.first_name %}For {{ person.first_name | escape }} {{ person.last_name | escape }}, {{ account.name | escape }}{% else %}For {{ account.name | escape }}{% endif %}</p>
+</header>
 <h1>How does {{ account.name | escape }} compare?</h1>
 <p class="lede">Hi {{ person.first_name | default: 'there' | escape }}, this page will ask {{ account.name | escape }} five quick questions and show where it stands next to companies like it.</p>
 <p class="lede">The questions are not on this page yet. The link stays the same, so check back later today.</p>
 </section>
 <section data-section="cta" class="cta">
-<div class="cta-box">
 <h2>Rather go through them now?</h2>
 <p>Twenty minutes with {{ sender_first | escape }}: the five questions, how companies like {{ account.name | escape }} answered them, and what tends to sit behind the gaps.</p>
 {% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}
 <p class="sign">{{ sender_name | escape }}<span>{% if sender.title %}{{ sender.title | escape }}, {% endif %}{{ brand_name | escape }}</span></p>
-</div>
 </section>
 <footer class="foot">Made for {% if person.first_name %}{{ person.first_name | escape }} {{ person.last_name | escape }} at {% endif %}{{ account.name | escape }} by {{ sender_name | escape }} at {{ brand_name | escape }}.</footer>
-</div>
 </main>
 </body>
 </html>

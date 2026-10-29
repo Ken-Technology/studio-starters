@@ -1,8 +1,11 @@
-{%- assign accent = brand.colors.primary | default: '#0f4c5c' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Bricolage Grotesque' -%}
-{%- assign font_body = brand.fonts.body | default: 'Instrument Sans' -%}
+{%- assign accent = brand.colors.primary | default: '#d7261e' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#22392f' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Young Serif' -%}
+{%- assign font_body = brand.fonts.body | default: 'Source Serif 4' -%}
 {%- assign head_q = font_head | replace: ' ', '+' -%}
 {%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- if font_head == 'Young Serif' -%}{%- assign head_w = '400' -%}{%- else -%}{%- assign head_w = '400;700' -%}{%- endif -%}
+{%- if font_body == 'Source Serif 4' -%}{%- assign body_w = '400;600' -%}{%- else -%}{%- assign body_w = '400;700' -%}{%- endif -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,51 +13,50 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A readiness checklist for {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q | escape }}:wght@{{ head_w }}&display=swap">
+{%- if body_q != head_q %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q | escape }}:wght@{{ body_w }}&display=swap">
+{%- endif %}
 <style>
+:root{--p:{{ accent | escape }};--s:{{ accent2 | escape }};--on-p:#fff;--on-p:oklch(from var(--p) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);--on-s:#eef0ee;--on-s:oklch(from var(--s) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);--fh:'{{ font_head | escape }}',Georgia,serif;--fb:'{{ font_body | escape }}',Georgia,serif;--bg:#eef0ee;--ink:#14181a;--text2:#262c29;--muted:#4d5550;--m:clamp(1.125rem,3.6vw,3.5rem)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f6f4ee;color:#15171a;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.rc{--a:{{ accent }};--ink:#15171a;--mute:#696c72;--text2:#3d4046;--line:#dad7cf;--card:#fffdf8;--soft:#e9e6de}
-.rc h1,.rc h2{font-family:'{{ font_head }}',Georgia,serif;font-weight:700;letter-spacing:-.015em}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.125rem/1.6 var(--fb);-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--fh);font-weight:400;margin:0;line-height:1.08;letter-spacing:-.015em;text-wrap:balance}
 p{margin:0}
-.rc-wrap{max-width:68rem;margin:0 auto;padding:0 1.1rem}
-.rc-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.95rem 0;border-bottom:1px solid var(--ink)}
-.rc-logo{height:24px;width:auto;display:block}
-.rc-brand{font-weight:600;font-size:.95rem}
-.rc-tag{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);text-align:right}
-.rc-hero{padding:2rem 0 1.6rem;max-width:40rem}
-.rc-kicker{display:flex;align-items:center;gap:.6rem;font-size:.82rem;font-weight:600;color:var(--text2)}
-.rc-kicker::before{content:'';width:1.25rem;height:3px;background:var(--a);flex:none}
-.rc h1{font-size:2.1rem;line-height:1.08;margin:.85rem 0 .9rem;text-wrap:balance}
-.rc-hero p{font-size:1.05rem;line-height:1.55;color:var(--text2);margin-bottom:.8rem}
-.rc-rows{list-style:none;margin:1.6rem 0 0;padding:0;border-top:2px solid var(--ink);max-width:40rem}
-.rc-rows li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:.8rem;align-items:center;padding:.85rem 0;border-bottom:1px solid var(--line);color:var(--mute);font-size:.95rem}
-.rc-rows i{display:block;width:28px;height:28px;border:2px solid var(--line);border-radius:7px;background:var(--card)}
-.rc-cta{margin:2.4rem 0 1rem;border:1.5px solid var(--ink);border-radius:14px;padding:1.5rem 1.2rem 1.3rem;background:var(--card);max-width:40rem}
-.rc-cta h2{font-size:1.35rem;margin:0 0 .5rem}
-.rc-cta p{max-width:36rem}
-.rc-btn{margin:1.1rem 0 1.2rem}
-.rc-cta .ken-cta{background:var(--a)!important;border-radius:8px!important;padding:13px 22px!important}
-.rc-sign{font-size:.95rem;font-weight:600}
-.rc-sign span{display:block;font-weight:400;color:var(--mute)}
-.rc-foot{font-size:.8rem;color:var(--mute);padding:1rem 0 2.6rem}
-@media (min-width:760px){body{font-size:17px}.rc-wrap{padding:0 2rem}.rc-hero{padding:3.2rem 0 2rem}.rc h1{font-size:3.1rem}.rc-cta{padding:2rem 2.2rem 1.8rem}}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.rc-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:1.25rem var(--m) 0;font-size:.9375rem}
+.rc-brand{font-family:var(--fh);font-size:1.125rem}
+.rc-logo{height:28px;width:auto;max-width:9rem;display:block}
+.rc-top p{color:var(--muted)}
+.rc-hero{padding:clamp(2rem,6vw,4rem) var(--m) clamp(2.5rem,6vw,4rem);display:grid;gap:1rem}
+.rc-hero h1{font-size:clamp(2rem,1.3rem + 3vw,3.5rem);max-width:20ch;margin-bottom:.5rem}
+.rc-hero p{color:var(--text2);max-width:46ch}
+.rc-by{font-size:.9375rem;color:var(--muted)!important}
+.rc-rows{list-style:none;margin:1rem 0 0;padding:0;border-top:2px solid var(--ink);max-width:40rem}
+.rc-rows li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:1rem;align-items:center;padding:1rem 0 .25rem;color:var(--muted)}
+.rc-rows i{display:block;width:28px;height:28px;border:2px solid var(--muted);border-radius:2px}
+.rc-cta{background:var(--s);color:var(--on-s);padding:clamp(3rem,8vw,6rem) var(--m);display:grid;gap:1.25rem;justify-items:start}
+.rc-cta h2{font-size:clamp(2rem,1.3rem + 2.6vw,3.5rem);max-width:18ch}
+.rc-cta p{font-size:1.3125rem;line-height:1.5;max-width:44ch}
+.rc-cta .ken-cta{display:inline-flex!important;align-items:center;min-height:56px;padding:1rem 1.75rem!important;border-radius:2px!important;background:var(--p)!important;color:var(--on-p)!important;font-family:var(--fb);font-weight:600!important;text-decoration:none}
+.rc-cta .ken-cta:focus-visible{outline:3px solid var(--on-s);outline-offset:4px}
+.rc-sign{font-weight:600;font-size:1.125rem!important}
+.rc-sign span{display:block;font-weight:400}
+.rc-foot{font-size:.9375rem;color:var(--muted);padding:1.5rem var(--m) 3rem}
 </style>
 </head>
 <body>
 <main class="rc">
-<div class="rc-wrap">
 <header class="rc-top">
 {%- if brand.logo_url %}<img class="rc-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<span class="rc-brand">{{ brand.name | escape }}</span>{% else %}<span></span>{% endif -%}
-<span class="rc-tag">Readiness checklist</span>
+<p>Readiness checklist</p>
 </header>
 <section data-section="hero" class="rc-hero">
-<p class="rc-kicker">{% if person.first_name %}For {{ person.first_name | escape }} at {{ account.name | escape }}{% else %}For the team at {{ account.name | escape }}{% endif %}</p>
 <h1>A readiness checklist for {{ account.name | escape }}</h1>
 <p>Hi {{ person.first_name | default: 'there' | escape }}, I'm putting together a short checklist for {{ account.name | escape }}: what is already in place, what is not, and which gaps to close first. You tick the boxes, the page keeps the score.</p>
 <p>The list isn't on this page yet. This link stays the same, so check back later today.</p>
+<p class="rc-by">{% if person.first_name %}For {{ person.first_name | escape }} at {{ account.name | escape }}{% else %}For the team at {{ account.name | escape }}{% endif %}</p>
 <ul class="rc-rows" aria-hidden="true">
 <li><i></i>The first thing to have in place</li>
 <li><i></i>The second</li>
@@ -64,11 +66,10 @@ p{margin:0}
 <section data-section="cta" class="rc-cta">
 <h2>Rather talk it through now?</h2>
 <p>Grab 20 minutes and I'll walk you through the list myself, and we can tick it together.</p>
-<div class="rc-btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}
 <p class="rc-sign">{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
 </section>
 <p class="rc-foot">Made for {{ account.name | escape }} by {{ sender.name | default: 'our team' | escape }}.</p>
-</div>
 </main>
 </body>
 </html>

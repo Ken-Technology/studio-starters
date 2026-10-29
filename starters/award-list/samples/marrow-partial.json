@@ -1,0 +1,517 @@
+{
+  "account": {
+    "name": "Marrow Build Co",
+    "domain": "marrowbuild.example",
+    "industry": "construction",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Marrow Build Co is a commercial general contractor in Denver doing tenant build-outs and small industrial projects.",
+      "why_now": null,
+      "angle": null
+    },
+    "signals": []
+  },
+  "person": {
+    "first_name": "Reema",
+    "last_name": "Dalal",
+    "title": "Director of Operations"
+  },
+  "sender": {
+    "name": "Ben Castellano",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Ridgeline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1f5a3c",
+      "secondary": null
+    },
+    "fonts": null
+  },
+  "data": {
+    "industry": "construction",
+    "signals": [],
+    "candidates": [
+      {
+        "name": "Front Range Steel Erectors",
+        "domain": "frontrangesteel.example",
+        "industry": "construction",
+        "size": "1,001-5,000",
+        "employee_count": 1260,
+        "hq": "Denver, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/front-range-steel-erectors",
+        "description": "Structural steel erection for warehouses and stadium projects across the Mountain West.",
+        "founded": 1988
+      },
+      {
+        "name": "Highline Scaffold",
+        "domain": "highlinescaffold.example",
+        "industry": "construction",
+        "size": "51-200",
+        "employee_count": 128,
+        "hq": "Denver, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/highline-scaffold",
+        "description": "Scaffold rental and erection for high-rise and refinery work.",
+        "founded": 2011
+      },
+      {
+        "name": "Boulder Creek Mechanical",
+        "domain": "bouldercreekmech.example",
+        "industry": "construction",
+        "size": "501-1,000",
+        "employee_count": 980,
+        "hq": "Boulder, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/boulder-creek-mechanical",
+        "description": "HVAC and plumbing contractor for hospitals and labs along the Front Range.",
+        "founded": 1994
+      },
+      {
+        "name": "Aspen Trail Builders",
+        "domain": "aspentrailbuilders.example",
+        "industry": "construction",
+        "size": "501-1,000",
+        "employee_count": 820,
+        "hq": "Grand Junction, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/aspen-trail-builders",
+        "description": "Highway and bridge contractor working for state transport departments.",
+        "founded": 1979
+      },
+      {
+        "name": "Summit Line Electric",
+        "domain": "summitlineelectric.example",
+        "industry": "construction",
+        "size": "501-1,000",
+        "employee_count": 690,
+        "hq": "Colorado Springs, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/summit-line-electric",
+        "description": "Electrical contractor for data centers and distribution warehouses.",
+        "founded": 2001
+      },
+      {
+        "name": "Redrock Paving",
+        "domain": "redrockpaving.example",
+        "industry": "construction",
+        "size": "501-1,000",
+        "employee_count": 540,
+        "hq": "Pueblo, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/redrock-paving",
+        "description": "Asphalt paving and site grading for municipal and commercial jobs.",
+        "founded": 1985
+      },
+      {
+        "name": "Timberline Framing",
+        "domain": "timberlineframing.example",
+        "industry": "construction",
+        "size": "201-500",
+        "employee_count": 430,
+        "hq": "Fort Collins, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/timberline-framing",
+        "description": "Wood framing crews for multifamily housing from Fort Collins to Pueblo."
+      },
+      {
+        "name": "Ironvale Concrete",
+        "domain": "ironvaleconcrete.example",
+        "industry": "construction",
+        "size": "201-500",
+        "employee_count": 360,
+        "hq": "Denver, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/ironvale-concrete",
+        "description": "Tilt-up and foundation concrete for industrial buildings.",
+        "founded": 1997
+      },
+      {
+        "name": "Cascade Glass & Glazing",
+        "domain": "cascadeglazing.example",
+        "industry": "construction",
+        "size": "201-500",
+        "employee_count": 290,
+        "hq": "Denver, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/cascade-glass-and-glazing",
+        "description": "Curtain wall and storefront glazing for office and hotel projects.",
+        "founded": 2006
+      },
+      {
+        "name": "Pikes Peak Roofing",
+        "domain": "pikespeakroofing.example",
+        "industry": "construction",
+        "size": "201-500",
+        "employee_count": 240,
+        "hq": "Colorado Springs, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/pikes-peak-roofing",
+        "description": "Commercial roofing and hail repair across southern Colorado.",
+        "founded": 1990
+      },
+      {
+        "name": "Meadowlark Interiors",
+        "domain": "meadowlarkinteriors.example",
+        "industry": "construction",
+        "size": "201-500",
+        "employee_count": 205,
+        "linkedin_url": "https://www.linkedin.com/company/meadowlark-interiors",
+        "description": "Drywall, ceilings and finishes for tenant build-outs.",
+        "founded": 2010
+      },
+      {
+        "name": "Granite Peak Excavation",
+        "domain": "granitepeakexcavation.example",
+        "industry": "construction",
+        "size": "51-200",
+        "employee_count": 180,
+        "hq": "Golden, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/granite-peak-excavation",
+        "description": "Excavation and utility trenching for subdivisions and solar farms.",
+        "founded": 1999
+      },
+      {
+        "name": "Blue Spruce Builders",
+        "domain": "bluesprucebuilders.example",
+        "industry": "construction",
+        "size": "51-200",
+        "employee_count": 160,
+        "hq": "Durango, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/blue-spruce-builders",
+        "description": "General contractor for schools and county buildings in southwest Colorado.",
+        "founded": 2004
+      },
+      {
+        "name": "Sandstone Masonry Works",
+        "domain": "sandstonemasonry.example",
+        "industry": "construction",
+        "size": "51-200",
+        "employee_count": 140,
+        "hq": "Fort Collins, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/sandstone-masonry-works",
+        "description": "Brick and stone masonry for campus and civic buildings."
+      },
+      {
+        "name": "Westgate Fire Protection",
+        "domain": "westgatefire.example",
+        "industry": "construction",
+        "size": "51-200",
+        "employee_count": 112,
+        "hq": "Aurora, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/westgate-fire-protection",
+        "description": "Sprinkler design and installation for warehouses and apartments.",
+        "founded": 2008
+      },
+      {
+        "name": "Copper Ridge Plumbing",
+        "domain": "copperridgeplumbing.example",
+        "industry": "construction",
+        "size": "51-200",
+        "employee_count": 96,
+        "linkedin_url": "https://www.linkedin.com/company/copper-ridge-plumbing",
+        "description": "Commercial plumbing contractor for restaurants and clinics.",
+        "founded": 2005
+      },
+      {
+        "name": "Elkhorn Crane & Rigging",
+        "domain": "elkhorncrane.example",
+        "industry": "construction",
+        "size": "51-200",
+        "employee_count": 84,
+        "hq": "Greeley, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/elkhorn-crane-and-rigging",
+        "description": "Crane rental and rigging crews for steel and precast jobs.",
+        "founded": 1996
+      },
+      {
+        "name": "Juniper Solar Installers",
+        "domain": "junipersolar.example",
+        "industry": "construction",
+        "size": "51-200",
+        "employee_count": 72,
+        "hq": "Boulder, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/juniper-solar-installers",
+        "description": "Rooftop and carport solar installation for schools and warehouses.",
+        "founded": 2015
+      },
+      {
+        "name": "Alder Street Millwork",
+        "domain": "alderstreetmillwork.example",
+        "industry": "construction",
+        "size": "51-200",
+        "employee_count": 64,
+        "hq": "Denver, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/alder-street-millwork",
+        "description": "Custom cabinetry and millwork for offices and restaurants.",
+        "founded": 2009
+      },
+      {
+        "name": "North Fork Demolition",
+        "domain": "northforkdemo.example",
+        "industry": "construction",
+        "size": "51-200",
+        "employee_count": 58,
+        "hq": "Commerce City, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/north-fork-demolition",
+        "description": "Interior demolition and abatement for renovation projects."
+      },
+      {
+        "name": "Silver Creek Surveying",
+        "domain": "silvercreeksurvey.example",
+        "industry": "construction",
+        "size": "51-200",
+        "employee_count": 52,
+        "hq": "Lakewood, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/silver-creek-surveying",
+        "description": "Construction staking and drone surveys for site contractors.",
+        "founded": 2007
+      },
+      {
+        "name": "Prairie Wind Fencing",
+        "domain": "prairiewindfence.example",
+        "industry": "construction",
+        "size": "11-50",
+        "employee_count": 46,
+        "linkedin_url": "https://www.linkedin.com/company/prairie-wind-fencing",
+        "description": "Commercial fencing and gates for industrial yards and schools.",
+        "founded": 2013
+      },
+      {
+        "name": "Mesa Verde Painting",
+        "domain": "mesaverdepainting.example",
+        "industry": "construction",
+        "size": "11-50",
+        "employee_count": 40,
+        "hq": "Grand Junction, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/mesa-verde-painting",
+        "description": "Commercial painting and coatings for warehouses and water tanks."
+      },
+      {
+        "name": "Trailhead Landscaping",
+        "domain": "trailheadlandscape.example",
+        "industry": "construction",
+        "size": "11-50",
+        "employee_count": 34,
+        "hq": "Golden, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/trailhead-landscaping",
+        "description": "Commercial landscaping and irrigation for new builds.",
+        "founded": 2016
+      },
+      {
+        "name": "Foothills Equipment Rental",
+        "domain": "foothillsrental.example",
+        "industry": "construction",
+        "hq": "Denver, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/foothills-equipment-rental",
+        "description": "Earthmoving equipment rental for contractors."
+      }
+    ],
+    "title": "25 construction companies adding people right now",
+    "intro": "This is a list of 25 construction companies that are hiring and growing headcount right now, built from company profiles and hiring data rather than opinion. Marrow Build Co is on it. How the list was made is at the bottom of the page.",
+    "entries": [
+      {
+        "name": "Front Range Steel Erectors",
+        "domain": "frontrangesteel.example",
+        "line": "Structural steel erection for warehouses and stadium projects across the Mountain West.",
+        "employee_count": 1260,
+        "hq": "Denver",
+        "founded": 1988
+      },
+      {
+        "name": "Boulder Creek Mechanical",
+        "domain": "bouldercreekmech.example",
+        "line": "HVAC and plumbing contractor for hospitals and labs along the Front Range.",
+        "employee_count": 980,
+        "hq": "Boulder",
+        "founded": 1994
+      },
+      {
+        "name": "Aspen Trail Builders",
+        "domain": "aspentrailbuilders.example",
+        "line": "Highway and bridge contractor working for state transport departments.",
+        "employee_count": 820,
+        "hq": "Grand Junction",
+        "founded": 1979
+      },
+      {
+        "name": "Summit Line Electric",
+        "domain": "summitlineelectric.example",
+        "line": "Electrical contractor for data centers and distribution warehouses.",
+        "employee_count": 690,
+        "hq": "Colorado Springs",
+        "founded": 2001
+      },
+      {
+        "name": "Redrock Paving",
+        "domain": "redrockpaving.example",
+        "line": "Asphalt paving and site grading for municipal and commercial jobs.",
+        "employee_count": 540,
+        "hq": "Pueblo",
+        "founded": 1985
+      },
+      {
+        "name": "Timberline Framing",
+        "domain": "timberlineframing.example",
+        "line": "Wood framing crews for multifamily housing from Fort Collins to Pueblo.",
+        "employee_count": 430,
+        "hq": "Fort Collins"
+      },
+      {
+        "name": "Ironvale Concrete",
+        "domain": "ironvaleconcrete.example",
+        "line": "Tilt-up and foundation concrete for industrial buildings.",
+        "employee_count": 360,
+        "hq": "Denver",
+        "founded": 1997
+      },
+      {
+        "name": "Cascade Glass & Glazing",
+        "domain": "cascadeglazing.example",
+        "line": "Curtain wall and storefront glazing for office and hotel projects.",
+        "employee_count": 290,
+        "hq": "Denver",
+        "founded": 2006
+      },
+      {
+        "name": "Pikes Peak Roofing",
+        "domain": "pikespeakroofing.example",
+        "line": "Commercial roofing and hail repair across southern Colorado.",
+        "employee_count": 240,
+        "hq": "Colorado Springs",
+        "founded": 1990
+      },
+      {
+        "name": "Meadowlark Interiors",
+        "domain": "meadowlarkinteriors.example",
+        "line": "Drywall, ceilings and finishes for tenant build-outs.",
+        "employee_count": 205,
+        "founded": 2010
+      },
+      {
+        "name": "Granite Peak Excavation",
+        "domain": "granitepeakexcavation.example",
+        "line": "Excavation and utility trenching for subdivisions and solar farms.",
+        "employee_count": 180,
+        "hq": "Golden",
+        "founded": 1999
+      },
+      {
+        "name": "Blue Spruce Builders",
+        "domain": "bluesprucebuilders.example",
+        "line": "General contractor for schools and county buildings in southwest Colorado.",
+        "employee_count": 160,
+        "hq": "Durango",
+        "founded": 2004
+      },
+      {
+        "name": "Sandstone Masonry Works",
+        "domain": "sandstonemasonry.example",
+        "line": "Brick and stone masonry for campus and civic buildings.",
+        "employee_count": 140,
+        "hq": "Fort Collins"
+      },
+      {
+        "name": "Highline Scaffold",
+        "domain": "highlinescaffold.example",
+        "line": "Scaffold rental and erection for high-rise and refinery work.",
+        "employee_count": 128,
+        "hq": "Denver",
+        "founded": 2011
+      },
+      {
+        "name": "Westgate Fire Protection",
+        "domain": "westgatefire.example",
+        "line": "Sprinkler design and installation for warehouses and apartments.",
+        "employee_count": 112,
+        "hq": "Aurora",
+        "founded": 2008
+      },
+      {
+        "name": "Copper Ridge Plumbing",
+        "domain": "copperridgeplumbing.example",
+        "line": "Commercial plumbing contractor for restaurants and clinics.",
+        "employee_count": 96,
+        "founded": 2005
+      },
+      {
+        "name": "Elkhorn Crane & Rigging",
+        "domain": "elkhorncrane.example",
+        "line": "Crane rental and rigging crews for steel and precast jobs.",
+        "employee_count": 84,
+        "hq": "Greeley",
+        "founded": 1996
+      },
+      {
+        "name": "Juniper Solar Installers",
+        "domain": "junipersolar.example",
+        "line": "Rooftop and carport solar installation for schools and warehouses.",
+        "employee_count": 72,
+        "hq": "Boulder",
+        "founded": 2015
+      },
+      {
+        "name": "Alder Street Millwork",
+        "domain": "alderstreetmillwork.example",
+        "line": "Custom cabinetry and millwork for offices and restaurants.",
+        "employee_count": 64,
+        "hq": "Denver",
+        "founded": 2009
+      },
+      {
+        "name": "North Fork Demolition",
+        "domain": "northforkdemo.example",
+        "line": "Interior demolition and abatement for renovation projects.",
+        "employee_count": 58,
+        "hq": "Commerce City"
+      },
+      {
+        "name": "Silver Creek Surveying",
+        "domain": "silvercreeksurvey.example",
+        "line": "Construction staking and drone surveys for site contractors.",
+        "employee_count": 52,
+        "hq": "Lakewood",
+        "founded": 2007
+      },
+      {
+        "name": "Prairie Wind Fencing",
+        "domain": "prairiewindfence.example",
+        "line": "Commercial fencing and gates for industrial yards and schools.",
+        "employee_count": 46,
+        "founded": 2013
+      },
+      {
+        "name": "Mesa Verde Painting",
+        "domain": "mesaverdepainting.example",
+        "line": "Commercial painting and coatings for warehouses and water tanks.",
+        "employee_count": 40,
+        "hq": "Grand Junction"
+      },
+      {
+        "name": "Trailhead Landscaping",
+        "domain": "trailheadlandscape.example",
+        "line": "Commercial landscaping and irrigation for new builds.",
+        "employee_count": 34,
+        "hq": "Golden",
+        "founded": 2016
+      }
+    ],
+    "account_rank": 15,
+    "account_line": "Marrow Build Co is a commercial general contractor in Denver doing tenant build-outs and small industrial projects, with 51 to 200 people and the same industry as every company on this list."
+  }
+}

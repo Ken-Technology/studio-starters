@@ -1,0 +1,582 @@
+{
+  "account": {
+    "name": "Tollgate Logistics",
+    "domain": "tollgatelogistics.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Tollgate Logistics runs regional LTL and refrigerated trucking out of Columbus, with about 260 trucks and a brokerage desk that books outside carriers.",
+      "why_now": "Opened a third terminal in Louisville in September.",
+      "angle": null
+    },
+    "signals": [
+      {
+        "type": "hiring",
+        "title": "Posted 14 dispatcher and driver roles in the last 30 days",
+        "date": "2026-10-21",
+        "source_url": "https://tollgatelogistics.example/careers"
+      },
+      {
+        "type": "expansion",
+        "title": "Opened a third terminal in Louisville",
+        "date": "2026-09-16",
+        "source_url": "https://tollgatelogistics.example/news/louisville-terminal"
+      }
+    ]
+  },
+  "person": {
+    "first_name": "Nadia",
+    "last_name": "Ferreira",
+    "title": "VP Operations"
+  },
+  "sender": {
+    "name": "Jonas Lindqvist",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Fieldstone",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "industry": "transportation, logistics, supply chain and storage",
+    "signals": [
+      {
+        "type": "hiring",
+        "title": "Posted 14 dispatcher and driver roles in the last 30 days",
+        "date": "2026-10-21",
+        "source_url": "https://tollgatelogistics.example/careers"
+      },
+      {
+        "type": "expansion",
+        "title": "Opened a third terminal in Louisville",
+        "date": "2026-09-16",
+        "source_url": "https://tollgatelogistics.example/news/louisville-terminal"
+      }
+    ],
+    "counts": [
+      {
+        "label": "Same industry",
+        "value": 4120
+      },
+      {
+        "label": "Hiring surge, 6 months",
+        "value": 610
+      },
+      {
+        "label": "Headcount up 10% or more",
+        "value": 390
+      },
+      {
+        "label": "Both signals",
+        "value": 140
+      }
+    ],
+    "candidates": [
+      {
+        "name": "Marlow Freight Systems",
+        "domain": "marlowfreight.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "1,001-5,000",
+        "employee_count": 1870,
+        "hq": "Indianapolis, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/marlow-freight-systems",
+        "description": "Dry van and flatbed carrier serving auto plants across Indiana and Ohio, with its own driver school.",
+        "founded": 1998
+      },
+      {
+        "name": "Granite Bay Freight",
+        "domain": "granitebayfreight.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "201-500",
+        "employee_count": 320,
+        "hq": "Columbus, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/granite-bay-freight",
+        "description": "Regional LTL carrier running overnight lanes between Columbus, Pittsburgh and Detroit.",
+        "founded": 2010
+      },
+      {
+        "name": "Cinder Ridge Transport",
+        "domain": "cinderridge.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "1,001-5,000",
+        "employee_count": 1420,
+        "hq": "Memphis, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/cinder-ridge-transport",
+        "description": "Truckload carrier and brokerage built around the Memphis rail yards.",
+        "founded": 2004
+      },
+      {
+        "name": "Juniper Last Mile",
+        "domain": "juniperlastmile.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "201-500",
+        "employee_count": 205,
+        "hq": "Detroit, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/juniper-last-mile",
+        "description": "Van fleet delivering parcels for online sellers across metro Detroit.",
+        "founded": 2017
+      },
+      {
+        "name": "Northgate Cold Storage",
+        "domain": "northgatecold.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "1,001-5,000",
+        "employee_count": 1180,
+        "hq": "Grand Rapids, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/northgate-cold-storage",
+        "description": "Cold storage warehouses and temperature-controlled delivery for food producers in Michigan.",
+        "founded": 1987
+      },
+      {
+        "name": "Pennock Intermodal",
+        "domain": "pennockintermodal.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "501-1,000",
+        "employee_count": 960,
+        "hq": "Chicago, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/pennock-intermodal",
+        "description": "Drayage trucks and container yards around the Chicago intermodal terminals.",
+        "founded": 2009
+      },
+      {
+        "name": "Saltmarsh Shipping",
+        "domain": "saltmarshshipping.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "51-200",
+        "employee_count": 55,
+        "hq": "Cleveland, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/saltmarsh-shipping",
+        "description": "Great Lakes barge and vessel agency handling bulk cargo for steel mills.",
+        "founded": 2012
+      },
+      {
+        "name": "Lakeshore Courier Group",
+        "domain": "lakeshorecourier.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "501-1,000",
+        "employee_count": 840,
+        "hq": "Milwaukee, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/lakeshore-courier-group",
+        "description": "Same-day and next-day courier network for medical labs and pharmacies in Wisconsin.",
+        "founded": 2011
+      },
+      {
+        "name": "Bluff City Brokers",
+        "domain": "bluffcitybrokers.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "501-1,000",
+        "employee_count": 720,
+        "hq": "Memphis, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/bluff-city-brokers",
+        "description": "Freight brokerage matching produce shippers with refrigerated carriers in the Southeast.",
+        "founded": 2012
+      },
+      {
+        "name": "Halvorsen Fleet Services",
+        "domain": "halvorsenfleet.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "501-1,000",
+        "employee_count": 610,
+        "hq": "Minneapolis, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/halvorsen-fleet-services",
+        "description": "Dedicated contract fleets for retailers, with maintenance shops in four states.",
+        "founded": 2001
+      },
+      {
+        "name": "Oakhaven Supply Chain",
+        "domain": "oakhavensupply.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "501-1,000",
+        "employee_count": 530,
+        "hq": "Louisville, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/oakhaven-supply-chain",
+        "description": "Third-party warehousing and kitting for consumer goods brands near the Louisville air hub.",
+        "founded": 2006
+      },
+      {
+        "name": "Redstone Haulage",
+        "domain": "redstonehaulage.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "201-500",
+        "employee_count": 470,
+        "hq": "Birmingham, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/redstone-haulage",
+        "description": "Heavy haul and oversize load carrier for steel and construction equipment.",
+        "founded": 1995
+      },
+      {
+        "name": "Tern Point Logistics",
+        "domain": "ternpoint.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "201-500",
+        "employee_count": 410,
+        "hq": "Cincinnati, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/tern-point-logistics",
+        "description": "Final-mile delivery of appliances and furniture for regional retailers.",
+        "founded": 2015
+      },
+      {
+        "name": "Caraway Distribution",
+        "domain": "carawaydist.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "201-500",
+        "employee_count": 380,
+        "hq": "Nashville, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/caraway-distribution",
+        "description": "Foodservice distribution to restaurants and schools across Tennessee and Kentucky.",
+        "founded": 2008
+      },
+      {
+        "name": "Silverline Tankers",
+        "domain": "silverlinetankers.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "201-500",
+        "employee_count": 290,
+        "hq": "Toledo, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/silverline-tankers",
+        "description": "Bulk liquid carrier for food-grade and chemical tank loads around the Great Lakes.",
+        "founded": 1992
+      },
+      {
+        "name": "Whitlock Air Cargo",
+        "domain": "whitlockaircargo.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "201-500",
+        "employee_count": 260,
+        "hq": "Louisville, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/whitlock-air-cargo",
+        "description": "Air freight forwarder and ground handler at the Louisville and Cincinnati airports.",
+        "founded": 2003
+      },
+      {
+        "name": "Harbor Six Logistics",
+        "domain": "harborsix.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "201-500",
+        "employee_count": 230,
+        "hq": "Cleveland, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/harbor-six-logistics",
+        "description": "Freight forwarding and customs brokerage for manufacturers shipping through the port of Cleveland.",
+        "founded": 2013
+      },
+      {
+        "name": "Copperfield Van Lines",
+        "domain": "copperfieldvanlines.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "51-200",
+        "employee_count": 180,
+        "hq": "Dayton, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/copperfield-van-lines",
+        "description": "Household and office moving company with storage in Dayton and Columbus.",
+        "founded": 1979
+      },
+      {
+        "name": "Ashby Rail Services",
+        "domain": "ashbyrail.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "51-200",
+        "employee_count": 160,
+        "hq": "Fort Wayne, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/ashby-rail-services",
+        "description": "Short line rail switching and transload yards for grain and lumber shippers.",
+        "founded": 2005
+      },
+      {
+        "name": "Meridian Pallet Co.",
+        "domain": "meridianpallet.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "51-200",
+        "employee_count": 140,
+        "hq": "Lexington, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/meridian-pallet-co",
+        "description": "Pallet pooling and repair depots serving beverage and grocery distributors.",
+        "founded": 2001
+      },
+      {
+        "name": "Fairlane Expedite",
+        "domain": "fairlaneexpedite.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "51-200",
+        "employee_count": 120,
+        "hq": "Toledo, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/fairlane-expedite",
+        "description": "Expedited sprinter and straight truck service for auto parts plants.",
+        "founded": 2014
+      },
+      {
+        "name": "Kestrel Reverse Logistics",
+        "domain": "kestrelreverse.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "51-200",
+        "employee_count": 95,
+        "hq": "Columbus, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/kestrel-reverse-logistics",
+        "description": "Returns processing and refurbishment for electronics retailers.",
+        "founded": 2018
+      },
+      {
+        "name": "Brookmere Freight Audit",
+        "domain": "brookmerefreight.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "51-200",
+        "employee_count": 80,
+        "hq": "Indianapolis, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/brookmere-freight-audit",
+        "description": "Freight bill audit and payment for mid-size shippers.",
+        "founded": 2016
+      },
+      {
+        "name": "Dunmore Drayage",
+        "domain": "dunmoredrayage.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size": "51-200",
+        "employee_count": 70,
+        "hq": "Chicago, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/dunmore-drayage",
+        "description": "Owner-operator drayage fleet moving containers out of the Chicago rail ramps.",
+        "founded": 2019
+      },
+      {
+        "name": "Wexford Marine Terminals",
+        "domain": "wexfordmarine.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "hq": "Toledo, United States",
+        "country": "United States",
+        "linkedin_url": "https://www.linkedin.com/company/wexford-marine-terminals",
+        "description": "Lake port terminal operator handling aggregates and salt."
+      },
+      {
+        "name": "Pinecrest Logistics Advisors",
+        "domain": "pinecrestadvisors.example",
+        "industry": "transportation, logistics, supply chain and storage",
+        "linkedin_url": "https://www.linkedin.com/company/pinecrest-logistics-advisors",
+        "description": "Consultants who design distribution networks for regional retailers."
+      }
+    ],
+    "title": "25 freight and logistics companies adding people right now",
+    "intro": "This is a list of 25 freight and logistics companies that are hiring and growing headcount right now, built from company profiles and hiring data rather than opinion. Tollgate Logistics is on it. How the list was made is at the bottom of the page.",
+    "entries": [
+      {
+        "name": "Marlow Freight Systems",
+        "domain": "marlowfreight.example",
+        "line": "Dry van and flatbed carrier serving auto plants across Indiana and Ohio, with its own driver school.",
+        "employee_count": 1870,
+        "hq": "Indianapolis",
+        "founded": 1998
+      },
+      {
+        "name": "Cinder Ridge Transport",
+        "domain": "cinderridge.example",
+        "line": "Truckload carrier and brokerage built around the Memphis rail yards.",
+        "employee_count": 1420,
+        "hq": "Memphis",
+        "founded": 2004
+      },
+      {
+        "name": "Northgate Cold Storage",
+        "domain": "northgatecold.example",
+        "line": "Cold storage warehouses and temperature-controlled delivery for food producers in Michigan.",
+        "employee_count": 1180,
+        "hq": "Grand Rapids",
+        "founded": 1987
+      },
+      {
+        "name": "Pennock Intermodal",
+        "domain": "pennockintermodal.example",
+        "line": "Drayage trucks and container yards around the Chicago intermodal terminals.",
+        "employee_count": 960,
+        "hq": "Chicago",
+        "founded": 2009
+      },
+      {
+        "name": "Lakeshore Courier Group",
+        "domain": "lakeshorecourier.example",
+        "line": "Same-day and next-day courier network for medical labs and pharmacies in Wisconsin.",
+        "employee_count": 840,
+        "hq": "Milwaukee",
+        "founded": 2011
+      },
+      {
+        "name": "Bluff City Brokers",
+        "domain": "bluffcitybrokers.example",
+        "line": "Freight brokerage matching produce shippers with refrigerated carriers in the Southeast.",
+        "employee_count": 720,
+        "hq": "Memphis",
+        "founded": 2012
+      },
+      {
+        "name": "Halvorsen Fleet Services",
+        "domain": "halvorsenfleet.example",
+        "line": "Dedicated contract fleets for retailers, with maintenance shops in four states.",
+        "employee_count": 610,
+        "hq": "Minneapolis",
+        "founded": 2001
+      },
+      {
+        "name": "Oakhaven Supply Chain",
+        "domain": "oakhavensupply.example",
+        "line": "Third-party warehousing and kitting for consumer goods brands near the Louisville air hub.",
+        "employee_count": 530,
+        "hq": "Louisville",
+        "founded": 2006
+      },
+      {
+        "name": "Redstone Haulage",
+        "domain": "redstonehaulage.example",
+        "line": "Heavy haul and oversize load carrier for steel and construction equipment.",
+        "employee_count": 470,
+        "hq": "Birmingham",
+        "founded": 1995
+      },
+      {
+        "name": "Tern Point Logistics",
+        "domain": "ternpoint.example",
+        "line": "Final-mile delivery of appliances and furniture for regional retailers.",
+        "employee_count": 410,
+        "hq": "Cincinnati",
+        "founded": 2015
+      },
+      {
+        "name": "Caraway Distribution",
+        "domain": "carawaydist.example",
+        "line": "Foodservice distribution to restaurants and schools across Tennessee and Kentucky.",
+        "employee_count": 380,
+        "hq": "Nashville",
+        "founded": 2008
+      },
+      {
+        "name": "Granite Bay Freight",
+        "domain": "granitebayfreight.example",
+        "line": "Regional LTL carrier running overnight lanes between Columbus, Pittsburgh and Detroit.",
+        "employee_count": 320,
+        "hq": "Columbus",
+        "founded": 2010
+      },
+      {
+        "name": "Silverline Tankers",
+        "domain": "silverlinetankers.example",
+        "line": "Bulk liquid carrier for food-grade and chemical tank loads around the Great Lakes.",
+        "employee_count": 290,
+        "hq": "Toledo",
+        "founded": 1992
+      },
+      {
+        "name": "Whitlock Air Cargo",
+        "domain": "whitlockaircargo.example",
+        "line": "Air freight forwarder and ground handler at the Louisville and Cincinnati airports.",
+        "employee_count": 260,
+        "hq": "Louisville",
+        "founded": 2003
+      },
+      {
+        "name": "Harbor Six Logistics",
+        "domain": "harborsix.example",
+        "line": "Freight forwarding and customs brokerage for manufacturers shipping through the port of Cleveland.",
+        "employee_count": 230,
+        "hq": "Cleveland",
+        "founded": 2013
+      },
+      {
+        "name": "Juniper Last Mile",
+        "domain": "juniperlastmile.example",
+        "line": "Van fleet delivering parcels for online sellers across metro Detroit.",
+        "employee_count": 205,
+        "hq": "Detroit",
+        "founded": 2017
+      },
+      {
+        "name": "Copperfield Van Lines",
+        "domain": "copperfieldvanlines.example",
+        "line": "Household and office moving company with storage in Dayton and Columbus.",
+        "employee_count": 180,
+        "hq": "Dayton",
+        "founded": 1979
+      },
+      {
+        "name": "Ashby Rail Services",
+        "domain": "ashbyrail.example",
+        "line": "Short line rail switching and transload yards for grain and lumber shippers.",
+        "employee_count": 160,
+        "hq": "Fort Wayne",
+        "founded": 2005
+      },
+      {
+        "name": "Meridian Pallet Co.",
+        "domain": "meridianpallet.example",
+        "line": "Pallet pooling and repair depots serving beverage and grocery distributors.",
+        "employee_count": 140,
+        "hq": "Lexington",
+        "founded": 2001
+      },
+      {
+        "name": "Fairlane Expedite",
+        "domain": "fairlaneexpedite.example",
+        "line": "Expedited sprinter and straight truck service for auto parts plants.",
+        "employee_count": 120,
+        "hq": "Toledo",
+        "founded": 2014
+      },
+      {
+        "name": "Kestrel Reverse Logistics",
+        "domain": "kestrelreverse.example",
+        "line": "Returns processing and refurbishment for electronics retailers.",
+        "employee_count": 95,
+        "hq": "Columbus",
+        "founded": 2018
+      },
+      {
+        "name": "Brookmere Freight Audit",
+        "domain": "brookmerefreight.example",
+        "line": "Freight bill audit and payment for mid-size shippers.",
+        "employee_count": 80,
+        "hq": "Indianapolis",
+        "founded": 2016
+      },
+      {
+        "name": "Dunmore Drayage",
+        "domain": "dunmoredrayage.example",
+        "line": "Owner-operator drayage fleet moving containers out of the Chicago rail ramps.",
+        "employee_count": 70,
+        "hq": "Chicago",
+        "founded": 2019
+      },
+      {
+        "name": "Saltmarsh Shipping",
+        "domain": "saltmarshshipping.example",
+        "line": "Great Lakes barge and vessel agency handling bulk cargo for steel mills.",
+        "employee_count": 55,
+        "hq": "Cleveland",
+        "founded": 2012
+      }
+    ],
+    "account_rank": 12,
+    "account_line": "Tollgate runs about 260 trucks and a brokerage desk out of Columbus, opened a third terminal in Louisville on September 16, and posted 14 dispatcher and driver roles in the last 30 days."
+  }
+}

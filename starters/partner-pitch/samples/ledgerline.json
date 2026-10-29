@@ -1,0 +1,120 @@
+{
+  "account": {
+    "name": "Ledgerline POS",
+    "domain": "ledgerline.example",
+    "industry": "software development",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Ledgerline POS makes point-of-sale software for independent restaurants and small restaurant groups. About 140 people, based in Austin, with around 3,000 restaurant locations on the system.",
+      "why_now": "Opened a partner program page on its site in September and is hiring a partnerships manager.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Priya",
+    "last_name": "Natarajan",
+    "title": "Head of Partnerships"
+  },
+  "sender": {
+    "name": "Jonah Reyes",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Tallgrass",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "knowledge": [
+      {
+        "citationId": "k-offer-1",
+        "kind": "offer",
+        "title": "What Tallgrass sells",
+        "text": "Tallgrass is payroll and HR software for restaurant groups with 3 to 30 locations. It runs payroll from the timeclock hours each site reports, handles tip pooling and tip credits by state, and files payroll taxes. Priced per employee per month. Customers switch to us from a bookkeeper plus spreadsheets, or from a general payroll tool that does not handle tips."
+      },
+      {
+        "citationId": "k-file-2",
+        "kind": "org_file",
+        "title": "Customer profile, 2026",
+        "text": "We have about 600 restaurant group customers, mostly in Texas, the Southeast and the Midwest. The typical customer runs 3 to 30 locations with 40 to 600 hourly staff and an owner or a controller who runs payroll. Most come to us when they open their third or fourth site and tips, overtime and state filings stop fitting in a spreadsheet. The buyer is the owner, the controller or the director of operations."
+      },
+      {
+        "citationId": "k-file-3",
+        "kind": "org_file",
+        "title": "How we win and lose deals",
+        "text": "We win when the group already has a POS that exports hours cleanly, because onboarding takes a week instead of a month. We lose when hours live in three different timeclocks. Our onboarding team maps each POS export by hand today."
+      }
+    ],
+    "why_now": "Opened a partner program page on its site in September and is hiring a partnerships manager.",
+    "site": {
+      "url": "https://ledgerline.example",
+      "title": "Ledgerline POS, point of sale built for independent restaurants",
+      "description": "Orders, payments, timeclock and reporting for independent restaurants and growing restaurant groups.",
+      "markdown": "# Point of sale built for independent restaurants\n\nLedgerline runs the front of house for more than 3,000 restaurant locations: counter service, full service and bars. Orders, payments, online ordering, a built-in timeclock and end-of-day reports in one system.\n\n## Built for groups that are growing\n\nRun one menu across every site. See sales, labor and tips per location in one dashboard. Add a new site in a day.\n\n## Timeclock and labor\n\nStaff clock in on the terminal. Managers see hours, breaks and overtime as the shift happens. Export hours to your payroll provider at the end of the pay period.\n\n## Partners\n\nWe work with payment processors, delivery platforms and accounting tools. Our partner program opened in September 2026.\n\n## Who uses Ledgerline\n\nIndependent restaurants, cafes and bars, and restaurant groups with up to 50 locations, across the US."
+    },
+    "partner_customers": "You sell to independent restaurants, cafes and bars, and to restaurant groups with up to 50 locations across the US. Your system runs the front of house and the timeclock, and groups use it to see sales, labor and tips per location in one dashboard.",
+    "partner_offer": "Point-of-sale software for independent restaurants and restaurant groups: orders, payments, online ordering, a timeclock and end-of-day reporting in one system.",
+    "search": {
+      "industries": ["restaurants", "food and beverage services"],
+      "employeeRanges": ["51-200", "201-500"]
+    },
+    "candidates": [
+      { "name": "Pecan Street Kitchens", "domain": "pecanstreetkitchens.example", "industry": "restaurants", "size": "51-200", "employee_count": 160, "hq": "Austin, Texas", "country": "United States", "description": "Six counter-service kitchens in central Texas serving tacos and breakfast all day, with a seventh site planned for 2027.", "founded": 2014 },
+      { "name": "Harbor and Vine Hospitality", "domain": "harborandvine.example", "industry": "restaurants", "size": "201-500", "employee_count": 310, "hq": "Charleston, South Carolina", "country": "United States", "description": "A restaurant group with eleven full-service restaurants and bars across the Carolinas and Georgia.", "founded": 2009 },
+      { "name": "Copper Kettle Cafes", "domain": "copperkettlecafes.example", "industry": "food and beverage services", "size": "51-200", "employee_count": 120, "hq": "Nashville, Tennessee", "country": "United States", "description": "Nine neighborhood cafes in Nashville and Chattanooga, open for breakfast and lunch, with a central bakery.", "founded": 2016 },
+      { "name": "Ninth Ward Taqueria Group", "domain": "ninthwardtaco.example", "industry": "restaurants", "size": "51-200", "employee_count": 95, "hq": "New Orleans, Louisiana", "country": "United States", "description": "Four taquerias and a commissary kitchen in greater New Orleans, hiring for a fifth location.", "founded": 2018 },
+      { "name": "Redbird Pizza Co", "domain": "redbirdpizza.example", "industry": "restaurants", "size": "201-500", "employee_count": 240, "hq": "Indianapolis, Indiana", "country": "United States", "description": "Fourteen pizzerias across Indiana and Ohio, half of them with bars, run by one operations team.", "founded": 2011 },
+      { "name": "Lakeshore Brunch Collective", "domain": "lakeshorebrunch.example", "industry": "restaurants", "size": "51-200", "employee_count": 180, "hq": "Milwaukee, Wisconsin", "country": "United States", "description": "Eight brunch restaurants in Wisconsin and Illinois with a shared loyalty program and online ordering.", "founded": 2015 },
+      { "name": "Sunset Coast Seafood", "domain": "sunsetcoastseafood.example", "industry": "restaurants", "size": "201-500", "employee_count": 420, "hq": "San Diego, California", "country": "United States", "description": "Twelve seafood restaurants along the Southern California coast, each with a bar and patio service.", "founded": 2004 },
+      { "name": "Bluebonnet Barbecue Holdings", "domain": "bluebonnetbbq.example", "industry": "restaurants", "size": "51-200", "employee_count": 140, "hq": "San Antonio, Texas", "country": "United States", "description": "Five barbecue restaurants in south Texas plus a catering operation, with hourly staff across all sites.", "founded": 2012 }
+    ],
+    "examples": [
+      { "name": "Pecan Street Kitchens", "industry": "restaurants", "size": "51-200", "hq": "Austin, Texas", "why": "Six kitchens in central Texas with a seventh planned, which is the size and the moment both of us sell into." },
+      { "name": "Bluebonnet Barbecue Holdings", "industry": "restaurants", "size": "51-200", "hq": "San Antonio, Texas", "why": "Five restaurants and a catering arm in south Texas, with hourly staff across every site." },
+      { "name": "Ninth Ward Taqueria Group", "industry": "restaurants", "size": "51-200", "hq": "New Orleans, Louisiana", "why": "Four taquerias and a commissary, hiring for a fifth location right now." },
+      { "name": "Copper Kettle Cafes", "industry": "food and beverage services", "size": "51-200", "hq": "Nashville, Tennessee", "why": "Nine cafes across two cities with a central bakery, so hours and tips already span sites." },
+      { "name": "Redbird Pizza Co", "industry": "restaurants", "size": "201-500", "hq": "Indianapolis, Indiana", "why": "Fourteen pizzerias in two states under one operations team, at the top of the range we both serve." }
+    ],
+    "headline": "Your groups run payroll by hand the week they open a fourth site",
+    "summary": "We both sell to restaurant groups with 3 to 30 locations, and we meet them at the same moment: when the spreadsheet stops being enough. Your POS already holds the hours. We turn them into payroll. This page is my case for selling that together.",
+    "our_customers": "Restaurant groups with 3 to 30 locations and 40 to 600 hourly staff, mostly in Texas, the Southeast and the Midwest. The buyer is the owner, the controller or the director of operations. Most come to us when they open a third or fourth site and tips, overtime and state filings stop fitting in a spreadsheet.",
+    "our_offer": "Payroll and HR software for restaurant groups: payroll from timeclock hours, tip pooling and tip credits by state, and payroll tax filings.",
+    "overlap": {
+      "name": "Restaurant groups with 3 to 30 locations",
+      "points": [
+        "The same buyer: the owner or controller who signs for the POS also signs for payroll.",
+        "The same moment: a third or fourth site is when one menu, one dashboard and one payroll stop being optional.",
+        "The same hours: staff clock in on your terminal, and those hours are what we run payroll from.",
+        "The same map: your groups are across the US, and most of ours are in Texas, the Southeast and the Midwest."
+      ]
+    },
+    "offer": {
+      "name": "Payroll that reads the Ledgerline timeclock",
+      "summary": "A bundle for restaurant groups that run on Ledgerline: timeclock hours flow into Tallgrass payroll at the end of each pay period, with tips and overtime already coded per location. You offer it to groups that are adding sites. We offer Ledgerline to groups that come to us without a timeclock worth keeping.",
+      "you_bring": [
+        "A timeclock export per location, with breaks, overtime and tips, that your groups already use",
+        "A partner program and a partnerships hire to run joint deals through",
+        "Groups that are adding sites, which is the week they go looking for payroll"
+      ],
+      "we_bring": [
+        "Payroll from your hours export, with tip pooling and tip credits by state",
+        "Payroll tax filings in every state your groups operate in",
+        "An onboarding team that already maps POS exports by hand, and would map yours once"
+      ],
+      "customer_gets": "One timeclock, one payroll run and one set of tip rules per location, set up in a week instead of a month, with nobody keying hours twice.",
+      "steps": [
+        { "title": "Map the export once", "detail": "Our onboarding team maps your timeclock export to our payroll fields one time, so every shared customer gets the same setup." },
+        { "title": "Offer it to groups adding a site", "detail": "When a group on Ledgerline opens a third or fourth location, your team mentions the bundle. We do the same for groups that come to us first." },
+        { "title": "Onboard in a week", "detail": "Hours flow from your terminals, we run the first payroll next to their old process, and the group switches when the numbers match." },
+        { "title": "Review every quarter", "detail": "We compare who signed, who stayed and what broke, and decide together whether to widen it." }
+      ]
+    },
+    "first_step": {
+      "title": "A 30 minute call to compare ten customers",
+      "detail": "You bring ten groups on Ledgerline that are adding sites this year. I bring ten of ours that run on a POS with a timeclock. If five of them look like the same company, we have an offer. If not, we both learned something in half an hour.",
+      "ask": "Pick a week, and tell me whether the timeclock export is the same for every Ledgerline group or differs by plan."
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "account": {
+    "name": "Harlow and Pike Architects",
+    "domain": "harlowpike.example",
+    "industry": "architecture and planning",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Harlow and Pike Architects is a 14-person practice that designs schools and community buildings.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Isla",
+    "last_name": "Brennan",
+    "title": "Practice Manager"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northbeam",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "rows": [
+      {
+        "kind": "quarter",
+        "label": "Q3 2026",
+        "hours_saved": 96,
+        "active_seats": 9,
+        "seats": 12,
+        "tasks_done": 410,
+        "median_hours": 1.8,
+        "detail": "July to September 2026"
+      },
+      {
+        "kind": "month",
+        "label": "Jul",
+        "quarter": "Q3 2026",
+        "active_seats": 5
+      },
+      {
+        "kind": "month",
+        "label": "Aug",
+        "quarter": "Q3 2026",
+        "active_seats": 7
+      },
+      {
+        "kind": "month",
+        "label": "Sep",
+        "quarter": "Q3 2026",
+        "active_seats": 9
+      }
+    ],
+    "headline": "Harlow and Pike Architects saved 96 hours in Q3, with 9 of 12 seats active.",
+    "usage_note": "Active seats grew from 5 in July to 9 in September, and grew every month."
+  }
+}

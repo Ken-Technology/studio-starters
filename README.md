@@ -18,6 +18,81 @@ Starter templates for [Ken](https://getken.ai) Studio. A Studio template is buil
 
 `index.json` lists them for tools (`studio_starters_list` and the Studio gallery read it). Each entry has `slug`, `name`, `type`, `format`, `description`, `showcases` and `version`.
 
+## The library
+
+The Library is the set of Ken-designed templates every workspace can browse, preview and fork. A Library template is a folder `starters/<slug>/` with the normal bundle (see What a bundle is) plus two things a fork never copies:
+
+```
+starters/<slug>/
+  library.json       how the Library lists the template
+  preview/           written by npm run render; never edit it by hand
+    cover.png        1280x800 PNG of the first screen of the first listed sample
+    <sampleId>.html  each listed sample rendered to a full HTML page
+```
+
+Ken copies only `studio.json`, `template.liquid`, `fallback.liquid`, `assets/` and `samples/` into a workspace, so never put preview files under `assets/` or `samples/`.
+
+### library.json
+
+```json
+{
+  "description": "A one-page brief with the latest news on an account and a count of companies like it.",
+  "category": "prospecting",
+  "tags": ["signals", "market size"],
+  "featured": false,
+  "needs": [],
+  "version": "1.0.0",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "acme", "label": "Acme, filled for one person" },
+    { "id": "globex-shared", "label": "Globex, shared link" },
+    { "id": "initech-partial", "label": "Initech, partial fill" }
+  ]
+}
+```
+
+| Field | Value |
+|---|---|
+| `description` | What the page does, in one or two plain sentences. No em or en dashes, no exclamation marks |
+| `category` | `prospecting`, `deal`, `events`, `customers`, `interactive`, `content`, `partners` or `recruiting` |
+| `tags` | 0 to 6 strings, each at most 32 characters |
+| `featured` | `true` or `false` |
+| `needs` | What a workspace adds before the template works: any of `dataset`, `webhook`, `knowledge` and `video`. Empty means ready to use |
+| `version` | Semver like `1.0.0`. Bump it on every change |
+| `updatedAt` | The date of the last change, as `YYYY-MM-DD` |
+| `samples` | At least 3 `{id, label}`. Each `id` is lowercase letters, digits and hyphens and has `samples/<id>.json`. Every JSON file in `samples/` is listed (a CSV next to them is data, not a sample), and one listed sample has `"person": null` for the shared link. The first one becomes the cover, so make it a sample in the template's default brand (`brand.colors` and `brand.fonts` null). Labels follow the description's rules |
+
+### Previews
+
+`npm run render` runs each listed sample through `template.liquid` with LiquidJS, set up like Ken's edge renderer, and writes `preview/<id>.html`:
+
+- The kit snippets are ports of the edge's. `ken/chart` and `ken/cta` print the same HTML as a live page. `ken/form` shows its fields and submit button disabled, and `ken/booking` shows a calendar-shaped placeholder with the booking button.
+- A preview has no link: `link.booking_url` and `link.page_url` are `#`, and `asset_url` is the folder on `main`, `https://raw.githubusercontent.com/Ken-Technology/studio-starters/main/starters/<slug>`.
+- `brand` is the sample's own, so a field it leaves out takes the template's default. An empty slot takes its slot fallback.
+- A sample with `"person": null` renders `template.liquid`, never `fallback.liquid`: the fallback is for a failed fill, not for a shared link.
+
+It then screenshots the first sample's first screen with Playwright Chromium at 1280x800, after the fonts load and the images settle, and compresses it to `preview/cover.png` under 400 KB. The cover reads assets from the local folder, so it works before the template is on `main`.
+
+Rendering reads no clock and no random values, so the same inputs give the same bytes. Do not print `'now' | date` in a Library template, or its previews change on every render.
+
+### Index
+
+`index.json` is generated. `npm run build-index` writes each Library template's entry: `slug` (the folder name), `name`, `type` and `format` from `studio.json`, `showcases`, then every `library.json` field. `showcases` lists the recipe's step kinds, then its tool names, then the kit snippets `template.liquid` renders, then `doc` for a doc. Library entries are sorted by slug and come after the entries of folders without `library.json`, which stay exactly as they are. `node scripts/build-index.mjs --check` names the entries that are stale.
+
+### Adding a template
+
+```bash
+npm ci                               # LiquidJS, Playwright and sharp
+npx playwright install chromium      # the browser for the cover
+# write starters/<slug>/: studio.json, template.liquid, assets/, samples/ and library.json
+npm run render -- <slug>             # preview/<id>.html and preview/cover.png
+npm run build-index                  # index.json
+npm run check                        # bundles, library.json, preview/ and index.json
+npm test                             # the scripts' own tests
+```
+
+Commit the folder, its `preview/` and `index.json` together. CI runs the check and the tests, and renders the HTML again: a committed preview that differs fails with a message to run `npm run render`. Covers are not compared pixel by pixel, since fonts differ across machines; `check.mjs` checks that each one is a 1280x800 PNG of at most 400 KB.
+
 ## Using a starter
 
 - **In Ken:** Library > Studio > New template, then pick a starter. Ken copies the bundle into your workspace as a draft.
@@ -66,7 +141,7 @@ The recipe fills `data.*` for one account. Steps run in order, and each one writ
 | Kind | Fields | What it does |
 |---|---|---|
 | `bind` | `from`, `to` | Copies `account.*`, `person.*`, `account.dossier.*`, `role.*` or `knowledge.*` into a slot |
-| `tool` | `tool`, `args`, `to` | `ken_search.people`, `ken_search.companies`, `enrich.email`, `scrape.page`, `ken.copy`, `chart.data` |
+| `tool` | `tool`, `args`, `to` | `ken_search.people`, `ken_search.companies`, `ken_search.count`, `enrich.email`, `scrape.page`, `ken.copy`, `chart.data` |
 | `prompt` | `prompt`, `inputs`, `to`, `model` | An LLM writes one or more slots; the output is checked against the slot schema. `model` defaults to `cheap` |
 | `grade` | `rubric`, `on`, `retries`, `pass_score`, `checks` | A judge scores slots; it retries the steps that wrote them, then marks the page "Needs review". `checks` run first and fail a hit without calling the judge |
 | `webhook` | `url`, `headers`, `to`, `timeout_s` | POSTs `{account, person, data}` to your HTTPS endpoint and takes JSON back. Ken signs every request |
@@ -80,6 +155,7 @@ Conventions these starters follow:
 - Every kind except `bind` takes `requires`, a list of `data.<slot>` paths that an earlier step writes. While one of them is empty or failed, the step does not run and costs nothing, and its slots fall back. `rd-doc` uses it so `plan` never writes a strategy without the site, and `copy` never names people when the search found none.
 - A `grade` step may set `checks`: string rules Ken runs on the graded slots before the judge. `banned` lists words and phrases (`demo` also catches `demos`), and `no_placeholders`, `no_dashes`, `no_prices`, `no_test_noun`, `no_real_emphasis` and `no_signoff` turn on the rest. `skip` names fields copied as given (a lead's `name`, `title`, `linkedin_url`), which the checks do not read. A hit fails the grade at no model cost, and the rewrite is told the rule and the quoted phrase. `rd-doc` turns them all on. ken-backend `docs/studio/validation-rules.md` says what each one matches.
 - `ken_search.people` searches one company by default (`company: "account"` or a domain). For people across the market, the starters pass `"company": "any"` with `"filters"`, a Ken Search people filter object (`currentTitles`, `seniorityLevels`, `industries`, `companyHeadcount`, `countries`). Results are `{name, title, company, linkedin_url}` and never carry emails or phone numbers.
+- `ken_search.count` takes `{kind: companies|people, segments: [{label, filters}]}`, 1 to 8 segments, each with a Ken Search filter object, and returns `[{label, value}]` with one count per segment, ready for `ken/chart`. Use it for market numbers instead of a prompt. Needs ken-backend DEV-5732 deployed.
 - `scrape.page` takes `{url, maxChars, mode}`; `ken.copy` takes `{kind: email|headline|paragraph, brief, tone, maxWords}` and returns one piece of copy; `chart.data` turns rows into `{label, value}` for `ken/chart`.
 - A `webhook` gets `{account, person, data, template: {id, versionId}, assetId}` and answers with a JSON object whose top-level keys are the step's `to` slot names. Requests carry Standard Webhooks signature headers. See `starters/rd-your-product/README.md`.
 - A `dataset` step returns up to `limit` rows (default 10). `eq` is case-insensitive, `in` takes a list, `between` is numeric. Columns map to the slot's item properties by name.
@@ -91,6 +167,7 @@ Ken supplies these at render time. Recipes never fill them.
 | Variable | Fields |
 |---|---|
 | `account` | `name`, `domain`, `industry`, `size_band`, `dossier.summary`, `dossier.why_now`, `dossier.angle` |
+| `account.signals` | News on the account: a list of `{type, title, date, source_url}`, `date` as `YYYY-MM-DD`, newest first, at most 10, empty when there is none. Bind it to a slot, pass it to a prompt or loop over it. Needs ken-backend DEV-5732 deployed |
 | `person` | `first_name`, `last_name`, `title`. **Null on the shared link**, so always write `{{ person.first_name \| default: 'there' }}`. On a recruiting page also `current_title`, `current_company`, `location`, `skills`, `experience_summary` and `linkedin_url`, set while the page fills too |
 | `sender` | `name`, `title`, `signature_html` |
 | `brand` | `name`, `logo_url`, `colors.primary`, `colors.secondary`, `fonts.heading`, `fonts.body` |

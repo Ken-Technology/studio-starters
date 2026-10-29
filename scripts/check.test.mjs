@@ -173,7 +173,7 @@ test('a Library template passes', () => {
 const INVALID = [
   ['no description', (l) => delete l.description, /library\.json: description must be a non-empty string/],
   ['an exclamation mark in the description', (l) => { l.description = 'A brief for one account!'; }, /library\.json: description has an em or en dash or an exclamation mark/],
-  ['an en dash in the description', (l) => { l.description = 'A brief – for one account.'; }, /library\.json: description has an em or en dash or an exclamation mark/],
+  ['an en dash in the description', (l) => { l.description = 'A brief \u2013 for one account.'; }, /library\.json: description has an em or en dash or an exclamation mark/],
   ['an unknown category', (l) => { l.category = 'sales'; }, /library\.json: category must be one of prospecting, deal, events, customers, interactive, content, partners, recruiting/],
   ['seven tags', (l) => { l.tags = ['a', 'b', 'c', 'd', 'e', 'f', 'g']; }, /library\.json: tags must be a list of 0 to 6 strings of at most 32 characters/],
   ['a tag over 32 characters', (l) => { l.tags = ['x'.repeat(33)]; }, /library\.json: tags must be a list of 0 to 6 strings of at most 32 characters/],

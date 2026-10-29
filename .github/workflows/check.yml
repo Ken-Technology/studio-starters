@@ -21,3 +21,29 @@ jobs:
         run: node scripts/check.mjs
       - name: Test the check
         run: node --test scripts/check.test.mjs
+      - name: Check index.json is what build-index.mjs writes
+        run: node scripts/build-index.mjs --check
+      - name: Test build-index
+        run: node --test scripts/build-index.test.mjs
+
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Render the sample previews
+        run: node scripts/render.mjs --html-only
+      - name: Committed previews match their templates
+        run: |
+          if ! git diff --exit-code -- 'starters/*/preview/*.html'; then
+            echo "::error::A committed preview is stale. Run npm run render, then commit starters/<slug>/preview/."
+            exit 1
+          fi
+      - name: Test render
+        run: node --test scripts/render.test.mjs

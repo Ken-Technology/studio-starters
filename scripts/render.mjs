@@ -8,7 +8,7 @@
 //
 // The HTML is the sample run through template.liquid with LiquidJS set up like the edge (ken-backend
 // Ken.Redirector.Edge/src/studio/render.ts), and the kit snippets ported in scripts/kit/. A preview has no link:
-// link.booking_url and link.page_url are "#", and asset_url is the bundle folder on main. Same inputs, same bytes.
+// link.booking_url and link.page_url are "#", and asset_url is the bundle's assets/ folder on main. Same inputs, same bytes.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -20,6 +20,9 @@ import { renderForm } from './kit/form.mjs';
 import { escapeHtml } from './kit/html.mjs';
 
 export const RAW_BASE = 'https://raw.githubusercontent.com/Ken-Technology/studio-starters/main/starters';
+// The edge serves {{ asset_url }}/<path> from the bundle's assets/ folder (ken-backend Ken.Redirector.Edge/src/studio/paths.ts),
+// so a preview's asset_url is that folder on main.
+export const assetUrl = (slug) => `${RAW_BASE}/${slug}/assets`;
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const COVER = { width: 1280, height: 800, bytes: 400 * 1024 };
 const KIT = { cta: renderCta, chart: renderChart, booking: renderBooking, form: renderForm };
@@ -99,7 +102,7 @@ export function renderSample({ slug, manifest, template }, sample) {
     sender: sample.sender,
     brand: sample.brand,
     link: { page_url: '#', booking_url: booking, refresh_url: null, pdf_url: null },
-    asset_url: `${RAW_BASE}/${slug}`,
+    asset_url: assetUrl(slug),
     ...(sample.role ? { role: { ...sample.role, booking_url: booking } } : {}),
     ...(sample.roles ? { roles: sample.roles.map((role) => ({ ...role, booking_url: booking })) } : {}),
   };
@@ -137,11 +140,13 @@ async function renderCover(dir, slug, html) {
   const browser = await chromium.launch();
   try {
     const page = await browser.newPage({ viewport: { width: COVER.width, height: COVER.height }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
-    // asset_url points at main, which does not have a new template's assets yet: serve them from the folder.
-    await page.route(`${RAW_BASE}/${slug}/**`, (route) => {
-      const rel = decodeURIComponent(new URL(route.request().url()).pathname).split(`/starters/${slug}/`)[1] ?? '';
-      const file = path.resolve(dir, rel);
-      if (!file.startsWith(`${dir}${path.sep}`) || !fs.existsSync(file)) return route.fulfill({ status: 404 });
+    // asset_url points at main, which does not have a new template's assets yet: serve them from its assets/ folder.
+    const base = `${assetUrl(slug)}/`;
+    const assets = path.join(dir, 'assets');
+    await page.route((url) => url.href.startsWith(base), (route) => {
+      const rel = decodeURIComponent(new URL(route.request().url()).pathname.slice(new URL(base).pathname.length));
+      const file = path.resolve(assets, rel);
+      if (!file.startsWith(`${assets}${path.sep}`) || !fs.existsSync(file)) return route.fulfill({ status: 404 });
       return route.fulfill({ path: file });
     });
     await page.setContent(html, { waitUntil: 'networkidle' });

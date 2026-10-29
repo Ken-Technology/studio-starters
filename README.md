@@ -67,7 +67,7 @@ Ken copies only `studio.json`, `template.liquid`, `fallback.liquid`, `assets/` a
 `npm run render` runs each listed sample through `template.liquid` with LiquidJS, set up like Ken's edge renderer, and writes `preview/<id>.html`:
 
 - The kit snippets are ports of the edge's. `ken/chart` and `ken/cta` print the same HTML as a live page. `ken/form` shows its fields and submit button disabled, and `ken/booking` shows a calendar-shaped placeholder with the booking button.
-- A preview has no link: `link.booking_url` and `link.page_url` are `#`, and `asset_url` is the folder on `main`, `https://raw.githubusercontent.com/Ken-Technology/studio-starters/main/starters/<slug>`.
+- A preview has no link: `link.booking_url` and `link.page_url` are `#`, and `asset_url` is the bundle's `assets/` folder on `main`, `https://raw.githubusercontent.com/Ken-Technology/studio-starters/main/starters/<slug>/assets`, so `{{ asset_url }}/logo.svg` loads as it does on a live page.
 - `brand` is the sample's own, so a field it leaves out takes the template's default. An empty slot takes its slot fallback.
 - A sample with `"person": null` renders `template.liquid`, never `fallback.liquid`: the fallback is for a failed fill, not for a shared link.
 

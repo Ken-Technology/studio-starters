@@ -79,7 +79,8 @@ test('a preview links to "#", reads assets from main and keeps the template defa
   const template = TEMPLATE.replace('</main>', '<img src="{{ asset_url }}/logo.svg" alt=""><a href="{{ link.page_url }}">Page</a></main>');
   const acme = render(SAMPLES.acme, template);
   assert.match(acme, /<a class="ken-cta" data-ken-cta="booking" href="#" style="[^"]*background:#111827;/);
-  assert.match(acme, new RegExp(`<img src="${RAW_BASE}/${SLUG}/logo\\.svg" alt="">`));
+  // The edge serves {{ asset_url }}/<path> from assets/, so the preview points at that folder on main.
+  assert.match(acme, new RegExp(`<img src="${RAW_BASE}/${SLUG}/assets/logo\\.svg" alt="">`));
   assert.equal(RAW_BASE, 'https://raw.githubusercontent.com/Ken-Technology/studio-starters/main/starters');
   assert.match(acme, /<a href="#">Page<\/a>/);
   assert.match(acme, /h1\{color:#1f4e79\}/);
@@ -126,6 +127,21 @@ test('a page with unresolved Liquid fails to render', () => {
   const sample = structuredClone(SAMPLES.acme);
   sample.data.headline = 'Hi {{ person.first_name }}';
   assert.throws(() => render(sample), /unresolved Liquid/);
+});
+
+test('the cover reads assets from the local folder, before the template is on main', async () => {
+  const { default: sharp } = await import('sharp');
+  await inRepo(async (dir) => {
+    const template = TEMPLATE.replace('<main>', '<main><img src="{{ asset_url }}/block.png" alt="" style="position:fixed;top:0;left:0;width:200px;height:200px">');
+    const bundle = writeLibrary(dir, { template });
+    fs.mkdirSync(path.join(bundle, 'assets'));
+    await sharp({ create: { width: 200, height: 200, channels: 3, background: '#000000' } }).png().toFile(path.join(bundle, 'assets', 'block.png'));
+    await renderPreviews(dir, SLUG);
+    const { data, info } = await sharp(path.join(bundle, 'preview', 'cover.png')).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    const at = (x, y) => [...data.subarray((y * info.width + x) * info.channels, (y * info.width + x) * info.channels + 3)];
+    assert.deepEqual(at(100, 100), [0, 0, 0]);
+    assert.notDeepEqual(at(600, 700), [0, 0, 0]);
+  });
 });
 
 test('the cover is a 1280x800 PNG of at most 400 KB', async () => {

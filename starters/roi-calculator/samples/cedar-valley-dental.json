@@ -1,0 +1,55 @@
+{
+  "account": {
+    "name": "Cedar Valley Dental Group",
+    "domain": "cedarvalleydental.example",
+    "industry": "hospitals and health care",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Cedar Valley Dental Group runs eleven family dental offices across two counties. A central billing team handles insurance for every office.",
+      "why_now": "Added three offices in the last year.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Dana",
+    "last_name": "Whitfield",
+    "title": "Practice Administrator"
+  },
+  "sender": {
+    "name": "Jonas Reyes",
+    "title": "Customer Success Lead",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Ledgerline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1b2a41",
+      "secondary": "#10192b"
+    },
+    "fonts": {
+      "heading": "Fraunces",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "work_name": "claims follow-up work",
+    "team_size": 14,
+    "hours_per_week": 11,
+    "hourly_cost": 31,
+    "tool_spend": 1800,
+    "reasons": {
+      "team": "We assumed about 1 in 9 of the 51 to 200 people handle claims, a common split for a group that bills for many offices from one place.",
+      "hours": "Checking claim status, resubmitting denials and posting payments. We assumed 11 hours a week each.",
+      "rate": "Pay for a billing specialist plus benefits and overhead, in US dollars. Change it if your blended cost is different.",
+      "tools": "A billing system add-on, a clearinghouse plan and shared spreadsheets. You will know the actual figure."
+    },
+    "offer": {
+      "seat_price": 39,
+      "setup_fee": 6000,
+      "recovered_share": 35,
+      "tool_replaced_share": 40,
+      "ramp_months": 4
+    }
+  }
+}

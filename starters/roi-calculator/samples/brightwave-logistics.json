@@ -1,0 +1,49 @@
+{
+  "account": {
+    "name": "Brightwave Logistics",
+    "domain": "brightwave-logistics.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Brightwave Logistics is a regional freight broker and carrier with a dispatch floor in Chicago. It moves truckload and less-than-truckload freight for manufacturers across the Midwest.",
+      "why_now": "Opened a second dispatch desk this quarter.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Leo",
+    "last_name": "Marsh",
+    "title": "Director of Operations"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northbeam",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "work_name": "dispatch work",
+    "team_size": 38,
+    "hours_per_week": 9,
+    "hourly_cost": 42,
+    "tool_spend": 2400,
+    "reasons": {
+      "team": "We assumed about 1 in 11 of the 201 to 500 people do dispatch work, a typical share for a freight company this size. Change it to your headcount.",
+      "hours": "Rekeying loads, chasing carrier updates and building the same reports. We assumed 9 hours a week each.",
+      "rate": "Pay for a dispatch coordinator plus benefits and overhead, in US dollars. Change it if your blended cost is different.",
+      "tools": "Spreadsheets, a tracking tool and a reporting add-on, as a team this size tends to pay for them. You will know the actual figure."
+    },
+    "offer": {
+      "seat_price": 49,
+      "setup_fee": 40000,
+      "recovered_share": 40,
+      "tool_replaced_share": 50,
+      "ramp_months": 6
+    }
+  }
+}

@@ -115,6 +115,7 @@
       "checks": {
         "banned": ["leverage", "seamless", "robust", "unlock", "elevate", "empower", "supercharge", "revolutionize", "cutting-edge", "best-in-class", "world-class", "all-in-one"],
         "no_placeholders": true,
+        "no_prices": true,
         "no_dashes": true,
         "skip": ["kind", "where", "before", "grade"]
       },

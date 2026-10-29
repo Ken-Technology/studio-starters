@@ -96,6 +96,7 @@
       "checks": {
         "banned": ["demo", "unlock", "game changer", "I noticed", "I saw"],
         "no_placeholders": true,
+        "no_prices": true,
         "no_dashes": true,
         "no_real_emphasis": true
       },

@@ -774,6 +774,7 @@
           "cutting-edge"
         ],
         "no_placeholders": true,
+        "no_prices": true,
         "no_dashes": true,
         "no_real_emphasis": true
       },

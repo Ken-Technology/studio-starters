@@ -95,6 +95,7 @@
       "checks": {
         "banned": ["revolutionize", "supercharge", "unlock", "seamless", "game-changer", "game changer", "cutting-edge", "leverage", "elevate", "empower", "world-class", "best-in-class", "all-in-one", "stock photo", "lorem ipsum"],
         "no_placeholders": true,
+        "no_prices": true,
         "no_dashes": true,
         "no_real_emphasis": true
       },

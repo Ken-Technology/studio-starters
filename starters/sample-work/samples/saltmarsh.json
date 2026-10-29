@@ -50,7 +50,7 @@
         "citationId": "k3",
         "kind": "instruction",
         "title": "How we write",
-        "text": "Numbers first, then what they mean. Every assumption named as an assumption."
+        "text": "Numbers first, then what they mean. Only numbers the client gave us or we measured."
       }
     ],
     "account_notes": [],

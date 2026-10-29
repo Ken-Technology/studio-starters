@@ -1,0 +1,38 @@
+{
+  "account": {
+    "name": "Larkspur Tooling",
+    "domain": "larkspurtooling.example",
+    "industry": "industrial equipment",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Larkspur Tooling makes custom dies and fixtures for automotive suppliers and has about 90 people.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Elena",
+    "last_name": "Ruiz",
+    "title": "Plant Director"
+  },
+  "sender": {
+    "name": "Sam Whitaker",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Halcyon",
+    "logo_url": null,
+    "colors": {
+      "primary": "#0f766e",
+      "secondary": "#1f2a24"
+    },
+    "fonts": {
+      "heading": "Fraunces",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "notes": ""
+  }
+}

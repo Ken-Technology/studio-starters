@@ -83,6 +83,50 @@
       "version": "1.0.0"
     },
     {
+      "slug": "deal-room",
+      "name": "Deal room",
+      "type": "landing_page",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/cta"
+      ],
+      "description": "One page for a live deal: agenda, a plan with owners on both sides, people and resources. Ken fills it per account from your deal notes and call transcripts.",
+      "category": "deal",
+      "tags": [
+        "deal room",
+        "mutual action plan",
+        "sales",
+        "agenda"
+      ],
+      "featured": true,
+      "needs": [
+        "knowledge"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics"
+        },
+        {
+          "id": "tidewater",
+          "label": "Tidewater Health Partners"
+        },
+        {
+          "id": "ridgeback-shared",
+          "label": "Ridgeback Foods, shared link (no person)"
+        },
+        {
+          "id": "larkspur-empty",
+          "label": "Larkspur Tooling, no deal notes yet"
+        }
+      ]
+    },
+    {
       "slug": "exec-dinner",
       "name": "Executive dinner",
       "type": "event",

@@ -1,0 +1,261 @@
+{
+  "account": {
+    "name": "Lumen Payroll",
+    "domain": "lumen-payroll.example",
+    "industry": "software development",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Lumen Payroll sells payroll software to small employers in Texas. Its site lists three open sales roles and a new partner program.",
+      "why_now": "Hired its first head of revenue operations in September.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Priya",
+    "last_name": "Raman",
+    "title": "Head of Revenue"
+  },
+  "sender": {
+    "name": "Jordan Ellis",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Forgeline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#e4572e",
+      "secondary": "#1c1c1c"
+    },
+    "fonts": {
+      "heading": "Space Grotesk",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "scope": {
+      "market": "US HR and payroll software companies",
+      "size": "50 to 500 staff",
+      "small_band": "50 to 200 staff",
+      "large_band": "201 to 500 staff",
+      "account_band": "51 to 200"
+    },
+    "total": [
+      {
+        "label": "All companies",
+        "value": 2710
+      }
+    ],
+    "segments": [
+      {
+        "label": "HR management software",
+        "value": 910
+      },
+      {
+        "label": "Payroll software",
+        "value": 640
+      },
+      {
+        "label": "Recruiting software",
+        "value": 520
+      },
+      {
+        "label": "Benefits admin",
+        "value": 380
+      },
+      {
+        "label": "Time and attendance",
+        "value": 260
+      }
+    ],
+    "regions": [
+      {
+        "label": "West",
+        "value": 760
+      },
+      {
+        "label": "South",
+        "value": 690
+      },
+      {
+        "label": "Northeast",
+        "value": 610
+      },
+      {
+        "label": "Midwest",
+        "value": 450
+      },
+      {
+        "label": "Mountain",
+        "value": 200
+      }
+    ],
+    "roles_small": [
+      {
+        "label": "VP of Sales",
+        "value": 1980
+      },
+      {
+        "label": "Head of Marketing",
+        "value": 1540
+      },
+      {
+        "label": "Head of Revenue Ops",
+        "value": 860
+      },
+      {
+        "label": "Chief Revenue Officer",
+        "value": 310
+      }
+    ],
+    "roles_large": [
+      {
+        "label": "VP of Sales",
+        "value": 720
+      },
+      {
+        "label": "Head of Marketing",
+        "value": 560
+      },
+      {
+        "label": "Head of Revenue Ops",
+        "value": 410
+      },
+      {
+        "label": "Chief Revenue Officer",
+        "value": 380
+      }
+    ],
+    "signals": [
+      {
+        "label": "Hiring in sales",
+        "value": 780
+      },
+      {
+        "label": "Raised in 12 months",
+        "value": 142
+      },
+      {
+        "label": "Hiring and raised",
+        "value": 96
+      }
+    ],
+    "hiring": [
+      {
+        "label": "HR management software",
+        "value": 290
+      },
+      {
+        "label": "Payroll software",
+        "value": 150
+      },
+      {
+        "label": "Recruiting software",
+        "value": 190
+      },
+      {
+        "label": "Benefits admin",
+        "value": 70
+      },
+      {
+        "label": "Time and attendance",
+        "value": 80
+      }
+    ],
+    "bands": [
+      {
+        "label": "11 to 50",
+        "value": 214
+      },
+      {
+        "label": "51 to 200",
+        "value": 261
+      },
+      {
+        "label": "201 to 500",
+        "value": 118
+      },
+      {
+        "label": "501 to 1,000",
+        "value": 61
+      },
+      {
+        "label": "1,001 and up",
+        "value": 36
+      }
+    ],
+    "band_hiring": [
+      {
+        "label": "11 to 50",
+        "value": 41
+      },
+      {
+        "label": "51 to 200",
+        "value": 88
+      },
+      {
+        "label": "201 to 500",
+        "value": 42
+      },
+      {
+        "label": "501 to 1,000",
+        "value": 27
+      },
+      {
+        "label": "1,001 and up",
+        "value": 19
+      }
+    ],
+    "headline": "The HR and payroll software market, in numbers",
+    "stand": "What 2,710 US HR and payroll software companies with 50 to 500 staff look like right now, and where Lumen Payroll sits among them.",
+    "brief": [
+      {
+        "figure": "2,710",
+        "text": "companies fit the profile. HR management software is the largest segment at 910, and payroll software has 640."
+      },
+      {
+        "figure": "760",
+        "text": "companies are in the West, the largest region. The South is close behind at 690."
+      },
+      {
+        "figure": "6,760",
+        "text": "people hold the four roles that buy for sales and marketing. VP of Sales is the largest group, at 2,700."
+      },
+      {
+        "figure": "780",
+        "text": "companies are hiring in sales, and 142 raised money in the last twelve months."
+      },
+      {
+        "figure": "261",
+        "text": "companies in the South sit in Lumen's size band, and 88 of them are hiring."
+      }
+    ],
+    "narrative": {
+      "segments": "The profile is a US software company with 50 to 500 staff that sells into HR, payroll or hiring teams. There are 2,710 of them. HR management is the largest segment, and payroll, where Lumen sits, is the second largest.",
+      "segments_after": "Time and attendance is the smallest segment at 260 companies. Recruiting software has 520, more than benefits administration at 380.",
+      "regions": "The West holds 760 of the 2,710 companies, the most of any region. The South follows with 690 and the Northeast with 610.",
+      "regions_after": "Lumen is based in the South, where 690 companies compete for the same small employers. The Mountain region is the smallest with 200.",
+      "buyers": "Four titles decide on sales and marketing spend in this market. Across the 2,710 companies, 6,760 people hold one of them. There are more of them at companies with 50 to 200 staff in every role but one.",
+      "buyers_after": "Chief Revenue Officer is the exception, with 380 people at the larger companies and 310 at the smaller ones. At 50 to 200 staff the VP of Sales is the biggest group, with 1,980 people.",
+      "signals": "A company that is hiring salespeople or has new money is about to spend on its revenue stack. Hiring comes from job posts and funding from announcements.",
+      "signals_after": "HR management software has 290 companies hiring, the most of any segment. 142 companies raised money in the last twelve months, and 96 of them are also hiring.",
+      "peers": "Lumen is in the 51 to 200 band. The peer group is every HR and payroll software company in the South, split by headcount, with the number in each band that are hiring.",
+      "peers_after": "Lumen's band is the largest in the South with 261 companies, and 88 of them are hiring. The next band up, 201 to 500, has 118 companies and 42 of them are hiring."
+    },
+    "plays": [
+      {
+        "title": "Write to the 780 companies hiring in sales",
+        "body": "A company hiring salespeople is about to need a way to reach new buyers. 780 companies are hiring now, and 290 of them sell HR management software. Write to the head of sales about ramping new reps."
+      },
+      {
+        "title": "Go to the VP of Sales at smaller companies",
+        "body": "There are 1,980 VPs of Sales at companies with 50 to 200 staff, the largest single group in the report. They run the team and own the number, so write about pipeline, not about tools."
+      },
+      {
+        "title": "Reach the 96 that are funded and hiring",
+        "body": "142 companies raised money in the last twelve months and 96 of them are hiring. A funded company tends to pick vendors in the first few quarters, so a message now lands early."
+      }
+    ],
+    "method": "The counts come from company profiles and hiring data at the time this page was filled. Companies: headquartered in the United States, 50 to 500 employees, in a software or HR services industry. People: a current title in one of four sales and marketing roles at those companies. Hiring means a sales hiring surge in the last three months. Raised means a funding round in the last 365 days. The peer group is the same industries in the South, split by headcount."
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "account": {
+    "name": "Cobalt Fleet Software",
+    "domain": "cobaltfleet.example",
+    "industry": "software development",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Cobalt Fleet Software sells preventive maintenance software to trucking fleets of 50 to 500 trucks. It reads engine fault codes from telematics and books shop time before a truck fails on the road. About 90 people, based in Columbus.",
+      "why_now": "Released a new telematics integration in October and posted two sales development roles.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Ana Lindqvist",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Meridian Outbound",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1f2d3d",
+      "secondary": "#b8894b"
+    },
+    "fonts": {
+      "heading": "Newsreader",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "knowledge": [
+      {
+        "citationId": "k1",
+        "kind": "file",
+        "title": "What Meridian sells",
+        "text": "Meridian Outbound runs cold email and LinkedIn outreach for B2B software companies with 20 to 200 people. We build the list, write the sequence, send from domains we warm, answer replies and book meetings on the client's calendar. One segment at a time, a new segment every month."
+      },
+      {
+        "citationId": "k2",
+        "kind": "file",
+        "title": "How a month runs",
+        "text": "Week 1 we agree the segment and the ask and build the list. Week 2 the first send goes out under the client's name. Weeks 3 and 4 are follow-ups, replies answered within a working day, and a readout every Friday with what was sent, who answered and what they said."
+      },
+      {
+        "citationId": "k3",
+        "kind": "instruction",
+        "title": "How we write",
+        "text": "One fact about their company, one problem, one easy ask. Under 90 words. No subject line a marketer would write."
+      }
+    ],
+    "account_notes": [],
+    "site": {
+      "url": "https://cobaltfleet.example",
+      "title": "Cobalt Fleet: preventive maintenance for fleets of 50 to 500 trucks",
+      "description": "Cobalt reads fault codes from your trucks and books shop time before a truck fails on the road.",
+      "markdown": "# Fewer trucks down on the road\nCobalt reads engine fault codes and mileage from your telematics and schedules preventive maintenance before a truck fails on the road. Built for fleets of 50 to 500 trucks.\n\n## How it works\nConnect your telematics. Cobalt groups fault codes by truck and sets a shop date for each one. Your shop sees a day plan, not a pile of alerts.\n\n## Who uses it\nRegional truckload carriers, food distributors with their own fleet, and waste haulers.\n\n## Integrations\nWorks with the major telematics providers. New integration released October 2026."
+    },
+    "dossier": "Cobalt Fleet Software sells preventive maintenance software to trucking fleets of 50 to 500 trucks. It reads engine fault codes from telematics and books shop time before a truck fails on the road. About 90 people, based in Columbus.",
+    "why_now": "Released a new telematics integration in October and posted two sales development roles.",
+    "signals": [
+      {
+        "type": "hiring",
+        "title": "Two sales development representative roles posted",
+        "date": "2026-10-20",
+        "source_url": "https://cobaltfleet.example/careers"
+      },
+      {
+        "type": "product",
+        "title": "New telematics integration announced on the Cobalt blog",
+        "date": "2026-10-08",
+        "source_url": "https://cobaltfleet.example/blog/telematics-integration"
+      }
+    ],
+    "headline": "A first two weeks of outbound for Cobalt Fleet, planned from your own site",
+    "intro": "Nobody at Cobalt Fleet asked for this. Your site names the fleet size you serve and the three kinds of company that use you, so a first plan was possible without a call. It is one segment, one email and a two-week schedule.",
+    "kind": "An outbound plan for the first two weeks",
+    "site_note": "The headline, the how it works section and the who uses it list, plus the October integration note.",
+    "blocks": [
+      {
+        "label": "The bet",
+        "title": "Go after the shop, not the fleet owner",
+        "body": "Your site says the shop sees a day plan instead of a pile of alerts. That line is written for the person who runs the shop, so the first segment is maintenance directors, not owners or finance. The ask is small: would they like to see what Cobalt does with one week of their own fault codes. Fleets of 50 to 500 trucks is your own number, so the list stays inside it."
+      },
+      {
+        "label": "Who to reach",
+        "title": "Three kinds of company, one role in each",
+        "body": "All three come from the who uses it line on your site. In each one the list targets the person who owns shop time and downtime, by title.",
+        "items": [
+          {
+            "name": "Director of maintenance at regional truckload carriers",
+            "note": "Fleets of 50 to 500 trucks, the size your site names. Owns the downtime number."
+          },
+          {
+            "name": "VP of operations at food distributors with their own fleet",
+            "note": "Refrigerated routes run on a fixed schedule. A truck down is a route missed."
+          },
+          {
+            "name": "Fleet manager at waste and recycling haulers",
+            "note": "The same preventive maintenance problem, on trucks that run the same route every day."
+          }
+        ]
+      },
+      {
+        "label": "The first email",
+        "title": "Under 90 words, one fact, one ask",
+        "body": "The greeting and the name are added per person. The subject line is the first two words of the plan, shop day plan, because it reads like a note from inside their own company.\n\nIf fault codes still land in an inbox and the shop sorts them on Monday, a truck that could have had a shop date fails on the road instead.\n\nCobalt reads the codes from your telematics and sets a shop date per truck, so the shop gets a day plan instead of a pile of alerts. It is built for fleets of 50 to 500 trucks.\n\nWant me to show you what it does with one week of your own codes?"
+      },
+      {
+        "label": "Days 1 to 14",
+        "title": "The first two weeks",
+        "body": "The schedule runs the way every first month runs with us, cut to the part before the first follow-up.",
+        "items": [
+          {
+            "name": "Days 1 to 3",
+            "note": "Agree the segment and the ask. Build the list and check every company against the 50 to 500 truck range."
+          },
+          {
+            "name": "Days 4 to 5",
+            "note": "Sending domains set up and warmed apart from cobaltfleet.example, so your main domain stays clean."
+          },
+          {
+            "name": "Days 6 to 10",
+            "note": "The first send goes out under your name. Every reply answered within a working day."
+          },
+          {
+            "name": "Days 11 to 14",
+            "note": "The first follow-up. Friday readout: what was sent, who answered and what they said."
+          }
+        ]
+      }
+    ],
+    "full_intro": "This is the first two weeks of a month. The full month adds the list, the follow-ups and the replies, then a new segment the month after.",
+    "full": [
+      {
+        "title": "The list, built and checked",
+        "detail": "Every maintenance director at the carriers in the segment, checked by us before the first send."
+      },
+      {
+        "title": "Three follow-ups and a LinkedIn note",
+        "detail": "Each on a different reason to answer, spaced over three weeks."
+      },
+      {
+        "title": "Replies answered, meetings booked",
+        "detail": "We answer every reply within a working day and put meetings straight on your calendar."
+      },
+      {
+        "title": "A readout every Friday",
+        "detail": "What was sent, who answered and what they said, so you can steer the next segment."
+      },
+      {
+        "title": "A new segment each month",
+        "detail": "Food distributors or waste haulers next, from the same who uses it line on your site."
+      }
+    ],
+    "closing": "If the segment is right, reply and I will build the list and send the first batch under your name. If it is the wrong segment, tell me who actually buys and I will redo the plan around them."
+  }
+}

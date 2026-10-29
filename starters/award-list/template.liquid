@@ -1,0 +1,270 @@
+{%- assign accent = brand.colors.primary | default: '#b42318' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#1c2b3a' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
+{%- assign font_body = brand.fonts.body | default: 'IBM Plex Sans' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign ranked = data.entries | sort: 'employee_count' | reverse -%}
+{%- assign total = ranked.size | plus: 1 -%}
+{%- assign you_rank = data.account_rank | default: total -%}
+{%- if you_rank > total -%}{%- assign you_rank = total -%}{%- endif -%}
+{%- if you_rank < 1 -%}{%- assign you_rank = 1 -%}{%- endif -%}
+{%- assign has_counts = false -%}
+{%- if data.counts and data.counts.size > 0 -%}{%- assign has_counts = true -%}{%- assign pool = data.counts | last -%}{%- endif -%}
+{%- assign has_signals = false -%}
+{%- if data.signals and data.signals.size > 0 -%}{%- assign has_signals = true -%}{%- endif -%}
+{%- assign has_band = false -%}
+{%- if account.size_band and account.size_band != '' -%}{%- assign has_band = true -%}{%- endif -%}
+{%- assign band = account.size_band | replace: '-', ' to ' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ data.title | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f5f2ec;color:#1b1a17;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.al{--a:{{ accent }};--a2:{{ accent2 }};--ink:#1b1a17;--soft:#3f3c36;--mute:#6b675f;--line:#d9d4c9;--card:#fcfbf8}
+.al h1,.al h2,.al-big,.al-rank,.al-place{font-family:'{{ font_head }}',Georgia,serif;font-weight:500;letter-spacing:-.012em}
+.al h1{text-wrap:pretty}
+.al h2{text-wrap:balance}
+.al p{margin:0 0 1rem}
+.al a{color:inherit}
+.al-wrap{max-width:66rem;margin:0 auto;padding:0 1.25rem}
+.al-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.al-logo{height:24px;width:auto;display:block}
+.al-brand{font-weight:700;font-size:.95rem;margin:0!important}
+.al-type{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;white-space:nowrap}
+.al-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--a);margin:0 0 .7rem!important}
+.al-cover{padding:2.2rem 0 1.8rem}
+.al h1{font-size:2.5rem;line-height:1.02;margin:0 0 1rem}
+.al-intro{font-size:1.08rem;line-height:1.5;color:var(--soft);max-width:36rem}
+.al-stamp{margin:1.4rem 0 0;padding:1.1rem 0 1rem;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:1.2rem;align-items:center}
+.al-big{font-size:5rem;line-height:.85;color:var(--a);margin:0!important;font-variant-numeric:lining-nums tabular-nums;grid-column:1;grid-row:1 / 3}
+.al-no{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;align-self:end;grid-column:2;grid-row:1}
+.al-who{margin:0!important;font-weight:600;font-size:1.02rem;line-height:1.25;align-self:start;grid-column:2;grid-row:2}
+.al-who small{display:block;font-weight:400;color:var(--mute);font-size:.86rem;margin-top:.1rem}
+.al-facts{margin:1.4rem 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.2rem}
+.al-facts div{margin:0}
+.al-facts dt{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 .15rem}
+.al-facts dd{margin:0;font-weight:600;font-size:.98rem;line-height:1.3}
+.al-facts dd small{display:block;font-weight:400;color:var(--mute);font-size:.82rem}
+.al-you{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2rem 0 1.4rem}
+.al-place{font-size:2.1rem;line-height:1;margin:0 0 1rem!important;font-variant-numeric:lining-nums tabular-nums}
+.al-place span{font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:.95rem;color:var(--mute);letter-spacing:0;margin-left:.4rem;font-weight:400}
+.al h2{font-size:1.55rem;line-height:1.15;margin:0 0 .8rem}
+.al-why{font-size:1.04rem;color:var(--soft)}
+.al-signals{list-style:none;margin:0 0 1rem;padding:0;border-top:1px solid var(--line)}
+.al-signals li{display:grid;grid-template-columns:5.6rem 1fr;gap:.8rem;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.4}
+.al-signals time{color:var(--mute);font-size:.82rem;padding-top:.15rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.al-basis{font-size:.85rem;color:var(--mute);margin:0!important}
+.al-list{padding:2.2rem 0 1rem}
+.al-list-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.3rem 1rem;margin:0 0 .7rem}
+.al-list-head h2{margin:0}
+.al-list-head p{margin:0;font-size:.85rem;color:var(--mute)}
+.al-cols{display:none}
+.al-rows{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.al-row{display:grid;grid-template-columns:3rem 1fr;grid-template-areas:"rank name" "rank line" "rank meta";column-gap:.8rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
+.al-rank{grid-area:rank;font-size:1.85rem;line-height:1;color:var(--mute);font-variant-numeric:lining-nums tabular-nums;padding-top:.1rem}
+.al-name{grid-area:name;font-weight:600;font-size:1.02rem;line-height:1.3}
+.al-dom{display:block;font-weight:400;font-size:.8rem;color:var(--mute);text-decoration:none;word-break:break-all}
+.al-line{grid-area:line;font-size:.95rem;color:var(--soft);line-height:1.45;margin:.2rem 0 .35rem}
+.al-meta{grid-area:meta;font-size:.84rem;color:var(--mute);display:flex;flex-wrap:wrap;gap:.2rem .9rem}
+.al-people{font-variant-numeric:tabular-nums;white-space:nowrap}
+.al-hq small{font-size:inherit;color:inherit}
+.al-hq small::before{content:"\00b7";margin:0 .4rem}
+.al-row.is-you{background:var(--card);box-shadow:inset 3px 0 0 var(--a);margin:0 -1.25rem;padding-left:1.25rem;padding-right:1.25rem}
+.al-row.is-you .al-rank{color:var(--a)}
+.al-tag{display:inline-block;vertical-align:.12em;margin-left:.45rem;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--a);padding:.18rem .45rem;border-radius:3px}
+.al-method{padding:2.4rem 0 1rem;border-top:1px solid var(--line)}
+.al-steps{margin:0 0 1.2rem;padding:0;list-style:none;counter-reset:step}
+.al-steps li{position:relative;padding:.6rem 0 .6rem 2.3rem;border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.45}
+.al-steps li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:.62rem;width:1.5rem;height:1.5rem;border:1px solid var(--ink);border-radius:50%;font-size:.72rem;font-weight:600;display:grid;place-items:center;font-variant-numeric:lining-nums}
+.al-steps b{display:block;font-weight:600}
+.al-note{font-size:.9rem;color:var(--soft);border-left:3px solid var(--a2);padding:.1rem 0 .1rem .9rem;margin:1.2rem 0 0!important}
+.al-chart{margin:1.8rem 0 0}
+.al-bars{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.al-bars li{display:grid;grid-template-columns:1fr auto;grid-template-areas:"label value" "bar bar";column-gap:1rem;padding:.6rem 0 .7rem;border-bottom:1px solid var(--line);font-size:.92rem;align-items:baseline}
+.al-bar-label{grid-area:label;color:var(--soft)}
+.al-bar-value{grid-area:value;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.al-bar{grid-area:bar;display:block;height:.55rem;background:#e9e4da;margin-top:.4rem;border-radius:2px;overflow:hidden}
+.al-bar i{display:block;height:100%;background:var(--a);border-radius:2px}
+.ken-chart{display:none;margin:0}
+.ken-chart svg{display:block}
+.ken-chart figcaption{font-size:.8rem;color:var(--mute);margin-top:.5rem}
+.al-chart-note{font-size:.8rem;color:var(--mute);margin:.6rem 0 0!important}
+.al-cta{padding:1.8rem 0 3.2rem}
+.al-box{border:1px solid var(--ink);background:var(--card);padding:1.5rem 1.3rem 1.3rem}
+.al-box h2{margin:0 0 .6rem}
+.al-box p{color:var(--soft)}
+.al-btn{margin:1.2rem 0 1.3rem}
+.al-btn .ken-cta{min-height:44px;line-height:20px}
+.al-sign{font-size:.95rem;margin:0!important;font-weight:600;color:var(--ink)!important}
+.al-sign span{display:block;color:var(--mute);font-weight:400}
+.al-foot{font-size:.78rem;color:var(--mute);padding:1rem 0 2rem;border-top:1px solid var(--line);margin:0!important}
+@media (min-width:760px){
+body{font-size:17px}
+.al-wrap{padding:0 2.5rem}
+.al-cover{display:grid;grid-template-columns:1fr 17rem;column-gap:3rem;padding:3.6rem 0 2.8rem;align-items:start}
+.al h1{font-size:3.9rem;text-wrap:balance}
+.al-stamp{margin:.4rem 0 0;padding:0 0 0 2.5rem;border:0;border-left:1px solid var(--line);display:block}
+.al-big{font-size:9.5rem;line-height:.8;margin:.3rem 0 .9rem!important}
+.al-facts{grid-template-columns:repeat(4,1fr);grid-column:1 / -1;border-top:2px solid var(--ink);padding-top:1rem;margin-top:1.6rem}
+.al-you{padding:2.6rem 0 2rem}
+.al-you .al-wrap{display:grid;grid-template-columns:15rem 1fr;column-gap:3rem}
+.al-place{font-size:2.6rem}
+.al h2{font-size:1.9rem}
+.al-list{padding:3rem 0 1.5rem}
+.al-cols{display:grid;grid-template-columns:4rem 1fr 8.5rem 12rem;column-gap:1.2rem;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding:0 0 .5rem}
+.al-cols span:nth-child(3){text-align:right}
+.al-row{grid-template-columns:4rem 1fr 8.5rem 12rem;grid-template-areas:"rank name people hq" "rank line people hq";column-gap:1.2rem;padding:1rem 0;align-items:start}
+.al-rank{font-size:2.1rem}
+.al-name{font-size:1.08rem}
+.al-line{font-size:.95rem;margin:.25rem 0 0}
+.al-meta{display:contents}
+.al-people{grid-area:people;text-align:right;font-size:.98rem;color:var(--ink);font-weight:500;padding-top:.2rem}
+.al-hq{grid-area:hq;font-size:.92rem;color:var(--soft);padding-top:.25rem}
+.al-hq small{display:block;color:var(--mute);font-size:.8rem}
+.al-hq small::before{content:none}
+.al-row.is-you{margin:0 -1rem;padding-left:1rem;padding-right:1rem}
+.al-method{padding:3rem 0 1.5rem}
+.al-method .al-wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:3.5rem;align-items:start}
+.al-method.is-text .al-wrap{grid-template-columns:1fr}
+.al-method.is-text .al-text{max-width:42rem}
+.al-chart{margin:2.9rem 0 0}
+.al-bars{display:none}
+.ken-chart{display:block}
+.al-cta{padding:2.4rem 0 4rem}
+.al-box{padding:2.2rem 2.4rem 1.9rem;max-width:44rem}
+}
+</style>
+</head>
+<body>
+<main class="al">
+<div class="al-wrap">
+<header class="al-top">
+{%- if brand.logo_url %}<img class="al-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="al-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="al-type">Top {{ total }} list</p>
+</header>
+<section data-section="cover" class="al-cover">
+<div class="al-cover-text">
+<p class="al-label">{% if person.first_name %}For {{ person.first_name | escape }} at {{ account.name | escape }}{% else %}Made for {{ account.name | escape }}{% endif %}</p>
+<h1>{{ data.title | escape }}</h1>
+<p class="al-intro">{{ data.intro | escape }}</p>
+</div>
+<div class="al-stamp">
+<p class="al-no">No.</p>
+<p class="al-big">{{ you_rank }}</p>
+<p class="al-who">{{ account.name | escape }}<small>of {{ total }} companies on this list</small></p>
+</div>
+<dl class="al-facts">
+<div><dt>Companies</dt><dd>{{ total }}<small>{{ account.name | escape }} included</small></dd></div>
+<div><dt>Ranked by</dt><dd>Headcount<small>largest first</small></dd></div>
+{%- if has_counts %}
+<div><dt>Pool</dt><dd>{%- assign n = pool.value -%}{%- if n >= 1000 -%}{%- assign k = n | divided_by: 1000 | floor -%}{%- assign rem = n | modulo: 1000 -%}{{ k }},{% if rem < 10 %}00{% elsif rem < 100 %}0{% endif %}{{ rem }}{%- else -%}{{ n }}{%- endif -%}<small>met both signals</small></dd></div>
+{%- else %}
+<div><dt>Source</dt><dd>Company data<small>profiles and hiring</small></dd></div>
+{%- endif %}
+<div><dt>Made by</dt><dd>{{ sender.name | default: 'Our team' | escape }}<small>{% if brand.name %}{{ brand.name | escape }}{% else %}own list, not an award{% endif %}</small></dd></div>
+</dl>
+</section>
+</div>
+<section data-section="you" class="al-you">
+<div class="al-wrap">
+<div>
+<p class="al-label">Your place</p>
+<p class="al-place">No. {{ you_rank }}<span>of {{ total }}</span></p>
+</div>
+<div>
+<h2>Why {{ account.name | escape }} is on it</h2>
+<p class="al-why">{{ data.account_line | escape }}</p>
+{%- if has_signals %}
+<ul class="al-signals">
+{%- for s in data.signals limit: 3 %}
+<li><time{% if s.date and s.date != '' %} datetime="{{ s.date | escape }}"{% endif %}>{% if s.date and s.date != '' %}{{ s.date | date: '%b %-d, %Y' }}{% endif %}</time><span>{% if s.source_url and s.source_url != '' %}<a href="{{ s.source_url | escape }}" rel="noopener">{{ s.title | escape }}</a>{% else %}{{ s.title | escape }}{% endif %}</span></li>
+{%- endfor %}
+</ul>
+{%- endif %}
+<p class="al-basis">{% if has_band %}Placed by its size band, {{ band | escape }} people. Every other company on the list has an exact headcount from its profile.{% else %}Placed last, since we do not hold a headcount for {{ account.name | escape }}. Every other company on the list has one from its profile.{% endif %}</p>
+</div>
+</div>
+</section>
+<div class="al-wrap">
+<section data-section="list" class="al-list">
+<div class="al-list-head">
+<h2>The list</h2>
+<p>{{ total }} companies, {{ account.name | escape }} at no. {{ you_rank }}</p>
+</div>
+<div class="al-cols"><span>No.</span><span>Company</span><span>People</span><span>Headquarters</span></div>
+<ol class="al-rows">
+{%- for i in (1..total) %}
+{%- if i == you_rank %}
+<li class="al-row is-you">
+<span class="al-rank">{% if i < 10 %}0{% endif %}{{ i }}</span>
+<span class="al-name">{{ account.name | escape }}<span class="al-tag">You</span>{% if account.domain and account.domain != '' %}<a class="al-dom" href="https://{{ account.domain | escape }}" rel="noopener">{{ account.domain | escape }}</a>{% endif %}</span>
+<span class="al-line">{{ data.account_line | escape }}</span>
+<span class="al-meta"><span class="al-people">{% if has_band %}{{ band | escape }} people{% else %}headcount not held{% endif %}</span><span class="al-hq">{% if has_band %}Placed by size band{% else %}Placed last{% endif %}<small>not an exact count</small></span></span>
+</li>
+{%- else %}
+{%- assign idx = i | minus: 1 -%}{%- if i > you_rank -%}{%- assign idx = idx | minus: 1 -%}{%- endif -%}
+{%- assign e = ranked[idx] %}
+<li class="al-row">
+<span class="al-rank">{% if i < 10 %}0{% endif %}{{ i }}</span>
+<span class="al-name">{{ e.name | escape }}{% if e.domain and e.domain != '' %}<a class="al-dom" href="https://{{ e.domain | escape }}" rel="noopener">{{ e.domain | escape }}</a>{% endif %}</span>
+<span class="al-line">{{ e.line | escape }}</span>
+<span class="al-meta"><span class="al-people">{%- assign n = e.employee_count -%}{%- if n >= 1000 -%}{%- assign k = n | divided_by: 1000 | floor -%}{%- assign rem = n | modulo: 1000 -%}{{ k }},{% if rem < 10 %}00{% elsif rem < 100 %}0{% endif %}{{ rem }}{%- else -%}{{ n }}{%- endif %} people</span><span class="al-hq">{% if e.hq and e.hq != '' %}{{ e.hq | escape }}{% else %}HQ not listed{% endif %}{% if e.founded %}<small>since {{ e.founded }}</small>{% endif %}</span></span>
+</li>
+{%- endif %}
+{%- endfor %}
+</ol>
+</section>
+</div>
+<section data-section="method" class="al-method{% unless has_counts %} is-text{% endunless %}">
+<div class="al-wrap">
+<div class="al-text">
+<p class="al-label">Method</p>
+<h2>How the list was made</h2>
+<ol class="al-steps">
+<li><b>Same industry as {{ account.name | escape }}</b>{% if account.industry and account.industry != '' %}Companies whose profile lists {{ account.industry | escape }}.{% else %}Companies in the same industry as {{ account.name | escape }}.{% endif %}</li>
+<li><b>A hiring surge</b>At least 5 net new people in sales, engineering or operations over the last 6 months.</li>
+<li><b>Headcount growth</b>Headcount up 10 percent or more at the latest count.</li>
+<li><b>Ranked by headcount</b>The search returns up to 40 companies that pass both. Those are ordered by headcount, largest first, and the list shows the top {{ ranked.size }}.</li>
+<li><b>{{ account.name | escape }}</b>{% if has_band %}Placed by its size band, {{ band | escape }} people, since this page holds an exact headcount for every company but yours.{% else %}Placed last, since this page does not hold a headcount for it.{% endif %}</li>
+</ol>
+<p class="al-note">No awards body is behind this list. It is {% if brand.name %}{{ brand.name | escape }}'s{% else %}our{% endif %} own, built by {{ sender.name | default: 'our team' | escape }} from company profiles and hiring data, and the filters above are the whole method.</p>
+</div>
+{%- if has_counts %}
+{%- assign top = data.counts | first %}
+<div class="al-chart">
+<p class="al-label">The pool</p>
+<ul class="al-bars">
+{%- for c in data.counts %}
+{%- assign pct = 100 -%}{%- if top.value > 0 -%}{%- assign pct = c.value | times: 100 | divided_by: top.value | at_most: 100 | at_least: 1 | round -%}{%- endif %}
+<li><span class="al-bar-label">{{ c.label | escape }}</span><span class="al-bar-value">{%- assign n = c.value -%}{%- if n >= 1000 -%}{%- assign k = n | divided_by: 1000 | floor -%}{%- assign rem = n | modulo: 1000 -%}{{ k }},{% if rem < 10 %}00{% elsif rem < 100 %}0{% endif %}{{ rem }}{%- else -%}{{ n }}{%- endif -%}</span><span class="al-bar"><i style="width:{{ pct }}%"></i></span></li>
+{%- endfor %}
+</ul>
+{% render 'ken/chart', type: 'funnel', data: data.counts, title: 'From the whole industry to the pool for this list', color: accent %}
+<p class="al-chart-note">Company counts on the day this page was built.</p>
+</div>
+{%- endif %}
+</div>
+</section>
+<div class="al-wrap">
+<section data-section="cta" class="al-cta">
+<div class="al-box">
+<h2>Want the list with the people behind it?</h2>
+<p>I can send it as a sheet with the hiring signal behind each company, or walk you through it in 20 minutes and show you where {{ account.name | escape }} sits once we add your exact headcount.</p>
+<div class="al-btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking', color: accent %}</div>
+<p class="al-sign">{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</div>
+</section>
+<p class="al-foot">Made for {{ account.name | escape }} by {{ sender.name | default: 'our team' | escape }}{% if brand.name %} at {{ brand.name | escape }}{% endif %}. A private link, built from company profiles and hiring data.</p>
+</div>
+</main>
+</body>
+</html>

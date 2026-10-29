@@ -1,0 +1,826 @@
+{
+  "kenStudio": "1",
+  "name": "Market opportunity report",
+  "type": "report",
+  "format": "doc",
+  "slug": "market-report",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "scope": {
+        "type": "object",
+        "properties": {
+          "market": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 48
+          },
+          "size": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 40
+          },
+          "small_band": {
+            "type": "string",
+            "maxLength": 28
+          },
+          "large_band": {
+            "type": "string",
+            "maxLength": 28
+          },
+          "account_band": {
+            "type": "string",
+            "maxLength": 20
+          }
+        },
+        "required": [
+          "market",
+          "size"
+        ]
+      },
+      "total_defs": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 1,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 28
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "label",
+            "filters"
+          ]
+        }
+      },
+      "segment_defs": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 22
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "label",
+            "filters"
+          ]
+        }
+      },
+      "region_defs": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 20
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "label",
+            "filters"
+          ]
+        }
+      },
+      "role_small_defs": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 22
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "label",
+            "filters"
+          ]
+        }
+      },
+      "role_large_defs": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 22
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "label",
+            "filters"
+          ]
+        }
+      },
+      "signal_defs": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 28
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "label",
+            "filters"
+          ]
+        }
+      },
+      "hiring_defs": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 22
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "label",
+            "filters"
+          ]
+        }
+      },
+      "band_defs": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 20
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "label",
+            "filters"
+          ]
+        }
+      },
+      "band_hiring_defs": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 20
+            },
+            "filters": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "label",
+            "filters"
+          ]
+        }
+      },
+      "total": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 1,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 28
+            },
+            "value": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ]
+        }
+      },
+      "segments": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 28
+            },
+            "value": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ]
+        }
+      },
+      "regions": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 28
+            },
+            "value": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ]
+        }
+      },
+      "roles_small": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 28
+            },
+            "value": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ]
+        }
+      },
+      "roles_large": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 28
+            },
+            "value": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ]
+        }
+      },
+      "signals": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 28
+            },
+            "value": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ]
+        }
+      },
+      "hiring": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 28
+            },
+            "value": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ]
+        }
+      },
+      "bands": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 28
+            },
+            "value": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ]
+        }
+      },
+      "band_hiring": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 28
+            },
+            "value": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ]
+        }
+      },
+      "headline": {
+        "type": "string",
+        "minLength": 15,
+        "maxLength": 64
+      },
+      "stand": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 240
+      },
+      "brief": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "figure": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 12
+            },
+            "text": {
+              "type": "string",
+              "minLength": 20,
+              "maxLength": 220
+            }
+          },
+          "required": [
+            "figure",
+            "text"
+          ]
+        }
+      },
+      "narrative": {
+        "type": "object",
+        "properties": {
+          "segments": {
+            "type": "string",
+            "minLength": 40,
+            "maxLength": 560
+          },
+          "segments_after": {
+            "type": "string",
+            "minLength": 40,
+            "maxLength": 360
+          },
+          "regions": {
+            "type": "string",
+            "minLength": 40,
+            "maxLength": 560
+          },
+          "regions_after": {
+            "type": "string",
+            "minLength": 40,
+            "maxLength": 360
+          },
+          "buyers": {
+            "type": "string",
+            "maxLength": 560
+          },
+          "buyers_after": {
+            "type": "string",
+            "maxLength": 360
+          },
+          "signals": {
+            "type": "string",
+            "minLength": 40,
+            "maxLength": 560
+          },
+          "signals_after": {
+            "type": "string",
+            "minLength": 40,
+            "maxLength": 360
+          },
+          "peers": {
+            "type": "string",
+            "maxLength": 560
+          },
+          "peers_after": {
+            "type": "string",
+            "maxLength": 360
+          }
+        },
+        "required": [
+          "segments",
+          "segments_after",
+          "regions",
+          "regions_after",
+          "signals",
+          "signals_after"
+        ]
+      },
+      "plays": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 70
+            },
+            "body": {
+              "type": "string",
+              "minLength": 40,
+              "maxLength": 420
+            }
+          },
+          "required": [
+            "title",
+            "body"
+          ]
+        }
+      },
+      "method": {
+        "type": "string",
+        "maxLength": 900
+      }
+    },
+    "required": [
+      "scope",
+      "total",
+      "segments",
+      "regions",
+      "signals",
+      "headline",
+      "brief",
+      "narrative",
+      "plays"
+    ]
+  },
+  "recipe": [
+    {
+      "id": "plan",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": [
+        "account.name",
+        "account.domain",
+        "account.industry",
+        "account.size_band",
+        "account.dossier.summary",
+        "account.dossier.why_now"
+      ],
+      "to": [
+        "data.scope",
+        "data.total_defs",
+        "data.segment_defs",
+        "data.region_defs",
+        "data.role_small_defs",
+        "data.role_large_defs",
+        "data.signal_defs",
+        "data.hiring_defs",
+        "data.band_defs",
+        "data.band_hiring_defs"
+      ],
+      "prompt": "You are setting up a market report for {{ account.name }} ({{ account.domain }}), a company in {{ account.industry | default: 'an industry we do not know' }} with {{ account.size_band | default: 'an unknown number of' }} employees. The page counts companies and people in a company database for each set of filters you write. You write the filters. You do not write any numbers.\n\nInputs: account.dossier.summary is our research on the account: {{ account.dossier.summary | default: 'none' }}. account.dossier.why_now is {{ account.dossier.why_now | default: 'none' }}. Use these facts only. Never invent a region, a customer or a number.\n\nKen Search company filters (camelCase): industries (lowercase LinkedIn industry names, like \"truck transportation\"), countries (full names), states (full names), employeesCount {min, max}, hiringSurge {functions, windowMonths}, raisedFundingRecently (true) with raisedFundingWithinDays.\nKen Search people filters (camelCase): currentTitles (full job titles), industries, companyHeadcount {min, max}, companyHeadquarters (country names).\nUse only these keys. Never use keywords or booleanSearch.\n\nDecide the market first:\n- Industry: the account's own industry, split into segments by LinkedIn industry names.\n- Region: the region the dossier says the account works in or is based in. If it names none, use the United States.\n- Size: a headcount range with the account's own size band in the middle, about 5 times as wide as the band.\n- Buyers: the 5 job titles that decide on spend in this market, most senior or largest group first.\n\nReturn JSON with these keys. Every def is a list of {label, filters}:\n- scope: {market, size, small_band, large_band, account_band}. market is a short noun phrase for the companies, like \"US freight and logistics companies\", at most 48 characters. size is the range in words, like \"200 to 1,000 staff\". small_band and large_band are the two halves of that range, like \"200 to 500 staff\" and \"500 to 1,000 staff\". account_band is the label from band_defs that holds the account's own size, copied exactly, or an empty string when none does.\n- total_defs: exactly 1 def, label \"All companies\", filters for the whole market: industries is every industry used in segment_defs, plus the region and the size range.\n- segment_defs: 3 to 6 defs, one per segment of the market, largest segment first. Same region and size range as total_defs. label at most 22 characters, plain words.\n- region_defs: 3 to 6 defs that split the whole market by headquarters region (states), like Midwest, South, West, Northeast. Outside the United States use the country's own regions. label at most 20 characters.\n- role_small_defs and role_large_defs: 3 to 5 defs each, one per buyer role, with the same labels in the same order in both. Each is a people def: currentTitles for that role, industries from total_defs, companyHeadquarters, and companyHeadcount. role_small_defs uses the lower half of the size range and role_large_defs the upper half. label at most 22 characters.\n- signal_defs: exactly 3 company defs on the whole market, in this order: companies hiring (label like \"Hiring in operations\", with hiringSurge {functions: one LinkedIn function that matches the buyer roles, windowMonths: 3}), companies that raised money in the last year (label \"Raised in 12 months\", raisedFundingRecently true and raisedFundingWithinDays 365), and companies that are both (both filters, label \"Hiring and raised\"). Labels at most 28 characters.\n- hiring_defs: one def per segment_defs entry, same label and order, with the segment's filters plus the same hiringSurge as the hiring signal.\n- band_defs: 4 to 6 company defs, the account's own industries and region (the account's region only, not the whole market), split by employeesCount into size bands that do not overlap, from small to large, with the account's size in one of them. label like \"201 to 500\", at most 20 characters.\n- band_hiring_defs: one def per band_defs entry, same label and order, with the band's filters plus the same hiringSurge.\n\nRules for every string: no em dashes or en dashes. No email addresses or phone numbers."
+    },
+    {
+      "id": "total",
+      "kind": "tool",
+      "tool": "ken_search.count",
+      "requires": [
+        "data.total_defs"
+      ],
+      "args": {
+        "kind": "companies",
+        "segments": "{{ data.total_defs }}"
+      },
+      "to": "data.total"
+    },
+    {
+      "id": "segments",
+      "kind": "tool",
+      "tool": "ken_search.count",
+      "requires": [
+        "data.segment_defs"
+      ],
+      "args": {
+        "kind": "companies",
+        "segments": "{{ data.segment_defs }}"
+      },
+      "to": "data.segments"
+    },
+    {
+      "id": "regions",
+      "kind": "tool",
+      "tool": "ken_search.count",
+      "requires": [
+        "data.region_defs"
+      ],
+      "args": {
+        "kind": "companies",
+        "segments": "{{ data.region_defs }}"
+      },
+      "to": "data.regions"
+    },
+    {
+      "id": "roles_small",
+      "kind": "tool",
+      "tool": "ken_search.count",
+      "requires": [
+        "data.role_small_defs"
+      ],
+      "args": {
+        "kind": "people",
+        "segments": "{{ data.role_small_defs }}"
+      },
+      "to": "data.roles_small"
+    },
+    {
+      "id": "roles_large",
+      "kind": "tool",
+      "tool": "ken_search.count",
+      "requires": [
+        "data.role_large_defs"
+      ],
+      "args": {
+        "kind": "people",
+        "segments": "{{ data.role_large_defs }}"
+      },
+      "to": "data.roles_large"
+    },
+    {
+      "id": "signals",
+      "kind": "tool",
+      "tool": "ken_search.count",
+      "requires": [
+        "data.signal_defs"
+      ],
+      "args": {
+        "kind": "companies",
+        "segments": "{{ data.signal_defs }}"
+      },
+      "to": "data.signals"
+    },
+    {
+      "id": "hiring",
+      "kind": "tool",
+      "tool": "ken_search.count",
+      "requires": [
+        "data.hiring_defs"
+      ],
+      "args": {
+        "kind": "companies",
+        "segments": "{{ data.hiring_defs }}"
+      },
+      "to": "data.hiring"
+    },
+    {
+      "id": "bands",
+      "kind": "tool",
+      "tool": "ken_search.count",
+      "requires": [
+        "data.band_defs"
+      ],
+      "args": {
+        "kind": "companies",
+        "segments": "{{ data.band_defs }}"
+      },
+      "to": "data.bands"
+    },
+    {
+      "id": "band_hiring",
+      "kind": "tool",
+      "tool": "ken_search.count",
+      "requires": [
+        "data.band_hiring_defs"
+      ],
+      "args": {
+        "kind": "companies",
+        "segments": "{{ data.band_hiring_defs }}"
+      },
+      "to": "data.band_hiring"
+    },
+    {
+      "id": "report",
+      "kind": "prompt",
+      "model": "strong",
+      "requires": [
+        "data.total",
+        "data.segments",
+        "data.regions",
+        "data.signals"
+      ],
+      "inputs": [
+        "account.name",
+        "account.industry",
+        "account.size_band",
+        "account.dossier.summary",
+        "person.first_name",
+        "sender.name",
+        "data.scope",
+        "data.total",
+        "data.segments",
+        "data.regions",
+        "data.roles_small",
+        "data.roles_large",
+        "data.signals",
+        "data.hiring",
+        "data.bands",
+        "data.band_hiring",
+        "data.total_defs",
+        "data.segment_defs",
+        "data.region_defs",
+        "data.role_small_defs",
+        "data.signal_defs",
+        "data.band_defs"
+      ],
+      "to": [
+        "data.headline",
+        "data.stand",
+        "data.brief",
+        "data.narrative",
+        "data.plays",
+        "data.method"
+      ],
+      "prompt": "Write the copy for a market report on {{ account.name }}. {{ sender.name | default: 'The sender' }} sends it to {{ person.first_name | default: 'the account' }}. It reads like a short research report: plain, specific, one person writing to one person.\n\nInputs. The market: {{ data.scope | json }}. The counts below come from company profiles and hiring data and are the only numbers you may use.\n- All companies: {{ data.total | json }}\n- Companies by segment: {{ data.segments | json }}\n- Companies by region: {{ data.regions | json }}\n- People in each buying role at the smaller companies: {{ data.roles_small | json }}\n- People in each buying role at the larger companies: {{ data.roles_large | json }}\n- Growth signals, as counts of companies: {{ data.signals | json }}\n- Companies hiring, by segment: {{ data.hiring | json }}\n- Companies by size band in the account's region: {{ data.bands | json }}\n- Companies hiring, by size band: {{ data.band_hiring | json }}\n- The filters behind each count: {{ data.total_defs | json }} {{ data.segment_defs | json }} {{ data.region_defs | json }} {{ data.role_small_defs | json }} {{ data.signal_defs | json }} {{ data.band_defs | json }}\nThe account: {{ account.name }}, {{ account.industry | default: 'industry unknown' }}, {{ account.size_band | default: 'size unknown' }} employees. Our research: {{ account.dossier.summary | default: 'none' }}\n\nNumbers: write a number only when it is copied exactly from the counts above, as digits with thousands commas (4,170). Do no arithmetic: no percentages, ratios, differences, sums, \"one in three\" or \"half\". You may say which count is largest, smallest or bigger than another, and you may say \"most\" or \"a few\" when the order of the counts shows it. Name the account's own region and size band when the counts cover them. Never invent customers, news, quotes, years or dates. If a count list above is empty or null, leave out everything about it and use an empty string for its text.\n\nReturn JSON with these keys:\n- headline: the title of the report, at most 64 characters, sentence case, no year, no colon. It names the market, like \"The mid-market freight operator, in numbers\".\n- stand: 1 or 2 sentences, at most 240 characters, under the title: what the report counts (the total companies and the size range from scope) and that it shows where {{ account.name }} sits.\n- brief: 5 findings (4 if people or bands are missing), each {figure, text}. figure is one count copied from the data, like \"4,170\". text continues after the figure in one or two sentences, at most 220 characters, and never repeats the figure. Cover the total, the largest region, the buyers, the growth signals and the account's size band.\n- narrative: {segments, segments_after, regions, regions_after, buyers, buyers_after, signals, signals_after, peers, peers_after}. Each section has a lead paragraph before its chart (2 to 4 sentences, at most 560 characters: what the chart shows and how to read it) and an after paragraph (1 or 2 sentences, at most 360 characters: the one thing that stands out and what it means for {{ account.name }}). buyers texts are empty when there are no role counts, and peers texts are empty when there are no size band counts.\n- plays: exactly 3 plays {title, body} for {{ account.name }}, built on the counts. title is at most 70 characters and states the move. body is 2 or 3 sentences, at most 420 characters, quotes the counts it rests on, and says who to reach and why now. Leave out calls or meetings with us; the report ends with that.\n- method: 3 to 5 sentences, at most 900 characters, saying how the counts were made, from the filters above: the companies (region, size, industries), the people (current titles at those companies), what hiring means, what raised means and, when there are size band counts, the peer group. Say the counts come from company profiles and hiring data at the time the page was filled. Never claim more than the filters say. Never name the database or the tool the counts come from, in any string.\n\nVoice: short sentences a person would say out loud to a peer. Sentence case for titles.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. No hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, game changer, cutting edge). Never \"real\" as emphasis."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": [
+        "data.headline",
+        "data.stand",
+        "data.brief",
+        "data.narrative",
+        "data.plays",
+        "data.method"
+      ],
+      "retries": 1,
+      "pass_score": 8,
+      "checks": {
+        "banned": [
+          "unlock",
+          "leverage",
+          "seamless",
+          "robust",
+          "crucial",
+          "elevate",
+          "delve",
+          "game changer",
+          "game-changer",
+          "cutting-edge"
+        ],
+        "no_placeholders": true,
+        "no_prices": true,
+        "no_dashes": true,
+        "no_real_emphasis": true
+      },
+      "rubric": "Grade the copy of a market report. It is written only from the counts below, and every number in it must come from them.\nScore these, 0 to 10 each:\n- numbers: every number in the copy appears in the counts as the same value (a comma-formatted copy of it counts). A percentage, ratio, sum, difference or any figure that is not in the counts scores 0.\n- claims: nothing is invented: no customers, news, quotes, dates, years or places that the counts and the account facts do not show. A claim about which count is largest or smallest must be true.\n- plain: short sentences, plain words, specific. No hype, no filler, no section that only repeats its chart.\nAnswer yes or no:\n- consistent: do the brief, narrative and plays agree with each other and with the counts?\n- empty_ok: where a count list is empty, is the matching text an empty string?\nAutomatic fail: an em dash or en dash, an exclamation mark, an email address or phone number, a headline with a year in it.\nCounts, the only source of numbers: {{ data.total | json }} {{ data.segments | json }} {{ data.regions | json }} {{ data.roles_small | json }} {{ data.roles_large | json }} {{ data.signals | json }} {{ data.hiring | json }} {{ data.bands | json }} {{ data.band_hiring | json }}\nAccount facts: {{ account.name }}, {{ account.industry | default: 'unknown' }}, {{ account.size_band | default: 'unknown' }}. {{ account.dossier.summary | default: '' }}\nPass when the overall score is 8 or higher, no 0 to 10 check is 6 or lower, and both yes or no answers are yes. On a fail, name the check and quote the phrase to change. The fix never supplies replacement numbers."
+    }
+  ],
+  "sections": [
+    {
+      "id": "cover",
+      "label": "Cover"
+    },
+    {
+      "id": "brief",
+      "label": "In brief"
+    },
+    {
+      "id": "segments",
+      "label": "Segments"
+    },
+    {
+      "id": "regions",
+      "label": "Regions"
+    },
+    {
+      "id": "buyers",
+      "label": "Buyers"
+    },
+    {
+      "id": "signals",
+      "label": "Growth signals"
+    },
+    {
+      "id": "peers",
+      "label": "Where you sit"
+    },
+    {
+      "id": "plays",
+      "label": "Three plays"
+    },
+    {
+      "id": "next",
+      "label": "Next steps"
+    }
+  ],
+  "cta": {
+    "primary": "booking",
+    "label": "Book 30 minutes"
+  }
+}

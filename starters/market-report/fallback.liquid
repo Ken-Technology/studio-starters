@@ -1,0 +1,60 @@
+{%- assign accent = brand.colors.primary | default: '#2a4bd7' | escape -%}
+{%- assign accent2 = brand.colors.secondary | default: '#0e1530' | escape -%}
+{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' | escape -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' | escape -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign acct = account.name | default: 'your company' -%}
+{%- assign logo = brand.logo_url | default: '' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ acct | escape }} market report</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600&display=swap">
+<style>
+:root{--p:{{ accent }};--s:{{ accent2 }};--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--ink:var(--s);--mute:color-mix(in srgb,var(--s) 62%,#fff);--rule:color-mix(in srgb,var(--s) 14%,#fff)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased;padding-bottom:4rem}
+.doc{max-width:58rem;margin:0 auto;padding:0 1.25rem}
+h1{font-family:var(--fh);font-weight:600;letter-spacing:-.03em;margin:0 0 1.25rem;font-size:clamp(2.4rem,8vw,3.8rem);line-height:1;max-width:14ch;text-wrap:balance}
+p{margin:0 0 1rem}
+.brandline{display:flex;align-items:center;gap:.6rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.9rem}
+.logo{width:28px;height:28px;display:block;flex:none;border-radius:8px;background:var(--p);color:#fff;font:700 15px/28px var(--fh);text-align:center}
+.logo-img{height:28px;width:auto;max-width:9rem;display:block;flex:none}
+.bname{font-weight:600}
+.meta{margin-left:auto;color:var(--mute)}
+.cover{padding:3rem 0 1.5rem;border-bottom:3px solid var(--p)}
+.stand{font-size:1.15rem;line-height:1.5;color:var(--mute);max-width:32rem}
+.next{padding-top:2rem;max-width:34rem}
+.ken-cta{min-height:44px;line-height:20px;border-radius:3px!important}
+.sign{font-size:.95rem;margin:1.5rem 0 0}
+.sign b{display:block;font-weight:600}
+.sign span{color:var(--mute)}
+@media (min-width:760px){.doc{padding:0 2.5rem}.cover{padding:4.5rem 0 2.5rem}}
+@media print{body{padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}.cta-wrap{display:none}}
+</style>
+</head>
+<body>
+<main class="doc">
+<section class="cover" data-section="cover">
+<div class="brandline">
+{%- if logo != '' %}<img class="logo-img" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<span class="logo" aria-hidden="true">{{ brand.name | slice: 0, 1 | upcase | escape }}</span>{% endif -%}
+{%- if brand.name and logo == '' %}<span class="bname">{{ brand.name | escape }}</span>{% endif %}
+<span class="meta">Market report</span>
+</div>
+<h1>{{ acct | escape }} and its market</h1>
+<p class="stand">Hi {{ person.first_name | default: 'there' | escape }}. I am putting together a short report on the companies and buyers in {{ account.industry | default: 'your market' | escape }}, with company counts and where {{ acct | escape }} sits among them.</p>
+<p>The numbers are not on this page yet. Book a time and I will walk you through them.</p>
+</section>
+<section class="next" data-section="next">
+<div class="cta-wrap">{% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking' %}</div>
+<p class="sign"><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title or brand.name %}<span>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {% endif %}{% endif %}{% if brand.name %}{{ brand.name | escape }}{% endif %}</span>{% endif %}</p>
+</section>
+</main>
+</body>
+</html>

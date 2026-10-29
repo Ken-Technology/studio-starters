@@ -1,0 +1,63 @@
+{%- assign brand_p = brand.colors.primary | default: '#2a4bd7' -%}
+{%- assign brand_s = brand.colors.secondary | default: '#0e1530' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+{%- assign bname = brand.name | default: 'Northbeam' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The recording for {{ account.name | default: 'you' | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;600&display=swap">
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;600&display=swap">
+{%- endif %}
+<style>
+:root{--p:{{ brand_p | escape }};--s:{{ brand_s | escape }};--fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--mute:color-mix(in srgb,var(--s) 60%,#fff);--rule:color-mix(in srgb,var(--s) 13%,#fff);--tint:color-mix(in srgb,var(--p) 10%,#fff)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--s);font:17px/1.55 var(--fb);-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--fh);font-weight:600;line-height:1.12;letter-spacing:-.018em;margin:0}
+p{margin:0 0 .85rem}
+.wrap{max-width:44rem;margin:0 auto;padding:0 1.35rem}
+.top{padding:1.5rem 0 2.2rem}
+.mark{display:flex;align-items:center;gap:.55rem;font-weight:600;font-size:.95rem}
+.mark .logo{width:24px;height:24px;display:block;flex:none;border-radius:6px;object-fit:contain}
+.mark span.logo{background:var(--p);color:#fff;font:700 .8rem/24px var(--fh);text-align:center}
+h1{font-size:1.9rem;margin:1.6rem 0 .8rem}
+.sig{color:var(--mute);font-size:.95rem;margin:0}
+.sig b{color:var(--s);font-weight:600}
+.book{background:var(--tint);padding:1.6rem 1.35rem 1.8rem;margin:0 0 2rem}
+.book h2{font-size:1.5rem;margin-bottom:.5rem}
+.book .btn{margin-top:.6rem}
+.book .btn .ken-cta{display:inline-block;background:var(--p) !important;color:#fff !important;font-weight:600;font-size:1rem;padding:.9rem 1.6rem !important;border-radius:6px !important;min-height:44px}
+@media (min-width:860px){h1{font-size:2.5rem}.top{padding:2.4rem 0 2.6rem}.book{padding:2.2rem 2.4rem 2.4rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top" data-section="top">
+    <div class="mark">
+      {%- if brand.logo_url and brand.logo_url != '' %}
+      <img class="logo" src="{{ brand.logo_url | escape }}" alt="">
+      {%- else %}
+      <span class="logo" aria-hidden="true">{{ bname | slice: 0, 1 | upcase | escape }}</span>
+      {%- endif %}
+      <span>{{ bname | escape }}</span>
+    </div>
+    <h1>You missed the live session. The recording is coming.</h1>
+    <p>{{ person.first_name | default: 'Hi' | escape }}, we are putting the recording together for {{ account.name | default: 'you' | escape }}. It is not on this page yet, so check back soon.</p>
+    {%- if sender.name and sender.name != '' %}
+    <p class="sig"><b>{{ sender.name | escape }}</b>{% if sender.title and sender.title != '' %}, {{ sender.title | escape }}{% endif %}, {{ bname | escape }}</p>
+    {%- endif %}
+  </header>
+  <section class="book" data-section="book">
+    <h2>Rather talk it through now?</h2>
+    <p>{{ sender.name | default: 'Our team' | escape }} can go over what you missed in 20 minutes.</p>
+    <div class="btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+  </section>
+</div>
+</body>
+</html>

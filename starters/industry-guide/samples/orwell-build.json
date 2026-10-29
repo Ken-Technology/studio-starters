@@ -1,0 +1,67 @@
+{
+  "account": {
+    "name": "Orwell Build",
+    "domain": "orwellbuild.example",
+    "industry": "construction",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Orwell Build is a commercial general contractor in the Denver area doing tenant improvements and ground-up light industrial work. It runs about a dozen projects at a time, estimates in spreadsheets, and gets job cost reports from the bookkeeper at month end. Superintendents keep daily logs on paper.",
+      "why_now": "Broke ground on a cold storage facility in Aurora and hired a director of preconstruction."
+    }
+  },
+  "person": null,
+  "sender": { "name": "Tomas Reyes", "title": "Founder", "signature_html": null },
+  "brand": {
+    "name": "Fieldnote",
+    "logo_url": null,
+    "colors": { "primary": "#1b2a41", "secondary": "#b8894a" },
+    "fonts": { "heading": "Newsreader", "body": "Source Sans 3" }
+  },
+  "data": {
+    "industry": "construction",
+    "role": null,
+    "dossier": "Orwell Build is a commercial general contractor in the Denver area doing tenant improvements and ground-up light industrial work. It runs about a dozen projects at a time, estimates in spreadsheets, and gets job cost reports from the bookkeeper at month end. Superintendents keep daily logs on paper.",
+    "signals": [
+      { "type": "hiring", "title": "Orwell Build hires a director of preconstruction", "date": "2026-10-20", "source_url": "https://news.example/orwell-build-preconstruction" },
+      { "type": "project", "title": "Orwell Build breaks ground on a cold storage facility in Aurora", "date": "2026-09-30", "source_url": "https://news.example/orwell-build-aurora" }
+    ],
+    "offer": "Fieldnote gives mid-size contractors one daily log per job, filled in from the field: time, materials, deliveries and change orders, with cost to date against the estimate on the office screen the next morning.",
+    "pov": "A job is won or lost in the weeks it is open, not at the month-end close. The superintendent is the only person who sees the cost happen, so the numbers have to start with them and come back to them, in a form that takes less time than the paper log it replaces.",
+    "account_notes": "",
+    "title": "Five moves for mid-size general contractors",
+    "intro": "Most contractors find out a job lost money when the bookkeeper closes the month, weeks after the crew could have done anything about it. This guide covers five moves that bring cost to date back to the people on site while the job is still open. Each one comes with an example and a first step that needs no new software.",
+    "moves": [
+      {
+        "name": "Close the daily log before the crew leaves site",
+        "why": "A log written the next morning is a memory, and memory rounds everything in the crew's favor. The log written in the truck before the gate closes has the hours, the delivery that came up short and the extra the owner asked for, while the superintendent still remembers them. It takes less time than fixing it later.",
+        "example": "A superintendent on a tenant improvement job stops at the trailer at the end of the day and fills in the log while the crew loads up: who was on site, what got done, what was delivered and what was asked for. The project manager reads it that evening and knows about the ceiling change before the subcontractor sends a price.",
+        "first_step": "Pick one job and set a rule for it: the daily log is done before the superintendent leaves site. Ask the project manager to read it the same evening."
+      },
+      {
+        "name": "Price the change order the day it is spoken",
+        "why": "Most change orders are agreed on site in a sentence and priced weeks later, after the work is done and the owner has forgotten the conversation. The estimate drifts away from the job one small extra at a time. A rough price the same day, in writing, keeps the job and the estimate on the same page.",
+        "example": "The owner's representative asks for a second roll-up door on the cold storage job during a walk on Tuesday. The superintendent writes it in the log, and the project manager sends a one-paragraph price that night, marked as a rough number until the supplier confirms. The owner signs the next morning, before the slab is poured around it.",
+        "first_step": "Write every extra the owner asks for into the daily log the day it is spoken, with a rough number next to it, even when the final price comes later."
+      },
+      {
+        "name": "Check cost against the estimate every Friday",
+        "why": "A month-end cost report tells you what happened. A Friday comparison tells you what is happening, and gives you a weekend to think and a Monday to act. Contractors skip it because pulling the numbers takes the bookkeeper a day, so start with the two lines that move: labor hours and committed materials.",
+        "example": "The project manager keeps one sheet per job with two rows from the estimate, labor hours and materials, and fills in the actuals from the daily logs every Friday afternoon. Three weeks into the Aurora job the labor line runs ahead of the concrete schedule, and the question goes to the superintendent on Monday instead of to the bookkeeper at month end.",
+        "first_step": "Make a one-page sheet for one job with the estimated labor hours and materials, and fill in the actuals from the logs this Friday."
+      },
+      {
+        "name": "Show the superintendent the budget",
+        "why": "Superintendents run the job from the schedule and the drawings, and most never see the number the job was bid at. So they cannot tell a cheap week from an expensive one until someone in the office does. A superintendent who knows the labor budget by week makes the trade-off on site, where it gets made anyway.",
+        "example": "At the Monday meeting the project manager shares the labor hours bid for the next two weeks of the framing package, and the superintendent plans the crew size against it. When a sub asks for three extra bodies to catch up, the superintendent knows what that costs and asks what it buys before saying yes.",
+        "first_step": "At the next job meeting, bring the labor hours bid for the coming two weeks and talk them through with the superintendent."
+      },
+      {
+        "name": "Hold a short close-out on every finished job",
+        "why": "The bid for the next job is built from what the last one cost, and most of that knowledge leaves with the superintendent when the job ends. A close-out that takes less than an hour, with the estimator in the room, puts the lessons into the next estimate instead of into a story at the holiday party.",
+        "example": "When a tenant improvement job wraps, the estimator, the project manager and the superintendent sit down with the Friday sheets and the change order list. They go line by line: where the estimate was right, where it was off, and why. The estimator changes two unit rates before the next bid goes out, and the new director of preconstruction joins the next close-out.",
+        "first_step": "Book the close-out for the next job that finishes, with the estimator, the project manager and the superintendent in the room and the cost sheet on the table."
+      }
+    ],
+    "closing": "Start with the daily log. It is the one record everything else reads from, and closing it on site costs the superintendent a few minutes a day. Then the change orders have somewhere to live, the Friday check has numbers to use, the budget conversation has a basis, and the close-out has something to learn from."
+  }
+}

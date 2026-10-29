@@ -1,0 +1,237 @@
+{
+  "account": {
+    "name": "Tessellate Payroll",
+    "domain": "tessellate.example",
+    "industry": "financial services",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Tessellate Payroll runs payroll and contractor payments for creative agencies with 10 to 80 staff. About 30 people, fully remote, founded 2021. Sells on simple pricing and onboarding in a week.",
+      "why_now": "Posted three sales roles in October.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Jonah",
+    "last_name": "Adeyemi-Clarke",
+    "title": "Co-founder"
+  },
+  "sender": {
+    "name": "Sofia Lindqvist",
+    "title": "Growth Lead",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Lumen Growth",
+    "logo_url": null,
+    "colors": {
+      "primary": "#d91c73",
+      "secondary": "#ffd166"
+    },
+    "fonts": {
+      "heading": "Outfit",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "market": [
+      {
+        "label": "Same industry",
+        "value": 186300
+      },
+      {
+        "label": "Growing headcount",
+        "value": 24900
+      }
+    ],
+    "candidates": [
+      {
+        "name": "Paymint",
+        "domain": "paymint.example",
+        "industry": "financial services",
+        "size": "201-500",
+        "employee_count": 310,
+        "hq": "Austin, Texas",
+        "country": "United States",
+        "description": "Payroll, benefits and HR for small businesses. Self-serve, one monthly price.",
+        "founded": 2014
+      },
+      {
+        "name": "Stackwage",
+        "domain": "stackwage.example",
+        "industry": "financial services",
+        "size": "1001-5000",
+        "employee_count": 1900,
+        "hq": "San Francisco, California",
+        "country": "United States",
+        "description": "Payroll and HR platform for mid-market companies, with a PEO option.",
+        "founded": 2011
+      },
+      {
+        "name": "Crewpay",
+        "domain": "crewpay.example",
+        "industry": "financial services",
+        "size": "11-50",
+        "employee_count": 24,
+        "hq": "Brooklyn, New York",
+        "country": "United States",
+        "description": "Contractor payments and invoicing for freelancers and the studios that hire them.",
+        "founded": 2020
+      },
+      {
+        "name": "Harbor HR",
+        "domain": "harborhr.example",
+        "industry": "financial services",
+        "size": "501-1000",
+        "employee_count": 640,
+        "hq": "Boston, Massachusetts",
+        "country": "United States",
+        "description": "Full HR suite with payroll for companies with 100 to 2,000 employees.",
+        "founded": 2008
+      },
+      {
+        "name": "Quillpay",
+        "domain": "quillpay.example",
+        "industry": "financial services",
+        "size": "51-200",
+        "employee_count": 110,
+        "hq": "Nashville, Tennessee",
+        "country": "United States",
+        "description": "Payroll for restaurants and hospitality, with tip handling and scheduling.",
+        "founded": 2016
+      },
+      {
+        "name": "Ledgerly Payroll",
+        "domain": "ledgerly.example",
+        "industry": "financial services",
+        "size": "11-50",
+        "employee_count": 40,
+        "hq": "Portland, Oregon",
+        "country": "United States",
+        "description": "Accountant-run payroll service for small businesses, with a bookkeeping add-on.",
+        "founded": 2017
+      },
+      {
+        "name": "Tidewater Workforce",
+        "domain": "tidewaterwf.example",
+        "industry": "financial services",
+        "size": "201-500",
+        "employee_count": 280,
+        "hq": "London",
+        "country": "United Kingdom",
+        "description": "Global payroll and employer of record for remote teams.",
+        "founded": 2018
+      }
+    ],
+    "site_account": {
+      "url": "https://tessellate.example",
+      "title": "Tessellate Payroll: payroll for agencies",
+      "description": "Pay your staff and your freelancers from one place. Built for creative agencies with 10 to 80 people. Live in a week, one price.",
+      "markdown": "# Payroll for agencies, staff and freelancers alike\n\nTessellate runs payroll for your employees and payments to your contractors from one account.\n\n## One price, no tiers\n\nA flat monthly price per person paid, whether they are on staff or on contract.\n\n## Live in a week\n\nMost agencies run their first payroll within seven days of signing up."
+    },
+    "site_1": {
+      "url": "https://paymint.example",
+      "title": "Paymint: payroll, benefits and HR for small business",
+      "description": "Run payroll in minutes, add health benefits and keep HR paperwork in one place. One low monthly price, no sales call needed.",
+      "markdown": "# Payroll, benefits and HR in one place\n\nPaymint gives small businesses payroll, benefits and the HR basics in one self-serve product.\n\n## One low monthly price\n\nA base fee plus a small amount per employee. Sign up online in ten minutes.\n\n## Add benefits when you are ready\n\nHealth, dental and retirement plans you can turn on from the dashboard."
+    },
+    "site_2": {
+      "url": "https://stackwage.example",
+      "title": "Stackwage: the payroll and HR platform for growing companies",
+      "description": "Payroll, HR, benefits and compliance for mid-market companies. Choose the platform or let our PEO take on the employer burden.",
+      "markdown": "# Built for companies that are growing up\n\nStackwage is the payroll and HR platform for mid-market companies, with a PEO option for teams that want us to carry the employer burden.\n\n## Talk to sales\n\nOur team will scope your rollout and build a plan for your company.\n\n## Trusted at scale\n\nThousands of companies run payroll on Stackwage every month."
+    },
+    "site_3": {
+      "url": "https://crewpay.example",
+      "title": "Crewpay: pay your freelancers",
+      "description": "Contractor payments and invoicing for studios and the freelancers they hire. Pay per payment, no subscription.",
+      "markdown": "# Pay the crew\n\nCrewpay handles contractor onboarding, invoices and payments for studios that work with freelancers.\n\n## Pay per payment\n\nNo monthly fee. A small charge on each payment you send.\n\n## Freelancers love it\n\nYour contractors get paid on time and keep their own records in Crewpay."
+    },
+    "site_4": {
+      "url": "https://harborhr.example",
+      "title": "Harbor HR: the complete HR suite with payroll",
+      "description": "HR, payroll, performance and benefits for companies with 100 to 2,000 employees. Implemented by our team.",
+      "markdown": "# The HR suite your company grows into\n\nHarbor HR brings payroll, performance, benefits and compliance together for companies with 100 to 2,000 employees.\n\n## Implemented with you\n\nA dedicated implementation manager runs your rollout over eight to twelve weeks.\n\n## Talk to sales\n\nSpeak with our sales team about your company."
+    },
+    "site_5": {
+      "url": "https://quillpay.example",
+      "title": "Quillpay: payroll built for restaurants",
+      "description": "Payroll with tip pooling, scheduling and overtime rules built for restaurants and hospitality groups.",
+      "markdown": "# Payroll that understands tips\n\nQuillpay runs payroll for restaurants and hospitality groups, with tip pooling, split shifts and overtime rules built in.\n\n## Scheduling included\n\nBuild the week's schedule and let the hours flow straight into payroll.\n\n## For one location or forty\n\nFrom a single restaurant to a regional group."
+    },
+    "site_6": {
+      "url": "https://ledgerly.example",
+      "title": "Ledgerly Payroll: payroll run by accountants",
+      "description": "A named accountant runs your payroll every month. Add bookkeeping when you need it. For small businesses that want a person, not a dashboard.",
+      "markdown": "# Your payroll, run by an accountant\n\nLedgerly Payroll gives small businesses a named accountant who runs payroll every month and answers the phone.\n\n## Bookkeeping, when you want it\n\nAdd monthly bookkeeping from the same accountant.\n\n## A person, not a dashboard\n\nWe built Ledgerly for owners who would rather hand it off."
+    },
+    "headline": "Where Tessellate sits among six payroll companies, and the gap none of them fills",
+    "intro": "The six companies are the ones whose profiles are closest to Tessellate. Each one is placed from what its own homepage says about who it sells to and how much it bundles with payroll. The positions are a reading, not a ranking.",
+    "axes": {
+      "x": {
+        "name": "Company size they serve",
+        "low": "Under 50 staff",
+        "high": "Enterprise"
+      },
+      "y": {
+        "name": "How much they bundle",
+        "low": "Payroll only",
+        "high": "Payroll plus HR"
+      }
+    },
+    "competitors": [
+      {
+        "name": "Paymint",
+        "domain": "paymint.example",
+        "x": 28,
+        "y": 66,
+        "line": "Sells payroll with benefits and HR to small businesses, self-serve, and leads with one low monthly price."
+      },
+      {
+        "name": "Stackwage",
+        "domain": "stackwage.example",
+        "x": 74,
+        "y": 82,
+        "line": "Sells a payroll and HR platform to mid-market companies through a sales team, with a PEO option."
+      },
+      {
+        "name": "Crewpay",
+        "domain": "crewpay.example",
+        "x": 12,
+        "y": 12,
+        "line": "Sells contractor payments and invoicing to studios and their freelancers, priced per payment with no subscription."
+      },
+      {
+        "name": "Harbor HR",
+        "domain": "harborhr.example",
+        "x": 88,
+        "y": 92,
+        "line": "Sells a full HR suite with payroll to companies with 100 to 2,000 employees, implemented over eight to twelve weeks."
+      },
+      {
+        "name": "Quillpay",
+        "domain": "quillpay.example",
+        "x": 40,
+        "y": 38,
+        "line": "Sells payroll with tip pooling and scheduling to restaurants and hospitality groups, and leads with rules built for that trade."
+      },
+      {
+        "name": "Ledgerly Payroll",
+        "domain": "ledgerly.example",
+        "x": 22,
+        "y": 46,
+        "line": "Sells an accountant-run payroll service with a bookkeeping add-on to small businesses, and leads with a named person."
+      }
+    ],
+    "account_position": {
+      "x": 24,
+      "y": 24,
+      "line": "Sells payroll and contractor payments to creative agencies with 10 to 80 staff, and leads with one flat price and going live in a week."
+    },
+    "open_space": {
+      "title": "Agencies that pay staff and freelancers from one place",
+      "x": 52,
+      "y": 20,
+      "why": "Crewpay handles freelancers and Paymint handles staff, and nobody does both for an agency that runs a mix. Quillpay shows that a product built for one trade can hold its own against the generalists. Tessellate already pays both kinds of worker for agencies and could claim the space by saying so on every page."
+    }
+  }
+}

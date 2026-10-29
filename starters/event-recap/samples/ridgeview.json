@@ -1,0 +1,80 @@
+{
+  "account": {
+    "name": "Ridgeview Dental Group",
+    "domain": "ridgeviewdental.example",
+    "industry": "hospitals and health care",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Ridgeview Dental Group runs eleven dental offices in two states with one shared front desk team.",
+      "why_now": "Added two offices this year.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Dana",
+    "last_name": "Whitfield",
+    "title": "Director of Patient Operations"
+  },
+  "sender": {
+    "name": "Jonas Berg",
+    "title": "Customer Success Lead",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Halcyon",
+    "logo_url": null,
+    "colors": { "primary": "#14403f", "secondary": "#1f2a24" },
+    "fonts": { "heading": "Fraunces", "body": "Source Sans 3" }
+  },
+  "data": {
+    "event_title": "Fewer no-shows without more reminders",
+    "recorded_on": "October 21",
+    "speakers": "Elena Ruiz and Jonas Berg.",
+    "video_url": "https://halcyon.example/recordings/fewer-no-shows",
+    "duration_seconds": 2535,
+    "chapters": [
+      { "start": "0:00", "seconds": 0, "title": "Welcome and what we measured", "summary": "Elena Ruiz and Jonas Berg introduce a study of appointment no-shows across 60 practices." },
+      { "start": "2:10", "seconds": 130, "title": "Why more reminders stop working", "summary": "Past the third reminder, extra messages brought no appointments back. Patients who ignore two texts rarely answer a third." },
+      { "start": "8:45", "seconds": 525, "title": "Confirm or cancel beats a plain reminder", "summary": "A reply to confirm or cancel cut no-shows more than a plain reminder, because cancelled slots could be rebooked." },
+      { "start": "15:20", "seconds": 920, "title": "Filling cancelled slots the same day", "summary": "Practices with a same-day waitlist refilled about a third of the slots that were cancelled." },
+      { "start": "24:05", "seconds": 1445, "title": "Running it with a small front desk", "summary": "How a front desk of two to four people handles replies and the waitlist without a new hire." },
+      { "start": "33:40", "seconds": 2020, "title": "Questions: insurance checks, multi-office scheduling", "summary": "Questions on insurance checks, patients without a cell phone and scheduling across several offices." },
+      { "start": "39:30", "seconds": 2370, "title": "Close and the practice checklist", "summary": "Wrap up and where to get the checklist." }
+    ],
+    "slides_url": "https://halcyon.example/decks/fewer-no-shows",
+    "slide_pages": [
+      { "page": 1, "caption": "Fewer no-shows without more reminders" },
+      { "page": 6, "caption": "No-show rate by number of reminders" },
+      { "page": 11, "caption": "The confirm or cancel message" },
+      { "page": 17, "caption": "A same-day waitlist, step by step" }
+    ],
+    "slide_count": 18,
+    "transcript": [
+      { "at": "8:45", "speaker": "Elena", "text": "The change that surprised us was small. We stopped saying \"reminder\" and asked patients to confirm or cancel. A cancel is a good outcome for a practice, because the slot is still open for two days." },
+      { "at": "9:20", "speaker": "Jonas", "text": "And the front desk does not chase anyone. A patient who does not answer is treated as unconfirmed and moves to the list for a phone call, which is a short list." },
+      { "at": "10:05", "speaker": "Elena", "text": "Right. Fewer messages go out in total, but each one asks for something the patient can do in ten seconds." }
+    ],
+    "transcript_url": "https://halcyon.example/recordings/fewer-no-shows/transcript",
+    "book_title": "Want to see it with your offices' numbers?",
+    "book_text": "Jonas can go through the no-show study with your front desk lead in 20 minutes and show where your offices would start.",
+    "book_label": "Book 20 minutes with Jonas",
+    "start_at": 1445,
+    "takeaways": [
+      {
+        "title": "Ask patients to confirm or cancel",
+        "body": "A confirm or cancel reply cut no-shows more than a plain reminder did. Cancelled slots could be rebooked, which helps a group that runs many schedules.",
+        "at": 525
+      },
+      {
+        "title": "Keep a same-day waitlist",
+        "body": "Practices with a same-day waitlist refilled about a third of cancelled slots. With two new offices this year, empty chairs cost more to leave open.",
+        "at": 920
+      },
+      {
+        "title": "Check how it works across several offices",
+        "body": "The questions at the end cover scheduling across several offices and insurance checks. Both come up for a patient operations team running one shared desk.",
+        "at": 2020
+      }
+    ]
+  }
+}

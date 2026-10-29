@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The HR and payroll software market, in numbers</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --p:#e4572e;
+  --s:#1c1c1c;
+  --fh:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;
+  --fb:'DM Sans',ui-sans-serif,system-ui,sans-serif;
+  --ink:var(--s);
+  --mute:color-mix(in srgb,var(--s) 62%,#fff);
+  --rule:color-mix(in srgb,var(--s) 14%,#fff);
+  --hair:color-mix(in srgb,var(--s) 9%,#fff);
+  --c1:var(--p);
+  --c2:color-mix(in srgb,var(--p) 78%,#fff);
+  --c3:color-mix(in srgb,var(--p) 60%,#fff);
+  --c4:color-mix(in srgb,var(--p) 44%,#fff);
+  --c5:color-mix(in srgb,var(--p) 30%,#fff);
+  --c6:color-mix(in srgb,var(--p) 18%,#fff);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased;padding-bottom:5.5rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.doc{max-width:58rem;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--fh);font-weight:600;line-height:1.1;letter-spacing:-.015em;margin:0}
+p{margin:0 0 1rem}
+a{color:var(--p)}
+a:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+.tn{font-variant-numeric:tabular-nums}
+
+.brandline{display:flex;align-items:center;gap:.6rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.9rem}
+.logo{width:28px;height:28px;display:block;flex:none;border-radius:8px;background:var(--p);color:#fff;font:700 15px/28px var(--fh);text-align:center}
+.logo-img{height:28px;width:auto;max-width:9rem;display:block;flex:none}
+.bname{font-weight:600}
+.meta{margin-left:auto;color:var(--mute);text-align:right;line-height:1.45}
+
+.cover{padding-bottom:2.5rem}
+.cover-grid{display:grid;gap:2rem;margin-top:2.5rem}
+.cover h1{font-size:clamp(2.7rem,9vw,4.4rem);line-height:.98;letter-spacing:-.03em;max-width:13ch;margin:0 0 1.25rem;text-wrap:balance;overflow-wrap:break-word}
+.stand{font-size:1.15rem;line-height:1.5;color:var(--mute);max-width:32rem}
+.waffle{max-width:230px}
+.waffle svg{width:100%;height:auto;display:block}
+.waffle p{font-size:.78rem;color:var(--mute);margin:.6rem 0 0;line-height:1.45}
+.plate{display:grid;gap:1rem;border-top:3px solid var(--p);padding-top:1.25rem;margin-top:2.5rem;font-size:.92rem;line-height:1.45}
+.plate small{display:block;color:var(--mute);font-size:.78rem;margin-bottom:.2rem}
+.plate b{font-weight:600}
+.toc{list-style:none;margin:2.5rem 0 0;padding:0;max-width:30rem;counter-reset:t}
+.toc li{counter-increment:t;display:flex;gap:.9rem;align-items:baseline;padding:.45rem 0;border-top:1px solid var(--hair);font-size:.95rem}
+.toc li::before{content:counter(t);font:600 .9rem/1 var(--fh);color:var(--p);min-width:1.1rem}
+
+.sec{padding:2.5rem 0 .5rem;border-top:1px solid var(--rule);display:grid;gap:.2rem 3rem}
+.sec .n{font:700 1.6rem/1 var(--fh);letter-spacing:-.03em;color:var(--p)}
+.sec h2{font-size:1.9rem;margin:.1rem 0 1rem;text-wrap:balance}
+.body{max-width:44rem}
+.body p{font-size:1.02rem}
+.brief{list-style:none;margin:0;padding:0}
+.brief li{padding:.9rem 0;border-top:1px solid var(--hair);font-size:1.02rem}
+.brief li:first-child{border-top:0;padding-top:0}
+.brief b{font-family:var(--fh);font-weight:600;font-size:1.35rem;letter-spacing:-.01em;margin-right:.4rem;white-space:nowrap}
+
+figure{margin:1.75rem 0 2rem;display:grid;gap:.8rem}
+figure svg{width:100%;height:auto;display:block;overflow:visible}
+figure .fig{max-width:30rem}
+figcaption{font-size:.82rem;line-height:1.5;color:var(--mute)}
+figcaption b{color:var(--ink);font-weight:600}
+.lab{font:500 12px var(--fb);fill:var(--ink)}
+.val{font:600 12px var(--fb);fill:var(--ink);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.mut{font:500 10px var(--fb);fill:var(--mute)}
+.bar{fill:var(--p)}
+.bar2{fill:var(--c4)}
+.bar3{fill:var(--c5)}
+.ref{stroke:var(--mute);stroke-width:1;stroke-dasharray:3 3}
+.c1{fill:var(--c1)}.c2{fill:var(--c2)}.c3{fill:var(--c3)}.c4{fill:var(--c4)}.c5{fill:var(--c5)}.c6{fill:var(--c6)}
+.legend{list-style:none;margin:.6rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;font-size:.82rem}
+.legend li{display:flex;align-items:center;gap:.4rem}
+.legend i{width:11px;height:11px;border-radius:2px;display:inline-block;flex:none}
+.legend i.c1{background:var(--c1)}.legend i.c2{background:var(--c2)}.legend i.c3{background:var(--c3)}.legend i.c4{background:var(--c4)}.legend i.c5{background:var(--c5)}.legend i.c6{background:var(--c6)}
+.legend b{font-weight:600}
+.legend .tn{color:var(--mute)}
+.legend.top{margin:0 0 .7rem}
+.region .legend li{flex-basis:calc(50% - .55rem)}
+
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin:1.5rem 0 1rem}
+.tile{border-top:2px solid var(--ink);padding-top:.7rem}
+.tile b{display:block;font:600 1.8rem/1 var(--fh);letter-spacing:-.03em;margin-bottom:.35rem}
+.tile span{display:block;font-size:.85rem;line-height:1.35;color:var(--mute)}
+
+.plays{list-style:none;margin:0;padding:0;counter-reset:pl;display:grid;gap:1.5rem}
+.plays li{counter-increment:pl;padding-top:1rem;border-top:2px solid var(--ink)}
+.plays li::before{content:"Play " counter(pl);display:block;font:600 .85rem/1 var(--fb);color:var(--p);margin-bottom:.6rem}
+.plays h3{font-size:1.3rem;margin-bottom:.5rem}
+.plays p{margin:0;font-size:.98rem}
+
+.next{display:grid;gap:1rem;max-width:none}
+.cta-wrap{justify-self:start}
+.ken-cta{min-height:44px;line-height:20px;border-radius:3px!important;background:var(--p)!important}
+.sign{margin:0;font-size:.95rem}
+.sign b{display:block;font-weight:600}
+.sign span{color:var(--mute)}
+.method{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.8rem;line-height:1.55;color:var(--mute);max-width:46rem}
+.method b{color:var(--ink);font-weight:600}
+
+@media (min-width:760px){
+  .doc{padding:0 2.5rem}
+  .cover{padding-bottom:3.5rem}
+  .cover-grid{grid-template-columns:minmax(0,1fr) 15rem;gap:3rem;align-items:end;margin-top:4rem}
+  .waffle{max-width:15rem;justify-self:end}
+  .plate{grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;margin-top:3.5rem}
+  .sec{grid-template-columns:5.5rem minmax(0,1fr);padding:3.5rem 0 1rem}
+  .sec .n{font-size:2.6rem;padding-top:.35rem}
+  .sec h2{font-size:2.2rem;margin-bottom:1.25rem}
+  .tile b{font-size:2.1rem}
+  figure{grid-template-columns:minmax(0,1fr) 11rem;gap:1.5rem;align-items:end}
+  figure .fig{max-width:32rem}
+  .region .legend li{flex-basis:auto}
+  .plays{grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem}
+  .next{grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:1rem 3rem}
+  .next p{max-width:34rem}
+  .next .sign{grid-column:1}
+  .next .cta-wrap{grid-column:2;grid-row:1/3;align-self:center}
+}
+@media print{
+  @page{margin:16mm}
+  body{padding:0}
+  .doc{max-width:none;padding:0}
+  .sec{break-before:page;border-top:0;padding-top:.5rem}
+  .method{break-inside:avoid;margin-top:1rem}
+  .cover{break-before:auto;padding-bottom:0}
+  .cover-grid{margin-top:1.5rem}
+  .cover h1{font-size:3.4rem}
+  .plate{margin-top:1.75rem}
+  .toc{margin-top:1.25rem}
+  .toc li{padding:.3rem 0}
+  .sec.last{break-before:auto;border-top:1px solid var(--rule);margin-top:.75rem;padding-top:1.5rem}
+  figure,.tile,.plays li{break-inside:avoid}
+  .cta-wrap{display:none}
+}
+</style>
+</head>
+<body>
+<main class="doc">
+<section class="cover" data-section="cover">
+<div class="brandline"><span class="logo" aria-hidden="true">F</span><span class="bname">Forgeline</span>
+<span class="meta">Market report<br>US HR and payroll software companies</span>
+</div>
+<div class="cover-grid">
+<div>
+<h1>The HR and payroll software market, in numbers</h1>
+<p class="stand">What 2,710 US HR and payroll software companies with 50 to 500 staff look like right now, and where Lumen Payroll sits among them.</p>
+</div><div class="waffle">
+<svg viewBox="0 0 198 198" role="img" aria-label="US HR and payroll software companies: companies as 100 squares, shaded by segment">
+<rect x="0" y="0" width="18" height="18" rx="2" class="c1"/>
+<rect x="20" y="0" width="18" height="18" rx="2" class="c1"/>
+<rect x="40" y="0" width="18" height="18" rx="2" class="c1"/>
+<rect x="60" y="0" width="18" height="18" rx="2" class="c1"/>
+<rect x="80" y="0" width="18" height="18" rx="2" class="c1"/>
+<rect x="100" y="0" width="18" height="18" rx="2" class="c1"/>
+<rect x="120" y="0" width="18" height="18" rx="2" class="c1"/>
+<rect x="140" y="0" width="18" height="18" rx="2" class="c1"/>
+<rect x="160" y="0" width="18" height="18" rx="2" class="c1"/>
+<rect x="180" y="0" width="18" height="18" rx="2" class="c1"/>
+<rect x="0" y="20" width="18" height="18" rx="2" class="c1"/>
+<rect x="20" y="20" width="18" height="18" rx="2" class="c1"/>
+<rect x="40" y="20" width="18" height="18" rx="2" class="c1"/>
+<rect x="60" y="20" width="18" height="18" rx="2" class="c1"/>
+<rect x="80" y="20" width="18" height="18" rx="2" class="c1"/>
+<rect x="100" y="20" width="18" height="18" rx="2" class="c1"/>
+<rect x="120" y="20" width="18" height="18" rx="2" class="c1"/>
+<rect x="140" y="20" width="18" height="18" rx="2" class="c1"/>
+<rect x="160" y="20" width="18" height="18" rx="2" class="c1"/>
+<rect x="180" y="20" width="18" height="18" rx="2" class="c1"/>
+<rect x="0" y="40" width="18" height="18" rx="2" class="c1"/>
+<rect x="20" y="40" width="18" height="18" rx="2" class="c1"/>
+<rect x="40" y="40" width="18" height="18" rx="2" class="c1"/>
+<rect x="60" y="40" width="18" height="18" rx="2" class="c1"/>
+<rect x="80" y="40" width="18" height="18" rx="2" class="c1"/>
+<rect x="100" y="40" width="18" height="18" rx="2" class="c1"/>
+<rect x="120" y="40" width="18" height="18" rx="2" class="c1"/>
+<rect x="140" y="40" width="18" height="18" rx="2" class="c1"/>
+<rect x="160" y="40" width="18" height="18" rx="2" class="c1"/>
+<rect x="180" y="40" width="18" height="18" rx="2" class="c1"/>
+<rect x="0" y="60" width="18" height="18" rx="2" class="c1"/>
+<rect x="20" y="60" width="18" height="18" rx="2" class="c1"/>
+<rect x="40" y="60" width="18" height="18" rx="2" class="c1"/>
+<rect x="60" y="60" width="18" height="18" rx="2" class="c1"/>
+<rect x="80" y="60" width="18" height="18" rx="2" class="c2"/>
+<rect x="100" y="60" width="18" height="18" rx="2" class="c2"/>
+<rect x="120" y="60" width="18" height="18" rx="2" class="c2"/>
+<rect x="140" y="60" width="18" height="18" rx="2" class="c2"/>
+<rect x="160" y="60" width="18" height="18" rx="2" class="c2"/>
+<rect x="180" y="60" width="18" height="18" rx="2" class="c2"/>
+<rect x="0" y="80" width="18" height="18" rx="2" class="c2"/>
+<rect x="20" y="80" width="18" height="18" rx="2" class="c2"/>
+<rect x="40" y="80" width="18" height="18" rx="2" class="c2"/>
+<rect x="60" y="80" width="18" height="18" rx="2" class="c2"/>
+<rect x="80" y="80" width="18" height="18" rx="2" class="c2"/>
+<rect x="100" y="80" width="18" height="18" rx="2" class="c2"/>
+<rect x="120" y="80" width="18" height="18" rx="2" class="c2"/>
+<rect x="140" y="80" width="18" height="18" rx="2" class="c2"/>
+<rect x="160" y="80" width="18" height="18" rx="2" class="c2"/>
+<rect x="180" y="80" width="18" height="18" rx="2" class="c2"/>
+<rect x="0" y="100" width="18" height="18" rx="2" class="c2"/>
+<rect x="20" y="100" width="18" height="18" rx="2" class="c2"/>
+<rect x="40" y="100" width="18" height="18" rx="2" class="c2"/>
+<rect x="60" y="100" width="18" height="18" rx="2" class="c2"/>
+<rect x="80" y="100" width="18" height="18" rx="2" class="c2"/>
+<rect x="100" y="100" width="18" height="18" rx="2" class="c2"/>
+<rect x="120" y="100" width="18" height="18" rx="2" class="c2"/>
+<rect x="140" y="100" width="18" height="18" rx="2" class="c3"/>
+<rect x="160" y="100" width="18" height="18" rx="2" class="c3"/>
+<rect x="180" y="100" width="18" height="18" rx="2" class="c3"/>
+<rect x="0" y="120" width="18" height="18" rx="2" class="c3"/>
+<rect x="20" y="120" width="18" height="18" rx="2" class="c3"/>
+<rect x="40" y="120" width="18" height="18" rx="2" class="c3"/>
+<rect x="60" y="120" width="18" height="18" rx="2" class="c3"/>
+<rect x="80" y="120" width="18" height="18" rx="2" class="c3"/>
+<rect x="100" y="120" width="18" height="18" rx="2" class="c3"/>
+<rect x="120" y="120" width="18" height="18" rx="2" class="c3"/>
+<rect x="140" y="120" width="18" height="18" rx="2" class="c3"/>
+<rect x="160" y="120" width="18" height="18" rx="2" class="c3"/>
+<rect x="180" y="120" width="18" height="18" rx="2" class="c3"/>
+<rect x="0" y="140" width="18" height="18" rx="2" class="c3"/>
+<rect x="20" y="140" width="18" height="18" rx="2" class="c3"/>
+<rect x="40" y="140" width="18" height="18" rx="2" class="c3"/>
+<rect x="60" y="140" width="18" height="18" rx="2" class="c3"/>
+<rect x="80" y="140" width="18" height="18" rx="2" class="c3"/>
+<rect x="100" y="140" width="18" height="18" rx="2" class="c3"/>
+<rect x="120" y="140" width="18" height="18" rx="2" class="c4"/>
+<rect x="140" y="140" width="18" height="18" rx="2" class="c4"/>
+<rect x="160" y="140" width="18" height="18" rx="2" class="c4"/>
+<rect x="180" y="140" width="18" height="18" rx="2" class="c4"/>
+<rect x="0" y="160" width="18" height="18" rx="2" class="c4"/>
+<rect x="20" y="160" width="18" height="18" rx="2" class="c4"/>
+<rect x="40" y="160" width="18" height="18" rx="2" class="c4"/>
+<rect x="60" y="160" width="18" height="18" rx="2" class="c4"/>
+<rect x="80" y="160" width="18" height="18" rx="2" class="c4"/>
+<rect x="100" y="160" width="18" height="18" rx="2" class="c4"/>
+<rect x="120" y="160" width="18" height="18" rx="2" class="c4"/>
+<rect x="140" y="160" width="18" height="18" rx="2" class="c4"/>
+<rect x="160" y="160" width="18" height="18" rx="2" class="c4"/>
+<rect x="180" y="160" width="18" height="18" rx="2" class="c4"/>
+<rect x="0" y="180" width="18" height="18" rx="2" class="c5"/>
+<rect x="20" y="180" width="18" height="18" rx="2" class="c5"/>
+<rect x="40" y="180" width="18" height="18" rx="2" class="c5"/>
+<rect x="60" y="180" width="18" height="18" rx="2" class="c5"/>
+<rect x="80" y="180" width="18" height="18" rx="2" class="c5"/>
+<rect x="100" y="180" width="18" height="18" rx="2" class="c5"/>
+<rect x="120" y="180" width="18" height="18" rx="2" class="c5"/>
+<rect x="140" y="180" width="18" height="18" rx="2" class="c5"/>
+<rect x="160" y="180" width="18" height="18" rx="2" class="c5"/>
+<rect x="180" y="180" width="18" height="18" rx="2" class="c5"/>
+</svg>
+<p>2,710 companies. Each square is one percent of the segments in figure 1, shaded by segment: darkest for HR management software, lightest for Time and attendance.</p>
+</div>
+</div>
+<div class="plate">
+<div><small>Prepared for</small><b>Priya Raman</b><br>Head of Revenue, Lumen Payroll</div>
+<div><small>Written by</small><b>Jordan Ellis</b><br>Account Executive, Forgeline</div>
+<div><small>Data</small><b>Company profiles and hiring data</b><br>2,710 companies, 6,760 people</div>
+</div>
+<ol class="toc" aria-label="Contents">
+<li>In brief</li>
+<li>Who is in the market</li>
+<li>Where they are</li>
+<li>Who buys</li>
+<li>Who is growing</li>
+<li>Where Lumen Payroll sits</li>
+<li>Three plays for Lumen Payroll</li>
+</ol>
+</section>
+<section class="sec" data-section="brief">
+<span class="n">1</span>
+<div class="body">
+<h2>In brief</h2>
+<ul class="brief">
+<li><b class="tn">2,710</b>companies fit the profile. HR management software is the largest segment at 910, and payroll software has 640.</li>
+<li><b class="tn">760</b>companies are in the West, the largest region. The South is close behind at 690.</li>
+<li><b class="tn">6,760</b>people hold the four roles that buy for sales and marketing. VP of Sales is the largest group, at 2,700.</li>
+<li><b class="tn">780</b>companies are hiring in sales, and 142 raised money in the last twelve months.</li>
+<li><b class="tn">261</b>companies in the South sit in Lumen&#39;s size band, and 88 of them are hiring.</li>
+</ul>
+</div>
+</section>
+
+<section class="sec" data-section="segments">
+<span class="n">2</span>
+<div class="body">
+<h2>Who is in the market</h2>
+<p>The profile is a US software company with 50 to 500 staff that sells into HR, payroll or hiring teams. There are 2,710 of them. HR management is the largest segment, and payroll, where Lumen sits, is the second largest.</p>
+<figure>
+<div class="fig"><svg viewBox="0 0 360 150" role="img" aria-label="Companies by segment, horizontal bars">
+<text x="0" y="16.5" class="lab">HR management software</text>
+<rect x="164" y="4" width="136" height="16" rx="2" class="bar"/>
+<text x="306" y="16.5" class="val">910</text>
+<text x="0" y="46.5" class="lab">Payroll software</text>
+<rect x="164" y="34" width="95.6" height="16" rx="2" class="bar"/>
+<text x="265.6" y="46.5" class="val">640</text>
+<text x="0" y="76.5" class="lab">Recruiting software</text>
+<rect x="164" y="64" width="77.7" height="16" rx="2" class="bar"/>
+<text x="247.7" y="76.5" class="val">520</text>
+<text x="0" y="106.5" class="lab">Benefits admin</text>
+<rect x="164" y="94" width="56.8" height="16" rx="2" class="bar"/>
+<text x="226.8" y="106.5" class="val">380</text>
+<text x="0" y="136.5" class="lab">Time and attendance</text>
+<rect x="164" y="124" width="38.9" height="16" rx="2" class="bar"/>
+<text x="208.9" y="136.5" class="val">260</text>
+</svg></div>
+<figcaption><b>Figure 1.</b> Companies by segment, 50 to 500 staff. Segments follow each company's primary industry in its profile. Total 2,710.</figcaption>
+</figure>
+<p>Time and attendance is the smallest segment at 260 companies. Recruiting software has 520, more than benefits administration at 380.</p>
+</div>
+</section>
+
+<section class="sec region" data-section="regions">
+<span class="n">3</span>
+<div class="body">
+<h2>Where they are</h2>
+<p>The West holds 760 of the 2,710 companies, the most of any region. The South follows with 690 and the Northeast with 610.</p>
+<figure>
+<div class="fig">
+<svg viewBox="0 0 360 28" role="img" aria-label="Share of companies by region, one stacked bar">
+<rect x="0" y="0" width="98.7" height="28" rx="2" class="c1"/>
+<rect x="100.7" y="0" width="89.6" height="28" rx="2" class="c2"/>
+<rect x="192.3" y="0" width="79.2" height="28" rx="2" class="c3"/>
+<rect x="273.6" y="0" width="58.5" height="28" rx="2" class="c4"/>
+<rect x="334" y="0" width="26" height="28" rx="2" class="c5"/>
+</svg>
+<ul class="legend">
+<li><i class="c1"></i><b>West</b><span class="tn">28%, 760</span></li>
+<li><i class="c2"></i><b>South</b><span class="tn">25%, 690</span></li>
+<li><i class="c3"></i><b>Northeast</b><span class="tn">23%, 610</span></li>
+<li><i class="c4"></i><b>Midwest</b><span class="tn">17%, 450</span></li>
+<li><i class="c5"></i><b>Mountain</b><span class="tn">7%, 200</span></li>
+</ul>
+</div>
+<figcaption><b>Figure 2.</b> Share of companies by headquarters region, from company profiles.</figcaption>
+</figure>
+<p>Lumen is based in the South, where 690 companies compete for the same small employers. The Mountain region is the smallest with 200.</p>
+</div>
+</section>
+<section class="sec" data-section="buyers">
+<span class="n">4</span>
+<div class="body">
+<h2>Who buys</h2>
+<p>Four titles decide on sales and marketing spend in this market. Across the 2,710 companies, 6,760 people hold one of them. There are more of them at companies with 50 to 200 staff in every role but one.</p>
+<figure>
+<div class="fig">
+<ul class="legend top">
+<li><i class="c1"></i><b>50 to 200 staff</b></li>
+<li><i class="c4"></i><b>201 to 500 staff</b></li>
+</ul>
+<svg viewBox="0 0 360 120" role="img" aria-label="People in each buying role by company size, stacked bars">
+<text x="0" y="16.5" class="lab">VP of Sales</text>
+<rect x="164" y="4" width="99.7" height="16" rx="2" class="bar"/>
+<rect x="265.7" y="4" width="36.3" height="16" rx="2" class="bar2"/>
+<text x="308" y="16.5" class="val">2,700</text>
+<text x="0" y="46.5" class="lab">Head of Marketing</text>
+<rect x="164" y="34" width="77.6" height="16" rx="2" class="bar"/>
+<rect x="243.6" y="34" width="28.2" height="16" rx="2" class="bar2"/>
+<text x="277.8" y="46.5" class="val">2,100</text>
+<text x="0" y="76.5" class="lab">Head of Revenue Ops</text>
+<rect x="164" y="64" width="43.3" height="16" rx="2" class="bar"/>
+<rect x="209.3" y="64" width="20.7" height="16" rx="2" class="bar2"/>
+<text x="236" y="76.5" class="val">1,270</text>
+<text x="0" y="106.5" class="lab">Chief Revenue Officer</text>
+<rect x="164" y="94" width="15.6" height="16" rx="2" class="bar"/>
+<rect x="181.6" y="94" width="19.1" height="16" rx="2" class="bar2"/>
+<text x="206.8" y="106.5" class="val">690</text>
+</svg>
+</div>
+<figcaption><b>Figure 3.</b> People in each buying role, by the size of their company. Current titles only. Total 6,760.</figcaption>
+</figure>
+<p>Chief Revenue Officer is the exception, with 380 people at the larger companies and 310 at the smaller ones. At 50 to 200 staff the VP of Sales is the biggest group, with 1,980 people.</p>
+</div>
+</section>
+
+<section class="sec" data-section="signals">
+<span class="n">5</span>
+<div class="body">
+<h2>Who is growing</h2>
+<p>A company that is hiring salespeople or has new money is about to spend on its revenue stack. Hiring comes from job posts and funding from announcements.</p>
+<div class="tiles">
+<div class="tile"><b class="tn">780</b><span>Hiring in sales. 29% of the market.</span></div>
+<div class="tile"><b class="tn">142</b><span>Raised in 12 months. 5% of the market.</span></div>
+<div class="tile"><b class="tn">96</b><span>Hiring and raised. 4% of the market.</span></div>
+</div>
+<figure>
+<div class="fig"><svg viewBox="0 0 360 166" role="img" aria-label="Share of companies hiring, by segment">
+<line x1="271.2" y1="14" x2="271.2" y2="166" class="ref"/>
+<text x="274.2" y="9" class="mut" text-anchor="end">All segments, 29%</text>
+<text x="0" y="32.5" class="lab">Recruiting software</text>
+<rect x="164" y="20" width="136" height="16" rx="2" class="bar"/>
+<text x="306" y="32.5" class="val">37%</text>
+<text x="0" y="62.5" class="lab">HR management software</text>
+<rect x="164" y="50" width="118.9" height="16" rx="2" class="bar"/>
+<text x="288.9" y="62.5" class="val">32%</text>
+<text x="0" y="92.5" class="lab">Time and attendance</text>
+<rect x="164" y="80" width="114.8" height="16" rx="2" class="bar"/>
+<text x="284.8" y="92.5" class="val">31%</text>
+<text x="0" y="122.5" class="lab">Payroll software</text>
+<rect x="164" y="110" width="87.2" height="16" rx="2" class="bar"/>
+<text x="257.2" y="122.5" class="val">23%</text>
+<text x="0" y="152.5" class="lab">Benefits admin</text>
+<rect x="164" y="140" width="68.6" height="16" rx="2" class="bar"/>
+<text x="238.6" y="152.5" class="val">18%</text>
+</svg></div>
+<figcaption><b>Figure 4.</b> Share of companies in each segment that are hiring. The dashed line is the whole market, 29 percent.</figcaption>
+</figure>
+<p>HR management software has 290 companies hiring, the most of any segment. 142 companies raised money in the last twelve months, and 96 of them are also hiring.</p>
+</div>
+</section>
+<section class="sec" data-section="peers">
+<span class="n">6</span>
+<div class="body">
+<h2>Where Lumen Payroll sits</h2>
+<p>Lumen is in the 51 to 200 band. The peer group is every HR and payroll software company in the South, split by headcount, with the number in each band that are hiring.</p>
+<figure>
+<div class="fig">
+<ul class="legend top"><li><i class="c1"></i>Lumen Payroll&#39;s size band</li><li><i class="c5"></i>other size bands</li></ul>
+<svg viewBox="0 0 360 166" role="img" aria-label="Companies in each size band and how many of them are hiring">
+<text x="360" y="9" class="mut" text-anchor="end">Hiring now</text>
+<text x="0" y="32.5" class="lab">11 to 50</text>
+<rect x="124" y="20" width="90.2" height="16" rx="2" class="bar3"/>
+<text x="220.2" y="32.5" class="val">214</text>
+<text x="360" y="32.5" class="val" text-anchor="end">19%</text>
+<text x="0" y="62.5" class="lab" style="font-weight:700">51 to 200</text>
+<rect x="124" y="50" width="110" height="16" rx="2" class="bar"/>
+<text x="240" y="62.5" class="val">261</text>
+<text x="360" y="62.5" class="val" text-anchor="end">34%</text>
+<text x="0" y="92.5" class="lab">201 to 500</text>
+<rect x="124" y="80" width="49.7" height="16" rx="2" class="bar3"/>
+<text x="179.7" y="92.5" class="val">118</text>
+<text x="360" y="92.5" class="val" text-anchor="end">36%</text>
+<text x="0" y="122.5" class="lab">501 to 1,000</text>
+<rect x="124" y="110" width="25.7" height="16" rx="2" class="bar3"/>
+<text x="155.7" y="122.5" class="val">61</text>
+<text x="360" y="122.5" class="val" text-anchor="end">44%</text>
+<text x="0" y="152.5" class="lab">1,001 and up</text>
+<rect x="124" y="140" width="15.2" height="16" rx="2" class="bar3"/>
+<text x="145.2" y="152.5" class="val">36</text>
+<text x="360" y="152.5" class="val" text-anchor="end">53%</text>
+</svg>
+</div>
+<figcaption><b>Figure 5.</b> Companies in Lumen Payroll&#39;s industry and region, by headcount, and the share of each band that is hiring. Lumen Payroll is in the 51 to 200 band. Total 690.</figcaption>
+</figure>
+<p>Lumen&#39;s band is the largest in the South with 261 companies, and 88 of them are hiring. The next band up, 201 to 500, has 118 companies and 42 of them are hiring.</p>
+</div>
+</section>
+
+<section class="sec" data-section="plays">
+<span class="n">7</span>
+<div class="body" style="max-width:none">
+<h2>Three plays for Lumen Payroll</h2>
+<ol class="plays">
+<li><h3>Write to the 780 companies hiring in sales</h3><p>A company hiring salespeople is about to need a way to reach new buyers. 780 companies are hiring now, and 290 of them sell HR management software. Write to the head of sales about ramping new reps.</p></li>
+<li><h3>Go to the VP of Sales at smaller companies</h3><p>There are 1,980 VPs of Sales at companies with 50 to 200 staff, the largest single group in the report. They run the team and own the number, so write about pipeline, not about tools.</p></li>
+<li><h3>Reach the 96 that are funded and hiring</h3><p>142 companies raised money in the last twelve months and 96 of them are hiring. A funded company tends to pick vendors in the first few quarters, so a message now lands early.</p></li>
+</ol>
+</div>
+</section>
+
+<section class="sec last" data-section="next">
+<span class="n" aria-hidden="true"></span>
+<div class="body next">
+<p>The companies and people behind this report come from company profiles and hiring data, filtered to Lumen Payroll&#39;s market. Book 30 minutes and I will go through the list with you.</p>
+<p class="sign"><b>Jordan Ellis</b><span>Account Executive, Forgeline</span></p>
+<div class="cta-wrap"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#e4572e;color:#fff;text-decoration:none;font-weight:600">Book 30 minutes</a></div>
+<p class="method" style="grid-column:1/-1"><b>How this was built.</b> The counts come from company profiles and hiring data at the time this page was filled. Companies: headquartered in the United States, 50 to 500 employees, in a software or HR services industry. People: a current title in one of four sales and marketing roles at those companies. Hiring means a sales hiring surge in the last three months. Raised means a funding round in the last 365 days. The peer group is the same industries in the South, split by headcount.</p>
+</div>
+</section>
+</main>
+</body>
+</html>

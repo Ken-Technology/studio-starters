@@ -1,0 +1,124 @@
+{
+  "account": {
+    "name": "Marlow Packaging",
+    "domain": "marlowpackaging.example",
+    "industry": "packaging and containers manufacturing",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Marlow Packaging makes corrugated boxes and custom inserts for food and consumer brands. It runs one plant with about 130 people.",
+      "why_now": "Added a second die-cutting line this year.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Ines",
+    "last_name": "Duarte",
+    "title": "Plant Manager"
+  },
+  "sender": {
+    "name": "Dev Patel",
+    "title": "Solutions Engineer",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Forgeline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#d9441c",
+      "secondary": "#1c1c1c"
+    },
+    "fonts": {
+      "heading": "Space Grotesk",
+      "body": "IBM Plex Sans"
+    }
+  },
+  "data": {
+    "site": {
+      "url": "https://marlowpackaging.example",
+      "title": "Marlow Packaging: corrugated boxes and custom inserts",
+      "description": "Short runs and long runs of corrugated packaging, with two die-cutting lines in one plant."
+    },
+    "careers": {
+      "url": "https://marlowpackaging.example/careers",
+      "title": "Work at Marlow",
+      "description": "Openings for a maintenance technician and a line operator."
+    },
+    "signals_raw": [],
+    "product": "Forgeline is maintenance planning software for plants. It keeps one schedule of planned work per machine, turns operator notes into work orders, and shows which machine is due for service before it stops a line. It works alongside the plant's existing spreadsheets or maintenance system. A rollout starts with one line and takes about six weeks. Pricing is shared on the call.",
+    "hero": {
+      "headline": "Keep both lines running on the days that matter.",
+      "sub": "Forgeline gives Marlow's plant one schedule of planned maintenance per machine, so the work gets done between runs instead of during them."
+    },
+    "noticed": [
+      {
+        "fact": "Two die-cutting lines in one plant.",
+        "source": "marlowpackaging.example/plant",
+        "source_url": "https://marlowpackaging.example/plant"
+      },
+      {
+        "fact": "An opening for a maintenance technician.",
+        "source": "marlowpackaging.example/careers",
+        "source_url": "https://marlowpackaging.example/careers"
+      },
+      {
+        "fact": "Short runs and long runs, both listed as services.",
+        "source": "marlowpackaging.example/services",
+        "source_url": "https://marlowpackaging.example/services"
+      }
+    ],
+    "uses_lead": "Picked for a plant manager with two die-cutting lines and an open maintenance role, from the plant page and the careers page.",
+    "uses": [
+      {
+        "title": "Plan service between runs",
+        "today": "With short and long runs on two lines, the gaps for maintenance are small and move around.",
+        "after": "Planned work sits on one schedule per machine, so it lands in the gaps between runs and not in the middle of one."
+      },
+      {
+        "title": "Turn operator notes into work orders",
+        "today": "A line operator who hears a new noise has to find the right person to tell.",
+        "after": "The operator writes one line on a phone and it becomes a work order for the right machine."
+      },
+      {
+        "title": "Help a new technician start fast",
+        "today": "Marlow is hiring a maintenance technician, who will learn two lines from what others remember.",
+        "after": "Each machine keeps its history and its next service, so a new technician sees what was done and what is due."
+      }
+    ],
+    "rollout_lead": "Start with one die-cutting line, then add the second once the schedule has run through a few weeks of production.",
+    "rollout": [
+      {
+        "when": "Weeks 1 and 2",
+        "title": "Set up line one",
+        "body": "We load the line's machines and their service history, and agree the first month of planned work with your team."
+      },
+      {
+        "when": "Weeks 3 to 4",
+        "title": "Run it on the floor",
+        "body": "Operators write notes on their phones and the technician works from the schedule. We check in each week."
+      },
+      {
+        "when": "Weeks 5 and 6",
+        "title": "Add the second line",
+        "body": "The second die-cutting line goes on the same schedule, and you see both lines in one view."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do we have to drop our spreadsheets?",
+        "a": "No. Forgeline works alongside them, and you can move over one machine at a time."
+      },
+      {
+        "q": "Who needs training?",
+        "a": "Operators need ten minutes to write a note. The maintenance technician needs a short walkthrough of the schedule."
+      },
+      {
+        "q": "How long until the first line is live?",
+        "a": "About two weeks to set up one line, and the full rollout takes about six weeks."
+      },
+      {
+        "q": "What does it cost?",
+        "a": "We share pricing on the call, so you see it next to the plan for two lines."
+      }
+    ]
+  }
+}

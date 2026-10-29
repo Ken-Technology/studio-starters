@@ -21,6 +21,8 @@ const SLOT_TYPES = ['string', 'number', 'integer', 'boolean', 'array', 'object']
 const SLOT_KEYWORDS = new Set(['type', 'properties', 'required', 'items', 'minLength', 'maxLength', 'minItems', 'maxItems', 'enum', 'format', 'fallback', 'description', 'title']);
 const KEN_ROOTS = ['account', 'person', 'sender', 'brand', 'link', 'asset_url', 'data', 'role', 'roles'];
 const BIND_FROM = ['account.', 'person.', 'role.', 'knowledge.', 'defaults.'];
+// A variable path written without {{ }}, like data.segments or account.domain.
+const VARIABLE_PATH = /^\s*(account|person|sender|brand|link|role|roles|knowledge|defaults|data)(\.[A-Za-z0-9_]+|\[\d+\])+\s*$/;
 const TOOLS = ['ken_search.people', 'ken_search.companies', 'ken_search.count', 'enrich.email', 'scrape.page', 'ken.copy', 'chart.data'];
 const CATEGORIES = ['prospecting', 'deal', 'events', 'customers', 'interactive', 'content', 'partners', 'recruiting'];
 const NEEDS = ['dataset', 'webhook', 'knowledge', 'video'];
@@ -128,29 +130,35 @@ function checkSchema(schema, where, err) {
   }
 }
 
-// Validates a filled value against the subset. Returns a list of problems.
+// Null and a blank string read as "no value" (ken-backend StudioSlotValueValidator.IsAbsent).
+const absent = (v) => v === null || v === undefined || (typeof v === 'string' && !v.trim());
+const URI = /^https?:\/\/[^\s/?#]\S*$/i;
+const kindOf = (v) => (v === null ? 'null' : Array.isArray(v) ? 'array' : Number.isInteger(v) ? 'integer' : typeof v);
+
+// Validates a value against the subset the way ken-backend StudioSlotValueValidator does, for sample data and slot
+// fallbacks alike: lengths count code points, a uri is an absolute http(s) URL, and an absent object field is skipped.
 function validateValue(schema, value, where) {
   const out = [];
-  if (value === null || value === undefined) return out;
+  if (value === undefined) return out;
   const t = schema.type;
-  const actual = Array.isArray(value) ? 'array' : Number.isInteger(value) ? 'integer' : typeof value;
-  const fits = t === actual || (t === 'number' && actual === 'integer');
-  if (!fits) return [`${where}: expected ${t}, got ${actual}`];
-  if (t === 'string') {
-    if ('minLength' in schema && value.length < schema.minLength) out.push(`${where}: shorter than ${schema.minLength}`);
-    if ('maxLength' in schema && value.length > schema.maxLength) out.push(`${where}: longer than ${schema.maxLength} (${value.length})`);
-    if (schema.format === 'uri' && !/^https?:\/\/[^\s]+$/.test(value)) out.push(`${where}: not a URI`);
+  const actual = kindOf(value);
+  if (t && !(t === actual || (t === 'number' && actual === 'integer'))) return [`${where}: expected ${t}, got ${actual}`];
+  if (Array.isArray(schema.enum) && !schema.enum.some((e) => JSON.stringify(e) === JSON.stringify(value))) out.push(`${where}: not one of ${schema.enum.join(', ')}`);
+  if (actual === 'string') {
+    const length = [...value].length;
+    if ('minLength' in schema && length < schema.minLength) out.push(`${where}: ${length} characters, shorter than ${schema.minLength}`);
+    if ('maxLength' in schema && length > schema.maxLength) out.push(`${where}: ${length} characters, longer than ${schema.maxLength}`);
+    if (schema.format === 'uri' && !URI.test(value.trim())) out.push(`${where}: not an absolute http(s) URL`);
   }
-  if (schema.enum && !schema.enum.includes(value)) out.push(`${where}: not one of ${schema.enum.join(', ')}`);
-  if (t === 'array') {
+  if (actual === 'array') {
     if ('minItems' in schema && value.length < schema.minItems) out.push(`${where}: fewer than ${schema.minItems} items`);
     if ('maxItems' in schema && value.length > schema.maxItems) out.push(`${where}: more than ${schema.maxItems} items`);
     if (schema.items) value.forEach((v, i) => out.push(...validateValue(schema.items, v, `${where}[${i}]`)));
   }
-  if (t === 'object') {
-    for (const r of schema.required ?? []) if (value[r] === undefined || value[r] === null) out.push(`${where}.${r}: required`);
+  if (actual === 'object') {
+    for (const r of schema.required ?? []) if (absent(value[r])) out.push(`${where}.${r}: required`);
     for (const [k, v] of Object.entries(value)) {
-      if (schema.properties?.[k]) out.push(...validateValue(schema.properties[k], v, `${where}.${k}`));
+      if (schema.properties?.[k] && !absent(v)) out.push(...validateValue(schema.properties[k], v, `${where}.${k}`));
     }
   }
   return out;
@@ -160,6 +168,14 @@ function stringsIn(value, out = []) {
   if (typeof value === 'string') out.push(value);
   else if (Array.isArray(value)) value.forEach((v) => stringsIn(v, out));
   else if (value && typeof value === 'object') Object.values(value).forEach((v) => stringsIn(v, out));
+  return out;
+}
+
+// Every string in a step's args as [path, text], like ['segments[0].label', 'Same industry'].
+function argStrings(value, at = '', out = []) {
+  if (typeof value === 'string') out.push([at, value]);
+  else if (Array.isArray(value)) value.forEach((v, i) => argStrings(v, `${at}[${i}]`, out));
+  else if (value && typeof value === 'object') for (const [k, v] of Object.entries(value)) argStrings(v, at ? `${at}.${k}` : k, out);
   return out;
 }
 
@@ -237,6 +253,9 @@ function scanLiquid(text, file, { err, warn }, { allowData }) {
     for (const f of filters) {
       if (!LIQUID_FILTERS.has(f)) err(file, `line ${lineOf(text, e.index)}: filter "${f}" is not in the portable filter list`);
     }
+    // Ken's validator parses Liquid with Scriban, which fails on a negative first argument followed by more (slice: -3, 3).
+    const negative = body.match(/\|\s*([a-z_][a-z0-9_]*)\s*:\s*-\s*\d[\d.]*\s*,/i)?.[1];
+    if (negative) err(file, `line ${lineOf(text, e.index)}: ${negative} takes a negative first argument and more after it, which Ken's Liquid parse rejects; use a start of 0 or more, like | plus: 1000 | slice: 1, 3 for the last three digits`);
     // The edge escapes every {{ }} output again, so the <br /> that newline_to_br adds shows as text unless the output ends in raw.
     if (e.output && (filters.includes('newline_to_br') || withBr.has(root)) && filters.at(-1) !== 'raw') {
       err(file, `line ${lineOf(text, e.index)}: newline_to_br output is escaped at render, so <br /> shows as text; end it with | raw after | escape`);
@@ -245,6 +264,9 @@ function scanLiquid(text, file, { err, warn }, { allowData }) {
     if (e.output && filters.at(-1) === 'raw' && !escapes(filters) && !escaped.has(root)) {
       err(file, `line ${lineOf(text, e.index)}: | raw prints the value unescaped; put | escape earlier in the chain, or print a local assigned from an escaped value`);
     }
+    // A published page or preview gets account.name, domain, industry and size_band only (ken-backend EdgeAccountV1).
+    const recipeOnly = body.match(/(?<![\w.])account\.(signals|dossier)\b/)?.[1];
+    if (recipeOnly) err(file, `line ${lineOf(text, e.index)}: account.${recipeOnly} is empty on a published page and in previews, which carry only account name, domain, industry and size_band; ${recipeOnly === 'signals' ? 'bind account.signals to an array data.* slot in the recipe and loop over that slot' : 'bind the field to a data.* slot in the recipe and print that slot'}`);
     const roots = [...body.replace(/\|\s*[a-z_][a-z0-9_]*(\s*:)?/g, ' ').matchAll(/(?<![\w.'"-])([a-z_][\w]*)(?=[.\[\s,)]|$)/gi)].map((m) => m[1]);
     for (const r of roots) {
       if (['and', 'or', 'contains', 'in', 'limit', 'offset', 'reversed', 'true', 'false', 'nil', 'null', 'empty', 'blank', 'with', 'as', 'else'].includes(r)) continue;
@@ -466,15 +488,19 @@ function checkBundle(slug, indexEntry) {
   for (const r of slots?.required ?? []) {
     if (props[r] && !('fallback' in props[r]) && !hasFallbackLiquid) err('studio.json', `required slot "${r}" needs a fallback, or the bundle needs fallback.liquid`);
   }
+  // Ken checks every fallback against its own slot (ken-backend slot-fallback-invalid). A Liquid string renders first,
+  // so only its type is checked; a null or blank fallback is no value.
   for (const [name, s] of Object.entries(props)) {
     if (!('fallback' in s)) continue;
     const fb = s.fallback;
-    if (typeof fb === 'string') {
+    if (typeof fb === 'string' && /\{[{%]/.test(fb)) {
       if (/\{[{%][^}]*\bdata\b/.test(fb)) err('studio.json', `slot "${name}" fallback reads data.*; fallbacks use Ken variables only`);
-    } else {
-      if (stringsIn(fb).some((x) => /\{[{%]/.test(x))) err('studio.json', `slot "${name}" static fallback contains Liquid; only a string fallback is rendered`);
-      for (const p of validateValue(s, fb, `slots.${name}.fallback`)) err('studio.json', p);
+      if (s.type && s.type !== 'string') err('studio.json', `slot "${name}" fallback is a Liquid string but the slot is type ${s.type}; use a static JSON fallback`);
+      continue;
     }
+    if (stringsIn(fb).some((x) => /\{[{%]/.test(x))) err('studio.json', `slot "${name}" static fallback contains Liquid; only a string fallback is rendered`);
+    if (absent(fb)) continue;
+    for (const p of validateValue(s, fb, `slots.${name}.fallback`)) err('studio.json', `slot "${name}" fallback does not fit its slot: ${p}`);
   }
 
   // recipe
@@ -546,6 +572,14 @@ function checkBundle(slug, indexEntry) {
       if (/^knowledge\./.test(String(ref)) && !/^knowledge\.(stable|scoped)$/.test(ref)) warn('studio.json', `${where}: "${ref}" is not Knowledge; it holds only knowledge.stable and knowledge.scoped, so extract fields with a prompt over them`);
     }
     if (step.kind === 'tool' && !TOOLS.includes(step.tool)) err('studio.json', `${where}: tool must be one of ${TOOLS.join(', ')}`);
+    // A tool gets a value only from an arg that is exactly one output tag (ken-backend StudioRecipeText.TryPassThrough);
+    // a bare path reaches it as that text. chart.data's from is the one arg that takes a path.
+    if (step.kind === 'tool') {
+      for (const [arg, text] of argStrings(step.args)) {
+        if (step.tool === 'chart.data' && arg === 'from') continue;
+        if (VARIABLE_PATH.test(text)) err('studio.json', `${where}: args.${arg} is the bare path "${text.trim()}", which reaches the tool as that text; write "{{ ${text.trim()} }}" to pass its value`);
+      }
+    }
     if (step.kind === 'prompt') {
       for (const input of step.inputs ?? []) {
         const s = slotOf(input);

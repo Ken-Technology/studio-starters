@@ -1,0 +1,56 @@
+{
+  "account": {
+    "name": "Crestline Outdoor Co.",
+    "domain": "crestline-outdoor.example",
+    "industry": "outdoor equipment wholesale",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Crestline Outdoor Co. wholesales camping and climbing gear to 900 independent retailers from its headquarters in Austin. The sales team of 14 reviews its pipeline every Monday.",
+      "why_now": "Added a second sales region this quarter."
+    }
+  },
+  "person": null,
+  "sender": { "name": "Theo Brandt", "title": "Account Executive", "signature_html": null },
+  "brand": {
+    "name": "Pulsegrid",
+    "logo_url": null,
+    "colors": { "primary": "#ff5a1f", "secondary": "#141414" },
+    "fonts": { "heading": "Space Grotesk", "body": "DM Sans" }
+  },
+  "data": {
+    "kicker": "Live session, 45 minutes",
+    "title": "Pipeline reviews in 20 minutes",
+    "subtitle": "How sales managers at consumer brands and wholesalers cut the weekly pipeline review to 20 minutes with the same deals on the table. Two short talks, then your questions.",
+    "date_text": "Thursday, January 14, 2027",
+    "where_text": "Online. The link comes by email once you register.",
+    "zones": [
+      { "city": "Los Angeles", "time": "10:00 am" },
+      { "city": "Chicago", "time": "12:00 pm" },
+      { "city": "New York", "time": "1:00 pm" },
+      { "city": "London", "time": "6:00 pm" }
+    ],
+    "calendar_url": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pipeline+reviews+in+20+minutes+(live+session)&dates=20270114T180000Z/20270114T184500Z",
+    "recording_note": "Cannot make it live? Register anyway. Everyone who registers gets the recording and the slides the next morning.",
+    "speakers": [
+      { "name": "Ines Carvalho", "role": "Sales Operations Lead, Tamarack Outfitters", "line": "Moved a 20-rep team from a 90-minute Monday review to 20 minutes." },
+      { "name": "Ravi Anand", "role": "Head of Customer Success, Pulsegrid", "line": "Has sat in on pipeline reviews at 30 consumer brands." },
+      { "name": "Theo Brandt", "role": "Account Executive, Pulsegrid", "line": "Hosts, keeps the clock and reads out your questions." }
+    ],
+    "agenda": [
+      { "time": "10:00", "minutes": 5, "title": "Who is on the call", "note": "A quick round of the teams in the room, by size and number of regions.", "speaker": "Theo Brandt" },
+      { "time": "10:05", "minutes": 15, "title": "What a 20-minute review leaves out", "note": "The agenda Tamarack runs every Monday, and the three questions that sort a deal into move, hold or drop.", "speaker": "Ines Carvalho" },
+      { "time": "10:20", "minutes": 15, "title": "Adding a region without doubling the meeting", "note": "What 30 pipeline reviews show about the week a second region joins, and what to cut first.", "speaker": "Ravi Anand" },
+      { "time": "10:35", "minutes": 10, "title": "Your questions", "note": "Send them in with your registration or ask live. Questions about your own review are welcome.", "speaker": "All three" },
+      { "time": "10:45", "title": "Close", "note": "The recording and the slides are in your inbox the next morning." }
+    ],
+    "register_note": "Register once. The recording and the slides come by email the day after, whether or not you join live.",
+    "why_now": "Added a second sales region this quarter.",
+    "local_zone": "Chicago",
+    "why_you": "This session was planned with sales teams like Crestline's in mind: a Monday review that now has to cover a second region added this quarter. The second talk is about what to cut when a region joins.",
+    "takeaways": [
+      { "lead": "A 20-minute review agenda", "detail": "that Crestline's 14 reps can start on the next Monday." },
+      { "lead": "Three questions for every deal", "detail": "that sort it into move, hold or drop, so the second region does not double the meeting." },
+      { "lead": "What to cut first", "detail": "when a region joins and the weekly review starts to run long." }
+    ]
+  }
+}

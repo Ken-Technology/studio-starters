@@ -1,0 +1,95 @@
+{
+  "account": {
+    "name": "Marlowe Biologics",
+    "domain": "marlowebio.example",
+    "industry": "biotechnology research",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Marlowe Biologics makes research antibodies for university labs and has about 90 people.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Tomas",
+    "last_name": "Albrecht",
+    "title": "Head of Commercial Operations"
+  },
+  "sender": {
+    "name": "Hana Sato",
+    "title": "Partner",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Fieldnote",
+    "logo_url": null,
+    "colors": {
+      "primary": "#0f766e",
+      "secondary": "#1f2a24"
+    },
+    "fonts": {
+      "heading": "Playfair Display",
+      "body": "Lato"
+    }
+  },
+  "data": {
+    "headline": "A private dinner for commercial operations leaders",
+    "subline": "Eight seats, one table, nothing on the screen.",
+    "date_text": "Thursday, January 21",
+    "date_short": "January 21",
+    "year_text": "2027",
+    "time_text": "7:00 pm",
+    "time_note": "Drinks from 6:30",
+    "venue": "Cormorant",
+    "venue_line": "Pike Place, Seattle",
+    "calendar_start": "20270121T190000",
+    "calendar_end": "20270121T213000",
+    "calendar_tz": "America/Los_Angeles",
+    "host": "Hana Sato",
+    "featured_guest": {
+      "name": "Imogen Reyes",
+      "role": "Former head of commercial operations, a diagnostics company",
+      "bio": "She rebuilt order-to-cash after a merger, and will say what she would hand to finance sooner."
+    },
+    "guests": [
+      {
+        "title": "VP Commercial Operations",
+        "company_type": "a life sciences tools company in Bothell"
+      },
+      {
+        "title": "Director of Sales Operations",
+        "company_type": "a contract research organization in Seattle"
+      },
+      {
+        "title": "Head of Customer Operations",
+        "company_type": "a genomics instrument maker in San Diego"
+      },
+      {
+        "title": "COO",
+        "company_type": "a specialty reagent supplier in Portland"
+      }
+    ],
+    "topic": "Running orders, pricing and support with a team of 40: which decisions belong at the center, and which stay with the account owner.",
+    "topic_note": "One question goes around the table once. After that it is open.",
+    "menu": "Four courses from the Cormorant kitchen, served family style. Shellfish, a braise, roasted roots, one shared dessert.",
+    "menu_note": "A vegetarian path through every course. Wine with each course, or not.",
+    "run_of_show": [
+      {
+        "time": "6:30",
+        "text": "Drinks upstairs"
+      },
+      {
+        "time": "7:15",
+        "text": "Seated"
+      },
+      {
+        "time": "9:30",
+        "text": "Last pour"
+      }
+    ],
+    "dress_note": "Come as you are from the lab or the office.",
+    "rsvp_by": "Friday, January 15",
+    "invitee_title": "Head of Commercial Operations",
+    "why_you": "The table is for people who run commercial operations at a company this size, and the talk is about how they split the work between the center and the account owners."
+  }
+}

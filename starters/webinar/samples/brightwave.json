@@ -1,0 +1,52 @@
+{
+  "account": {
+    "name": "Brightwave Logistics",
+    "domain": "brightwave.example",
+    "industry": "freight and logistics",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Brightwave Logistics runs regional freight across the Midwest with 420 people and a headquarters in Chicago. One operations team handles dispatch, billing and customer updates for every terminal.",
+      "why_now": "Opened two new cross-dock sites this year."
+    }
+  },
+  "person": { "first_name": "Leo", "last_name": "Marsh", "title": "VP Operations" },
+  "sender": { "name": "Maya Chen", "title": "Account Executive", "signature_html": null },
+  "brand": { "name": "Northbeam", "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "kicker": "Live session, 45 minutes",
+    "title": "Growing volume, not headcount",
+    "subtitle": "How operations teams at mid-size logistics and manufacturing companies take on more freight with the same people. Two talks, then your questions.",
+    "date_text": "Thursday, November 12, 2026",
+    "where_text": "Online. The link comes by email once you register.",
+    "zones": [
+      { "city": "Chicago", "time": "11:00 am" },
+      { "city": "New York", "time": "12:00 pm" },
+      { "city": "Los Angeles", "time": "9:00 am" },
+      { "city": "London", "time": "5:00 pm" }
+    ],
+    "calendar_url": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Growing+volume,+not+headcount+(live+session)&dates=20261112T170000Z/20261112T174500Z",
+    "recording_note": "Cannot make it live? Register anyway. Everyone who registers gets the recording and the slides the next morning.",
+    "speakers": [
+      { "name": "Priya Natarajan", "role": "VP Operations, Kestrel Freight", "line": "Runs a 60-person operations team at a 600-person carrier in Columbus." },
+      { "name": "Daniel Okafor", "role": "Head of Customer Operations, Northbeam", "line": "Spent the past year inside the calendars of 40 operations teams." },
+      { "name": "Maya Chen", "role": "Account Executive, Northbeam", "line": "Hosts, keeps the clock and reads out your questions." }
+    ],
+    "agenda": [
+      { "time": "11:00", "minutes": 5, "title": "Who is on the call", "note": "A quick round of the companies in the room, by industry and size, so the speakers can pitch the talks at the right level.", "speaker": "Maya Chen" },
+      { "time": "11:05", "minutes": 15, "title": "Where the hours go", "note": "A time audit of 40 operations teams: dispatch, billing, exceptions and customer updates, with the median hours per 100 loads for each.", "speaker": "Daniel Okafor" },
+      { "time": "11:20", "minutes": 15, "title": "Kestrel's year: 28% more loads, the same 60 people", "note": "What they centralized, what they left at the terminals, and the one change that failed in the first month.", "speaker": "Priya Natarajan" },
+      { "time": "11:35", "minutes": 10, "title": "Your questions", "note": "Send them in with your registration or ask live. Questions about your own setup are welcome.", "speaker": "All three" },
+      { "time": "11:45", "title": "Close", "note": "The recording and the slides are in your inbox the next morning." }
+    ],
+    "register_note": "Register once. The recording and the slides come by email the day after, whether or not you join live.",
+    "why_now": "Opened two new cross-dock sites this year.",
+    "local_zone": "Chicago",
+    "why_you": "This session was planned with companies like Brightwave in mind: 420 people, two new cross-dock sites this year, and an operations team that did not grow with them. The second talk is from a carrier a year further down that road.",
+    "takeaways": [
+      { "lead": "The time audit as a sheet", "detail": "you can run on Brightwave's dispatch and billing teams in a week, with the median from 40 peers next to your numbers." },
+      { "lead": "What Kestrel centralized", "detail": "and what it left at the terminals, so you can judge which fits a new cross-dock site." },
+      { "lead": "The one change that failed", "detail": "in Kestrel's first month, so Brightwave can skip it at the next site." },
+      { "lead": "A number for a flat operations team", "detail": "you can put in Brightwave's 2027 plan before the headcount conversation starts." }
+    ]
+  }
+}

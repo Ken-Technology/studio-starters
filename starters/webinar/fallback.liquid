@@ -1,0 +1,68 @@
+{%- assign accent = brand.colors.primary | default: '#2a4bd7' -%}
+{%- assign ink = brand.colors.secondary | default: '#0e1530' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+{%- assign brand_name = brand.name | default: '' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>A live session for {{ account.name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@500;600;700&display=swap">
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+{%- endif %}
+<style>
+:root{--p:{{ accent | escape }};--s:{{ ink | escape }};--fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--on-p:#fff;--ink:var(--s);--mute:color-mix(in srgb,var(--ink) 60%,#fff);--rule:color-mix(in srgb,var(--ink) 13%,#fff);--panel:color-mix(in srgb,var(--p) 7%,#fff);--tint:color-mix(in srgb,var(--p) 14%,#fff);--accent:color-mix(in srgb,var(--p) 86%,var(--ink))}
+@supports (color:oklch(from red l c h)){:root{--on-p:oklch(from var(--p) clamp(0,(0.66 - l) * 1000,1) 0 0);--ink:oklch(from var(--s) min(l,0.34) c h)}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--panel);color:var(--ink);font:17px/1.55 var(--fb);-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--fh);font-weight:600;line-height:1.1;letter-spacing:-.018em;margin:0;text-wrap:balance}
+p{margin:0 0 .85rem}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:36rem;margin:0 auto;padding:1.5rem 1.35rem 3rem}
+.mark{display:flex;align-items:center;gap:.55rem;font-weight:600;font-size:.95rem;min-height:24px}
+.mark .logo{height:24px;width:auto;max-width:9rem;display:block}
+.mark .sq{width:24px;height:24px;border-radius:6px;background:var(--p);color:var(--on-p);display:grid;place-items:center;font-family:var(--fh);font-weight:700;font-size:.8rem;line-height:1}
+.live{display:flex;align-items:center;gap:.5rem;margin:2.2rem 0 .8rem;color:var(--accent);font-weight:500;font-size:.95rem}
+.live i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--p);box-shadow:0 0 0 4px var(--tint)}
+h1{font-size:2.3rem;max-width:15ch}
+.lead{margin:1rem 0 0;color:var(--mute);max-width:34ch}
+.card{margin-top:1.8rem;padding:1.3rem 1.2rem .6rem;background:#fff;border:1px solid var(--rule)}
+.card h2{font-size:1.3rem;margin-bottom:.4rem}
+.card p{color:var(--mute);font-size:.95rem}
+.ken-form{display:grid;gap:.9rem;margin:1rem 0 .6rem}
+.ken-form-field{display:grid;gap:.3rem;font-size:.9rem;color:var(--mute);min-width:0}
+.ken-form input{font:inherit;font-size:1rem;width:100%;min-height:48px;padding:.72rem .8rem;border:1px solid color-mix(in srgb,var(--ink) 28%,#fff);border-radius:6px;background:#fff;color:var(--ink)}
+.ken-form-submit{font:inherit!important;font-weight:600!important;font-size:1rem!important;min-height:48px;background:var(--p)!important;color:var(--on-p)!important;border-radius:6px!important;padding:.95rem 1.6rem!important;justify-self:start}
+.sign{margin:1.4rem 0 0;font-size:.95rem;color:var(--mute)}
+.sign b{color:var(--ink);font-weight:600}
+@media (min-width:760px){.wrap{padding:2.8rem 1.5rem 4rem}h1{font-size:3rem}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header data-section="program">
+    {%- if brand.logo_url %}
+    <div class="mark"><img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand_name | default: 'Logo' | escape }}"></div>
+    {%- elsif brand_name != '' %}
+    <div class="mark"><span class="sq" aria-hidden="true">{{ brand_name | slice: 0, 1 | upcase | escape }}</span><span>{{ brand_name | escape }}</span></div>
+    {%- endif %}
+    <p class="live"><i aria-hidden="true"></i>Live session</p>
+    <h1>{{ person.first_name | default: 'Hello' | escape }}, you are invited to a live session</h1>
+    <p class="lead">I am putting a short live session together for the team at {{ account.name | escape }}, but the date, the speakers and the agenda are not on this page yet</p>
+  </header>
+  <section class="card" data-section="register">
+    <h2>Get the details first</h2>
+    <p>Leave your name and work email and I will send you the date, the speakers and the link as soon as they are set.</p>
+    {% render 'ken/form', id: 'register', fields: 'name*,email*,company', submit: 'Send me the details' %}
+  </section>
+  <p class="sign"><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title %}, {{ sender.title | escape }}{% endif %}{% if brand_name != '' %}, {{ brand_name | escape }}{% endif %}</p>
+</main>
+</body>
+</html>

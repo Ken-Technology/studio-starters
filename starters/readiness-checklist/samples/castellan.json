@@ -1,0 +1,162 @@
+{
+  "account": {
+    "name": "Castellan Machine Works",
+    "domain": "castellan-machine.example",
+    "industry": "machinery manufacturing",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Castellan Machine Works builds packaging machinery in two plants in Ohio, about 340 people. Production runs on an ERP installed in 2009, and inventory is kept in spreadsheets by plant. Both plants moved to barcode scanning on the shop floor in 2024 and have run on one network since. The 2026 capital plan includes an ERP replacement, and a third plant announced for 2027 is planned to run the same system.",
+      "why_now": "Listed an ERP project manager role in September, reporting to operations. The posting is still up.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Henrik",
+    "last_name": "Dahl",
+    "title": "Director of Operations"
+  },
+  "sender": {
+    "name": "Ana Petrova",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Harrow Vale",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1b2a41",
+      "secondary": "#b08d57"
+    },
+    "fonts": {
+      "heading": "Lora",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "topic": "ERP go-live",
+    "checklist": [
+      {
+        "label": "An executive sponsor who owns the outcome",
+        "detail": "One leader is accountable for the go-live date and the business result, and settles the arguments the team cannot.",
+        "first_step": "Write down who decides when scope and timeline collide. If it takes more than a minute, that is the gap."
+      },
+      {
+        "label": "A project manager with the time to run it",
+        "detail": "Someone runs the project most of their week, with the standing to pull people from the plants when needed.",
+        "first_step": "Fill the role or free up half of someone's week for the next year. Part time project managers slip go-lives."
+      },
+      {
+        "label": "One item master across plants",
+        "detail": "Every part, product and supplier has one record and one number, the same in both plants.",
+        "first_step": "Pick 50 parts both plants buy and compare their records. The differences show the cleanup ahead."
+      },
+      {
+        "label": "Inventory counts you trust",
+        "detail": "Cycle counts match the books within a known tolerance, and the people who count know what the number is used for.",
+        "first_step": "Count one storeroom this month and compare it to what the spreadsheet says. Keep the difference as your baseline."
+      },
+      {
+        "label": "Processes written as they run today",
+        "detail": "Order to cash, procure to pay and plan to produce are mapped as they happen now, not as the old manual says.",
+        "first_step": "Walk one customer order from quote to invoice and write down every hand-off, including the workarounds."
+      },
+      {
+        "label": "Shop floor data captured at the machine",
+        "detail": "Production, scrap and downtime are recorded where they happen, by scan or terminal, not on paper and keyed in later.",
+        "first_step": "List the stations where paper still travels to the office. Each one is a data feed the new system will not have."
+      },
+      {
+        "label": "Both plants on one network and one login",
+        "detail": "People sign in the same way at every plant, and the plants see the same systems, so the new ERP is set up once.",
+        "first_step": "Check whether a planner from one plant can log in at the other without a workaround."
+      },
+      {
+        "label": "Budget and timeline approved",
+        "detail": "The money, the go-live window and the freeze on other projects are approved in writing, not agreed in a meeting.",
+        "first_step": "Get the approval on paper, with the go-live window and the projects that pause for it."
+      },
+      {
+        "label": "Super users named in each plant",
+        "detail": "Two people per plant know the process, are trained first, and train the rest. Their managers have agreed to the time.",
+        "first_step": "Ask each plant manager for two names and a day a week from January. The answer tells you how ready they are."
+      },
+      {
+        "label": "Sized for the next plant",
+        "detail": "The system is set up for every plant you plan to run, so the next one is a copy of the last, not a new project.",
+        "first_step": "Write the list of what a new plant needs on day one: sites, warehouses, work centers, roles. Keep it to one page."
+      }
+    ],
+    "items": [
+      {
+        "label": "An executive sponsor who owns the outcome",
+        "detail": "One leader is accountable for the go-live date and the business result, and settles the arguments the team cannot.",
+        "first_step": "Write down who decides when scope and timeline collide. If it takes more than a minute, that is the gap.",
+        "done": true,
+        "note": "Seen: the ERP project manager role you listed reports to operations, so the project has a home."
+      },
+      {
+        "label": "A project manager with the time to run it",
+        "detail": "Someone runs the project most of their week, with the standing to pull people from the plants when needed.",
+        "first_step": "Fill the role or free up half of someone's week for the next year. Part time project managers slip go-lives.",
+        "done": false,
+        "note": "Seen: the project manager posting from September is still up."
+      },
+      {
+        "label": "One item master across plants",
+        "detail": "Every part, product and supplier has one record and one number, the same in both plants.",
+        "first_step": "Pick 50 parts both plants buy and compare their records. The differences show the cleanup ahead.",
+        "done": false
+      },
+      {
+        "label": "Inventory counts you trust",
+        "detail": "Cycle counts match the books within a known tolerance, and the people who count know what the number is used for.",
+        "first_step": "Count one storeroom this month and compare it to what the spreadsheet says. Keep the difference as your baseline.",
+        "done": false,
+        "note": "Seen: inventory is kept in spreadsheets by plant today."
+      },
+      {
+        "label": "Processes written as they run today",
+        "detail": "Order to cash, procure to pay and plan to produce are mapped as they happen now, not as the old manual says.",
+        "first_step": "Walk one customer order from quote to invoice and write down every hand-off, including the workarounds.",
+        "done": false
+      },
+      {
+        "label": "Shop floor data captured at the machine",
+        "detail": "Production, scrap and downtime are recorded where they happen, by scan or terminal, not on paper and keyed in later.",
+        "first_step": "List the stations where paper still travels to the office. Each one is a data feed the new system will not have.",
+        "done": true,
+        "note": "Seen: both plants moved to barcode scanning on the shop floor in 2024."
+      },
+      {
+        "label": "Both plants on one network and one login",
+        "detail": "People sign in the same way at every plant, and the plants see the same systems, so the new ERP is set up once.",
+        "first_step": "Check whether a planner from one plant can log in at the other without a workaround.",
+        "done": true,
+        "note": "Seen: both plants have run on one network since 2024."
+      },
+      {
+        "label": "Budget and timeline approved",
+        "detail": "The money, the go-live window and the freeze on other projects are approved in writing, not agreed in a meeting.",
+        "first_step": "Get the approval on paper, with the go-live window and the projects that pause for it.",
+        "done": true,
+        "note": "Seen: the ERP replacement is in your 2026 capital plan."
+      },
+      {
+        "label": "Super users named in each plant",
+        "detail": "Two people per plant know the process, are trained first, and train the rest. Their managers have agreed to the time.",
+        "first_step": "Ask each plant manager for two names and a day a week from January. The answer tells you how ready they are.",
+        "done": false
+      },
+      {
+        "label": "Sized for the next plant",
+        "detail": "The system is set up for every plant you plan to run, so the next one is a copy of the last, not a new project.",
+        "first_step": "Write the list of what a new plant needs on day one: sites, warehouses, work centers, roles. Keep it to one page.",
+        "done": true,
+        "note": "Seen: the plant announced for 2027 is planned to run the same system."
+      }
+    ],
+    "headline": "Where Castellan stands before an ERP go-live",
+    "intro": "The ERP replacement is in your 2026 capital plan and the project manager role has been open since September. Go-lives slip on data and people long before they slip on software, so this list is the ten things we check first. We ticked five from what Castellan has said publicly. Tick the rest as they stand today.",
+    "closing": "If it helps to have a second pair of eyes, book 20 minutes and we will go through the gaps in order, starting with the project manager seat."
+  }
+}

@@ -1,0 +1,345 @@
+{
+  "kenStudio": "1",
+  "name": "Top 25 list",
+  "type": "report",
+  "format": "page",
+  "slug": "top-25",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "industry": {
+        "type": "string",
+        "maxLength": 120
+      },
+      "signals": {
+        "type": "array",
+        "maxItems": 10,
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "date": {
+              "type": "string",
+              "maxLength": 10
+            },
+            "source_url": {
+              "type": "string",
+              "maxLength": 300
+            }
+          },
+          "required": [
+            "title"
+          ]
+        }
+      },
+      "counts": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 28
+            },
+            "value": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ]
+        }
+      },
+      "candidates": {
+        "type": "array",
+        "maxItems": 50,
+        "items": {
+          "type": "object"
+        }
+      },
+      "title": {
+        "type": "string",
+        "minLength": 12,
+        "maxLength": 90,
+        "fallback": "The companies growing beside {{ account.name }}"
+      },
+      "intro": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 400,
+        "fallback": "A short list of companies in the same market as {{ account.name }} that are adding people right now. {{ account.name }} is on it. How the list was made is at the bottom of the page."
+      },
+      "entries": {
+        "type": "array",
+        "minItems": 5,
+        "maxItems": 24,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "domain": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "line": {
+              "type": "string",
+              "minLength": 20,
+              "maxLength": 140
+            },
+            "employee_count": {
+              "type": "integer"
+            },
+            "hq": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "founded": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "line",
+            "employee_count"
+          ]
+        }
+      },
+      "account_rank": {
+        "type": "integer"
+      },
+      "account_line": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 220
+      }
+    },
+    "required": [
+      "title",
+      "intro",
+      "entries",
+      "account_rank",
+      "account_line"
+    ]
+  },
+  "recipe": [
+    {
+      "id": "industry",
+      "kind": "bind",
+      "from": "account.industry",
+      "to": "data.industry"
+    },
+    {
+      "id": "signals",
+      "kind": "bind",
+      "from": "account.signals",
+      "to": "data.signals"
+    },
+    {
+      "id": "counts",
+      "kind": "tool",
+      "tool": "ken_search.count",
+      "requires": [
+        "data.industry"
+      ],
+      "args": {
+        "kind": "companies",
+        "segments": [
+          {
+            "label": "Same industry",
+            "filters": {
+              "industries": "{{ data.industry }}"
+            }
+          },
+          {
+            "label": "Hiring surge, 6 months",
+            "filters": {
+              "industries": "{{ data.industry }}",
+              "hiringSurge": {
+                "functions": [
+                  "Sales",
+                  "Engineering",
+                  "Operations"
+                ],
+                "windowMonths": 6,
+                "minNetAdds": 5
+              }
+            }
+          },
+          {
+            "label": "Headcount up 10% or more",
+            "filters": {
+              "industries": "{{ data.industry }}",
+              "headcountGrew": true,
+              "minHeadcountGrowthPct": 10
+            }
+          },
+          {
+            "label": "Both signals",
+            "filters": {
+              "industries": "{{ data.industry }}",
+              "hiringSurge": {
+                "functions": [
+                  "Sales",
+                  "Engineering",
+                  "Operations"
+                ],
+                "windowMonths": 6,
+                "minNetAdds": 5
+              },
+              "headcountGrew": true,
+              "minHeadcountGrowthPct": 10
+            }
+          }
+        ]
+      },
+      "to": "data.counts"
+    },
+    {
+      "id": "pool",
+      "kind": "tool",
+      "tool": "ken_search.companies",
+      "requires": [
+        "data.industry"
+      ],
+      "args": {
+        "mode": "filters",
+        "filters": {
+          "industries": "{{ data.industry }}",
+          "hiringSurge": {
+            "functions": [
+              "Sales",
+              "Engineering",
+              "Operations"
+            ],
+            "windowMonths": 6,
+            "minNetAdds": 5
+          },
+          "headcountGrew": true,
+          "minHeadcountGrowthPct": 10
+        },
+        "limit": 40
+      },
+      "to": "data.candidates"
+    },
+    {
+      "id": "write",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": [
+        "data.candidates"
+      ],
+      "inputs": [
+        "account.name",
+        "account.domain",
+        "account.industry",
+        "account.size_band",
+        "account.dossier.summary",
+        "account.dossier.why_now",
+        "person.first_name",
+        "sender.name",
+        "brand.name",
+        "data.industry",
+        "data.candidates",
+        "data.signals"
+      ],
+      "to": [
+        "data.title",
+        "data.intro",
+        "data.entries",
+        "data.account_rank",
+        "data.account_line"
+      ],
+      "prompt": "You are writing a ranked list page for {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it. The page lists companies in the same market as {{ account.name }} that are adding people right now, with {{ account.name }} on the list, so the reader sees their company next to its peers. \"We\" and \"us\" mean {{ brand.name | default: 'our company' }}.\n\nInputs: data.candidates are companies from a company database that match these filters: industry {{ data.industry }}, at least 5 net new people in Sales, Engineering or Operations over the last 6 months, and headcount up 10 percent or more at the latest count. Each has name, domain, industry, size, employee_count, hq, country, linkedin_url, description and founded; some fields are missing. What we know about {{ account.name }}: industry {{ account.industry | default: 'unknown' }}, size band {{ account.size_band | default: 'unknown' }}, dossier summary {{ account.dossier.summary | default: 'none' }}, why now {{ account.dossier.why_now | default: 'none' }}, and data.signals, recent news on {{ account.name }} as {type, title, date, source_url}. Nothing else.\n\nReturn JSON with these keys:\n\n- entries: the companies in data.candidates that have an employee_count, sorted by employee_count from largest to smallest, at most 24 of them (drop the smallest beyond 24). Never add a company that is not in data.candidates, never include {{ account.name }} itself, and never repeat a domain. Each is {name, domain, line, employee_count, hq, founded}. Copy name, domain, employee_count, hq and founded exactly as given; leave hq or founded out when the record has none. line is one sentence of at most 140 characters on what the company does, from its description, industry and hq only, in plain words, like \"Refrigerated trucking for grocery chains across the Midwest, run from Columbus.\" Never a number that is not in the record, never a claim about growth, hiring, revenue or customers, never \"leading\", \"innovative\" or \"fast-growing\".\n\n- account_rank: the position {{ account.name }} takes in entries when it counts as the middle of its size band {{ account.size_band | default: 'unknown' }} (for 201-500 that is 350): 1 plus the number of entries whose employee_count is above that middle. With an unknown size band, account_rank is the number of entries plus 1.\n\n- account_line: one or two sentences, at most 220 characters, on why {{ account.name }} belongs on this list, from its industry, size band, dossier summary, why now and data.signals only. Name a signal with its date when there is one. Never guess headcount, growth or hiring numbers for {{ account.name }}.\n\n- title: at most 72 characters, sentence case, naming the market and what the companies have in common, like \"25 freight operators adding people right now\". The number is the entries count plus one. No year, no \"award\", \"winner\", \"best\" or \"fastest\".\n\n- intro: 2 or 3 sentences, 80 to 360 characters, on what the list is, that {{ account.name }} is on it, and that how it was made is at the bottom of the page. No greeting: the page already addresses {{ person.first_name | default: 'the reader' }}.\n\nFacts: use only the inputs. Never invent companies, people, numbers, news, awards or rankings by anyone else. This is {{ brand.name | default: 'our company' }}'s own list, built from filters, not an award.\n\nVoice: one person writing to a peer. Plain, specific, calm. Short sentences.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. No hype words (unlock, leverage, seamless, robust, elevate, transform, game changer, cutting edge, innovative, leading, disruptive). Never \"real\" as emphasis."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": [
+        "data.entries",
+        "data.account_line",
+        "data.title",
+        "data.intro"
+      ],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": [
+          "award",
+          "winner",
+          "best of",
+          "top rated",
+          "top-rated",
+          "prestigious",
+          "coveted",
+          "honored",
+          "honoured",
+          "judges",
+          "nominated",
+          "fastest",
+          "innovative",
+          "leading",
+          "industry leader",
+          "world class",
+          "world-class",
+          "cutting edge",
+          "cutting-edge",
+          "game changer",
+          "seamless",
+          "unlock",
+          "leverage"
+        ],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true,
+        "skip": [
+          "name",
+          "domain",
+          "hq",
+          "linkedin_url"
+        ]
+      },
+      "rubric": "Grade the page the way its reader does: the title, the intro, the list lines, then the line about {{ account.name }}. 10 is a page a busy operator reads in two minutes and trusts.\nScore 0 to 10 each:\n- grounded: every list line says only what that company's record below says. A number, a customer, a growth claim or a hiring claim that the record does not hold scores 0 here.\n- plain: short sentences a person would say out loud; no marketing adjectives, no stacked nouns.\n- specific: each line tells the reader what the company does and where, not a category label.\n- you: the line about {{ account.name }} uses only its industry, size band, dossier and signals below, names a signal with its date when there is one, and guesses nothing.\nAutomatic fail: a company that is not in the records below; a line that claims an award, a ranking body, judges or a prize; an em dash or en dash; an exclamation mark; an email address or phone number; a title that names a year or calls the list the best or the fastest.\nCompany records from the search, the only source for the list lines: {{ data.candidates | json }}\nWhat we know about {{ account.name }}: industry {{ account.industry | default: 'unknown' }}, size band {{ account.size_band | default: 'unknown' }}, dossier {{ account.dossier.summary | default: 'none' }}, why now {{ account.dossier.why_now | default: 'none' }}, signals {{ data.signals | json }}.\nPass when the overall score is 7.5 or higher and no check is 6 or lower. On a fail, name the check and quote the phrase to change. The fix never supplies replacement facts, numbers or company names."
+    }
+  ],
+  "sections": [
+    {
+      "id": "cover",
+      "label": "Cover"
+    },
+    {
+      "id": "you",
+      "label": "Your place"
+    },
+    {
+      "id": "list",
+      "label": "The list"
+    },
+    {
+      "id": "method",
+      "label": "How the list was made"
+    },
+    {
+      "id": "cta",
+      "label": "Next step"
+    }
+  ],
+  "cta": {
+    "primary": "booking",
+    "label": "Book 20 minutes"
+  }
+}

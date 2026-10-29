@@ -1,0 +1,106 @@
+{
+  "account": {
+    "name": "Marlowe Foods",
+    "domain": "marlowefoods.example",
+    "industry": "food and beverage manufacturing",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Marlowe Foods makes shelf-stable sauces and soups for grocery chains from one plant in Ohio.",
+      "why_now": "Announced new funding this month.",
+      "angle": null
+    },
+    "signals": [
+      {
+        "type": "funding",
+        "title": "Marlowe Foods raises a growth round from a regional food fund",
+        "date": "2026-10-20",
+        "source_url": "https://press.marlowefoods.example/growth-round"
+      },
+      {
+        "type": "expansion",
+        "title": "Marlowe Foods adds a second packaging line at its Ohio plant",
+        "date": "2026-10-08",
+        "source_url": "https://press.marlowefoods.example/second-line"
+      },
+      {
+        "type": "hiring",
+        "title": "Marlowe Foods is hiring a head of quality",
+        "date": "2026-09-29",
+        "source_url": "https://marlowefoods.example/careers/head-of-quality"
+      }
+    ]
+  },
+  "person": null,
+  "sender": {
+    "name": "Priya Nair",
+    "title": "Head of Partnerships",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Halcyon",
+    "logo_url": null,
+    "colors": {
+      "primary": "#17335c",
+      "secondary": "#1f2a24"
+    },
+    "fonts": {
+      "heading": "Fraunces",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "raw_signals": [
+      {
+        "type": "funding",
+        "title": "Marlowe Foods raises a growth round from a regional food fund",
+        "date": "2026-10-20",
+        "source_url": "https://press.marlowefoods.example/growth-round"
+      },
+      {
+        "type": "expansion",
+        "title": "Marlowe Foods adds a second packaging line at its Ohio plant",
+        "date": "2026-10-08",
+        "source_url": "https://press.marlowefoods.example/second-line"
+      },
+      {
+        "type": "hiring",
+        "title": "Marlowe Foods is hiring a head of quality",
+        "date": "2026-09-29",
+        "source_url": "https://marlowefoods.example/careers/head-of-quality"
+      }
+    ],
+    "signals": [
+      {
+        "kind": "funding",
+        "headline": "Marlowe Foods raised a growth round",
+        "fact": "Marlowe Foods announced a growth round from a regional food fund on October 20.",
+        "means": "New money usually comes with a plan the investor has already seen: more volume, a wider customer list, or both. The team then has a few months to show that the plant and the paperwork can carry it.",
+        "idea": "List the three promises in the funding plan that depend on the plant, and give each one an owner and a date. Review the list monthly.",
+        "seen_on": "2026-10-20",
+        "source_label": "Marlowe Foods raises a growth round from a regional food fund",
+        "source_url": "https://press.marlowefoods.example/growth-round"
+      },
+      {
+        "kind": "expansion",
+        "headline": "A second packaging line is coming to the Ohio plant",
+        "fact": "Marlowe Foods announced a second packaging line at its Ohio plant on October 8.",
+        "means": "A second line often exposes what one line hid: changeover time, label checks and the hours a shift lead spends on handoffs. Output tends to rise before the routines around it catch up.",
+        "idea": "Time one changeover on the first line this week and write the steps as a checklist. Use it to set up the second line.",
+        "seen_on": "2026-10-08",
+        "source_label": "Marlowe Foods adds a second packaging line at its Ohio plant",
+        "source_url": "https://press.marlowefoods.example/second-line"
+      },
+      {
+        "kind": "hiring",
+        "headline": "Marlowe Foods is hiring a head of quality",
+        "fact": "A head of quality role is open on the Marlowe Foods careers page, seen on September 29.",
+        "means": "A first head of quality is often hired when retail buyers start asking for audit records, or when the volume is too high for the founders to check by eye.",
+        "idea": "Collect every audit request and customer complaint from the past year in one sheet before the hire starts. It becomes their first week of work.",
+        "seen_on": "2026-09-29",
+        "source_label": "Marlowe Foods is hiring a head of quality",
+        "source_url": "https://marlowefoods.example/careers/head-of-quality"
+      }
+    ],
+    "note": "I put these three together because each one asks more of the plant than it did a quarter ago: more money, more capacity and a new person to hold quality. Nothing here needs an answer. If it is useful, reply and tell me which part. If it is not, tell me and I will stop writing."
+  }
+}

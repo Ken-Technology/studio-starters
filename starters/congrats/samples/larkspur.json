@@ -1,0 +1,90 @@
+{
+  "account": {
+    "name": "Larkspur Health",
+    "domain": "larkspurhealth.example",
+    "industry": "hospitals and health care",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Larkspur Health runs 14 outpatient clinics across Oregon and Washington, with about 380 staff. Scheduling, referrals and intake are handled clinic by clinic, and the company has been centralising operations since 2025.",
+      "why_now": "Promoted its director of clinical operations to a new VP role in October.",
+      "angle": null
+    },
+    "signals": [
+      {
+        "type": "new_role",
+        "title": "Larkspur Health names Priya Natarajan VP of Clinical Operations",
+        "date": "2026-10-14",
+        "source_url": "https://larkspurhealth.example/news/priya-natarajan-vp-clinical-operations"
+      },
+      {
+        "type": "expansion",
+        "title": "Larkspur Health opens its 14th clinic, in Bend",
+        "date": "2026-09-22",
+        "source_url": "https://larkspurhealth.example/news/bend-clinic-opens"
+      },
+      {
+        "type": "hiring",
+        "title": "Larkspur Health is hiring a referral coordinator in Tacoma",
+        "date": "2026-09-08",
+        "source_url": "https://larkspurhealth.example/careers/referral-coordinator-tacoma"
+      }
+    ]
+  },
+  "person": {
+    "first_name": "Priya",
+    "last_name": "Natarajan",
+    "title": "VP of Clinical Operations"
+  },
+  "sender": {
+    "name": "Jonas Lindqvist",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Fieldstone",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "signals": [
+      {
+        "type": "new_role",
+        "title": "Larkspur Health names Priya Natarajan VP of Clinical Operations",
+        "date": "2026-10-14",
+        "source_url": "https://larkspurhealth.example/news/priya-natarajan-vp-clinical-operations"
+      },
+      {
+        "type": "expansion",
+        "title": "Larkspur Health opens its 14th clinic, in Bend",
+        "date": "2026-09-22",
+        "source_url": "https://larkspurhealth.example/news/bend-clinic-opens"
+      },
+      {
+        "type": "hiring",
+        "title": "Larkspur Health is hiring a referral coordinator in Tacoma",
+        "date": "2026-09-08",
+        "source_url": "https://larkspurhealth.example/careers/referral-coordinator-tacoma"
+      }
+    ],
+    "why_now": "Promoted its director of clinical operations to a new VP role in October.",
+    "occasion": {
+      "what": "Larkspur Health named Priya Natarajan VP of Clinical Operations, a new role covering all 14 clinics.",
+      "kind": "role",
+      "date": "2026-10-14",
+      "source_url": "https://larkspurhealth.example/news/priya-natarajan-vp-clinical-operations"
+    },
+    "headline": "Congratulations on the VP of Clinical Operations role, Priya",
+    "note": [
+      "Larkspur made the role on October 14, and it is the first time one person has run operations across all 14 clinics. That matters because Larkspur has been pulling scheduling, referrals and intake together since last year, and that work now has an owner.",
+      "A new VP role is also a short window. For a few months, people expect change from you, and the old way of doing things has not yet been defended."
+    ],
+    "idea_title": "Pick one clinic and time every referral it handles for 30 days",
+    "idea": [
+      "Before you change anything across 14 clinics, pick one, probably Bend since it is new and has no habits yet, and measure how long a referral takes from the moment it arrives to the first appointment on the calendar. Count the handoffs along the way. Thirty days of that gives you a number nobody at Larkspur has today.",
+      "In the operations teams we work with, that one number does two things within 90 days: it tells you which of the 14 clinics to fix first, and it gives you something to show the board at the next review that is yours, not inherited."
+    ],
+    "ask": "If you want to compare notes on how to set the measurement up, I am happy to walk through it. No slides, and nothing to buy.",
+    "ps": "PS: Bend opening in September and your role in October is a good six weeks for Larkspur."
+  }
+}

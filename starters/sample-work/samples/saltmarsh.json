@@ -1,0 +1,148 @@
+{
+  "account": {
+    "name": "Saltmarsh Cold Storage",
+    "domain": "saltmarshcold.example",
+    "industry": "warehousing and storage",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Saltmarsh Cold Storage runs a 60,000 square foot freezer warehouse in Savannah with 8 dock doors and 24-hour receiving. About 35 people. Customers are seafood processors and frozen food distributors moving through the port.",
+      "why_now": "Announced a 20,000 square foot expansion with 4 more dock doors, opening next spring.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Eli",
+    "last_name": "Brandt",
+    "title": "Owner"
+  },
+  "sender": {
+    "name": "Noor Haddad",
+    "title": "Principal",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Plainwater",
+    "logo_url": null,
+    "colors": {
+      "primary": "#3730a3",
+      "secondary": "#c7d2fe"
+    },
+    "fonts": {
+      "heading": "Space Grotesk",
+      "body": "Inter"
+    }
+  },
+  "data": {
+    "knowledge": [
+      {
+        "citationId": "k1",
+        "kind": "file",
+        "title": "What Plainwater does",
+        "text": "Plainwater builds operations models for warehouses and cold storage operators with 1 to 5 sites: dock capacity, labor by shift and the cost of an expansion. A project is three weeks: one week on site, one week building the model in a spreadsheet the client keeps, one week walking the team through it."
+      },
+      {
+        "citationId": "k2",
+        "kind": "file",
+        "title": "What a model covers",
+        "text": "Dock turns per door per day, labor hours per pallet by shift, storage turns, and the point where an expansion pays for itself. Every assumption sits on one tab the client can change."
+      },
+      {
+        "citationId": "k3",
+        "kind": "instruction",
+        "title": "How we write",
+        "text": "Numbers first, then what they mean. Only numbers the client gave us or we measured."
+      }
+    ],
+    "account_notes": [],
+    "site": {
+      "url": "https://saltmarshcold.example",
+      "title": "Saltmarsh Cold Storage, Savannah",
+      "description": "Frozen and chilled storage with 24-hour receiving, one mile from the Port of Savannah.",
+      "markdown": "# Frozen storage, one mile from the Port of Savannah\n60,000 square feet of freezer space, 8 dock doors, receiving 24 hours a day. Blast freezing and repacking on site.\n\n## Expansion\nA 20,000 square foot addition opens next spring, with 4 more dock doors.\n\n## Customers\nSeafood processors, frozen food distributors and importers moving through the port."
+    },
+    "dossier": "Saltmarsh Cold Storage runs a 60,000 square foot freezer warehouse in Savannah with 8 dock doors and 24-hour receiving. About 35 people. Customers are seafood processors and frozen food distributors moving through the port.",
+    "why_now": "Announced a 20,000 square foot expansion with 4 more dock doors, opening next spring.",
+    "signals": [
+      {
+        "type": "news",
+        "title": "20,000 square foot expansion announced, opening next spring",
+        "date": "2026-09-30",
+        "source_url": "https://saltmarshcold.example/news/expansion"
+      }
+    ],
+    "headline": "A dock capacity model for Savannah, before and after the 4 new doors",
+    "intro": "Hi Eli, nobody at Saltmarsh asked for this. Your site gives the door count today and after the expansion, which is enough for a first capacity model. Every number in it comes from your site, and the one I could not find is left for you to fill in.",
+    "kind": "A dock capacity model for one site",
+    "site_note": "The square footage and door counts on the homepage, the 24-hour receiving line and the expansion note.",
+    "blocks": [
+      {
+        "label": "The question",
+        "title": "How many trailers a day the docks can turn",
+        "body": "The expansion takes you from 8 doors to 12, so the question is what the docks can take before and after, and whether receiving is the limit or the floor is. This model answers the first part from your door count and your hours. The floor question needs your pallet counts, which are not public."
+      },
+      {
+        "label": "Inputs",
+        "title": "Three inputs, two from your site",
+        "body": "Two numbers come from your site. The third, the time a trailer spends at a door, is not public, so the model leaves it to you.",
+        "items": [
+          {
+            "name": "8 dock doors today, 12 after the expansion",
+            "note": "From the homepage and the expansion note."
+          },
+          {
+            "name": "Receiving runs 24 hours a day",
+            "note": "From the homepage."
+          },
+          {
+            "name": "Minutes per trailer at the door",
+            "note": "Not on your site. Put in your average for frozen pallets with a check-in and every line below follows from it."
+          }
+        ]
+      },
+      {
+        "label": "The method",
+        "title": "Trailers a day, before and after",
+        "body": "One door turns 1,440 minutes a day divided by your minutes per trailer. Eight doors turn eight times that and twelve turn twelve times that, so the expansion raises dock capacity by half whatever your door time is. If the floor cannot absorb half again as many trailers a day, the new doors will wait on forklifts, not the other way round.",
+        "items": [
+          {
+            "name": "Today: 8 doors times the turns per door",
+            "note": "1,440 minutes a day, divided by your minutes per trailer, times 8."
+          },
+          {
+            "name": "After the expansion: 12 doors times the turns per door",
+            "note": "The same turns per door, times 12."
+          },
+          {
+            "name": "Every minute saved at the door",
+            "note": "Raises the turns of every door at once, so after the expansion it counts 12 times."
+          }
+        ]
+      },
+      {
+        "label": "What to change first",
+        "title": "Measure the door time before the doors open",
+        "body": "The one number the model cannot get from your site is the time a trailer spends at a door. Measure it for two weeks on the 8 doors you have: time in, time out, frozen or chilled. With that number, the model tells you whether the 4 new doors need more forklifts, or whether a faster check-in gets you most of the way there."
+      }
+    ],
+    "full_intro": "This is one tab of the model. The full version adds labor and storage, is built on site, and stays with your team.",
+    "full": [
+      {
+        "title": "A week on site",
+        "detail": "Dock, floor and shift counts taken by us in Savannah, so no number in the model is assumed."
+      },
+      {
+        "title": "Labor hours per pallet by shift",
+        "detail": "Which shifts carry the receiving peak, and what the 4 new doors add to each of them."
+      },
+      {
+        "title": "Storage turns and the expansion payback",
+        "detail": "The point where 20,000 more square feet pays for itself, from your own rates."
+      },
+      {
+        "title": "A spreadsheet your team keeps",
+        "detail": "Every assumption on one tab you can change, with a week of walkthroughs so it keeps being used."
+      }
+    ],
+    "closing": "Reply with your door time and I will run the model with it the same day. If the question itself is wrong, tell me what you need to decide before spring and I will build that instead."
+  }
+}

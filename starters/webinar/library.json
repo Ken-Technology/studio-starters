@@ -1,0 +1,15 @@
+{
+  "description": "A webinar invite with a time strip in the reader's time zone, speakers, an agenda and a sign-up form. Ken writes the takeaways for each person's role and company.",
+  "category": "events",
+  "tags": ["webinar", "invite", "registration", "live session"],
+  "featured": false,
+  "needs": [],
+  "version": "1.0.2",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "brightwave", "label": "Brightwave Logistics, filled for one person" },
+    { "id": "tidewater", "label": "Tidewater Biologics, dark serif brand" },
+    { "id": "crestline-shared", "label": "Crestline Outdoor Co., shared link (no person)" },
+    { "id": "foxglove-partial", "label": "Foxglove Dental Partners, no time zone found" }
+  ]
+}

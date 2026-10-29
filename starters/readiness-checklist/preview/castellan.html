@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Where Castellan stands before an ERP go-live</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600&display=swap">
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js"></script>
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f6f4ee;color:#15171a;font-family:'Source Sans 3',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.rc{--a:#1b2a41;--a2:#b08d57;--ink:#15171a;--mute:#696c72;--text2:#3d4046;--line:#dad7cf;--paper:#f6f4ee;--card:#fffdf8;--soft:#e9e6de}
+.rc h1,.rc h2,.rc h3,.rc-lvl,.rc-ring-num,.rc-gap::before,.rc-bar b,.rc-bar-pct{font-family:'Lora',Georgia,serif;font-weight:700;letter-spacing:-.015em}
+p{margin:0}
+.rc-wrap{max-width:68rem;margin:0 auto;padding:0 1.1rem}
+.rc-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.95rem 0;border-bottom:1px solid var(--ink)}
+.rc-logo{height:24px;width:auto;display:block}
+.rc-brand{font-weight:600;font-size:.95rem}
+.rc-tag{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);text-align:right}
+.rc-hero{padding:2rem 0 .3rem}
+.rc-kicker{display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;line-height:1.4;font-weight:600;color:var(--text2)}
+.rc-kicker::before{content:'';width:1.25rem;height:3px;margin-top:.5em;background:var(--a);flex:none}
+.rc h1{font-size:2.1rem;line-height:1.08;margin:.85rem 0 .9rem;text-wrap:balance;max-width:22ch}
+.rc-intro{font-size:1.05rem;line-height:1.55;color:var(--text2);max-width:38rem;text-wrap:pretty}
+.rc-by{font-size:.88rem;color:var(--mute);margin-top:1.1rem}
+.rc-cols{display:grid;gap:2rem}
+.rc-score{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.15rem 1.15rem}
+.rc-score-head{display:flex;align-items:center;gap:1.1rem}
+.rc-ring{position:relative;width:124px;height:124px;flex:none}
+.rc-ring svg{display:block;width:100%;height:100%;transform:rotate(-90deg)}
+.rc-ring-track{fill:none;stroke:var(--soft);stroke-width:9}
+.rc-ring-val{fill:none;stroke:var(--a);stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset .45s ease}
+.rc-ring-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
+.rc-ring-num small{font-size:.95rem;font-weight:600;margin-left:.1rem;color:var(--mute)}
+.rc-lvl{font-size:1.4rem;line-height:1.1;margin:0 0 .3rem}
+.rc-count{font-size:.95rem;color:var(--text2)}
+.rc-count b{color:var(--ink);font-variant-numeric:tabular-nums}
+.rc-hint{font-size:.82rem;line-height:1.45;color:var(--mute);margin-top:.5rem}
+.rc-scale{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--line)}
+.rc-seg i{display:block;height:6px;border-radius:3px;background:var(--soft)}
+.rc-seg span{display:block;font-size:.72rem;line-height:1.3;color:var(--mute);margin-top:.4rem}
+.rc-seg[data-on="yes"] i{background:var(--a)}
+.rc-seg[data-on="yes"] span{color:var(--ink);font-weight:600}
+.rc h2{font-size:1.45rem;line-height:1.15;margin:0 0 .35rem}
+.rc-sub{font-size:.9rem;line-height:1.5;color:var(--mute);margin:0 0 1rem;max-width:36rem;text-wrap:pretty}
+.rc-items{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.rc-item{border-bottom:1px solid var(--line)}
+.rc-hit{display:grid;grid-template-columns:28px 1.7rem minmax(0,1fr);gap:.75rem;padding:.95rem 0;min-height:44px;cursor:pointer;align-items:start}
+.rc-box{appearance:none;-webkit-appearance:none;width:28px;height:28px;margin:.05rem 0 0;border:2px solid var(--ink);border-radius:7px;background:var(--card);position:relative;cursor:pointer;flex:none}
+.rc-box:checked{background:var(--a);border-color:var(--a)}
+.rc-box:checked::after{content:'';position:absolute;left:8px;top:3px;width:7px;height:13px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg)}
+.rc-box:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.rc-num{font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--mute);padding-top:.35rem;font-variant-numeric:tabular-nums}
+.rc-item:has(.rc-box:checked) .rc-num{color:var(--a)}
+.rc-label{display:block;font-weight:600;font-size:1.02rem;line-height:1.35;text-wrap:pretty}
+.rc-detail{display:block;font-size:.92rem;line-height:1.5;color:var(--text2);margin-top:.2rem;text-wrap:pretty}
+.rc-note{display:block;font-size:.84rem;line-height:1.45;color:var(--mute);margin-top:.5rem;padding-left:.65rem;border-left:2px solid var(--a)}
+.rc-gaps{margin-top:.4rem}
+.rc-gap-list{list-style:none;margin:0;padding:0;counter-reset:gap;border-top:2px solid var(--ink)}
+.rc-gap{counter-increment:gap;display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:.75rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.rc-gap::before{content:counter(gap,decimal-leading-zero);font-size:1.7rem;line-height:1;color:var(--a);padding-top:.1rem;font-variant-numeric:tabular-nums}
+.rc-gap h3{font-size:1.05rem;line-height:1.35;margin:0 0 .35rem;font-weight:600;letter-spacing:0;text-wrap:pretty}
+.rc-step{font-size:.92rem;line-height:1.5;color:var(--text2);text-wrap:pretty}
+.rc-steplab{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-right:.35rem}
+.rc-gap-empty{padding:1rem 1.1rem;background:var(--card);border:1px solid var(--line);border-radius:12px;font-size:.95rem;line-height:1.5}
+[hidden]{display:none!important}
+.rc:has(#rc-ck0:checked) #rc-gap0{display:none}
+.rc:has(#rc-ck1:checked) #rc-gap1{display:none}
+.rc:has(#rc-ck2:checked) #rc-gap2{display:none}
+.rc:has(#rc-ck3:checked) #rc-gap3{display:none}
+.rc:has(#rc-ck4:checked) #rc-gap4{display:none}
+.rc:has(#rc-ck5:checked) #rc-gap5{display:none}
+.rc:has(#rc-ck6:checked) #rc-gap6{display:none}
+.rc:has(#rc-ck7:checked) #rc-gap7{display:none}
+.rc:has(#rc-ck8:checked) #rc-gap8{display:none}
+.rc:has(#rc-ck9:checked) #rc-gap9{display:none}
+.rc-cta{margin:2.6rem 0 1rem;border:1.5px solid var(--ink);border-radius:14px;padding:1.5rem 1.2rem 1.3rem;background:var(--card)}
+.rc-cta h2{font-size:1.35rem}
+.rc-cta p{max-width:40rem}
+.rc-btn{margin:1.1rem 0 1.2rem}
+.rc-cta .ken-cta{background:var(--a)!important;border-radius:8px!important;padding:13px 22px!important}
+.rc-sign{font-size:.95rem;font-weight:600}
+.rc-sign span{display:block;font-weight:400;color:var(--mute)}
+.rc-foot{font-size:.8rem;line-height:1.5;color:var(--mute);padding:1rem 0 5.6rem}
+.rc-bar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;gap:.8rem;padding:.7rem 1.1rem;padding-bottom:calc(.7rem + env(safe-area-inset-bottom));background:var(--ink);color:var(--paper);font-size:.88rem}
+.rc-bar b{font-size:1.15rem;font-variant-numeric:tabular-nums}
+.rc-bar-track{flex:1;height:4px;display:block}
+.rc-bar-track rect.t{fill:rgba(255,255,255,.22)}
+.rc-bar-track rect.f{fill:var(--paper)}
+.rc-bar-pct{font-size:1.05rem;font-variant-numeric:tabular-nums}
+@media (min-width:760px){
+body{font-size:17px}
+.rc-wrap{padding:0 2rem}
+.rc-hero{padding:3.2rem 0 2.4rem}
+.rc h1{font-size:3.1rem}
+.rc-intro{font-size:1.15rem}
+.rc-hit{grid-template-columns:28px 2.4rem minmax(0,1fr);gap:1rem;padding:1.05rem 0}
+.rc-gap{grid-template-columns:3.2rem minmax(0,1fr);gap:1rem;padding:1.2rem 0}
+.rc-gap::before{font-size:2rem}
+.rc-cta{padding:2rem 2.2rem 1.8rem}
+}
+@media (min-width:980px){
+.rc-cols{grid-template-columns:minmax(0,1fr) 300px;column-gap:3.6rem;row-gap:0;align-items:start}
+.rc-hero{grid-column:1;grid-row:1}
+.rc-score{grid-column:2;grid-row:1 / span 3;position:sticky;top:1.4rem;margin-top:3.2rem;padding:1.5rem 1.4rem 1.4rem}
+.rc-score-head{flex-direction:column;align-items:flex-start;gap:1rem}
+.rc-ring{width:150px;height:150px}
+.rc-ring-num{font-size:2.4rem}
+.rc-list{grid-column:1;grid-row:2}
+.rc-gaps{grid-column:1;grid-row:3;margin-top:3rem}
+.rc-bar{display:none}
+.rc-foot{padding-bottom:2.6rem}
+}
+</style>
+</head>
+<body>
+<main class="rc" x-data="{ d0: true, d1: false, d2: false, d3: false, d4: false, d5: true, d6: true, d7: true, d8: false, d9: true, score: 5, total: 10 }">
+<div class="rc-wrap">
+<header class="rc-top"><span class="rc-brand">Harrow Vale</span><span class="rc-tag">ERP go-live readiness</span>
+</header>
+<div class="rc-cols">
+<section data-section="hero" class="rc-hero">
+<p class="rc-kicker">For Henrik Dahl, Director of Operations at Castellan Machine Works</p>
+<h1>Where Castellan stands before an ERP go-live</h1>
+<p class="rc-intro">The ERP replacement is in your 2026 capital plan and the project manager role has been open since September. Go-lives slip on data and people long before they slip on software, so this list is the ten things we check first. We ticked five from what Castellan has said publicly. Tick the rest as they stand today.</p>
+<p class="rc-by">Prepared by Ana Petrova at Harrow Vale</p>
+</section>
+<aside data-section="score" class="rc-score">
+<div class="rc-score-head">
+<div class="rc-ring">
+<svg viewBox="0 0 100 100" aria-hidden="true"><circle class="rc-ring-track" cx="50" cy="50" r="45"></circle><circle class="rc-ring-val" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="141.5" x-bind:stroke-dashoffset="283 - 283 * score / total"></circle></svg>
+<div class="rc-ring-num"><span x-text="(score * 100 - (score * 100) % total) / total">50</span><small>%</small></div>
+</div>
+<div class="rc-score-text">
+<p class="rc-lvl" x-text="score * 100 / total >= 80 ? 'Ready' : score * 100 / total >= 50 ? 'On the way' : 'Early days'">On the way</p>
+<p class="rc-count"><b x-text="score">5</b> of <span x-text="total">10</span> in place</p>
+<p class="rc-hint">Tick what is in place. The score and the gaps update as you go.</p>
+</div>
+</div>
+<div class="rc-scale" aria-hidden="true">
+<div class="rc-seg" data-on="no" x-bind:data-on="score * 100 / total < 50 ? 'yes' : 'no'"><i></i><span>Early days<br>0 to 49</span></div>
+<div class="rc-seg" data-on="yes" x-bind:data-on="score * 100 / total >= 50 && score * 100 / total < 80 ? 'yes' : 'no'"><i></i><span>On the way<br>50 to 79</span></div>
+<div class="rc-seg" data-on="no" x-bind:data-on="score * 100 / total >= 80 ? 'yes' : 'no'"><i></i><span>Ready<br>80 to 100</span></div>
+</div>
+</aside>
+<section data-section="checklist" class="rc-list">
+<h2>The checklist</h2>
+<p class="rc-sub">10 items, in the order that matters most. We ticked what we could see from outside, so fix anything we got wrong.</p>
+<ol class="rc-items">
+<li class="rc-item">
+<label class="rc-hit" for="rc-ck0">
+<input id="rc-ck0" class="rc-box" type="checkbox" checked x-model="d0" x-on:change="score = score + (d0 ? 1 : -1)">
+<span class="rc-num">01</span>
+<span class="rc-body">
+<span class="rc-label">An executive sponsor who owns the outcome</span>
+<span class="rc-detail">One leader is accountable for the go-live date and the business result, and settles the arguments the team cannot.</span>
+<span class="rc-note">Seen: the ERP project manager role you listed reports to operations, so the project has a home.</span>
+</span>
+</label>
+</li>
+<li class="rc-item">
+<label class="rc-hit" for="rc-ck1">
+<input id="rc-ck1" class="rc-box" type="checkbox" x-model="d1" x-on:change="score = score + (d1 ? 1 : -1)">
+<span class="rc-num">02</span>
+<span class="rc-body">
+<span class="rc-label">A project manager with the time to run it</span>
+<span class="rc-detail">Someone runs the project most of their week, with the standing to pull people from the plants when needed.</span>
+<span class="rc-note">Seen: the project manager posting from September is still up.</span>
+</span>
+</label>
+</li>
+<li class="rc-item">
+<label class="rc-hit" for="rc-ck2">
+<input id="rc-ck2" class="rc-box" type="checkbox" x-model="d2" x-on:change="score = score + (d2 ? 1 : -1)">
+<span class="rc-num">03</span>
+<span class="rc-body">
+<span class="rc-label">One item master across plants</span>
+<span class="rc-detail">Every part, product and supplier has one record and one number, the same in both plants.</span>
+</span>
+</label>
+</li>
+<li class="rc-item">
+<label class="rc-hit" for="rc-ck3">
+<input id="rc-ck3" class="rc-box" type="checkbox" x-model="d3" x-on:change="score = score + (d3 ? 1 : -1)">
+<span class="rc-num">04</span>
+<span class="rc-body">
+<span class="rc-label">Inventory counts you trust</span>
+<span class="rc-detail">Cycle counts match the books within a known tolerance, and the people who count know what the number is used for.</span>
+<span class="rc-note">Seen: inventory is kept in spreadsheets by plant today.</span>
+</span>
+</label>
+</li>
+<li class="rc-item">
+<label class="rc-hit" for="rc-ck4">
+<input id="rc-ck4" class="rc-box" type="checkbox" x-model="d4" x-on:change="score = score + (d4 ? 1 : -1)">
+<span class="rc-num">05</span>
+<span class="rc-body">
+<span class="rc-label">Processes written as they run today</span>
+<span class="rc-detail">Order to cash, procure to pay and plan to produce are mapped as they happen now, not as the old manual says.</span>
+</span>
+</label>
+</li>
+<li class="rc-item">
+<label class="rc-hit" for="rc-ck5">
+<input id="rc-ck5" class="rc-box" type="checkbox" checked x-model="d5" x-on:change="score = score + (d5 ? 1 : -1)">
+<span class="rc-num">06</span>
+<span class="rc-body">
+<span class="rc-label">Shop floor data captured at the machine</span>
+<span class="rc-detail">Production, scrap and downtime are recorded where they happen, by scan or terminal, not on paper and keyed in later.</span>
+<span class="rc-note">Seen: both plants moved to barcode scanning on the shop floor in 2024.</span>
+</span>
+</label>
+</li>
+<li class="rc-item">
+<label class="rc-hit" for="rc-ck6">
+<input id="rc-ck6" class="rc-box" type="checkbox" checked x-model="d6" x-on:change="score = score + (d6 ? 1 : -1)">
+<span class="rc-num">07</span>
+<span class="rc-body">
+<span class="rc-label">Both plants on one network and one login</span>
+<span class="rc-detail">People sign in the same way at every plant, and the plants see the same systems, so the new ERP is set up once.</span>
+<span class="rc-note">Seen: both plants have run on one network since 2024.</span>
+</span>
+</label>
+</li>
+<li class="rc-item">
+<label class="rc-hit" for="rc-ck7">
+<input id="rc-ck7" class="rc-box" type="checkbox" checked x-model="d7" x-on:change="score = score + (d7 ? 1 : -1)">
+<span class="rc-num">08</span>
+<span class="rc-body">
+<span class="rc-label">Budget and timeline approved</span>
+<span class="rc-detail">The money, the go-live window and the freeze on other projects are approved in writing, not agreed in a meeting.</span>
+<span class="rc-note">Seen: the ERP replacement is in your 2026 capital plan.</span>
+</span>
+</label>
+</li>
+<li class="rc-item">
+<label class="rc-hit" for="rc-ck8">
+<input id="rc-ck8" class="rc-box" type="checkbox" x-model="d8" x-on:change="score = score + (d8 ? 1 : -1)">
+<span class="rc-num">09</span>
+<span class="rc-body">
+<span class="rc-label">Super users named in each plant</span>
+<span class="rc-detail">Two people per plant know the process, are trained first, and train the rest. Their managers have agreed to the time.</span>
+</span>
+</label>
+</li>
+<li class="rc-item">
+<label class="rc-hit" for="rc-ck9">
+<input id="rc-ck9" class="rc-box" type="checkbox" checked x-model="d9" x-on:change="score = score + (d9 ? 1 : -1)">
+<span class="rc-num">10</span>
+<span class="rc-body">
+<span class="rc-label">Sized for the next plant</span>
+<span class="rc-detail">The system is set up for every plant you plan to run, so the next one is a copy of the last, not a new project.</span>
+<span class="rc-note">Seen: the plant announced for 2027 is planned to run the same system.</span>
+</span>
+</label>
+</li>
+</ol>
+</section>
+<section data-section="gaps" class="rc-gaps">
+<h2>Close these first</h2>
+<p class="rc-sub" x-bind:hidden="score == total"><span x-text="total - score">5</span> <span x-text="total - score == 1 ? 'gap' : 'gaps'">gaps</span>, in the order to close them. Each one comes with a first step you can take this week.</p>
+<ol class="rc-gap-list">
+<li class="rc-gap" id="rc-gap0" hidden x-bind:hidden="d0">
+<div>
+<h3>An executive sponsor who owns the outcome</h3>
+<p class="rc-step"><span class="rc-steplab">First step</span>Write down who decides when scope and timeline collide. If it takes more than a minute, that is the gap.</p>
+</div>
+</li>
+<li class="rc-gap" id="rc-gap1" x-bind:hidden="d1">
+<div>
+<h3>A project manager with the time to run it</h3>
+<p class="rc-step"><span class="rc-steplab">First step</span>Fill the role or free up half of someone&#39;s week for the next year. Part time project managers slip go-lives.</p>
+</div>
+</li>
+<li class="rc-gap" id="rc-gap2" x-bind:hidden="d2">
+<div>
+<h3>One item master across plants</h3>
+<p class="rc-step"><span class="rc-steplab">First step</span>Pick 50 parts both plants buy and compare their records. The differences show the cleanup ahead.</p>
+</div>
+</li>
+<li class="rc-gap" id="rc-gap3" x-bind:hidden="d3">
+<div>
+<h3>Inventory counts you trust</h3>
+<p class="rc-step"><span class="rc-steplab">First step</span>Count one storeroom this month and compare it to what the spreadsheet says. Keep the difference as your baseline.</p>
+</div>
+</li>
+<li class="rc-gap" id="rc-gap4" x-bind:hidden="d4">
+<div>
+<h3>Processes written as they run today</h3>
+<p class="rc-step"><span class="rc-steplab">First step</span>Walk one customer order from quote to invoice and write down every hand-off, including the workarounds.</p>
+</div>
+</li>
+<li class="rc-gap" id="rc-gap5" hidden x-bind:hidden="d5">
+<div>
+<h3>Shop floor data captured at the machine</h3>
+<p class="rc-step"><span class="rc-steplab">First step</span>List the stations where paper still travels to the office. Each one is a data feed the new system will not have.</p>
+</div>
+</li>
+<li class="rc-gap" id="rc-gap6" hidden x-bind:hidden="d6">
+<div>
+<h3>Both plants on one network and one login</h3>
+<p class="rc-step"><span class="rc-steplab">First step</span>Check whether a planner from one plant can log in at the other without a workaround.</p>
+</div>
+</li>
+<li class="rc-gap" id="rc-gap7" hidden x-bind:hidden="d7">
+<div>
+<h3>Budget and timeline approved</h3>
+<p class="rc-step"><span class="rc-steplab">First step</span>Get the approval on paper, with the go-live window and the projects that pause for it.</p>
+</div>
+</li>
+<li class="rc-gap" id="rc-gap8" x-bind:hidden="d8">
+<div>
+<h3>Super users named in each plant</h3>
+<p class="rc-step"><span class="rc-steplab">First step</span>Ask each plant manager for two names and a day a week from January. The answer tells you how ready they are.</p>
+</div>
+</li>
+<li class="rc-gap" id="rc-gap9" hidden x-bind:hidden="d9">
+<div>
+<h3>Sized for the next plant</h3>
+<p class="rc-step"><span class="rc-steplab">First step</span>Write the list of what a new plant needs on day one: sites, warehouses, work centers, roles. Keep it to one page.</p>
+</div>
+</li>
+</ol>
+<p class="rc-gap-empty" hidden x-bind:hidden="score != total">Everything on this list is in place. If that holds up on a closer look, Castellan Machine Works is ready, and the call below is a short one.</p>
+</section>
+</div>
+<section data-section="cta" class="rc-cta">
+<h2>Want to go through the gaps together?</h2>
+<p>If it helps to have a second pair of eyes, book 20 minutes and we will go through the gaps in order, starting with the project manager seat.</p>
+<div class="rc-btn"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1b2a41;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+<p class="rc-sign">Ana Petrova<span>Harrow Vale</span></p>
+</section>
+<p class="rc-foot">Made for Castellan Machine Works by Ana Petrova. Your ticks stay in this browser and are not saved or shared.</p>
+</div>
+<div class="rc-bar" aria-hidden="true">
+<span class="rc-bar-n"><b x-text="score">5</b> of <span x-text="total">10</span> in place</span>
+<svg class="rc-bar-track" viewBox="0 0 100 4" preserveAspectRatio="none"><rect class="t" x="0" y="0" width="100" height="4"></rect><rect class="f" x="0" y="0" width="50" height="4" x-bind:width="score * 100 / total"></rect></svg>
+<span class="rc-bar-pct"><span x-text="(score * 100 - (score * 100) % total) / total">50</span>%</span>
+</div>
+</main>
+</body>
+</html>

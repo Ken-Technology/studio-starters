@@ -1,0 +1,136 @@
+{
+  "account": {
+    "name": "Harrowgate Robotics",
+    "domain": "harrowgate.example",
+    "industry": "industrial automation",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Harrowgate Robotics builds palletizing robots and end-of-line automation for food and beverage plants. About 240 people, with assembly in Dayton and service technicians in 14 states.",
+      "why_now": "Opened a second assembly bay in September and is hiring a regional sales manager for the Southeast.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Priya",
+    "last_name": "Natarajan",
+    "title": "VP Marketing"
+  },
+  "sender": {
+    "name": "Jonah Reyes",
+    "title": "Partner",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Latchkey",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "knowledge": [
+      {
+        "citationId": "k1",
+        "kind": "file",
+        "title": "What Latchkey sells",
+        "text": "Latchkey rewrites the words on B2B websites and sales decks for industrial and hardware companies. A project covers positioning, the homepage, the product pages and the first sales deck, in four weeks, from interviews with three customers and the founders."
+      },
+      {
+        "citationId": "k2",
+        "kind": "file",
+        "title": "How a project runs",
+        "text": "Week 1 customer interviews. Week 2 positioning on one page. Week 3 page copy in a shared doc with two rounds of edits. Week 4 the sales deck and handover. One writer and one editor per project."
+      },
+      {
+        "citationId": "k3",
+        "kind": "instruction",
+        "title": "How we write",
+        "text": "Plain words. Short sentences. Name the machine, the part and the number. No adjective an engineer would not use about their own work."
+      }
+    ],
+    "account_notes": [],
+    "site": {
+      "url": "https://harrowgate.example",
+      "title": "Harrowgate Robotics: palletizing and end-of-line automation",
+      "description": "Harrowgate builds robotic palletizers and end-of-line automation for food and beverage plants.",
+      "markdown": "# Next-generation palletizing solutions that empower manufacturers to optimize throughput and reduce downtime.\n\n## HX Series palletizer\nFlexible, scalable, and designed for the demands of modern production environments, the HX Series sets a new standard in robotic palletizing. Up to 40 cases per minute. Pattern changeover in under 10 minutes from the panel. Mixed-case palletizing on one line.\n\n## LineSight\nReal-time visibility into end-of-line performance, powered by advanced analytics. See every stop and its cause, on the floor or on your phone.\n\n## Customers\nTrusted by leading food and beverage manufacturers across North America.\n\n## Service\n24/7 support. Parts dispatched within 48 hours. Field technicians in 14 states."
+    },
+    "dossier": "Harrowgate Robotics builds palletizing robots and end-of-line automation for food and beverage plants. About 240 people, with assembly in Dayton and service technicians in 14 states.",
+    "why_now": "Opened a second assembly bay in September and is hiring a regional sales manager for the Southeast.",
+    "signals": [
+      {
+        "type": "hiring",
+        "title": "Regional sales manager for the Southeast posted on the careers page",
+        "date": "2026-10-14",
+        "source_url": "https://harrowgate.example/careers/regional-sales-manager-southeast"
+      },
+      {
+        "type": "news",
+        "title": "Harrowgate opens a second assembly bay in Dayton",
+        "date": "2026-09-22",
+        "source_url": "https://harrowgate.example/news/second-assembly-bay-dayton"
+      }
+    ],
+    "headline": "Three lines of your site, rewritten the way a plant manager reads them",
+    "intro": "Hi Priya, nobody at Harrowgate asked for this. I read your homepage the way a plant manager would and rewrote the three lines they hit first. Your service section gave me the voice: parts within 48 hours is a sentence that sells.",
+    "kind": "Three rewritten lines from your site",
+    "site_note": "The homepage headline, the HX Series and LineSight sections, and the service numbers at the bottom of the page.",
+    "blocks": [
+      {
+        "label": "Rewrite 1",
+        "title": "The homepage headline",
+        "body": "Next-generation and empower are on every palletizer site, so a plant manager reads past them. The two numbers that decide a visit are further down your own page: 40 cases a minute and a changeover under 10 minutes. The headline should carry them.",
+        "before": "Next-generation palletizing solutions that empower manufacturers to optimize throughput and reduce downtime.",
+        "after": "Palletizing robots for food and beverage lines. Up to 40 cases a minute, and a new pattern in under 10 minutes."
+      },
+      {
+        "label": "Rewrite 2",
+        "title": "The HX Series paragraph",
+        "body": "The first sentence says nothing a buyer can check. The facts that follow it are good, so the rewrite keeps them and drops the adjectives. Mixed cases on one line is the detail a plant with many SKUs is looking for, so it goes first.",
+        "before": "Flexible, scalable, and designed for the demands of modern production environments, the HX Series sets a new standard in robotic palletizing.",
+        "after": "The HX Series palletizes mixed cases on one line, up to 40 a minute. Change the pattern from the panel and run again in under 10 minutes."
+      },
+      {
+        "label": "Rewrite 3",
+        "title": "The LineSight paragraph",
+        "body": "Real-time visibility and advanced analytics describe a category, not your product. Your second sentence already says what it does. The rewrite leads with that and names who looks at it, because a line supervisor and a plant manager open it for different reasons.",
+        "before": "Real-time visibility into end-of-line performance, powered by advanced analytics. See every stop and its cause, on the floor or on your phone.",
+        "after": "LineSight shows every stop on the line and what caused it. The supervisor sees it on the floor, and you see it on your phone."
+      },
+      {
+        "label": "Left as is",
+        "title": "What we would not touch yet",
+        "body": "Two parts of the page are already doing their job, or need something a rewrite cannot give them.",
+        "items": [
+          {
+            "name": "The service section",
+            "note": "24/7 support, parts within 48 hours, technicians in 14 states. Specific and short. Keep it, and move it higher up the page."
+          },
+          {
+            "name": "The customers section",
+            "note": "Trusted by leading manufacturers names nobody. It needs customer interviews first, not new words."
+          }
+        ]
+      }
+    ],
+    "full_intro": "These three lines are the top of one page. The full project covers the site and the first sales deck in four weeks.",
+    "full": [
+      {
+        "title": "Three customer interviews",
+        "detail": "Plant managers who bought an HX line, on what they compared and what settled it, so every page uses their words."
+      },
+      {
+        "title": "Positioning on one page",
+        "detail": "Who Harrowgate is for, who it is not for, and the one claim the homepage, the product pages and the deck all make."
+      },
+      {
+        "title": "Homepage, HX Series and LineSight pages",
+        "detail": "Full copy for each in a shared doc, with two rounds of edits from your team."
+      },
+      {
+        "title": "The first sales deck",
+        "detail": "A deck for the new Southeast sales manager in the same words as the site, so the call and the website say one thing."
+      }
+    ],
+    "closing": "If these lines read right to you, reply and I will send the rest of the homepage done the same way. If they are off, tell me which word you would never say to a customer and I will redo them."
+  }
+}

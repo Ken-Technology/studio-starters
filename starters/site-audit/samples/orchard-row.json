@@ -1,0 +1,109 @@
+{
+  "account": {
+    "name": "Orchard Row Payroll",
+    "domain": "orchardrow.example",
+    "industry": "payroll software",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Orchard Row Payroll sells payroll and time tracking to restaurants and cafes with 5 to 100 staff. Pricing is a flat monthly fee plus a small amount per employee.",
+      "why_now": "Added tip pooling reports this month."
+    }
+  },
+  "person": { "first_name": "Nadia", "last_name": "Okafor", "title": "Head of Growth" },
+  "sender": { "name": "Jonas Weber", "title": "Founder", "signature_html": null },
+  "brand": {
+    "name": "Forgeline",
+    "logo_url": null,
+    "colors": { "primary": "#d8421a", "secondary": "#1c1c1c" },
+    "fonts": { "heading": "Space Grotesk", "body": "IBM Plex Sans" }
+  },
+  "data": {
+    "headline": "orchardrow.example sells to restaurants in its pricing page, but its homepage speaks to everyone",
+    "criteria": [
+      {
+        "name": "Message clarity",
+        "score": 3,
+        "quote": "Payroll that works the way your business does.",
+        "where": "Homepage headline",
+        "cost": "Any business could print this line. A restaurant owner cannot tell that Orchard Row is built for kitchens and shifts, and the pricing page is where that finally shows up."
+      },
+      {
+        "name": "Proof",
+        "score": 4,
+        "quote": "Join the businesses that run payroll with confidence.",
+        "where": "Homepage, below the first screen",
+        "cost": "No business is named and there is no number or review to back it up. A cautious owner reads this as a placeholder."
+      },
+      {
+        "name": "Call to action",
+        "score": 6,
+        "quote": "Start free trial",
+        "where": "Main button",
+        "cost": "A familiar label that works. It does not say how long the trial is or that no card is needed, which are the two questions an owner has before clicking."
+      },
+      {
+        "name": "Trust",
+        "score": 5,
+        "quote": "Orchard Row Payroll LLC, Portland, Oregon",
+        "where": "Footer",
+        "cost": "A company name and a city are all that shows this is a real business. There is no security note, no named team and no About page link in the menu."
+      },
+      {
+        "name": "Navigation",
+        "score": 8,
+        "quote": "Features | Pricing | Restaurants | Sign in",
+        "where": "Main menu",
+        "cost": "Four plain labels in a sensible order, with a page just for restaurants. It is the clearest part of the site, but the restaurant page is not mentioned on the homepage."
+      },
+      {
+        "name": "Contact path",
+        "score": 7,
+        "quote": "Questions? Talk to a payroll expert.",
+        "where": "Pricing page",
+        "cost": "A visitor who wants to talk to someone can, and the link sits right by the prices. The homepage has no such line, so only people who open pricing find it."
+      }
+    ],
+    "rewrites": [
+      {
+        "kind": "headline",
+        "where": "Hero headline",
+        "before": "Payroll that works the way your business does.",
+        "after": "Payroll and tip pooling for restaurants and cafes with 5 to 100 staff.",
+        "why": "Names who it is for and two things a restaurant owner cares about. An owner knows in one read that this was built for a kitchen, not an office.",
+        "grade": 8.7
+      },
+      {
+        "kind": "button",
+        "where": "Main button",
+        "before": "Start free trial",
+        "after": "Try payroll free for 14 days",
+        "why": "Says what you get and for how long. The buyer knows what the click starts before they make it.",
+        "grade": 7.9
+      }
+    ],
+    "callouts": [
+      "Could sit on any payroll site. Name restaurants and cafes in the first line, as the pricing page already does.",
+      "The line under it says confidence and ease. Replace it with what the product does in a week: run payroll, track hours, pool tips.",
+      "Start free trial is fine. Add the length of the trial so the owner knows what the click starts.",
+      "The menu is the strongest part. Link the Restaurants page from the headline area too, not only from the menu.",
+      "The proof row is a sentence with no names. Replace it with real customer names or the number of restaurants you serve."
+    ],
+    "fixes": [
+      {
+        "title": "Name restaurants in the headline",
+        "body": "Paste the headline rewrite. The pricing page already speaks to restaurants, so the homepage only has to match it.",
+        "effort": "About an hour. Today."
+      },
+      {
+        "title": "Say how long the trial is",
+        "body": "Put the length of the trial and whether a card is needed on the button or right under it. Owners ask both questions before they click.",
+        "effort": "About an hour. Today."
+      },
+      {
+        "title": "Add one real proof line",
+        "body": "Replace Join the businesses with a count of restaurants on Orchard Row, or two named restaurants you have permission to use, with their staff size.",
+        "effort": "Half a day. This week."
+      }
+    ]
+  }
+}

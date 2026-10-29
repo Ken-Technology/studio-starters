@@ -1,0 +1,104 @@
+{
+  "account": {
+    "name": "Brightwave Logistics",
+    "domain": "brightwave.example",
+    "industry": "freight and logistics",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Brightwave Logistics is a Chicago freight broker and carrier running full truckload and LTL lanes across the Midwest. The site says the company has operated for 14 years with a team of 420.",
+      "why_now": "Opened a second terminal in Columbus this autumn."
+    }
+  },
+  "person": { "first_name": "Leo", "last_name": "Marsh", "title": "VP Operations" },
+  "sender": { "name": "Maya Chen", "title": "Account Executive", "signature_html": null },
+  "brand": { "name": "Northbeam", "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "headline": "brightwave.example tells shippers how you feel about freight, not what you haul or where",
+    "criteria": [
+      {
+        "name": "Message clarity",
+        "score": 4,
+        "quote": "Moving your world forward, one shipment at a time.",
+        "where": "Homepage headline",
+        "cost": "The headline is a feeling, not an offer. A shipper who searched for Chicago full truckload carriers cannot tell what Brightwave hauls, which lanes it runs or who it works for, so most go back to the results."
+      },
+      {
+        "name": "Proof",
+        "score": 5,
+        "quote": "Trusted by leading shippers across North America.",
+        "where": "Homepage, under the hero",
+        "cost": "No shipper is named in the text and no number sits near the claim. Your About page says 14 years and 420 people, which is better proof than the slogan, and it is one click away."
+      },
+      {
+        "name": "Call to action",
+        "score": 3,
+        "quote": "Learn more",
+        "where": "The only button in the first screen",
+        "cost": "The button goes to the About page. A shipper with a load to cover this week wants a quote, and the quote form is not linked from the first screen at all."
+      },
+      {
+        "name": "Trust",
+        "score": 8,
+        "quote": "MC 847211 | USDOT 2391044",
+        "where": "Footer",
+        "cost": "Licence numbers, a street address in Chicago and named leadership on the About page are the strongest signals on the site. A broker checks exactly these, but they sit in the footer, not the first screen."
+      },
+      {
+        "name": "Navigation",
+        "score": 6,
+        "quote": "Solutions | Network | Resources | About | Request a quote",
+        "where": "Main menu",
+        "cost": "Five plain items, and Request a quote is the last one. Solutions and Resources do not say what is inside, so a visitor has to open them to find rates or lanes."
+      },
+      {
+        "name": "Contact path",
+        "score": 4,
+        "quote": "Request a quote",
+        "where": "Last item in the main menu",
+        "cost": "The only way in is a menu link that leads to a long form. There is no short line on the homepage to ask about a lane, and no named person to write to."
+      }
+    ],
+    "rewrites": [
+      {
+        "kind": "headline",
+        "where": "Hero headline",
+        "before": "Moving your world forward, one shipment at a time.",
+        "after": "Full truckload and LTL across the Midwest, run out of Chicago and Columbus.",
+        "why": "Says what you haul, where, and where it runs from. A shipper searching for Midwest capacity knows in one read that this is the right site.",
+        "grade": 8.4
+      },
+      {
+        "kind": "button",
+        "where": "Main button",
+        "before": "Learn more",
+        "after": "Request a quote",
+        "why": "Names what happens next and points at the quote form instead of the About page, which is the page a shipper with a load to cover came for.",
+        "grade": 9.1
+      }
+    ],
+    "callouts": [
+      "A slogan where the offer should be. Use the rewrite above, with the freight type and the region in the first line.",
+      "The line under it talks about technology-enabled, end-to-end solutions. One sentence with your lanes and fleet size does more.",
+      "Learn more goes to the About page. Point the button at the quote form and use the new label.",
+      "Five items and a plain order. Move Request a quote to a button style so it reads as the action, not a link.",
+      "Six logos, no names, no numbers. Three facts you already publish belong here: 14 years, 420 people and your licence number."
+    ],
+    "fixes": [
+      {
+        "title": "Swap the headline and the button",
+        "body": "Paste the two rewrites above. It is the only change that reaches every visitor, and the only one your CMS can ship today.",
+        "effort": "About an hour. Today."
+      },
+      {
+        "title": "Put proof in the first screen",
+        "body": "Move 14 years, 420 people and your licence number up from the footer and the About page. Name two shippers you are allowed to name, in text, not logos.",
+        "effort": "Half a day. This week."
+      },
+      {
+        "title": "Add a short quote line to the homepage",
+        "body": "Three fields under the headline: lane, load type and a way to reply. A visitor with a load to cover should not need the menu to ask for a rate.",
+        "effort": "One ticket for your web team. This sprint."
+      }
+    ]
+  }
+}

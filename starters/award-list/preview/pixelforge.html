@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>25 software companies adding people right now</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f5f2ec;color:#1b1a17;font-family:'DM Sans',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.al{--a:#f2541b;--a2:#14213d;--ink:#1b1a17;--soft:#3f3c36;--mute:#6b675f;--line:#d9d4c9;--card:#fcfbf8}
+.al h1,.al h2,.al-big,.al-rank,.al-place{font-family:'Outfit',Georgia,serif;font-weight:500;letter-spacing:-.012em}
+.al h1{text-wrap:pretty}
+.al h2{text-wrap:balance}
+.al p{margin:0 0 1rem}
+.al a{color:inherit}
+.al-wrap{max-width:66rem;margin:0 auto;padding:0 1.25rem}
+.al-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.al-logo{height:24px;width:auto;display:block}
+.al-brand{font-weight:700;font-size:.95rem;margin:0!important}
+.al-type{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;white-space:nowrap}
+.al-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--a);margin:0 0 .7rem!important}
+.al-cover{padding:2.2rem 0 1.8rem}
+.al h1{font-size:2.5rem;line-height:1.02;margin:0 0 1rem}
+.al-intro{font-size:1.08rem;line-height:1.5;color:var(--soft);max-width:36rem}
+.al-stamp{margin:1.4rem 0 0;padding:1.1rem 0 1rem;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:1.2rem;align-items:center}
+.al-big{font-size:5rem;line-height:.85;color:var(--a);margin:0!important;font-variant-numeric:lining-nums tabular-nums;grid-column:1;grid-row:1 / 3}
+.al-no{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;align-self:end;grid-column:2;grid-row:1}
+.al-who{margin:0!important;font-weight:600;font-size:1.02rem;line-height:1.25;align-self:start;grid-column:2;grid-row:2}
+.al-who small{display:block;font-weight:400;color:var(--mute);font-size:.86rem;margin-top:.1rem}
+.al-facts{margin:1.4rem 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.2rem}
+.al-facts div{margin:0}
+.al-facts dt{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 .15rem}
+.al-facts dd{margin:0;font-weight:600;font-size:.98rem;line-height:1.3}
+.al-facts dd small{display:block;font-weight:400;color:var(--mute);font-size:.82rem}
+.al-you{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2rem 0 1.4rem}
+.al-place{font-size:2.1rem;line-height:1;margin:0 0 1rem!important;font-variant-numeric:lining-nums tabular-nums}
+.al-place span{font-family:'DM Sans',ui-sans-serif,system-ui,sans-serif;font-size:.95rem;color:var(--mute);letter-spacing:0;margin-left:.4rem;font-weight:400}
+.al h2{font-size:1.55rem;line-height:1.15;margin:0 0 .8rem}
+.al-why{font-size:1.04rem;color:var(--soft)}
+.al-signals{list-style:none;margin:0 0 1rem;padding:0;border-top:1px solid var(--line)}
+.al-signals li{display:grid;grid-template-columns:5.6rem 1fr;gap:.8rem;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.4}
+.al-signals time{color:var(--mute);font-size:.82rem;padding-top:.15rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.al-basis{font-size:.85rem;color:var(--mute);margin:0!important}
+.al-list{padding:2.2rem 0 1rem}
+.al-list-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.3rem 1rem;margin:0 0 .7rem}
+.al-list-head h2{margin:0}
+.al-list-head p{margin:0;font-size:.85rem;color:var(--mute)}
+.al-cols{display:none}
+.al-rows{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.al-row{display:grid;grid-template-columns:3rem 1fr;grid-template-areas:"rank name" "rank line" "rank meta";column-gap:.8rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
+.al-rank{grid-area:rank;font-size:1.85rem;line-height:1;color:var(--mute);font-variant-numeric:lining-nums tabular-nums;padding-top:.1rem}
+.al-name{grid-area:name;font-weight:600;font-size:1.02rem;line-height:1.3}
+.al-dom{display:block;font-weight:400;font-size:.8rem;color:var(--mute);text-decoration:none;word-break:break-all}
+.al-line{grid-area:line;font-size:.95rem;color:var(--soft);line-height:1.45;margin:.2rem 0 .35rem}
+.al-meta{grid-area:meta;font-size:.84rem;color:var(--mute);display:flex;flex-wrap:wrap;gap:.2rem .9rem}
+.al-people{font-variant-numeric:tabular-nums;white-space:nowrap}
+.al-hq small{font-size:inherit;color:inherit}
+.al-hq small::before{content:"\00b7";margin:0 .4rem}
+.al-row.is-you{background:var(--card);box-shadow:inset 3px 0 0 var(--a);margin:0 -1.25rem;padding-left:1.25rem;padding-right:1.25rem}
+.al-row.is-you .al-rank{color:var(--a)}
+.al-tag{display:inline-block;vertical-align:.12em;margin-left:.45rem;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--a);padding:.18rem .45rem;border-radius:3px}
+.al-method{padding:2.4rem 0 1rem;border-top:1px solid var(--line)}
+.al-steps{margin:0 0 1.2rem;padding:0;list-style:none;counter-reset:step}
+.al-steps li{position:relative;padding:.6rem 0 .6rem 2.3rem;border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.45}
+.al-steps li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:.62rem;width:1.5rem;height:1.5rem;border:1px solid var(--ink);border-radius:50%;font-size:.72rem;font-weight:600;display:grid;place-items:center;font-variant-numeric:lining-nums}
+.al-steps b{display:block;font-weight:600}
+.al-note{font-size:.9rem;color:var(--soft);border-left:3px solid var(--a2);padding:.1rem 0 .1rem .9rem;margin:1.2rem 0 0!important}
+.al-chart{margin:1.8rem 0 0}
+.al-bars{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.al-bars li{display:grid;grid-template-columns:1fr auto;grid-template-areas:"label value" "bar bar";column-gap:1rem;padding:.6rem 0 .7rem;border-bottom:1px solid var(--line);font-size:.92rem;align-items:baseline}
+.al-bar-label{grid-area:label;color:var(--soft)}
+.al-bar-value{grid-area:value;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.al-bar{grid-area:bar;display:block;height:.55rem;background:#e9e4da;margin-top:.4rem;border-radius:2px;overflow:hidden}
+.al-bar i{display:block;height:100%;background:var(--a);border-radius:2px}
+.ken-chart{display:none;margin:0}
+.ken-chart svg{display:block}
+.ken-chart figcaption{font-size:.8rem;color:var(--mute);margin-top:.5rem}
+.al-chart-note{font-size:.8rem;color:var(--mute);margin:.6rem 0 0!important}
+.al-cta{padding:1.8rem 0 3.2rem}
+.al-box{border:1px solid var(--ink);background:var(--card);padding:1.5rem 1.3rem 1.3rem}
+.al-box h2{margin:0 0 .6rem}
+.al-box p{color:var(--soft)}
+.al-btn{margin:1.2rem 0 1.3rem}
+.al-btn .ken-cta{min-height:44px;line-height:20px}
+.al-sign{font-size:.95rem;margin:0!important;font-weight:600;color:var(--ink)!important}
+.al-sign span{display:block;color:var(--mute);font-weight:400}
+.al-foot{font-size:.78rem;color:var(--mute);padding:1rem 0 2rem;border-top:1px solid var(--line);margin:0!important}
+@media (min-width:760px){
+body{font-size:17px}
+.al-wrap{padding:0 2.5rem}
+.al-cover{display:grid;grid-template-columns:1fr 17rem;column-gap:3rem;padding:3.6rem 0 2.8rem;align-items:start}
+.al h1{font-size:3.9rem;text-wrap:balance}
+.al-stamp{margin:.4rem 0 0;padding:0 0 0 2.5rem;border:0;border-left:1px solid var(--line);display:block}
+.al-big{font-size:9.5rem;line-height:.8;margin:.3rem 0 .9rem!important}
+.al-facts{grid-template-columns:repeat(4,1fr);grid-column:1 / -1;border-top:2px solid var(--ink);padding-top:1rem;margin-top:1.6rem}
+.al-you{padding:2.6rem 0 2rem}
+.al-you .al-wrap{display:grid;grid-template-columns:15rem 1fr;column-gap:3rem}
+.al-place{font-size:2.6rem}
+.al h2{font-size:1.9rem}
+.al-list{padding:3rem 0 1.5rem}
+.al-cols{display:grid;grid-template-columns:4rem 1fr 8.5rem 12rem;column-gap:1.2rem;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding:0 0 .5rem}
+.al-cols span:nth-child(3){text-align:right}
+.al-row{grid-template-columns:4rem 1fr 8.5rem 12rem;grid-template-areas:"rank name people hq" "rank line people hq";column-gap:1.2rem;padding:1rem 0;align-items:start}
+.al-rank{font-size:2.1rem}
+.al-name{font-size:1.08rem}
+.al-line{font-size:.95rem;margin:.25rem 0 0}
+.al-meta{display:contents}
+.al-people{grid-area:people;text-align:right;font-size:.98rem;color:var(--ink);font-weight:500;padding-top:.2rem}
+.al-hq{grid-area:hq;font-size:.92rem;color:var(--soft);padding-top:.25rem}
+.al-hq small{display:block;color:var(--mute);font-size:.8rem}
+.al-hq small::before{content:none}
+.al-row.is-you{margin:0 -1rem;padding-left:1rem;padding-right:1rem}
+.al-method{padding:3rem 0 1.5rem}
+.al-method .al-wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:3.5rem;align-items:start}
+.al-method.is-text .al-wrap{grid-template-columns:1fr}
+.al-method.is-text .al-text{max-width:42rem}
+.al-chart{margin:2.9rem 0 0}
+.al-bars{display:none}
+.ken-chart{display:block}
+.al-cta{padding:2.4rem 0 4rem}
+.al-box{padding:2.2rem 2.4rem 1.9rem;max-width:44rem}
+}
+</style>
+</head>
+<body>
+<main class="al">
+<div class="al-wrap">
+<header class="al-top"><img class="al-logo" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;118&#39; height=&#39;28&#39; viewBox=&#39;0 0 118 28&#39;&gt;&lt;circle cx=&#39;14&#39; cy=&#39;14&#39; r=&#39;11&#39; fill=&#39;%23f2541b&#39;/&gt;&lt;circle cx=&#39;14&#39; cy=&#39;14&#39; r=&#39;4&#39; fill=&#39;%23fff&#39;/&gt;&lt;text x=&#39;34&#39; y=&#39;20&#39; font-family=&#39;Arial,Helvetica,sans-serif&#39; font-size=&#39;18&#39; font-weight=&#39;700&#39; fill=&#39;%2314213d&#39;&gt;Orbital&lt;/text&gt;&lt;/svg&gt;" alt="Orbital"><p class="al-type">Top 25 list</p>
+</header>
+<section data-section="cover" class="al-cover">
+<div class="al-cover-text">
+<p class="al-label">For Theo at Pixelforge Studios</p>
+<h1>25 software companies adding people right now</h1>
+<p class="al-intro">This is a list of 25 software companies that are hiring and growing headcount right now, built from company profiles and hiring data rather than opinion. Pixelforge Studios is on it. How the list was made is at the bottom of the page.</p>
+</div>
+<div class="al-stamp">
+<p class="al-no">No.</p>
+<p class="al-big">14</p>
+<p class="al-who">Pixelforge Studios<small>of 25 companies on this list</small></p>
+</div>
+<dl class="al-facts">
+<div><dt>Companies</dt><dd>25<small>Pixelforge Studios included</small></dd></div>
+<div><dt>Ranked by</dt><dd>Headcount<small>largest first</small></dd></div>
+<div><dt>Pool</dt><dd>1,650<small>met both signals</small></dd></div>
+<div><dt>Made by</dt><dd>Lena Hoffmann<small>Orbital</small></dd></div>
+</dl>
+</section>
+</div>
+<section data-section="you" class="al-you">
+<div class="al-wrap">
+<div>
+<p class="al-label">Your place</p>
+<p class="al-place">No. 14<span>of 25</span></p>
+</div>
+<div>
+<h2>Why Pixelforge Studios is on it</h2>
+<p class="al-why">Pixelforge builds a video editing app for social media teams with about 120 people in Berlin and Lisbon, announced a Series B on October 7, and posted 9 engineering roles in the last 30 days.</p>
+<ul class="al-signals">
+<li><time datetime="2026-10-24">Oct 24, 2026</time><span><a href="https://pixelforge.example/jobs" rel="noopener">Posted 9 engineering roles in the last 30 days</a></span></li>
+<li><time datetime="2026-10-07">Oct 7, 2026</time><span><a href="https://pixelforge.example/blog/series-b" rel="noopener">Announced a Series B round</a></span></li>
+</ul>
+<p class="al-basis">Placed by its size band, 51 to 200 people. Every other company on the list has an exact headcount from its profile.</p>
+</div>
+</div>
+</section>
+<div class="al-wrap">
+<section data-section="list" class="al-list">
+<div class="al-list-head">
+<h2>The list</h2>
+<p>25 companies, Pixelforge Studios at no. 14</p>
+</div>
+<div class="al-cols"><span>No.</span><span>Company</span><span>People</span><span>Headquarters</span></div>
+<ol class="al-rows">
+<li class="al-row">
+<span class="al-rank">01</span>
+<span class="al-name">Nordlicht Software<a class="al-dom" href="https://nordlicht.example" rel="noopener">nordlicht.example</a></span>
+<span class="al-line">Warehouse management software for mid-size online retailers in Germany and Austria.</span>
+<span class="al-meta"><span class="al-people">1,150 people</span><span class="al-hq">Hamburg<small>since 2008</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">02</span>
+<span class="al-name">Vexmo Payments<a class="al-dom" href="https://vexmo.example" rel="noopener">vexmo.example</a></span>
+<span class="al-line">Payment processing and invoicing tools for marketplaces in the EU.</span>
+<span class="al-meta"><span class="al-people">940 people</span><span class="al-hq">Amsterdam<small>since 2012</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">03</span>
+<span class="al-name">Brightloom Analytics<a class="al-dom" href="https://brightloom.example" rel="noopener">brightloom.example</a></span>
+<span class="al-line">Product analytics for mobile apps, with event tracking and funnel reports.</span>
+<span class="al-meta"><span class="al-people">760 people</span><span class="al-hq">Stockholm<small>since 2014</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">04</span>
+<span class="al-name">Kapsel Health Tech<a class="al-dom" href="https://kapsel.example" rel="noopener">kapsel.example</a></span>
+<span class="al-line">Scheduling and patient records software for dental and physio practices.</span>
+<span class="al-meta"><span class="al-people">610 people</span><span class="al-hq">Munich<small>since 2013</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">05</span>
+<span class="al-name">Tidewater Robotics Software<a class="al-dom" href="https://tidewaterrobotics.example" rel="noopener">tidewaterrobotics.example</a></span>
+<span class="al-line">Fleet software for warehouse robots and automated forklifts.</span>
+<span class="al-meta"><span class="al-people">520 people</span><span class="al-hq">Copenhagen<small>since 2015</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">06</span>
+<span class="al-name">Quillon Learning<a class="al-dom" href="https://quillon.example" rel="noopener">quillon.example</a></span>
+<span class="al-line">Course platform and assessments for corporate training teams.</span>
+<span class="al-meta"><span class="al-people">440 people</span><span class="al-hq">Dublin<small>since 2011</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">07</span>
+<span class="al-name">Marbleway<a class="al-dom" href="https://marbleway.example" rel="noopener">marbleway.example</a></span>
+<span class="al-line">Expense cards and spend controls for companies with 50 to 500 employees.</span>
+<span class="al-meta"><span class="al-people">370 people</span><span class="al-hq">Paris<small>since 2016</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">08</span>
+<span class="al-name">Fjordline Maps<a class="al-dom" href="https://fjordlinemaps.example" rel="noopener">fjordlinemaps.example</a></span>
+<span class="al-line">Mapping and routing APIs for delivery and ride companies in the Nordics.</span>
+<span class="al-meta"><span class="al-people">310 people</span><span class="al-hq">Oslo<small>since 2010</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">09</span>
+<span class="al-name">Ravelo Security<a class="al-dom" href="https://ravelo.example" rel="noopener">ravelo.example</a></span>
+<span class="al-line">Access management and single sign-on for mid-size companies.</span>
+<span class="al-meta"><span class="al-people">260 people</span><span class="al-hq">Lisbon<small>since 2017</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">10</span>
+<span class="al-name">Lumen Street Media Tools<a class="al-dom" href="https://lumenstreet.example" rel="noopener">lumenstreet.example</a></span>
+<span class="al-line">Scheduling and approval tools for social media agencies.</span>
+<span class="al-meta"><span class="al-people">220 people</span><span class="al-hq">London<small>since 2015</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">11</span>
+<span class="al-name">Sable &amp; Thorne Software<a class="al-dom" href="https://sablethorne.example" rel="noopener">sablethorne.example</a></span>
+<span class="al-line">Case management software for law firms and insurers in the UK.</span>
+<span class="al-meta"><span class="al-people">190 people</span><span class="al-hq">Edinburgh<small>since 2009</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">12</span>
+<span class="al-name">Helix Harbor<a class="al-dom" href="https://helixharbor.example" rel="noopener">helixharbor.example</a></span>
+<span class="al-line">Port logistics software for container terminals and customs brokers.</span>
+<span class="al-meta"><span class="al-people">165 people</span><span class="al-hq">Rotterdam<small>since 2018</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">13</span>
+<span class="al-name">Okapi Design Systems<a class="al-dom" href="https://okapidesign.example" rel="noopener">okapidesign.example</a></span>
+<span class="al-line">Design handoff and component libraries for product teams.</span>
+<span class="al-meta"><span class="al-people">140 people</span><span class="al-hq">Berlin<small>since 2019</small></span></span>
+</li>
+<li class="al-row is-you">
+<span class="al-rank">14</span>
+<span class="al-name">Pixelforge Studios<span class="al-tag">You</span><a class="al-dom" href="https://pixelforge.example" rel="noopener">pixelforge.example</a></span>
+<span class="al-line">Pixelforge builds a video editing app for social media teams with about 120 people in Berlin and Lisbon, announced a Series B on October 7, and posted 9 engineering roles in the last 30 days.</span>
+<span class="al-meta"><span class="al-people">51 to 200 people</span><span class="al-hq">Placed by size band<small>not an exact count</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">15</span>
+<span class="al-name">Cobalt Quay<a class="al-dom" href="https://cobaltquay.example" rel="noopener">cobaltquay.example</a></span>
+<span class="al-line">Subscription billing for software companies selling in several currencies.</span>
+<span class="al-meta"><span class="al-people">118 people</span><span class="al-hq">Barcelona<small>since 2017</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">16</span>
+<span class="al-name">Pinwheel Video<a class="al-dom" href="https://pinwheelvideo.example" rel="noopener">pinwheelvideo.example</a></span>
+<span class="al-line">Video hosting and player analytics for online course creators.</span>
+<span class="al-meta"><span class="al-people">102 people</span><span class="al-hq">Lisbon<small>since 2020</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">17</span>
+<span class="al-name">Tessellate AI Labs<a class="al-dom" href="https://tessellate.example" rel="noopener">tessellate.example</a></span>
+<span class="al-line">Document extraction models for insurers and banks.</span>
+<span class="al-meta"><span class="al-people">88 people</span><span class="al-hq">Zurich<small>since 2021</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">18</span>
+<span class="al-name">Mossbank Software<a class="al-dom" href="https://mossbank.example" rel="noopener">mossbank.example</a></span>
+<span class="al-line">Rent collection and maintenance tracking for residential landlords.</span>
+<span class="al-meta"><span class="al-people">76 people</span><span class="al-hq">Manchester<small>since 2016</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">19</span>
+<span class="al-name">Greyfeather Games Tools<a class="al-dom" href="https://greyfeather.example" rel="noopener">greyfeather.example</a></span>
+<span class="al-line">Live ops dashboards and A/B testing for mobile game studios.</span>
+<span class="al-meta"><span class="al-people">64 people</span><span class="al-hq">Helsinki<small>since 2018</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">20</span>
+<span class="al-name">Ironbridge Dev Tools<a class="al-dom" href="https://ironbridgedev.example" rel="noopener">ironbridgedev.example</a></span>
+<span class="al-line">Continuous integration runners and build caching for engineering teams.</span>
+<span class="al-meta"><span class="al-people">55 people</span><span class="al-hq">Berlin<small>since 2019</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">21</span>
+<span class="al-name">Saltwick Studio<a class="al-dom" href="https://saltwick.example" rel="noopener">saltwick.example</a></span>
+<span class="al-line">Audio editing app for podcast producers, with transcript-based cuts.</span>
+<span class="al-meta"><span class="al-people">48 people</span><span class="al-hq">Brighton<small>since 2020</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">22</span>
+<span class="al-name">Lantern Hill Software<a class="al-dom" href="https://lanternhill.example" rel="noopener">lanternhill.example</a></span>
+<span class="al-line">Inventory and point of sale software for independent bookshops.</span>
+<span class="al-meta"><span class="al-people">41 people</span><span class="al-hq">Warsaw<small>since 2017</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">23</span>
+<span class="al-name">Nimbus Fold<a class="al-dom" href="https://nimbusfold.example" rel="noopener">nimbusfold.example</a></span>
+<span class="al-line">Form builder and e-signature tool for small accounting firms.</span>
+<span class="al-meta"><span class="al-people">36 people</span><span class="al-hq">Tallinn<small>since 2021</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">24</span>
+<span class="al-name">Orrery Labs<a class="al-dom" href="https://orrerylabs.example" rel="noopener">orrerylabs.example</a></span>
+<span class="al-line">Calendar and booking software for music schools and tutors.</span>
+<span class="al-meta"><span class="al-people">30 people</span><span class="al-hq">Vienna<small>since 2022</small></span></span>
+</li>
+<li class="al-row">
+<span class="al-rank">25</span>
+<span class="al-name">Pebblecast<a class="al-dom" href="https://pebblecast.example" rel="noopener">pebblecast.example</a></span>
+<span class="al-line">Podcast hosting with chapter markers and listener stats.</span>
+<span class="al-meta"><span class="al-people">24 people</span><span class="al-hq">Porto<small>since 2022</small></span></span>
+</li>
+</ol>
+</section>
+</div>
+<section data-section="method" class="al-method">
+<div class="al-wrap">
+<div class="al-text">
+<p class="al-label">Method</p>
+<h2>How the list was made</h2>
+<ol class="al-steps">
+<li><b>Same industry as Pixelforge Studios</b>Companies whose profile lists software development.</li>
+<li><b>A hiring surge</b>At least 5 net new people in sales, engineering or operations over the last 6 months.</li>
+<li><b>Headcount growth</b>Headcount up 10 percent or more at the latest count.</li>
+<li><b>Ranked by headcount</b>The search returns up to 40 companies that pass both. Those are ordered by headcount, largest first, and the list shows the top 24.</li>
+<li><b>Pixelforge Studios</b>Placed by its size band, 51 to 200 people, since this page holds an exact headcount for every company but yours.</li>
+</ol>
+<p class="al-note">No awards body is behind this list. It is Orbital's own, built by Lena Hoffmann from company profiles and hiring data, and the filters above are the whole method.</p>
+</div>
+<div class="al-chart">
+<p class="al-label">The pool</p>
+<ul class="al-bars">
+<li><span class="al-bar-label">Same industry</span><span class="al-bar-value">38,200</span><span class="al-bar"><i style="width:100%"></i></span></li>
+<li><span class="al-bar-label">Hiring surge, 6 months</span><span class="al-bar-value">5,900</span><span class="al-bar"><i style="width:15%"></i></span></li>
+<li><span class="al-bar-label">Headcount up 10% or more</span><span class="al-bar-value">4,300</span><span class="al-bar"><i style="width:11%"></i></span></li>
+<li><span class="al-bar-label">Both signals</span><span class="al-bar-value">1,650</span><span class="al-bar"><i style="width:4%"></i></span></li>
+</ul>
+<figure class="ken-chart" data-ken-chart="funnel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" width="100%" role="img" aria-label="From the whole industry to the pool for this list" style="max-width:640px;height:auto" font-family="inherit" font-size="13"><title>From the whole industry to the pool for this list</title><text x="200" y="25" text-anchor="end" fill="#374151">Same industry</text><rect x="210" y="8" width="320" height="26" rx="3" fill="#f2541b" fill-opacity="1"/><text x="540" y="25" fill="#374151">38,200 (100%)</text><text x="200" y="61" text-anchor="end" fill="#374151">Hiring surge, 6 months</text><rect x="345.3" y="44" width="49.4" height="26" rx="3" fill="#f2541b" fill-opacity="0.9"/><text x="540" y="61" fill="#374151">5,900 (15%)</text><text x="200" y="97" text-anchor="end" fill="#374151">Headcount up 10% or more</text><rect x="352" y="80" width="36" height="26" rx="3" fill="#f2541b" fill-opacity="0.8"/><text x="540" y="97" fill="#374151">4,300 (11%)</text><text x="200" y="133" text-anchor="end" fill="#374151">Both signals</text><rect x="363.1" y="116" width="13.8" height="26" rx="3" fill="#f2541b" fill-opacity="0.6"/><text x="540" y="133" fill="#374151">1,650 (4%)</text></svg><figcaption>From the whole industry to the pool for this list</figcaption></figure>
+<p class="al-chart-note">Company counts on the day this page was built.</p>
+</div>
+</div>
+</section>
+<div class="al-wrap">
+<section data-section="cta" class="al-cta">
+<div class="al-box">
+<h2>Want the list with the people behind it?</h2>
+<p>I can send it as a sheet with the hiring signal behind each company, or walk you through it in 20 minutes and show you where Pixelforge Studios sits once we add your exact headcount.</p>
+<div class="al-btn"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#f2541b;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+<p class="al-sign">Lena Hoffmann<span>Founder, Orbital</span></p>
+</div>
+</section>
+<p class="al-foot">Made for Pixelforge Studios by Lena Hoffmann at Orbital. A private link, built from company profiles and hiring data.</p>
+</div>
+</main>
+</body>
+</html>

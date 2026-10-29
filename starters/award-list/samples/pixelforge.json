@@ -1,0 +1,588 @@
+{
+  "account": {
+    "name": "Pixelforge Studios",
+    "domain": "pixelforge.example",
+    "industry": "software development",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Pixelforge Studios builds a video editing app for social media teams, with about 120 people in Berlin and Lisbon.",
+      "why_now": "Announced a Series B on October 7 and has posted 9 engineering roles since.",
+      "angle": null
+    },
+    "signals": [
+      {
+        "type": "hiring",
+        "title": "Posted 9 engineering roles in the last 30 days",
+        "date": "2026-10-24",
+        "source_url": "https://pixelforge.example/jobs"
+      },
+      {
+        "type": "funding",
+        "title": "Announced a Series B round",
+        "date": "2026-10-07",
+        "source_url": "https://pixelforge.example/blog/series-b"
+      }
+    ]
+  },
+  "person": {
+    "first_name": "Theo",
+    "last_name": "Brandt",
+    "title": "Head of Sales"
+  },
+  "sender": {
+    "name": "Lena Hoffmann",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Orbital",
+    "logo_url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='118' height='28' viewBox='0 0 118 28'><circle cx='14' cy='14' r='11' fill='%23f2541b'/><circle cx='14' cy='14' r='4' fill='%23fff'/><text x='34' y='20' font-family='Arial,Helvetica,sans-serif' font-size='18' font-weight='700' fill='%2314213d'>Orbital</text></svg>",
+    "colors": {
+      "primary": "#f2541b",
+      "secondary": "#14213d"
+    },
+    "fonts": {
+      "heading": "Outfit",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "industry": "software development",
+    "signals": [
+      {
+        "type": "hiring",
+        "title": "Posted 9 engineering roles in the last 30 days",
+        "date": "2026-10-24",
+        "source_url": "https://pixelforge.example/jobs"
+      },
+      {
+        "type": "funding",
+        "title": "Announced a Series B round",
+        "date": "2026-10-07",
+        "source_url": "https://pixelforge.example/blog/series-b"
+      }
+    ],
+    "counts": [
+      {
+        "label": "Same industry",
+        "value": 38200
+      },
+      {
+        "label": "Hiring surge, 6 months",
+        "value": 5900
+      },
+      {
+        "label": "Headcount up 10% or more",
+        "value": 4300
+      },
+      {
+        "label": "Both signals",
+        "value": 1650
+      }
+    ],
+    "candidates": [
+      {
+        "name": "Nordlicht Software",
+        "domain": "nordlicht.example",
+        "industry": "software development",
+        "size": "1,001-5,000",
+        "employee_count": 1150,
+        "hq": "Hamburg, Germany",
+        "country": "Germany",
+        "linkedin_url": "https://www.linkedin.com/company/nordlicht-software",
+        "description": "Warehouse management software for mid-size online retailers in Germany and Austria.",
+        "founded": 2008
+      },
+      {
+        "name": "Okapi Design Systems",
+        "domain": "okapidesign.example",
+        "industry": "software development",
+        "size": "51-200",
+        "employee_count": 140,
+        "hq": "Berlin, Germany",
+        "country": "Germany",
+        "linkedin_url": "https://www.linkedin.com/company/okapi-design-systems",
+        "description": "Design handoff and component libraries for product teams.",
+        "founded": 2019
+      },
+      {
+        "name": "Vexmo Payments",
+        "domain": "vexmo.example",
+        "industry": "software development",
+        "size": "501-1,000",
+        "employee_count": 940,
+        "hq": "Amsterdam, Netherlands",
+        "country": "Netherlands",
+        "linkedin_url": "https://www.linkedin.com/company/vexmo-payments",
+        "description": "Payment processing and invoicing tools for marketplaces in the EU.",
+        "founded": 2012
+      },
+      {
+        "name": "Brightloom Analytics",
+        "domain": "brightloom.example",
+        "industry": "software development",
+        "size": "501-1,000",
+        "employee_count": 760,
+        "hq": "Stockholm, Sweden",
+        "country": "Sweden",
+        "linkedin_url": "https://www.linkedin.com/company/brightloom-analytics",
+        "description": "Product analytics for mobile apps, with event tracking and funnel reports.",
+        "founded": 2014
+      },
+      {
+        "name": "Kapsel Health Tech",
+        "domain": "kapsel.example",
+        "industry": "software development",
+        "size": "501-1,000",
+        "employee_count": 610,
+        "hq": "Munich, Germany",
+        "country": "Germany",
+        "linkedin_url": "https://www.linkedin.com/company/kapsel-health-tech",
+        "description": "Scheduling and patient records software for dental and physio practices.",
+        "founded": 2013
+      },
+      {
+        "name": "Tidewater Robotics Software",
+        "domain": "tidewaterrobotics.example",
+        "industry": "software development",
+        "size": "501-1,000",
+        "employee_count": 520,
+        "hq": "Copenhagen, Denmark",
+        "country": "Denmark",
+        "linkedin_url": "https://www.linkedin.com/company/tidewater-robotics-software",
+        "description": "Fleet software for warehouse robots and automated forklifts.",
+        "founded": 2015
+      },
+      {
+        "name": "Quillon Learning",
+        "domain": "quillon.example",
+        "industry": "software development",
+        "size": "201-500",
+        "employee_count": 440,
+        "hq": "Dublin, Ireland",
+        "country": "Ireland",
+        "linkedin_url": "https://www.linkedin.com/company/quillon-learning",
+        "description": "Course platform and assessments for corporate training teams.",
+        "founded": 2011
+      },
+      {
+        "name": "Marbleway",
+        "domain": "marbleway.example",
+        "industry": "software development",
+        "size": "201-500",
+        "employee_count": 370,
+        "hq": "Paris, France",
+        "country": "France",
+        "linkedin_url": "https://www.linkedin.com/company/marbleway",
+        "description": "Expense cards and spend controls for companies with 50 to 500 employees.",
+        "founded": 2016
+      },
+      {
+        "name": "Fjordline Maps",
+        "domain": "fjordlinemaps.example",
+        "industry": "software development",
+        "size": "201-500",
+        "employee_count": 310,
+        "hq": "Oslo, Norway",
+        "country": "Norway",
+        "linkedin_url": "https://www.linkedin.com/company/fjordline-maps",
+        "description": "Mapping and routing APIs for delivery and ride companies in the Nordics.",
+        "founded": 2010
+      },
+      {
+        "name": "Ravelo Security",
+        "domain": "ravelo.example",
+        "industry": "software development",
+        "size": "201-500",
+        "employee_count": 260,
+        "hq": "Lisbon, Portugal",
+        "country": "Portugal",
+        "linkedin_url": "https://www.linkedin.com/company/ravelo-security",
+        "description": "Access management and single sign-on for mid-size companies.",
+        "founded": 2017
+      },
+      {
+        "name": "Lumen Street Media Tools",
+        "domain": "lumenstreet.example",
+        "industry": "software development",
+        "size": "201-500",
+        "employee_count": 220,
+        "hq": "London, United Kingdom",
+        "country": "United Kingdom",
+        "linkedin_url": "https://www.linkedin.com/company/lumen-street-media-tools",
+        "description": "Scheduling and approval tools for social media agencies.",
+        "founded": 2015
+      },
+      {
+        "name": "Sable & Thorne Software",
+        "domain": "sablethorne.example",
+        "industry": "software development",
+        "size": "51-200",
+        "employee_count": 190,
+        "hq": "Edinburgh, United Kingdom",
+        "country": "United Kingdom",
+        "linkedin_url": "https://www.linkedin.com/company/sable-and-thorne-software",
+        "description": "Case management software for law firms and insurers in the UK.",
+        "founded": 2009
+      },
+      {
+        "name": "Helix Harbor",
+        "domain": "helixharbor.example",
+        "industry": "software development",
+        "size": "51-200",
+        "employee_count": 165,
+        "hq": "Rotterdam, Netherlands",
+        "country": "Netherlands",
+        "linkedin_url": "https://www.linkedin.com/company/helix-harbor",
+        "description": "Port logistics software for container terminals and customs brokers.",
+        "founded": 2018
+      },
+      {
+        "name": "Cobalt Quay",
+        "domain": "cobaltquay.example",
+        "industry": "software development",
+        "size": "51-200",
+        "employee_count": 118,
+        "hq": "Barcelona, Spain",
+        "country": "Spain",
+        "linkedin_url": "https://www.linkedin.com/company/cobalt-quay",
+        "description": "Subscription billing for software companies selling in several currencies.",
+        "founded": 2017
+      },
+      {
+        "name": "Pinwheel Video",
+        "domain": "pinwheelvideo.example",
+        "industry": "software development",
+        "size": "51-200",
+        "employee_count": 102,
+        "hq": "Lisbon, Portugal",
+        "country": "Portugal",
+        "linkedin_url": "https://www.linkedin.com/company/pinwheel-video",
+        "description": "Video hosting and player analytics for online course creators.",
+        "founded": 2020
+      },
+      {
+        "name": "Tessellate AI Labs",
+        "domain": "tessellate.example",
+        "industry": "software development",
+        "size": "51-200",
+        "employee_count": 88,
+        "hq": "Zurich, Switzerland",
+        "country": "Switzerland",
+        "linkedin_url": "https://www.linkedin.com/company/tessellate-ai-labs",
+        "description": "Document extraction models for insurers and banks.",
+        "founded": 2021
+      },
+      {
+        "name": "Mossbank Software",
+        "domain": "mossbank.example",
+        "industry": "software development",
+        "size": "51-200",
+        "employee_count": 76,
+        "hq": "Manchester, United Kingdom",
+        "country": "United Kingdom",
+        "linkedin_url": "https://www.linkedin.com/company/mossbank-software",
+        "description": "Rent collection and maintenance tracking for residential landlords.",
+        "founded": 2016
+      },
+      {
+        "name": "Greyfeather Games Tools",
+        "domain": "greyfeather.example",
+        "industry": "software development",
+        "size": "51-200",
+        "employee_count": 64,
+        "hq": "Helsinki, Finland",
+        "country": "Finland",
+        "linkedin_url": "https://www.linkedin.com/company/greyfeather-games-tools",
+        "description": "Live ops dashboards and A/B testing for mobile game studios.",
+        "founded": 2018
+      },
+      {
+        "name": "Ironbridge Dev Tools",
+        "domain": "ironbridgedev.example",
+        "industry": "software development",
+        "size": "51-200",
+        "employee_count": 55,
+        "hq": "Berlin, Germany",
+        "country": "Germany",
+        "linkedin_url": "https://www.linkedin.com/company/ironbridge-dev-tools",
+        "description": "Continuous integration runners and build caching for engineering teams.",
+        "founded": 2019
+      },
+      {
+        "name": "Saltwick Studio",
+        "domain": "saltwick.example",
+        "industry": "software development",
+        "size": "11-50",
+        "employee_count": 48,
+        "hq": "Brighton, United Kingdom",
+        "country": "United Kingdom",
+        "linkedin_url": "https://www.linkedin.com/company/saltwick-studio",
+        "description": "Audio editing app for podcast producers, with transcript-based cuts.",
+        "founded": 2020
+      },
+      {
+        "name": "Lantern Hill Software",
+        "domain": "lanternhill.example",
+        "industry": "software development",
+        "size": "11-50",
+        "employee_count": 41,
+        "hq": "Warsaw, Poland",
+        "country": "Poland",
+        "linkedin_url": "https://www.linkedin.com/company/lantern-hill-software",
+        "description": "Inventory and point of sale software for independent bookshops.",
+        "founded": 2017
+      },
+      {
+        "name": "Nimbus Fold",
+        "domain": "nimbusfold.example",
+        "industry": "software development",
+        "size": "11-50",
+        "employee_count": 36,
+        "hq": "Tallinn, Estonia",
+        "country": "Estonia",
+        "linkedin_url": "https://www.linkedin.com/company/nimbus-fold",
+        "description": "Form builder and e-signature tool for small accounting firms.",
+        "founded": 2021
+      },
+      {
+        "name": "Orrery Labs",
+        "domain": "orrerylabs.example",
+        "industry": "software development",
+        "size": "11-50",
+        "employee_count": 30,
+        "hq": "Vienna, Austria",
+        "country": "Austria",
+        "linkedin_url": "https://www.linkedin.com/company/orrery-labs",
+        "description": "Calendar and booking software for music schools and tutors.",
+        "founded": 2022
+      },
+      {
+        "name": "Pebblecast",
+        "domain": "pebblecast.example",
+        "industry": "software development",
+        "size": "11-50",
+        "employee_count": 24,
+        "hq": "Porto, Portugal",
+        "country": "Portugal",
+        "linkedin_url": "https://www.linkedin.com/company/pebblecast",
+        "description": "Podcast hosting with chapter markers and listener stats.",
+        "founded": 2022
+      },
+      {
+        "name": "Quartzline Consulting",
+        "domain": "quartzline.example",
+        "industry": "software development",
+        "hq": "Berlin, Germany",
+        "country": "Germany",
+        "linkedin_url": "https://www.linkedin.com/company/quartzline-consulting",
+        "description": "Custom software builds for mid-size manufacturers."
+      },
+      {
+        "name": "Driftwood Apps",
+        "domain": "driftwoodapps.example",
+        "industry": "software development",
+        "linkedin_url": "https://www.linkedin.com/company/driftwood-apps",
+        "description": "Mobile app studio working for consumer brands."
+      }
+    ],
+    "title": "25 software companies adding people right now",
+    "intro": "This is a list of 25 software companies that are hiring and growing headcount right now, built from company profiles and hiring data rather than opinion. Pixelforge Studios is on it. How the list was made is at the bottom of the page.",
+    "entries": [
+      {
+        "name": "Nordlicht Software",
+        "domain": "nordlicht.example",
+        "line": "Warehouse management software for mid-size online retailers in Germany and Austria.",
+        "employee_count": 1150,
+        "hq": "Hamburg",
+        "founded": 2008
+      },
+      {
+        "name": "Vexmo Payments",
+        "domain": "vexmo.example",
+        "line": "Payment processing and invoicing tools for marketplaces in the EU.",
+        "employee_count": 940,
+        "hq": "Amsterdam",
+        "founded": 2012
+      },
+      {
+        "name": "Brightloom Analytics",
+        "domain": "brightloom.example",
+        "line": "Product analytics for mobile apps, with event tracking and funnel reports.",
+        "employee_count": 760,
+        "hq": "Stockholm",
+        "founded": 2014
+      },
+      {
+        "name": "Kapsel Health Tech",
+        "domain": "kapsel.example",
+        "line": "Scheduling and patient records software for dental and physio practices.",
+        "employee_count": 610,
+        "hq": "Munich",
+        "founded": 2013
+      },
+      {
+        "name": "Tidewater Robotics Software",
+        "domain": "tidewaterrobotics.example",
+        "line": "Fleet software for warehouse robots and automated forklifts.",
+        "employee_count": 520,
+        "hq": "Copenhagen",
+        "founded": 2015
+      },
+      {
+        "name": "Quillon Learning",
+        "domain": "quillon.example",
+        "line": "Course platform and assessments for corporate training teams.",
+        "employee_count": 440,
+        "hq": "Dublin",
+        "founded": 2011
+      },
+      {
+        "name": "Marbleway",
+        "domain": "marbleway.example",
+        "line": "Expense cards and spend controls for companies with 50 to 500 employees.",
+        "employee_count": 370,
+        "hq": "Paris",
+        "founded": 2016
+      },
+      {
+        "name": "Fjordline Maps",
+        "domain": "fjordlinemaps.example",
+        "line": "Mapping and routing APIs for delivery and ride companies in the Nordics.",
+        "employee_count": 310,
+        "hq": "Oslo",
+        "founded": 2010
+      },
+      {
+        "name": "Ravelo Security",
+        "domain": "ravelo.example",
+        "line": "Access management and single sign-on for mid-size companies.",
+        "employee_count": 260,
+        "hq": "Lisbon",
+        "founded": 2017
+      },
+      {
+        "name": "Lumen Street Media Tools",
+        "domain": "lumenstreet.example",
+        "line": "Scheduling and approval tools for social media agencies.",
+        "employee_count": 220,
+        "hq": "London",
+        "founded": 2015
+      },
+      {
+        "name": "Sable & Thorne Software",
+        "domain": "sablethorne.example",
+        "line": "Case management software for law firms and insurers in the UK.",
+        "employee_count": 190,
+        "hq": "Edinburgh",
+        "founded": 2009
+      },
+      {
+        "name": "Helix Harbor",
+        "domain": "helixharbor.example",
+        "line": "Port logistics software for container terminals and customs brokers.",
+        "employee_count": 165,
+        "hq": "Rotterdam",
+        "founded": 2018
+      },
+      {
+        "name": "Okapi Design Systems",
+        "domain": "okapidesign.example",
+        "line": "Design handoff and component libraries for product teams.",
+        "employee_count": 140,
+        "hq": "Berlin",
+        "founded": 2019
+      },
+      {
+        "name": "Cobalt Quay",
+        "domain": "cobaltquay.example",
+        "line": "Subscription billing for software companies selling in several currencies.",
+        "employee_count": 118,
+        "hq": "Barcelona",
+        "founded": 2017
+      },
+      {
+        "name": "Pinwheel Video",
+        "domain": "pinwheelvideo.example",
+        "line": "Video hosting and player analytics for online course creators.",
+        "employee_count": 102,
+        "hq": "Lisbon",
+        "founded": 2020
+      },
+      {
+        "name": "Tessellate AI Labs",
+        "domain": "tessellate.example",
+        "line": "Document extraction models for insurers and banks.",
+        "employee_count": 88,
+        "hq": "Zurich",
+        "founded": 2021
+      },
+      {
+        "name": "Mossbank Software",
+        "domain": "mossbank.example",
+        "line": "Rent collection and maintenance tracking for residential landlords.",
+        "employee_count": 76,
+        "hq": "Manchester",
+        "founded": 2016
+      },
+      {
+        "name": "Greyfeather Games Tools",
+        "domain": "greyfeather.example",
+        "line": "Live ops dashboards and A/B testing for mobile game studios.",
+        "employee_count": 64,
+        "hq": "Helsinki",
+        "founded": 2018
+      },
+      {
+        "name": "Ironbridge Dev Tools",
+        "domain": "ironbridgedev.example",
+        "line": "Continuous integration runners and build caching for engineering teams.",
+        "employee_count": 55,
+        "hq": "Berlin",
+        "founded": 2019
+      },
+      {
+        "name": "Saltwick Studio",
+        "domain": "saltwick.example",
+        "line": "Audio editing app for podcast producers, with transcript-based cuts.",
+        "employee_count": 48,
+        "hq": "Brighton",
+        "founded": 2020
+      },
+      {
+        "name": "Lantern Hill Software",
+        "domain": "lanternhill.example",
+        "line": "Inventory and point of sale software for independent bookshops.",
+        "employee_count": 41,
+        "hq": "Warsaw",
+        "founded": 2017
+      },
+      {
+        "name": "Nimbus Fold",
+        "domain": "nimbusfold.example",
+        "line": "Form builder and e-signature tool for small accounting firms.",
+        "employee_count": 36,
+        "hq": "Tallinn",
+        "founded": 2021
+      },
+      {
+        "name": "Orrery Labs",
+        "domain": "orrerylabs.example",
+        "line": "Calendar and booking software for music schools and tutors.",
+        "employee_count": 30,
+        "hq": "Vienna",
+        "founded": 2022
+      },
+      {
+        "name": "Pebblecast",
+        "domain": "pebblecast.example",
+        "line": "Podcast hosting with chapter markers and listener stats.",
+        "employee_count": 24,
+        "hq": "Porto",
+        "founded": 2022
+      }
+    ],
+    "account_rank": 14,
+    "account_line": "Pixelforge builds a video editing app for social media teams with about 120 people in Berlin and Lisbon, announced a Series B on October 7, and posted 9 engineering roles in the last 30 days."
+  }
+}

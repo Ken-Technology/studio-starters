@@ -4,7 +4,7 @@
   "tags": ["top 25", "ranked list", "hiring signals", "market", "growth"],
   "featured": false,
   "needs": [],
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updatedAt": "2026-10-29",
   "samples": [
     { "id": "tollgate", "label": "Tollgate Logistics" },

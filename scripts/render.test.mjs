@@ -80,7 +80,7 @@ test('a preview links to "#", reads assets from main and keeps the template defa
   const acme = render(SAMPLES.acme, template);
   assert.match(acme, /<a class="ken-cta" data-ken-cta="booking" href="#" style="[^"]*background:#111827;/);
   // The edge serves {{ asset_url }}/<path> from assets/, so the preview points at that folder on main.
-  assert.match(acme, new RegExp(`<img src="${RAW_BASE}/${SLUG}/assets/logo\\.svg" alt="">`));
+  assert.ok(acme.includes(`<img src="${RAW_BASE}/${SLUG}/assets/logo.svg" alt="">`), acme);
   assert.equal(RAW_BASE, 'https://raw.githubusercontent.com/Ken-Technology/studio-starters/main/starters');
   assert.match(acme, /<a href="#">Page<\/a>/);
   assert.match(acme, /h1\{color:#1f4e79\}/);

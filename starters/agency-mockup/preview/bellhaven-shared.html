@@ -5,122 +5,117 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Your new homepage, sketched: Bellhaven Physio</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;700&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f3f3f0;color:#15171a;font-family:'Source Sans 3',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.am{--a:#1f2d3d;--a2:#b08d57;--ink:#15171a;--mute:#646871;--line:#d9dad5;--sheet:#fff;--clip:#e8e8e3}
-.am h1,.am h2,.am h3{font-family:'Newsreader',ui-sans-serif,system-ui,sans-serif;font-weight:700;line-height:1.1;letter-spacing:-.018em;margin:0;text-wrap:balance}
-.am p{margin:0 0 .9rem}
-.am-wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
-.am-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
-.am-logo{height:24px;width:auto;display:block}
-.am-brand{font-weight:700;font-size:.95rem;margin:0!important}
-.am-for{font-size:.85rem;color:var(--mute);margin:0!important;text-align:right}
-.am-for b{color:var(--ink);font-weight:600}
-.am-intro{padding:2.2rem 0 2rem}
-.am h1{font-size:2.3rem;margin:0 0 1rem}
-.am-lead{font-size:1.1rem;line-height:1.5;max-width:34rem}
-.am-summary{font-size:1.05rem;line-height:1.5;max-width:34rem;color:#2d3035}
-.am-meta{margin:1.6rem 0 0;padding:0;border-top:2px solid var(--ink)}
-.am-meta div{display:grid;grid-template-columns:6.5rem 1fr;gap:.6rem;padding:.6rem 0;border-bottom:1px solid var(--line)}
-.am-meta dt{font-size:.82rem;color:var(--mute);padding-top:.15rem}
-.am-meta dd{margin:0;font-weight:500}
-.am-meta small{display:block;font-weight:400;color:var(--mute);font-size:.86rem}
-.am-key{font-size:.9rem;color:var(--mute);margin:1.2rem 0 0!important}
-.am-k{display:inline-flex;align-items:center;justify-content:center;flex:none;width:20px;height:20px;border-radius:50%;background:var(--a);color:#fff;font-family:'Source Sans 3',ui-sans-serif,system-ui,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:0;line-height:1;vertical-align:top;margin-left:.35rem;position:relative;top:.05em}
-.am-part{padding:1.8rem 0 0}
-.am-part h2{font-size:1.45rem;margin:0 0 .9rem}
-.am-clip{background:var(--clip);border-radius:6px;padding:.9rem 1rem 1rem;margin:0 0 1rem}
-.am-clip .am-src{font-size:.78rem;color:var(--mute);margin:0 0 .55rem!important;padding-bottom:.45rem;border-bottom:1px solid #d6d6d0}
-.am-clip .am-src b{color:var(--a2);font-weight:600}
-.am-clip h3{font-family:inherit;font-weight:600;font-size:1.05rem;line-height:1.3;letter-spacing:0;margin:0 0 .4rem;text-wrap:pretty}
-.am-clip p{font-size:.95rem;color:#3a3d42;margin:0 0 .6rem}
-.am-clip .am-btn-today{display:inline-block;border:1px solid #9b9d99;border-radius:999px;padding:.2rem .7rem;font-size:.85rem;color:#3a3d42;background:#f6f6f3}
-.am-clip .am-btn-lbl{font-size:.8rem;color:var(--mute);margin-right:.4rem}
-.am-clip .am-none{font-size:.92rem;color:var(--mute);margin:0}
-.am-notes{list-style:none;margin:0 0 1.4rem;padding:0;border-top:1px solid var(--line)}
-.am-notes li{display:grid;grid-template-columns:20px 1fr;gap:.6rem;padding:.65rem 0;border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.5}
-.am-notes li .am-k{margin:.15rem 0 0}
-.am-notes b{font-weight:600}
-.am-frame{background:var(--sheet);border:1.5px solid var(--ink);border-radius:10px;margin:0 0 1.2rem;overflow:hidden}
-.am-chrome{display:flex;align-items:center;gap:.5rem;padding:.55rem .8rem;background:#f3f3f0;border-bottom:1px solid var(--line)}
-.am-chrome i{width:9px;height:9px;border-radius:50%;background:#c9cac5;display:block}
-.am-chrome span{flex:1;margin-left:.3rem;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.15rem .7rem;font-size:.78rem;color:var(--mute);text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.am-mock{padding:1rem 1.1rem 1.3rem}
-.am-nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:0 0 .9rem;border-bottom:1px solid var(--line);margin:0 0 1.4rem}
-.am-nav b{font-size:.95rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.am-bars{display:flex;gap:.55rem;flex:none}
-.am-bars i{display:block;width:30px;height:7px;border-radius:4px;background:#d4d5d0}
-.am-bars i:last-child{display:none}
-.am-navbtn{display:block;flex:none;width:52px;height:22px;border:1.5px solid var(--ink);border-radius:5px}
-.am-hero h3{font-size:1.55rem;line-height:1.12;margin:0 0 .7rem;max-width:22ch}
-.am-hero .am-sub{font-size:1rem;line-height:1.5;color:#3a3d42;max-width:40ch;margin:0 0 1rem}
-.am-btn{display:inline-block;background:var(--ink);color:#fff;border-radius:6px;padding:.6rem 1rem;font-weight:600;font-size:.95rem;line-height:1.3}
-.am-cta-row{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem 1rem;margin:0 0 1rem}
-.am-proof{font-size:.85rem;color:var(--mute);margin:0 0 1.2rem;display:flex;align-items:flex-start;gap:.5rem}
-.am-proof .am-k{margin:.1rem 0 0}
-.am-proof::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--ink);margin-top:.5em}
-.am-img{position:relative;border:1.5px solid var(--ink);border-radius:6px;aspect-ratio:16/8;overflow:hidden;background:#fafaf8}
-.am-img>svg{position:absolute;inset:0;width:100%;height:100%}
-.am-img>span{position:absolute;left:.6rem;right:.6rem;bottom:.5rem;font-size:.8rem;color:var(--ink);background:#fff;padding:.25rem .5rem;border-radius:4px;display:inline-block;width:fit-content;max-width:calc(100% - 1.2rem)}
-.am-sec{padding:1.3rem 0 0}
-.am-sec h3{font-size:1.3rem;line-height:1.15;margin:0 0 .5rem;max-width:26ch}
-.am-sec .am-sub{font-size:.95rem;line-height:1.5;color:#3a3d42;max-width:48ch;margin:0 0 1rem}
-.am-points{display:grid;gap:.9rem;margin:0;padding:0;list-style:none}
-.am-points li{border-top:2px solid var(--ink);padding:.6rem 0 0}
-.am-points b{display:block;font-size:.95rem;font-weight:700;margin:0 0 .25rem}
-.am-points p{font-size:.88rem;line-height:1.45;color:#3a3d42;margin:0}
-.am-cap{font-size:.82rem;color:var(--mute);margin:0 0 1.5rem}
-.am-next{padding:1.2rem 0 1.5rem;border-top:1px solid var(--line);margin-top:.6rem}
-.am-box{background:var(--sheet);border:1.5px solid var(--ink);border-radius:10px;padding:1.4rem 1.2rem 1.3rem}
-.am-box h2{font-size:1.4rem;margin:0 0 .6rem}
-.am-box p{max-width:36rem}
-.am-cta{margin:1.1rem 0 1.2rem}
-.am-cta .ken-cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.am-sign{font-size:.95rem;margin:0!important}
-.am-sign span{display:block;color:var(--mute)}
-.am-how{margin:1.4rem 0 0;padding:1rem 0 0;border-top:1px solid var(--line)}
-.am-how h3{font-family:inherit;font-size:.95rem;font-weight:600;letter-spacing:0;margin:0 0 .4rem}
-.am-how p{font-size:.9rem;color:var(--mute);margin:0 0 .5rem}
-.am-foot{font-size:.8rem;color:var(--mute);padding:0 0 2.2rem;margin:0!important}
-@media (min-width:520px){
-.am-bars i:last-child{display:block}
-.am-points{grid-template-columns:repeat(3,1fr);gap:1.2rem}
+body{margin:0;background:#e2e2e2;color:#7d0c14;font-family:'Source Sans 3',ui-sans-serif,system-ui,sans-serif;font-size:1.125rem;line-height:1.5;-webkit-font-smoothing:antialiased}
+.am{--paper:#e2e2e2;--surface:#d6d6d6;--sheet:#f2f2f2;--a:#1f2d3d;--a2:#b08d57;--ink:#7d0c14;--ink:oklch(from var(--a) min(l,0.36) min(c,0.16) h);--muted:#6e3a3e;--muted:color-mix(in oklch,var(--ink) 78%,var(--paper));--f-ink:#e2e2e2;--f-ink:oklch(from var(--a) clamp(0.2,(0.62 - l) * 1000,0.92) 0 0);--m:clamp(1rem,2.4vw,2rem);--head:'Newsreader',ui-sans-serif,system-ui,sans-serif;color:var(--ink)}
+.am h1,.am h2,.am h3{font-family:var(--head);font-weight:700;line-height:1;letter-spacing:-.03em;margin:0;text-wrap:balance}
+.am p{margin:0;text-wrap:pretty}
+.am ol,.am ul{margin:0;padding:0;list-style:none}
+.am ::selection{background:var(--a);color:var(--f-ink)}
+.am-wrap{max-width:90rem;margin:0 auto;padding:0 var(--m)}
+.am-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
+.am-logo{height:26px;width:auto;display:block}
+.am-brand{font-family:var(--head);font-weight:700;font-size:1.125rem}
+.am-for{font-size:.9375rem;text-align:right}
+.am-for b{font-weight:600}
+.am-board{display:grid;grid-template-columns:minmax(0,1fr);gap:.5rem}
+.am-tile{padding:1.25rem 1.25rem 1.5rem;display:flex;flex-direction:column;justify-content:flex-end;gap:.75rem}
+.am-tA{background:var(--a);color:var(--f-ink);min-height:18rem}
+.am h1{font-size:clamp(2.1rem,.6rem + 4.2vw,5.25rem);line-height:.92;letter-spacing:-.045em}
+.am-tB{background:var(--surface)}
+.am-tC{background:var(--sheet)}
+.am-cap{font-size:.9375rem;color:var(--muted)}
+.am-old,.am-new{font-family:var(--head);font-size:clamp(1.5rem,1rem + 1.6vw,2.25rem);line-height:1.1;letter-spacing:-.025em;font-weight:600}
+.am-old{color:var(--muted);text-decoration:line-through;text-decoration-thickness:.09em;text-decoration-color:var(--a2)}
+.am-old.is-long{font-size:1.5rem}
+.am-new{font-weight:700}
+.am-stand{display:grid;gap:1.75rem;padding:2.5rem 0 4.5rem}
+.am-lead{font-size:clamp(1.25rem,1rem + .8vw,1.5rem);line-height:1.35;max-width:36ch}
+.am-stand p+p{margin-top:1rem}
+.am-meta{margin:0;display:grid;gap:.9rem;align-content:start}
+.am-meta dt{font-size:.9375rem;color:var(--muted)}
+.am-meta dd{margin:0;font-weight:600}
+.am-meta small{display:block;font-weight:400}
+.am-part{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem;padding:0 0 4.5rem}
+.am-part h2,.am-next h2{font-size:clamp(2rem,1.2rem + 2.8vw,3.75rem);letter-spacing:-.035em}
+.am-clip{background:var(--surface);padding:1.25rem 1.25rem 1.5rem;border-left:6px solid var(--a2)}
+.am-clip .am-cap{margin:0 0 .75rem}
+.am-clip h3{font-family:inherit;font-weight:600;font-size:1.125rem;line-height:1.35;letter-spacing:0;margin:0 0 .5rem;text-wrap:pretty}
+.am-clip p{color:var(--muted)}
+.am-clip .am-btn-today{display:inline-block;margin:.75rem 0 0;font-weight:600;color:var(--ink)}
+.am-k{display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--a);color:var(--f-ink);font-family:var(--head);font-size:.9375rem;font-weight:700;letter-spacing:0;line-height:1;vertical-align:.35em;margin-left:.4rem}
+.am-notes{display:grid;gap:1rem;align-content:start}
+.am-notes li{display:grid;grid-template-columns:1.5rem 1fr;gap:.75rem;line-height:1.5}
+.am-notes li .am-k{margin:.1rem 0 0;vertical-align:0}
+.am-notes b{font-weight:700}
+.am-sheet{background:var(--sheet);padding:1.25rem 1.25rem 1.75rem}
+.am-nav{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.25rem 1rem;margin:0 0 2rem}
+.am-nav b{font-family:var(--head);font-size:1.125rem;font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.am-nav span{font-size:.9375rem;color:var(--muted);white-space:nowrap}
+.am-hero h3{font-size:clamp(2rem,1.3rem + 2.2vw,3.25rem);line-height:.98;letter-spacing:-.04em;margin:0 0 1rem;max-width:20ch}
+.am-hero .am-sub{font-size:1.125rem;max-width:40ch;margin:0 0 1.5rem}
+.am-cta-row{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem;margin:0 0 1.25rem}
+.am-btn{display:inline-block;background:var(--a);color:var(--f-ink);padding:.7rem 1.2rem;font-family:var(--head);font-weight:700;font-size:1.125rem;line-height:1.3}
+.am-proof{font-size:.9375rem;color:var(--muted);margin:0 0 1.5rem;max-width:40ch}
+.am-img{background:var(--surface);aspect-ratio:4/3;display:flex;align-items:flex-end;padding:1.1rem;margin:1.5rem 0 0}
+.am-img p{font-family:var(--head);font-weight:600;font-size:1.25rem;line-height:1.25;max-width:22ch}
+.am-sec h3{font-size:clamp(1.75rem,1.2rem + 1.6vw,2.5rem);line-height:1.02;letter-spacing:-.035em;margin:0 0 .75rem;max-width:20ch}
+.am-sec .am-sub{font-size:1.125rem;max-width:48ch;margin:0 0 1.75rem}
+.am-points{display:grid;gap:1.5rem}
+.am-points li{border-top:4px solid var(--ink);padding:.9rem 0 0}
+.am-points b{display:block;font-family:var(--head);font-size:1.25rem;font-weight:700;line-height:1.2;margin:0 0 .4rem}
+.am-note-none{color:var(--muted)}
+.am-capline{font-size:.9375rem;color:var(--muted);max-width:60ch}
+.am-next{background:var(--a);color:var(--f-ink);padding:4.5rem 0 2.5rem}
+.am-next-in{display:grid;gap:2.5rem}
+.am-next p{max-width:38rem}
+.am-next-main p{margin:1.25rem 0 0}
+.am-cta{margin:2rem 0 0}
+.am .ken-cta{display:inline-flex!important;align-items:center;min-height:52px;padding:.85rem 1.6rem!important;border-radius:0!important;background:var(--f-ink)!important;color:var(--a)!important;font-family:var(--head);font-size:1.125rem;font-weight:700!important;text-decoration:none}
+.am .ken-cta:hover{background:var(--sheet)!important}
+.am .ken-cta:focus-visible,.am a:focus-visible{outline:3px solid var(--f-ink);outline-offset:4px}
+.am-sign{margin:2rem 0 0!important;font-weight:600}
+.am-sign span{display:block;font-weight:400}
+.am-how h3{font-family:var(--head);font-size:1.5rem;font-weight:700;letter-spacing:-.02em;margin:0 0 .75rem}
+.am-how p+p{margin-top:.75rem}
+.am-foot{margin:4rem 0 0!important;font-size:.9375rem}
+@keyframes am-strike{from{text-decoration-color:transparent}}
+@keyframes am-rise{from{opacity:0;transform:translateY(14px)}}
+.am-old{animation:am-strike .4s ease-out .3s both}
+.am-tC .am-new{animation:am-rise .5s cubic-bezier(.2,.7,.2,1) .6s both}
+@media (prefers-reduced-motion:reduce){.am-old,.am-tC .am-new{animation:none}}
+@media (min-width:600px){
+.am-points{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media (min-width:900px){
-body{font-size:17px}
-.am-wrap{padding:0 2.5rem}
-.am-top{padding:1.2rem 0}
-.am-intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:3rem;padding:2.8rem 0 2.4rem;align-items:start}
-.am h1{font-size:3.2rem}
-.am-lead{font-size:1.2rem}
-.am-summary{font-size:1.1rem}
-.am-meta{margin:0}
-.am-part{display:grid;grid-template-columns:minmax(0,4.5fr) minmax(0,7.5fr);grid-template-areas:"head sketch" "clip sketch" "notes sketch" ". cap";grid-template-rows:auto auto 1fr auto;column-gap:3rem;padding:0}
-.am-part h2{grid-area:head;font-size:1.6rem;margin:2.2rem 0 1rem}
-.am-part-first h2{margin-top:0}
-.am-clip{grid-area:clip;padding:1.1rem 1.2rem 1.2rem}
-.am-notes{grid-area:notes;align-self:start}
-.am-frame{grid-area:sketch;margin:0;height:100%}
-.am-frame-top{border-bottom:0;border-radius:10px 10px 0 0}
-.am-frame-bottom{border-top:0;border-radius:0 0 10px 10px}
-.am-cap{grid-area:cap;margin:.9rem 0 0}
-.am-mock{padding:1.6rem 2rem 2rem}
-.am-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:1.6rem;align-items:center}
-.am-hero h3{font-size:2rem}
-.am-hero .am-sub{font-size:1.05rem}
+.am-board{grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:minmax(17rem,1fr) minmax(17rem,1fr);min-height:min(74vh,44rem)}
+.am-tile{padding:1.5rem 1.75rem 1.75rem}
+.am-tA{grid-column:1/8;grid-row:1/3}
+.am-tB{grid-column:8/13;grid-row:1}
+.am-tC{grid-column:8/13;grid-row:2}
+.am-stand{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;padding:3.5rem 0 7rem}
+.am-meta{grid-column:1/5;grid-row:1}
+.am-stand-text{grid-column:6/13;grid-row:1}
+.am-part{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;row-gap:1.5rem;padding:0 0 7rem;align-items:start}
+.am-part h2{grid-column:6/13}
+.am-hero-part .am-clip{grid-column:1/6;grid-row:2}
+.am-hero-part .am-sheet{grid-column:6/13;grid-row:2/4}
+.am-hero-part .am-notes{grid-column:1/6;grid-row:3}
+.am-sec-part .am-sheet{grid-column:1/13}
+.am-sec-part .am-clip{grid-column:1/6}
+.am-sec-part .am-notes,.am-sec-part .am-capline{grid-column:6/13}
+.am-sheet{padding:1.5rem 2rem 2.25rem}
+.am-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:0 1.75rem;align-items:start}
+.am-hero h3{grid-column:1/-1;margin-bottom:1.5rem}
+.am-img{margin:0}
 .am-proof{margin:0}
-.am-img{aspect-ratio:4/3}
-.am-sec{padding:2.4rem 0 .4rem}
-.am-sec h3{font-size:1.6rem}
-.am-sec .am-sub{font-size:1rem}
-.am-points p{font-size:.9rem}
-.am-next{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:3rem;padding:2.4rem 0 2.2rem;margin-top:1.2rem}
-.am-box{padding:2rem 2.2rem 1.8rem}
-.am-box h2{font-size:1.7rem}
-.am-how{margin:0;padding:.4rem 0 0;border-top:0}
+.am-next{padding:7rem 0 3rem}
+.am-next-in{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;align-items:start}
+.am-how{grid-column:1/5;padding-top:.75rem}
+.am-next-main{grid-column:6/13;grid-row:1}
 }
 </style>
 </head>
@@ -131,42 +126,44 @@ body{font-size:17px}
 </header>
 
 <section data-section="intro" class="am-intro">
-<div>
-<h1>Your new homepage, sketched</h1>
-<p class="am-lead">This is the top of bellhavenphysio.example as it reads today, next to the same two parts sketched again from the words and facts already on it. Nothing here is final, and every line can change.</p>
-<p class="am-summary">Your homepage leads with a welcome and a line about moving better. The sketch leads with same-week appointments at four clinics around Leeds, which the page says further down.</p>
-<p class="am-key">Numbered marks on the sketch show what changed. The notes beside each part say why.</p>
+<div class="am-board">
+<div class="am-tile am-tA"><h1>Your new homepage, sketched</h1></div>
+<div class="am-tile am-tB"><p class="am-old">Welcome to Bellhaven Physio</p><p class="am-cap">Your headline on bellhavenphysio.example today</p></div>
+<div class="am-tile am-tC"><p class="am-new">Physio in Leeds this week, at four clinics, billed to your insurer</p><p class="am-cap">The same line, sketched again</p></div>
 </div>
+<div class="am-stand">
 <dl class="am-meta">
 <div><dt>Sketched for</dt><dd>Bellhaven Physio<small>Shared with the team</small></dd></div>
 <div><dt>By</dt><dd>Priya Natarajan<small>Founder, Oldfield &amp; Co</small></dd></div>
 <div><dt>Built from</dt><dd>bellhavenphysio.example<small>The hero and the What we treat section, copy only</small></dd></div>
 </dl>
+<div class="am-stand-text">
+<p class="am-lead">This is the top of bellhavenphysio.example as it reads today, next to the same two parts sketched again from the words and facts already on it. Nothing here is final, and every line can change.</p>
+<p>Your homepage leads with a welcome and a line about moving better. The sketch leads with same-week appointments at four clinics around Leeds, which the page says further down.</p>
+<p class="am-cap">Numbered marks on the sketch show what changed. The notes beside each part say why.</p>
+</div>
+</div>
 </section>
 
-<section data-section="hero" class="am-part am-part-first">
+<section data-section="hero" class="am-part am-hero-part">
 <h2>The hero</h2>
 <div class="am-clip">
-<p class="am-src">On <b>bellhavenphysio.example</b> today</p>
+<p class="am-cap">On bellhavenphysio.example today</p>
 <h3>Welcome to Bellhaven Physio</h3>
 <p>We are dedicated to helping you move better, feel better and live better through expert, personalised physiotherapy care.</p>
-<p style="margin:0"><span class="am-btn-lbl">Button</span><span class="am-btn-today">Book now</span></p>
+<p class="am-btn-today">Button: Book now</p>
 </div>
-<div class="am-frame am-frame-top">
-<div class="am-chrome" aria-hidden="true"><i></i><i></i><i></i><span>bellhavenphysio.example</span></div>
-<div class="am-mock">
-<div class="am-nav" aria-hidden="true"><b>Bellhaven Physio</b><span class="am-bars"><i></i><i></i><i></i></span><span class="am-navbtn"></span></div>
+<div class="am-sheet" data-ui>
+<div class="am-nav" aria-hidden="true"><b>Bellhaven Physio</b><span>bellhavenphysio.example</span></div>
 <div class="am-hero">
-<div>
 <h3>Physio in Leeds this week, at four clinics, billed to your insurer<span class="am-k">1</span></h3>
+<div>
 <p class="am-sub">Same-week appointments at Bellhaven&#39;s four clinics around Leeds, with direct billing to the main private insurers.<span class="am-k">2</span></p>
 <div class="am-cta-row"><span class="am-btn">Book now</span></div>
-<p class="am-proof"><span>Four clinics, including the new one in Headingley</span><span class="am-k">3</span></p>
+<p class="am-proof">Four clinics, including the new one in Headingley<span class="am-k">3</span></p>
 </div>
-<div class="am-img" role="img" aria-label="Picture placeholder: A physiotherapist with a patient in the Headingley treatment room">
-<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 100M100 0L0 100" stroke="#c9cac5" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
-<span>Picture: A physiotherapist with a patient in the Headingley treatment room</span>
-</div>
+<div class="am-img" role="img" aria-label="Picture to shoot: A physiotherapist with a patient in the Headingley treatment room">
+<p>Picture to shoot: A physiotherapist with a patient in the Headingley treatment room</p>
 </div>
 </div>
 </div>
@@ -177,15 +174,9 @@ body{font-size:17px}
 </ol>
 </section>
 
-<section data-section="section" class="am-part">
+<section data-section="section" class="am-part am-sec-part">
 <h2>Below it: What we treat</h2>
-<div class="am-clip">
-<p class="am-src">On <b>bellhavenphysio.example</b> today</p>
-<h3>What we treat</h3>
-<p style="margin:0">Our highly qualified physiotherapists treat a wide range of conditions, from sports injuries and back pain to post-surgical rehabilitation. Whatever your goal, we will create a personalised treatment plan to get you there.</p>
-</div>
-<div class="am-frame am-frame-bottom">
-<div class="am-mock">
+<div class="am-sheet" data-ui>
 <div class="am-sec">
 <h3>What we treat, and how soon you are seen<span class="am-k">4</span></h3>
 <p class="am-sub">Three things Bellhaven treats, and what the first visit looks like for each.</p>
@@ -196,16 +187,23 @@ body{font-size:17px}
 </ul>
 </div>
 </div>
+<div class="am-clip">
+<p class="am-cap">On bellhavenphysio.example today</p>
+<h3>What we treat</h3>
+<p>Our highly qualified physiotherapists treat a wide range of conditions, from sports injuries and back pain to post-surgical rehabilitation. Whatever your goal, we will create a personalised treatment plan to get you there.</p>
 </div>
 <ol class="am-notes">
 <li><span class="am-k">4</span><span><b>Section heading.</b> Adds how soon to the what, because the wait is the question a patient asks before the condition.</span></li>
 <li><span class="am-k">5</span><span><b>The three points.</b> The three conditions you list get a line each on what the first visit looks like, so a reader can see themselves in one of them.</span></li>
 </ol>
-<p class="am-cap">Sketched from the copy on bellhavenphysio.example and nothing else. Layout and type are a starting point, the picture is a placeholder, and the menu stays as it is.</p>
+<p class="am-capline">Sketched from the copy on bellhavenphysio.example and nothing else. Layout and type are a starting point, the picture is a brief for a photo you take, and the menu stays as it is.</p>
 </section>
+</div>
 
 <section data-section="next" class="am-next">
-<div class="am-box">
+<div class="am-wrap">
+<div class="am-next-in">
+<div class="am-next-main">
 <h2>Want the rest of the page?</h2>
 <p>Thirty minutes is enough to walk through the sketch on a screen, hear what is off, and decide whether a full homepage is worth doing. If you would rather, reply with notes and I will revise this page.</p>
 <div class="am-cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1f2d3d;color:#fff;text-decoration:none;font-weight:600">Book 30 minutes</a></div>
@@ -215,11 +213,12 @@ body{font-size:17px}
 <h3>How this was made</h3>
 <p>Every line in the sketch comes from the copy on bellhavenphysio.example. No customer names, numbers or claims were added.</p>
 <p>The layout is the same for every sketch we send: a hero with a headline, a line under it, a button, a proof line and a picture, then one section with three points. The point is the words, not the grid.</p>
-<p>The quotes on the left are your page as it reads today, copied word for word.</p>
+<p>The grey panels are your page as it reads today, copied word for word.</p>
 </div>
-</section>
+</div>
 <p class="am-foot">Sketched for Bellhaven Physio by Priya Natarajan at Oldfield &amp; Co. This is a private link.</p>
 </div>
+</section>
 </main>
 </body>
 </html>

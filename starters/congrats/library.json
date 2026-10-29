@@ -4,7 +4,7 @@
   "tags": ["congratulations", "signals", "new role", "funding", "launch"],
   "featured": false,
   "needs": [],
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updatedAt": "2026-10-29",
   "samples": [
     { "id": "larkspur", "label": "Larkspur Health" },

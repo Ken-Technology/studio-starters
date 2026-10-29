@@ -1,0 +1,145 @@
+{
+  "kenStudio": "1",
+  "name": "Fits your stack",
+  "type": "landing_page",
+  "format": "page",
+  "slug": "fits-your-stack",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "integrations": {
+        "type": "array",
+        "maxItems": 60,
+        "items": {
+          "type": "object",
+          "properties": {
+            "tool": { "type": "string", "maxLength": 60 },
+            "category": { "type": "string", "maxLength": 28 },
+            "aliases": { "type": "string", "maxLength": 120 },
+            "connection": { "type": "string", "maxLength": 60 },
+            "summary": { "type": "string", "maxLength": 320 },
+            "syncs": { "type": "string", "maxLength": 200 },
+            "setup": { "type": "string", "maxLength": 160 },
+            "docs_url": { "type": "string", "maxLength": 200 }
+          },
+          "required": ["tool", "category", "connection", "summary"]
+        }
+      },
+      "site": { "type": "object" },
+      "careers": { "type": "object" },
+      "tools": {
+        "type": "array",
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string", "maxLength": 60 },
+            "category": { "type": "string", "maxLength": 28 },
+            "clue": { "type": "string", "minLength": 10, "maxLength": 160 },
+            "source": { "type": "string", "enum": ["site", "careers"] }
+          },
+          "required": ["name", "category", "clue", "source"]
+        }
+      },
+      "headline": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 90,
+        "fallback": "How {{ brand.name | default: 'our product' }} fits the tools {{ account.name }} runs"
+      },
+      "intro": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 320,
+        "fallback": "We read {{ account.name }}'s site and careers page to guess which tools you already run. Each one below is a guess, so tell us where we are wrong, and we will show how {{ brand.name | default: 'our product' }} plugs into the rest."
+      },
+      "matches": {
+        "type": "array",
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "tool": { "type": "string", "maxLength": 60 },
+            "change": { "type": "string", "minLength": 20, "maxLength": 260 }
+          },
+          "required": ["tool", "change"]
+        }
+      },
+      "closing": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 320,
+        "fallback": "If a guess above is wrong, or we missed a tool, reply and we will redo this page. Twenty minutes with the people who run those tools is enough to agree on which one to connect first."
+      }
+    },
+    "required": ["headline", "intro", "closing"]
+  },
+  "recipe": [
+    {
+      "id": "catalog",
+      "kind": "dataset",
+      "dataset": "integrations",
+      "limit": 60,
+      "to": "data.integrations"
+    },
+    {
+      "id": "site",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}", "maxChars": 12000, "mode": "markdown" },
+      "to": "data.site"
+    },
+    {
+      "id": "careers",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}/careers", "maxChars": 12000, "mode": "markdown" },
+      "to": "data.careers"
+    },
+    {
+      "id": "guess",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.site"],
+      "inputs": ["account.name", "account.domain", "brand.name", "data.site", "data.careers", "data.integrations"],
+      "to": ["data.tools"],
+      "prompt": "You are reading {{ account.name }}'s website and careers page to guess which software tools they run today. {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} will show how {{ brand.name | default: 'our product' }} plugs into those tools.\n\nInputs: data.site is their website as text. data.careers is their careers page as text, and may be empty. Our integration list, for spelling only: {{ data.integrations | json }}. Nothing else.\n\nReturn JSON {\"tools\": [...]} with at most 8 items, strongest evidence first. Each item is {name, category, clue, source}:\n- name: the tool's name as people say it, like Salesforce or NetSuite, at most 60 characters. When the tool is in our integration list under tool or aliases, spell it exactly as that row's tool column does.\n- category: what kind of tool it is, at most 28 characters, like CRM, ERP and accounting, Messaging, Identity and SSO. When the tool is in our list, copy that row's category.\n- clue: one sentence, at most 160 characters, that says where on the page the tool shows up and what the page says, like \"The staff accountant posting asks for daily work in NetSuite\". It quotes or closely paraphrases the page.\n- source: site when the clue comes from data.site, careers when it comes from data.careers.\n\nList a tool only when a page names it, or names something only that tool has (a certification, a product module, a job title that carries the vendor's name). A tool the pages do not name is not a guess, it is made up: leave it out. Do not infer a tool from the company's industry or size. Do not list {{ brand.name | default: 'our product' }} itself. If you find nothing, return {\"tools\": []}.\n\nRules for every string: no em dashes or en dashes, no exclamation marks, no email addresses or phone numbers."
+    },
+    {
+      "id": "copy",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.tools"],
+      "inputs": ["account.name", "account.domain", "account.dossier.summary", "brand.name", "data.tools", "data.integrations"],
+      "to": ["data.headline", "data.intro", "data.matches", "data.closing"],
+      "prompt": "Write the page copy for {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it. The page shows how {{ brand.name | default: 'our product' }} plugs into the tools {{ account.name }} likely runs. \"We\" and \"us\" mean {{ brand.name | default: 'our company' }}.\n\nInputs: data.tools are the tools we guessed from their site and careers page, each with a clue and a source. data.integrations is our integration list; each row has tool, category, aliases, connection, summary, syncs, setup and docs_url. What we know about {{ account.name }}: {{ account.dossier.summary | default: 'nothing beyond the name' }}. Nothing else.\n\nReturn JSON with these keys:\n- headline: at most 90 characters, sentence case, naming {{ brand.name | default: 'our product' }} next to one to three of the guessed tools that are in our list, like \"Plinth next to NetSuite and Slack at Marlow Freight\". If none of the guessed tools is in our list, name {{ account.name }} and the tools we guessed instead.\n- intro: 1 to 3 sentences, 40 to 320 characters. Say that the tools below are guesses from their site and careers page, ask them to correct you, and say how many of the guessed tools we connect to today. If data.integrations is empty, leave that count out.\n- matches: one item for each tool in data.tools whose name equals a row's tool, or appears in that row's aliases, in the same order as data.tools. Each is {tool, change}. tool is the row's tool column, copied exactly. change is 1 or 2 sentences, 20 to 260 characters, on what changes day to day for the people at {{ account.name }} who use that tool, built only from the row's summary and syncs and the tool's clue. Describe their work in the terms the clue uses. Say nothing the row does not say. A tool with no row gets no item. If data.integrations is empty, matches is [].\n- closing: 1 to 3 sentences, 20 to 320 characters. Invite them to correct a wrong guess or add a tool you missed, and ask for a short call to agree on which tool to connect first. Never ask for a demo.\n\nAddress the reader as you. Never use their name, their title or a greeting; the page prints those. Never state that {{ account.name }} runs a tool as a fact: it is a guess, and the words should say so where it matters. Never invent tools, integrations, customers, numbers, timings or results. Never add a claim about {{ brand.name | default: 'our product' }} that a row does not make.\n\nVoice: one person writing to a peer. Plain words, short sentences a person would say out loud. No hype words (seamless, unlock, leverage, robust, powerful, transform, game changer, cutting edge, revolutionize, supercharge).\n\nRules for every string: no em dashes or en dashes, no exclamation marks, no email addresses or phone numbers, no prices."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "requires": ["data.headline"],
+      "on": ["data.headline", "data.intro", "data.matches", "data.closing"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["demo", "seamless", "unlock", "leverage", "robust", "game changer", "game-changer", "cutting edge", "cutting-edge", "revolutionize", "supercharge"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true,
+        "no_signoff": true,
+        "skip": ["tool"]
+      },
+      "rubric": "Grade the page copy for {{ account.name }} the way its reader would: headline, intro, each change line in matches, then closing. 10 is copy a busy buyer reads in one pass and trusts.\nScore these, 0 to 10 each:\n- honest: the copy treats the account's tools as guesses from their site and careers page, never as known facts, and claims nothing about how they work beyond what the clue says.\n- grounded: every claim about an integration appears in its row of the integration list below (summary, syncs, setup), and every change line describes a change that row supports.\n- plain: short sentences a person would say out loud, no jargon a buyer would not use, no marketing adjectives.\n- specific: each change line is about this tool and this account's clue, not a benefit that could go on any page.\nAnswer yes or no:\n- would_reply: would a buyer at {{ account.name }} plausibly answer the closing?\n- weird_word: is there a phrase a person would not say out loud? Quote it.\nAutomatic fail: an em dash or en dash, an exclamation mark, the word demo, a greeting or the reader's name in the copy, a tool in matches that is not in the integration list, a claim about an integration that its row does not support, a number, customer or result that no input holds, or a tool stated as something the account runs for certain.\nGuessed tools, the only source for facts about {{ account.name }}'s tools: {{ data.tools | json }}\nIntegration list, the only source for facts about {{ brand.name | default: 'our product' }}: {{ data.integrations | json }}\nPass when the overall score is 7.5 or higher, no check is 6 or lower, would_reply is yes and weird_word is no. On a fail, name the check and quote the phrase to change. The fix never supplies replacement sentences, tools or numbers."
+    }
+  ],
+  "sections": [
+    { "id": "hero", "label": "Hero" },
+    { "id": "tools", "label": "Tools we spotted" },
+    { "id": "integrations", "label": "How it plugs in" },
+    { "id": "setup", "label": "Setting it up" },
+    { "id": "catalog", "label": "Also in our list" },
+    { "id": "next", "label": "Next step" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

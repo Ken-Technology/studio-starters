@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>10 checks before you sign a distribution agreement</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{margin:0;background:#fff}
+.ck{--a:#ff4d1f;--a2:#1d1d1b;--ink:#161616;--mute:#67665f;--line:#e4e2dc;--soft:#f5f4f0;font-family:'Outfit',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;color:var(--ink);-webkit-font-smoothing:antialiased;max-width:70rem;margin:0 auto;padding:0 1.25rem 3rem}
+.ck h1,.ck-mono{font-family:'Outfit',ui-sans-serif,system-ui,sans-serif}
+.ck h1{font-size:2rem;line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.ck p{margin:0}
+.ck-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.ck-brand{display:flex;align-items:center;gap:.6rem;min-height:28px}
+.ck-logo{height:26px;width:auto;display:block}
+.ck-mono{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:6px;background:var(--a);color:#fff;font-weight:700;font-size:.85rem;line-height:1}
+.ck-wordmark{font-weight:600;font-size:.95rem}
+.ck-doc{font-size:.8rem;color:var(--mute);text-align:right}
+.ck-cover{padding:2rem 0 1.25rem}
+.ck-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--a);margin:0 0 1rem}
+.ck-intro{font-size:1.0625rem;line-height:1.55;margin:1.25rem 0 0;color:#3a3935}
+.ck-meta{margin:1.5rem 0 0;padding:0;border-top:1px solid var(--line)}
+.ck-meta div{display:grid;grid-template-columns:6.5rem 1fr;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--line)}
+.ck-meta dt{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:.25rem}
+.ck-meta dd{margin:0;font-weight:500;font-size:.95rem;line-height:1.4}
+.ck-meta small{display:block;font-weight:400;color:var(--mute);font-size:.85rem}
+.ck-list{padding-top:.5rem}
+.ck-rows{list-style:none;margin:0;padding:0;counter-reset:done;border-top:1px solid var(--ink)}
+.ck-row{border-bottom:1px solid var(--line)}
+.ck-lab{position:relative;display:grid;grid-template-columns:44px 1fr;gap:.9rem;padding:.9rem 0;cursor:pointer;align-items:start}
+.ck-box{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.ck-n{display:grid;place-items:center;width:44px;height:44px;border:1.5px solid var(--ink);border-radius:8px;font-weight:600;font-size:.95rem;font-variant-numeric:tabular-nums;color:var(--ink);background:#fff}
+.ck-lab:hover .ck-n{border-color:var(--a)}
+.ck-body{display:block;padding-top:.15rem;min-width:0}
+.ck-title{display:block;font-weight:600;font-size:1.0625rem;line-height:1.35}
+.ck-why{display:block;color:var(--mute);font-size:.95rem;line-height:1.5;margin-top:.2rem}
+.ck-box:checked+.ck-n{background:var(--a);border-color:var(--a);color:transparent;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4.5 10.5l3.8 3.8L15.5 6' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:22px 22px}
+.ck-box:checked~.ck-body .ck-title{color:var(--mute);text-decoration:line-through;text-decoration-color:var(--a);text-decoration-thickness:2px}
+.ck-box:focus-visible+.ck-n{outline:2px solid var(--a);outline-offset:3px}
+.ck-lab:has(.ck-box:checked){counter-increment:done}
+.ck-tally{display:none;font-size:.85rem;color:var(--mute);padding:.85rem 0 0}
+@supports selector(:has(a)){.ck-tally{display:block}}
+.ck-done::after{content:counter(done);font-weight:600;color:var(--ink)}
+.ck-close{margin-top:2.25rem;padding:1.4rem 1.4rem 1.5rem;background:var(--soft);border-radius:12px;border-left:4px solid var(--a2)}
+.ck-closing{font-size:1rem;line-height:1.55}
+.ck-cta{margin:1.1rem 0 1.2rem}
+.ck-sign{font-size:.95rem;font-weight:600;line-height:1.4}
+.ck-sign span{display:block;font-weight:400;color:var(--mute);font-size:.85rem}
+@media (min-width:1024px){
+.ck{padding:0 3rem 5rem}
+.ck-grid{display:grid;grid-template-columns:minmax(18rem,22rem) minmax(0,42rem);grid-template-rows:auto 1fr;column-gap:5rem;justify-content:space-between;align-items:start}
+.ck-cover{grid-column:1;grid-row:1;padding:2.75rem 0 .5rem}
+.ck-list{grid-column:2;grid-row:1 / span 2;padding-top:2.75rem}
+.ck-close{grid-column:1;grid-row:2;margin-top:1.5rem;padding:1.5rem 1.6rem 1.6rem}
+.ck h1{font-size:2.6rem}
+.ck-lab{grid-template-columns:40px 1fr;gap:1.1rem;padding:1rem 0}
+.ck-n{width:40px;height:40px}
+}
+@page{margin:10mm 13mm 10mm}
+@media print{
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ck{max-width:none;padding:0;font-size:10pt;line-height:1.35}
+.ck-top{padding:0 0 6pt;border-bottom-width:1pt}
+.ck-mono{width:18pt;height:18pt;font-size:8pt;border-radius:3pt}
+.ck-logo{height:18pt}
+.ck-wordmark{font-size:9.5pt}
+.ck-doc{font-size:8pt}
+.ck-grid{display:block}
+.ck-cover{padding:11pt 0 4pt}
+.ck-eyebrow{font-size:7pt;margin-bottom:5pt}
+.ck h1{font-size:20pt;text-wrap:initial}
+.ck-intro{font-size:9.5pt;margin-top:5pt;max-width:60em}
+.ck-meta{margin-top:8pt;display:grid;grid-template-columns:1fr 1.6fr;gap:0 14pt}
+.ck-meta div{display:block;padding:5pt 0;border-bottom:0}
+.ck-meta dt{font-size:6.5pt;padding:0 0 2pt}
+.ck-meta dd{font-size:9pt}
+.ck-meta small{font-size:8pt}
+.ck-list{padding-top:3pt}
+.ck-rows{border-top-width:1pt}
+.ck-row{break-inside:avoid}
+.ck-lab{grid-template-columns:20pt 1fr;gap:8pt;padding:4.5pt 0;cursor:auto}
+.ck-n{width:20pt;height:20pt;border-radius:4pt;font-size:8pt;border-width:1pt}
+.ck-box:checked+.ck-n{background-size:13pt 13pt}
+.ck-body{padding-top:1pt}
+.ck-title{font-size:10pt;line-height:1.3}
+.ck-why{font-size:8.5pt;line-height:1.35;margin-top:1pt}
+.ck-tally,.ck-cta{display:none}
+.ck-close{break-inside:avoid;break-before:avoid;margin-top:8pt;padding:7pt 0 0;background:none;border-radius:0;border-left:0;border-top:1pt solid var(--ink)}
+.ck-closing{font-size:9pt;line-height:1.35}
+.ck-sign{font-size:9pt;margin-top:3pt}
+.ck-sign span{display:inline;font-size:9pt}
+.ck-sign span::before{content:', '}
+}
+</style>
+</head>
+<body>
+<main class="ck">
+<header class="ck-top">
+<div class="ck-brand"><img class="ck-logo" src="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;124&#39; height=&#39;28&#39; viewBox=&#39;0 0 124 28&#39;%3E%3Crect width=&#39;28&#39; height=&#39;28&#39; rx=&#39;7&#39; fill=&#39;%23ff4d1f&#39;/%3E%3Cpath d=&#39;M8 8h4v5l5-5h5l-6 6 6 6h-5l-5-5v5H8z&#39; fill=&#39;%23fff&#39;/%3E%3Ctext x=&#39;36&#39; y=&#39;19.5&#39; font-family=&#39;Arial,Helvetica,sans-serif&#39; font-size=&#39;15&#39; font-weight=&#39;700&#39; fill=&#39;%231d1d1b&#39;%3EKeg Route%3C/text%3E%3C/svg%3E" alt="Keg Route"></div>
+<p class="ck-doc">Checklist for Copperline Brewing</p>
+</header>
+<div class="ck-grid">
+<section data-section="cover" class="ck-cover">
+<p class="ck-eyebrow">Printable checklist</p>
+<h1>10 checks before you sign a distribution agreement</h1>
+<p class="ck-intro">For the owners of Copperline Brewing weighing a distributor against the van and the taproom accounts you have built. It covers what you give up, what you keep, and what to settle before you sign.</p>
+<dl class="ck-meta">
+<div><dt>Prepared for</dt><dd>Copperline Brewing<small>Shared with the team</small></dd></div>
+<div><dt>How to use it</dt><dd>Tick what you already have covered. Print it for the team, or send the link.</dd></div>
+</dl>
+</section>
+<section data-section="checks" class="ck-list">
+<ol class="ck-rows">
+<li class="ck-row">
+<label class="ck-lab">
+<input class="ck-box" type="checkbox">
+<span class="ck-n" aria-hidden="true">01</span>
+<span class="ck-body"><span class="ck-title">Pull twelve months of sales by account, by keg and by can</span><span class="ck-why">A distributor&#39;s offer only makes sense against the volume and margin you move today.</span></span>
+</label>
+</li>
+<li class="ck-row">
+<label class="ck-lab">
+<input class="ck-box" type="checkbox">
+<span class="ck-n" aria-hidden="true">02</span>
+<span class="ck-body"><span class="ck-title">Work out what the van route costs per keg, including your own time</span><span class="ck-why">Self-delivery looks free until the hours and the fuel sit next to the distributor&#39;s cut.</span></span>
+</label>
+</li>
+<li class="ck-row">
+<label class="ck-lab">
+<input class="ck-box" type="checkbox">
+<span class="ck-n" aria-hidden="true">03</span>
+<span class="ck-body"><span class="ck-title">List the accounts you keep direct, and check the contract allows it</span><span class="ck-why">The taproom and your ten best bars are often the margin that keeps the brewery open.</span></span>
+</label>
+</li>
+<li class="ck-row">
+<label class="ck-lab">
+<input class="ck-box" type="checkbox">
+<span class="ck-n" aria-hidden="true">04</span>
+<span class="ck-body"><span class="ck-title">Read the territory and exclusivity clauses with a lawyer who knows beer</span><span class="ck-why">Once signed, these clauses decide who you can sell to and how hard it is to leave.</span></span>
+</label>
+</li>
+<li class="ck-row">
+<label class="ck-lab">
+<input class="ck-box" type="checkbox">
+<span class="ck-n" aria-hidden="true">05</span>
+<span class="ck-body"><span class="ck-title">Ask how many brands of your size the distributor already carries</span><span class="ck-why">A long book means a rep who mentions your beer when there is time left over.</span></span>
+</label>
+</li>
+<li class="ck-row">
+<label class="ck-lab">
+<input class="ck-box" type="checkbox">
+<span class="ck-n" aria-hidden="true">06</span>
+<span class="ck-body"><span class="ck-title">Agree the grocery plan in writing, with store counts and dates</span><span class="ck-why">Cans on grocery shelves were the reason to talk, so make the plan part of the deal.</span></span>
+</label>
+</li>
+<li class="ck-row">
+<label class="ck-lab">
+<input class="ck-box" type="checkbox">
+<span class="ck-n" aria-hidden="true">07</span>
+<span class="ck-body"><span class="ck-title">Settle who pays for keg loss, out of date beer and returns</span><span class="ck-why">These costs land on the brewery by default, one keg at a time.</span></span>
+</label>
+</li>
+<li class="ck-row">
+<label class="ck-lab">
+<input class="ck-box" type="checkbox">
+<span class="ck-n" aria-hidden="true">08</span>
+<span class="ck-body"><span class="ck-title">Set the distributor price and work out the shelf price it produces</span><span class="ck-why">If the margin stack pushes the can past the shelf price nearby, the account dies in a quarter.</span></span>
+</label>
+</li>
+<li class="ck-row">
+<label class="ck-lab">
+<input class="ck-box" type="checkbox">
+<span class="ck-n" aria-hidden="true">09</span>
+<span class="ck-body"><span class="ck-title">Decide what sales data you get, how often, and in what format</span><span class="ck-why">Without account level data you learn which bars dropped you months later.</span></span>
+</label>
+</li>
+<li class="ck-row">
+<label class="ck-lab">
+<input class="ck-box" type="checkbox">
+<span class="ck-n" aria-hidden="true">10</span>
+<span class="ck-body"><span class="ck-title">Write the exit terms before the start terms</span><span class="ck-why">Leaving a distributor is where breweries lose money, so leaving clean has to be in the contract.</span></span>
+</label>
+</li>
+</ol>
+<p class="ck-tally"><span class="ck-done"></span> of 10 ticked</p>
+</section>
+<section data-section="close" class="ck-close">
+<p class="ck-closing">Happy to go through any of these with you, especially the margin stack and the exit terms. Reply to my email with the one you are weighing and I will send my notes.</p>
+<div class="ck-cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#ff4d1f;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+<p class="ck-sign">Jonah Reyes<span>Founder, Keg Route</span></p>
+</section>
+</div>
+</main>
+</body>
+</html>

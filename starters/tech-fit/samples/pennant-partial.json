@@ -1,0 +1,64 @@
+{
+  "account": {
+    "name": "Pennant Robotics",
+    "domain": "pennantrobotics.example",
+    "industry": "automation machinery manufacturing",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Pennant Robotics builds palletizing robots for food and beverage plants, with about 140 people in Ohio and a growing list of component suppliers.",
+      "why_now": "Raised a Series B in August and is hiring in finance and operations.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Jonah",
+    "last_name": "Petrakis",
+    "title": "Head of Finance"
+  },
+  "sender": {
+    "name": "Ines Kowalski",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Plinth",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1d5fd1",
+      "secondary": "#f5b700"
+    },
+    "fonts": null
+  },
+  "data": {
+    "integrations": [],
+    "site": {
+      "url": "https://pennantrobotics.example",
+      "title": "Pennant Robotics",
+      "description": "Palletizing robots for food and beverage plants.",
+      "markdown": "# Pennant Robotics\n\nPalletizing robots for food and beverage plants, built in Ohio and installed in 14 states.\n\n## Talk to us\n\nTell us about your line and we will reply within a day. This form is powered by HubSpot."
+    },
+    "careers": {
+      "url": "https://pennantrobotics.example/careers",
+      "title": "Careers at Pennant Robotics",
+      "description": "Engineering, operations and finance roles in Ohio.",
+      "markdown": "# Careers\n\n## Manufacturing Engineer\n\nOwn the build process for one robot family. Work is tracked in Jira, and you will write the first version of most of the tickets.\n\n## Accounts Payable Specialist\n\nSupplier invoices, three-way match and payment runs for a growing supplier list."
+    },
+    "tools": [
+      {
+        "name": "HubSpot",
+        "category": "CRM",
+        "clue": "The contact page says its form is powered by HubSpot.",
+        "source": "site"
+      },
+      {
+        "name": "Jira",
+        "category": "Project tracking",
+        "clue": "The manufacturing engineer posting says work is tracked in Jira.",
+        "source": "careers"
+      }
+    ],
+    "headline": "Plinth at Pennant Robotics, next to HubSpot and Jira",
+    "intro": "I read your site and careers page to guess which tools you already run. Both below are guesses from a page footer and a job post, so tell me what I got wrong.",
+    "matches": []
+  }
+}

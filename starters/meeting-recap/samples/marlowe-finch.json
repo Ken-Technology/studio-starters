@@ -1,0 +1,180 @@
+{
+  "account": {
+    "name": "Marlowe & Finch",
+    "domain": "marlowefinch.example",
+    "industry": "accounting",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Marlowe & Finch is a regional accounting firm with three offices in Oregon and about 60 staff. It does tax, bookkeeping and advisory work for small businesses and their owners.",
+      "why_now": "Posted an opening for a client services coordinator in September.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Priya",
+    "last_name": "Natarajan",
+    "title": "Partner"
+  },
+  "sender": {
+    "name": "Jonah Reyes",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Ledgerline",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "notes": [
+      {
+        "citationId": "k-7f31",
+        "kind": "note",
+        "title": "Call notes, Oct 21: discovery call with Marlowe & Finch",
+        "sourceDate": "2026-10-21",
+        "sourceUrls": [],
+        "text": "Discovery call, Wednesday October 21, 2026, 45 min, video. Marlowe & Finch: Priya Natarajan (Partner), Sam Whitlock (Operations Manager), Ingrid Halvorsen (Tax Manager). Ledgerline: Jonah Reyes, Ana Costa (Solutions Engineer).\n\nFirm: 62 staff across Portland, Salem and Bend. About 1,400 business tax clients and 900 individual returns. Bend is the smallest office, 9 staff.\n\nProblem: document collection in tax season. Clients email PDFs and phone photos to whichever staff member they know, so documents land in personal inboxes and get forwarded around. Staff chase missing documents by phone and email. Priya said extensions were up 18 percent in the 2025 season versus 2024, and she thinks late documents are most of that. They use a document vault for storage and email for everything else. No client portal today.\n\nWhat Priya wants: one link per client to upload to, reminders that go out on their own, and a list where staff see who has sent what. Ingrid asked whether engagement letters and Form 8879 can be signed in the same place. Ana said yes and showed the signing flow.\n\nSam's concern: moving 2,300 client folders out of the vault. He wants to try it with the Bend office first and have it running before January 15. Priya said the partners meet on Thursday November 12 and she needs a proposal before that meeting.\n\nAgreed: pilot in the Bend office for 60 days, starting Tuesday December 1. Jonah sends the security questionnaire answers and a proposal by Friday November 6. Sam sends the list of Bend staff and a sample of 20 client folders by Friday October 30. Next call Tuesday November 10 to walk through the pilot plan; Ana shows the client reminder flow on that call. Priya asked for a story from a firm with several offices; Jonah to send the Ridgecrest Tax Group story.\n\nResources mentioned: Ledgerline security overview PDF (https://ledgerline.example/security-overview.pdf), Ridgecrest Tax Group customer story (https://ledgerline.example/stories/ridgecrest), the Bend pilot plan (Jonah drafts it in a shared doc before the next call, not written yet)."
+      },
+      {
+        "citationId": "k-7f32",
+        "kind": "transcript",
+        "title": "Transcript, Oct 21 call (auto)",
+        "sourceDate": "2026-10-21",
+        "sourceUrls": [],
+        "text": "[00:04:12] Priya Natarajan: The thing that hurts is March. Every document comes to a different person. Someone's cousin sends a photo of a 1099 to whoever did their return two years ago.\n[00:04:40] Jonah Reyes: And then it gets forwarded around?\n[00:04:43] Priya Natarajan: Forwarded, printed, lost. We had 18 percent more extensions last season than the one before, and I would bet most of that is documents that came in late.\n[00:11:05] Ingrid Halvorsen: Can the engagement letter and the 8879 be signed in the same place the documents go? Right now that is a separate tool and clients get confused.\n[00:11:20] Ana Costa: Yes. Same link, same list. Let me show you.\n[00:27:50] Sam Whitlock: My worry is the 2,300 folders in the vault. I do not want to move all of that in one go. Could we start with Bend? Nine people, and it has to be running by January 15.\n[00:28:30] Jonah Reyes: We can do Bend first. Sixty days from December 1 gets you through the start of the season.\n[00:36:02] Priya Natarajan: Partners meet on the twelfth. I need something on paper before then.\n[00:36:15] Jonah Reyes: You will have the proposal and the security answers by the sixth."
+      },
+      {
+        "citationId": "k-7f40",
+        "kind": "signal",
+        "title": "Job post: Client Services Coordinator (Portland)",
+        "sourceDate": "2026-09-30",
+        "sourceUrls": [
+          "https://marlowefinch.example/careers/client-services-coordinator"
+        ],
+        "text": "Marlowe & Finch is hiring a Client Services Coordinator for the Portland office to manage client document requests, onboarding paperwork and engagement letters during tax season."
+      }
+    ],
+    "title": "Our call on Wednesday, October 21",
+    "note": "Thanks for the 45 minutes on Wednesday, and for being so clear about what March looks like for your team. Here is what I took away, what we agreed and who does what next. If anything on this page is off, reply to my email and I will fix it the same day.",
+    "call": {
+      "date": "Wednesday, October 21",
+      "length": "45 minutes",
+      "channel": "video",
+      "them": [
+        {
+          "name": "Priya Natarajan",
+          "title": "Partner"
+        },
+        {
+          "name": "Sam Whitlock",
+          "title": "Operations Manager"
+        },
+        {
+          "name": "Ingrid Halvorsen",
+          "title": "Tax Manager"
+        }
+      ],
+      "us": [
+        {
+          "name": "Jonah Reyes"
+        },
+        {
+          "name": "Ana Costa",
+          "title": "Solutions Engineer"
+        }
+      ]
+    },
+    "heard": [
+      {
+        "topic": "The firm",
+        "text": "You are 62 people across Portland, Salem and Bend, with about 1,400 business tax clients and 900 individual returns. Bend is the smallest office at 9 staff."
+      },
+      {
+        "topic": "Tax season documents",
+        "text": "Clients send PDFs and phone photos to whichever staff member they know, so documents land in personal inboxes and get forwarded around. Your staff chase what is missing by phone and email."
+      },
+      {
+        "topic": "Extensions",
+        "text": "Extensions were up 18 percent in the 2025 season compared with 2024. Priya thinks late documents are most of that."
+      },
+      {
+        "topic": "Current tools",
+        "text": "A document vault for storage and email for everything else. There is no client portal today, and signing happens in a separate tool that confuses clients."
+      },
+      {
+        "topic": "What you want",
+        "text": "One link per client to upload to, reminders that go out on their own, and a list where staff see who has sent what. Ingrid wants engagement letters and Form 8879 signed in the same place."
+      },
+      {
+        "topic": "Timing",
+        "text": "Sam would rather start with the Bend office than move all 2,300 client folders at once, and wants it running before January 15. The partners meet on November 12 and need a proposal before then."
+      }
+    ],
+    "agreed": [
+      "A 60 day pilot in the Bend office, starting Tuesday, December 1.",
+      "Bend goes first. The other offices' client folders stay in the vault for now.",
+      "The partners see a proposal before their meeting on November 12.",
+      "We walk through the pilot plan together on Tuesday, November 10, and Ana shows the client reminder flow on that call."
+    ],
+    "steps": [
+      {
+        "what": "Send the list of Bend staff and a sample of 20 client folders",
+        "owner": "Sam Whitlock",
+        "side": "them",
+        "due": "Fri Oct 30"
+      },
+      {
+        "what": "Send the security questionnaire answers and the proposal",
+        "owner": "Jonah Reyes",
+        "side": "us",
+        "due": "Fri Nov 6"
+      },
+      {
+        "what": "Walk through the pilot plan and show the client reminder flow",
+        "owner": "Ana Costa",
+        "side": "us",
+        "due": "Tue Nov 10"
+      },
+      {
+        "what": "Take the proposal to the partners' meeting",
+        "owner": "Priya Natarajan",
+        "side": "them",
+        "due": "Thu Nov 12"
+      },
+      {
+        "what": "Draft the Bend pilot plan in a shared doc before the November 10 call",
+        "owner": "Jonah Reyes",
+        "side": "us"
+      },
+      {
+        "what": "Send the Ridgecrest Tax Group story, a firm with several offices",
+        "owner": "Jonah Reyes",
+        "side": "us"
+      }
+    ],
+    "resources": [
+      {
+        "title": "Ledgerline security overview",
+        "kind": "PDF",
+        "note": "Came up when Priya asked about security. The full questionnaire answers follow by November 6.",
+        "url": "https://ledgerline.example/security-overview.pdf"
+      },
+      {
+        "title": "Ridgecrest Tax Group customer story",
+        "kind": "Page",
+        "note": "A firm with several offices. Priya asked for it.",
+        "url": "https://ledgerline.example/stories/ridgecrest"
+      },
+      {
+        "title": "Bend pilot plan",
+        "kind": "Doc",
+        "note": "Jonah drafts it in a shared doc before the November 10 call. Not written yet."
+      }
+    ],
+    "sources": [
+      "Call notes, Oct 21: discovery call with Marlowe & Finch",
+      "Transcript, Oct 21 call (auto)"
+    ]
+  }
+}

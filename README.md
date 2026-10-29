@@ -130,7 +130,7 @@ Limits: `template.liquid` 256 KB, each asset 5 MB, a bundle 20 MB. This repo kee
 
 - `type`: `reverse_demo`, `landing_page`, `audit`, `report`, `event`, `calculator`, `recruiting` or `other`. `format`: `page` or `doc`.
 - `slug` names the page in its link: `https://go.acme.com/brightwave/outbound-campaign-for-leo`. Lowercase words joined by hyphens, at most 60 characters.
-- `slots` describe `data.*` with a JSON Schema subset: `type`, `properties`, `required`, `items`, `minLength`, `maxLength`, `minItems`, `maxItems`, `enum`, `format: "uri"`, plus Studio's `fallback`. Nothing else.
+- `slots` describe `data.*` with a JSON Schema subset: `type`, `properties`, `required`, `items`, `minLength`, `maxLength`, `minItems`, `maxItems`, `enum`, `format: "uri"`, plus Studio's `fallback`, and `description` and `title` as notes for whoever edits the template (Ken checks nothing in them). Nothing else, so no `pattern`: say a value's format in `description`.
 - Every required slot has a `fallback`, or the bundle ships `fallback.liquid`. A fallback is a static JSON value, or a Liquid string that uses only Ken variables (never `data.*`).
 - Every element with `data-section="<id>"` in the template appears in `sections`, and every section appears in the template. Ken tracks reading time per section.
 
@@ -140,7 +140,7 @@ The recipe fills `data.*` for one account. Steps run in order, and each one writ
 
 | Kind | Fields | What it does |
 |---|---|---|
-| `bind` | `from`, `to` | Copies `account.*`, `person.*`, `account.dossier.*`, `role.*` or `knowledge.*` into a slot |
+| `bind` | `from`, `to` | Copies `account.*`, `person.*`, `account.dossier.*`, `role.*`, `knowledge.stable`, `knowledge.scoped` or `defaults.*` into a slot |
 | `tool` | `tool`, `args`, `to` | `ken_search.people`, `ken_search.companies`, `ken_search.count`, `enrich.email`, `scrape.page`, `ken.copy`, `chart.data` |
 | `prompt` | `prompt`, `inputs`, `to`, `model` | An LLM writes one or more slots; the output is checked against the slot schema. `model` defaults to `cheap` |
 | `grade` | `rubric`, `on`, `retries`, `pass_score`, `checks` | A judge scores slots; it retries the steps that wrote them, then marks the page "Needs review". `checks` run first and fail a hit without calling the judge |
@@ -149,7 +149,9 @@ The recipe fills `data.*` for one account. Steps run in order, and each one writ
 
 Conventions these starters follow:
 
-- `prompt` text (and `rubric`, tool `args` and dataset `where`) takes output tags over Ken variables and `data.*`, with the filters `default`, `upcase`, `downcase`, `capitalize`, `strip`, `size`, `join`, `truncate` and `json`, like `{{ data.pricing.url | default: 'none' }}`. Tags such as `{% if %}` fail the step when it runs, and `check.mjs` rejects them. `inputs` lists the Ken variables and earlier slots the step reads.
+- `prompt` text (and `rubric`, tool `args` and dataset `where`) takes output tags over Ken variables, `defaults.*` and `data.*`, with the filters `default`, `upcase`, `downcase`, `capitalize`, `strip`, `size`, `join`, `truncate` and `json`, like `{{ data.pricing.url | default: 'none' }}`. Tags such as `{% if %}` fail the step when it runs, and `check.mjs` rejects them. `inputs` lists the Ken variables and earlier slots the step reads.
+- A fill starts with `data` empty, so a step reads only the slots earlier steps wrote. For a slot the template's owner sets, like an event's name, date or agenda, read its fallback as `{{ defaults.<slot> }}` in the text, and list `defaults.<slot>` in `inputs` when the model needs the whole value. Do not copy the fallback's text into the prompt: the fallback stays the one place the owner edits it. `check.mjs` rejects recipe text or `inputs` that read a `data.<slot>` no earlier step writes, and a `defaults.<slot>` whose slot has no `fallback`.
+- Knowledge is two lists, `knowledge.stable` and `knowledge.scoped`. For a field such as a price or a team name, a `prompt` step reads them and writes the field to a slot, empty when Knowledge does not state it, and the section that shows it hides when it is empty. There is no `knowledge.offer` or `knowledge.account`; `check.mjs` warns on any other `knowledge.*` path.
 - String values in `tool` args are Liquid too. A string that is exactly one `{{ data.x }}` passes that value through with its type, so `"filters": "{{ data.search }}"` hands Ken Search the filter object a `prompt` step wrote.
 - Intermediate results (scraped pages, raw search results) are declared as optional slots, because every `to` must be a declared slot.
 - Every kind except `bind` takes `requires`, a list of `data.<slot>` paths that an earlier step writes. While one of them is empty or failed, the step does not run and costs nothing, and its slots fall back. `rd-doc` uses it so `plan` never writes a strategy without the site, and `copy` never names people when the search found none.
@@ -162,7 +164,7 @@ Conventions these starters follow:
 
 ### Ken variables
 
-Ken supplies these at render time. Recipes never fill them.
+Ken supplies these. Recipes never fill them. `knowledge` and `defaults` exist only while the recipe runs: steps read them, the page does not.
 
 | Variable | Fields |
 |---|---|
@@ -175,6 +177,8 @@ Ken supplies these at render time. Recipes never fill them.
 | `asset_url` | Base URL for `assets/` |
 | `role` | Recruiting pages only: `title`, `company`, `location`, `remote_policy` (`onsite`, `hybrid` or `remote`), `pay_range` (like "$150k-$180k a year", empty when the role has no pay), `description`, `highlights` (the must-haves), `job_url`, `booking_url` |
 | `roles` | Recruiting pages only: the campaign's roles shaped like `role`, the primary role first, at most 4 |
+| `knowledge` | Recipe steps only: `stable` (workspace-wide items such as instructions, company files and the offer) and `scoped` (the account's own files, signals and facts, such as call notes and transcripts), each a list of `{citationId, kind, title, text}` |
+| `defaults.<slot>` | Recipe steps only: the slot's `fallback` as the page would render it, a string fallback rendered as Liquid over the Ken variables and any other fallback as is. Absent for a slot with no fallback. Use it in prompts for details the owner sets, such as an event's name, date and agenda. Needs ken-backend DEV-5800 deployed |
 
 `brand.colors`, `brand.fonts` and `sender.title` are empty today, so every starter sets a default for them.
 
@@ -237,21 +241,16 @@ node scripts/check.mjs rd-doc     # one bundle
 node --test scripts/check.test.mjs   # tests for check.mjs itself
 ```
 
-`check.mjs` has no dependencies (Node 20 or newer) and runs on every push and pull request. It checks the manifest fields, the slot schema subset, fallbacks, the recipe (known kinds and tools, `to` targets, inputs filled by earlier steps, https webhooks, timeouts), `data-section` against `sections`, the HTML rules above, the portable Liquid tags and filters, sizes, asset types, dashes, and that each sample has `account.name` (`role.title` on a recruiting starter), matches the slot schema and holds no contact details. Ken's validator runs the full set when you push a bundle, including a Liquid parse and the filled-data rules.
+`check.mjs` has no dependencies (Node 20 or newer) and runs on every push and pull request. It checks the manifest fields, the slot schema subset, fallbacks, the recipe (known kinds and tools, `to` targets, recipe text and inputs that read only slots earlier steps write, `defaults.<slot>` only for slots with a fallback, https webhooks, timeouts), `data-section` against `sections`, the HTML rules above, the portable Liquid tags and filters, sizes, asset types, dashes, and that each sample has `account.name` (`role.title` on a recruiting starter), matches the slot schema and holds no contact details. Ken's validator runs the full set when you push a bundle, including a Liquid parse and the filled-data rules.
 
-To see a starter rendered, run its samples through LiquidJS with stub kit partials, for example:
+To see a Library template rendered, render its samples and open the output:
 
-```js
-// npm install liquidjs (outside this repo), then put stubs in stubs/ken/cta.liquid, chart.liquid, booking.liquid, form.liquid
-import fs from 'node:fs';
-import { Liquid } from 'liquidjs';
-const engine = new Liquid({ root: ['stubs'], extname: '.liquid' });
-const template = fs.readFileSync('starters/rd-doc/template.liquid', 'utf8');
-const sample = JSON.parse(fs.readFileSync('starters/rd-doc/samples/brightwave.json', 'utf8'));
-const html = await engine.parseAndRender(template, { ...sample, link: { booking_url: '#' }, asset_url: '' });
+```bash
+npm run render -- <slug>                       # starters/<slug>/preview/<sampleId>.html and cover.png
+node scripts/render.mjs --html-only <slug>     # the HTML only, no browser
 ```
 
-The output is the HTML the edge serves, before the tracking script and the real kit snippets.
+Each `preview/<sampleId>.html` is the HTML the edge serves for that sample, before the tracking script, with the kit snippets ported as Previews says. Open it in a browser (its assets load from `main`, so a new asset shows once the template is merged), or screenshot it at a phone and a desktop width. `preview/cover.png` is the first sample's first screen at 1280x800. A folder without `library.json` has no previews; push it to a draft in Ken and use `studio_template_preview` to see it.
 
 ## Contributing
 

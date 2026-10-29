@@ -81,6 +81,575 @@
       "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
       "showcases": ["prompt", "person", "roles", "ken/cta"],
       "version": "1.0.0"
+    },
+    {
+      "slug": "agency-mockup",
+      "name": "Your new homepage, sketched",
+      "type": "reverse_demo",
+      "format": "page",
+      "showcases": [
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "A redesign of one account's homepage hero and one section, written from their own copy and shown next to what their page says today.",
+      "category": "partners",
+      "tags": [
+        "agency",
+        "homepage",
+        "redesign",
+        "website copy",
+        "mockup"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "marlow",
+          "label": "Marlow Fastening"
+        },
+        {
+          "id": "bellhaven-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "juniper",
+          "label": "Juniper Payroll"
+        }
+      ]
+    },
+    {
+      "slug": "checklist-doc",
+      "name": "Printable checklist",
+      "type": "other",
+      "format": "doc",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/cta",
+        "doc"
+      ],
+      "description": "A printable checklist for the account's industry, like 12 checks before you switch freight software. Ken writes the title, the checks and a one-line why each.",
+      "category": "content",
+      "tags": [
+        "checklist",
+        "printable",
+        "pdf",
+        "content"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "kestrel-freight",
+          "label": "Kestrel Freight Lines"
+        },
+        {
+          "id": "oakhill-dental",
+          "label": "Oakhill Dental Partners"
+        },
+        {
+          "id": "copperline-shared",
+          "label": "Copperline Brewing, shared link (no person)"
+        }
+      ]
+    },
+    {
+      "slug": "comparison",
+      "name": "Us vs what you use today",
+      "type": "landing_page",
+      "format": "page",
+      "showcases": [
+        "dataset",
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "Puts your product next to the tool an account most likely uses today, row by row from your own comparison CSV, and says where each one is the better fit.",
+      "category": "prospecting",
+      "tags": [
+        "comparison",
+        "competitors",
+        "switching",
+        "side by side"
+      ],
+      "featured": false,
+      "needs": [
+        "dataset"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "cobble-hill",
+          "label": "Cobble Hill Plumbing and Heating"
+        },
+        {
+          "id": "pemberton-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "juniper-oak",
+          "label": "Juniper and Oak Candle Co."
+        },
+        {
+          "id": "brookside-partial",
+          "label": "Brookside Electric, partial fill"
+        }
+      ]
+    },
+    {
+      "slug": "deal-room",
+      "name": "Deal room",
+      "type": "landing_page",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/cta"
+      ],
+      "description": "One page for a live deal: agenda, a plan with owners on both sides, people and resources. Ken fills it per account from your deal notes and call transcripts.",
+      "category": "deal",
+      "tags": [
+        "deal room",
+        "mutual action plan",
+        "sales",
+        "agenda"
+      ],
+      "featured": true,
+      "needs": [
+        "knowledge"
+      ],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics"
+        },
+        {
+          "id": "tidewater",
+          "label": "Tidewater Health Partners"
+        },
+        {
+          "id": "ridgeback-shared",
+          "label": "Ridgeback Foods, shared link (no person)"
+        },
+        {
+          "id": "larkspur-empty",
+          "label": "Larkspur Tooling, no deal notes yet"
+        }
+      ]
+    },
+    {
+      "slug": "maturity-assessment",
+      "name": "Maturity assessment",
+      "type": "calculator",
+      "format": "page",
+      "showcases": [
+        "dataset",
+        "prompt",
+        "grade",
+        "ken/cta"
+      ],
+      "description": "A self-assessment page: eight questions, a score and stage, a peer comparison from your CSV. Ken writes each account's intro and next steps.",
+      "category": "interactive",
+      "tags": [
+        "assessment",
+        "maturity",
+        "benchmark",
+        "quiz",
+        "scorecard"
+      ],
+      "featured": true,
+      "needs": [
+        "dataset"
+      ],
+      "version": "1.0.2",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics, filled for one person"
+        },
+        {
+          "id": "marlowe-dental",
+          "label": "Marlowe Dental Partners, dark brand with a serif"
+        },
+        {
+          "id": "stonegate-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "quillmark-partial",
+          "label": "Quillmark Publishing, no peer data"
+        }
+      ]
+    },
+    {
+      "slug": "meeting-recap",
+      "name": "Meeting recap",
+      "type": "other",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/cta"
+      ],
+      "description": "A recap after a call: what we heard, what we agreed, next steps with owners and dates, and the links that came up, written from the account's call notes.",
+      "category": "deal",
+      "tags": [
+        "recap",
+        "call notes",
+        "next steps",
+        "follow up",
+        "deal"
+      ],
+      "featured": false,
+      "needs": [
+        "knowledge"
+      ],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "marlowe-finch",
+          "label": "Marlowe & Finch"
+        },
+        {
+          "id": "pinecrest-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "sunbeam-pediatrics",
+          "label": "Sunbeam Pediatrics"
+        },
+        {
+          "id": "tessaro-no-notes",
+          "label": "Tessaro Foods, no call notes yet"
+        }
+      ]
+    },
+    {
+      "slug": "newsletter",
+      "name": "Monthly brief",
+      "type": "other",
+      "format": "page",
+      "showcases": [
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "A one-screen monthly newsletter. Ken writes a note on the account's industry and one idea for them from their site, and picks one resource from your Knowledge.",
+      "category": "content",
+      "tags": [
+        "newsletter",
+        "monthly brief",
+        "nurture",
+        "industry note"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "coastline",
+          "label": "Coastline Produce"
+        },
+        {
+          "id": "ashgrove-shared",
+          "label": "Ashgrove Health Clinics, Shared link (no person)"
+        },
+        {
+          "id": "brightline",
+          "label": "Brightline Robotics"
+        },
+        {
+          "id": "pennant-partial",
+          "label": "Pennant Hospitality Group, partial fill"
+        }
+      ]
+    },
+    {
+      "slug": "partner-pitch",
+      "name": "Partnership pitch",
+      "type": "landing_page",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken_search.companies",
+        "ken/cta"
+      ],
+      "description": "A partnership proposal for one company: where the two customer bases meet, a joint offer and a first step. Ken fills it from Knowledge, their site and a company search.",
+      "category": "partners",
+      "tags": [
+        "partnership",
+        "co-selling",
+        "partners",
+        "channel",
+        "overlap"
+      ],
+      "featured": false,
+      "needs": [
+        "knowledge"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "ledgerline",
+          "label": "Ledgerline POS"
+        },
+        {
+          "id": "northgate",
+          "label": "Northgate Cloud"
+        },
+        {
+          "id": "aspen-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "rivet",
+          "label": "Rivet Safety"
+        }
+      ]
+    },
+    {
+      "slug": "proposal",
+      "name": "Proposal and pilot plan",
+      "type": "other",
+      "format": "doc",
+      "showcases": [
+        "prompt",
+        "grade",
+        "ken/cta",
+        "ken/form",
+        "doc"
+      ],
+      "description": "A forwardable proposal with a 30-day pilot plan, success criteria, timeline, team, pricing and sign-off. Ken fills it from your deal notes and offer.",
+      "category": "deal",
+      "tags": [
+        "proposal",
+        "pilot plan",
+        "sales",
+        "pdf"
+      ],
+      "featured": true,
+      "needs": [
+        "knowledge"
+      ],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics"
+        },
+        {
+          "id": "tidewell-shared",
+          "label": "Tidewell Dental Group, shared link (no person)"
+        },
+        {
+          "id": "redhill",
+          "label": "Redhill Fabrication"
+        },
+        {
+          "id": "cobalt-harbor",
+          "label": "Cobalt Harbor Foods, no Knowledge yet"
+        }
+      ]
+    },
+    {
+      "slug": "roi-calculator",
+      "name": "ROI calculator",
+      "type": "calculator",
+      "format": "page",
+      "showcases": [
+        "prompt",
+        "grade",
+        "ken/cta"
+      ],
+      "description": "An ROI worksheet with live sliders. Ken fills in team size, hours, hourly cost and tool spend per account, then shows savings, payback and a 3-year chart.",
+      "category": "deal",
+      "tags": [
+        "roi",
+        "calculator",
+        "business case",
+        "payback"
+      ],
+      "featured": true,
+      "needs": [
+        "knowledge"
+      ],
+      "version": "1.0.2",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave-logistics",
+          "label": "Brightwave Logistics"
+        },
+        {
+          "id": "cedar-valley-dental",
+          "label": "Cedar Valley Dental Group"
+        },
+        {
+          "id": "tallis-shared",
+          "label": "Tallis Staffing, shared link (no person)"
+        },
+        {
+          "id": "oakfield-no-offer",
+          "label": "Oakfield Insurance Brokers, no offer in Knowledge"
+        }
+      ]
+    },
+    {
+      "slug": "site-audit",
+      "name": "Website conversion audit",
+      "type": "audit",
+      "format": "page",
+      "showcases": [
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "A scorecard of the account's own website: six scored criteria that quote their copy, two rewrites, a marked-up first screen and the three fixes to make first.",
+      "category": "prospecting",
+      "tags": [
+        "website audit",
+        "conversion",
+        "copy rewrite",
+        "scorecard"
+      ],
+      "featured": true,
+      "needs": [],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics, filled for one person"
+        },
+        {
+          "id": "tidewater-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "orchard-row",
+          "label": "Orchard Row Payroll, filled for one person"
+        }
+      ]
+    },
+    {
+      "slug": "tech-fit",
+      "name": "Fits your stack",
+      "type": "landing_page",
+      "format": "page",
+      "showcases": [
+        "dataset",
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "Shows how your product fits the tools an account likely runs, guessed by Ken from their site and careers page and matched to your integration list.",
+      "category": "prospecting",
+      "tags": [
+        "integrations",
+        "tech stack",
+        "technical fit",
+        "prospecting"
+      ],
+      "featured": false,
+      "needs": [
+        "dataset"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "alder-ridge",
+          "label": "Alder Ridge Health"
+        },
+        {
+          "id": "marlow-freight",
+          "label": "Marlow Freight Systems"
+        },
+        {
+          "id": "oakhaven-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "pennant-partial",
+          "label": "Pennant Robotics, partial fill"
+        }
+      ]
+    },
+    {
+      "slug": "value-review",
+      "name": "Quarterly value review",
+      "type": "report",
+      "format": "doc",
+      "showcases": [
+        "dataset",
+        "prompt",
+        "grade",
+        "ken/cta",
+        "doc"
+      ],
+      "description": "A quarterly review for one customer: usage against last quarter, adoption by team, three wins, the plan and the renewal timeline. Ken fills it from a usage CSV.",
+      "category": "customers",
+      "tags": [
+        "customer success",
+        "quarterly review",
+        "renewal",
+        "usage",
+        "qbr"
+      ],
+      "featured": true,
+      "needs": [
+        "dataset"
+      ],
+      "version": "1.0.2",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics"
+        },
+        {
+          "id": "oakline-shared",
+          "label": "Oakline Foods, Shared link (no person)"
+        },
+        {
+          "id": "pinecrest",
+          "label": "Pinecrest Home Care"
+        },
+        {
+          "id": "harlow-pike-partial",
+          "label": "Harlow and Pike Architects, partial usage export"
+        }
+      ]
     }
   ]
 }

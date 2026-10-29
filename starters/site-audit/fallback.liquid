@@ -1,0 +1,93 @@
+{%- assign primary = brand.colors.primary | default: '#2a4bd7' -%}
+{%- assign secondary = brand.colors.secondary | default: '#0e1530' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+{%- assign brand_name = brand.name | default: 'Northbeam' -%}
+{%- assign first = person.first_name | default: 'there' -%}
+{%- assign site = account.domain | default: account.name -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Website audit for {{ site | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@500;600;700&display=swap">
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;500;600&display=swap">
+{%- endif %}
+<style>
+:root{--p:{{ primary | escape }};--s:{{ secondary | escape }};--fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--ink:var(--s);--mute:color-mix(in srgb,var(--s) 64%,#fff);--rule:color-mix(in srgb,var(--s) 14%,#fff);--tint:color-mix(in srgb,var(--p) 7%,#fff);--tint2:color-mix(in srgb,var(--p) 18%,#fff)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased;border-top:6px solid var(--p);padding-bottom:4rem;overflow-wrap:break-word}
+.page{max-width:66rem;margin:0 auto;padding:0 1.25rem}
+h1{font-family:var(--fh);font-weight:600;line-height:1.1;letter-spacing:-.015em;margin:0;text-wrap:balance}
+p{margin:0 0 1rem}
+.brandline{display:flex;align-items:center;gap:.6rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.9rem}
+.logo{width:28px;height:28px;display:block;flex:none}
+img.logo{width:auto;max-width:9rem;object-fit:contain}
+.bname{font-weight:600}
+.meta{margin-left:auto;color:var(--mute);text-align:right}
+.hero{padding:2.25rem 0 0}
+.for{color:var(--mute);font-size:.95rem;margin:0 0 .8rem}
+.hero h1{font-size:clamp(1.85rem,6vw,3.5rem);max-width:21ch;margin-bottom:1.25rem}
+.lead{max-width:40rem;font-size:1.05rem}
+.pending{margin-top:2.25rem;border-top:2px solid var(--ink);padding-top:1.5rem;display:grid;gap:1.5rem}
+.six{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.six li{display:flex;align-items:center;min-height:44px;padding:.5rem .8rem;background:var(--tint);border-left:3px solid var(--tint2);font-weight:500;font-size:.95rem}
+.next{margin-top:2.25rem;display:grid;gap:1rem}
+.next p{max-width:38rem;margin:0}
+.next .cta{justify-self:start}
+.next .ken-cta{display:inline-flex!important;align-items:center;justify-content:center;min-height:48px;background:var(--p)!important;color:#fff!important;text-decoration:none;font:600 1rem/1.2 var(--fb);padding:.95rem 1.4rem!important;border-radius:3px!important}
+.sign{font-size:.95rem}
+.sign b{display:block;font-weight:600}
+.sign span{color:var(--mute)}
+@media (min-width:760px){
+  .page{padding:0 2.5rem}
+  .brandline{padding:1.25rem 0}
+  .hero{padding-top:3.5rem}
+  .pending{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:3.5rem;margin-top:3rem;padding-top:2rem}
+  .six{grid-template-columns:1fr 1fr 1fr}
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+<header class="hero" data-section="hero">
+  <div class="brandline">
+    {%- if brand.logo_url %}
+    <img class="logo" src="{{ brand.logo_url | escape }}" alt="">
+    {%- else %}
+    <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--p)"/><text x="16" y="21.5" text-anchor="middle" font-family="var(--fh)" font-weight="700" font-size="16" fill="#fff">{{ brand_name | slice: 0 | upcase | escape }}</text></svg>
+    {%- endif %}
+    <span class="bname">{{ brand_name | escape }}</span>
+    <span class="meta">Website audit<br>{{ site | escape }}</span>
+  </div>
+  <p class="for">For {% if person %}{{ person.first_name | escape }}, at {% else %}the team at {% endif %}{{ account.name | escape }}</p>
+  <h1>Website audit for {{ site | escape }}</h1>
+  <p class="lead">Hi {{ first | escape }}. I am still reading {{ site | escape }} the way a first-time visitor would. When I am done, this page will have the score, the lines I would change and the three fixes to make first.</p>
+</header>
+
+<section class="pending" data-section="score">
+  <p>This link stays the same, so check back later today. Here is what I am scoring.</p>
+  <ul class="six">
+    <li>Message clarity</li>
+    <li>Proof</li>
+    <li>Call to action</li>
+    <li>Trust</li>
+    <li>Navigation</li>
+    <li>Contact path</li>
+  </ul>
+</section>
+
+<section class="next" data-section="next">
+  <p>If you would rather hear it in person, book 20 minutes and I will go through what I have so far.</p>
+  <p class="sign"><b>{{ sender.name | default: brand_name | escape }}</b><span>{{ brand_name | escape }}</span></p>
+  <div class="cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+</section>
+
+</main>
+</body>
+</html>

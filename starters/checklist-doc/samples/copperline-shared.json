@@ -1,0 +1,39 @@
+{
+  "account": {
+    "name": "Copperline Brewing",
+    "domain": "copperlinebrewing.example",
+    "industry": "food and beverage manufacturing",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Copperline Brewing is a craft brewery in Asheville with a taproom and a small canning line. It sells kegs to about 60 bars and restaurants within an hour's drive, delivered with its own van, and the site says cans launched in grocery stores this spring.",
+      "why_now": "Announced a second canning shift in October."
+    }
+  },
+  "person": null,
+  "sender": { "name": "Jonah Reyes", "title": "Founder", "signature_html": null },
+  "brand": {
+    "name": "Keg Route",
+    "logo_url": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='124' height='28' viewBox='0 0 124 28'%3E%3Crect width='28' height='28' rx='7' fill='%23ff4d1f'/%3E%3Cpath d='M8 8h4v5l5-5h5l-6 6 6 6h-5l-5-5v5H8z' fill='%23fff'/%3E%3Ctext x='36' y='19.5' font-family='Arial,Helvetica,sans-serif' font-size='15' font-weight='700' fill='%231d1d1b'%3EKeg Route%3C/text%3E%3C/svg%3E",
+    "colors": { "primary": "#ff4d1f", "secondary": "#1d1d1b" },
+    "fonts": { "heading": "Outfit", "body": "Outfit" }
+  },
+  "data": {
+    "dossier": "Copperline Brewing is a craft brewery in Asheville with a taproom and a small canning line. It sells kegs to about 60 bars and restaurants within an hour's drive, delivered with its own van, and the site says cans launched in grocery stores this spring.",
+    "offer": "Keg Route is route accounting software for craft breweries that deliver their own beer: orders, delivery runs, invoices and keg deposits.",
+    "title": "10 checks before you sign a distribution agreement",
+    "intro": "For the owners of Copperline Brewing weighing a distributor against the van and the taproom accounts you have built. It covers what you give up, what you keep, and what to settle before you sign.",
+    "checks": [
+      { "title": "Pull twelve months of sales by account, by keg and by can", "why": "A distributor's offer only makes sense against the volume and margin you move today." },
+      { "title": "Work out what the van route costs per keg, including your own time", "why": "Self-delivery looks free until the hours and the fuel sit next to the distributor's cut." },
+      { "title": "List the accounts you keep direct, and check the contract allows it", "why": "The taproom and your ten best bars are often the margin that keeps the brewery open." },
+      { "title": "Read the territory and exclusivity clauses with a lawyer who knows beer", "why": "Once signed, these clauses decide who you can sell to and how hard it is to leave." },
+      { "title": "Ask how many brands of your size the distributor already carries", "why": "A long book means a rep who mentions your beer when there is time left over." },
+      { "title": "Agree the grocery plan in writing, with store counts and dates", "why": "Cans on grocery shelves were the reason to talk, so make the plan part of the deal." },
+      { "title": "Settle who pays for keg loss, out of date beer and returns", "why": "These costs land on the brewery by default, one keg at a time." },
+      { "title": "Set the distributor price and work out the shelf price it produces", "why": "If the margin stack pushes the can past the shelf price nearby, the account dies in a quarter." },
+      { "title": "Decide what sales data you get, how often, and in what format", "why": "Without account level data you learn which bars dropped you months later." },
+      { "title": "Write the exit terms before the start terms", "why": "Leaving a distributor is where breweries lose money, so leaving clean has to be in the contract." }
+    ],
+    "closing": "Happy to go through any of these with you, especially the margin stack and the exit terms. Reply to my email with the one you are weighing and I will send my notes."
+  }
+}

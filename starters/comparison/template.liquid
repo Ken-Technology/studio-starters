@@ -1,0 +1,280 @@
+{%- assign accent = brand.colors.primary | default: '#0e5c63' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#a3783f' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
+{%- assign font_body = brand.fonts.body | default: 'Hanken Grotesk' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign us = brand.name | default: 'Us' -%}
+{%- assign them = data.current_tool | default: '' -%}
+{%- assign has_tool = false -%}
+{%- if them != '' -%}{%- assign has_tool = true -%}{%- endif -%}
+{%- assign has_rows = false -%}
+{%- if data.rows.size > 0 -%}{%- assign has_rows = true -%}{%- endif -%}
+{%- assign has_evidence = false -%}
+{%- if data.evidence.size > 0 -%}{%- assign has_evidence = true -%}{%- endif -%}
+{%- assign has_them_fit = false -%}
+{%- if data.them_fit and data.them_fit != '' -%}{%- assign has_them_fit = true -%}{%- endif -%}
+{%- assign has_us_fit = false -%}
+{%- if data.us_fit and data.us_fit != '' -%}{%- assign has_us_fit = true -%}{%- endif -%}
+{%- assign n_them = 0 -%}
+{%- assign n_us = 0 -%}
+{%- assign n_either = 0 -%}
+{%- for r in data.rows -%}
+{%- assign fit = r.better_fit | default: '' | downcase | strip -%}
+{%- if fit == 'them' -%}{%- assign n_them = n_them | plus: 1 -%}{%- elsif fit == 'us' -%}{%- assign n_us = n_us | plus: 1 -%}{%- else -%}{%- assign n_either = n_either | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+{%- assign k = 0 -%}
+{%- capture either_list -%}
+{%- for r in data.rows -%}
+{%- assign fit = r.better_fit | default: '' | downcase | strip -%}
+{%- if fit != 'them' and fit != 'us' -%}
+{%- assign k = k | plus: 1 -%}
+{%- if k > 1 -%}, {% endif -%}{{ r.criterion | escape }}
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ data.headline | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f6f4ef;color:#1b1a17;font-family:'{{ font_body }}',ui-sans-serif,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.vs{--p:{{ accent }};--s:{{ accent2 }};--ink:#1b1a17;--mute:#66635b;--line:#dcd8cf;--paper:#f6f4ef;--card:#fff}
+.vs h1,.vs h2,.vs-guess-name{font-family:'{{ font_head }}',Georgia,'Times New Roman',serif;font-weight:500;letter-spacing:-.012em;line-height:1.1;margin:0;text-wrap:balance}
+.vs p{margin:0 0 1rem}
+.vs-wrap{max-width:72rem;margin:0 auto;padding:0 1.15rem}
+.vs-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.vs-logo{height:26px;width:auto;display:block}
+.vs-brand{font-weight:700;font-size:1rem;margin:0!important;letter-spacing:-.01em}
+.vs-tag{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;text-align:right}
+.vs-hero{padding:2.2rem 0 2.2rem;display:grid;gap:2rem}
+.vs-kicker{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin:0 0 1rem!important}
+.vs h1{font-size:2.35rem}
+.vs-intro{font-size:1.1rem;line-height:1.5;color:#3a3832;margin:1.1rem 0 0!important;max-width:38rem}
+.vs-by{font-size:.9rem;color:var(--mute);margin:1.2rem 0 0!important}
+.vs-guess{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p);padding:1.15rem 1.2rem 1rem;align-self:start}
+.vs-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 .55rem!important}
+.vs-guess .vs-guess-name{font-size:1.9rem;line-height:1.1;margin:0 0 .75rem}
+.vs-guess ul{list-style:none;margin:0;padding:0}
+.vs-guess li{position:relative;padding:.5rem 0 .5rem 1.1rem;border-top:1px solid var(--line);font-size:.95rem;line-height:1.45}
+.vs-guess li::before{content:'';position:absolute;left:0;top:1.05rem;width:.4rem;height:.4rem;background:var(--p)}
+.vs-guess p{font-size:.95rem;margin:0 0 .5rem}
+.vs-guess-foot{font-size:.86rem;color:var(--mute);margin:.5rem 0 0!important;padding-top:.75rem;border-top:1px solid var(--line)}
+.vs-comp{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.3rem 0 2.4rem}
+.vs h2{font-size:1.7rem;margin:0 0 .6rem}
+.vs-sub{color:var(--mute);margin:0 0 1.5rem!important;max-width:42rem}
+.vs-tally{margin:0 0 1.9rem}
+.vs-bar{display:flex;gap:3px;height:10px;border-radius:999px;overflow:hidden}
+.vs-bar span{display:block;min-width:0}
+.vs-bar .t{background:var(--s)}
+.vs-bar .e{background:var(--line)}
+.vs-bar .u{background:var(--p)}
+.vs-legend{list-style:none;margin:.75rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;font-size:.9rem;color:var(--mute)}
+.vs-legend li{display:flex;align-items:center;gap:.5rem}
+.vs-legend i{width:.62rem;height:.62rem;border-radius:2px;flex:none}
+.vs-legend .t i{background:var(--s)}
+.vs-legend .e i{background:var(--line)}
+.vs-legend .u i{background:var(--p)}
+.vs-legend b{color:var(--ink);font-weight:700;font-size:1.05rem;margin-right:.1rem}
+.vs-grid{border-top:2px solid var(--ink)}
+.vs-head{display:none}
+.vs-row{padding:1.1rem 0 1.2rem;border-bottom:1px solid var(--line)}
+.vs-crit b{display:block;font-weight:600;font-size:1.06rem;line-height:1.3}
+.vs-crit small{display:block;color:var(--mute);font-size:.86rem;margin-top:.15rem;line-height:1.4}
+.vs-cell{position:relative;margin-top:.75rem;padding:.75rem .9rem .85rem;border:1px solid var(--line);border-radius:4px;background:var(--card);display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"who pill" "text text";align-items:center;column-gap:.6rem}
+.vs-cell.win{border-color:transparent}
+.vs-cell.win::before{content:'';position:absolute;inset:0;border-radius:inherit;background:var(--s);opacity:.12;pointer-events:none}
+.vs-cell.u.win::before{background:var(--p);opacity:.09}
+.vs-cell>*{position:relative}
+.vs-who{grid-area:who;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.vs-cell.u .vs-who{color:var(--p)}
+.vs-cell.t.win .vs-who{color:var(--ink)}
+.vs-cell p{grid-area:text;margin:.35rem 0 0;font-size:.97rem;line-height:1.5}
+.vs-pill{grid-area:pill;font-style:normal;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;border:1px solid currentColor;border-radius:999px;padding:.15rem .5rem;white-space:nowrap;color:var(--s)}
+.vs-cell.u .vs-pill{color:var(--p)}
+.vs-note{font-size:.86rem;color:var(--mute);margin:1.1rem 0 0!important}
+.vs-fit{padding:2.4rem 0 1.2rem}
+.vs-fit.is-empty{display:none}
+.vs-cols{display:grid;gap:1.6rem;margin-top:1.5rem}
+.vs-col{border-top:2px solid var(--s);padding-top:1rem}
+.vs-col.u{border-top-color:var(--p)}
+.vs-col h3{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 .7rem;line-height:1.4}
+.vs-col.u h3{color:var(--p)}
+.vs-col p{font-size:1.03rem;margin:0 0 1rem}
+.vs-col .vs-none{color:var(--mute);font-size:.95rem}
+.vs-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
+.vs-chips li{font-size:.86rem;font-weight:600;border:1px solid var(--line);background:var(--card);padding:.35rem .7rem;border-radius:999px;line-height:1.3}
+.vs-same{font-size:.92rem;color:var(--mute);margin:1.5rem 0 0!important}
+.vs-cta{padding:1.6rem 0 3.5rem}
+.vs-box{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--ink);padding:1.6rem 1.3rem 1.4rem}
+.vs-box h2{font-size:1.6rem;margin:0 0 .6rem}
+.vs-box p{max-width:36rem}
+.vs-btn{margin:1.3rem 0 1.5rem}
+.vs .ken-cta{display:inline-flex!important;align-items:center;min-height:48px;padding:.7rem 1.4rem!important;border-radius:4px!important;background:var(--p)!important;color:#fff!important;font-weight:600;font-size:1rem;text-decoration:none}
+.vs .ken-cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.vs-sign{font-size:.97rem;font-weight:600;margin:0!important}
+.vs-sign span{display:block;color:var(--mute);font-size:.88rem;font-weight:400}
+.vs-foot{font-size:.8rem;color:var(--mute);padding:0 0 1rem;max-width:40rem}
+.vs-sronly{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media (min-width:760px){
+body{font-size:17px}
+.vs-wrap{padding:0 2rem}
+.vs-hero{grid-template-columns:minmax(0,1fr) 21rem;gap:3rem;padding:3.2rem 0 3rem;align-items:start}
+.vs h1{font-size:3.3rem}
+.vs-intro{font-size:1.18rem}
+.vs h2{font-size:2.05rem}
+.vs-comp{padding:3rem 0 3.2rem}
+.vs-head{display:grid;grid-template-columns:13rem minmax(0,1fr) minmax(0,1fr);border-bottom:1px solid var(--ink);padding:0 0 .8rem}
+.vs-head span{display:block;font-weight:600;font-size:1.02rem;line-height:1.3;padding:0 1.2rem}
+.vs-head .c{padding-left:0;color:var(--mute);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;align-self:end;padding-bottom:.2rem}
+.vs-head .u{color:var(--p)}
+.vs-head small{display:block;font-weight:400;color:var(--mute);font-size:.84rem;margin-top:.1rem}
+.vs-row{display:grid;grid-template-columns:13rem minmax(0,1fr) minmax(0,1fr);padding:0}
+.vs-crit{padding:1.15rem 1.2rem 1.2rem 0}
+.vs-cell{display:block;margin:0;border:0;border-left:1px solid var(--line);border-radius:0;padding:1.1rem 1.2rem 1.2rem;background:transparent}
+.vs-cell.win{border-left-color:var(--line)}
+.vs-cell.win::before{border-radius:0}
+.vs-who{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.vs-cell p{margin:0}
+.vs-pill{display:inline-block;margin-top:.7rem}
+.vs-fit{padding:3rem 0 1.5rem}
+.vs-cols{grid-template-columns:1fr 1fr;gap:3rem}
+.vs-cta{padding:2rem 0 4rem}
+.vs-box{padding:2.2rem 2.4rem 2rem}
+}
+@media (min-width:1100px){
+.vs-hero{grid-template-columns:minmax(0,1fr) 24rem;gap:4.5rem;padding:3.8rem 0 3.4rem}
+.vs h1{font-size:3.9rem}
+.vs-row,.vs-head{grid-template-columns:15rem minmax(0,1fr) minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+<main class="vs">
+<div class="vs-wrap">
+<header class="vs-top">
+{%- if brand.logo_url %}<img class="vs-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="vs-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="vs-tag">Side by side</p>
+</header>
+<section data-section="hero" class="vs-hero">
+<div class="vs-hero-main">
+<p class="vs-kicker">{% if person.first_name %}For {{ person.first_name | escape }} at {{ account.name | escape }}{% else %}For {{ account.name | escape }}{% endif %}</p>
+<h1>{{ data.headline | escape }}</h1>
+<p class="vs-intro">{{ data.intro | escape }}</p>
+<p class="vs-by">From {{ sender.name | default: 'our team' | escape }}{% if sender.title %}, {{ sender.title | escape }}{% endif %}{% if brand.name %} at {{ brand.name | escape }}{% endif %}</p>
+</div>
+{%- if has_tool %}
+<aside class="vs-guess">
+<p class="vs-label">{% if has_evidence %}What your site points to{% else %}Our best guess{% endif %}</p>
+<p class="vs-guess-name">{{ them | escape }}</p>
+{%- if has_evidence %}
+<ul>
+{%- for e in data.evidence %}
+<li>{{ e | escape }}</li>
+{%- endfor %}
+</ul>
+{%- else %}
+<p>Nothing on your site names the tool you use for this, so this page compares {{ us | escape }} with {{ them | escape }}.</p>
+{%- endif %}
+<p class="vs-guess-foot">Wrong tool? Tell me and I will redo this page for the one you use.</p>
+</aside>
+{%- endif %}
+</section>
+</div>
+<section data-section="comparison" class="vs-comp">
+<div class="vs-wrap">
+{%- if has_rows %}
+<h2>{{ them | escape }} next to {{ us | escape }}, row by row</h2>
+<p class="vs-sub">Both columns are our own notes, written to be fair to both. The marked cell is the better fit on that row, in our view.</p>
+<div class="vs-tally">
+<p class="vs-label">Rows where each one is the better fit</p>
+<div class="vs-bar" aria-hidden="true"><span class="t" style="flex:{{ n_them }}"></span><span class="e" style="flex:{{ n_either }}"></span><span class="u" style="flex:{{ n_us }}"></span></div>
+<ul class="vs-legend">
+<li class="t"><i></i><b>{{ n_them }}</b> {{ them | escape }}</li>
+<li class="e"><i></i><b>{{ n_either }}</b> about the same</li>
+<li class="u"><i></i><b>{{ n_us }}</b> {{ us | escape }}</li>
+</ul>
+</div>
+<div class="vs-grid">
+<div class="vs-head" aria-hidden="true"><span class="c">Criterion</span><span class="t">{{ them | escape }}<small>{% if has_evidence %}What you use today{% else %}Our guess at what you use today{% endif %}</small></span><span class="u">{{ us | escape }}<small>What we offer</small></span></div>
+{%- for r in data.rows %}
+{%- assign fit = r.better_fit | default: '' | downcase | strip %}
+<div class="vs-row">
+<div class="vs-crit"><b>{{ r.criterion | escape }}</b>{% if r.note and r.note != '' %}<small>{{ r.note | escape }}</small>{% endif %}</div>
+<div class="vs-cell t{% if fit == 'them' %} win{% endif %}"><span class="vs-who">{{ them | escape }}</span>{% if fit == 'them' %}<em class="vs-pill">Better fit</em>{% endif %}<p>{{ r.them | escape }}</p></div>
+<div class="vs-cell u{% if fit == 'us' %} win{% endif %}"><span class="vs-who">{{ us | escape }}</span>{% if fit == 'us' %}<em class="vs-pill">Better fit</em>{% endif %}<p>{{ r.us | escape }}</p></div>
+</div>
+{%- endfor %}
+</div>
+<p class="vs-note">A row with no mark is about the same either way. Where a row says nothing about your setup, ask and I will fill it in.</p>
+{%- else %}
+<p class="vs-label">Row by row</p>
+<h2>The side by side is not on this page yet</h2>
+<p class="vs-sub">{% if has_tool %}Our notes on {{ them | escape }} are not loaded yet. {% endif %}This link stays the same, so check back later. If you would rather go through it now, book a time below and I will walk you through it.</p>
+{%- endif %}
+</div>
+</section>
+<div class="vs-wrap">
+<section data-section="fit" class="vs-fit{% unless has_rows %} is-empty{% endunless %}">
+{%- if has_rows %}
+<p class="vs-label">The honest split</p>
+<h2>Where each one is the better fit</h2>
+<div class="vs-cols">
+<div class="vs-col t">
+<h3>Where {{ them | escape }} is the better fit</h3>
+{%- if n_them > 0 %}
+{%- if has_them_fit %}
+<p>{{ data.them_fit | escape }}</p>
+{%- endif %}
+<ul class="vs-chips">
+{%- for r in data.rows %}
+{%- assign fit = r.better_fit | default: '' | downcase | strip %}
+{%- if fit == 'them' %}<li>{{ r.criterion | escape }}</li>{% endif %}
+{%- endfor %}
+</ul>
+{%- else %}
+<p class="vs-none">No row in our notes goes to {{ them | escape }}. That is our view, so weigh it as one.</p>
+{%- endif %}
+</div>
+<div class="vs-col u">
+<h3>Where {{ us | escape }} is the better fit</h3>
+{%- if n_us > 0 %}
+{%- if has_us_fit %}
+<p>{{ data.us_fit | escape }}</p>
+{%- endif %}
+<ul class="vs-chips">
+{%- for r in data.rows %}
+{%- assign fit = r.better_fit | default: '' | downcase | strip %}
+{%- if fit == 'us' %}<li>{{ r.criterion | escape }}</li>{% endif %}
+{%- endfor %}
+</ul>
+{%- else %}
+<p class="vs-none">No row in our notes goes to {{ us | escape }} on its own.</p>
+{%- endif %}
+</div>
+</div>
+{%- if n_either > 0 %}
+<p class="vs-same">About the same either way: {{ either_list }}.</p>
+{%- endif %}
+{%- endif %}
+</section>
+<section data-section="cta" class="vs-cta">
+<div class="vs-box">
+<h2>Want this checked against your setup?</h2>
+<p>Book 20 minutes. Tell me what {{ account.name | escape }} runs on today and I will go through the rows that do not hold for you, as well as the ones that do.</p>
+<div class="vs-btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+<p class="vs-sign">{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</div>
+<p class="vs-foot">Written for {{ account.name | escape }} by {{ sender.name | default: 'our team' | escape }}. Both columns come from our own comparison notes, so they carry our view.</p>
+</section>
+</div>
+</main>
+</body>
+</html>

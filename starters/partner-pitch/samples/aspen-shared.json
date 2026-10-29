@@ -1,0 +1,117 @@
+{
+  "account": {
+    "name": "Aspen Equipment Finance",
+    "domain": "aspenequipment.example",
+    "industry": "financial services",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Aspen Equipment Finance leases mowers, loaders, trucks and snow equipment to landscaping and outdoor services contractors in the Mountain West and the Midwest. About 90 people in Denver.",
+      "why_now": "Added a page for landscaping contractors to its site in October 2026.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Rosa Alvarez",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Fieldstone",
+    "logo_url": null,
+    "colors": { "primary": "#ff5a1f", "secondary": "#15202b" },
+    "fonts": { "heading": "Space Grotesk", "body": "DM Sans" }
+  },
+  "data": {
+    "knowledge": [
+      {
+        "citationId": "k-offer-1",
+        "kind": "offer",
+        "title": "What Fieldstone sells",
+        "text": "Fieldstone is crew scheduling and time tracking for landscaping, lawn care and snow removal companies with 20 to 300 field staff. Crews see the day's route on their phones, clock in at the job, and the office sees hours, drive time and equipment use per crew. Priced per crew per month."
+      },
+      {
+        "citationId": "k-file-2",
+        "kind": "org_file",
+        "title": "Customer profile, 2026",
+        "text": "Around 900 customers, mostly in the Midwest, the Mountain West and the Northeast. The typical customer runs 4 to 25 crews, owns its mowers and trucks, and adds snow removal in winter. The buyer is the owner or the operations manager. Most come to us in spring, when they add crews and the paper route sheets stop working."
+      },
+      {
+        "citationId": "k-claim-3",
+        "kind": "claim",
+        "title": "Proof we may use",
+        "text": "Customers log which mower or truck each crew took out, so the office sees equipment hours per machine."
+      }
+    ],
+    "why_now": "Added a page for landscaping contractors to its site in October 2026.",
+    "site": {
+      "url": "https://aspenequipment.example",
+      "title": "Aspen Equipment Finance, leasing for outdoor services contractors",
+      "description": "Leases and loans for mowers, loaders, trucks and snow equipment, built for landscaping and snow removal contractors.",
+      "markdown": "# Equipment leasing for contractors who work outdoors\n\nAspen finances the mowers, loaders, trucks and snow equipment that landscaping, lawn care and snow removal contractors run every day. Decisions in two business days.\n\n## Who we work with\n\nContractors with 10 to 300 employees across Colorado, Utah, Arizona and the Midwest. Most lease a fleet of five to fifty machines and replace a part of it every spring.\n\n## For landscaping contractors\n\nSeasonal payment plans that match your cash flow: lower payments in winter, higher in the growing season. Snow equipment financed before the first storm.\n\n## Partners\n\nWe work with equipment dealers and with software vendors that serve contractors. Referral partners get a dedicated contact."
+    },
+    "partner_customers": "You sell to landscaping, lawn care and snow removal contractors with 10 to 300 employees across Colorado, Utah, Arizona and the Midwest. Most lease a fleet of five to fifty machines, replace part of it every spring, and use your seasonal payment plans to match winter and summer cash flow.",
+    "partner_offer": "Leases and loans for mowers, loaders, trucks and snow equipment, with seasonal payment plans for landscaping and snow removal contractors.",
+    "search": {
+      "industries": ["landscaping services", "facilities services"],
+      "employeeRanges": ["11-50", "51-200", "201-500"]
+    },
+    "candidates": [
+      { "name": "Front Range Grounds", "domain": "frontrangegrounds.example", "industry": "landscaping services", "size": "51-200", "employee_count": 110, "hq": "Fort Collins, Colorado", "country": "United States", "description": "Commercial landscaping and snow removal for office parks and HOAs along the Front Range, with twelve crews in summer.", "founded": 2008 },
+      { "name": "Wasatch Lawn and Snow", "domain": "wasatchlawn.example", "industry": "landscaping services", "size": "11-50", "employee_count": 45, "hq": "Salt Lake City, Utah", "country": "United States", "description": "Residential lawn care in the Salt Lake valley, with snow plowing for the same customers in winter.", "founded": 2014 },
+      { "name": "Prairie Edge Landscapes", "domain": "prairieedge.example", "industry": "landscaping services", "size": "51-200", "employee_count": 160, "hq": "Des Moines, Iowa", "country": "United States", "description": "Design, install and maintenance crews for commercial properties across Iowa and Nebraska.", "founded": 2003 },
+      { "name": "Sonoran Grounds Management", "domain": "sonorangrounds.example", "industry": "facilities services", "size": "201-500", "employee_count": 260, "hq": "Phoenix, Arizona", "country": "United States", "description": "Year-round grounds maintenance for retail centers and campuses in Arizona and Nevada, run by one dispatch office.", "founded": 1998 },
+      { "name": "Great Lakes Snow and Turf", "domain": "greatlakessnow.example", "industry": "landscaping services", "size": "51-200", "employee_count": 90, "hq": "Grand Rapids, Michigan", "country": "United States", "description": "Snow removal for industrial sites in winter and turf maintenance in summer, with a fleet of thirty trucks.", "founded": 2011 },
+      { "name": "Blue Spruce Property Care", "domain": "bluespruce.example", "industry": "landscaping services", "size": "11-50", "employee_count": 35, "hq": "Boulder, Colorado", "country": "United States", "description": "Maintenance and irrigation for residential properties in Boulder County, adding its sixth crew this year.", "founded": 2016 },
+      { "name": "Heartland Turf Partners", "domain": "heartlandturf.example", "industry": "landscaping services", "size": "51-200", "employee_count": 75, "hq": "Omaha, Nebraska", "country": "United States", "description": "Lawn care and tree services for homes and small businesses across eastern Nebraska.", "founded": 2012 },
+      { "name": "Timberline Outdoor Services", "domain": "timberlineoutdoor.example", "industry": "facilities services", "size": "51-200", "employee_count": 130, "hq": "Bozeman, Montana", "country": "United States", "description": "Landscaping, snow removal and parking lot maintenance for commercial clients in Montana and Idaho.", "founded": 2006 }
+    ],
+    "examples": [
+      { "name": "Front Range Grounds", "industry": "landscaping services", "size": "51-200", "hq": "Fort Collins, Colorado", "why": "Twelve summer crews doing landscaping and snow removal on the Front Range, in your home state and our core size." },
+      { "name": "Prairie Edge Landscapes", "industry": "landscaping services", "size": "51-200", "hq": "Des Moines, Iowa", "why": "Design, install and maintenance crews across two Midwest states, the fleet size that gets replaced in parts." },
+      { "name": "Great Lakes Snow and Turf", "industry": "landscaping services", "size": "51-200", "hq": "Grand Rapids, Michigan", "why": "Thirty trucks that plow in winter and mow in summer, which is a seasonal fleet and a seasonal payroll." },
+      { "name": "Wasatch Lawn and Snow", "industry": "landscaping services", "size": "11-50", "hq": "Salt Lake City, Utah", "why": "Lawn care plus snow plowing for the same customers in Utah, at the small end of both our ranges." },
+      { "name": "Blue Spruce Property Care", "industry": "landscaping services", "size": "11-50", "hq": "Boulder, Colorado", "why": "Adding a sixth crew this year, which is when route sheets and the fleet both need to grow." },
+      { "name": "Timberline Outdoor Services", "industry": "facilities services", "size": "51-200", "hq": "Bozeman, Montana", "why": "Landscaping, snow and parking lot work for commercial clients in Montana and Idaho, with 130 people." }
+    ],
+    "headline": "Your lessees decide which mowers to replace from hours nobody wrote down",
+    "summary": "We both sell to landscaping and snow contractors with a few dozen to a few hundred field staff, in the same states. And we care about the same machines: you finance them, and our customers log every hour they run. Here is a way to sell to those contractors together.",
+    "our_customers": "Landscaping, lawn care and snow removal companies with 20 to 300 field staff, mostly in the Midwest, the Mountain West and the Northeast. They run 4 to 25 crews, own their mowers and trucks, and add snow removal in winter. The buyer is the owner or the operations manager, and most come to us in spring when paper route sheets stop working.",
+    "our_offer": "Crew scheduling and time tracking for outdoor services contractors: routes on the crew's phone, clock-in at the job, and hours per crew and per machine for the office.",
+    "overlap": {
+      "name": "Landscaping and snow contractors with 4 to 25 crews",
+      "points": [
+        "The same buyer: the owner or operations manager who leases the fleet is the one who schedules the crews.",
+        "The same states: Colorado, Utah, Arizona and the Midwest on your side, the Midwest and the Mountain West on ours.",
+        "The same season: contractors add crews and replace machines every spring, which is when both of us get the call.",
+        "The same machines: you finance the mowers and trucks, and our customers log the hours each one runs."
+      ]
+    },
+    "offer": {
+      "name": "Equipment hours that set the replacement plan",
+      "summary": "Contractors on Fieldstone get a leasing offer from Aspen built on the hours their machines ran last season, instead of a guess. You get a lessee who knows which five machines to replace. We get a referral partner that sees contractors the week they lease a new fleet.",
+      "you_bring": [
+        "Seasonal leases and loans for mowers, loaders, trucks and snow equipment, decided in two business days",
+        "A dedicated contact for referral partners",
+        "Contractors replacing part of a fleet every spring"
+      ],
+      "we_bring": [
+        "Hours per machine from crew clock-ins, which a contractor can share with you when they ask for a lease",
+        "Routes and time tracking the crews already use, so the hours are there without extra work",
+        "Around 900 contractors, most of them in your states"
+      ],
+      "customer_gets": "A replacement plan and a lease built on the hours each machine actually ran, from two companies that already know their crews and their fleet.",
+      "steps": [
+        { "title": "Agree what a contractor shares", "detail": "We settle on one export: machine, hours last season, crew. The contractor chooses to send it to Aspen. Nothing moves without them." },
+        { "title": "Add Fieldstone to your landscaping page", "detail": "Your new landscaping page lists us as a way to track machine hours. Our help center lists Aspen as a way to finance a replacement." },
+        { "title": "Refer both ways through one contact", "detail": "Your partner contact and I trade introductions every two weeks and keep one shared list of who was referred." },
+        { "title": "Check the first season", "detail": "After the spring season we look at how many contractors used the export and whether their lease decisions changed." }
+      ]
+    },
+    "first_step": {
+      "title": "A 30 minute call on the machine hours export",
+      "detail": "I show you the equipment hours a contractor sees in Fieldstone, and you tell me whether that is what your underwriters want to see for a replacement lease. If it is, we write the export together. If it is not, we know what to change.",
+      "ask": "Pick a week, and bring whoever reads a contractor's equipment list when a lease comes in."
+    }
+  }
+}

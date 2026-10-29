@@ -1,0 +1,135 @@
+{
+  "kenStudio": "1",
+  "name": "Website conversion audit",
+  "type": "audit",
+  "format": "page",
+  "slug": "site-audit",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "site": { "type": "object" },
+      "about": { "type": "object" },
+      "headline": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 100,
+        "fallback": "Website audit for {{ account.domain | default: account.name }}"
+      },
+      "criteria": {
+        "type": "array",
+        "minItems": 6,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "enum": ["Message clarity", "Proof", "Call to action", "Trust", "Navigation", "Contact path"]
+            },
+            "score": { "type": "number" },
+            "quote": { "type": "string", "minLength": 3, "maxLength": 200 },
+            "where": { "type": "string", "minLength": 3, "maxLength": 60 },
+            "cost": { "type": "string", "minLength": 60, "maxLength": 340 }
+          },
+          "required": ["name", "score", "quote", "where", "cost"]
+        }
+      },
+      "rewrites": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": {
+          "type": "object",
+          "properties": {
+            "kind": { "type": "string", "enum": ["headline", "button"] },
+            "where": { "type": "string", "minLength": 3, "maxLength": 40 },
+            "before": { "type": "string", "minLength": 2, "maxLength": 200 },
+            "after": { "type": "string", "minLength": 2, "maxLength": 160 },
+            "why": { "type": "string", "minLength": 30, "maxLength": 240 }
+          },
+          "required": ["kind", "where", "before", "after", "why"]
+        }
+      },
+      "callouts": {
+        "type": "array",
+        "minItems": 5,
+        "maxItems": 5,
+        "items": { "type": "string", "minLength": 30, "maxLength": 240 }
+      },
+      "fixes": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "minLength": 10, "maxLength": 70 },
+            "body": { "type": "string", "minLength": 40, "maxLength": 280 },
+            "effort": { "type": "string", "minLength": 5, "maxLength": 60 }
+          },
+          "required": ["title", "body", "effort"]
+        }
+      }
+    },
+    "required": ["headline", "criteria", "rewrites", "callouts", "fixes"]
+  },
+  "recipe": [
+    {
+      "id": "site",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}", "maxChars": 12000 },
+      "to": "data.site"
+    },
+    {
+      "id": "about",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}/about", "maxChars": 6000 },
+      "to": "data.about"
+    },
+    {
+      "id": "score",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.site"],
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "data.site", "data.about"],
+      "to": ["data.headline", "data.criteria", "data.callouts", "data.fixes"],
+      "prompt": "You are a conversion reviewer reading the website of {{ account.name }} ({{ account.domain }}) as a first-time visitor who has never heard of them and is deciding whether to get in touch. {{ sender.name | default: 'The sender' }} sends this audit to {{ account.name }} for free.\n\nInputs: data.site is their homepage text: {{ data.site.url | default: \"we could not read it\" }}. data.about is a second page: {{ data.about.url | default: \"we could not read it, so say nothing about an About page\" }}. account.dossier.summary is our research summary: {{ account.dossier.summary | default: 'none' }}. Use these inputs only. You see page text, not speed, design, images or how the page looks on a phone, so never score or mention those. Quote their text word for word, as a visitor reads it, without Markdown such as **, # or [text](url) links. Never invent customers, numbers, features or claims.\n\nReturn JSON with these keys:\n- headline: the page title, 20 to 100 characters. Name the one thing on {{ account.domain }} that most gets in a visitor's way, like \"brightwave.io tells shippers how you feel about freight, not what you haul or where\". No question, no exclamation mark.\n- criteria: exactly 6, in this order, each {name, score, quote, where, cost}:\n  1. Message clarity: does a visitor learn what they do, for whom and where from the headline and the line under it.\n  2. Proof: named customers, numbers, results, years or people on the page.\n  3. Call to action: the main button or link. Does it say what happens next, and does it lead to the thing a buyer wants.\n  4. Trust: licences, addresses, named leadership, policies, anything that shows a real business.\n  5. Navigation: the menu and headings. Can a visitor find the page they came for in one click, are the labels plain.\n  6. Contact path: how a visitor reaches a person. Where the link, form or booking page sits, and how many steps it takes.\n  - name: exactly one of the six names above.\n  - score: a whole number from 0 to 10. 0 to 4 is weak, 5 to 6 is fair, 7 to 10 is strong. Be honest: most sites have both a strong and a weak criterion. Do not give everything the same score.\n  - quote: the exact line from data.site or data.about that the score rests on, copied character for character, at most 200 characters. When the thing is missing from the page, quote the line where it should have been, and say in cost that it is missing.\n  - where: where that line sits, at most 60 characters, like \"Homepage headline\" or \"Footer\".\n  - cost: 60 to 340 characters, two or three sentences. What the visitor thinks or does next, in plain words. Only what the text shows.\n- callouts: exactly 5 strings of 30 to 240 characters, one per part of the first screen, in this order: the headline, the line under it, the main button, the navigation, the proof row (logos, numbers or customer names near the top). Each says what is wrong or right with that part on {{ account.domain }} and what to do, in one or two sentences. When the part is not in the text, say what should be there.\n- fixes: exactly 3, the biggest effect for the least work first. Each is {title, body, effort}. title: 10 to 70 characters, an action. body: 40 to 280 characters, what to change and why, using their own facts. effort: 5 to 60 characters, a rough time and when, like \"About an hour. Today.\"\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. Plain words a person would say out loud to a peer. No hype words (leverage, seamless, robust, unlock, elevate, empower, synergy, game-changer, cutting-edge, best-in-class, world-class, all-in-one)."
+    },
+    {
+      "id": "rewrites",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.criteria"],
+      "inputs": ["account.name", "account.domain", "data.site", "data.about", "data.criteria"],
+      "to": ["data.rewrites"],
+      "prompt": "Rewrite two pieces of copy on {{ account.name }}'s website ({{ account.domain }}): the hero headline and the main call to action button.\n\nInputs: data.site is their homepage text: {{ data.site.url | default: \"we could not read it\" }}. data.about is a second page: {{ data.about.url | default: \"we could not read it, so use nothing from an About page\" }}. data.criteria are our scores and findings. Use facts from these inputs only. Never invent customers, numbers, results or features.\n\nReturn JSON with this key:\n- rewrites: exactly 2, the headline first, the button second. Each is {kind, where, before, after, why}.\n  - kind: \"headline\" for the first, \"button\" for the second.\n  - where: \"Hero headline\" or \"Main button\".\n  - before: their current text, copied word for word from data.site, at most 200 characters.\n  - after: your rewrite, at most 160 characters. The headline says what {{ account.name }} does, for whom, or where, using facts from their pages, in one sentence. The button is 2 to 6 words, says what happens next, and points at the page the visitor wants.\n  - why: 30 to 240 characters, what the visitor gets from the new version, not what you did.\n\nBefore you answer, read each rewrite out loud. Would a visitor get it in one read? Could it sit on a competitor's site unchanged? Rewrite it if the answers are no and yes.\n\nRules: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. Plain words a person would say out loud. No hype words (leverage, seamless, robust, unlock, elevate, empower, supercharge, revolutionize, cutting-edge, best-in-class, world-class, all-in-one)."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.rewrites"],
+      "retries": 2,
+      "pass_score": 7,
+      "checks": {
+        "banned": ["leverage", "seamless", "robust", "unlock", "elevate", "empower", "supercharge", "revolutionize", "cutting-edge", "best-in-class", "world-class", "all-in-one"],
+        "no_placeholders": true,
+        "no_prices": true,
+        "no_dashes": true,
+        "skip": ["kind", "where", "before", "grade"]
+      },
+      "rubric": "Grade the two rewrites in data.rewrites the way {{ account.name }}'s team would read them. 10 is a rewrite they could paste onto their site today.\nScore each rewrite 0 to 10 on:\n- verbatim: before is copied word for word from data.site. A paraphrase, a summary or a changed word scores 0.\n- specific: after names what {{ account.name }} does, who it is for, where, or what happens next, from facts on their pages. It could not sit on a competitor's site unchanged.\n- clearer: after is shorter than before, or the same length and easier to understand in one read. The button is 2 to 6 words.\n- plain: no hype words, no exclamation marks, nothing a person would not say out loud.\n- why: says what the visitor gets, not what the writer did.\nAutomatic fail for that rewrite: an em dash or en dash, an email address or phone number, or a customer, number or result that is not on their pages.\nThe overall score is the lowest rewrite's average. Pass at 7 or higher with no automatic fail. On a fail, name the rewrite by its where, name the check, and quote the words to change."
+    }
+  ],
+  "sections": [
+    { "id": "hero", "label": "Intro" },
+    { "id": "score", "label": "Score" },
+    { "id": "findings", "label": "Findings" },
+    { "id": "rewrites", "label": "Rewrites" },
+    { "id": "wireframe", "label": "First screen" },
+    { "id": "fixes", "label": "Top fixes" },
+    { "id": "next", "label": "Booking" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

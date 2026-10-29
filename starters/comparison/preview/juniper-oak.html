@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Pollen next to Mailhaven, for Juniper &amp; Oak</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f6f4ef;color:#1b1a17;font-family:'DM Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.vs{--p:#f2541b;--s:#1c1c1c;--ink:#1b1a17;--mute:#66635b;--line:#dcd8cf;--paper:#f6f4ef;--card:#fff}
+.vs h1,.vs h2,.vs-guess-name{font-family:'Outfit',Georgia,'Times New Roman',serif;font-weight:500;letter-spacing:-.012em;line-height:1.1;margin:0;text-wrap:balance}
+.vs p{margin:0 0 1rem}
+.vs-wrap{max-width:72rem;margin:0 auto;padding:0 1.15rem}
+.vs-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.vs-logo{height:26px;width:auto;display:block}
+.vs-brand{font-weight:700;font-size:1rem;margin:0!important;letter-spacing:-.01em}
+.vs-tag{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;text-align:right}
+.vs-hero{padding:2.2rem 0 2.2rem;display:grid;gap:2rem}
+.vs-kicker{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin:0 0 1rem!important}
+.vs h1{font-size:2.35rem}
+.vs-intro{font-size:1.1rem;line-height:1.5;color:#3a3832;margin:1.1rem 0 0!important;max-width:38rem}
+.vs-by{font-size:.9rem;color:var(--mute);margin:1.2rem 0 0!important}
+.vs-guess{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p);padding:1.15rem 1.2rem 1rem;align-self:start}
+.vs-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 .55rem!important}
+.vs-guess .vs-guess-name{font-size:1.9rem;line-height:1.1;margin:0 0 .75rem}
+.vs-guess ul{list-style:none;margin:0;padding:0}
+.vs-guess li{position:relative;padding:.5rem 0 .5rem 1.1rem;border-top:1px solid var(--line);font-size:.95rem;line-height:1.45}
+.vs-guess li::before{content:'';position:absolute;left:0;top:1.05rem;width:.4rem;height:.4rem;background:var(--p)}
+.vs-guess p{font-size:.95rem;margin:0 0 .5rem}
+.vs-guess-foot{font-size:.86rem;color:var(--mute);margin:.5rem 0 0!important;padding-top:.75rem;border-top:1px solid var(--line)}
+.vs-comp{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.3rem 0 2.4rem}
+.vs h2{font-size:1.7rem;margin:0 0 .6rem}
+.vs-sub{color:var(--mute);margin:0 0 1.5rem!important;max-width:42rem}
+.vs-tally{margin:0 0 1.9rem}
+.vs-bar{display:flex;gap:3px;height:10px;border-radius:999px;overflow:hidden}
+.vs-bar span{display:block;min-width:0}
+.vs-bar .t{background:var(--s)}
+.vs-bar .e{background:var(--line)}
+.vs-bar .u{background:var(--p)}
+.vs-legend{list-style:none;margin:.75rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;font-size:.9rem;color:var(--mute)}
+.vs-legend li{display:flex;align-items:center;gap:.5rem}
+.vs-legend i{width:.62rem;height:.62rem;border-radius:2px;flex:none}
+.vs-legend .t i{background:var(--s)}
+.vs-legend .e i{background:var(--line)}
+.vs-legend .u i{background:var(--p)}
+.vs-legend b{color:var(--ink);font-weight:700;font-size:1.05rem;margin-right:.1rem}
+.vs-grid{border-top:2px solid var(--ink)}
+.vs-head{display:none}
+.vs-row{padding:1.1rem 0 1.2rem;border-bottom:1px solid var(--line)}
+.vs-crit b{display:block;font-weight:600;font-size:1.06rem;line-height:1.3}
+.vs-crit small{display:block;color:var(--mute);font-size:.86rem;margin-top:.15rem;line-height:1.4}
+.vs-cell{position:relative;margin-top:.75rem;padding:.75rem .9rem .85rem;border:1px solid var(--line);border-radius:4px;background:var(--card);display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"who pill" "text text";align-items:center;column-gap:.6rem}
+.vs-cell.win{border-color:transparent}
+.vs-cell.win::before{content:'';position:absolute;inset:0;border-radius:inherit;background:var(--s);opacity:.12;pointer-events:none}
+.vs-cell.u.win::before{background:var(--p);opacity:.09}
+.vs-cell>*{position:relative}
+.vs-who{grid-area:who;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.vs-cell.u .vs-who{color:var(--p)}
+.vs-cell.t.win .vs-who{color:var(--ink)}
+.vs-cell p{grid-area:text;margin:.35rem 0 0;font-size:.97rem;line-height:1.5}
+.vs-pill{grid-area:pill;font-style:normal;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;border:1px solid currentColor;border-radius:999px;padding:.15rem .5rem;white-space:nowrap;color:var(--s)}
+.vs-cell.u .vs-pill{color:var(--p)}
+.vs-note{font-size:.86rem;color:var(--mute);margin:1.1rem 0 0!important}
+.vs-fit{padding:2.4rem 0 1.2rem}
+.vs-fit.is-empty{display:none}
+.vs-cols{display:grid;gap:1.6rem;margin-top:1.5rem}
+.vs-col{border-top:2px solid var(--s);padding-top:1rem}
+.vs-col.u{border-top-color:var(--p)}
+.vs-col h3{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 .7rem;line-height:1.4}
+.vs-col.u h3{color:var(--p)}
+.vs-col p{font-size:1.03rem;margin:0 0 1rem}
+.vs-col .vs-none{color:var(--mute);font-size:.95rem}
+.vs-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
+.vs-chips li{font-size:.86rem;font-weight:600;border:1px solid var(--line);background:var(--card);padding:.35rem .7rem;border-radius:999px;line-height:1.3}
+.vs-same{font-size:.92rem;color:var(--mute);margin:1.5rem 0 0!important}
+.vs-cta{padding:1.6rem 0 3.5rem}
+.vs-box{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--ink);padding:1.6rem 1.3rem 1.4rem}
+.vs-box h2{font-size:1.6rem;margin:0 0 .6rem}
+.vs-box p{max-width:36rem}
+.vs-btn{margin:1.3rem 0 1.5rem}
+.vs .ken-cta{display:inline-flex!important;align-items:center;min-height:48px;padding:.7rem 1.4rem!important;border-radius:4px!important;background:var(--p)!important;color:#fff!important;font-weight:600;font-size:1rem;text-decoration:none}
+.vs .ken-cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.vs-sign{font-size:.97rem;font-weight:600;margin:0!important}
+.vs-sign span{display:block;color:var(--mute);font-size:.88rem;font-weight:400}
+.vs-foot{font-size:.8rem;color:var(--mute);padding:0 0 1rem;max-width:40rem}
+.vs-sronly{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media (min-width:760px){
+body{font-size:17px}
+.vs-wrap{padding:0 2rem}
+.vs-hero{grid-template-columns:minmax(0,1fr) 21rem;gap:3rem;padding:3.2rem 0 3rem;align-items:start}
+.vs h1{font-size:3.3rem}
+.vs-intro{font-size:1.18rem}
+.vs h2{font-size:2.05rem}
+.vs-comp{padding:3rem 0 3.2rem}
+.vs-head{display:grid;grid-template-columns:13rem minmax(0,1fr) minmax(0,1fr);border-bottom:1px solid var(--ink);padding:0 0 .8rem}
+.vs-head span{display:block;font-weight:600;font-size:1.02rem;line-height:1.3;padding:0 1.2rem}
+.vs-head .c{padding-left:0;color:var(--mute);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;align-self:end;padding-bottom:.2rem}
+.vs-head .u{color:var(--p)}
+.vs-head small{display:block;font-weight:400;color:var(--mute);font-size:.84rem;margin-top:.1rem}
+.vs-row{display:grid;grid-template-columns:13rem minmax(0,1fr) minmax(0,1fr);padding:0}
+.vs-crit{padding:1.15rem 1.2rem 1.2rem 0}
+.vs-cell{display:block;margin:0;border:0;border-left:1px solid var(--line);border-radius:0;padding:1.1rem 1.2rem 1.2rem;background:transparent}
+.vs-cell.win{border-left-color:var(--line)}
+.vs-cell.win::before{border-radius:0}
+.vs-who{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.vs-cell p{margin:0}
+.vs-pill{display:inline-block;margin-top:.7rem}
+.vs-fit{padding:3rem 0 1.5rem}
+.vs-cols{grid-template-columns:1fr 1fr;gap:3rem}
+.vs-cta{padding:2rem 0 4rem}
+.vs-box{padding:2.2rem 2.4rem 2rem}
+}
+@media (min-width:1100px){
+.vs-hero{grid-template-columns:minmax(0,1fr) 24rem;gap:4.5rem;padding:3.8rem 0 3.4rem}
+.vs h1{font-size:3.9rem}
+.vs-row,.vs-head{grid-template-columns:15rem minmax(0,1fr) minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+<main class="vs">
+<div class="vs-wrap">
+<header class="vs-top"><p class="vs-brand">Pollen</p><p class="vs-tag">Side by side</p>
+</header>
+<section data-section="hero" class="vs-hero">
+<div class="vs-hero-main">
+<p class="vs-kicker">For Priya at Juniper &amp; Oak</p>
+<h1>Pollen next to Mailhaven, for Juniper &amp; Oak</h1>
+<p class="vs-intro">Your site names Mailhaven: the newsletter signup posts to a Mailhaven form and the footer credits it. Here is how Pollen lines up with it on the seven things a small email team touches. Mailhaven is the better fit on three rows, SMS among them, Pollen on three, and one is a wash.</p>
+<p class="vs-by">From Theo Lindqvist, Founder at Pollen</p>
+</div>
+<aside class="vs-guess">
+<p class="vs-label">What your site points to</p>
+<p class="vs-guess-name">Mailhaven</p>
+<ul>
+<li>The newsletter signup on the home page posts to a Mailhaven form.</li>
+<li>The footer of every page reads Email by Mailhaven.</li>
+</ul>
+<p class="vs-guess-foot">Wrong tool? Tell me and I will redo this page for the one you use.</p>
+</aside>
+</section>
+</div>
+<section data-section="comparison" class="vs-comp">
+<div class="vs-wrap">
+<h2>Mailhaven next to Pollen, row by row</h2>
+<p class="vs-sub">Both columns are our own notes, written to be fair to both. The marked cell is the better fit on that row, in our view.</p>
+<div class="vs-tally">
+<p class="vs-label">Rows where each one is the better fit</p>
+<div class="vs-bar" aria-hidden="true"><span class="t" style="flex:3"></span><span class="e" style="flex:1"></span><span class="u" style="flex:3"></span></div>
+<ul class="vs-legend">
+<li class="t"><i></i><b>3</b> Mailhaven</li>
+<li class="e"><i></i><b>1</b> about the same</li>
+<li class="u"><i></i><b>3</b> Pollen</li>
+</ul>
+</div>
+<div class="vs-grid">
+<div class="vs-head" aria-hidden="true"><span class="c">Criterion</span><span class="t">Mailhaven<small>What you use today</small></span><span class="u">Pollen<small>What we offer</small></span></div>
+<div class="vs-row">
+<div class="vs-crit"><b>Flows</b><small>Mailhaven&#39;s builder is more capable if you run many variants.</small></div>
+<div class="vs-cell t win"><span class="vs-who">Mailhaven</span><em class="vs-pill">Better fit</em><p>The same five flows plus a visual builder with split tests inside a flow.</p></div>
+<div class="vs-cell u"><span class="vs-who">Pollen</span><p>Welcome, browse, cart, post-purchase and winback flows that start from your shop&#39;s events. Branch on what someone bought.</p></div>
+</div>
+<div class="vs-row">
+<div class="vs-crit"><b>Segments</b></div>
+<div class="vs-cell t"><span class="vs-who">Mailhaven</span><p>Segments from orders and profile fields, rebuilt every few hours.</p></div>
+<div class="vs-cell u win"><span class="vs-who">Pollen</span><em class="vs-pill">Better fit</em><p>Segments from orders, products and site visits, updated as orders come in.</p></div>
+</div>
+<div class="vs-row">
+<div class="vs-crit"><b>Editor and templates</b></div>
+<div class="vs-cell t"><span class="vs-who">Mailhaven</span><p>A drag and drop editor with a large template library and custom HTML.</p></div>
+<div class="vs-cell u"><span class="vs-who">Pollen</span><p>A block editor with your brand set once. Product blocks pull price and image from the shop.</p></div>
+</div>
+<div class="vs-row">
+<div class="vs-crit"><b>SMS</b><small>If SMS is on your list for this year, this row decides it.</small></div>
+<div class="vs-cell t win"><span class="vs-who">Mailhaven</span><em class="vs-pill">Better fit</em><p>SMS in the same flows as email, with its own consent handling.</p></div>
+<div class="vs-cell u"><span class="vs-who">Pollen</span><p>Not yet. Email only.</p></div>
+</div>
+<div class="vs-row">
+<div class="vs-crit"><b>Deliverability</b><small>Ask what share of your last drop landed in Promotions.</small></div>
+<div class="vs-cell t"><span class="vs-who">Mailhaven</span><p>Shared sending pools by default. A dedicated domain on the higher plans.</p></div>
+<div class="vs-cell u win"><span class="vs-who">Pollen</span><em class="vs-pill">Better fit</em><p>A dedicated sending domain set up with you, inbox placement checks before each drop, and a warmup plan.</p></div>
+</div>
+<div class="vs-row">
+<div class="vs-crit"><b>Shop integration</b><small>Your subscription box makes this one matter.</small></div>
+<div class="vs-cell t"><span class="vs-who">Mailhaven</span><p>Connects to the common shop platforms. Subscription data needs a connector.</p></div>
+<div class="vs-cell u win"><span class="vs-who">Pollen</span><em class="vs-pill">Better fit</em><p>Built for the shop platforms DTC brands use. Orders, products and subscriptions sync in minutes.</p></div>
+</div>
+<div class="vs-row">
+<div class="vs-crit"><b>Getting set up</b></div>
+<div class="vs-cell t win"><span class="vs-who">Mailhaven</span><em class="vs-pill">Better fit</em><p>Already set up.</p></div>
+<div class="vs-cell u"><span class="vs-who">Pollen</span><p>We move your list and flows in the first week and keep the old sender running until the first drop lands.</p></div>
+</div>
+</div>
+<p class="vs-note">A row with no mark is about the same either way. Where a row says nothing about your setup, ask and I will fill it in.</p>
+</div>
+</section>
+<div class="vs-wrap">
+<section data-section="fit" class="vs-fit">
+<p class="vs-label">The honest split</p>
+<h2>Where each one is the better fit</h2>
+<div class="vs-cols">
+<div class="vs-col t">
+<h3>Where Mailhaven is the better fit</h3>
+<p>Stay with Mailhaven if SMS is on your list for this year, or if you run many variants inside a flow and lean on its builder. It is also already set up, which counts for something.</p>
+<ul class="vs-chips"><li>Flows</li><li>SMS</li><li>Getting set up</li>
+</ul>
+</div>
+<div class="vs-col u">
+<h3>Where Pollen is the better fit</h3>
+<p>Pollen is the better fit if the subscription box you launched in September needs its own flows and segments, and if you want a dedicated sending domain with placement checks before each drop.</p>
+<ul class="vs-chips"><li>Segments</li><li>Deliverability</li><li>Shop integration</li>
+</ul>
+</div>
+</div>
+<p class="vs-same">About the same either way: Editor and templates.</p>
+</section>
+<section data-section="cta" class="vs-cta">
+<div class="vs-box">
+<h2>Want this checked against your setup?</h2>
+<p>Book 20 minutes. Tell me what Juniper &amp; Oak runs on today and I will go through the rows that do not hold for you, as well as the ones that do.</p>
+<div class="vs-btn"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#f2541b;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+<p class="vs-sign">Theo Lindqvist<span>Founder, Pollen</span></p>
+</div>
+<p class="vs-foot">Written for Juniper &amp; Oak by Theo Lindqvist. Both columns come from our own comparison notes, so they carry our view.</p>
+</section>
+</div>
+</main>
+</body>
+</html>

@@ -1,7 +1,7 @@
-{%- assign brand_p = brand.colors.primary | default: '#2a4bd7' -%}
-{%- assign brand_s = brand.colors.secondary | default: '#0e1530' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
-{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+{%- assign brand_p = brand.colors.primary | default: '#bfb21a' -%}
+{%- assign brand_s = brand.colors.secondary | default: '#181715' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Hanken Grotesk' -%}
+{%- assign font_body = brand.fonts.body | default: 'Hanken Grotesk' -%}
 {%- assign bname = brand.name | default: 'Northbeam' -%}
 <!doctype html>
 <html lang="en">
@@ -10,54 +10,60 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>The recording for {{ account.name | default: 'you' | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;500;700&display=swap">
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;700&display=swap">
 {%- endif %}
 <style>
-:root{--p:{{ brand_p | escape }};--s:{{ brand_s | escape }};--fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--mute:color-mix(in srgb,var(--s) 60%,#fff);--rule:color-mix(in srgb,var(--s) 13%,#fff);--tint:color-mix(in srgb,var(--p) 10%,#fff)}
+:root{--p:{{ brand_p | escape }};--s:{{ brand_s | escape }};--fh:'{{ font_head | escape }}','Helvetica Neue',Arial,sans-serif;--fb:'{{ font_body | escape }}','Helvetica Neue',Arial,sans-serif;--paper:#e8e8e3;--ink:var(--s);--on-p:#181715;--m:clamp(1rem,3vw,2.5rem)}
+@supports (color:oklch(from red l c h)){:root{--ink:oklch(from var(--s) min(l,.24) c h);--on-p:oklch(from var(--p) clamp(.2,(.6 - l) * 1000,1) 0 h)}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#fff;color:var(--s);font:17px/1.55 var(--fb);-webkit-font-smoothing:antialiased}
-h1,h2{font-family:var(--fh);font-weight:600;line-height:1.12;letter-spacing:-.018em;margin:0}
-p{margin:0 0 .85rem}
-.wrap{max-width:44rem;margin:0 auto;padding:0 1.35rem}
-.top{padding:1.5rem 0 2.2rem}
-.mark{display:flex;align-items:center;gap:.55rem;font-weight:600;font-size:.95rem}
-.mark .logo{width:24px;height:24px;display:block;flex:none;border-radius:6px;object-fit:contain}
-.mark span.logo{background:var(--p);color:#fff;font:700 .8rem/24px var(--fh);text-align:center}
-h1{font-size:1.9rem;margin:1.6rem 0 .8rem}
-.sig{color:var(--mute);font-size:.95rem;margin:0}
-.sig b{color:var(--s);font-weight:600}
-.book{background:var(--tint);padding:1.6rem 1.35rem 1.8rem;margin:0 0 2rem}
-.book h2{font-size:1.5rem;margin-bottom:.5rem}
-.book .btn{margin-top:.6rem}
-.book .btn .ken-cta{display:inline-block;background:var(--p) !important;color:#fff !important;font-weight:600;font-size:1rem;padding:.9rem 1.6rem !important;border-radius:6px !important;min-height:44px}
-@media (min-width:860px){h1{font-size:2.5rem}.top{padding:2.4rem 0 2.6rem}.book{padding:2.2rem 2.4rem 2.4rem}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:clamp(1.0625rem,1rem + .25vw,1.1875rem);line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--fh);font-weight:500;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.wrap{padding:0 var(--m)}
+.top{padding:1.3rem 0 clamp(3.5rem,7vw,6rem)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:2.5rem}
+.mark{display:flex;align-items:center;gap:.6rem;font-family:var(--fh);font-weight:700;font-size:1.25rem;letter-spacing:-.02em}
+.mark img{height:28px;width:auto;max-width:10rem;display:block}
+.sig{font-size:.875rem;text-align:right}
+.sig b{font-weight:700}
+h1{margin-top:clamp(3rem,9vw,7rem);font-size:clamp(2.6rem,10vw,7.5rem);line-height:.94;letter-spacing:-.055em;max-width:12ch}
+.lede{margin-top:1.8rem;font-size:clamp(1.3125rem,1.15rem + .7vw,1.75rem);line-height:1.35;max-width:36ch}
+.book{background:var(--ink);color:var(--paper);padding:clamp(4.5rem,9vw,8.5rem) 0}
+.book h2{font-size:clamp(2.25rem,1.3rem + 3.8vw,4.75rem);line-height:.98;letter-spacing:-.04em;max-width:18ch}
+.book p{margin-top:1.2rem;max-width:38ch;font-size:clamp(1.3125rem,1.15rem + .7vw,1.75rem);line-height:1.35}
+.book .btn{margin-top:2rem}
+.book .btn .ken-cta{display:inline-flex!important;align-items:center;min-height:56px;padding:0 1.8rem!important;background:var(--p)!important;color:var(--on-p)!important;border-radius:0!important;font-weight:700}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="top" data-section="top">
-    <div class="mark">
-      {%- if brand.logo_url and brand.logo_url != '' %}
-      <img class="logo" src="{{ brand.logo_url | escape }}" alt="">
-      {%- else %}
-      <span class="logo" aria-hidden="true">{{ bname | slice: 0, 1 | upcase | escape }}</span>
+<header class="top" data-section="top">
+  <div class="wrap">
+    <div class="bar">
+      <div class="mark">
+        {%- if brand.logo_url and brand.logo_url != '' %}
+        <img src="{{ brand.logo_url | escape }}" alt="{{ bname | escape }}">
+        {%- else %}
+        <span>{{ bname | escape }}</span>
+        {%- endif %}
+      </div>
+      {%- if sender.name and sender.name != '' %}
+      <p class="sig"><b>{{ sender.name | escape }}</b>{% if sender.title and sender.title != '' %}, {{ sender.title | escape }}{% endif %}, {{ bname | escape }}</p>
       {%- endif %}
-      <span>{{ bname | escape }}</span>
     </div>
-    <h1>You missed the live session. The recording is coming.</h1>
-    <p>{{ person.first_name | default: 'Hi' | escape }}, we are putting the recording together for {{ account.name | default: 'you' | escape }}. It is not on this page yet, so check back soon.</p>
-    {%- if sender.name and sender.name != '' %}
-    <p class="sig"><b>{{ sender.name | escape }}</b>{% if sender.title and sender.title != '' %}, {{ sender.title | escape }}{% endif %}, {{ bname | escape }}</p>
-    {%- endif %}
-  </header>
-  <section class="book" data-section="book">
+    <h1>You missed it. The recording is coming.</h1>
+    <p class="lede">{{ person.first_name | default: 'Hi' | escape }}, we are putting the recording together for {{ account.name | default: 'you' | escape }}. It is not on this page yet, so check back soon.</p>
+  </div>
+</header>
+<section class="book" data-section="book">
+  <div class="wrap">
     <h2>Rather talk it through now?</h2>
     <p>{{ sender.name | default: 'Our team' | escape }} can go over what you missed in 20 minutes.</p>
     <div class="btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
-  </section>
-</div>
+  </div>
+</section>
 </body>
 </html>

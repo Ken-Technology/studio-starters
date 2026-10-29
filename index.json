@@ -81,6 +81,51 @@
       "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
       "showcases": ["prompt", "person", "roles", "ken/cta"],
       "version": "1.0.0"
+    },
+    {
+      "slug": "video-intro",
+      "name": "Personal video page",
+      "type": "landing_page",
+      "format": "page",
+      "showcases": [
+        "dataset",
+        "prompt",
+        "grade",
+        "ken/booking"
+      ],
+      "description": "The sender's video up top, three reasons the page was made for this account, which Ken writes per account, and a booking block under it.",
+      "category": "prospecting",
+      "tags": [
+        "video",
+        "loom",
+        "personal",
+        "booking",
+        "intro"
+      ],
+      "featured": false,
+      "needs": [
+        "video"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "orchard-mechanical",
+          "label": "Orchard Mechanical (no video)"
+        },
+        {
+          "id": "cobalt-street",
+          "label": "Cobalt Street Clinics"
+        },
+        {
+          "id": "pinecrest-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "larkspur",
+          "label": "Larkspur Software"
+        }
+      ]
     }
   ]
 }

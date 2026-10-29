@@ -1,0 +1,50 @@
+{
+  "account": {
+    "name": "Cobalt Street Clinics",
+    "domain": "cobaltstreet.example",
+    "industry": "hospitals and health care",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Cobalt Street Clinics runs 14 urgent care and primary care clinics in the Denver area with about 320 staff. It bills commercial insurers and Medicaid and handles patient statements in house.",
+      "why_now": "Opened two clinics in Aurora in September 2026.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Tomas",
+    "last_name": "Reyes",
+    "title": "Chief Financial Officer"
+  },
+  "sender": {
+    "name": "Hanna Lindqvist",
+    "title": "Head of Partnerships",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Halden Ledger",
+    "logo_url": null,
+    "colors": { "primary": "#1f3a5f", "secondary": "#0f1f33" },
+    "fonts": { "heading": "Lora", "body": "Source Sans 3" }
+  },
+  "data": {
+    "video_rows": [
+      { "domain": "cobaltstreet.example", "video_url": "https://www.youtube.com/watch?v=k3xR9pLm2Qw" }
+    ],
+    "title": "Patient statements at 16 clinics instead of 14",
+    "intro": "Two new clinics in Aurora means two more front desks sending statements their own way. Here is how Cobalt Street could keep one statement process while the clinic count keeps growing.",
+    "reasons": [
+      {
+        "heading": "Two clinics opened in September",
+        "body": "New sites usually start with their own way of handling statements and collections. The sooner they share one process with the other 14, the less there is to undo later."
+      },
+      {
+        "heading": "Statements handled in house",
+        "body": "Your team prints, mails and follows up on patient statements itself. With 320 staff across 16 sites, that is a lot of hours on envelopes and callbacks that a shared queue could take over."
+      },
+      {
+        "heading": "Commercial and Medicaid on the same desk",
+        "body": "The payer mix means two sets of rules at every front desk. I would want to hear how your billing team keeps them straight today before suggesting anything."
+      }
+    ]
+  }
+}

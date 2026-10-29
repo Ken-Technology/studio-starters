@@ -1,0 +1,48 @@
+{
+  "account": {
+    "name": "Larkspur Software",
+    "domain": "larkspur.example",
+    "industry": "software development",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Larkspur Software makes scheduling software for independent veterinary clinics. It has about 35 people and sells through a small inside sales team and a partner program with clinic consultants.",
+      "why_now": "Hired a head of marketing in September 2026 and started a monthly webinar series.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Mei",
+    "last_name": "Tanaka",
+    "title": "Head of Marketing"
+  },
+  "sender": {
+    "name": "Aisha Bello",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Sessionry",
+    "logo_url": null,
+    "colors": { "primary": "#5b21b6", "secondary": "#15102a" },
+    "fonts": { "heading": "Bricolage Grotesque", "body": "Hanken Grotesk" }
+  },
+  "data": {
+    "video_url": "https://www.loom.com/share/7c1e2f3a4b5d4c6e8f9a0b1c2d3e4f5a",
+    "title": "Turning Larkspur's monthly webinar into booked calls",
+    "intro": "You started a monthly webinar the same month you took the marketing role, so the follow-up process is probably still being decided. Here is what I would set up in the first month and what I would skip.",
+    "reasons": [
+      {
+        "heading": "A new webinar series, one month old",
+        "body": "The first few sessions decide what the follow-up looks like for the rest of the year. It is easier to set up the recording, the replay page and the handoff to sales now than to retrofit them."
+      },
+      {
+        "heading": "A small inside sales team",
+        "body": "With a handful of reps, every attendee list has to be sorted before it is useful. I would want the webinar to tell your reps who to call first, not hand them a spreadsheet."
+      },
+      {
+        "heading": "Partners who sell for you",
+        "body": "Clinic consultants in your partner program could host or co-host a session. A co-hosted session can work without adding work for them, and I would show you how."
+      }
+    ]
+  }
+}

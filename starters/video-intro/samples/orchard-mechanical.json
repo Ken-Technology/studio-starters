@@ -1,0 +1,47 @@
+{
+  "account": {
+    "name": "Orchard Mechanical",
+    "domain": "orchardmechanical.example",
+    "industry": "construction",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Orchard Mechanical is a commercial HVAC and plumbing contractor with about 140 people across two branches in Ohio. It runs service and install crews out of both branches and dispatches around 40 technicians a day.",
+      "why_now": "Posted three dispatcher openings in October 2026.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Priya",
+    "last_name": "Raman",
+    "title": "Director of Operations"
+  },
+  "sender": {
+    "name": "Marcus Ellison",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Fieldboard",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "title": "How Orchard's dispatchers could stop rebuilding the board every morning",
+    "intro": "Three dispatcher openings in one quarter usually means the board is rebuilt by hand every morning. Here is what I would look at first at Orchard, and what I would leave alone.",
+    "reasons": [
+      {
+        "heading": "Three dispatcher openings in one quarter",
+        "body": "That is a lot of hiring for a team your size. Most of the time it points to work the board should be doing for the dispatchers, like reshuffling the day when a job runs long."
+      },
+      {
+        "heading": "Two branches, one set of technicians",
+        "body": "Your service and install crews run out of both Ohio branches. When each branch keeps its own board, a technician who is free in one branch is invisible to the other."
+      },
+      {
+        "heading": "Service and install on the same day",
+        "body": "Around 40 technicians a day across service calls and installs is where a shared spreadsheet starts to slip. I would start with the service side, because that is where a missed callback shows up first."
+      }
+    ]
+  }
+}

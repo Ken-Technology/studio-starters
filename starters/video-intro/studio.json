@@ -1,0 +1,96 @@
+{
+  "kenStudio": "1",
+  "name": "Personal video page",
+  "type": "landing_page",
+  "format": "page",
+  "slug": "video-for-you",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "video_url": {
+        "type": "string",
+        "maxLength": 400,
+        "fallback": ""
+      },
+      "video_rows": {
+        "type": "array",
+        "maxItems": 1,
+        "items": {
+          "type": "object",
+          "properties": {
+            "domain": { "type": "string", "maxLength": 120 },
+            "video_url": { "type": "string", "maxLength": 400 }
+          },
+          "required": ["domain", "video_url"]
+        }
+      },
+      "title": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 90,
+        "fallback": "A short page made for {{ account.name }}"
+      },
+      "intro": {
+        "type": "string",
+        "minLength": 60,
+        "maxLength": 240,
+        "fallback": "I made this page for {{ account.name }} instead of sending another email. It is short, and the three points under it say why I think a conversation is worth your time."
+      },
+      "reasons": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string", "minLength": 8, "maxLength": 60 },
+            "body": { "type": "string", "minLength": 40, "maxLength": 220 }
+          },
+          "required": ["heading", "body"]
+        }
+      }
+    },
+    "required": ["title", "intro", "reasons"]
+  },
+  "recipe": [
+    {
+      "id": "video_by_domain",
+      "kind": "dataset",
+      "dataset": "videos",
+      "where": [{ "column": "domain", "op": "eq", "value": "account.domain" }],
+      "limit": 1,
+      "to": "data.video_rows"
+    },
+    {
+      "id": "copy",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "account.dossier.why_now", "account.dossier.angle", "account.signals", "brand.name", "sender.name", "knowledge.stable", "knowledge.scoped"],
+      "to": ["data.title", "data.intro", "data.reasons"],
+      "prompt": "You are writing a short personal page that {{ sender.name | default: 'the sender' }} at {{ brand.name | default: 'our company' }} sends to {{ account.name }} ({{ account.domain }}). The page shows a short video from the sender at the top, then three reasons the sender made it for {{ account.name }}, then a booking button. You write the title, the intro and the three reasons. \"I\" is the sender and \"we\" is {{ brand.name | default: 'our company' }}.\n\nInputs, and nothing else:\n- What we know about {{ account.name }}: industry {{ account.industry | default: 'unknown' }}, size band {{ account.size_band | default: 'unknown' }}. Summary: {{ account.dossier.summary | default: 'none' }} Why now: {{ account.dossier.why_now | default: 'none' }} Angle: {{ account.dossier.angle | default: 'none' }}\n- Recent signals on {{ account.name }}, newest first, possibly empty: {{ account.signals | json }}\n- What we sell and how we talk about it, from workspace knowledge, possibly empty: {{ knowledge.stable | json }}\n- Notes on this account, possibly empty: {{ knowledge.scoped | json }}\n\nReturn JSON with these keys:\n- title: 20 to 90 characters. What the page is about for {{ account.name }}, said as a plain topic, like \"Dispatch at Orchard after three dispatcher hires\". Sentence case. No question, no person's name.\n- intro: 1 or 2 sentences, 60 to 240 characters. Why this is worth two minutes of {{ account.name }}'s time right now, from the why-now fact or the newest signal. Do not use the words video, recorded or watch; the page says that around it.\n- reasons: exactly 3 items {heading, body}. Each one is a specific thing about {{ account.name }} that made the sender pick this account, and what the sender would look at or ask about it. heading: 8 to 60 characters, the fact itself, like \"Two branches, one set of technicians\". body: 1 to 3 sentences, 40 to 220 characters. Lead with the fact from the inputs, then what it means for them, then what we would look at first. When the knowledge inputs describe what we sell, say in plain words how it fits. When they are empty, write about the account only and never guess what we sell.\n\nFacts: every fact about {{ account.name }} comes from the inputs above. Never invent customers, numbers, news, tools or quotes, and never add a number the inputs do not hold. If the inputs hold fewer than three solid facts, use the industry or the size band as written, not a guess. Do not use the person's name anywhere; the page greets them itself. Make the three reasons three different points.\n\nVoice: one person writing to a peer, plain and direct. Short sentences you would say out loud. No greeting, no sign-off.\n\nRules for every string: sentence case, no em dashes or en dashes, no exclamation marks, no email addresses or phone numbers, no prices. No hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, transform, game changer, revolutionize, supercharge, cutting edge). Never \"real\" as emphasis. Never the word \"demo\"."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.title", "data.intro", "data.reasons"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["demo", "I noticed", "I saw", "I came across", "caught my attention", "game changer", "cutting edge", "unlock", "leverage", "seamless", "revolutionize", "supercharge"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_test_noun": true,
+        "no_real_emphasis": true,
+        "no_signoff": true
+      },
+      "rubric": "Grade the title, the intro and the three reasons the way the reader at {{ account.name }} sees them: a page from one person, with a short video on top, that says why it was made for their company. 10 is a page the reader finishes in 30 seconds and believes was written for them.\nScore these, 0 to 10 each:\n- specific: each reason names a fact about {{ account.name }} that the inputs below hold, not a line that fits any company in the industry.\n- plain: short sentences a person would say out loud. No marketing adjectives, no jargon, no stacked nouns.\n- honest: nothing claimed about {{ account.name }}, its numbers, its tools or its customers that the inputs do not support, and nothing claimed about what we sell unless the knowledge input holds it.\n- flow: the title says the topic, the intro says why now, and each of the three reasons adds a point the others do not.\nAnswer yes or no:\n- would_read: would a busy person in this role read all three reasons?\n- weird_word: is there a phrase a person would not say out loud? Quote it.\nAutomatic fail: an em dash or en dash, an exclamation mark, the person's name, a greeting or a sign-off, the words video, recorded or watch in the intro, a number the inputs do not hold, a price, an email address or a phone number, or two reasons that make the same point.\nInputs for checking. Summary: {{ account.dossier.summary | default: 'none' }} Why now: {{ account.dossier.why_now | default: 'none' }} Signals: {{ account.signals | json }} Knowledge: {{ knowledge.stable | json }} Notes: {{ knowledge.scoped | json }}"
+    }
+  ],
+  "sections": [
+    { "id": "video", "label": "Video and intro" },
+    { "id": "reasons", "label": "Why this account" },
+    { "id": "booking", "label": "Pick a time" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

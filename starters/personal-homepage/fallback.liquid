@@ -1,0 +1,61 @@
+{%- assign bname = brand.name | default: 'Northbeam' -%}
+{%- assign primary = brand.colors.primary | default: '#2a4bd7' -%}
+{%- assign secondary = brand.colors.secondary | default: '#0e1530' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign sender_first = sender.name | default: 'our team' | split: ' ' | first -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ bname | escape }} for {{ account.name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q | escape }}:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q | escape }}:wght@400;500;600&display=swap">
+<style>
+:root{--p:{{ primary | escape }};--s:{{ secondary | escape }};--fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--mute:color-mix(in srgb,var(--s) 62%,#fff);--line:color-mix(in srgb,var(--s) 13%,#fff);--paper:color-mix(in srgb,var(--p) 5%,#fff);--tint:color-mix(in srgb,var(--p) 10%,#fff);--p-deep:color-mix(in srgb,var(--p) 72%,var(--s))}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--s);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+h1,h2{font-family:var(--fh);margin:0;line-height:1.1;letter-spacing:-.015em;font-weight:600;text-wrap:balance}
+p{margin:0 0 .9rem}
+.wrap{max-width:72rem;margin:0 auto;padding:0 1.1rem}
+.nav{display:flex;align-items:center;gap:.75rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:.55rem;font-weight:600;font-family:var(--fh);font-size:1.02rem;min-width:0}
+.logo{width:28px;height:28px;display:block;flex:none;object-fit:contain}
+img.logo{width:auto;max-width:7.5rem}
+.for{font-size:.82rem;color:var(--p-deep);background:var(--tint);padding:.3rem .65rem;border-radius:999px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.hero{padding:3rem 0 3.4rem;max-width:40rem}
+.hero .made{font-size:.9rem;color:var(--mute);margin-bottom:1.1rem}
+.hero h1{font-size:2.5rem;max-width:16ch}
+.hero .sub{font-size:1.1rem;color:var(--mute);margin:1.1rem 0 1.5rem}
+.cta a{display:inline-block;background:var(--p);color:#fff;text-decoration:none;font-weight:500;padding:.8rem 1.25rem;border-radius:4px;font-size:.98rem;line-height:1.55}
+.cta a:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+.sign{padding:1.4rem 0 2.5rem;border-top:1px solid var(--line);font-size:.9rem;color:var(--mute)}
+@media (min-width:720px){.wrap{padding:0 2rem}.hero{padding:5rem 0 5.5rem}.hero h1{font-size:3.4rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="nav">
+  <div class="brand">
+    {%- if brand.logo_url and brand.logo_url != '' %}<img class="logo" src="{{ brand.logo_url }}" alt="">{% else %}<svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--p)"/><text x="16" y="21.5" text-anchor="middle" style="font-family:var(--fh);font-weight:700;font-size:16px" fill="#fff">{{ bname | slice: 0, 1 | upcase | escape }}</text></svg>{% endif -%}
+    <span>{{ bname | escape }}</span>
+  </div>
+  <span class="for">for {{ account.name | escape }}</span>
+</nav>
+<section class="hero" data-section="hero">
+  <p class="made">A page for {% if person.first_name and person.first_name != '' %}{{ person.first_name | escape }} at {% else %}the team at {% endif %}{{ account.name | escape }}</p>
+  <h1>A page for {{ account.name | escape }} is on its way</h1>
+  <p class="sub">I am putting together what {{ bname | escape }} could do for {{ account.name | escape }}, based on your site. It is not ready on this page yet. The quickest way to see it is a short call.</p>
+  <div class="cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking', variant: 'link' %}</div>
+</section>
+<section class="sign" data-section="booking">
+  {{ sender.name | default: 'Our team' | escape }}{% if sender.title and sender.title != '' %}, {{ sender.title | escape }}{% endif %}, {{ bname | escape }}. This is a private link.
+</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{
+  "account": {
+    "name": "Brightwave Logistics",
+    "domain": "brightwave.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Brightwave Logistics is a freight and logistics company with about 420 people and a regional cross-dock network.",
+      "why_now": "Opened two cross-dock sites this year.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Leo",
+    "last_name": "Marsh",
+    "title": "VP Operations"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northbeam",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "event_title": "Growing volume, not headcount",
+    "recorded_on": "October 22",
+    "speakers": "Priya Natarajan, Daniel Okafor and Maya Chen.",
+    "video_url": "https://northbeam.example/recordings/growing-volume-not-headcount",
+    "duration_seconds": 2772,
+    "chapters": [
+      { "start": "0:00", "seconds": 0, "title": "Who was on the call", "summary": "Introductions and what the session covers." },
+      { "start": "2:40", "seconds": 160, "title": "Where the hours go: the time audit of 40 teams", "summary": "A time audit of 40 operations teams. The median was 31 hours per 100 loads across four areas. Teams that had added sites sat at 36 to 40." },
+      { "start": "9:15", "seconds": 555, "title": "The three handoffs that cost the most hours", "summary": "Dispatch to billing, exceptions and customer updates were the three handoffs that cost the most hours." },
+      { "start": "17:30", "seconds": 1050, "title": "Kestrel's year: 28% more loads, the same 60 people", "summary": "Kestrel's loads grew 28 percent year on year while its operations team went from 61 people to 60." },
+      { "start": "26:05", "seconds": 1565, "title": "What Kestrel changed first: one desk for exceptions", "summary": "Kestrel moved exception handling to one desk before touching dispatch. It gave back the most hours per month of any change." },
+      { "start": "33:50", "seconds": 2030, "title": "Questions: exceptions, customer updates, planner roles", "summary": "Asked about a new cross-dock, Priya said to run it from the central desk for a quarter before hiring a planner." },
+      { "start": "44:10", "seconds": 2650, "title": "Close and the audit template", "summary": "Wrap up and where to get the audit template." }
+    ],
+    "slides_url": "https://northbeam.example/decks/growing-volume-not-headcount",
+    "slide_pages": [
+      { "page": 1, "caption": "Growing volume, not headcount" },
+      { "page": 9, "caption": "The audit sheet, hours per 100 loads" },
+      { "page": 14, "caption": "The three handoffs, in order" },
+      { "page": 19, "caption": "Kestrel's year in numbers" }
+    ],
+    "slide_count": 24,
+    "transcript": [
+      { "at": "17:30", "speaker": "Priya", "text": "So the number everyone asks about is the 28 percent. Loads were up 28 percent year on year, and the operations team was 61 people in January and 60 in December. One person left and we did not backfill. That was not a plan, it just happened, and then we noticed nothing broke." },
+      { "at": "18:04", "speaker": "Priya", "text": "What made it possible was not one thing. It was three handoffs, in order. Dispatch to billing first, because that is where the hours were and the fix was boring. Exceptions second. Customer updates last, and that one we got wrong the first time." },
+      { "at": "18:40", "speaker": "Maya", "text": "What went wrong the first time?" },
+      { "at": "18:44", "speaker": "Priya", "text": "We automated the update before we agreed what an update was. Every terminal had its own idea. So customers got three messages for one late truck. We pulled it after two weeks, wrote the definition down, and the second version stuck." }
+    ],
+    "transcript_url": "https://northbeam.example/recordings/growing-volume-not-headcount/transcript",
+    "book_title": "Want the audit run on your numbers?",
+    "book_text": "Maya can walk your dispatch and billing leads through the sheet in 20 minutes. You keep the sheet either way.",
+    "book_label": "Book 20 minutes with Maya",
+    "start_at": 1050,
+    "takeaways": [
+      {
+        "title": "Run the audit on dispatch and billing first",
+        "body": "The median across 40 teams was 31 hours per 100 loads. Teams that had added sites sat at 36 to 40, and Brightwave opened two cross-dock sites this year.",
+        "at": 160
+      },
+      {
+        "title": "Centralize exceptions before anything else",
+        "body": "Kestrel moved exception handling to one desk before touching dispatch. It gave back the most hours per month of any change, which matters most when volume is growing.",
+        "at": 1565
+      },
+      {
+        "title": "A new site does not need a planner on day one",
+        "body": "Priya's answer on new cross-docks was to run the site from the central desk for a quarter, then decide. With two sites opened this year, that is a live question for operations.",
+        "at": 2030
+      }
+    ]
+  }
+}

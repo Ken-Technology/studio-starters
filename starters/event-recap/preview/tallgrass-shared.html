@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The recording of Changeovers in under ten minutes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+:root{
+  --brand-primary:#e4572e;
+  --brand-secondary:#1c1c1c;
+  --brand-heading-font:'Space Grotesk';
+  --brand-body-font:'IBM Plex Sans';
+  --p:var(--brand-primary);
+  --s:var(--brand-secondary);
+  --fh:var(--brand-heading-font),ui-sans-serif,system-ui,sans-serif;
+  --fb:var(--brand-body-font),ui-sans-serif,system-ui,sans-serif;
+  --ink:var(--s);
+  --mute:color-mix(in srgb,var(--s) 60%,#fff);
+  --rule:color-mix(in srgb,var(--s) 13%,#fff);
+  --tint:color-mix(in srgb,var(--p) 10%,#fff);
+  --accent:color-mix(in srgb,var(--p) 86%,var(--s));
+  --room:var(--s);
+  --room-ink:#fff;
+  --room-mute:color-mix(in srgb,#fff 62%,var(--s));
+  --room-rule:color-mix(in srgb,#fff 14%,var(--s));
+  --room-accent:color-mix(in srgb,var(--p) 38%,#fff);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font:17px/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--fh);font-weight:600;line-height:1.12;letter-spacing:-.018em;margin:0}
+h2{font-size:1.5rem;margin-bottom:.9rem}
+p{margin:0 0 .85rem}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:68rem;margin:0 auto;padding:0 1.35rem}
+
+/* top */
+.top{padding:1.5rem 0 1.6rem}
+.mark{display:flex;align-items:center;gap:.55rem;font-weight:600;font-size:.95rem}
+.mark .logo{width:24px;height:24px;display:block;flex:none;border-radius:6px;object-fit:contain}
+.mark span.logo{background:var(--p);color:#fff;font:700 .8rem/24px var(--fh);text-align:center}
+.top h1{font-size:1.9rem;margin:1.6rem 0 .8rem;max-width:22ch}
+.top .lede{max-width:40rem;font-size:1.06rem;line-height:1.6}
+.top .sig{color:var(--mute);font-size:.95rem;margin:0}
+.top .sig b{color:var(--ink);font-weight:600}
+
+/* screening room */
+.room{background:var(--room);color:var(--room-ink);padding:1.5rem 0 1.6rem}
+.player{display:block}
+.vid{display:contents}
+.frame{position:relative;aspect-ratio:16/9;background:color-mix(in srgb,#000 35%,var(--room));border:1px solid var(--room-rule);overflow:hidden}
+.frame.poster{display:block;color:inherit;text-decoration:none}
+.frame .play{position:absolute;left:50%;top:60%;width:3rem;height:3rem;transform:translate(-50%,-50%);border-radius:50%;background:var(--p);display:grid;place-items:center;box-shadow:0 0 0 2px rgba(255,255,255,.5),0 10px 30px rgba(0,0,0,.4)}
+.frame .play svg{position:static;width:1.1rem;height:1.1rem;margin-left:.15rem}
+a.poster:hover .play{filter:brightness(1.12)}
+.frame .bar{position:absolute;left:1.1rem;right:1.1rem;bottom:.9rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:.8rem;font-size:.8rem;color:var(--room-mute)}
+.frame .track{display:block;width:100%;height:9px}
+.frame.live{position:sticky;top:0;z-index:3;box-shadow:0 14px 18px -14px rgba(0,0,0,.6)}
+.frame>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:#000}
+.frame .title{position:absolute;left:1.1rem;top:1rem;right:1.1rem;font-family:var(--fh);font-weight:600;font-size:1rem;line-height:1.25;letter-spacing:-.01em;color:var(--room-ink)}
+.frame .title small{display:block;font-family:var(--fb);font-weight:400;font-size:.8rem;line-height:1.4;color:var(--room-mute);margin-top:.25rem}
+.frame .soon{position:absolute;left:1.1rem;right:1.1rem;bottom:1rem;margin:0;font-size:.88rem;line-height:1.4;color:var(--room-mute)}
+.embed-note{margin:.7rem 0 1.5rem;font-size:.86rem;line-height:1.45;color:var(--room-mute)}
+.embed-note b{display:block;color:var(--room-ink);font-weight:600;font-size:.95rem;margin-bottom:.1rem}
+.chapters h2{font-size:.88rem;font-variant-caps:all-small-caps;letter-spacing:.12em;font-weight:400;color:var(--room-mute);margin:0 0 .3rem;font-family:var(--fb)}
+.chapters ol{list-style:none;margin:0;padding:0}
+.chapters li{border-top:1px solid var(--room-rule);scroll-margin-top:calc((100vw - 2.7rem) * .5625 + 1.2rem)}
+.chapters li:last-child{border-bottom:1px solid var(--room-rule)}
+.chapters a,.chapters .row{display:grid;grid-template-columns:3.3rem minmax(0,1fr) auto;gap:.6rem;align-items:baseline;padding:.8rem 0;color:var(--room-ink);text-decoration:none;font-size:.95rem;line-height:1.35}
+.chapters .t{color:var(--room-accent);font-weight:600;font-size:.9rem}
+.chapters .d{color:var(--room-mute);font-size:.8rem}
+.chapters a:hover span:nth-child(2){text-decoration:underline;text-underline-offset:3px}
+.chapters li:target a,.chapters li:target .row{background:color-mix(in srgb,#fff 8%,transparent);margin:0 -.5rem;padding-left:.5rem;padding-right:.5rem}
+.chapters .you a,.chapters .you .row{background:linear-gradient(to right,color-mix(in srgb,var(--room-accent) 17%,transparent),transparent);margin:0 -.5rem;padding-left:.5rem;padding-right:.5rem}
+.chapters .you .tag{display:block;font-size:.76rem;color:var(--room-accent);margin-top:.1rem}
+
+/* below */
+section{padding:2rem 0;border-top:1px solid var(--rule)}
+.cols{display:grid;gap:0;border-top:1px solid var(--rule)}
+.cols>section{border-top:0}
+.cols>section+section{border-top:1px solid var(--rule)}
+.for{margin:-.3rem 0 1.2rem;color:var(--mute);font-size:.95rem}
+.takes{list-style:none;margin:0;padding:0;display:grid;gap:1.3rem;max-width:40rem}
+.takes li{display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.6rem}
+.takes .n{font-family:var(--fh);font-weight:600;color:var(--p);font-size:1.25rem;line-height:1.3}
+.takes h3{font-size:1.1rem;letter-spacing:-.01em;margin-bottom:.3rem}
+.takes p{margin:0 0 .1rem;color:color-mix(in srgb,var(--s) 85%,#fff)}
+.takes a{display:inline-flex;align-items:center;min-height:44px;font-size:.9rem;text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--accent) 40%,transparent);text-underline-offset:4px}
+
+.slides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin:0 0 1rem}
+.slide{position:relative;aspect-ratio:16/9;margin:0;padding:.7rem .75rem .65rem;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--rule);background:#fff;overflow:hidden}
+.slide:first-child{background:var(--s);border-color:var(--s);color:#fff}
+.slide i{display:block;width:.6rem;height:.6rem;border-radius:2px;background:var(--p)}
+.slide:first-child i{background:var(--room-accent)}
+.slide span{font-size:.72rem;line-height:1.2;color:var(--mute)}
+.slide:first-child span{color:var(--room-mute)}
+.slide b{display:block;font:600 .92rem/1.2 var(--fh);letter-spacing:-.01em}
+.slide .meta{display:grid;gap:.3rem}
+.dl{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;font-weight:600;font-size:.98rem}
+.dl svg{width:18px;height:18px;flex:none;color:var(--accent)}
+.dl a{text-decoration:none}
+.dl small{font-weight:400;color:var(--mute);font-size:.88rem}
+
+.tx{max-width:40rem;border-left:2px solid var(--tint);padding-left:1.1rem;display:grid;gap:.9rem}
+.tx div{display:grid;grid-template-columns:3.3rem minmax(0,1fr);gap:.6rem;font-size:.98rem;line-height:1.6}
+.tx p{margin:0}
+.tx .t{color:var(--accent);font-size:.84rem;font-weight:600;padding-top:.2rem}
+.tx b{font-weight:600}
+.tx-more{margin:.4rem 0 0;font-size:.95rem}
+.tx-more a{display:inline-flex;align-items:center;min-height:44px}
+
+.book{background:var(--tint);padding:1.6rem 1.35rem;margin:0 -1.35rem;border-top:0}
+.book h2{margin-bottom:.4rem}
+.book p{max-width:34rem}
+.book .btn{margin-top:.4rem}
+.book .btn .ken-cta{display:inline-block;background:var(--p) !important;color:#fff !important;font-weight:600;font-size:1rem;padding:.9rem 1.6rem !important;border-radius:6px !important;min-height:44px}
+.book .alt{margin:1rem 0 0;font-size:.92rem;color:var(--mute)}
+footer{padding:1.2rem 0 2rem;border-top:1px solid var(--rule);font-size:.86rem;color:var(--mute)}
+footer b{color:var(--ink);font-weight:600}
+
+@media (min-width:860px){
+  .wrap{padding:0 2.5rem}
+  .top{padding:2.4rem 0 2.2rem}
+  .top h1{font-size:2.5rem}
+  .room{padding:2.4rem 0 2.6rem}
+  .player{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:2.4rem;align-items:start}
+  .player.one{grid-template-columns:minmax(0,46rem)}
+  .vid{display:block}
+  .frame.live{position:relative;top:auto;z-index:auto;box-shadow:none}
+  .embed-note{margin:.6rem 0 0}
+  .chapters li{scroll-margin-top:2rem}
+  .frame .title{font-size:1.2rem;left:1.5rem;top:1.3rem}
+  .frame .soon{left:1.5rem;right:1.5rem;bottom:1.3rem}
+  .frame .bar{left:1.5rem;right:1.5rem;bottom:1.3rem}
+  .frame .play{top:50%;width:4.4rem;height:4.4rem}
+  .frame .play svg{width:1.6rem;height:1.6rem}
+  section{padding:2.8rem 0}
+  .cols.two{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:3.5rem;align-items:start}
+  .cols.two>section+section{border-top:0}
+  .book{margin:0;padding:2.4rem 2.6rem;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem 2.5rem;align-items:center}
+  .book .btn{margin:0;white-space:nowrap}
+  .book .alt{grid-column:1/-1;margin:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top" data-section="top">
+  <div class="wrap">
+    <div class="mark">
+      <span class="logo" aria-hidden="true">F</span>
+      <span>Forgeline</span>
+    </div>
+    <h1>You missed the live session. Here it is, cut into chapters.</h1>
+    <p class="lede">You registered for “Changeovers in under ten minutes” on October 23 and could not join on the day. The full 38 minutes are below, with the three parts that matter most for Tallgrass Packaging. The slides and a piece of the transcript follow.</p>
+    <p class="sig"><b>Marcus Hale</b>, Solutions Engineer, Forgeline</p>
+  </div>
+</header>
+<section class="room" data-section="recording">
+  <div class="wrap">
+    <div class="player">
+      <div class="vid">
+        <a class="frame poster" href="https://forgeline.example/recordings/changeovers-under-ten-minutes" target="_blank" rel="noopener noreferrer" data-ken-cta="recording" aria-label="Watch the recording: Changeovers in under ten minutes">
+          <svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient></defs>
+            <rect width="160" height="90" fill="url(#g)"/>
+          </svg>
+          <span class="title">Changeovers in under ten minutes<small>Recorded October 23. Marcus Hale and Tess Okonkwo.</small></span>
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 20 20" fill="#fff"><path d="M4 2.5v15l13-7.5z"/></svg></span>
+          <span class="bar" aria-hidden="true">
+            <svg class="track" aria-hidden="true"><line x1="0" x2="100%" y1="4.5" y2="4.5" stroke="rgba(255,255,255,.22)" stroke-width="3"/><g stroke="rgba(255,255,255,.6)" stroke-width="1"><line x1="11.8%" x2="11.8%" y1="0" y2="9"/><line x1="32%" x2="32%" y1="0" y2="9"/><line x1="57.2%" x2="57.2%" y1="0" y2="9"/><line x1="79.8%" x2="79.8%" y1="0" y2="9"/></g></svg>
+            <span class="time">0:00 / 38:00</span>
+          </span>
+        </a>
+        <p class="embed-note">The recording opens in a new tab. The chapters show where each part starts.</p>
+      </div>
+      <div class="chapters">
+        <h2>Chapters</h2>
+        <ol>
+          <li id="ch-0">
+            <div class="row">
+              <span class="t">0:00</span>
+              <span>What a changeover costs</span>
+              <span class="d">4:30</span>
+            </div>
+          </li>
+          <li id="ch-270">
+            <div class="row">
+              <span class="t">4:30</span>
+              <span>Where the minutes go</span>
+              <span class="d">7:40</span>
+            </div>
+          </li>
+          <li id="ch-730" class="you">
+            <div class="row">
+              <span class="t">12:10</span>
+              <span>Standard kits at the line<span class="tag">Start here for Tallgrass Packaging</span></span>
+              <span class="d">9:35</span>
+            </div>
+          </li>
+          <li id="ch-1305">
+            <div class="row">
+              <span class="t">21:45</span>
+              <span>Who signs off the first article</span>
+              <span class="d">8:35</span>
+            </div>
+          </li>
+          <li id="ch-1820">
+            <div class="row">
+              <span class="t">30:20</span>
+              <span>Questions and the changeover log</span>
+              <span class="d">7:40</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="cols">
+    <section data-section="takeaways">
+      <h2>Three things for Tallgrass Packaging</h2>
+      <p class="for">Picked for Tallgrass Packaging.</p>
+      <ol class="takes">
+        <li><span class="n" aria-hidden="true">1</span><div><h3>Count the waiting, not only the work</h3><p>Cleaning, setup and checks took most of the time, but waiting for tools or approvals took more than people expected. A log shows it per line.</p><a href="#ch-270">Chapter at 4:30</a></div></li>
+        <li><span class="n" aria-hidden="true">2</span><div><h3>Stage a tool kit at each line</h3><p>One plant took its busiest line from 25 minutes to under 10 by staging the kit before the last job ended. Tallgrass has a sixth line to set up this way.</p><a href="#ch-730">Chapter at 12:10</a></div></li>
+        <li><span class="n" aria-hidden="true">3</span><div><h3>Let the operator sign off the first article</h3><p>Moving first-article sign-off to the operator, with a photo standard, removed the longest wait in the study.</p><a href="#ch-1305">Chapter at 21:45</a></div></li>
+      </ol>
+    </section>
+    <section data-section="slides">
+      <h2>The slides</h2>
+      <p class="dl"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3v10M6 9l4 4 4-4M4 16h12"/></svg><a class="ken-cta" data-ken-cta="slides" href="https://forgeline.example/decks/changeovers-under-ten-minutes" target="_blank" rel="noopener noreferrer">Download the slides</a> <small>16 pages</small></p>
+    </section>
+  </div>
+  <section data-section="transcript">
+    <h2>From the transcript</h2>
+    <p class="for">An excerpt from the recording, starting at 12:10.</p>
+    <div class="tx">
+      <div><span class="t">12:10</span><p><b>Tess:</b> We stopped treating the changeover as one job. The kit is staged while the last job is still running, so the crew starts with every tool in reach.</p></div>
+      <div><span class="t">12:48</span><p><b>Marcus:</b> And that was the whole saving on your busiest line?</p></div>
+      <div><span class="t">12:53</span><p><b>Tess:</b> Most of it. Twenty-five minutes down to under ten. The first article sign-off was the rest, and we got to that later.</p></div>
+    </div>
+  </section>
+
+  <section class="book" data-section="book">
+    <div>
+      <h2>Want to run the changeover log on your lines?</h2>
+      <p>Marcus can set up the log with your line leads in 20 minutes, on the lines you pick.</p>
+    </div>
+    <div class="btn"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#e4572e;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes with Marcus</a></div>
+    <p class="alt">Or reply to the message this came with. Questions about your own setup are welcome.</p>
+  </section>
+
+  <footer>A recording from <b>Forgeline</b>, made for Tallgrass Packaging.</footer>
+</div>
+</body>
+</html>

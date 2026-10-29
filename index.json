@@ -81,6 +81,51 @@
       "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
       "showcases": ["prompt", "person", "roles", "ken/cta"],
       "version": "1.0.0"
+    },
+    {
+      "slug": "market-report",
+      "name": "Market opportunity report",
+      "type": "report",
+      "format": "doc",
+      "showcases": [
+        "prompt",
+        "tool",
+        "grade",
+        "ken_search.count",
+        "ken/cta",
+        "doc"
+      ],
+      "description": "A printable market report on one account's segment: company counts by segment and region, buyer roles, growth signals and three plays, all counted in Ken Search.",
+      "category": "prospecting",
+      "tags": [
+        "market report",
+        "market size",
+        "ken search",
+        "buyer roles",
+        "signals"
+      ],
+      "featured": true,
+      "needs": [],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics, filled for one person"
+        },
+        {
+          "id": "meridian-dental",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "lumen-payroll",
+          "label": "Lumen Payroll, filled for one person"
+        },
+        {
+          "id": "kestrel-solar",
+          "label": "Kestrel Solar, partial fill"
+        }
+      ]
     }
   ]
 }

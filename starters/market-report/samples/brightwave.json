@@ -1,0 +1,271 @@
+{
+  "account": {
+    "name": "Brightwave Logistics",
+    "domain": "brightwave-logistics.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Brightwave Logistics is a Midwest trucking carrier with about 420 staff. Its careers page lists eleven open roles, mostly in dispatch and operations.",
+      "why_now": "Opened a second terminal this year and is hiring operations staff to run it.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Leo",
+    "last_name": "Marsh",
+    "title": "VP Operations"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northbeam",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "scope": {
+      "market": "US freight and logistics companies",
+      "size": "200 to 1,000 staff",
+      "small_band": "200 to 500 staff",
+      "large_band": "500 to 1,000 staff",
+      "account_band": "201 to 500"
+    },
+    "total": [
+      {
+        "label": "All companies",
+        "value": 4170
+      }
+    ],
+    "segments": [
+      {
+        "label": "Trucking, FTL and LTL",
+        "value": 1240
+      },
+      {
+        "label": "Brokers and 3PLs",
+        "value": 980
+      },
+      {
+        "label": "Warehousing",
+        "value": 740
+      },
+      {
+        "label": "Freight forwarders",
+        "value": 610
+      },
+      {
+        "label": "Last mile and courier",
+        "value": 420
+      },
+      {
+        "label": "Intermodal and rail",
+        "value": 180
+      }
+    ],
+    "regions": [
+      {
+        "label": "Midwest",
+        "value": 1293
+      },
+      {
+        "label": "South",
+        "value": 1126
+      },
+      {
+        "label": "West",
+        "value": 792
+      },
+      {
+        "label": "Northeast",
+        "value": 667
+      },
+      {
+        "label": "Mountain",
+        "value": 292
+      }
+    ],
+    "roles_small": [
+      {
+        "label": "VP or Director of Ops",
+        "value": 1840
+      },
+      {
+        "label": "Director of Logistics",
+        "value": 1540
+      },
+      {
+        "label": "Head of Fleet",
+        "value": 880
+      },
+      {
+        "label": "CFO or VP Finance",
+        "value": 800
+      },
+      {
+        "label": "COO",
+        "value": 700
+      }
+    ],
+    "roles_large": [
+      {
+        "label": "VP or Director of Ops",
+        "value": 1120
+      },
+      {
+        "label": "Director of Logistics",
+        "value": 770
+      },
+      {
+        "label": "Head of Fleet",
+        "value": 600
+      },
+      {
+        "label": "CFO or VP Finance",
+        "value": 580
+      },
+      {
+        "label": "COO",
+        "value": 440
+      }
+    ],
+    "signals": [
+      {
+        "label": "Hiring in operations",
+        "value": 1107
+      },
+      {
+        "label": "Raised in 12 months",
+        "value": 86
+      },
+      {
+        "label": "Hiring and raised",
+        "value": 61
+      }
+    ],
+    "hiring": [
+      {
+        "label": "Trucking, FTL and LTL",
+        "value": 298
+      },
+      {
+        "label": "Brokers and 3PLs",
+        "value": 323
+      },
+      {
+        "label": "Warehousing",
+        "value": 215
+      },
+      {
+        "label": "Freight forwarders",
+        "value": 116
+      },
+      {
+        "label": "Last mile and courier",
+        "value": 130
+      },
+      {
+        "label": "Intermodal and rail",
+        "value": 25
+      }
+    ],
+    "bands": [
+      {
+        "label": "51 to 200",
+        "value": 902
+      },
+      {
+        "label": "201 to 500",
+        "value": 276
+      },
+      {
+        "label": "501 to 1,000",
+        "value": 110
+      },
+      {
+        "label": "1,001 to 5,000",
+        "value": 61
+      },
+      {
+        "label": "5,001 and up",
+        "value": 9
+      }
+    ],
+    "band_hiring": [
+      {
+        "label": "51 to 200",
+        "value": 224
+      },
+      {
+        "label": "201 to 500",
+        "value": 83
+      },
+      {
+        "label": "501 to 1,000",
+        "value": 41
+      },
+      {
+        "label": "1,001 to 5,000",
+        "value": 27
+      },
+      {
+        "label": "5,001 and up",
+        "value": 5
+      }
+    ],
+    "headline": "The mid-market freight operator, in numbers",
+    "stand": "What 4,170 US freight and logistics companies with 200 to 1,000 staff look like right now, and where Brightwave Logistics sits among them.",
+    "brief": [
+      {
+        "figure": "4,170",
+        "text": "companies fit the profile. Trucking carriers are the largest segment at 1,240, followed by brokers and 3PLs at 980."
+      },
+      {
+        "figure": "1,293",
+        "text": "companies are in the Midwest, more than any other region. Brightwave works in the largest region in this report."
+      },
+      {
+        "figure": "9,270",
+        "text": "people hold the five roles that buy for operations. VP or Director of Operations is the largest group, at 2,960."
+      },
+      {
+        "figure": "1,107",
+        "text": "companies are hiring in operations right now, and 86 raised money in the last twelve months."
+      },
+      {
+        "figure": "276",
+        "text": "companies sit in Brightwave's size band in the Midwest, and 83 of them are hiring."
+      }
+    ],
+    "narrative": {
+      "segments": "The profile is a US company with 200 to 1,000 staff whose main business is moving or storing freight. Ken Search finds 4,170 of them. Trucking carriers and brokers are the two largest segments, which is where Brightwave's direct competitors sit. Warehousing and forwarding come next, and they buy differently.",
+      "segments_after": "Intermodal and rail is the smallest segment at 180 companies, and trucking is the largest at 1,240. The market leans towards carriers and brokers, not last mile.",
+      "regions": "Freight follows the interstates and the ports. The Midwest holds 1,293 of the 4,170 companies, more than any other region, and the South is close behind with 1,126.",
+      "regions_after": "For Brightwave this cuts both ways. The Midwest has the most companies bidding on the same shippers, and it is the region the size comparison in section 6 is drawn from.",
+      "buyers": "Five titles decide on operations spend in this market. Across the 4,170 companies, 9,270 people hold one of them. At the smaller companies there are more people in every role than at the larger ones.",
+      "buyers_after": "VP or Director of Operations is the largest group at 2,960 people, and Director of Logistics comes next at 2,310. Together they are the best place to start.",
+      "signals": "Two signals say a company may be about to change how it runs operations: it is hiring for operations, or it has new money. Ken Search tracks both from job posts and funding announcements.",
+      "signals_after": "Brokers and 3PLs have 323 companies hiring, the most of any segment. 86 companies raised money in the last twelve months, and 61 of them are also hiring.",
+      "peers": "Brightwave is in the 201 to 500 band. The peer group is every freight and logistics company in its region, split by headcount, with the share of each band that is hiring.",
+      "peers_after": "Brightwave's band holds 276 companies and 83 of them are hiring. The band above it, 501 to 1,000, holds 110 companies and 41 of them are hiring. The share hiring rises with size, from 224 of 902 companies in the smallest band to 5 of 9 in the largest."
+    },
+    "plays": [
+      {
+        "title": "Start with the 1,107 companies that are hiring",
+        "body": "A company hiring for operations is changing how it runs them. 1,107 companies in the market are hiring right now, and 323 of them are brokers and 3PLs. Write to the operations lead about what the new hires will inherit."
+      },
+      {
+        "title": "Sell to operations, not procurement",
+        "body": "There are 2,960 VP and Director of Operations titles across the market, 1,840 of them at companies with 200 to 500 staff. Write to the operator about lanes, detention and ETAs, not about rates."
+      },
+      {
+        "title": "Reach the funded companies early",
+        "body": "86 companies raised money in the last twelve months and 61 of them are hiring. New money tends to turn into new hires and new vendors within a few quarters, so a first message now arrives before their plans are set."
+      }
+    ],
+    "method": "The counts come from Ken Search at the time this page was filled. Companies: headquartered in the United States, 200 to 1,000 employees, in a freight, trucking, logistics or warehousing industry. People: a current title in one of five operations and finance roles at those companies. Hiring means an operations hiring surge in the last three months. Raised means a funding round in the last 365 days. The peer group is the same industries in the Midwest, split by headcount."
+  }
+}

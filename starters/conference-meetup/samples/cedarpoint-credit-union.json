@@ -1,0 +1,55 @@
+{
+  "account": {
+    "name": "Cedarpoint Credit Union",
+    "domain": "cedarpointcu.example",
+    "industry": "banking",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Cedarpoint Credit Union serves about 90,000 members across Oregon from 14 branches, and moved its online banking to a new core provider last year.",
+      "why_now": "Posted a job for a head of digital lending in September.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Priya",
+    "last_name": "Natarajan",
+    "title": "Head of Digital Banking"
+  },
+  "sender": {
+    "name": "Tom Adebayo",
+    "title": "Regional Director",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Harrowvale",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1b2a41",
+      "secondary": "#b8862b"
+    },
+    "fonts": {
+      "heading": "Newsreader",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "conference_name": "Fintech Northwest 2026",
+    "dates_text": "May 5 and 6, 2026",
+    "venue": "Harbor Exhibition Hall",
+    "city": "Seattle",
+    "hall": "West Hall",
+    "booth": "C-118",
+    "booth_note": "The full loan application flow running end to end on two screens, and a table at the back where we can go through your own numbers without the hall noise.",
+    "booth_hours": [
+      { "day": "Tuesday, May 5", "hours": "8:30 am to 6:00 pm", "who": "Tom Adebayo, all day" },
+      { "day": "Wednesday, May 6", "hours": "8:30 am to 3:00 pm", "who": "Tom Adebayo until 1:00 pm, then Ingrid Solberg" }
+    ],
+    "side_events": [
+      { "day": "Tuesday, May 5", "time": "12:15 pm", "title": "Credit union lunch", "where": "The Pike Room, mezzanine", "note": "Forty people from credit unions in the Pacific Northwest. No vendors speak, we just sit at the table.", "host": "Northwest Credit Union League" },
+      { "day": "Tuesday, May 5", "time": "6:30 pm", "title": "Harbor reception", "where": "The terrace, level 3", "note": "The whole show is there for the first hour. Tom will be near the east door.", "host": "The show" },
+      { "day": "Wednesday, May 6", "time": "9:00 am", "title": "Digital lending roundtable", "where": "Room 311", "note": "Twelve seats, by invitation. Two are ours and one of them is yours if you want it.", "host": "Harrowvale" }
+    ],
+    "why_now": "Posted a job for a head of digital lending in September.",
+    "personal_line": "A new head of digital lending and a core switch in the same year usually means the loan application flow is next on the list. Our stand has that flow running end to end, so twenty minutes there will show you what it would mean for Cedarpoint's members."
+  }
+}

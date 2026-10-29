@@ -81,6 +81,49 @@
       "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
       "showcases": ["prompt", "person", "roles", "ken/cta"],
       "version": "1.0.0"
+    },
+    {
+      "slug": "conference-meetup",
+      "name": "See you at the conference",
+      "type": "event",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/booking"
+      ],
+      "description": "Meet an account at a conference you both attend: your booth, hours and side events stay fixed, and Ken writes the one personal line for each account.",
+      "category": "events",
+      "tags": [
+        "conference",
+        "trade show",
+        "booth",
+        "events",
+        "meeting"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "kessler-foods",
+          "label": "Kessler Foods"
+        },
+        {
+          "id": "cedarpoint-credit-union",
+          "label": "Cedarpoint Credit Union"
+        },
+        {
+          "id": "tidewater-clinics-shared",
+          "label": "Tidewater Clinics, Shared link (no person)"
+        },
+        {
+          "id": "norwood-partial",
+          "label": "Norwood Equipment Rental, partial fill"
+        }
+      ]
     }
   ]
 }

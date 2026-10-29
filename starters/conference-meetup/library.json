@@ -1,0 +1,15 @@
+{
+  "description": "Meet an account at a conference you both attend: your booth, hours and side events stay fixed, and Ken writes the one personal line for each account.",
+  "category": "events",
+  "tags": ["conference", "trade show", "booth", "events", "meeting"],
+  "featured": false,
+  "needs": [],
+  "version": "1.0.0",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "kessler-foods", "label": "Kessler Foods" },
+    { "id": "cedarpoint-credit-union", "label": "Cedarpoint Credit Union" },
+    { "id": "tidewater-clinics-shared", "label": "Tidewater Clinics, Shared link (no person)" },
+    { "id": "norwood-partial", "label": "Norwood Equipment Rental, partial fill" }
+  ]
+}

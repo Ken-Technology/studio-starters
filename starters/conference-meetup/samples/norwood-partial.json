@@ -1,0 +1,52 @@
+{
+  "account": {
+    "name": "Norwood Equipment Rental",
+    "domain": "norwoodrental.example",
+    "industry": "construction equipment rental",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Norwood Equipment Rental rents earthmoving and lifting equipment to contractors in the Carolinas from four yards.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Sam",
+    "last_name": "Delgado",
+    "title": "Operations Manager"
+  },
+  "sender": {
+    "name": "Ravi Menon",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Fieldstone",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1e5e3a",
+      "secondary": "#d9c7a3"
+    },
+    "fonts": {
+      "heading": "Familjen Grotesk",
+      "body": "Karla"
+    }
+  },
+  "data": {
+    "conference_name": "Fleet and Yard Expo 2026",
+    "dates_text": "June 9, 2026",
+    "venue": "Piedmont Fairgrounds",
+    "city": "Greensboro",
+    "hall": "Building 3",
+    "booth": "27",
+    "booth_note": null,
+    "booth_hours": [
+      { "day": "Tuesday, June 9", "hours": "8:00 am to 4:00 pm", "who": "Ravi Menon, all day" }
+    ],
+    "side_events": [
+      { "day": "Tuesday, June 9", "time": "4:30 pm", "title": "Rental operators barbecue", "where": "The north lawn, behind Building 3", "note": "Most of the yards from both states stay for it. Ravi will be at the Fieldstone table.", "host": "Carolinas Rental Association" }
+    ],
+    "why_now": null,
+    "personal_line": "Four yards serving contractors across two states usually means the machine a crew needs on Monday is sitting at the wrong yard on Friday. Twenty minutes at the stand is enough to see how our dispatch board moves it before the call comes in."
+  }
+}

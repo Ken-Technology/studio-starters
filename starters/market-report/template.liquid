@@ -206,14 +206,14 @@ figcaption b{color:var(--ink);font-weight:600}
 <rect x="{{ i | modulo: 10 | times: 20 }}" y="{{ i | divided_by: 10.0 | floor | times: 20 }}" width="18" height="18" rx="2" class="c{{ k | at_most: 6 }}"/>
 {%- endfor %}
 </svg>
-<p>{% if total > 0 %}{% assign nv = total %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %} companies. {% endif %}Each square is one percent of the segments in figure 1, shaded by segment: darkest for {{ segs.first.label | escape }}, lightest for {{ segs.last.label | escape }}.</p>
+<p>{% if total > 0 %}{% assign nv = total %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | plus: 1000 | slice: 1, 3 }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% else %}{{ nv }}{% endif %} companies. {% endif %}Each square is one percent of the segments in figure 1, shaded by segment: darkest for {{ segs.first.label | escape }}, lightest for {{ segs.last.label | escape }}.</p>
 </div>
 {%- endif %}
 </div>
 <div class="plate">
 <div><small>Prepared for</small>{% if person.first_name %}<b>{{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}</b><br>{% if person.title %}{{ person.title | escape }}, {% endif %}{{ acct | escape }}{% else %}<b>{{ acct | escape }}</b>{% endif %}</div>
 <div><small>Written by</small><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title or brand.name %}<br>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {% endif %}{% endif %}{% if brand.name %}{{ brand.name | escape }}{% endif %}{% endif %}</div>
-<div><small>Data</small><b>Company profiles and hiring data</b>{% if total > 0 %}<br>{% assign nv = total %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %} companies{% if has_roles %}, {% assign nv = people %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %} people{% endif %}{% endif %}</div>
+<div><small>Data</small><b>Company profiles and hiring data</b>{% if total > 0 %}<br>{% assign nv = total %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | plus: 1000 | slice: 1, 3 }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% else %}{{ nv }}{% endif %} companies{% if has_roles %}, {% assign nv = people %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | plus: 1000 | slice: 1, 3 }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% else %}{{ nv }}{% endif %} people{% endif %}{% endif %}</div>
 </div>
 <ol class="toc" aria-label="Contents">
 <li>In brief</li>
@@ -261,10 +261,10 @@ figcaption b{color:var(--ink);font-weight:600}
 {%- assign y = forloop.index0 | times: 30 | plus: 4 %}
 <text x="0" y="{{ y | plus: 12.5 }}" class="lab">{{ s.label | escape }}</text>
 <rect x="164" y="{{ y }}" width="{{ s.value | times: 136.0 | divided_by: segmax | round: 1 }}" height="16" rx="2" class="bar"/>
-<text x="{{ s.value | times: 136.0 | divided_by: segmax | plus: 170 | round: 1 }}" y="{{ y | plus: 12.5 }}" class="val">{% assign nv = s.value %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}</text>
+<text x="{{ s.value | times: 136.0 | divided_by: segmax | plus: 170 | round: 1 }}" y="{{ y | plus: 12.5 }}" class="val">{% assign nv = s.value %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | plus: 1000 | slice: 1, 3 }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% else %}{{ nv }}{% endif %}</text>
 {%- endfor %}
 </svg></div>
-<figcaption><b>Figure 1.</b> Companies by segment, {{ data.scope.size | default: 'all sizes' | escape }}. Segments follow each company's primary industry in its profile.{% if total > 0 %} Total {% assign nv = total %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}.{% endif %}</figcaption>
+<figcaption><b>Figure 1.</b> Companies by segment, {{ data.scope.size | default: 'all sizes' | escape }}. Segments follow each company's primary industry in its profile.{% if total > 0 %} Total {% assign nv = total %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | plus: 1000 | slice: 1, 3 }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% else %}{{ nv }}{% endif %}.{% endif %}</figcaption>
 </figure>
 {%- if data.narrative.segments_after and data.narrative.segments_after != '' %}
 <p>{{ data.narrative.segments_after | escape }}</p>
@@ -293,7 +293,7 @@ figcaption b{color:var(--ink);font-weight:600}
 </svg>
 <ul class="legend">
 {%- for r in regs %}
-<li><i class="c{{ forloop.index | at_most: 6 }}"></i><b>{{ r.label | escape }}</b><span class="tn">{{ r.value | times: 100.0 | divided_by: regsum | round }}%, {% assign nv = r.value %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}</span></li>
+<li><i class="c{{ forloop.index | at_most: 6 }}"></i><b>{{ r.label | escape }}</b><span class="tn">{{ r.value | times: 100.0 | divided_by: regsum | round }}%, {% assign nv = r.value %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | plus: 1000 | slice: 1, 3 }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% else %}{{ nv }}{% endif %}</span></li>
 {%- endfor %}
 </ul>
 </div>
@@ -331,11 +331,11 @@ figcaption b{color:var(--ink);font-weight:600}
 <text x="0" y="{{ y | plus: 12.5 }}" class="lab">{{ r.label | escape }}</text>
 <rect x="164" y="{{ y }}" width="{{ ws | round: 1 }}" height="16" rx="2" class="bar"/>
 <rect x="{{ ws | plus: 166 | round: 1 }}" y="{{ y }}" width="{{ wl | round: 1 }}" height="16" rx="2" class="bar2"/>
-<text x="{{ ws | plus: wl | plus: 172 | round: 1 }}" y="{{ y | plus: 12.5 }}" class="val">{% assign nv = r.value | plus: lg %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}</text>
+<text x="{{ ws | plus: wl | plus: 172 | round: 1 }}" y="{{ y | plus: 12.5 }}" class="val">{% assign nv = r.value | plus: lg %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | plus: 1000 | slice: 1, 3 }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% else %}{{ nv }}{% endif %}</text>
 {%- endfor %}
 </svg>
 </div>
-<figcaption><b>Figure 3.</b> People in each buying role, by the size of their company. Current titles only. Total {% assign nv = people %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}.</figcaption>
+<figcaption><b>Figure 3.</b> People in each buying role, by the size of their company. Current titles only. Total {% assign nv = people %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | plus: 1000 | slice: 1, 3 }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% else %}{{ nv }}{% endif %}.</figcaption>
 </figure>
 {%- if data.narrative.buyers_after and data.narrative.buyers_after != '' %}
 <p>{{ data.narrative.buyers_after | escape }}</p>
@@ -354,7 +354,7 @@ figcaption b{color:var(--ink);font-weight:600}
 {%- endif %}
 <div class="tiles">
 {%- for s in data.signals %}
-<div class="tile"><b class="tn">{% assign nv = s.value %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}</b><span>{{ s.label | escape }}.{% if total > 0 %} {{ s.value | times: 100.0 | divided_by: total | round }}% of the market.{% endif %}</span></div>
+<div class="tile"><b class="tn">{% assign nv = s.value %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | plus: 1000 | slice: 1, 3 }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% else %}{{ nv }}{% endif %}</b><span>{{ s.label | escape }}.{% if total > 0 %} {{ s.value | times: 100.0 | divided_by: total | round }}% of the market.{% endif %}</span></div>
 {%- endfor %}
 </div>
 {%- if has_hiring %}
@@ -421,12 +421,12 @@ figcaption b{color:var(--ink);font-weight:600}
 {%- if b.label == data.scope.account_band %}{% assign mine = true %}{% endif %}
 <text x="0" y="{{ y | plus: 12.5 }}" class="lab"{% if mine %} style="font-weight:700"{% endif %}>{{ b.label | escape }}</text>
 <rect x="124" y="{{ y }}" width="{{ b.value | times: 110.0 | divided_by: bmax | round: 1 }}" height="16" rx="2" class="{% if mine %}bar{% else %}bar3{% endif %}"/>
-<text x="{{ b.value | times: 110.0 | divided_by: bmax | plus: 130 | round: 1 }}" y="{{ y | plus: 12.5 }}" class="val">{% assign nv = b.value %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}</text>
+<text x="{{ b.value | times: 110.0 | divided_by: bmax | plus: 130 | round: 1 }}" y="{{ y | plus: 12.5 }}" class="val">{% assign nv = b.value %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | plus: 1000 | slice: 1, 3 }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% else %}{{ nv }}{% endif %}</text>
 <text x="360" y="{{ y | plus: 12.5 }}" class="val" text-anchor="end">{% if b.value > 0 %}{{ hb | times: 100.0 | divided_by: b.value | round }}%{% else %}0%{% endif %}</text>
 {%- endfor %}
 </svg>
 </div>
-<figcaption><b>Figure 5.</b> Companies in {{ acct_s | escape }} industry and region, by headcount, and the share of each band that is hiring. {{ acct | escape }} is in the {{ data.scope.account_band | escape }} band. Total {% assign nv = bsum %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}.</figcaption>
+<figcaption><b>Figure 5.</b> Companies in {{ acct_s | escape }} industry and region, by headcount, and the share of each band that is hiring. {{ acct | escape }} is in the {{ data.scope.account_band | escape }} band. Total {% assign nv = bsum %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | plus: 1000 | slice: 1, 3 }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | plus: 1000 | slice: 1, 3 }}{% else %}{{ nv }}{% endif %}.</figcaption>
 </figure>
 {%- if data.narrative.peers_after and data.narrative.peers_after != '' %}
 <p>{{ data.narrative.peers_after | escape }}</p>

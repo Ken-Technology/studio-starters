@@ -165,7 +165,7 @@ body{font-size:17px}
 <li class="rc-item">
 <label class="rc-hit" for="rc-ck{{ forloop.index0 }}">
 <input id="rc-ck{{ forloop.index0 }}" class="rc-box" type="checkbox"{% if item.done %} checked{% endif %} x-model="d{{ forloop.index0 }}" x-on:change="score = score + (d{{ forloop.index0 }} ? 1 : -1)">
-<span class="rc-num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+<span class="rc-num">{{ forloop.index | plus: 100 | slice: 1, 2 }}</span>
 <span class="rc-body">
 <span class="rc-label">{{ item.label | escape }}</span>
 <span class="rc-detail">{{ item.detail | escape }}</span>

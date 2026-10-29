@@ -463,6 +463,14 @@ test('account.signals in template.liquid or fallback.liquid fails and points at 
   assert.match(fallback.out, /fallback\.liquid: line \d+: account\.signals is empty on a published page/);
 });
 
+test('a filter with a negative first argument and more after it fails; one negative argument passes', () => {
+  const bad = checkLibrary(editFile('template.liquid', '<p>Hi {{', "<p>{{ account.name | prepend: '000' | slice: -3, 3 }}</p>\n<p>Hi {{"));
+  assert.equal(bad.status, 1, bad.out);
+  assert.match(bad.out, /template\.liquid: line \d+: slice takes a negative first argument and more after it, which Ken's Liquid parse rejects/);
+  const ok = checkLibrary(editFile('template.liquid', '<p>Hi {{', '<p>{{ account.name | slice: -1 | escape }}{{ account.name | slice: 1, 3 | escape }}</p>\n<p>Hi {{'));
+  assert.equal(ok.status, 0, ok.out);
+});
+
 test('account.dossier in template.liquid fails and points at a slot', () => {
   const { status, out } = checkLibrary(editFile('template.liquid', '<p>Hi {{', '<p>{{ account.dossier.why_now | escape }}</p>\n<p>Hi {{'));
   assert.equal(status, 1, out);

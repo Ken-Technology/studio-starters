@@ -253,6 +253,9 @@ function scanLiquid(text, file, { err, warn }, { allowData }) {
     for (const f of filters) {
       if (!LIQUID_FILTERS.has(f)) err(file, `line ${lineOf(text, e.index)}: filter "${f}" is not in the portable filter list`);
     }
+    // Ken's validator parses Liquid with Scriban, which fails on a negative first argument followed by more (slice: -3, 3).
+    const negative = body.match(/\|\s*([a-z_][a-z0-9_]*)\s*:\s*-\s*\d[\d.]*\s*,/i)?.[1];
+    if (negative) err(file, `line ${lineOf(text, e.index)}: ${negative} takes a negative first argument and more after it, which Ken's Liquid parse rejects; use a start of 0 or more, like | plus: 1000 | slice: 1, 3 for the last three digits`);
     // The edge escapes every {{ }} output again, so the <br /> that newline_to_br adds shows as text unless the output ends in raw.
     if (e.output && (filters.includes('newline_to_br') || withBr.has(root)) && filters.at(-1) !== 'raw') {
       err(file, `line ${lineOf(text, e.index)}: newline_to_br output is escaped at render, so <br /> shows as text; end it with | raw after | escape`);

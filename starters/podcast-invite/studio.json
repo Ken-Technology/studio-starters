@@ -1,0 +1,136 @@
+{
+  "kenStudio": "1",
+  "name": "Be our guest",
+  "type": "event",
+  "format": "page",
+  "slug": "be-our-guest",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "show_name": { "type": "string", "minLength": 2, "maxLength": 60, "fallback": "{{ brand.name | default: 'Our' }} podcast" },
+      "show_format": { "type": "string", "enum": ["audio", "video", "written"], "fallback": "video" },
+      "show_tagline": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 160,
+        "fallback": "Conversations with the people who run the work, about how it actually gets done."
+      },
+      "audience": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 300,
+        "fallback": "People in roles like yours at companies of a similar size, who listen for the decisions and the details rather than the pitch."
+      },
+      "episode_length": { "type": "string", "minLength": 2, "maxLength": 40, "fallback": "40 minutes" },
+      "recording": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 240,
+        "fallback": "Remote, over a video call. You need a quiet room and a laptop; we send the link and handle the rest."
+      },
+      "published_on": { "type": "string", "minLength": 2, "maxLength": 120, "fallback": "Apple Podcasts, Spotify and our site" },
+      "turnaround": { "type": "string", "minLength": 2, "maxLength": 80, "fallback": "about three weeks after we record" },
+      "host_about": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 300,
+        "fallback": "{{ sender.name | default: 'Our host' }} hosts every episode and does the prep, so the conversation starts where your work is, not at the beginning."
+      },
+      "recent_episodes": {
+        "type": "array",
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "minLength": 2, "maxLength": 120 },
+            "guest": { "type": "string", "maxLength": 120 }
+          },
+          "required": ["title"]
+        }
+      },
+      "site": { "type": "object" },
+      "writing": { "type": "object" },
+      "invite_line": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 320,
+        "fallback": "I would like to have you on to talk about how {{ account.name }} does its work, and what you have learned doing it."
+      },
+      "episode_title": { "type": "string", "minLength": 10, "maxLength": 90, "fallback": "How {{ account.name }} does the work" },
+      "angle": {
+        "type": "string",
+        "minLength": 120,
+        "maxLength": 700,
+        "fallback": "I would like to talk about how {{ account.name }} runs its part of the work: the decisions behind it, what they cost, and what you would do differently today. We can shape the exact angle together before we start."
+      },
+      "questions": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "question": { "type": "string", "minLength": 10, "maxLength": 160 },
+            "why": { "type": "string", "maxLength": 200 }
+          },
+          "required": ["question"]
+        },
+        "fallback": [
+          { "question": "What does a normal week look like in your role?", "why": "" },
+          { "question": "Which decision from the last year would you make differently now?", "why": "" },
+          { "question": "What do people outside your team get wrong about the work?", "why": "" }
+        ]
+      }
+    },
+    "required": ["show_name", "show_format", "show_tagline", "audience", "episode_length", "recording", "published_on", "turnaround", "host_about", "invite_line", "episode_title", "angle", "questions"]
+  },
+  "recipe": [
+    {
+      "id": "site",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}", "maxChars": 8000, "mode": "markdown" },
+      "to": "data.site"
+    },
+    {
+      "id": "writing",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}/blog", "maxChars": 6000, "mode": "markdown" },
+      "to": "data.writing"
+    },
+    {
+      "id": "pitch",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "account.dossier.why_now", "person.first_name", "person.title", "sender.name", "brand.name", "data.site", "data.writing"],
+      "to": ["data.invite_line", "data.episode_title", "data.angle", "data.questions"],
+      "prompt": "You are writing a guest invitation page for {{ person.first_name | default: 'the team' }} at {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The host' }} at {{ brand.name | default: 'our company' }} sends it. The show is {{ data.show_name | default: 'our show' }}: {{ data.show_tagline | default: 'conversations with the people who run the work, about how it gets done' }} Format: {{ data.show_format | default: 'video' }}. Who listens: {{ data.audience | default: 'people in roles like the guest, at companies of a similar size' }}\n\nInputs, the only facts you may use. Industry and size: {{ account.industry | default: 'unknown' }}, {{ account.size_band | default: 'unknown' }} people. The guest's title: {{ person.title | default: 'not known' }}. Research summary: {{ account.dossier.summary | default: 'none' }} Recent reason to reach out: {{ account.dossier.why_now | default: 'none' }} Their website ({{ data.site.url | default: 'not available' }}): {{ data.site.title }} {{ data.site.description }} {{ data.site.markdown | default: '' | truncate: 6000 }} Their blog, when it exists, where the guest's own writing may appear: {{ data.writing.markdown | default: 'none' | truncate: 4000 }}\n\nReturn JSON with these keys:\n- invite_line: 1 or 2 sentences, 40 to 320 characters, that open the letter. Say why we want this guest in particular, tied to one specific thing from the inputs about what {{ account.name }} does or has done, and when the blog carries a post by the guest, tie it to that post. Write to \"you\". Never use a first name; the page adds the greeting. No flattery, no \"I noticed\", \"I saw\" or \"I came across\".\n- episode_title: a working title for the episode, 10 to 90 characters, sentence case, specific to {{ account.name }}'s work. Numbers only when the inputs state them.\n- angle: 2 to 4 sentences, 120 to 700 characters, on what the conversation would cover and why listeners would want it. Name the specific part of their work we would dig into, from the inputs. End with one plain sentence on what we would not do: no product talk from our side and no company history.\n- questions: exactly 3 items {question, why}. question is one question we would ask, 10 to 160 characters, that only someone at {{ account.name }} in this role could answer well from experience. Each question covers a different part of the angle. why is at most 200 characters on where the question comes from, naming the input (their site, their blog, a recent change), or an empty string.\n\nFacts: use only the inputs. Never invent customers, numbers, news, tools, people or quotes. If the inputs say little, keep the angle about their role and industry and say less rather than guess. A stat the site shows as 0, 0% or 0+ is a counter that did not load; never use it.\n\nVoice: one host writing to a future guest. Plain, specific, warm but not gushing. Short sentences a person would say out loud. Write to \"you\" and name {{ account.name }} where it helps. When there is no first name, write to the team at {{ account.name }} and say \"your team\" where \"you\" would mislead.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. No hype words (unlock, leverage, seamless, robust, game changer, thought leader, insights, journey). Never \"real\" as emphasis. Never call the episode a test. Never mention {{ brand.name | default: 'our company' }}'s product."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.invite_line", "data.episode_title", "data.angle", "data.questions"],
+      "retries": 2,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["I noticed", "I saw", "I came across", "thought leader", "insights", "journey", "love what you", "impressive", "big fan", "huge fan", "excited to", "thrilled"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_test_noun": true,
+        "no_real_emphasis": true,
+        "no_signoff": true
+      },
+      "rubric": "Grade the invitation the way the guest reads it: the invite line, the episode title, the angle, then the three questions. 10 is an invitation a busy person reads once and wants to accept.\nScore 0 to 10 each:\n- specific: the angle and the questions are about {{ account.name }}'s own work, not generic to any company in {{ account.industry | default: 'their industry' }}. A question that could go to anyone else unchanged scores 3 or lower.\n- grounded: every fact about {{ account.name }} appears in the site text, the blog text or the research summary below. An invented customer, number, tool, person or event is an automatic fail.\n- answerable: each question is one question a guest can answer from experience in a minute or two, with no homework. Two questions in one, or a question that needs a number they would have to look up, fails this.\n- tone: plain words a host would say out loud. No flattery, no marketing words, no stacked nouns. Quote any phrase that fails.\nAutomatic fail: an em dash or en dash, an exclamation mark, a first name in invite_line or angle (the page adds the greeting), a title or question that mentions {{ brand.name | default: 'our company' }} or its product, a claim about {{ account.name }} that the inputs below do not support, or two questions that share an idea.\nSite text ({{ data.site.url | default: 'no site' }}): {{ data.site.title }} {{ data.site.description }} {{ data.site.markdown | default: '' | truncate: 6000 }}\nBlog text: {{ data.writing.markdown | default: 'none' | truncate: 3000 }}\nResearch summary: {{ account.dossier.summary | default: 'none' }} {{ account.dossier.why_now | default: '' }}\nPass when the overall score is 7.5 or higher and no check is 6 or lower. On a fail, name the check and quote the phrase to change. The fix never supplies replacement facts, numbers or questions."
+    }
+  ],
+  "sections": [
+    { "id": "invite", "label": "Invitation" },
+    { "id": "angle", "label": "The angle" },
+    { "id": "takes", "label": "What it takes" },
+    { "id": "show", "label": "The show" },
+    { "id": "book", "label": "Book a time" }
+  ],
+  "cta": { "primary": "booking", "label": "Pick a time" }
+}

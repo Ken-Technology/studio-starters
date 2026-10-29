@@ -1,0 +1,14 @@
+{
+  "description": "A guest invitation for your podcast or interview series. Ken reads the account's site and writes the angle and three questions for each guest.",
+  "category": "events",
+  "tags": ["podcast", "interview", "guest", "invitation"],
+  "featured": false,
+  "needs": [],
+  "version": "1.0.0",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "alder-mechanical", "label": "Alder Mechanical" },
+    { "id": "northgate-credit-union", "label": "Northgate Credit Union" },
+    { "id": "kessler-robotics-shared", "label": "Shared link (no person)" }
+  ]
+}

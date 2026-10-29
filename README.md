@@ -131,7 +131,7 @@ Limits: `template.liquid` 256 KB, each asset 5 MB, a bundle 20 MB. This repo kee
 - `type`: `reverse_demo`, `landing_page`, `audit`, `report`, `event`, `calculator`, `recruiting` or `other`. `format`: `page` or `doc`.
 - `slug` names the page in its link: `https://go.acme.com/brightwave/outbound-campaign-for-leo`. Lowercase words joined by hyphens, at most 60 characters.
 - `slots` describe `data.*` with a JSON Schema subset: `type`, `properties`, `required`, `items`, `minLength`, `maxLength`, `minItems`, `maxItems`, `enum`, `format: "uri"`, plus Studio's `fallback`, and `description` and `title` as notes for whoever edits the template (Ken checks nothing in them). Nothing else, so no `pattern`: say a value's format in `description`.
-- Every required slot has a `fallback`, or the bundle ships `fallback.liquid`. A fallback is a static JSON value, or a Liquid string that uses only Ken variables (never `data.*`).
+- Every required slot has a `fallback`, or the bundle ships `fallback.liquid`. A fallback is a static JSON value, or a Liquid string that uses only Ken variables (never `data.*`). Any fallback that is not Liquid must fit its own slot (`minLength`, `maxLength`, `enum`, `format`, `minItems`, `maxItems`), as Ken checks when you push; a blank string counts as no value.
 - Every element with `data-section="<id>"` in the template appears in `sections`, and every section appears in the template. Ken tracks reading time per section.
 
 ### Recipe steps
@@ -152,7 +152,7 @@ Conventions these starters follow:
 - `prompt` text (and `rubric`, tool `args` and dataset `where`) takes output tags over Ken variables, `defaults.*` and `data.*`, with the filters `default`, `upcase`, `downcase`, `capitalize`, `strip`, `size`, `join`, `truncate` and `json`, like `{{ data.pricing.url | default: 'none' }}`. Tags such as `{% if %}` fail the step when it runs, and `check.mjs` rejects them. `inputs` lists the Ken variables and earlier slots the step reads.
 - A fill starts with `data` empty, so a step reads only the slots earlier steps wrote. For a slot the template's owner sets, like an event's name, date or agenda, read its fallback as `{{ defaults.<slot> }}` in the text, and list `defaults.<slot>` in `inputs` when the model needs the whole value. Do not copy the fallback's text into the prompt: the fallback stays the one place the owner edits it. `check.mjs` rejects recipe text or `inputs` that read a `data.<slot>` no earlier step writes, and a `defaults.<slot>` whose slot has no `fallback`.
 - Knowledge is two lists, `knowledge.stable` and `knowledge.scoped`. For a field such as a price or a team name, a `prompt` step reads them and writes the field to a slot, empty when Knowledge does not state it, and the section that shows it hides when it is empty. There is no `knowledge.offer` or `knowledge.account`; `check.mjs` warns on any other `knowledge.*` path.
-- String values in `tool` args are Liquid too. A string that is exactly one `{{ data.x }}` passes that value through with its type, so `"filters": "{{ data.search }}"` hands Ken Search the filter object a `prompt` step wrote.
+- String values in `tool` args are Liquid too. A string that is exactly one `{{ data.x }}` passes that value through with its type, so `"filters": "{{ data.search }}"` hands Ken Search the filter object a `prompt` step wrote. A bare path such as `"segments": "data.segments"` reaches the tool as that text and fails the step, so `check.mjs` rejects it. `chart.data`'s `from` is the one arg that takes a path.
 - Intermediate results (scraped pages, raw search results) are declared as optional slots, because every `to` must be a declared slot.
 - Every kind except `bind` takes `requires`, a list of `data.<slot>` paths that an earlier step writes. While one of them is empty or failed, the step does not run and costs nothing, and its slots fall back. `rd-doc` uses it so `plan` never writes a strategy without the site, and `copy` never names people when the search found none.
 - A `grade` step may set `checks`: string rules Ken runs on the graded slots before the judge. `banned` lists words and phrases (`demo` also catches `demos`), and `no_placeholders`, `no_dashes`, `no_prices`, `no_test_noun`, `no_real_emphasis` and `no_signoff` turn on the rest. `skip` names fields copied as given (a lead's `name`, `title`, `linkedin_url`), which the checks do not read. A hit fails the grade at no model cost, and the rewrite is told the rule and the quoted phrase. `rd-doc` turns them all on. ken-backend `docs/studio/validation-rules.md` says what each one matches.
@@ -164,12 +164,12 @@ Conventions these starters follow:
 
 ### Ken variables
 
-Ken supplies these. Recipes never fill them. `knowledge` and `defaults` exist only while the recipe runs: steps read them, the page does not.
+Ken supplies these. Recipes never fill them. `knowledge`, `defaults`, `account.dossier` and `account.signals` exist only while the recipe runs: steps read them, the page does not. A published page and its preview carry only the account's `name`, `domain`, `industry` and `size_band`, so to show the rest, write it to a `data.*` slot and print the slot. `check.mjs` rejects `account.dossier` and `account.signals` in `template.liquid` and `fallback.liquid`.
 
 | Variable | Fields |
 |---|---|
-| `account` | `name`, `domain`, `industry`, `size_band`, `dossier.summary`, `dossier.why_now`, `dossier.angle` |
-| `account.signals` | News on the account: a list of `{type, title, date, source_url}`, `date` as `YYYY-MM-DD`, newest first, at most 10, empty when there is none. Bind it to a slot, pass it to a prompt or loop over it. Needs ken-backend DEV-5732 deployed |
+| `account` | `name`, `domain`, `industry`, `size_band`. Recipe steps also get `dossier.summary`, `dossier.why_now` and `dossier.angle` |
+| `account.signals` | Recipe steps only: news on the account, a list of `{type, title, date, source_url}`, `date` as `YYYY-MM-DD`, newest first, at most 10, empty when there is none. Pass it to a prompt, or bind it to an array `data.*` slot and loop over that slot in the template. Needs ken-backend DEV-5732 deployed |
 | `person` | `first_name`, `last_name`, `title`. **Null on the shared link**, so always write `{{ person.first_name \| default: 'there' }}`. On a recruiting page also `current_title`, `current_company`, `location`, `skills`, `experience_summary` and `linkedin_url`, set while the page fills too |
 | `sender` | `name`, `title`, `signature_html` |
 | `brand` | `name`, `logo_url`, `colors.primary`, `colors.secondary`, `fonts.heading`, `fonts.body` |
@@ -206,7 +206,7 @@ Pages are served with a strict Content Security Policy, and validation rejects a
 
 ### Liquid
 
-Templates use the subset that LiquidJS (the edge renderer) and Shopify Liquid share: `if/elsif/else`, `unless`, `for`, `assign`, `capture`, `case`, `render`, `comment`, `raw`, and standard filters (`default`, `escape`, `upcase`, `size`, `date`, `join`, `split`, `round`, `times`, `divided_by`, `newline_to_br` and the like), plus LiquidJS's `raw`. No custom filters.
+Templates use the subset that LiquidJS (the edge renderer) and Shopify Liquid share: `if/elsif/else`, `unless`, `for`, `assign`, `capture`, `case`, `render`, `comment`, `raw`, and standard filters (`default`, `escape`, `upcase`, `size`, `date`, `join`, `split`, `round`, `times`, `divided_by`, `newline_to_br` and the like), plus LiquidJS's `raw`. No custom filters. Ken's validator cannot parse a negative first argument followed by more (`slice: -3, 3`), so pad and cut from the start instead: `{{ n | modulo: 1000 | plus: 1000 | slice: 1, 3 }}` prints the last three digits. One negative argument alone (`slice: -1`) is fine.
 
 - Escape every value you print in HTML: `{{ data.headline | escape }}`. The edge escapes every `{{ }}` output again (existing entities are kept, so `| escape` never escapes twice), which turns markup a filter adds into text. For prose slots, `{{ data.intro | escape | newline_to_br | strip_newlines | raw }}`: `escape` makes the text safe, then `raw` keeps the `<br />` tags. Use `| raw` only on a value you escaped first: `check.mjs` fails an output that ends in `| raw` unless `| escape` comes earlier in its chain or in the `assign` that built the local it prints.
 - An empty string is truthy in Liquid. Test optional strings with `{% if data.ps and data.ps != '' %}`.
@@ -241,7 +241,7 @@ node scripts/check.mjs rd-doc     # one bundle
 node --test scripts/check.test.mjs   # tests for check.mjs itself
 ```
 
-`check.mjs` has no dependencies (Node 20 or newer) and runs on every push and pull request. It checks the manifest fields, the slot schema subset, fallbacks, the recipe (known kinds and tools, `to` targets, recipe text and inputs that read only slots earlier steps write, `defaults.<slot>` only for slots with a fallback, https webhooks, timeouts), `data-section` against `sections`, the HTML rules above, the portable Liquid tags and filters, sizes, asset types, dashes, and that each sample has `account.name` (`role.title` on a recruiting starter), matches the slot schema and holds no contact details. Ken's validator runs the full set when you push a bundle, including a Liquid parse and the filled-data rules.
+`check.mjs` has no dependencies (Node 20 or newer) and runs on every push and pull request. It checks the manifest fields, the slot schema subset, fallbacks (each one against its own slot), the recipe (known kinds and tools, `to` targets, tool args written as a bare path, recipe text and inputs that read only slots earlier steps write, `defaults.<slot>` only for slots with a fallback, https webhooks, timeouts), `data-section` against `sections`, the HTML rules above, the portable Liquid tags and filters, no negative first filter argument followed by more, no `account.dossier` or `account.signals` in the page, sizes, asset types, dashes, and that each sample has `account.name` (`role.title` on a recruiting starter), matches the slot schema and holds no contact details. Ken's validator runs the full set when you push a bundle, including a Liquid parse and the filled-data rules.
 
 To see a Library template rendered, render its samples and open the output:
 

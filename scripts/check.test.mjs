@@ -383,3 +383,96 @@ test('a slot may carry a description', () => {
   const { status, out } = checkLibrary((bundle) => editJson(path.join(bundle, 'studio.json'), (m) => { m.slots.properties.headline.description = 'One line, sentence case.'; }));
   assert.equal(status, 0, out);
 });
+
+// --- fallbacks against their own slot (ken-backend slot-fallback-invalid) --------------------
+
+// Edits studio.json before index.json is built, so a passing edit leaves the index fresh.
+const beforeIndex = (change) => ({ setup: (dir) => editJson(path.join(dir, 'starters', SLUG, 'studio.json'), change) });
+const withSlot = (schema) => beforeIndex((m) => { m.slots.properties.extra = schema; });
+
+const FALLBACK_INVALID = [
+  ['shorter than minLength', { type: 'string', minLength: 6, fallback: 'Work' }, /slot "extra" fallback does not fit its slot: slots\.extra\.fallback: 4 characters, shorter than 6/],
+  ['longer than maxLength', { type: 'string', maxLength: 10, fallback: 'What manual work costs' }, /slot "extra" fallback does not fit its slot: slots\.extra\.fallback: 22 characters, longer than 10/],
+  ['outside its enum', { type: 'string', enum: ['bar', 'pie'], fallback: 'line' }, /slot "extra" fallback does not fit its slot: slots\.extra\.fallback: not one of bar, pie/],
+  ['not a URL on a uri slot', { type: 'string', format: 'uri', fallback: 'acme.example/pricing' }, /slot "extra" fallback does not fit its slot: slots\.extra\.fallback: not an absolute http\(s\) URL/],
+  ['fewer items than minItems', { type: 'array', minItems: 2, items: { type: 'string' }, fallback: ['Intro'] }, /slot "extra" fallback does not fit its slot: slots\.extra\.fallback: fewer than 2 items/],
+  ['more items than maxItems', { type: 'array', maxItems: 1, items: { type: 'string' }, fallback: ['Intro', 'Agenda'] }, /slot "extra" fallback does not fit its slot: slots\.extra\.fallback: more than 1 items/],
+  ['an item over its maxLength', { type: 'array', items: { type: 'string', maxLength: 3 }, fallback: ['Intro'] }, /slot "extra" fallback does not fit its slot: slots\.extra\.fallback\[0\]: 5 characters, longer than 3/],
+  ['a value of another type', { type: 'number', fallback: 'ten' }, /slot "extra" fallback does not fit its slot: slots\.extra\.fallback: expected number, got string/],
+  ['a Liquid string on an array slot', { type: 'array', fallback: '{{ account.name }}' }, /slot "extra" fallback is a Liquid string but the slot is type array/],
+];
+
+for (const [name, schema, message] of FALLBACK_INVALID) {
+  test(`a fallback ${name} fails`, () => {
+    const { status, out } = checkLibrary(() => {}, withSlot(schema));
+    assert.equal(status, 1, out);
+    assert.match(out, message);
+  });
+}
+
+test('a fallback that fits its slot, a blank fallback and a Liquid fallback pass', () => {
+  for (const schema of [
+    { type: 'string', minLength: 4, maxLength: 40, fallback: 'Work' },
+    { type: 'string', enum: ['bar', 'pie'], fallback: 'pie' },
+    { type: 'string', format: 'uri', fallback: 'https://acme.example/pricing' },
+    { type: 'string', format: 'uri', fallback: '' },
+    { type: 'string', minLength: 40, fallback: '{{ account.name }}' },
+    { type: 'array', minItems: 1, maxItems: 2, items: { type: 'object', required: ['label'], properties: { label: { type: 'string' }, note: { type: 'string', minLength: 5 } } }, fallback: [{ label: 'Intro', note: '' }] },
+  ]) {
+    const { status, out } = checkLibrary(() => {}, withSlot(schema));
+    assert.equal(status, 0, `${JSON.stringify(schema)}\n${out}`);
+  }
+});
+
+// --- tool args written as a bare path --------------------------------------------------------
+
+test('a tool arg that is a bare variable path fails and points at {{ }}', () => {
+  const top = checkLibrary(recipe((r) => { r[1].args.segments = 'data.signals'; }));
+  assert.equal(top.status, 1, top.out);
+  assert.match(top.out, /recipe\[1\] \(market\): args\.segments is the bare path "data\.signals", which reaches the tool as that text; write "\{\{ data\.signals \}\}" to pass its value/);
+  const nested = checkLibrary(recipe((r) => { r[1].args.segments[0].filters.industries[0] = 'account.industry'; }));
+  assert.equal(nested.status, 1, nested.out);
+  assert.match(nested.out, /recipe\[1\] \(market\): args\.segments\[0\]\.filters\.industries\[0\] is the bare path "account\.industry"/);
+});
+
+test('a tool arg in {{ }} and chart.data from as a path pass', () => {
+  const tag = checkLibrary(() => {}, beforeIndex((m) => { m.recipe[1].args.segments = '{{ data.signals }}'; }));
+  assert.equal(tag.status, 0, tag.out);
+  const chart = checkLibrary(() => {}, beforeIndex((m) => {
+    m.slots.properties.chart = { type: 'array', items: { type: 'object', properties: { label: { type: 'string' }, value: { type: 'number' } } } };
+    m.recipe.push({ id: 'chart', kind: 'tool', tool: 'chart.data', args: { from: 'data.market', sort: 'desc' }, to: 'data.chart' });
+  }));
+  assert.equal(chart.status, 0, chart.out);
+});
+
+// --- account.signals on the page -------------------------------------------------------------
+
+const editFile = (name, find, replace) => (bundle) => {
+  const file = path.join(bundle, name);
+  const text = fs.readFileSync(file, 'utf8');
+  assert.equal(text.split(find).length, 2, `${name} should hold "${find}" exactly once`);
+  fs.writeFileSync(file, text.replace(find, replace));
+};
+
+test('account.signals in template.liquid or fallback.liquid fails and points at a slot', () => {
+  const page = checkLibrary(editFile('template.liquid', 'for s in data.signals', 'for s in account.signals'));
+  assert.equal(page.status, 1, page.out);
+  assert.match(page.out, /template\.liquid: line \d+: account\.signals is empty on a published page and in previews, which carry only account name, domain, industry and size_band; bind account\.signals to an array data\.\* slot in the recipe and loop over that slot/);
+  const fallback = checkLibrary(editFile('fallback.liquid', '</p>', ' {{ account.signals | size }}</p>'));
+  assert.equal(fallback.status, 1, fallback.out);
+  assert.match(fallback.out, /fallback\.liquid: line \d+: account\.signals is empty on a published page/);
+});
+
+test('a filter with a negative first argument and more after it fails; one negative argument passes', () => {
+  const bad = checkLibrary(editFile('template.liquid', '<p>Hi {{', "<p>{{ account.name | prepend: '000' | slice: -3, 3 }}</p>\n<p>Hi {{"));
+  assert.equal(bad.status, 1, bad.out);
+  assert.match(bad.out, /template\.liquid: line \d+: slice takes a negative first argument and more after it, which Ken's Liquid parse rejects/);
+  const ok = checkLibrary(editFile('template.liquid', '<p>Hi {{', '<p>{{ account.name | slice: -1 | escape }}{{ account.name | slice: 1, 3 | escape }}</p>\n<p>Hi {{'));
+  assert.equal(ok.status, 0, ok.out);
+});
+
+test('account.dossier in template.liquid fails and points at a slot', () => {
+  const { status, out } = checkLibrary(editFile('template.liquid', '<p>Hi {{', '<p>{{ account.dossier.why_now | escape }}</p>\n<p>Hi {{'));
+  assert.equal(status, 1, out);
+  assert.match(out, /template\.liquid: line \d+: account\.dossier is empty on a published page and in previews[^\n]*bind the field to a data\.\* slot/);
+});

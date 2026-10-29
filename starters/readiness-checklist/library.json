@@ -4,7 +4,7 @@
   "tags": ["checklist", "readiness", "self assessment", "score", "interactive"],
   "featured": false,
   "needs": ["knowledge"],
-  "version": "1.0.1",
+  "version": "1.0.2",
   "updatedAt": "2026-10-29",
   "samples": [
     { "id": "fernhill", "label": "Fernhill Software" },

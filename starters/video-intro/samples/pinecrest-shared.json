@@ -23,7 +23,7 @@
     "fonts": { "heading": "Outfit", "body": "DM Sans" }
   },
   "data": {
-    "video_url": "https://vimeo.com/987654321",
+    "video_url": "https://lanewright.example/videos/pinecrest",
     "title": "Filling the Spokane lanes without adding dispatchers",
     "intro": "A new terminal is the moment the old routing habits either carry over or get replaced. Here is what I would check on the Spokane lanes first, and why it matters for the other ten terminals.",
     "reasons": [

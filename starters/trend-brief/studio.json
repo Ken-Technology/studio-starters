@@ -1,0 +1,132 @@
+{
+  "kenStudio": "1",
+  "name": "Trend brief",
+  "type": "report",
+  "format": "doc",
+  "slug": "trend-brief",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "offer": { "type": "string", "maxLength": 300 },
+      "segments": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string", "minLength": 2, "maxLength": 28 },
+            "filters": { "type": "object" }
+          },
+          "required": ["label", "filters"]
+        }
+      },
+      "plan": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "minLength": 8, "maxLength": 64 },
+            "counted": { "type": "string", "minLength": 20, "maxLength": 120 },
+            "why": { "type": "string", "minLength": 20, "maxLength": 200 }
+          },
+          "required": ["title", "counted", "why"]
+        }
+      },
+      "counts": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string", "maxLength": 28 },
+            "value": { "type": "number" }
+          },
+          "required": ["label", "value"]
+        }
+      },
+      "headline": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 80,
+        "fallback": "Three things moving in {{ account.industry | default: 'your industry' }} this quarter"
+      },
+      "dek": {
+        "type": "string",
+        "minLength": 60,
+        "maxLength": 220,
+        "fallback": "Three trends in {{ account.industry | default: 'your market' }}, each backed by a count of companies from Ken Search, and what each one means for {{ account.name }}."
+      },
+      "trends": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "minLength": 8, "maxLength": 64 },
+            "what": { "type": "string", "minLength": 160, "maxLength": 420 },
+            "means": { "type": "string", "minLength": 160, "maxLength": 420 }
+          },
+          "required": ["title", "what", "means"]
+        }
+      },
+      "so_what": { "type": "string", "minLength": 120, "maxLength": 400 }
+    },
+    "required": ["headline", "dek", "trends", "so_what"]
+  },
+  "recipe": [
+    {
+      "id": "plan",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "account.dossier.why_now", "brand.name", "sender.name"],
+      "to": ["data.segments", "data.plan"],
+      "prompt": "You are planning a short trend brief for {{ account.name }} ({{ account.domain }}), a company in {{ account.industry | default: 'its industry' }} with {{ account.size_band | default: 'an unknown number of' }} people. {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it. The brief shows three things moving in {{ account.name }}'s industry right now, each backed by a count of companies from Ken Search, and what each one means for {{ account.name }}.\n\nWhat we know about {{ account.name }}: {{ account.dossier.summary | default: 'nothing beyond the industry' }} Recent reason to reach out: {{ account.dossier.why_now | default: 'none' }}\n\nYour job is to choose the three counts, not to write the brief. Ken Search counts the companies in an industry that show one of six signals. Pick the three signals that say the most about {{ account.name }}'s market and situation, judged from the inputs above:\n1. Hiring surge: {\"hiringSurge\": {\"windowMonths\": 3}}. Companies that added staff fast in the last three months.\n2. Headcount grew: {\"headcountGrew\": true, \"minHeadcountGrowthPct\": 10}. Companies that grew headcount by at least 10 percent.\n3. Headcount cut: {\"headcountDeclined\": true, \"minHeadcountDeclinePct\": 10}. Companies that cut headcount by at least 10 percent.\n4. Raised money: {\"raisedFundingRecently\": true, \"raisedFundingWithinDays\": 180}. Companies that announced funding in the last six months.\n5. New entrants: {\"newlyFounded\": true, \"newlyFoundedWithinYears\": 2}. Companies founded in the last two years.\n6. Moved up a size band: {\"crossedSizeBandUp\": true}. Companies that crossed into a larger headcount band.\n\nReturn JSON with two keys:\n- segments: exactly 4 items, each {label, filters}. Item 1 is the baseline, every company in the industry: {\"label\": <label>, \"filters\": {\"industries\": [\"{{ account.industry }}\"]}}. Items 2 to 4 are the three signals you picked, in the order the brief should present them. Each one's filters hold \"industries\": [\"{{ account.industry }}\"] plus that signal's keys copied exactly as written above, nothing else. Copy the industry string exactly as given here; never rename or translate it. label is at most 28 characters in plain words a reader understands, like \"All construction companies\" or \"Hiring surge, 3 months\".\n- plan: exactly 3 items, one per picked signal, in the same order as segments 2 to 4, each {title, counted, why}. title is a working title for the trend in at most 64 characters, sentence case, with no numbers in it, because you have no numbers yet. counted says in plain words what the segment counts, at most 120 characters, like \"Construction companies that added staff fast in the last three months\". why is one or two sentences, at most 200 characters, on why this signal matters for {{ account.name }}, from the inputs only.\n\nRules for every string: plain words, short sentences, sentence case. No em dashes or en dashes, no exclamation marks, no emoji. Never invent facts, numbers, customers or news. No hype words."
+    },
+    {
+      "id": "counts",
+      "kind": "tool",
+      "tool": "ken_search.count",
+      "requires": ["data.segments"],
+      "args": { "kind": "companies", "segments": "data.segments" },
+      "to": "data.counts"
+    },
+    {
+      "id": "brief",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.counts", "data.plan"],
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "account.dossier.why_now", "brand.name", "sender.name", "knowledge.stable", "data.plan", "data.segments", "data.counts"],
+      "to": ["data.headline", "data.dek", "data.trends", "data.so_what", "data.offer"],
+      "prompt": "Write the trend brief for {{ account.name }} ({{ account.domain }}), a company in {{ account.industry | default: 'its industry' }} with {{ account.size_band | default: 'an unknown number of' }} people. {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it. \"We\" and \"us\" mean {{ brand.name | default: 'our company' }}.\n\nInputs. data.plan holds the three trends to write about, each {title, counted, why}. data.segments holds the four Ken Search segments; the first is the baseline, every company in the industry. data.counts holds one count per segment in the same order: data.counts[0] is the baseline, data.counts[1] to data.counts[3] are the three trends, in the order of data.plan. knowledge.stable holds our workspace's Knowledge items, each {citationId, kind, title, text}; what we sell is in there when the workspace has written it down, and the list may be empty. About {{ account.name }}: {{ account.dossier.summary | default: 'nothing beyond the industry' }} Reason to reach out: {{ account.dossier.why_now | default: 'none' }}\n\nCounts: {{ data.counts | json }}\nPlan: {{ data.plan | json }}\n\nReturn JSON with these keys:\n- headline: the brief's title, 20 to 80 characters, sentence case, with no numbers. It names the industry and says these are three things happening now, like \"Three things moving in construction this quarter\".\n- dek: one or two sentences, 60 to 220 characters, on what this brief is and why {{ account.name }} should read it. It may use the baseline count.\n- trends: exactly 3 items in the order of data.plan, each {title, what, means}. title is 8 to 64 characters, sentence case, a plain statement of the trend with no numbers in it; the page prints the count next to it. what is 2 to 4 sentences, 160 to 420 characters, on what the count shows: how many companies, what share of the baseline that is, and what that tells a reader about the market. means is 2 to 4 sentences, 160 to 420 characters, on what this means for {{ account.name }} in particular, from the dossier and the plan's why. Say what they might do about it the way a peer would, without selling anything.\n- so_what: 2 or 3 sentences, 120 to 400 characters, on which of the three to act on first and why. No product claims.\n- offer: 1 to 3 sentences, at most 300 characters, on how {{ brand.name | default: 'we' }} helps with the three trends, using only what knowledge.stable says about what we sell and for whom. Every claim in it must appear in a knowledge.stable item. When knowledge.stable is empty or says nothing about what we sell, offer is an empty string; the page then hides that part.\n\nNumbers: use only the numbers in data.counts, and shares you compute from them rounded to a whole percent. Write a count with a thousands comma (3,260) and a share as \"8 percent\". You have one reading of each count, not two, so never say a number rose, fell, grew, doubled or set a record, and never guess a direction. Say how many and what share. Never name a customer, a company other than {{ account.name }}, a person, a price or a news event.\n\nVoice: one person writing a short brief to one person. Plain, specific, calm. Short sentences a person would say out loud.\n\nRules for every string: no em dashes or en dashes, no exclamation marks, no emoji. No hype words (unlock, leverage, seamless, robust, game changer, transform, accelerate, supercharge). Never \"real\" as emphasis. No email addresses or phone numbers. Stay inside the character limits; write shorter instead of cutting a sentence."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.headline", "data.dek", "data.trends", "data.so_what"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["reverse demo", "demo", "unlock", "leverage", "seamless", "robust", "game changer", "game-changer", "transform", "supercharge", "skyrocket", "cutting-edge", "revolutionize", "record high", "all-time high"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_test_noun": true,
+        "no_real_emphasis": true
+      },
+      "rubric": "Grade the brief the way its reader does: headline, dek, then each trend's title, what and means, then so_what. 10 is a brief a busy operator at {{ account.name }} reads in two minutes and forwards to a colleague.\nScore these, 0 to 10 each:\n- numbers_true: every number in the text is one of the counts below, or a whole-percent share computed from two of them. A number from anywhere else, or a wrong share, scores 0 here.\n- no_direction: the text never says a count rose, fell, grew, doubled, jumped or set a record, because there is one reading per count and no earlier one. Any such claim scores 0 here.\n- specific: the means paragraphs and so_what speak to {{ account.name }}'s own situation from the dossier below, not advice that fits any company.\n- plain: short sentences a person would say out loud, no jargon, no marketing adjectives. Quote any phrase that fails.\nAutomatic fail: an em dash or en dash, an exclamation mark, a number in a title or the headline, a customer or company name other than {{ account.name }}, a person's name, a price, a news event, or any fact not in the inputs.\nCounts, the only source of numbers: {{ data.counts | json }}\nDossier, the only source of facts about {{ account.name }}: {{ account.dossier.summary | default: 'none' }} {{ account.dossier.why_now | default: '' }}\nPass when the overall score is 7.5 or higher and no check is 6 or lower. On a fail, name the check and quote the phrase to change. The fix never supplies replacement sentences or numbers."
+    }
+  ],
+  "sections": [
+    { "id": "cover", "label": "Cover" },
+    { "id": "trend_1", "label": "Trend 1" },
+    { "id": "trend_2", "label": "Trend 2" },
+    { "id": "trend_3", "label": "Trend 3" },
+    { "id": "next", "label": "What to do with this" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

@@ -1,0 +1,79 @@
+{%- assign accent = brand.colors.primary | default: '#0f5f52' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#c08a2e' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
+{%- assign font_body = brand.fonts.body | default: 'Instrument Sans' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign short_name = account.name | split: ' - ' | first | split: ' | ' | first | strip | default: account.name -%}
+{%- assign industry = account.industry | default: 'your industry' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>A trend brief for {{ short_name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700{% if body_q != head_q %}&amp;family={{ body_q }}:wght@400;500;600;700{% endif %}&amp;display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff}
+.tb{--p:{{ accent }};--s:{{ accent2 }};--ink:#15191c;--mute:#5d6871;--rule:#e1e4e7;--tint:color-mix(in srgb,var(--p) 6%,#fff);--fh:'{{ font_head }}',Georgia,'Times New Roman',serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,-apple-system,sans-serif;font-family:var(--fb);font-size:16px;line-height:1.6;color:var(--ink);-webkit-font-smoothing:antialiased;padding-bottom:4rem}
+.tb p{margin:0}
+.tb h1,.tb h2{font-family:var(--fh);font-weight:500;margin:0}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.logo{height:26px;width:auto;display:block}
+.mark{font-weight:600;font-size:1rem;letter-spacing:-.01em}
+.kind{font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-align:right;line-height:1.35}
+.kind span{display:block;font-weight:400;letter-spacing:0;text-transform:none;color:var(--mute);font-size:.82rem}
+.cover{padding:2rem 0 2.25rem}
+.kicker{display:flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:1.1rem}
+.kicker::before{content:"";display:block;width:1.75rem;height:3px;background:var(--s)}
+.tb h1{font-size:clamp(2.35rem,9vw,3.9rem);line-height:1;letter-spacing:-.025em;max-width:15ch;text-wrap:balance;margin-bottom:1.1rem}
+.dek{font-size:1.08rem;line-height:1.5;color:var(--mute);max-width:33rem;margin-bottom:1rem}
+.next{background:var(--tint);padding:1.5rem 1.25rem 1.6rem;margin:1rem -1.25rem 0}
+.next h2{font-size:1.6rem;line-height:1.1;letter-spacing:-.02em;margin-bottom:.6rem}
+.next p{max-width:34rem;margin-bottom:1.2rem}
+.cta{margin:.25rem 0 1.4rem}
+.cta .ken-cta{border-radius:3px!important;padding:.9rem 1.35rem!important;font-size:1rem}
+.sign{font-size:.95rem;margin:0!important}
+.sign b{display:block;font-weight:600}
+.sign span{display:block;color:var(--mute)}
+@media (min-width:760px){
+.tb{font-size:17px}
+.wrap{padding:0 2.5rem}
+.cover{padding:3.5rem 0 2.5rem}
+.next{margin:1rem 0 0;padding:2rem 2rem 2.1rem;max-width:40rem}
+}
+</style>
+</head>
+<body>
+<main class="tb">
+<div class="wrap">
+<header class="top">
+{%- if brand.logo_url %}
+<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
+{%- elsif brand.name %}
+<p class="mark">{{ brand.name | escape }}</p>
+{%- else %}
+<span></span>
+{%- endif %}
+<p class="kind">Trend brief<span>{{ industry | capitalize | escape }}</span></p>
+</header>
+<section data-section="cover" class="cover">
+<p class="kicker">Three counts from Ken Search</p>
+<h1>A trend brief for {{ short_name | escape }}</h1>
+<p class="dek">Hi {{ person.first_name | default: 'there' | escape }}, I am pulling three counts from Ken Search on {{ industry | escape }} right now: how many companies are hiring fast, raising money, growing or moving up a size band, and what each one means for {{ short_name | escape }}.</p>
+<p class="dek">The counts are not on this page yet.</p>
+</section>
+<section data-section="next" class="next">
+<h2>Rather talk it through now?</h2>
+<p>Twenty minutes and I will walk you through the three counts myself, with the names behind them.</p>
+<div class="cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking', color: accent %}</div>
+<p class="sign"><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</section>
+</div>
+</main>
+</body>
+</html>

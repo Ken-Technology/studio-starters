@@ -1,0 +1,72 @@
+{%- assign accent = brand.colors.primary | default: '#0b6e4f' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#b45309' -%}
+{%- assign font_head = brand.fonts.heading | default: 'IBM Plex Sans' -%}
+{%- assign font_body = brand.fonts.body | default: font_head -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign short_name = account.name | split: ' - ' | first | split: ' | ' | first | strip | default: account.name -%}
+{%- assign mark = brand.name | default: '' | slice: 0, 1 | upcase -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>A checklist for {{ short_name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700{% if font_body != font_head %}&family={{ body_q }}:wght@400;500;600{% endif %}&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{margin:0;background:#fff}
+.ck{--a:{{ accent }};--a2:{{ accent2 }};--ink:#161616;--mute:#67665f;--line:#e4e2dc;--soft:#f5f4f0;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;color:var(--ink);-webkit-font-smoothing:antialiased;max-width:44rem;margin:0 auto;padding:0 1.25rem 3rem}
+.ck h1,.ck-mono{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif}
+.ck h1{font-size:2rem;line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.ck p{margin:0}
+.ck-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.ck-brand{display:flex;align-items:center;gap:.6rem;min-height:28px}
+.ck-logo{height:26px;width:auto;display:block}
+.ck-mono{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:6px;background:var(--a);color:#fff;font-weight:700;font-size:.85rem;line-height:1}
+.ck-wordmark{font-weight:600;font-size:.95rem}
+.ck-doc{font-size:.8rem;color:var(--mute);text-align:right}
+.ck-cover{padding:2rem 0 1.5rem}
+.ck-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--a);margin:0 0 1rem}
+.ck-intro{font-size:1.0625rem;line-height:1.55;margin:1rem 0 0;color:#3a3935}
+.ck-rows{list-style:none;margin:1.75rem 0 0;padding:0;border-top:1px solid var(--ink)}
+.ck-row{display:grid;grid-template-columns:44px 1fr;gap:.9rem;padding:.9rem 0;border-bottom:1px solid var(--line);align-items:center}
+.ck-n{display:grid;place-items:center;width:44px;height:44px;border:1.5px dashed var(--line);border-radius:8px;font-weight:600;font-size:.95rem;color:var(--mute);font-variant-numeric:tabular-nums}
+.ck-bar{display:block;height:.7rem;border-radius:4px;background:var(--soft)}
+.ck-close{margin-top:2rem;padding:1.4rem 1.4rem 1.5rem;background:var(--soft);border-radius:12px;border-left:4px solid var(--a2)}
+.ck-closing{font-size:1rem;line-height:1.55}
+.ck-cta{margin:1.1rem 0 1.2rem}
+.ck-sign{font-size:.95rem;font-weight:600;line-height:1.4}
+.ck-sign span{display:block;font-weight:400;color:var(--mute);font-size:.85rem}
+@media (min-width:760px){.ck{padding:0 2rem 5rem}.ck-cover{padding:3rem 0 1.5rem}.ck h1{font-size:2.6rem}}
+@media print{.ck{max-width:none;padding:0}.ck-cta{display:none}}
+</style>
+</head>
+<body>
+<main class="ck">
+<header class="ck-top">
+<div class="ck-brand">
+{%- if brand.logo_url %}<img class="ck-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<span class="ck-mono" aria-hidden="true">{{ mark | escape }}</span><span class="ck-wordmark">{{ brand.name | escape }}</span>{% endif -%}
+</div>
+<p class="ck-doc">Checklist for {{ short_name | escape }}</p>
+</header>
+<section data-section="cover" class="ck-cover">
+<p class="ck-eyebrow">Printable checklist</p>
+<h1>A checklist for {{ short_name | escape }}</h1>
+<p class="ck-intro">Hi {{ person.first_name | default: 'there' | escape }}. {{ sender.name | default: 'Our team' | escape }} is putting together a short checklist for {{ short_name | escape }}: the checks worth doing before the next change to how your team works, each with a one-line why. It is not on this page yet.</p>
+<ol class="ck-rows">
+<li class="ck-row"><span class="ck-n">01</span><span class="ck-bar"></span></li>
+<li class="ck-row"><span class="ck-n">02</span><span class="ck-bar"></span></li>
+<li class="ck-row"><span class="ck-n">03</span><span class="ck-bar"></span></li>
+</ol>
+</section>
+<section data-section="close" class="ck-close">
+<p class="ck-closing">If you would like it sooner, reply to my email and I will send the list as soon as it is ready.</p>
+<div class="ck-cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+<p class="ck-sign">{{ sender.name | default: 'Our team' | escape }}{% if sender.title or brand.name %}<span>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {% endif %}{% endif %}{% if brand.name %}{{ brand.name | escape }}{% endif %}</span>{% endif %}</p>
+</section>
+</main>
+</body>
+</html>

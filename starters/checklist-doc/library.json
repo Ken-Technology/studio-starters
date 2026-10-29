@@ -1,0 +1,14 @@
+{
+  "description": "A printable checklist for the account's industry, like 12 checks before you switch freight software. Ken writes the title, the checks and a one-line why each.",
+  "category": "content",
+  "tags": ["checklist", "printable", "pdf", "content"],
+  "featured": false,
+  "needs": [],
+  "version": "1.0.0",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "kestrel-freight", "label": "Kestrel Freight Lines" },
+    { "id": "oakhill-dental", "label": "Oakhill Dental Partners" },
+    { "id": "copperline-shared", "label": "Copperline Brewing, shared link (no person)" }
+  ]
+}

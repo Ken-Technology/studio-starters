@@ -43,6 +43,9 @@
 {%- endif -%}
 {%- assign has_video = false -%}
 {%- if video_provider != '' and video_id != '' -%}{%- assign has_video = true -%}{%- endif -%}
+{%- assign has_link = false -%}
+{%- if has_video == false and video_url != '' -%}{%- assign link_head = video_url | slice: 0, 8 -%}{%- if link_head == 'https://' -%}{%- assign has_link = true -%}{%- endif -%}{%- endif -%}
+{%- assign has_clip = has_video -%}{%- if has_link -%}{%- assign has_clip = true -%}{%- endif -%}
 {%- assign first_name = person.first_name | default: '' -%}
 {%- assign sender_name = sender.name | default: 'Your contact' -%}
 {%- assign name_parts = sender_name | split: ' ' -%}
@@ -79,6 +82,11 @@ p{margin:0}
 .vp-stage h1{font-size:1.9rem;line-height:1.15;color:#fff}
 .vp-frame{margin:1.35rem 0 0;position:relative;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;box-shadow:0 24px 48px -24px rgba(0,0,0,.7)}
 .vp-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vp-poster{display:grid;place-content:center;justify-items:center;gap:.9rem;color:#fff;text-decoration:none;background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--a) 35%,#000),#000 75%)}
+.vp-play{width:3.75rem;height:3.75rem;border-radius:50%;background:var(--a);display:grid;place-items:center;box-shadow:0 0 0 2px rgba(255,255,255,.45),0 10px 30px rgba(0,0,0,.45)}
+.vp-play svg{width:1.2rem;height:1.2rem;margin-left:.2rem}
+.vp-watch{font-size:.95rem;color:var(--on-stage);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--on-stage-mute)}
+a.vp-poster:hover .vp-play{filter:brightness(1.12)}
 .vp-aside{margin:1.5rem 0 0}
 .vp-who{display:flex;align-items:center;gap:.8rem}
 .vp-ava{width:44px;height:44px;border-radius:50%;background:var(--a);color:#fff;display:grid;place-items:center;font-weight:600;font-size:.95rem;flex:none;letter-spacing:.02em}
@@ -139,10 +147,10 @@ body{font-size:18px}
 <div class="vp-wrap">
 <header class="vp-top">
 {%- if brand.logo_url %}<img class="vp-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="vp-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
-<p class="vp-for">{% if has_video %}A video for {{ account.name | escape }}{% else %}A note for {{ account.name | escape }}{% endif %}</p>
+<p class="vp-for">{% if has_clip %}A video for {{ account.name | escape }}{% else %}A note for {{ account.name | escape }}{% endif %}</p>
 </header>
 </div>
-<section data-section="video" class="vp-stage{% unless has_video %} is-note{% endunless %}">
+<section data-section="video" class="vp-stage{% unless has_clip %} is-note{% endunless %}">
 <div class="vp-wrap">
 <p class="vp-kicker">{% if first_name != '' %}For {{ first_name | escape }}{% if person.title %}, {{ person.title | escape }}{% endif %} at {{ account.name | escape }}{% else %}For the team at {{ account.name | escape }}{% endif %}</p>
 <h1>{{ data.title | escape }}</h1>
@@ -160,14 +168,19 @@ body{font-size:18px}
 <iframe src="https://fast.wistia.net/embed/iframe/{{ video_id | url_encode }}" title="A video from {{ sender_name | escape }}" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
 {%- endcase %}
 </div>
+{%- elsif has_link %}
+<a class="vp-frame vp-poster" href="{{ video_url | escape }}" target="_blank" rel="noopener noreferrer" data-ken-cta="video">
+<span class="vp-play" aria-hidden="true"><svg viewBox="0 0 20 20" fill="#fff"><path d="M4 2.5v15l13-7.5z"/></svg></span>
+<span class="vp-watch">Watch the video from {{ sender_name | escape }}</span>
+</a>
 {%- endif %}
 <div class="vp-aside">
 <div class="vp-who">
 <div class="vp-ava" aria-hidden="true">{{ initial_a | upcase | escape }}{{ initial_b | upcase | escape }}</div>
-<p><b>{{ sender_name | escape }}</b><span>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}{% elsif brand.name %}{{ brand.name | escape }}{% else %}{% if has_video %}Recorded this for you{% else %}Wrote this for you{% endif %}{% endif %}</span></p>
+<p><b>{{ sender_name | escape }}</b><span>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}{% elsif brand.name %}{{ brand.name | escape }}{% else %}{% if has_clip %}Recorded this for you{% else %}Wrote this for you{% endif %}{% endif %}</span></p>
 </div>
 <p class="vp-intro">{{ data.intro | escape }}</p>
-<p class="vp-next">{% if has_video %}Watch it, then pick a time below if it is worth twenty minutes.{% else %}Read the three points below, then pick a time if it is worth twenty minutes.{% endif %} <a href="#book">Pick a time</a></p>
+<p class="vp-next">{% if has_clip %}Watch it, then pick a time below if it is worth twenty minutes.{% else %}Read the three points below, then pick a time if it is worth twenty minutes.{% endif %} <a href="#book">Pick a time</a></p>
 </div>
 </div>
 </div>
@@ -176,7 +189,7 @@ body{font-size:18px}
 <div class="vp-wrap vp-cols">
 <div>
 <h2>Why I made this for {{ account.name | escape }}</h2>
-<p class="vp-lead">Three things I looked at before {% if has_video %}recording{% else %}writing{% endif %} this, and what I would do about each one.</p>
+<p class="vp-lead">Three things I looked at before {% if has_clip %}recording{% else %}writing{% endif %} this, and what I would do about each one.</p>
 </div>
 <ol class="vp-list">
 {%- for r in data.reasons %}

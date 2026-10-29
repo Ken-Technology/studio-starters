@@ -105,7 +105,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -192,7 +192,7 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -231,7 +231,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -318,7 +318,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -361,7 +361,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -448,7 +448,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -491,7 +491,7 @@
       "needs": [
         "video"
       ],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -534,7 +534,7 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -619,7 +619,7 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -664,7 +664,7 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -709,7 +709,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -752,7 +752,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -846,7 +846,7 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -885,7 +885,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -908,7 +908,6 @@
       "type": "other",
       "format": "doc",
       "showcases": [
-        "bind",
         "prompt",
         "grade",
         "ken/cta",
@@ -927,7 +926,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -968,8 +967,10 @@
         "interactive"
       ],
       "featured": false,
-      "needs": [],
-      "version": "1.0.0",
+      "needs": [
+        "knowledge"
+      ],
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -992,7 +993,6 @@
       "type": "calculator",
       "format": "page",
       "showcases": [
-        "bind",
         "prompt",
         "grade",
         "ken/cta"
@@ -1009,7 +1009,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1056,7 +1056,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1101,7 +1101,7 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1144,7 +1144,7 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1231,7 +1231,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1273,7 +1273,7 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1318,7 +1318,7 @@
       "needs": [
         "video"
       ],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1360,7 +1360,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1403,7 +1403,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "updatedAt": "2026-10-29",
       "samples": [
         {

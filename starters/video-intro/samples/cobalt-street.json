@@ -28,7 +28,7 @@
   },
   "data": {
     "video_rows": [
-      { "domain": "cobaltstreet.example", "video_url": "https://www.youtube.com/watch?v=k3xR9pLm2Qw" }
+      { "domain": "cobaltstreet.example", "video_url": "https://haldenledger.example/videos/cobalt-street" }
     ],
     "title": "Patient statements at 16 clinics instead of 14",
     "intro": "Two new clinics in Aurora means two more front desks sending statements their own way. Here is how Cobalt Street could keep one statement process while the clinic count keeps growing.",

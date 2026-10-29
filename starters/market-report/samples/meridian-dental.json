@@ -231,13 +231,13 @@
       }
     ],
     "narrative": {
-      "segments": "The market here is every UK company in dental and oral care, from single practices that have grown into groups to labs and specialist clinics. Ken Search finds 2,850. Dental practice groups are the biggest segment, which is where Meridian sits.",
+      "segments": "The market here is every UK company in dental and oral care, from single practices that have grown into groups to labs and specialist clinics. There are 2,850. Dental practice groups are the biggest segment, which is where Meridian sits.",
       "segments_after": "Orthodontics is the second largest segment at 610 companies. Multi-site clinics are the smallest at 150, but 45 of them are hiring.",
       "regions": "London holds 640 of the 2,850 companies, the most of any region. The South East has 590 and the Midlands 560, so the market is spread across the south and centre of the country.",
       "regions_after": "Meridian is based in London, the largest region, so it has the most peers close by. Scotland and Wales is the smallest, with 270 companies.",
       "buyers": "Four titles run the business side of a dental group. Across the 2,850 companies, 5,650 people hold one of them. Most practice managers work at the smaller companies.",
       "buyers_after": "Practice manager is the largest group by a wide margin. Operations director and finance director are the two roles with more people at the larger companies.",
-      "signals": "A group that is hiring or has new money is a group that is changing how its clinics run. Ken Search tracks hiring from job posts and funding from announcements.",
+      "signals": "A group that is hiring or has new money is a group that is changing how its clinics run. Hiring comes from job posts and funding from announcements.",
       "signals_after": "Dental practice groups have 310 companies hiring, the most of any segment. 38 companies raised money in the last twelve months, and 27 of them are also hiring.",
       "peers": "Meridian is in the 51 to 200 band. The peer group is every dental and oral care company in London, split by headcount, with the number in each band that are hiring.",
       "peers_after": "Meridian's band holds 188 London companies and 51 of them are hiring. The smallest band is the biggest, with 311 companies, and 68 of those are hiring."
@@ -256,6 +256,6 @@
         "body": "38 companies raised money in the last twelve months and 27 of them are hiring. New money often means new clinics, so a message now lands before their systems are chosen."
       }
     ],
-    "method": "The counts come from Ken Search at the time this page was filled. Companies: headquartered in the United Kingdom, 11 to 1,000 employees, in a dental, oral care or related health care industry. People: a current title in one of four practice and group management roles at those companies. Hiring means an operations hiring surge in the last three months. Raised means a funding round in the last 365 days. The peer group is the same industries in London, split by headcount."
+    "method": "The counts come from company profiles and hiring data at the time this page was filled. Companies: headquartered in the United Kingdom, 11 to 1,000 employees, in a dental, oral care or related health care industry. People: a current title in one of four practice and group management roles at those companies. Hiring means an operations hiring surge in the last three months. Raised means a funding round in the last 365 days. The peer group is the same industries in London, split by headcount."
   }
 }

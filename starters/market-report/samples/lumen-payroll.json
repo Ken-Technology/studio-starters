@@ -231,13 +231,13 @@
       }
     ],
     "narrative": {
-      "segments": "The profile is a US software company with 50 to 500 staff that sells into HR, payroll or hiring teams. Ken Search finds 2,710 of them. HR management is the largest segment, and payroll, where Lumen sits, is the second largest.",
+      "segments": "The profile is a US software company with 50 to 500 staff that sells into HR, payroll or hiring teams. There are 2,710 of them. HR management is the largest segment, and payroll, where Lumen sits, is the second largest.",
       "segments_after": "Time and attendance is the smallest segment at 260 companies. Recruiting software has 520, more than benefits administration at 380.",
       "regions": "The West holds 760 of the 2,710 companies, the most of any region. The South follows with 690 and the Northeast with 610.",
       "regions_after": "Lumen is based in the South, where 690 companies compete for the same small employers. The Mountain region is the smallest with 200.",
       "buyers": "Four titles decide on sales and marketing spend in this market. Across the 2,710 companies, 6,760 people hold one of them. There are more of them at companies with 50 to 200 staff in every role but one.",
       "buyers_after": "Chief Revenue Officer is the exception, with 380 people at the larger companies and 310 at the smaller ones. At 50 to 200 staff the VP of Sales is the biggest group, with 1,980 people.",
-      "signals": "A company that is hiring salespeople or has new money is about to spend on its revenue stack. Ken Search tracks hiring from job posts and funding from announcements.",
+      "signals": "A company that is hiring salespeople or has new money is about to spend on its revenue stack. Hiring comes from job posts and funding from announcements.",
       "signals_after": "HR management software has 290 companies hiring, the most of any segment. 142 companies raised money in the last twelve months, and 96 of them are also hiring.",
       "peers": "Lumen is in the 51 to 200 band. The peer group is every HR and payroll software company in the South, split by headcount, with the number in each band that are hiring.",
       "peers_after": "Lumen's band is the largest in the South with 261 companies, and 88 of them are hiring. The next band up, 201 to 500, has 118 companies and 42 of them are hiring."
@@ -256,6 +256,6 @@
         "body": "142 companies raised money in the last twelve months and 96 of them are hiring. A funded company tends to pick vendors in the first few quarters, so a message now lands early."
       }
     ],
-    "method": "The counts come from Ken Search at the time this page was filled. Companies: headquartered in the United States, 50 to 500 employees, in a software or HR services industry. People: a current title in one of four sales and marketing roles at those companies. Hiring means a sales hiring surge in the last three months. Raised means a funding round in the last 365 days. The peer group is the same industries in the South, split by headcount."
+    "method": "The counts come from company profiles and hiring data at the time this page was filled. Companies: headquartered in the United States, 50 to 500 employees, in a software or HR services industry. People: a current title in one of four sales and marketing roles at those companies. Hiring means a sales hiring surge in the last three months. Raised means a funding round in the last 365 days. The peer group is the same industries in the South, split by headcount."
   }
 }

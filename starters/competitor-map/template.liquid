@@ -140,7 +140,7 @@ body{font-size:18px}
 </div>
 <ul class="facts">
 {%- if m0 %}
-<li><b>{{ m0_text }}</b><span>companies in {{ account.industry | default: 'this industry' | escape }}, counted by Ken Search</span></li>
+<li><b>{{ m0_text }}</b><span>companies in {{ account.industry | default: 'this industry' | escape }}, counted from company profiles</span></li>
 {%- endif %}
 {%- if m1 %}
 <li><b>{{ m1_text }}</b><span>of them growing headcount right now</span></li>
@@ -219,7 +219,7 @@ body{font-size:18px}
 </div>
 </div>
 </section>
-<p class="foot">Drawn for {{ account.name | escape }} by {{ sender.name | default: 'our team' | escape }}{% if brand.name %} at {{ brand.name | escape }}{% endif %}. Company names come from Ken Search and positions from each company's public website.</p>
+<p class="foot">Drawn for {{ account.name | escape }} by {{ sender.name | default: 'our team' | escape }}{% if brand.name %} at {{ brand.name | escape }}{% endif %}. Company names come from company profiles and positions from each company's public website.</p>
 </div>
 </main>
 </body>

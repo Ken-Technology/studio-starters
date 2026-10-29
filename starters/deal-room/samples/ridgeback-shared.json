@@ -29,8 +29,34 @@
     }
   },
   "data": {
-    "notes": "Oct 6 call with the plant managers at Dayton and Reno. Quality checks on the line are done on clipboards and typed in at the end of the shift. Goal: a line-side check that flags drift while the batch is still running.\nOct 15 site visit at Dayton with Gabriela Moreno (plant manager) and Sipho Dlamini (quality lead). Noor Hakim ran the check on Line 3 for two shifts.\nOct 27 draft proposal sent to Gabriela. Reno has not been scheduled yet. Next call Nov 3 at 9:30 AM PT, 40 minutes.",
-    "company": "Team: Noor Hakim, solutions lead. Callum Reyes, field engineer. Shared with buyers: Line 3 two-shift trial summary (PDF, 3 pages), proposal for the Dayton plant (PDF, 8 pages), recording of the Oct 15 readout.",
+    "notes": [
+      {
+        "citationId": "k-n-1",
+        "kind": "note",
+        "title": "Call notes, Oct 6",
+        "text": "Oct 6 call with the plant managers at Dayton and Reno. Quality checks on the line are done on clipboards and typed in at the end of the shift. Goal: a line-side check that flags drift while the batch is still running."
+      },
+      {
+        "citationId": "k-n-2",
+        "kind": "note",
+        "title": "Call notes, Oct 15",
+        "text": "Oct 15 site visit at Dayton with Gabriela Moreno (plant manager) and Sipho Dlamini (quality lead). Noor Hakim ran the check on Line 3 for two shifts."
+      },
+      {
+        "citationId": "k-n-3",
+        "kind": "note",
+        "title": "Call notes, Oct 27",
+        "text": "Oct 27 draft proposal sent to Gabriela. Reno has not been scheduled yet. Next call Nov 3 at 9:30 AM PT, 40 minutes."
+      }
+    ],
+    "company": [
+      {
+        "citationId": "k-c-1",
+        "kind": "org_file",
+        "title": "Our deal team and what we share with buyers",
+        "text": "Team: Noor Hakim, solutions lead. Callum Reyes, field engineer. Shared with buyers: Line 3 two-shift trial summary (PDF, 3 pages), proposal for the Dayton plant (PDF, 8 pages), recording of the Oct 15 readout."
+      }
+    ],
     "lede": "One room for the line-side quality checks at Ridgeback's plants: what the Dayton trial showed, the proposal, and who does what next.",
     "facts": [
       {

@@ -12,7 +12,7 @@
   "needs": [
     "dataset"
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "updatedAt": "2026-10-29",
   "samples": [
     {

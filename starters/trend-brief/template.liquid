@@ -134,13 +134,13 @@ body{margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjus
 </header>
 <section data-section="cover" class="cover">
 <div class="lead">
-<p class="kicker">Three counts from Ken Search</p>
+<p class="kicker">Three company counts</p>
 <h1>{{ data.headline | escape }}</h1>
 <p class="dek">{{ data.dek | escape }}</p>
 <div class="plate">
 <p><small>Prepared for</small>{% if person.first_name %}<b>{{ person.first_name | escape }} {{ person.last_name | escape }}</b>{% if person.title %}, {{ person.title | escape }}{% endif %}, {{ short_name | escape }}{% else %}<b>{{ short_name | escape }}</b>{% endif %}</p>
 <p><small>Written by</small><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title %}, {{ sender.title | escape }}{% endif %}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</p>
-<p><small>Source</small><b>Ken Search</b>, {{ n0 }} companies in {{ industry | escape }}</p>
+<p><small>Source</small><b>Company profiles and hiring data</b>, {{ n0 }} companies in {{ industry | escape }}</p>
 </div>
 </div>
 <aside class="glance">
@@ -186,7 +186,7 @@ body{margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjus
 <div class="waffle" role="img" aria-label="{{ pct }} percent of {{ n0 }}">{% for j in (1..100) %}<i{% if j <= w %} class="on"{% endif %}></i>{% endfor %}</div>
 <p class="share"><b>{% if pct < 1 %}Under 1%{% else %}{{ pct }}%{% endif %}</b>of {{ n0 }} companies in {{ industry | escape }}</p>
 {%- if p and p.counted %}
-<p class="how"><b>How we counted</b>{{ p.counted | escape }}<span>Ken Search, counted on the day this brief was filled.</span></p>
+<p class="how"><b>How we counted</b>{{ p.counted | escape }}<span>From company profiles and hiring data, counted on the day this brief was filled.</span></p>
 {%- endif %}
 </div>
 <div class="prose">
@@ -217,7 +217,7 @@ body{margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjus
 {%- endif %}
 <p class="sign"><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
 </div>
-<p class="method"><b>How this brief was built.</b> Every number is a count of companies in Ken Search on the day this brief was filled. The baseline is every company it lists in {{ industry | escape }}. Each trend is that baseline with one filter added, named under its count. Shares are rounded to a whole percent. One count is one reading, so the brief says how many, not whether a number went up or down.</p>
+<p class="method"><b>How this brief was built.</b> Every number is a count of companies, built from company profiles and hiring data on the day this brief was filled. The baseline is every company in {{ industry | escape }}. Each trend is that baseline with one filter added, named under its count. Shares are rounded to a whole percent. One count is one reading, so the brief says how many, not whether a number went up or down.</p>
 </section>
 </div>
 </main>

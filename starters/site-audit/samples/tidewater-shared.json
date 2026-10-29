@@ -69,16 +69,14 @@
         "where": "Hero headline",
         "before": "Family dentistry for every stage of life, in seven coastal communities.",
         "after": "Family dentistry in seven coastal Virginia towns, with new patient visits open this week.",
-        "why": "Keeps what already works and adds the state and the next step. A new patient knows they are in the right place and that they can book now.",
-        "grade": 7.8
+        "why": "Keeps what already works and adds the state and the next step. A new patient knows they are in the right place and that they can book now."
       },
       {
         "kind": "button",
         "where": "Main button",
         "before": "Book your visit",
         "after": "Book a new patient visit",
-        "why": "Tells new patients this button is for them and skips the sense that it is for existing ones only. It still opens the booking flow.",
-        "grade": 8.2
+        "why": "Tells new patients this button is for them and skips the sense that it is for existing ones only. It still opens the booking flow."
       }
     ],
     "callouts": [

@@ -132,13 +132,13 @@
       }
     ],
     "narrative": {
-      "segments": "The profile is a US company with 10 to 200 staff that installs solar for homes or small businesses. Ken Search finds 3,300 of them. Residential installers are the biggest group, and that is where Kestrel works.",
+      "segments": "The profile is a US company with 10 to 200 staff that installs solar for homes or small businesses. There are 3,300 of them. Residential installers are the biggest group, and that is where Kestrel works.",
       "segments_after": "Commercial, industrial is the second largest segment at 720 companies. Roofing and solar is the smallest at 330.",
       "regions": "The South holds 1,260 of the 3,300 companies and the West holds 1,190, so two regions cover most of the market. The Midwest has the fewest at 310.",
       "regions_after": "Kestrel sells in the West, the second largest region, where 1,190 installers compete for the same homeowners.",
       "buyers": "",
       "buyers_after": "",
-      "signals": "A company that is hiring salespeople or has new money is about to spend on how it finds homeowners. Ken Search tracks hiring from job posts and funding from announcements.",
+      "signals": "A company that is hiring salespeople or has new money is about to spend on how it finds homeowners. Hiring comes from job posts and funding from announcements.",
       "signals_after": "Residential installers have 420 companies hiring, the most of any segment. 74 companies raised money in the last twelve months, and 39 of them are also hiring.",
       "peers": "",
       "peers_after": ""
@@ -157,6 +157,6 @@
         "body": "74 companies raised money in the last twelve months and 39 of them are hiring. A funded installer tends to add crews and vendors fast, so a message now arrives early."
       }
     ],
-    "method": "The counts come from Ken Search at the time this page was filled. Companies: headquartered in the United States, 10 to 200 employees, in a solar or renewable energy installation industry. Hiring means a sales hiring surge in the last three months. Raised means a funding round in the last 365 days. Counts of buyers and of size bands were not available for this report."
+    "method": "The counts come from company profiles and hiring data at the time this page was filled. Companies: headquartered in the United States, 10 to 200 employees, in a solar or renewable energy installation industry. Hiring means a sales hiring surge in the last three months. Raised means a funding round in the last 365 days. Counts of buyers and of size bands were not available for this report."
   }
 }

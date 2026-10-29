@@ -27,6 +27,11 @@ p{margin:0}
 .vp-stage h1{font-size:1.9rem;line-height:1.15;color:#fff}
 .vp-frame{margin:1.35rem 0 0;position:relative;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;box-shadow:0 24px 48px -24px rgba(0,0,0,.7)}
 .vp-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vp-poster{display:grid;place-content:center;justify-items:center;gap:.9rem;color:#fff;text-decoration:none;background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--a) 35%,#000),#000 75%)}
+.vp-play{width:3.75rem;height:3.75rem;border-radius:50%;background:var(--a);display:grid;place-items:center;box-shadow:0 0 0 2px rgba(255,255,255,.45),0 10px 30px rgba(0,0,0,.45)}
+.vp-play svg{width:1.2rem;height:1.2rem;margin-left:.2rem}
+.vp-watch{font-size:.95rem;color:var(--on-stage);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--on-stage-mute)}
+a.vp-poster:hover .vp-play{filter:brightness(1.12)}
 .vp-aside{margin:1.5rem 0 0}
 .vp-who{display:flex;align-items:center;gap:.8rem}
 .vp-ava{width:44px;height:44px;border-radius:50%;background:var(--a);color:#fff;display:grid;place-items:center;font-weight:600;font-size:.95rem;flex:none;letter-spacing:.02em}
@@ -93,9 +98,10 @@ body{font-size:18px}
 <p class="vp-kicker">For Mei, Head of Marketing at Larkspur Software</p>
 <h1>Turning Larkspur&#39;s monthly webinar into booked calls</h1>
 <div class="vp-grid">
-<div class="vp-frame">
-<iframe src="https://www.loom.com/embed/7c1e2f3a4b5d4c6e8f9a0b1c2d3e4f5a" title="A video from Aisha Bello" loading="lazy" allow="fullscreen" allowfullscreen></iframe>
-</div>
+<a class="vp-frame vp-poster" href="https://sessionry.example/videos/larkspur" target="_blank" rel="noopener noreferrer" data-ken-cta="video">
+<span class="vp-play" aria-hidden="true"><svg viewBox="0 0 20 20" fill="#fff"><path d="M4 2.5v15l13-7.5z"/></svg></span>
+<span class="vp-watch">Watch the video from Aisha Bello</span>
+</a>
 <div class="vp-aside">
 <div class="vp-who">
 <div class="vp-ava" aria-hidden="true">AB</div>

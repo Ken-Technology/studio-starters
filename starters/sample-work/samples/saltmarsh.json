@@ -50,7 +50,7 @@
         "citationId": "k3",
         "kind": "instruction",
         "title": "How we write",
-        "text": "Numbers first, then what they mean. Every assumption named as an assumption."
+        "text": "Numbers first, then what they mean. Only numbers the client gave us or we measured."
       }
     ],
     "account_notes": [],
@@ -71,7 +71,7 @@
       }
     ],
     "headline": "A dock capacity model for Savannah, before and after the 4 new doors",
-    "intro": "Hi Eli, nobody at Saltmarsh asked for this. Your site gives the door count today and after the expansion, which is enough for a first capacity model. Every assumption is named, and the one number I had to assume is yours to replace.",
+    "intro": "Hi Eli, nobody at Saltmarsh asked for this. Your site gives the door count today and after the expansion, which is enough for a first capacity model. Every number in it comes from your site, and the one I could not find is left for you to fill in.",
     "kind": "A dock capacity model for one site",
     "site_note": "The square footage and door counts on the homepage, the 24-hour receiving line and the expansion note.",
     "blocks": [
@@ -81,9 +81,9 @@
         "body": "The expansion takes you from 8 doors to 12, so the question is what the docks can take before and after, and whether receiving is the limit or the floor is. This model answers the first part from your door count and your hours. The floor question needs your pallet counts, which are not public."
       },
       {
-        "label": "Assumptions",
-        "title": "Three inputs, one of them ours",
-        "body": "Two numbers come from your site. The third is our assumption until you replace it with yours.",
+        "label": "Inputs",
+        "title": "Three inputs, two from your site",
+        "body": "Two numbers come from your site. The third, the time a trailer spends at a door, is not public, so the model leaves it to you.",
         "items": [
           {
             "name": "8 dock doors today, 12 after the expansion",
@@ -91,30 +91,30 @@
           },
           {
             "name": "Receiving runs 24 hours a day",
-            "note": "From the homepage. The model uses 22 working hours a day, our allowance for breaks and changeovers."
+            "note": "From the homepage."
           },
           {
-            "name": "45 minutes per trailer at the door",
-            "note": "Our assumption for frozen pallets with a check-in. Replace it with your average and every number below moves with it."
+            "name": "Minutes per trailer at the door",
+            "note": "Not on your site. Put in your average for frozen pallets with a check-in and every line below follows from it."
           }
         ]
       },
       {
-        "label": "The result",
+        "label": "The method",
         "title": "Trailers a day, before and after",
-        "body": "At 45 minutes a trailer and 22 working hours, one door turns about 29 trailers a day. Eight doors turn about 235 and twelve turn about 352, so the expansion raises dock capacity by about half. If the floor cannot absorb 350 trailers a day, the new doors will wait on forklifts, not the other way round.",
+        "body": "One door turns 1,440 minutes a day divided by your minutes per trailer. Eight doors turn eight times that and twelve turn twelve times that, so the expansion raises dock capacity by half whatever your door time is. If the floor cannot absorb half again as many trailers a day, the new doors will wait on forklifts, not the other way round.",
         "items": [
           {
-            "name": "Today: about 235 trailers a day",
-            "note": "8 doors, 29 turns each."
+            "name": "Today: 8 doors times the turns per door",
+            "note": "1,440 minutes a day, divided by your minutes per trailer, times 8."
           },
           {
-            "name": "After the expansion: about 352 a day",
-            "note": "12 doors, 29 turns each."
+            "name": "After the expansion: 12 doors times the turns per door",
+            "note": "The same turns per door, times 12."
           },
           {
-            "name": "Every 5 minutes saved at the door",
-            "note": "About 29 more trailers a day on 8 doors, 44 on 12."
+            "name": "Every minute saved at the door",
+            "note": "Raises the turns of every door at once, so after the expansion it counts 12 times."
           }
         ]
       },
@@ -143,6 +143,6 @@
         "detail": "Every assumption on one tab you can change, with a week of walkthroughs so it keeps being used."
       }
     ],
-    "closing": "If the door time I assumed is far off, reply with your number and I will rerun the model the same day. If the question itself is wrong, tell me what you need to decide before spring and I will build that instead."
+    "closing": "Reply with your door time and I will run the model with it the same day. If the question itself is wrong, tell me what you need to decide before spring and I will build that instead."
   }
 }

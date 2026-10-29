@@ -17,9 +17,10 @@ const STARTERS = path.join(ROOT, 'starters');
 const TYPES = ['reverse_demo', 'landing_page', 'audit', 'report', 'event', 'calculator', 'recruiting', 'other'];
 const FORMATS = ['page', 'doc'];
 const SLOT_TYPES = ['string', 'number', 'integer', 'boolean', 'array', 'object'];
-const SLOT_KEYWORDS = new Set(['type', 'properties', 'required', 'items', 'minLength', 'maxLength', 'minItems', 'maxItems', 'enum', 'format', 'fallback']);
+// description and title are notes for the template's author; Ken accepts them and checks nothing in them.
+const SLOT_KEYWORDS = new Set(['type', 'properties', 'required', 'items', 'minLength', 'maxLength', 'minItems', 'maxItems', 'enum', 'format', 'fallback', 'description', 'title']);
 const KEN_ROOTS = ['account', 'person', 'sender', 'brand', 'link', 'asset_url', 'data', 'role', 'roles'];
-const BIND_FROM = ['account.', 'person.', 'role.', 'knowledge.'];
+const BIND_FROM = ['account.', 'person.', 'role.', 'knowledge.', 'defaults.'];
 const TOOLS = ['ken_search.people', 'ken_search.companies', 'ken_search.count', 'enrich.email', 'scrape.page', 'ken.copy', 'chart.data'];
 const CATEGORIES = ['prospecting', 'deal', 'events', 'customers', 'interactive', 'content', 'partners', 'recruiting'];
 const NEEDS = ['dataset', 'webhook', 'knowledge', 'video'];
@@ -480,6 +481,14 @@ function checkBundle(slug, indexEntry) {
   const ids = new Set();
   const filled = new Set();
   const slotOf = (target) => target.match(/^data\.([a-zA-Z0-9_]+)/)?.[1];
+  // defaults.<slot> (ken-backend DEV-5800) holds a slot's fallback as the page renders it, so it names a slot with one.
+  const defaultsProblem = (ref) => {
+    const s = String(ref).match(/^defaults\.([a-zA-Z0-9_]+)/)?.[1];
+    if (!s) return `"${ref}" must be defaults.<slot>`;
+    if (!props[s]) return `"${ref}" reads slot "${s}", which is not a declared slot`;
+    if (!('fallback' in props[s])) return `"${ref}" reads slot "${s}", which has no fallback, so defaults.${s} is always empty`;
+    return null;
+  };
   if (!Array.isArray(m.recipe) || m.recipe.length === 0) err('studio.json', 'recipe must be a non-empty array');
   for (const [i, step] of (m.recipe ?? []).entries()) {
     const where = `recipe[${i}]${step?.id ? ` (${step.id})` : ''}`;
@@ -498,6 +507,17 @@ function checkBundle(slug, indexEntry) {
     // Recipe text renders output tags only (StudioRecipeText in ken-backend): a {% %} tag fails the step when it runs.
     for (const f of ['prompt', 'rubric', 'args', 'where']) {
       if (step[f] !== undefined && stringsIn(step[f]).some((x) => x.includes('{%'))) err('studio.json', `${where}: ${f} uses a {% %} tag; recipe text supports output tags like {{ data.x | default: 'text' }} only`);
+      // A fill starts with data empty, so an output tag reads only slots that earlier steps write.
+      for (const o of liquidOutputs(stringsIn(step[f] ?? []).join('\n'))) {
+        const body = stripStrings(o.body);
+        for (const ref of body.matchAll(/(?<![\w.])data\.([a-zA-Z0-9_]+)/g)) {
+          if (props[ref[1]] && !filled.has(ref[1])) err('studio.json', `${where}: ${f} reads data.${ref[1]}, which no earlier step writes, so the step sees nothing${'fallback' in props[ref[1]] ? `; read the slot's fallback as {{ defaults.${ref[1]} }}` : ''}`);
+        }
+        for (const ref of body.matchAll(/(?<![\w.])defaults(\.[a-zA-Z0-9_]+)?/g)) {
+          const problem = defaultsProblem(ref[0]);
+          if (problem) err('studio.json', `${where}: ${f} ${problem}`);
+        }
+      }
     }
     for (const f of Object.keys(step)) if (!['id', 'kind', ...spec.required, ...spec.optional].includes(f)) err('studio.json', `${where}: unknown field "${f}" for ${step.kind}`);
     if ('requires' in step && step.kind !== 'bind') {
@@ -520,12 +540,21 @@ function checkBundle(slug, indexEntry) {
       }
     }
     if (step.kind === 'bind' && !BIND_FROM.some((p) => String(step.from).startsWith(p))) err('studio.json', `${where}: bind from must start with ${BIND_FROM.join(', ')}`);
+    if (step.kind === 'bind' && String(step.from).startsWith('defaults.') && defaultsProblem(step.from)) err('studio.json', `${where}: bind from ${defaultsProblem(step.from)}`);
+    // Knowledge is two lists of {citationId, kind, title, text}; a prompt pulls named fields out of them.
+    for (const ref of [step.kind === 'bind' ? step.from : null, ...(step.kind === 'prompt' ? step.inputs ?? [] : [])]) {
+      if (/^knowledge\./.test(String(ref)) && !/^knowledge\.(stable|scoped)$/.test(ref)) warn('studio.json', `${where}: "${ref}" is not Knowledge; it holds only knowledge.stable and knowledge.scoped, so extract fields with a prompt over them`);
+    }
     if (step.kind === 'tool' && !TOOLS.includes(step.tool)) err('studio.json', `${where}: tool must be one of ${TOOLS.join(', ')}`);
     if (step.kind === 'prompt') {
       for (const input of step.inputs ?? []) {
         const s = slotOf(input);
-        if (s && !(filled.has(s) && props[s])) err('studio.json', `${where}: input "${input}" is not filled by an earlier step`);
-        if (!s && !KEN_ROOTS.includes(String(input).split('.')[0]) && !String(input).startsWith('knowledge.')) err('studio.json', `${where}: input "${input}" is not a Ken variable or data.<slot>`);
+        const root = String(input).split('.')[0];
+        if (s && !(filled.has(s) && props[s])) err('studio.json', `${where}: input "${input}" is not filled by an earlier step${props[s] && 'fallback' in props[s] ? `; read the slot's fallback as "defaults.${s}"` : ''}`);
+        if (root === 'defaults') {
+          const problem = defaultsProblem(input);
+          if (problem) err('studio.json', `${where}: input ${problem}`);
+        } else if (!s && !KEN_ROOTS.includes(root) && !String(input).startsWith('knowledge.')) err('studio.json', `${where}: input "${input}" is not a Ken variable, knowledge.*, defaults.<slot> or data.<slot>`);
       }
       if ((step.to && (Array.isArray(step.to) ? step.to : [step.to]).some((t) => !slotOf(t)))) err('studio.json', `${where}: prompt writes only data.*`);
     }

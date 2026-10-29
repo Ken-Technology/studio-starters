@@ -225,7 +225,7 @@ blockquote cite{display:block;font:400 .8rem/1.4 var(--fb);color:var(--mute);fon
     <div><span class="lbl">Rewrite</span><p class="after">{{ rw.after | escape }}</p></div>
     {%- endif %}
     <p class="why">{{ rw.why | escape }}</p>
-    <p class="grade"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor"/><path d="M4.5 8.2l2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Passed the rewrite check{% if rw.grade %} at {{ rw.grade | round: 1 }} of 10{% endif %}: verbatim before, specific, clearer, plain words.</p>
+    <p class="grade"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor"/><path d="M4.5 8.2l2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Passed the rewrite check: verbatim before, specific, clearer, plain words.</p>
   </article>
   {%- endfor %}
 </section>

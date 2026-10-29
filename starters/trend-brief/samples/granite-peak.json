@@ -1,0 +1,81 @@
+{
+  "account": {
+    "name": "Granite Peak Builders",
+    "domain": "granitepeakbuilders.example",
+    "industry": "construction",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Granite Peak Builders is a commercial general contractor in Denver with about 320 staff. It builds mid-size healthcare and education projects across Colorado and runs its own self-perform concrete crews.",
+      "why_now": "Won a 14-building school district program in September and posted eleven project engineer roles.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Marcus",
+    "last_name": "Delgado",
+    "title": "VP of Preconstruction"
+  },
+  "sender": {
+    "name": "Priya Natarajan",
+    "title": "Head of Growth",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Fieldstone",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "offer": "Fieldstone runs the bid and buyout process for mid-size general contractors, from subcontractor outreach to signed scopes. The first project is set up in two weeks, and you keep every sub relationship.",
+    "segments": [
+      { "label": "All construction companies", "filters": { "industries": ["construction"] } },
+      { "label": "Hiring surge, 3 months", "filters": { "industries": ["construction"], "hiringSurge": { "windowMonths": 3 } } },
+      { "label": "Moved up a size band", "filters": { "industries": ["construction"], "crossedSizeBandUp": true } },
+      { "label": "Raised money, 6 months", "filters": { "industries": ["construction"], "raisedFundingRecently": true, "raisedFundingWithinDays": 180 } }
+    ],
+    "plan": [
+      {
+        "title": "Contractors staffing up fast",
+        "counted": "Construction companies that added staff fast in the last three months",
+        "why": "Granite Peak has eleven project engineer roles open after the school district award, so it competes for the same people as every other contractor hiring now."
+      },
+      {
+        "title": "Firms moving up a size band",
+        "counted": "Construction companies that crossed into a larger headcount band",
+        "why": "New entrants to the 201 to 500 band are new competition for the mid-size healthcare and education projects Granite Peak builds in Colorado."
+      },
+      {
+        "title": "Outside money in construction",
+        "counted": "Construction companies that announced funding in the last six months",
+        "why": "Funded contractors expanding into new regions would bid on the same Colorado programs Granite Peak just won."
+      }
+    ],
+    "counts": [
+      { "label": "All construction companies", "value": 41800 },
+      { "label": "Hiring surge, 3 months", "value": 3260 },
+      { "label": "Moved up a size band", "value": 1490 },
+      { "label": "Raised money, 6 months", "value": 370 }
+    ],
+    "headline": "Three things moving in construction this quarter",
+    "dek": "We counted 41,800 construction companies. Three signals say something about the market Granite Peak builds in, and about a contractor with 320 people on its payroll.",
+    "trends": [
+      {
+        "title": "Contractors are staffing up fast for work already won",
+        "what": "3,260 of the 41,800 construction companies counted added staff fast in the last three months, about 8 percent of the industry. Hiring at that pace usually follows work that is already signed. So roughly one contractor in twelve is building a team for projects it has booked, and competing for the same people to do it.",
+        "means": "Granite Peak is part of that 8 percent, with the school district program signed and eleven project engineer roles open. The firms in this count are the ones bidding against you for the same engineers. It is worth deciding now which roles you fill with hires and which scopes you hand to subcontractors, before the next award lands."
+      },
+      {
+        "title": "A new set of mid-size competitors has arrived",
+        "what": "1,490 construction companies crossed into a larger headcount band, about 4 percent of the industry. These firms were one size smaller not long ago and now show up in the next bracket. A move like that changes what they can bond, what they can bid on and which subcontractors they can keep busy.",
+        "means": "At 320 people Granite Peak sits in the middle of the 201 to 500 band, so firms that just entered it are new competition for mid-size healthcare and education work in Colorado. They need the same self-perform crews and project engineers you do. Knowing which of the 1,490 are in your region would sharpen the next pursuit list."
+      },
+      {
+        "title": "Outside money is rare, which makes the few deals worth watching",
+        "what": "370 of the 41,800 construction companies announced funding in the last six months, about 1 percent of the industry. Capital from outside is unusual in construction, so a short list like this names the companies with the means to change a market quickly. Small count, high signal.",
+        "means": "For Granite Peak this is a watch list rather than a worry. Any of the 370 that moves into Colorado will chase the same school and hospital programs you just won, and can afford to price low in the first year. It is also the list of possible buyers, should that question ever come up for the owners."
+      }
+    ],
+    "so_what": "Start with the hiring count. It is the largest of the three and it touches Granite Peak this quarter, with eleven engineer roles open against 3,260 other contractors hiring at the same time. The size band and funding counts are worth a look once a quarter, mostly as a list of names to watch in Colorado."
+  }
+}

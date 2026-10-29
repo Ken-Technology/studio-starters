@@ -1,0 +1,71 @@
+{%- assign accent = brand.colors.primary | default: '#0b6e5f' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#17202a' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Schibsted Grotesk' -%}
+{%- assign font_body = brand.fonts.body | default: 'Instrument Sans' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign brand_name = brand.name | default: 'our team' -%}
+{%- assign sender_name = sender.name | default: 'our team' -%}
+{%- assign sender_first = sender_name | split: ' ' | first -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>How does {{ account.name | escape }} compare?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+<style>
+:root{--p:{{ accent }};--s:{{ accent2 }};--ink:var(--s);--mute:color-mix(in srgb,var(--s) 60%,#fff);--line:color-mix(in srgb,var(--s) 15%,#fff);--paper:color-mix(in srgb,var(--s) 3%,#fbfaf7);--card:#fff;--p-deep:color-mix(in srgb,var(--p) 78%,var(--s))}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-weight:600;line-height:1.1;letter-spacing:-.015em;margin:0}
+p{margin:0}
+.wrap{max-width:66rem;margin:0 auto;padding:0 1.15rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.brand{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+.logo{height:26px;width:auto;display:block}
+.top-r{font-size:.84rem;color:var(--mute);white-space:nowrap}
+.eyebrow{font-size:.76rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--p-deep);margin-bottom:1rem}
+.intro{padding:2.3rem 0 1.6rem}
+h1{font-size:clamp(2.3rem,9vw,4rem);line-height:1;letter-spacing:-.03em;max-width:13ch;margin-bottom:1.1rem;text-wrap:balance}
+.lede{font-size:1.1rem;line-height:1.5;max-width:36rem}
+.lede+.lede{margin-top:.8rem;color:var(--mute)}
+.cta{padding:.6rem 0 1rem}
+.cta-box{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p);padding:1.5rem 1.3rem 1.4rem;max-width:44rem}
+.cta-box h2{font-size:1.45rem;margin-bottom:.6rem}
+.cta-box p{margin-bottom:1.2rem;max-width:34rem}
+.sign{margin:1.3rem 0 0;font-size:.95rem;font-weight:600}
+.sign span{display:block;color:var(--mute);font-size:.86rem;font-weight:400}
+.foot{padding:1.4rem 0 4rem;font-size:.8rem;color:var(--mute);border-top:1px solid var(--line);margin-top:1.6rem}
+@media (min-width:760px){body{font-size:17px}.wrap{padding:0 2rem}.intro{padding:3.4rem 0 2.4rem}.cta-box{padding:2rem 2.2rem 1.9rem}}
+</style>
+</head>
+<body>
+<main>
+<div class="wrap">
+<header class="top">
+{%- if brand.logo_url %}<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand_name | escape }}">{% else %}<span class="brand">{{ brand_name | escape }}</span>{% endif -%}
+<span class="top-r">Five questions, two minutes</span>
+</header>
+<section data-section="intro" class="intro">
+<p class="eyebrow">{% if person.first_name %}For {{ person.first_name | escape }} {{ person.last_name | escape }}, {{ account.name | escape }}{% else %}For {{ account.name | escape }}{% endif %}</p>
+<h1>How does {{ account.name | escape }} compare?</h1>
+<p class="lede">Hi {{ person.first_name | default: 'there' | escape }}, this page will ask {{ account.name | escape }} five quick questions and show where it stands next to companies like it.</p>
+<p class="lede">The questions are not on this page yet. The link stays the same, so check back later today.</p>
+</section>
+<section data-section="cta" class="cta">
+<div class="cta-box">
+<h2>Rather go through them now?</h2>
+<p>Twenty minutes with {{ sender_first | escape }}: the five questions, how companies like {{ account.name | escape }} answered them, and what tends to sit behind the gaps.</p>
+{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}
+<p class="sign">{{ sender_name | escape }}<span>{% if sender.title %}{{ sender.title | escape }}, {% endif %}{{ brand_name | escape }}</span></p>
+</div>
+</section>
+<footer class="foot">Made for {% if person.first_name %}{{ person.first_name | escape }} {{ person.last_name | escape }} at {% endif %}{{ account.name | escape }} by {{ sender_name | escape }} at {{ brand_name | escape }}.</footer>
+</div>
+</main>
+</body>
+</html>

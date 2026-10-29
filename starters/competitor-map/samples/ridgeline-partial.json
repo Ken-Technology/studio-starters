@@ -1,0 +1,151 @@
+{
+  "account": {
+    "name": "Ridgeline Field Services",
+    "domain": "ridgelinefield.example",
+    "industry": "facilities services",
+    "size_band": "501-1000",
+    "dossier": {
+      "summary": "Ridgeline Field Services is a commercial HVAC maintenance contractor for hospital and lab campuses across Texas, with about 600 technicians and a four-hour response commitment.",
+      "why_now": "Won a maintenance contract for a new hospital campus in San Antonio.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Elena",
+    "last_name": "Marsh",
+    "title": "Chief Operating Officer"
+  },
+  "sender": {
+    "name": "Theo Bramante",
+    "title": "Partner",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Orion Advisory",
+    "logo_url": null,
+    "colors": {
+      "primary": "#4a1d96",
+      "secondary": null
+    },
+    "fonts": null
+  },
+  "data": {
+    "candidates": [
+      {
+        "name": "Keystone Mechanical Group",
+        "domain": "keystonemech.example",
+        "industry": "facilities services",
+        "size": "1001-5000",
+        "employee_count": 2800,
+        "hq": "Houston, Texas",
+        "country": "United States",
+        "description": "National mechanical contractor. HVAC installation and service for hospitals and data centers.",
+        "founded": 1971
+      },
+      {
+        "name": "Blue Oak Facility Services",
+        "domain": "blueoakfs.example",
+        "industry": "facilities services",
+        "size": "201-500",
+        "employee_count": 420,
+        "hq": "Dallas, Texas",
+        "country": "United States",
+        "description": "Integrated facility management for office portfolios: HVAC, janitorial and grounds under one contract.",
+        "founded": 1998
+      },
+      {
+        "name": "Thermo Partners",
+        "domain": "thermopartners.example",
+        "industry": "facilities services",
+        "size": "51-200",
+        "employee_count": 130,
+        "hq": "Beaumont, Texas",
+        "country": "United States",
+        "description": "Boiler and chiller service for industrial plants along the Gulf Coast.",
+        "founded": 2005
+      },
+      {
+        "name": "Campus Air",
+        "domain": "campusair.example",
+        "industry": "facilities services",
+        "size": "51-200",
+        "employee_count": 160,
+        "hq": "Austin, Texas",
+        "country": "United States",
+        "description": "HVAC maintenance subscriptions for school districts and universities.",
+        "founded": 2013
+      }
+    ],
+    "site_account": {
+      "url": "https://ridgelinefield.example",
+      "title": "Ridgeline Field Services: HVAC maintenance for hospitals and labs",
+      "description": "Six hundred technicians across Texas, a four-hour response commitment, and crews who know what a negative pressure room is.",
+      "markdown": "# Keeping hospital air moving\n\nRidgeline Field Services maintains HVAC systems for hospital and laboratory campuses across Texas.\n\n## Four-hour response\n\nA technician on site within four hours of a call, around the clock.\n\n## Crews trained for clinical spaces\n\nOur technicians are trained for operating rooms, isolation rooms and lab exhaust."
+    },
+    "site_1": {
+      "url": "https://keystonemech.example",
+      "title": "Keystone Mechanical Group: mechanical contracting at scale",
+      "description": "HVAC installation and service for hospitals, data centers and campuses across the country. Projects from design to commissioning.",
+      "markdown": "# Mechanical contracting for the largest buildings\n\nKeystone Mechanical Group installs and services HVAC systems for hospitals, data centers and campuses nationwide.\n\n## Design-build to commissioning\n\nOur engineers and crews take a project from design through commissioning.\n\n## Service after the build\n\nMaintenance agreements on the systems we install."
+    },
+    "site_2": {
+      "url": "https://blueoakfs.example",
+      "title": "Blue Oak Facility Services: one contract for the whole building",
+      "description": "Integrated facility management for office portfolios in Texas. HVAC, janitorial, grounds and security under one agreement.",
+      "markdown": "# One contract, one call\n\nBlue Oak Facility Services runs the whole building for office portfolio owners: HVAC, janitorial, grounds and security.\n\n## Built for portfolios\n\nOne agreement across every property you own, with one account manager.\n\n## Reporting you can show a tenant\n\nMonthly service reports per building."
+    },
+    "site_4": {
+      "url": "https://campusair.example",
+      "title": "Campus Air: HVAC maintenance for schools",
+      "description": "Fixed-price annual HVAC maintenance subscriptions for school districts and universities in Texas.",
+      "markdown": "# Fixed-price maintenance for every campus\n\nCampus Air maintains HVAC systems for school districts and universities across Texas on an annual subscription.\n\n## One fixed price\n\nBudget the year in one line. No surprise invoices.\n\n## Summer ready\n\nWe schedule the heavy work for the breaks so classrooms are never without air."
+    },
+    "headline": "Where Ridgeline stands among the four contractors closest to it",
+    "intro": "We found four contractors whose profiles are similar to Ridgeline. Each one is placed from what its own website says about the sites it serves and how much of the building it takes on. One homepage could not be read, so that company is placed from its description alone.",
+    "axes": {
+      "x": { "name": "Site type", "low": "Offices and schools", "high": "Hospitals and plants" },
+      "y": { "name": "Scope", "low": "HVAC only", "high": "Whole facility" }
+    },
+    "competitors": [
+      {
+        "name": "Keystone Mechanical Group",
+        "domain": "keystonemech.example",
+        "x": 82,
+        "y": 40,
+        "line": "Installs and services HVAC for hospitals and data centers nationwide, and leads with design-build capacity on large projects."
+      },
+      {
+        "name": "Blue Oak Facility Services",
+        "domain": "blueoakfs.example",
+        "x": 24,
+        "y": 86,
+        "line": "Runs the whole building for office portfolio owners under one contract, with HVAC as one line among janitorial, grounds and security."
+      },
+      {
+        "name": "Thermo Partners",
+        "domain": "thermopartners.example",
+        "x": 76,
+        "y": 14,
+        "line": "Services boilers and chillers for industrial plants along the Gulf Coast, from its description; its website could not be read."
+      },
+      {
+        "name": "Campus Air",
+        "domain": "campusair.example",
+        "x": 18,
+        "y": 28,
+        "line": "Sells fixed-price annual HVAC maintenance subscriptions to school districts and universities in Texas."
+      }
+    ],
+    "account_position": {
+      "x": 72,
+      "y": 30,
+      "line": "Maintains HVAC for hospital and lab campuses across Texas with 600 technicians, and leads with a four-hour response and crews trained for clinical spaces."
+    },
+    "open_space": {
+      "title": "Hospitals that want one contract for the whole plant room",
+      "x": 70,
+      "y": 72,
+      "why": "Keystone sells projects and services the systems it installs, and Blue Oak sells whole-building contracts to offices. Nobody offers hospitals and labs one maintenance contract that covers HVAC, boilers and chillers together. Ridgeline already holds the HVAC side of those campuses, so the rest of the plant room is the natural next contract."
+    }
+  }
+}

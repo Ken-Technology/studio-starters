@@ -1,0 +1,212 @@
+{%- assign accent = brand.colors.primary | default: '#0f4c5c' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#c8553d' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Bricolage Grotesque' -%}
+{%- assign font_body = brand.fonts.body | default: 'Instrument Sans' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign total = data.items | size -%}
+{%- assign safe_total = total | at_least: 1 -%}
+{%- assign done = 0 -%}
+{%- for item in data.items -%}{%- if item.done -%}{%- assign done = done | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- assign gaps = total | minus: done -%}
+{%- assign pct = done | times: 100 | divided_by: safe_total | floor -%}
+{%- assign ring = done | times: 283 | divided_by: safe_total | round: 1 -%}
+{%- assign offset = 283 | minus: ring -%}
+{%- if pct >= 80 -%}{%- assign level = 'Ready' -%}{%- elsif pct >= 50 -%}{%- assign level = 'On the way' -%}{%- else -%}{%- assign level = 'Early days' -%}{%- endif -%}
+{%- assign has_topic = false -%}
+{%- if data.topic and data.topic != '' -%}{%- assign has_topic = true -%}{%- endif -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ data.headline | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600&display=swap">
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js"></script>
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f6f4ee;color:#15171a;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.rc{--a:{{ accent }};--a2:{{ accent2 }};--ink:#15171a;--mute:#696c72;--text2:#3d4046;--line:#dad7cf;--paper:#f6f4ee;--card:#fffdf8;--soft:#e9e6de}
+.rc h1,.rc h2,.rc h3,.rc-lvl,.rc-ring-num,.rc-gap::before,.rc-bar b,.rc-bar-pct{font-family:'{{ font_head }}',Georgia,serif;font-weight:700;letter-spacing:-.015em}
+p{margin:0}
+.rc-wrap{max-width:68rem;margin:0 auto;padding:0 1.1rem}
+.rc-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.95rem 0;border-bottom:1px solid var(--ink)}
+.rc-logo{height:24px;width:auto;display:block}
+.rc-brand{font-weight:600;font-size:.95rem}
+.rc-tag{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);text-align:right}
+.rc-hero{padding:2rem 0 .3rem}
+.rc-kicker{display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;line-height:1.4;font-weight:600;color:var(--text2)}
+.rc-kicker::before{content:'';width:1.25rem;height:3px;margin-top:.5em;background:var(--a);flex:none}
+.rc h1{font-size:2.1rem;line-height:1.08;margin:.85rem 0 .9rem;text-wrap:balance;max-width:22ch}
+.rc-intro{font-size:1.05rem;line-height:1.55;color:var(--text2);max-width:38rem;text-wrap:pretty}
+.rc-by{font-size:.88rem;color:var(--mute);margin-top:1.1rem}
+.rc-cols{display:grid;gap:2rem}
+.rc-score{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.15rem 1.15rem}
+.rc-score-head{display:flex;align-items:center;gap:1.1rem}
+.rc-ring{position:relative;width:124px;height:124px;flex:none}
+.rc-ring svg{display:block;width:100%;height:100%;transform:rotate(-90deg)}
+.rc-ring-track{fill:none;stroke:var(--soft);stroke-width:9}
+.rc-ring-val{fill:none;stroke:var(--a);stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset .45s ease}
+.rc-ring-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
+.rc-ring-num small{font-size:.95rem;font-weight:600;margin-left:.1rem;color:var(--mute)}
+.rc-lvl{font-size:1.4rem;line-height:1.1;margin:0 0 .3rem}
+.rc-count{font-size:.95rem;color:var(--text2)}
+.rc-count b{color:var(--ink);font-variant-numeric:tabular-nums}
+.rc-hint{font-size:.82rem;line-height:1.45;color:var(--mute);margin-top:.5rem}
+.rc-scale{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--line)}
+.rc-seg i{display:block;height:6px;border-radius:3px;background:var(--soft)}
+.rc-seg span{display:block;font-size:.72rem;line-height:1.3;color:var(--mute);margin-top:.4rem}
+.rc-seg[data-on="yes"] i{background:var(--a)}
+.rc-seg[data-on="yes"] span{color:var(--ink);font-weight:600}
+.rc h2{font-size:1.45rem;line-height:1.15;margin:0 0 .35rem}
+.rc-sub{font-size:.9rem;line-height:1.5;color:var(--mute);margin:0 0 1rem;max-width:36rem;text-wrap:pretty}
+.rc-items{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.rc-item{border-bottom:1px solid var(--line)}
+.rc-hit{display:grid;grid-template-columns:28px 1.7rem minmax(0,1fr);gap:.75rem;padding:.95rem 0;min-height:44px;cursor:pointer;align-items:start}
+.rc-box{appearance:none;-webkit-appearance:none;width:28px;height:28px;margin:.05rem 0 0;border:2px solid var(--ink);border-radius:7px;background:var(--card);position:relative;cursor:pointer;flex:none}
+.rc-box:checked{background:var(--a);border-color:var(--a)}
+.rc-box:checked::after{content:'';position:absolute;left:8px;top:3px;width:7px;height:13px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg)}
+.rc-box:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.rc-num{font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--mute);padding-top:.35rem;font-variant-numeric:tabular-nums}
+.rc-item:has(.rc-box:checked) .rc-num{color:var(--a)}
+.rc-label{display:block;font-weight:600;font-size:1.02rem;line-height:1.35;text-wrap:pretty}
+.rc-detail{display:block;font-size:.92rem;line-height:1.5;color:var(--text2);margin-top:.2rem;text-wrap:pretty}
+.rc-note{display:block;font-size:.84rem;line-height:1.45;color:var(--mute);margin-top:.5rem;padding-left:.65rem;border-left:2px solid var(--a)}
+.rc-gaps{margin-top:.4rem}
+.rc-gap-list{list-style:none;margin:0;padding:0;counter-reset:gap;border-top:2px solid var(--ink)}
+.rc-gap{counter-increment:gap;display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:.75rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.rc-gap::before{content:counter(gap,decimal-leading-zero);font-size:1.7rem;line-height:1;color:var(--a);padding-top:.1rem;font-variant-numeric:tabular-nums}
+.rc-gap h3{font-size:1.05rem;line-height:1.35;margin:0 0 .35rem;font-weight:600;letter-spacing:0;text-wrap:pretty}
+.rc-step{font-size:.92rem;line-height:1.5;color:var(--text2);text-wrap:pretty}
+.rc-steplab{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-right:.35rem}
+.rc-gap-empty{padding:1rem 1.1rem;background:var(--card);border:1px solid var(--line);border-radius:12px;font-size:.95rem;line-height:1.5}
+[hidden]{display:none!important}
+{% for item in data.items %}.rc:has(#rc-ck{{ forloop.index0 }}:checked) #rc-gap{{ forloop.index0 }}{display:none}
+{% endfor -%}
+.rc-cta{margin:2.6rem 0 1rem;border:1.5px solid var(--ink);border-radius:14px;padding:1.5rem 1.2rem 1.3rem;background:var(--card)}
+.rc-cta h2{font-size:1.35rem}
+.rc-cta p{max-width:40rem}
+.rc-btn{margin:1.1rem 0 1.2rem}
+.rc-cta .ken-cta{background:var(--a)!important;border-radius:8px!important;padding:13px 22px!important}
+.rc-sign{font-size:.95rem;font-weight:600}
+.rc-sign span{display:block;font-weight:400;color:var(--mute)}
+.rc-foot{font-size:.8rem;line-height:1.5;color:var(--mute);padding:1rem 0 5.6rem}
+.rc-bar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;gap:.8rem;padding:.7rem 1.1rem;padding-bottom:calc(.7rem + env(safe-area-inset-bottom));background:var(--ink);color:var(--paper);font-size:.88rem}
+.rc-bar b{font-size:1.15rem;font-variant-numeric:tabular-nums}
+.rc-bar-track{flex:1;height:4px;display:block}
+.rc-bar-track rect.t{fill:rgba(255,255,255,.22)}
+.rc-bar-track rect.f{fill:var(--paper)}
+.rc-bar-pct{font-size:1.05rem;font-variant-numeric:tabular-nums}
+@media (min-width:760px){
+body{font-size:17px}
+.rc-wrap{padding:0 2rem}
+.rc-hero{padding:3.2rem 0 2.4rem}
+.rc h1{font-size:3.1rem}
+.rc-intro{font-size:1.15rem}
+.rc-hit{grid-template-columns:28px 2.4rem minmax(0,1fr);gap:1rem;padding:1.05rem 0}
+.rc-gap{grid-template-columns:3.2rem minmax(0,1fr);gap:1rem;padding:1.2rem 0}
+.rc-gap::before{font-size:2rem}
+.rc-cta{padding:2rem 2.2rem 1.8rem}
+}
+@media (min-width:980px){
+.rc-cols{grid-template-columns:minmax(0,1fr) 300px;column-gap:3.6rem;row-gap:0;align-items:start}
+.rc-hero{grid-column:1;grid-row:1}
+.rc-score{grid-column:2;grid-row:1 / span 3;position:sticky;top:1.4rem;margin-top:3.2rem;padding:1.5rem 1.4rem 1.4rem}
+.rc-score-head{flex-direction:column;align-items:flex-start;gap:1rem}
+.rc-ring{width:150px;height:150px}
+.rc-ring-num{font-size:2.4rem}
+.rc-list{grid-column:1;grid-row:2}
+.rc-gaps{grid-column:1;grid-row:3;margin-top:3rem}
+.rc-bar{display:none}
+.rc-foot{padding-bottom:2.6rem}
+}
+</style>
+</head>
+<body>
+<main class="rc" x-data="{ {% for item in data.items %}d{{ forloop.index0 }}: {% if item.done %}true{% else %}false{% endif %}, {% endfor %}score: {{ done | escape }}, total: {{ safe_total | escape }} }">
+<div class="rc-wrap">
+<header class="rc-top">
+{%- if brand.logo_url %}<img class="rc-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<span class="rc-brand">{{ brand.name | escape }}</span>{% else %}<span></span>{% endif -%}
+<span class="rc-tag">{% if has_topic %}{{ data.topic | escape }} readiness{% else %}Readiness checklist{% endif %}</span>
+</header>
+<div class="rc-cols">
+<section data-section="hero" class="rc-hero">
+<p class="rc-kicker">{% if person.first_name %}For {{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}{% if person.title %}, {{ person.title | escape }}{% endif %} at {{ account.name | escape }}{% else %}For the team at {{ account.name | escape }}{% endif %}</p>
+<h1>{{ data.headline | escape }}</h1>
+<p class="rc-intro">{{ data.intro | escape | newline_to_br | strip_newlines | raw }}</p>
+<p class="rc-by">Prepared by {{ sender.name | default: 'our team' | escape }}{% if sender.title %}, {{ sender.title | escape }}{% endif %}{% if brand.name %} at {{ brand.name | escape }}{% endif %}</p>
+</section>
+<aside data-section="score" class="rc-score">
+<div class="rc-score-head">
+<div class="rc-ring">
+<svg viewBox="0 0 100 100" aria-hidden="true"><circle class="rc-ring-track" cx="50" cy="50" r="45"></circle><circle class="rc-ring-val" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="{{ offset }}" x-bind:stroke-dashoffset="283 - 283 * score / total"></circle></svg>
+<div class="rc-ring-num"><span x-text="(score * 100 - (score * 100) % total) / total">{{ pct }}</span><small>%</small></div>
+</div>
+<div class="rc-score-text">
+<p class="rc-lvl" x-text="score * 100 / total >= 80 ? 'Ready' : score * 100 / total >= 50 ? 'On the way' : 'Early days'">{{ level }}</p>
+<p class="rc-count"><b x-text="score">{{ done }}</b> of <span x-text="total">{{ total }}</span> in place</p>
+<p class="rc-hint">Tick what is in place. The score and the gaps update as you go.</p>
+</div>
+</div>
+<div class="rc-scale" aria-hidden="true">
+<div class="rc-seg" data-on="{% if pct < 50 %}yes{% else %}no{% endif %}" x-bind:data-on="score * 100 / total < 50 ? 'yes' : 'no'"><i></i><span>Early days<br>0 to 49</span></div>
+<div class="rc-seg" data-on="{% if pct >= 50 and pct < 80 %}yes{% else %}no{% endif %}" x-bind:data-on="score * 100 / total >= 50 && score * 100 / total < 80 ? 'yes' : 'no'"><i></i><span>On the way<br>50 to 79</span></div>
+<div class="rc-seg" data-on="{% if pct >= 80 %}yes{% else %}no{% endif %}" x-bind:data-on="score * 100 / total >= 80 ? 'yes' : 'no'"><i></i><span>Ready<br>80 to 100</span></div>
+</div>
+</aside>
+<section data-section="checklist" class="rc-list">
+<h2>The checklist</h2>
+<p class="rc-sub">{{ total }} items, in the order that matters most.{% if done > 0 %} We ticked what we could see from outside, so fix anything we got wrong.{% endif %}</p>
+<ol class="rc-items">
+{%- for item in data.items %}
+<li class="rc-item">
+<label class="rc-hit" for="rc-ck{{ forloop.index0 }}">
+<input id="rc-ck{{ forloop.index0 }}" class="rc-box" type="checkbox"{% if item.done %} checked{% endif %} x-model="d{{ forloop.index0 }}" x-on:change="score = score + (d{{ forloop.index0 }} ? 1 : -1)">
+<span class="rc-num">{{ forloop.index | plus: 100 | slice: 1, 2 }}</span>
+<span class="rc-body">
+<span class="rc-label">{{ item.label | escape }}</span>
+<span class="rc-detail">{{ item.detail | escape }}</span>
+{%- if item.note and item.note != '' %}
+<span class="rc-note">{{ item.note | escape }}</span>
+{%- endif %}
+</span>
+</label>
+</li>
+{%- endfor %}
+</ol>
+</section>
+<section data-section="gaps" class="rc-gaps">
+<h2>Close these first</h2>
+<p class="rc-sub"{% if gaps == 0 %} hidden{% endif %} x-bind:hidden="score == total"><span x-text="total - score">{{ gaps }}</span> <span x-text="total - score == 1 ? 'gap' : 'gaps'">{% if gaps == 1 %}gap{% else %}gaps{% endif %}</span>, in the order to close them. Each one comes with a first step you can take this week.</p>
+<ol class="rc-gap-list">
+{%- for item in data.items %}
+<li class="rc-gap" id="rc-gap{{ forloop.index0 }}"{% if item.done %} hidden{% endif %} x-bind:hidden="d{{ forloop.index0 }}">
+<div>
+<h3>{{ item.label | escape }}</h3>
+<p class="rc-step"><span class="rc-steplab">First step</span>{{ item.first_step | escape }}</p>
+</div>
+</li>
+{%- endfor %}
+</ol>
+<p class="rc-gap-empty"{% unless gaps == 0 %} hidden{% endunless %} x-bind:hidden="score != total">Everything on this list is in place. If that holds up on a closer look, {{ account.name | escape }} is ready, and the call below is a short one.</p>
+</section>
+</div>
+<section data-section="cta" class="rc-cta">
+<h2>Want to go through the gaps together?</h2>
+<p>{{ data.closing | escape | newline_to_br | strip_newlines | raw }}</p>
+<div class="rc-btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+<p class="rc-sign">{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</section>
+<p class="rc-foot">Made for {{ account.name | escape }} by {{ sender.name | default: 'our team' | escape }}. Your ticks stay in this browser and are not saved or shared.</p>
+</div>
+<div class="rc-bar" aria-hidden="true">
+<span class="rc-bar-n"><b x-text="score">{{ done }}</b> of <span x-text="total">{{ total }}</span> in place</span>
+<svg class="rc-bar-track" viewBox="0 0 100 4" preserveAspectRatio="none"><rect class="t" x="0" y="0" width="100" height="4"></rect><rect class="f" x="0" y="0" width="{{ pct }}" height="4" x-bind:width="score * 100 / total"></rect></svg>
+<span class="rc-bar-pct"><span x-text="(score * 100 - (score * 100) % total) / total">{{ pct }}</span>%</span>
+</div>
+</main>
+</body>
+</html>

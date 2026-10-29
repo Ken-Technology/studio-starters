@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Three things moving in health care this quarter</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;500;600;700&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tb{--p:#1b2a41;--s:#b08d57;--ink:#15191c;--mute:#5d6871;--rule:#e1e4e7;--tint:color-mix(in srgb,var(--p) 6%,#fff);--track:color-mix(in srgb,var(--p) 14%,#fff);--fh:'Libre Baskerville',Georgia,'Times New Roman',serif;--fb:'Source Sans 3',ui-sans-serif,system-ui,-apple-system,sans-serif;font-family:var(--fb);font-size:16px;line-height:1.6;color:var(--ink);-webkit-font-smoothing:antialiased;padding-bottom:4rem}
+.tb p{margin:0}
+.tb h1,.tb h2{font-family:var(--fh);font-weight:500;margin:0}
+.tb a{color:var(--p)}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.logo{height:26px;width:auto;display:block}
+.mark{font-weight:600;font-size:1rem;letter-spacing:-.01em}
+.kind{font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-align:right;line-height:1.35}
+.kind span{display:block;font-weight:400;letter-spacing:0;text-transform:none;color:var(--mute);font-size:.82rem}
+.cover{padding:2rem 0 2.25rem;display:grid;gap:2.25rem}
+.kicker{display:flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:1.1rem}
+.kicker::before{content:"";display:block;width:1.75rem;height:3px;background:var(--s)}
+.tb h1{font-size:clamp(2.35rem,9vw,3.9rem);line-height:1;letter-spacing:-.025em;max-width:15ch;text-wrap:balance;margin-bottom:1.1rem}
+.dek{font-size:1.08rem;line-height:1.5;color:var(--mute);max-width:33rem;margin-bottom:1.9rem}
+.plate{display:grid;gap:.9rem;border-top:1px solid var(--rule);padding-top:1rem;font-size:.9rem;line-height:1.45}
+.plate small{display:block;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+.plate b{font-weight:600}
+.glance{background:var(--tint);padding:1.35rem 1.25rem .3rem;margin:0 -1.25rem}
+.glance h2{font-family:var(--fb);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:.4rem}
+.g{display:grid;grid-template-columns:2.1rem minmax(0,1fr) auto;gap:.1rem .75rem;align-items:start;padding:.95rem 0 1.05rem;border-top:1px solid color-mix(in srgb,var(--p) 22%,#fff)}
+.g .n{font-family:var(--fh);font-size:1.2rem;line-height:1.25;color:var(--p)}
+.g .t{font-family:var(--fh);font-size:1.18rem;line-height:1.25;letter-spacing:-.01em}
+.g .c{font-family:var(--fh);font-size:1.45rem;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.g .c small{display:block;font-family:var(--fb);font-size:.72rem;color:var(--mute);letter-spacing:0;margin-top:.25rem}
+.sec{padding:2.5rem 0 1.5rem;border-top:1px solid var(--rule)}
+.num{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:.6rem}
+.sec h2{font-size:clamp(1.75rem,6.5vw,2.6rem);line-height:1.08;letter-spacing:-.02em;max-width:22ch;text-wrap:balance;margin-bottom:1.6rem}
+.grid{display:grid;gap:1.75rem}
+.stat{border-top:2px solid var(--ink);padding-top:.9rem}
+.count{font-family:var(--fh);font-size:clamp(3.2rem,15vw,5rem);line-height:.95;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.of{color:var(--mute);font-size:.95rem;margin:.55rem 0 1rem}
+.waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;max-width:11.5rem;margin:0 0 .7rem}
+.waffle i{display:block;aspect-ratio:1;background:var(--track);border-radius:1px}
+.waffle i.on{background:var(--p)}
+.share{font-size:.84rem;line-height:1.45;color:var(--mute);margin:0 0 1.25rem}
+.share b{font-weight:600;color:var(--ink);font-size:1rem;margin-right:.3rem}
+.how{font-size:.86rem;line-height:1.5;color:var(--mute);padding-top:.85rem;border-top:1px solid var(--rule)}
+.how b{display:block;font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:.3rem}
+.how span{display:block;margin-top:.3rem;font-size:.78rem}
+.prose h3{font-family:var(--fb);font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin:0 0 .55rem}
+.prose p{font-size:1.02rem;line-height:1.65;margin-bottom:1.6rem;max-width:40rem}
+.prose p:last-child{margin-bottom:0}
+.so{font-family:var(--fh);font-size:1.32rem!important;line-height:1.4!important;letter-spacing:-.01em;max-width:34rem!important}
+.cta{margin:.25rem 0 1.6rem}
+.cta .ken-cta{border-radius:3px!important;padding:.9rem 1.35rem!important;font-size:1rem}
+.print-only{display:none}
+.sign{font-size:.95rem;margin-top:.5rem}
+.sign b{display:block;font-weight:600}
+.sign span{display:block;color:var(--mute)}
+.method{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.8rem;line-height:1.55;color:var(--mute);max-width:46rem}
+.method b{color:var(--ink);font-weight:600}
+@media (min-width:760px){
+.tb{font-size:17px}
+.wrap{padding:0 2.5rem}
+.cover{padding:3rem 0}
+.plate{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.glance{margin:0;padding:1.5rem 1.5rem .5rem}
+.sec{padding:3.5rem 0 2rem}
+.grid{grid-template-columns:17rem minmax(0,1fr);gap:3.5rem;align-items:start}
+.count{font-size:4.6rem}
+}
+@media (min-width:1040px){
+.cover{grid-template-columns:minmax(0,1fr) 23rem;gap:4rem;align-items:start;padding:3.5rem 0}
+.glance{margin-top:.3rem}
+}
+@media print{
+@page{margin:14mm 16mm}
+.tb{padding-bottom:0;font-size:11.5pt}
+.wrap{max-width:none;padding:0}
+.cover{display:block;padding:1.5rem 0 0}
+.glance{margin:2rem 0 0}
+.sec{break-before:page;border-top:0;padding-top:.5rem}
+.grid{grid-template-columns:15rem minmax(0,1fr);gap:2.5rem}
+.stat,.g,.prose p{break-inside:avoid}
+.cta{display:none}
+.print-only{display:block}
+}
+</style>
+</head>
+<body>
+<main class="tb">
+<div class="wrap">
+<header class="top">
+<p class="mark">Marlowe &amp; Vance</p>
+<p class="kind">Trend brief<span>Hospitals and health care</span></p>
+</header>
+<section data-section="cover" class="cover">
+<div class="lead">
+<p class="kicker">Three company counts</p>
+<h1>Three things moving in health care this quarter</h1>
+<p class="dek">We counted 112,600 hospitals and health care companies. Three signals describe the market Larkspur buys practices in, and what a 46-practice group should make of each one.</p>
+<div class="plate">
+<p><small>Prepared for</small><b>Elena Marsh</b>, Chief Operating Officer, Larkspur Dental Partners</p>
+<p><small>Written by</small><b>Daniel Okafor</b>, Partner, Marlowe &amp; Vance</p>
+<p><small>Source</small><b>Company profiles and hiring data</b>, 112,600 companies in hospitals and health care</p>
+</div>
+</div>
+<aside class="glance">
+<h2>The three trends</h2>
+<div class="g">
+<span class="n">01</span>
+<span class="t">Growth is concentrated in a small group of operators</span>
+<span class="c">9,840<small>9% of the industry</small></span>
+</div>
+<div class="g">
+<span class="n">02</span>
+<span class="t">A sizable group is cutting staff</span>
+<span class="c">4,120<small>4% of the industry</small></span>
+</div>
+<div class="g">
+<span class="n">03</span>
+<span class="t">Fresh capital is backing a small number of groups</span>
+<span class="c">2,710<small>2% of the industry</small></span>
+</div>
+</aside>
+</section>
+<section data-section="trend_1" class="sec trend">
+<p class="num">Trend 01</p>
+<h2>Growth is concentrated in a small group of operators</h2>
+<div class="grid">
+<div class="stat">
+<p class="count">9,840</p>
+<p class="of">Headcount grew 10% or more</p>
+<div class="waffle" role="img" aria-label="9 percent of 112,600"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<p class="share"><b>9%</b>of 112,600 companies in hospitals and health care</p>
+<p class="how"><b>How we counted</b>Hospitals and health care companies that grew headcount by at least 10 percent<span>From company profiles and hiring data, counted on the day this brief was filled.</span></p>
+</div>
+<div class="prose">
+<h3>What the count says</h3>
+<p>9,840 of the 112,600 health care companies counted grew headcount by at least 10 percent, about 9 percent of the industry. The other 91 percent did not grow at that pace. So the growth in this market sits with fewer than one company in ten, and those are the ones adding sites and staff.</p>
+<h3>What it means for Larkspur Dental Partners</h3>
+<p>Larkspur is in that 9 percent after adding six practices in a year. The groups in this count are the ones bidding against you for the next practice, and for the office managers and hygienists who run it. It is worth knowing which of them operate in Ohio and Kentucky before the next seller takes offers.</p>
+</div>
+</div>
+</section>
+<section data-section="trend_2" class="sec trend">
+<p class="num">Trend 02</p>
+<h2>A sizable group is cutting staff</h2>
+<div class="grid">
+<div class="stat">
+<p class="count">4,120</p>
+<p class="of">Cut headcount 10% or more</p>
+<div class="waffle" role="img" aria-label="4 percent of 112,600"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<p class="share"><b>4%</b>of 112,600 companies in hospitals and health care</p>
+<p class="how"><b>How we counted</b>Hospitals and health care companies that cut headcount by at least 10 percent<span>From company profiles and hiring data, counted on the day this brief was filled.</span></p>
+</div>
+<div class="prose">
+<h3>What the count says</h3>
+<p>4,120 health care companies cut headcount by at least 10 percent, about 4 percent of the industry. That is close to half the size of the group that grew. A cut of that size usually means an operator is deciding which sites to keep, and that is when practices and small groups come up for sale.</p>
+<h3>What it means for Larkspur Dental Partners</h3>
+<p>For a group that has bought six practices in twelve months, this count is a sourcing list. Some of the 4,120 own dental practices they would rather sell than restaff. Your new VP of Revenue Cycle will also inherit whatever billing backlog comes with each one, so a plan for the first 90 days after close matters as much as the price.</p>
+</div>
+</div>
+</section>
+<section data-section="trend_3" class="sec trend">
+<p class="num">Trend 03</p>
+<h2>Fresh capital is backing a small number of groups</h2>
+<div class="grid">
+<div class="stat">
+<p class="count">2,710</p>
+<p class="of">Raised money, 6 months</p>
+<div class="waffle" role="img" aria-label="2 percent of 112,600"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<p class="share"><b>2%</b>of 112,600 companies in hospitals and health care</p>
+<p class="how"><b>How we counted</b>Hospitals and health care companies that announced funding in the last six months<span>From company profiles and hiring data, counted on the day this brief was filled.</span></p>
+</div>
+<div class="prose">
+<h3>What the count says</h3>
+<p>2,710 of the 112,600 health care companies announced funding in the last six months, about 2 percent of the industry. Funded operators can move faster on acquisitions than groups paying from cash flow. A count this small still names the buyers most likely to outbid on a practice.</p>
+<h3>What it means for Larkspur Dental Partners</h3>
+<p>The dossier does not say how Larkspur funds its acquisitions, but the 2,710 funded groups are the competition that can pay more per practice this year. Deciding early which deals you will walk away from on price keeps the pipeline honest, and keeps the integration team from drowning.</p>
+</div>
+</div>
+</section>
+<section data-section="next" class="sec next">
+<p class="num">What to do with this</p>
+<h2>Where I would start</h2>
+<div class="prose">
+<p class="so">Start with the cuts. 4,120 operators trimming staff is the count most likely to put practices on the market in Ohio and Kentucky this year, and Larkspur has shown it can close six in twelve months. Watch the funded group next, since it sets the price you will be bidding against.</p>
+<h3>Talk it through</h3>
+<p>Each count above is a list of companies, filtered the way the line under it says. I can pull the names behind any of the three, cut them to your region, and walk you through them in twenty minutes.</p>
+<div class="cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1b2a41;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+<p class="print-only">To book the twenty minutes, reply to my email with a time that suits you.</p>
+<p class="sign"><b>Daniel Okafor</b><span>Partner, Marlowe &amp; Vance</span></p>
+</div>
+<p class="method"><b>How this brief was built.</b> Every number is a count of companies, built from company profiles and hiring data on the day this brief was filled. The baseline is every company in hospitals and health care. Each trend is that baseline with one filter added, named under its count. Shares are rounded to a whole percent. One count is one reading, so the brief says how many, not whether a number went up or down.</p>
+</section>
+</div>
+</main>
+</body>
+</html>

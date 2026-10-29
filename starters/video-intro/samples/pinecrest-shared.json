@@ -1,0 +1,44 @@
+{
+  "account": {
+    "name": "Pinecrest Logistics",
+    "domain": "pinecrestlogistics.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Pinecrest Logistics is a regional less-than-truckload carrier with about 280 people, 11 terminals in the Pacific Northwest and a fleet of 160 trucks.",
+      "why_now": "Opened a terminal in Spokane in August 2026.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Jonah Price",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Lanewright",
+    "logo_url": null,
+    "colors": { "primary": "#e8590c", "secondary": "#1b1b1f" },
+    "fonts": { "heading": "Outfit", "body": "DM Sans" }
+  },
+  "data": {
+    "video_url": "https://lanewright.example/videos/pinecrest",
+    "title": "Filling the Spokane lanes without adding dispatchers",
+    "intro": "A new terminal is the moment the old routing habits either carry over or get replaced. Here is what I would check on the Spokane lanes first, and why it matters for the other ten terminals.",
+    "reasons": [
+      {
+        "heading": "A new terminal in Spokane",
+        "body": "Terminal number eleven adds lanes to and from every other site. Most of the planning for those lanes lands on the same dispatchers who already plan the other ten."
+      },
+      {
+        "heading": "160 trucks across 11 terminals",
+        "body": "At that size, a truck that leaves half empty from one terminal is hard to see from another. I would want to know how your planners spot that today."
+      },
+      {
+        "heading": "Regional and less-than-truckload",
+        "body": "Short lanes with many stops are where load planning pays off most, because one bad stop order shows up in the driver's day right away. This is where I would start."
+      }
+    ]
+  }
+}

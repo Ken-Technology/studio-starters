@@ -1,0 +1,56 @@
+{
+  "account": {
+    "name": "Tidewater Biologics",
+    "domain": "tidewater-bio.example",
+    "industry": "life sciences",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Tidewater Biologics makes cell-culture reagents for research labs, with 340 people and a headquarters in Boston. The legal team is two lawyers and a contracts manager.",
+      "why_now": "Signed distribution agreements in three new countries this year."
+    }
+  },
+  "person": { "first_name": "Dana", "last_name": "Whitfield", "title": "General Counsel" },
+  "sender": { "name": "Owen Pryce", "title": "Partner", "signature_html": null },
+  "brand": {
+    "name": "Marlowe & Finch",
+    "logo_url": null,
+    "colors": { "primary": "#1b2a49", "secondary": "#2a1e16" },
+    "fonts": { "heading": "Playfair Display", "body": "Source Sans 3" }
+  },
+  "data": {
+    "kicker": "Live session, 45 minutes",
+    "title": "Contracts in the last week of the quarter",
+    "subtitle": "How in-house legal teams at growing life sciences and manufacturing companies clear a pile of contracts in the last five working days of a quarter. One talk from outside counsel, one from a general counsel, then your questions.",
+    "date_text": "Thursday, December 3, 2026",
+    "where_text": "Online. The link comes by email once you register.",
+    "zones": [
+      { "city": "New York", "time": "1:00 pm" },
+      { "city": "Chicago", "time": "12:00 pm" },
+      { "city": "Los Angeles", "time": "10:00 am" },
+      { "city": "London", "time": "6:00 pm" }
+    ],
+    "calendar_url": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Contracts+in+the+last+week+of+the+quarter+(live+session)&dates=20261203T180000Z/20261203T184500Z",
+    "recording_note": "Cannot make it live? Register anyway. Everyone who registers gets the recording and the slides the next morning.",
+    "speakers": [
+      { "name": "Helen Marlowe", "role": "Partner, Marlowe & Finch", "line": "Reviewed 120 quarter-end contract files for growing companies over four years." },
+      { "name": "Tomas Reyes", "role": "General Counsel, Ostrander Foods", "line": "Runs a two-person legal team at a food manufacturer with 900 employees." },
+      { "name": "Owen Pryce", "role": "Partner, Marlowe & Finch", "line": "Hosts, keeps the clock and reads out your questions." }
+    ],
+    "agenda": [
+      { "time": "1:00", "minutes": 5, "title": "Who is on the call", "note": "A quick look at the legal teams in the room, by size, so the talks land at the right level.", "speaker": "Owen Pryce" },
+      { "time": "1:05", "minutes": 15, "title": "Where contracts stall in the last week", "note": "What 120 quarter-end contract files show: who held them, for how long and why.", "speaker": "Helen Marlowe" },
+      { "time": "1:20", "minutes": 15, "title": "One quarter-end with two lawyers", "note": "How Ostrander set what sales can sign alone, and the short clause list that cut escalations.", "speaker": "Tomas Reyes" },
+      { "time": "1:35", "minutes": 10, "title": "Your questions", "note": "Send them in with your registration or ask live. Questions about your own contracts are welcome.", "speaker": "All three" },
+      { "time": "1:45", "title": "Close", "note": "The recording and the slides are in your inbox the next morning." }
+    ],
+    "register_note": "Register once. The recording and the slides come by email the day after, whether or not you join live.",
+    "why_now": "Signed distribution agreements in three new countries this year.",
+    "local_zone": "New York",
+    "why_you": "This session was planned with legal teams like Tidewater's in mind: a small team with distribution agreements in three new countries this year. The second talk is from a two-person legal team that got through a quarter-end with a set standard.",
+    "takeaways": [
+      { "lead": "A map of where contracts stall", "detail": "that you can lay over Tidewater's quarter-end files, with 120 reviewed files as the comparison." },
+      { "lead": "A list of what sales can sign alone", "detail": "to adapt for Tidewater's distribution agreements, based on how Ostrander set theirs." },
+      { "lead": "The short clause list that cut escalations", "detail": "and which items need a lawyer when a small team has three new countries to cover." }
+    ]
+  }
+}

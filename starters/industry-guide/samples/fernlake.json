@@ -1,0 +1,64 @@
+{
+  "account": {
+    "name": "Fernlake Outdoor",
+    "domain": "fernlake.example",
+    "industry": "retail apparel and fashion",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Fernlake Outdoor sells trail running and hiking apparel online, with one outlet store in Bend. The brand launched a women's line this spring and ships from a single warehouse in Reno. Returns are handled over email through a shared inbox, and the size guide lives on a separate page.",
+      "why_now": "Launched a women's line this spring."
+    }
+  },
+  "person": { "first_name": "Marcus", "last_name": "Oyelaran", "title": "Head of Growth" },
+  "sender": { "name": "Lina Sorensen", "title": null, "signature_html": null },
+  "brand": {
+    "name": "Parcelwise",
+    "logo_url": null,
+    "colors": { "primary": "#f2572a", "secondary": "#1c3d2e" },
+    "fonts": { "heading": "Outfit", "body": "DM Sans" }
+  },
+  "data": {
+    "industry": "retail apparel and fashion",
+    "role": "Head of Growth",
+    "dossier": "Fernlake Outdoor sells trail running and hiking apparel online, with one outlet store in Bend. The brand launched a women's line this spring and ships from a single warehouse in Reno. Returns are handled over email through a shared inbox, and the size guide lives on a separate page.",
+    "signals": [],
+    "offer": "",
+    "pov": "",
+    "account_notes": "",
+    "title": "Five moves for growth leads at online apparel brands",
+    "intro": "In apparel, the sale is not done when the order ships. It is done when the customer keeps what arrived, and a line in its first season is where the sizing questions pile up. This guide covers five moves that keep the sale after the parcel leaves, each with an example and a first step.",
+    "moves": [
+      {
+        "name": "Put the size guide where the size is picked",
+        "why": "Shoppers do not open a separate size guide page. They guess, order two sizes, and send one back. The fit question has to be answered next to the size buttons, in the words the customer uses, with the garment measured flat rather than the body measured in a mirror.",
+        "example": "The merchandiser rewrites the fit note for the women's trail shorts and puts it under the size buttons: how the waist sits, whether the inseam runs long, and what a size up changes. The next time a customer asks about fit in the inbox, the answer is a link to the product page, not a paragraph.",
+        "first_step": "Take your most returned product and write a three-line fit note under its size buttons, using the words from the last ten return emails."
+      },
+      {
+        "name": "Offer the exchange before the refund",
+        "why": "A customer who got the wrong size still wants the shorts. The returns email that opens with the refund form sends them to a refund, and the one that opens with the other size keeps the sale. Brands skip this because the exchange is more work for the warehouse, which is exactly why it should be the easy option for the customer.",
+        "example": "The support lead changes the first reply in the shared inbox. Instead of the return instructions, it asks one question: which size or color would you like instead, and we will send it out today. The shorts go out from Reno before the original pair is back, and the customer has them for the weekend race.",
+        "first_step": "Rewrite the first reply template in the returns inbox so the first line offers the other size, and the refund steps come second."
+      },
+      {
+        "name": "Read every return reason once a week",
+        "why": "Return reasons are the cheapest product research you will ever get, and most brands file them. Read as a pile once a week, they tell you which product has a sizing problem, which photo oversells a color, and which description is missing a line. One person, one hour, every Friday.",
+        "example": "The head of growth exports the week's return emails on Friday afternoon and sorts them by product and by reason in a sheet. The women's quarter zip shows up with the same note three weeks running: the sleeves run short. The note goes to the product page on Monday and to the factory before the next run.",
+        "first_step": "Set a weekly reminder to read every return email from the week in one sitting and tag each with the product and the reason."
+      },
+      {
+        "name": "Make the returns page a page you would show",
+        "why": "The returns page is the one page every nervous first-time buyer reads before checkout, and on most brand sites it is a legal paragraph under a dropdown. A clear page that says how long you have, what it costs and what happens next takes away the reason to hesitate at checkout.",
+        "example": "The founder rewrites the returns page in three short lines: how many days you have, that exchanges are free, and what happens when the parcel arrives back. The link moves from the footer to the product page under the price. A customer buying her first pair of trail shoes now reads it before she decides, not after.",
+        "first_step": "Read your returns page on your phone as a first-time buyer. Rewrite it in three plain lines and link it under the price on every product page."
+      },
+      {
+        "name": "Say where the parcel is before they ask",
+        "why": "Where is my order is the email nobody on the team wants to answer, because the customer who sends it was excited and is now worried. A message when the parcel leaves Reno, and another the morning it is out for delivery, answers the question before it is asked and keeps the inbox for the questions that matter.",
+        "example": "The operations lead adds two messages to the order flow: one with the tracking link when the warehouse scans the label, and one the morning the parcel is out for delivery. The support inbox the following week holds fit questions and exchange requests, and the team gets to the exchanges the same day.",
+        "first_step": "Check what message a customer gets when their order ships. If it has no tracking link, add one this week, even if it is sent by hand."
+      }
+    ],
+    "closing": "Start with the exchange reply. It is one template, it changes nothing for the warehouse, and it turns the worst moment of the customer's week into the one they tell a friend about. The size note, the weekly read, the returns page and the shipping messages each make that reply needed less often."
+  }
+}

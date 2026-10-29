@@ -1,0 +1,33 @@
+{
+  "description": "A letter with three things noticed about each account this month, what each usually means and one idea. Ken fills it from hiring, news and leader signals.",
+  "category": "prospecting",
+  "tags": [
+    "signals",
+    "monthly note",
+    "hiring",
+    "news",
+    "outreach"
+  ],
+  "featured": true,
+  "needs": [],
+  "version": "1.0.1",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    {
+      "id": "brightwave",
+      "label": "Brightwave Logistics, three signals"
+    },
+    {
+      "id": "marlowe-shared",
+      "label": "Shared link (no person)"
+    },
+    {
+      "id": "copperline",
+      "label": "Copperline Software, two signals"
+    },
+    {
+      "id": "sunvale-research",
+      "label": "Sunvale Health Clinics, no signals"
+    }
+  ]
+}

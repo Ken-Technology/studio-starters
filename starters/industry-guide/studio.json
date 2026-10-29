@@ -1,0 +1,98 @@
+{
+  "kenStudio": "1",
+  "name": "Industry playbook",
+  "type": "other",
+  "format": "doc",
+  "slug": "industry-playbook",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "industry": { "type": "string", "maxLength": 120 },
+      "role": { "type": "string", "maxLength": 120 },
+      "dossier": { "type": "string", "maxLength": 4000 },
+      "signals": {
+        "type": "array",
+        "maxItems": 10,
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string", "maxLength": 40 },
+            "title": { "type": "string", "maxLength": 200 },
+            "date": { "type": "string", "maxLength": 10 },
+            "source_url": { "type": "string", "format": "uri" }
+          },
+          "required": ["title"]
+        }
+      },
+      "offer": { "type": "string", "maxLength": 400 },
+      "pov": { "type": "string", "maxLength": 600 },
+      "account_notes": { "type": "string", "maxLength": 800 },
+      "title": { "type": "string", "minLength": 20, "maxLength": 72 },
+      "intro": { "type": "string", "minLength": 80, "maxLength": 420 },
+      "moves": {
+        "type": "array",
+        "minItems": 5,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string", "minLength": 4, "maxLength": 48 },
+            "why": { "type": "string", "minLength": 120, "maxLength": 420 },
+            "example": { "type": "string", "minLength": 120, "maxLength": 520 },
+            "first_step": { "type": "string", "minLength": 40, "maxLength": 220 }
+          },
+          "required": ["name", "why", "example", "first_step"]
+        }
+      },
+      "closing": { "type": "string", "minLength": 80, "maxLength": 400 }
+    },
+    "required": ["title", "intro", "moves", "closing"]
+  },
+  "recipe": [
+    { "id": "industry", "kind": "bind", "from": "account.industry", "to": "data.industry" },
+    { "id": "role", "kind": "bind", "from": "person.title", "to": "data.role" },
+    { "id": "dossier", "kind": "bind", "from": "account.dossier.summary", "to": "data.dossier" },
+    { "id": "signals", "kind": "bind", "from": "account.signals", "to": "data.signals" },
+    {
+      "id": "pov",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "brand.name", "knowledge.stable", "knowledge.scoped"],
+      "to": ["data.offer", "data.pov", "data.account_notes"],
+      "prompt": "Read the Knowledge pack for {{ brand.name | default: 'our company' }} and pull out what an industry playbook for {{ account.name }} needs. knowledge.stable is a list of workspace-wide items {citationId, kind, title, text}: instructions, company files and the offer. knowledge.scoped is a list of items about {{ account.name }}: call notes, files and facts. Either list may be empty.\n\nReturn JSON with these keys:\n- offer: 1 to 3 sentences, at most 400 characters, on what {{ brand.name | default: 'we' }} sells and for whom, in plain words, copied or closely paraphrased from knowledge.stable. An empty string when the items do not say.\n- pov: 1 to 3 sentences, at most 600 characters, on how {{ brand.name | default: 'we' }} thinks this kind of work should be done: the beliefs, priorities or method the items state. An empty string when the items do not say.\n- account_notes: at most 800 characters of facts about {{ account.name }} from knowledge.scoped, one fact per sentence, as given. An empty string when there are none.\n\nUse only the items. Never add what you know about either company, and never invent a price, a customer or a number. No em dashes or en dashes. No exclamation marks."
+    },
+    {
+      "id": "guide",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.domain", "account.size_band", "person.first_name", "brand.name", "data.industry", "data.role", "data.dossier", "data.signals", "data.offer", "data.pov", "data.account_notes"],
+      "to": ["data.title", "data.intro", "data.moves", "data.closing"],
+      "prompt": "You are writing a short industry playbook for {{ account.name }} ({{ account.domain }}), a company in {{ data.industry | default: 'its industry' }} with {{ account.size_band | default: 'an unknown number of' }} people. {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it to {{ person.first_name | default: 'the reader' }}, whose title is {{ data.role | default: 'not known (the page is a shared link, so write for the team)' }}. The playbook is five moves a team in this industry and this role can make, each with a worked example and a first step.\n\nInputs: data.industry is the account's industry. data.role is the reader's title. data.dossier is our research summary on {{ account.name }}. data.signals is recent news on {{ account.name }} as {title, date, source_url}. data.account_notes holds facts from our own notes on {{ account.name }}. data.offer is what {{ brand.name | default: 'we' }} sells and data.pov is how {{ brand.name | default: 'we' }} thinks this work should be done: together they are the point of view this guide takes, so the five moves are the ones that make sense from that view, written as advice that stands on its own. When data.offer and data.pov are empty, write from the view of an experienced operator in this industry. Use these inputs and general knowledge of how work gets done in {{ data.industry | default: 'this industry' }}. Never invent customers, statistics, percentages, prices, headcounts, results or quotes. A number appears only when the inputs contain it. Name no company other than {{ account.name }} and {{ brand.name | default: 'our company' }}. Do not name the product or its features in the moves: the page prints data.offer separately.\n\nReturn JSON with these keys:\n- title: 20 to 72 characters, sentence case. \"Five moves for <the role, plural> at <the kind of company>\" when the title is known, like \"Five moves for operations leaders at multi-site dental groups\". When the title is not known, \"Five moves for <the kind of company>\", like \"Five moves for mid-size general contractors\". Describe the kind of company from data.industry and data.dossier, never from a guess.\n- intro: 2 or 3 sentences, 80 to 420 characters. The problem these moves solve in this industry, who the guide is for, and what each move comes with (an example and a first step). No product.\n- moves: exactly 5 items {name, why, example, first_step}, ordered from the smallest change to the largest. name: 4 to 48 characters, an imperative verb phrase in sentence case, specific to the industry (\"Book the next visit before the patient leaves\", not \"Improve scheduling\"). why: 2 to 4 sentences, 120 to 420 characters: what the move changes and why teams in this industry skip it. example: 2 to 4 sentences, 120 to 520 characters: one concrete scene of a team doing the move, in the present tense, with a role, a moment in the week, the tool or paper they use, and what is different afterwards. No company name, no statistic, no quote. When data.dossier, data.signals or data.account_notes holds a fact that fits, set the scene at {{ account.name }} and use that fact as given. first_step: 1 or 2 sentences, 40 to 220 characters: something the reader can do this week with no budget and no new tool.\n- closing: 2 or 3 sentences, 80 to 400 characters: which move to start with and why, and how the other four build on it. Do not describe {{ brand.name | default: 'our company' }} or its product: the page prints data.offer after this text.\n\nVoice: one experienced person writing to a peer. Second person. Plain words, short sentences a person would say out loud. Sentence case everywhere, including the title and the move names.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No hype words (revolutionize, supercharge, unlock, seamless, game changer, cutting edge, leverage, elevate, transform). Never \"real\" as emphasis. No email addresses, phone numbers or prices. Never the word \"demo\"."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.title", "data.intro", "data.moves", "data.closing"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["demo", "reverse demo", "revolutionize", "supercharge", "unlock", "seamless", "game changer", "game-changer", "cutting edge", "cutting-edge", "leverage", "elevate", "imagine a world", "in today's", "ever-changing", "fast-paced"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true
+      },
+      "rubric": "Grade this industry playbook the way its reader would: {{ person.first_name | default: 'someone' }}, {{ data.role | default: 'on the team' }} at {{ account.name }}, a company in {{ data.industry | default: 'its industry' }}. 10 is a guide they would print, keep on the desk and act on this week.\nScore these, 0 to 10 each:\n- specific: every move is particular to this industry and this role. Advice that would read the same for any company fails this check.\n- honest: every claim is supported by the inputs below or by common knowledge of how this work is done. A claim about {{ account.name }} that the dossier, the signals or the notes do not support fails this check.\n- doable: each first step can be done this week with no budget and no new tool, and each example shows a person doing the move, not a result being announced.\n- plain: short sentences in the second person that a person would say out loud; sentence case in the title and the move names; no jargon or stacked nouns.\nAutomatic fail: a statistic, percentage, price, headcount or revenue figure that does not appear word for word in the inputs below; a company named that is not {{ account.name }} or {{ brand.name | default: 'the sender' }}; a quote attributed to anyone; a product name or feature inside a move; an em dash or an en dash; an exclamation mark; the word \"demo\"; fewer or more than five moves.\nInputs the writer had, the only source for facts: industry {{ data.industry | default: 'none' }}. Role {{ data.role | default: 'none' }}. Dossier: {{ data.dossier | default: 'none' }}. Signals: {{ data.signals | json }}. Notes: {{ data.account_notes | default: 'none' }}. Offer: {{ data.offer | default: 'none' }}. Point of view: {{ data.pov | default: 'none' }}.\nPass when the overall score is 7.5 or higher and no check is 6 or lower. On a fail, name the check and quote the phrase to change. The fix never supplies replacement sentences, numbers, names or facts."
+    }
+  ],
+  "sections": [
+    { "id": "cover", "label": "Cover" },
+    { "id": "move_1", "label": "Move 1" },
+    { "id": "move_2", "label": "Move 2" },
+    { "id": "move_3", "label": "Move 3" },
+    { "id": "move_4", "label": "Move 4" },
+    { "id": "move_5", "label": "Move 5" },
+    { "id": "closing", "label": "Where to start" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

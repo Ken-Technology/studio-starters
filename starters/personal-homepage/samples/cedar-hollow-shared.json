@@ -1,0 +1,159 @@
+{
+  "account": {
+    "name": "Cedar Hollow Veterinary Group",
+    "domain": "cedarhollow.example",
+    "industry": "veterinary",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Cedar Hollow Veterinary Group runs five small-animal clinics in the Pacific Northwest and has about 110 people.",
+      "why_now": "Opened its fifth clinic in August.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Jonas Weber",
+    "title": "Head of Sales",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Halcyon",
+    "logo_url": null,
+    "colors": {
+      "primary": "#0b3d2e",
+      "secondary": "#1f2a24"
+    },
+    "fonts": {
+      "heading": "Fraunces",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "site": {
+      "url": "https://cedarhollow.example",
+      "title": "Cedar Hollow Veterinary Group",
+      "description": "Five clinics for dogs, cats and small pets. Book online or call your clinic."
+    },
+    "careers": {
+      "url": "https://cedarhollow.example/careers",
+      "title": "Join the team",
+      "description": "Open roles for veterinary technicians and front desk coordinators."
+    },
+    "signals_raw": [
+      {
+        "type": "news",
+        "title": "Cedar Hollow Veterinary Group opens its fifth clinic in Hillsboro",
+        "date": "2026-08-18",
+        "source_url": "https://cedarhollow.example/news/hillsboro-opens"
+      }
+    ],
+    "product": "Halcyon is appointment scheduling for veterinary clinics. Pet owners book and change visits online. Each clinic gets a confirmed day sheet per vet and room, and reminders go out by text and email with one tap to confirm or reschedule. It reads the schedule from the clinic's practice management system. Setup takes about two weeks per clinic. Pricing is shared on the call.",
+    "stories": [
+      {
+        "customer": "Fernbrook Animal Hospital",
+        "industry": "veterinary",
+        "size_band": "51-200",
+        "city": "Bend",
+        "summary": "Fernbrook Animal Hospital has four clinics and about 90 people. It moved online booking and reminders to one schedule across all four, starting with the busiest clinic.",
+        "quote": "Our front desk used to spend the morning calling people who forgot. Now most of them confirm with one tap.",
+        "quote_author_title": "Practice Manager",
+        "chart_title": "Missed appointments per week across the four clinics",
+        "chart_note": "First six weeks after launch",
+        "chart_points": "Wk 1:41|Wk 2:39|Wk 3:34|Wk 4:30|Wk 5:27|Wk 6:24"
+      }
+    ],
+    "hero": {
+      "headline": "Full waiting rooms, fewer empty appointment slots.",
+      "sub": "Halcyon gives Cedar Hollow's five clinics one schedule that owners can book and change themselves, with a reminder that confirms in one tap. Your front desks spend less of the day on the phone."
+    },
+    "noticed": [
+      {
+        "fact": "Five clinics, each with its own phone number and its own booking link.",
+        "source": "cedarhollow.example/clinics",
+        "source_url": "https://cedarhollow.example/clinics"
+      },
+      {
+        "fact": "The fifth clinic, in Hillsboro, opened in August.",
+        "source": "Cedar Hollow news, Aug 18, 2026",
+        "source_url": "https://cedarhollow.example/news/hillsboro-opens"
+      },
+      {
+        "fact": "Open roles for front desk coordinators at two clinics.",
+        "source": "cedarhollow.example/careers",
+        "source_url": "https://cedarhollow.example/careers"
+      }
+    ],
+    "uses_lead": "Picked for the team that runs scheduling across five clinics, from the clinics page, the Hillsboro news and the careers page.",
+    "uses": [
+      {
+        "title": "One schedule for five clinics",
+        "today": "Each clinic has its own phone number and booking link, so an owner has to pick a clinic before they can pick a time.",
+        "after": "One booking page shows open times at every clinic, and a visit moves between clinics without a phone call."
+      },
+      {
+        "title": "Fewer missed appointments",
+        "today": "Reminders depend on what each front desk has time for on a busy morning.",
+        "after": "Every visit gets a text and an email, and the owner confirms or reschedules with one tap. The clinic sees who has confirmed."
+      },
+      {
+        "title": "A calmer front desk",
+        "today": "Two clinics are hiring front desk coordinators, and much of their day goes to booking and calling.",
+        "after": "Owners book and change visits online, so the desk spends its time on the people in the room."
+      }
+    ],
+    "story": {
+      "headline": "A group like Cedar Hollow started with one clinic",
+      "who": "Fernbrook Animal Hospital has four clinics in Bend and about 90 people. It moved online booking and reminders to one schedule across all four, starting with the busiest clinic.",
+      "quote": {
+        "text": "Our front desk used to spend the morning calling people who forgot. Now most of them confirm with one tap.",
+        "author_title": "Practice Manager, Fernbrook Animal Hospital"
+      },
+      "chart_title": "Missed appointments per week across the four clinics",
+      "chart_note": "First six weeks after launch",
+      "chart": [
+        { "label": "Wk 1", "value": 41 },
+        { "label": "Wk 2", "value": 39 },
+        { "label": "Wk 3", "value": 34 },
+        { "label": "Wk 4", "value": 30 },
+        { "label": "Wk 5", "value": 27 },
+        { "label": "Wk 6", "value": 24 }
+      ]
+    },
+    "rollout_lead": "Start with one clinic, then add the other four, so the front desks learn it on one schedule before it reaches all five.",
+    "rollout": [
+      {
+        "when": "Weeks 1 and 2",
+        "title": "Connect one clinic",
+        "body": "We read the schedule from the clinic's practice management system and set up its vets, rooms and visit types."
+      },
+      {
+        "when": "Weeks 3 to 4",
+        "title": "Open online booking",
+        "body": "Owners start booking and confirming online. The front desk keeps the phone and sees every change on the day sheet."
+      },
+      {
+        "when": "Weeks 5 to 10",
+        "title": "Add the other clinics",
+        "body": "One clinic every two weeks, with the first clinic's front desk showing the next one how it works."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do we have to change our practice management system?",
+        "a": "No. Halcyon reads the schedule from it, and clinics keep using it for records and billing."
+      },
+      {
+        "q": "What happens when an owner cannot make a visit?",
+        "a": "They tap reschedule in the reminder, pick another open time, and the clinic's day sheet updates."
+      },
+      {
+        "q": "How long does setup take for each clinic?",
+        "a": "About two weeks per clinic. We start with one and add the others after."
+      },
+      {
+        "q": "What does it cost?",
+        "a": "We share pricing on the call, so you see it next to the plan for five clinics."
+      }
+    ]
+  }
+}

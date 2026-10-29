@@ -1,0 +1,63 @@
+{
+  "account": {
+    "name": "Juniper Dental Group",
+    "domain": "juniperdental.example",
+    "industry": "medical practices",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Juniper Dental Group runs general and pediatric dentistry across thirty one practices in Oregon and Washington, most of them acquired in the last four years. The practices still run three different practice management systems, and each one pulls its own recall list. The group hired a VP of Operations this year and is recruiting regional managers.",
+      "why_now": "Added four practices in Spokane this month and posted two regional manager roles."
+    }
+  },
+  "person": { "first_name": "Priya", "last_name": "Raman", "title": "VP of Operations" },
+  "sender": { "name": "Dana Whitfield", "title": "Account Executive", "signature_html": null },
+  "brand": { "name": "Clearpath", "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "industry": "medical practices",
+    "role": "VP of Operations",
+    "dossier": "Juniper Dental Group runs general and pediatric dentistry across thirty one practices in Oregon and Washington, most of them acquired in the last four years. The practices still run three different practice management systems, and each one pulls its own recall list. The group hired a VP of Operations this year and is recruiting regional managers.",
+    "signals": [
+      { "type": "acquisition", "title": "Juniper Dental Group adds four practices in Spokane", "date": "2026-10-14", "source_url": "https://news.example/juniper-dental-spokane" },
+      { "type": "hiring", "title": "Juniper Dental Group posts two regional manager roles", "date": "2026-10-02", "source_url": "https://jobs.example/juniper-dental/regional-manager" },
+      { "type": "leadership", "title": "Priya Raman joins Juniper Dental Group as VP of Operations", "date": "2026-08-24", "source_url": "https://news.example/juniper-dental-vp-operations" }
+    ],
+    "offer": "Clearpath runs recall, reminders and online booking for dental groups with more than ten locations, on top of the practice management systems you already have. One list, one set of rules, every practice.",
+    "pov": "A dental group grows by keeping chairs full, not by adding chairs. The schedule is the business, so the front desk and the recall list deserve more attention than any marketing spend. Fix the moment of checkout first, then the list, then the reporting.",
+    "account_notes": "Intro call on October 21: Priya said recall is run by each office manager and nobody sees a group-wide number. The Spokane practices are still on their old system.",
+    "title": "Five moves for operations leaders at multi-site dental groups",
+    "intro": "Groups that grow by acquisition end up with the same problem: the chairs are there, the patients are there, and the schedule still leaks. This guide covers five moves that fill those chairs without adding staff or software. Each one comes with an example and something you can start this week.",
+    "moves": [
+      {
+        "name": "Book the next visit before the patient leaves",
+        "why": "Recall cards and reminder texts chase patients who have already gone home. Checkout is the one moment every patient stands in front of you with a calendar in their pocket, and it is the moment most practices spend on payment alone. The booking that happens there never needs chasing.",
+        "example": "A pediatric practice in the group makes checkout a two-step script. The assistant walks the parent to the desk and names the month of the next visit before handing over. The coordinator offers two times, books one, and only then asks about payment. The parent leaves with the appointment on their phone, and that family drops off the recall list for good.",
+        "first_step": "Pick one practice and add one line to the checkout script: name the month of the next visit before the patient pays. Count for a week how many leave with a booking."
+      },
+      {
+        "name": "Keep one recall list across every system",
+        "why": "Three practice management systems mean three definitions of overdue and three teams pulling lists on different days. Patients at the newest practices fall through first, because their records were migrated last and nobody owns them yet. One list with one definition is the first thing a regional manager can act on.",
+        "example": "The regional manager for Portland exports the overdue list from each of her practices on Monday morning, pastes them into one sheet with the same four columns, and splits the calls by practice. On Friday she marks who booked. The sheet is ugly, but it is the first time the Spokane practices appear on the same page as the rest of the group.",
+        "first_step": "Ask every practice for its overdue list in whatever shape it comes, and paste them into one sheet with the same columns. Do not clean the data yet."
+      },
+      {
+        "name": "Fill cancellations from a short list",
+        "why": "A same-day cancellation is worth nothing unless someone fills it within the hour, and nobody can call the whole recall list in an hour. The practices that fill their gaps keep a short list of patients who asked to come sooner, and they text that list before they do anything else.",
+        "example": "A hygienist keeps a note on the schedule screen: patients who said they would take an earlier slot if one opened. When a Tuesday afternoon cancels, the coordinator texts those patients first, in order, and the chair is filled before lunch. Nobody opens the full recall list, and the patient who moved up thanks the front desk on the way out.",
+        "first_step": "Add a column to the schedule notes for patients who asked to be called sooner, and tell the coordinator to text that list first when a slot opens."
+      },
+      {
+        "name": "Measure chair hours, not appointment counts",
+        "why": "Appointment counts hide the gaps. A day can look full and still have an hour of empty chair between procedures, and the practice management reports will never show it because they count visits, not minutes. Chair hours tell you what each practice could have produced and where the leak is.",
+        "example": "An office manager marks the schedule by hand for one week: every block of empty chair, with the reason next to it. Late arrival, no show, a procedure that ran short, a hygienist out. At the end of the week the reasons sort themselves into three piles, and two of them are things the front desk can change.",
+        "first_step": "Ask one office manager to mark empty chair time and its reason on a printed schedule for one week, then read the reasons together."
+      },
+      {
+        "name": "Give every regional manager the same Monday page",
+        "why": "Regional managers hired this year inherit practices with different habits and no shared view, so each one builds a report of their own and the numbers never match. One page per practice, in the same shape, turns thirty one stories into one meeting and makes the weak practice visible without blame.",
+        "example": "The operations lead drafts the page by hand for one region: booked at checkout, cancellations filled, overdue patients called, chair hours lost. It goes out on Monday to the regional manager and every office manager in that region. The first version is wrong in two places, which is how everyone learns what the numbers mean.",
+        "first_step": "Write the Monday page for one region in a plain document with four lines per practice. Send it, and ask each office manager what is missing."
+      }
+    ],
+    "closing": "Start with the first move. It costs nothing, the front desk can run it tomorrow, and every patient booked at checkout is one fewer to chase later. The other four build on it in order: the list gets shorter, the gaps get filled, the measure gets honest, and the Monday page shows all of it."
+  }
+}

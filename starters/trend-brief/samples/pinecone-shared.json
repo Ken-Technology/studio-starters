@@ -1,0 +1,83 @@
+{
+  "account": {
+    "name": "Pinecone Robotics",
+    "domain": "pineconerobotics.example",
+    "industry": "industrial automation",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Pinecone Robotics builds mobile picking robots for mid-size warehouses and sells them on a per-pick subscription. About 140 staff in Pittsburgh, with field service teams in three states.",
+      "why_now": "Opened a second assembly line in August.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Sofia Lindqvist",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Kelp",
+    "logo_url": null,
+    "colors": {
+      "primary": "#ff5a1f",
+      "secondary": "#0b3b2e"
+    },
+    "fonts": {
+      "heading": "Outfit",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "offer": "Kelp runs outbound for industrial hardware companies: the target list, the emails and the first meeting, with a team that has sold capital equipment before.",
+    "segments": [
+      { "label": "All industrial automation", "filters": { "industries": ["industrial automation"] } },
+      { "label": "Hiring surge, 3 months", "filters": { "industries": ["industrial automation"], "hiringSurge": { "windowMonths": 3 } } },
+      { "label": "New entrants, 2 years", "filters": { "industries": ["industrial automation"], "newlyFounded": true, "newlyFoundedWithinYears": 2 } },
+      { "label": "Raised money, 6 months", "filters": { "industries": ["industrial automation"], "raisedFundingRecently": true, "raisedFundingWithinDays": 180 } }
+    ],
+    "plan": [
+      {
+        "title": "Who is hiring fast in automation",
+        "counted": "Industrial automation companies that added staff fast in the last three months",
+        "why": "Pinecone just opened a second assembly line, so it hires in the same market as every other automation firm growing now."
+      },
+      {
+        "title": "New entrants to the field",
+        "counted": "Industrial automation companies founded in the last two years",
+        "why": "New robot makers pitch the same mid-size warehouses Pinecone sells into."
+      },
+      {
+        "title": "Who has fresh money",
+        "counted": "Industrial automation companies that announced funding in the last six months",
+        "why": "Funded competitors can discount a subscription, and funded partners may need a robot that already works."
+      }
+    ],
+    "counts": [
+      { "label": "All industrial automation", "value": 9480 },
+      { "label": "Hiring surge, 3 months", "value": 1120 },
+      { "label": "New entrants, 2 years", "value": 640 },
+      { "label": "Raised money, 6 months", "value": 310 }
+    ],
+    "headline": "Three things moving in industrial automation this quarter",
+    "dek": "We counted 9,480 industrial automation companies. Three signals describe the field Pinecone sells into and competes in, and what a 140-person robot maker should take from each.",
+    "trends": [
+      {
+        "title": "One automation company in eight is hiring fast",
+        "what": "1,120 of the 9,480 industrial automation companies counted added staff fast in the last three months, about 12 percent of the industry. That is the largest share of the three counts in this brief. A hiring surge usually means an order book that outgrew the team, on the shop floor or in the field.",
+        "means": "Pinecone opened a second assembly line in August, so it knows this pressure from the inside. The other 1,120 are hiring the same controls engineers and field technicians in the same cities. If the second line needs more hands, the window to hire before those firms do is this quarter, not next."
+      },
+      {
+        "title": "New companies keep entering the field",
+        "what": "640 industrial automation companies were founded in the last two years, about 7 percent of the industry. Each one is younger than Pinecone's per-pick subscription model. A steady flow of new entrants changes how warehouse buyers compare vendors and how patient they are on price.",
+        "means": "Some of the 640 will pitch the same mid-size warehouses as Pinecone, with newer demos and no installed base to defend. The per-pick subscription and the field service teams in three states are the things a two-year-old company cannot copy quickly. Those belong at the front of the pitch, not the end."
+      },
+      {
+        "title": "Funding is flowing to a small group of automation firms",
+        "what": "310 of the 9,480 industrial automation companies announced funding in the last six months, about 3 percent of the industry. It is the smallest count in this brief. A funded competitor can underprice a subscription for a year or two, so even 310 names matter when the buyer is the same warehouse operator.",
+        "means": "For Pinecone the 310 are two lists at once. Some are competitors who will discount to win mid-size warehouses while the money lasts. Others are potential partners or acquirers who need a picking robot that already works in the field. Sorting the list by what each company builds is a one-afternoon job worth doing."
+      }
+    ],
+    "so_what": "Act on the hiring count first. 1,120 companies hiring fast is both the tightest labor market for the second assembly line and the clearest sign that automation buyers are spending. The new entrants and the funded group matter for the pitch, not the plan, so review them before the next trade show rather than this week."
+  }
+}

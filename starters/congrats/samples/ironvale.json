@@ -1,0 +1,96 @@
+{
+  "account": {
+    "name": "Ironvale Materials",
+    "domain": "ironvale.example",
+    "industry": "mining and metals",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Ironvale Materials recycles aluminium scrap into alloy ingots for automotive suppliers, from one plant in Ohio with about 140 staff. It buys scrap from more than 200 collectors and sells to a dozen tier-one suppliers.",
+      "why_now": "Closed a Series A in October to build a second line at the Ohio plant.",
+      "angle": null
+    },
+    "signals": [
+      {
+        "type": "funding",
+        "title": "Ironvale Materials raises a Series A to add a second casting line",
+        "date": "2026-10-21",
+        "source_url": "https://metalsweekly.example/2026/10/ironvale-series-a"
+      },
+      {
+        "type": "hiring",
+        "title": "Ironvale Materials is hiring a plant controller",
+        "date": "2026-10-06",
+        "source_url": "https://ironvale.example/careers/plant-controller"
+      },
+      {
+        "type": "partnership",
+        "title": "Ironvale Materials signs a supply agreement with a second tier-one supplier",
+        "date": "2026-08-30",
+        "source_url": "https://ironvale.example/news/supply-agreement"
+      }
+    ]
+  },
+  "person": {
+    "first_name": "Daniel",
+    "last_name": "Okoro",
+    "title": "Chief Financial Officer"
+  },
+  "sender": {
+    "name": "Helena Marsh",
+    "title": "Partner",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Oakhurst Advisory",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1c2b3a",
+      "secondary": "#b5893b"
+    },
+    "fonts": {
+      "heading": "Lora",
+      "body": "Nunito Sans"
+    }
+  },
+  "data": {
+    "signals": [
+      {
+        "type": "funding",
+        "title": "Ironvale Materials raises a Series A to add a second casting line",
+        "date": "2026-10-21",
+        "source_url": "https://metalsweekly.example/2026/10/ironvale-series-a"
+      },
+      {
+        "type": "hiring",
+        "title": "Ironvale Materials is hiring a plant controller",
+        "date": "2026-10-06",
+        "source_url": "https://ironvale.example/careers/plant-controller"
+      },
+      {
+        "type": "partnership",
+        "title": "Ironvale Materials signs a supply agreement with a second tier-one supplier",
+        "date": "2026-08-30",
+        "source_url": "https://ironvale.example/news/supply-agreement"
+      }
+    ],
+    "why_now": "Closed a Series A in October to build a second line at the Ohio plant.",
+    "occasion": {
+      "what": "Ironvale Materials raised a Series A to build a second casting line at its Ohio plant.",
+      "kind": "funding",
+      "date": "2026-10-21",
+      "source_url": "https://metalsweekly.example/2026/10/ironvale-series-a"
+    },
+    "headline": "Congratulations on the Series A, Daniel",
+    "note": [
+      "A second casting line is the kind of thing a recycler cannot do a bit at a time, so a round that pays for it outright is the right shape of money. It also comes a few weeks after the second tier-one agreement, which means the demand for the line is signed before the line exists.",
+      "The part that lands on you is the next twelve months of reporting. Investors who have just paid for a plant want to watch it get built."
+    ],
+    "idea_title": "Set the monthly investor update before the first invoice for the line arrives",
+    "idea": [
+      "Write the one-page update you will send every month, now, while there is nothing to report but the plan. Pick the four or five numbers it will carry: scrap bought, ingots shipped, line spend against budget, and the date the line pours its first metal. Send the first one in November with mostly blanks.",
+      "The finance teams we work with that do this early spend far less time on investor questions in month six, because the board already knows the shape of the story. The plant controller you are hiring can take it over once they start."
+    ],
+    "ask": "If a second pair of eyes on that first update would help, I can read a draft or talk it through in 15 minutes.",
+    "ps": ""
+  }
+}

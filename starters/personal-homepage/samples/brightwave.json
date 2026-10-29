@@ -1,0 +1,159 @@
+{
+  "account": {
+    "name": "Brightwave Logistics",
+    "domain": "brightwave.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Brightwave Logistics is a Midwest freight carrier with about 400 people and seven terminals. It opened a cross-dock in Joliet in September.",
+      "why_now": "Posted four openings for dispatch coordinators, three of them in Joliet.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Leo",
+    "last_name": "Marsh",
+    "title": "VP Operations"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northbeam",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "site": {
+      "url": "https://brightwave.example",
+      "title": "Brightwave Logistics: freight across the Midwest",
+      "description": "Truckload and less-than-truckload freight from seven Midwest terminals."
+    },
+    "careers": {
+      "url": "https://brightwave.example/careers",
+      "title": "Careers at Brightwave",
+      "description": "Four open roles for dispatch coordinators, three in Joliet."
+    },
+    "signals_raw": [
+      {
+        "type": "news",
+        "title": "Brightwave opens Joliet cross-dock and doubles daily throughput",
+        "date": "2026-09-09",
+        "source_url": "https://brightwave.example/news/joliet-cross-dock"
+      }
+    ],
+    "product": "Northbeam gives operations teams one view of every load, exception and handoff across terminals. It shows each load past its ETA window with the reason and the next action, keeps one timeline per load from pickup to proof of delivery, and shows lane volumes, dwell times and dispatcher workload in one view. It reads from the customer's TMS and writes nothing back unless asked. A rollout takes ten weeks: connect in weeks 1 and 2, pilot at one site in weeks 3 to 6, then every site in weeks 7 to 10. Pricing is shared on the call.",
+    "stories": [
+      {
+        "customer": "Lakeshore Freight",
+        "industry": "transportation, logistics, supply chain and storage",
+        "size_band": "201-500",
+        "city": "Milwaukee",
+        "summary": "Lakeshore Freight is a carrier with about 380 people. It started with its main terminal and 14 dispatchers, and ran the exception board there for eight weeks.",
+        "quote": "We stopped hearing about late loads from customers. In eight weeks the Friday call volume fell by almost half, and dispatch stopped working Saturdays.",
+        "quote_author_title": "Director of Operations",
+        "chart_title": "Late-load calls per week at the main terminal",
+        "chart_note": "Eight-week pilot in spring 2026",
+        "chart_points": "Wk 1:142|2:131|3:118|4:104|5:96|6:88|7:81|Wk 8:76"
+      }
+    ],
+    "hero": {
+      "headline": "Fewer surprises between dispatch and delivery.",
+      "sub": "Northbeam gives Brightwave's operations team one view of every load, exception and handoff across your seven terminals, so a problem reaches a dispatcher before it reaches a customer."
+    },
+    "noticed": [
+      {
+        "fact": "Seven Midwest terminals, each listed with its own dispatch desk.",
+        "source": "brightwave.example/locations",
+        "source_url": "https://brightwave.example/locations"
+      },
+      {
+        "fact": "Four open roles for dispatch coordinators, three of them in Joliet.",
+        "source": "brightwave.example/careers, October 2026",
+        "source_url": "https://brightwave.example/careers"
+      },
+      {
+        "fact": "The Joliet cross-dock opened in September and doubled daily throughput.",
+        "source": "Brightwave press note, Sep 9, 2026",
+        "source_url": "https://brightwave.example/news/joliet-cross-dock"
+      }
+    ],
+    "uses_lead": "Picked for a VP Operations running freight across seven terminals, from the site, the careers page and the Joliet news.",
+    "uses": [
+      {
+        "title": "Catch late loads before the customer calls",
+        "today": "With seven terminals and a new cross-dock, a load that slips is often found when the customer calls the desk.",
+        "after": "Every load past its ETA window shows on one board with the reason and the next action, so a dispatcher can act first."
+      },
+      {
+        "title": "One handoff log across seven terminals",
+        "today": "Each terminal runs its own dispatch desk, so a load that crosses terminals depends on calls and notes between them.",
+        "after": "One timeline per load from pickup to proof of delivery, shared by every terminal and the customer service desk."
+      },
+      {
+        "title": "Plan dispatch capacity a quarter out",
+        "today": "Four coordinator roles are open, three of them in Joliet, and headcount follows last month's volume.",
+        "after": "Lane volumes, dwell times and dispatcher workload in one view, so the open roles go where the backlog is."
+      }
+    ],
+    "story": {
+      "headline": "A carrier like Brightwave ran the same pilot in spring",
+      "who": "Lakeshore Freight is a carrier in Milwaukee with about 380 people. It started with its main terminal and 14 dispatchers, and ran the exception board there for eight weeks.",
+      "quote": {
+        "text": "We stopped hearing about late loads from customers. In eight weeks the Friday call volume fell by almost half, and dispatch stopped working Saturdays.",
+        "author_title": "Director of Operations, Lakeshore Freight"
+      },
+      "chart_title": "Late-load calls per week at the main terminal",
+      "chart_note": "Eight-week pilot in spring 2026",
+      "chart": [
+        { "label": "Wk 1", "value": 142 },
+        { "label": "2", "value": 131 },
+        { "label": "3", "value": 118 },
+        { "label": "4", "value": 104 },
+        { "label": "5", "value": 96 },
+        { "label": "6", "value": 88 },
+        { "label": "7", "value": 81 },
+        { "label": "Wk 8", "value": 76 }
+      ]
+    },
+    "rollout_lead": "Ten weeks from the first connection to all seven terminals, with Joliet as the pilot site because that is where the new volume and the open roles are.",
+    "rollout": [
+      {
+        "when": "Weeks 1 and 2",
+        "title": "Connect",
+        "body": "We connect your TMS and the Joliet dispatch board. Your security review runs alongside. Nothing changes for dispatchers yet."
+      },
+      {
+        "when": "Weeks 3 to 6",
+        "title": "Pilot at Joliet",
+        "body": "Joliet's dispatchers run the exception board for 30 days with a weekly check-in. We compare late-load calls against September."
+      },
+      {
+        "when": "Weeks 7 to 10",
+        "title": "All seven terminals",
+        "body": "Two terminals a week, with the Joliet team training the next site. You get the capacity view across all lanes at the end."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Does this replace our TMS?",
+        "a": "No. It reads from it. Dispatchers keep the TMS for planning and use Northbeam for exceptions and handoffs. Nothing is written back unless you ask for it."
+      },
+      {
+        "q": "How long does the first connection take?",
+        "a": "The first two weeks of a rollout are for connecting the TMS and one dispatch board. Dispatchers change nothing in that time."
+      },
+      {
+        "q": "What does the pilot cost?",
+        "a": "We share pricing on the call, so you see the numbers next to the pilot plan."
+      },
+      {
+        "q": "How much time does it take from the dispatch team?",
+        "a": "That depends on the setup, and we go through it on the call. The pilot site's dispatchers are the ones who use the board day to day."
+      }
+    ]
+  }
+}

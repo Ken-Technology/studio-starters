@@ -1,0 +1,158 @@
+{
+  "account": {
+    "name": "Marlow Home",
+    "domain": "marlowhome.example",
+    "industry": "retail",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Marlow Home sells furniture and lighting online and through three showrooms, about 140 people. Large items ship with two carriers. Its help center shows the returns window and the refund time on one page: returns are accepted for 60 days and refunds take up to 14 days. Its returns page offers carrier pickup booked online, and the showrooms accept returns of online orders.",
+      "why_now": "Extended the holiday returns window to 90 days last week and is hiring a seasonal customer care team.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Theo Marchetti",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Loopback",
+    "logo_url": null,
+    "colors": {
+      "primary": "#ff4f1f",
+      "secondary": "#111111"
+    },
+    "fonts": {
+      "heading": "Outfit",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "topic": "Peak season returns",
+    "checklist": [
+      {
+        "label": "A returns policy customers find in ten seconds",
+        "detail": "The window, the refund time and who pays for shipping are on one page, linked from the order confirmation and the footer.",
+        "first_step": "Open your site on a phone and time how long it takes to find the refund time. Over ten seconds means a support ticket."
+      },
+      {
+        "label": "The holiday window set before the peak starts",
+        "detail": "The extended window is decided, published and loaded into the support macros before the first holiday order ships.",
+        "first_step": "Put the date the window changes back in the calendar now, with a reminder two weeks before it."
+      },
+      {
+        "label": "One place where every return starts",
+        "detail": "Mail, showroom and carrier pickup returns all begin in the same portal, so every return has a number from the first minute.",
+        "first_step": "Count how many lists a return can live on today. More than one means someone reconciles them by hand in January."
+      },
+      {
+        "label": "Carrier pickup booked from the return itself",
+        "detail": "For large items, the customer books the pickup while starting the return, and the carrier gets the slot without an email from your team.",
+        "first_step": "Start a return for a sofa as a customer and count the emails it takes to get a pickup date."
+      },
+      {
+        "label": "Showrooms that take online orders back",
+        "detail": "Showroom staff can look up an online order, accept the return and trigger the refund without calling head office.",
+        "first_step": "Ask a showroom manager what they do when a customer walks in with an online order. Write down the steps."
+      },
+      {
+        "label": "A refund time you commit to and can measure",
+        "detail": "The promised refund time is public, and someone can see this week's actual time from return received to money sent.",
+        "first_step": "Pull last January's refunds and measure the time from received to refunded. That is your real number."
+      },
+      {
+        "label": "Seasonal staff trained on the top return reasons",
+        "detail": "Temporary agents know the five most common return reasons and the answer for each before their first shift.",
+        "first_step": "Pull last year's return reasons, keep the top five, and write one paragraph of guidance for each."
+      },
+      {
+        "label": "A daily view of returns in transit and their value",
+        "detail": "Someone sees every morning how many returns are on the way, what they are worth and which are late.",
+        "first_step": "Build the view from carrier tracking and your order list, even in a spreadsheet, and look at it every day of December."
+      },
+      {
+        "label": "Rules for opened and damaged items",
+        "detail": "Staff know what to do with an opened lamp or a scratched table before it arrives: restock, discount, repair or dispose.",
+        "first_step": "Write the rule for the three items you take back most often. Add the rest as they come up."
+      },
+      {
+        "label": "Return reasons captured in a fixed list",
+        "detail": "Every return records a reason from a short fixed list, so January's numbers say what to change for next year.",
+        "first_step": "Replace the free text reason box with eight options and an other field."
+      }
+    ],
+    "items": [
+      {
+        "label": "A returns policy customers find in ten seconds",
+        "detail": "The window, the refund time and who pays for shipping are on one page, linked from the order confirmation and the footer.",
+        "first_step": "Open your site on a phone and time how long it takes to find the refund time. Over ten seconds means a support ticket.",
+        "done": true,
+        "note": "Seen: your help center shows the window and the refund time on one page."
+      },
+      {
+        "label": "The holiday window set before the peak starts",
+        "detail": "The extended window is decided, published and loaded into the support macros before the first holiday order ships.",
+        "first_step": "Put the date the window changes back in the calendar now, with a reminder two weeks before it.",
+        "done": true,
+        "note": "Seen: the window was extended to 90 days last week."
+      },
+      {
+        "label": "One place where every return starts",
+        "detail": "Mail, showroom and carrier pickup returns all begin in the same portal, so every return has a number from the first minute.",
+        "first_step": "Count how many lists a return can live on today. More than one means someone reconciles them by hand in January.",
+        "done": false,
+        "note": "Seen: returns start by mail, by carrier pickup and in three showrooms."
+      },
+      {
+        "label": "Carrier pickup booked from the return itself",
+        "detail": "For large items, the customer books the pickup while starting the return, and the carrier gets the slot without an email from your team.",
+        "first_step": "Start a return for a sofa as a customer and count the emails it takes to get a pickup date.",
+        "done": true,
+        "note": "Seen: your returns page offers carrier pickup booked online."
+      },
+      {
+        "label": "Showrooms that take online orders back",
+        "detail": "Showroom staff can look up an online order, accept the return and trigger the refund without calling head office.",
+        "first_step": "Ask a showroom manager what they do when a customer walks in with an online order. Write down the steps.",
+        "done": true,
+        "note": "Seen: the showrooms accept returns of online orders."
+      },
+      {
+        "label": "A refund time you commit to and can measure",
+        "detail": "The promised refund time is public, and someone can see this week's actual time from return received to money sent.",
+        "first_step": "Pull last January's refunds and measure the time from received to refunded. That is your real number.",
+        "done": true,
+        "note": "Seen: your help center promises refunds within 14 days."
+      },
+      {
+        "label": "Seasonal staff trained on the top return reasons",
+        "detail": "Temporary agents know the five most common return reasons and the answer for each before their first shift.",
+        "first_step": "Pull last year's return reasons, keep the top five, and write one paragraph of guidance for each.",
+        "done": false,
+        "note": "Seen: you are hiring a seasonal customer care team."
+      },
+      {
+        "label": "A daily view of returns in transit and their value",
+        "detail": "Someone sees every morning how many returns are on the way, what they are worth and which are late.",
+        "first_step": "Build the view from carrier tracking and your order list, even in a spreadsheet, and look at it every day of December.",
+        "done": false
+      },
+      {
+        "label": "Rules for opened and damaged items",
+        "detail": "Staff know what to do with an opened lamp or a scratched table before it arrives: restock, discount, repair or dispose.",
+        "first_step": "Write the rule for the three items you take back most often. Add the rest as they come up.",
+        "done": false
+      },
+      {
+        "label": "Return reasons captured in a fixed list",
+        "detail": "Every return records a reason from a short fixed list, so January's numbers say what to change for next year.",
+        "first_step": "Replace the free text reason box with eight options and an other field.",
+        "done": false
+      }
+    ],
+    "headline": "Where Marlow Home stands before the holiday returns rush",
+    "intro": "A 90 day holiday window means January returns land on the seasonal team you are hiring now. This list is the ten things that decide whether that month runs smoothly. We ticked five from your help center and returns page. Tick the rest as they stand today, and pass the link to whoever owns returns.",
+    "closing": "If you want to go through the gaps with someone who has run a few peak seasons, book 20 minutes and we will start with where returns begin. No slides."
+  }
+}

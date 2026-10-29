@@ -1,0 +1,199 @@
+{
+  "kenStudio": "1",
+  "name": "How do you compare",
+  "type": "calculator",
+  "format": "page",
+  "slug": "how-you-compare",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "topic": {
+        "type": "string",
+        "maxLength": 40,
+        "fallback": "field work"
+      },
+      "questions": {
+        "type": "array",
+        "minItems": 5,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "key": { "type": "string", "maxLength": 24 },
+            "label": { "type": "string", "maxLength": 28 },
+            "text": { "type": "string", "maxLength": 140 },
+            "options": {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": { "type": "string", "maxLength": 48 }
+            }
+          },
+          "required": ["key", "label", "text", "options"]
+        },
+        "fallback": [
+          {
+            "key": "dispatch",
+            "label": "Daily dispatch",
+            "text": "How do technicians get their jobs each morning?",
+            "options": [
+              "Printed sheets or a phone call",
+              "A message or a shared spreadsheet",
+              "A scheduling app, set the day before",
+              "Live dispatch that changes during the day"
+            ]
+          },
+          {
+            "key": "jobs",
+            "label": "Jobs per day",
+            "text": "How many jobs does a technician finish on a typical day?",
+            "options": [
+              "Fewer than 4",
+              "4 or 5",
+              "6 to 8",
+              "9 or more"
+            ]
+          },
+          {
+            "key": "invoice",
+            "label": "Time to invoice",
+            "text": "How long after a job is done does the invoice go out?",
+            "options": [
+              "More than a week",
+              "Two to seven days",
+              "The next day",
+              "The same day"
+            ]
+          },
+          {
+            "key": "fix",
+            "label": "First-time fix",
+            "text": "How often is a job finished on the first visit?",
+            "options": [
+              "Under 60% of jobs",
+              "60 to 74% of jobs",
+              "75 to 89% of jobs",
+              "90% of jobs or more"
+            ]
+          },
+          {
+            "key": "updates",
+            "label": "Customer updates",
+            "text": "How do customers hear that a technician is on the way?",
+            "options": [
+              "They call the office to ask",
+              "The office calls or texts by hand",
+              "An automatic text on the morning of the job",
+              "A live link with the technician's arrival time"
+            ]
+          }
+        ]
+      },
+      "peers": {
+        "type": "array",
+        "maxItems": 10,
+        "items": {
+          "type": "object",
+          "properties": {
+            "industry": { "type": "string", "maxLength": 120 },
+            "question": { "type": "string", "maxLength": 24 },
+            "n_1": { "type": "integer" },
+            "n_2": { "type": "integer" },
+            "n_3": { "type": "integer" },
+            "n_4": { "type": "integer" },
+            "source": { "type": "string", "maxLength": 120 }
+          },
+          "required": ["question", "n_1", "n_2", "n_3", "n_4"]
+        }
+      },
+      "intro": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 220,
+        "fallback": "Five quick questions, about two minutes, and {{ account.name }} sees where it stands next to companies like it."
+      },
+      "lines": {
+        "type": "array",
+        "minItems": 5,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "key": { "type": "string", "maxLength": 24 },
+            "ahead": { "type": "string", "minLength": 30, "maxLength": 160 },
+            "level": { "type": "string", "minLength": 30, "maxLength": 160 },
+            "behind": { "type": "string", "minLength": 30, "maxLength": 160 }
+          },
+          "required": ["key", "ahead", "level", "behind"]
+        }
+      }
+    },
+    "required": ["questions", "intro"]
+  },
+  "recipe": [
+    {
+      "id": "peers",
+      "kind": "dataset",
+      "dataset": "peer-answers",
+      "where": [{ "column": "industry", "op": "eq", "value": "account.industry" }],
+      "limit": 10,
+      "to": "data.peers"
+    },
+    {
+      "id": "intro",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.industry", "account.size_band", "account.dossier.summary", "account.dossier.why_now", "person.first_name", "brand.name", "defaults.questions"],
+      "to": "data.intro",
+      "prompt": "You are writing one sentence for the top of a short benchmark page that {{ sender.name | default: 'the sender' }} at {{ brand.name | default: 'our company' }} sends to {{ person.first_name | default: 'a reader' }} at {{ account.name }}. The page asks five questions about how {{ account.name }} runs its {{ defaults.topic | default: 'work' }}, then shows how companies in {{ account.industry | default: 'its industry' }} answered the same questions.\n\nThe five questions are defaults.questions, each with key, label, text and four options.\n\nWhat we know about {{ account.name }}: {{ account.dossier.summary | default: 'nothing beyond its name and industry' }}. Why now: {{ account.dossier.why_now | default: 'nothing known' }}. Industry: {{ account.industry | default: 'unknown' }}. Size: {{ account.size_band | default: 'unknown' }} employees.\n\nWrite one sentence, 60 to 220 characters, that says why these five questions are worth two minutes for {{ account.name }} right now. Build it on one fact from what we know. If we know nothing beyond the name and industry, write a plain sentence about what the five questions tend to decide for a company in that industry, with no claims about {{ account.name }}.\n\nFacts: use only the inputs above. Never add a number, a customer, a product name or a result that is not in them. Do not promise outcomes.\n\nVoice: one person writing to one person. Plain words, said out loud. No flattery, no hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, transform, game changer). No em dashes or en dashes. No exclamation marks. No email addresses or phone numbers."
+    },
+    {
+      "id": "lines",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.peers"],
+      "inputs": ["account.name", "account.industry", "account.size_band", "brand.name", "data.peers", "defaults.questions"],
+      "to": "data.lines",
+      "prompt": "You are writing the comparison lines for a five-question benchmark page that {{ sender.name | default: 'the sender' }} at {{ brand.name | default: 'our company' }} sends to {{ account.name }}, a company in {{ account.industry | default: 'its industry' }} with {{ account.size_band | default: 'an unknown number of' }} employees. The reader answers five questions about how they run their {{ defaults.topic | default: 'work' }}, then sees how {{ account.industry | default: 'their' }} peers answered each one. Next to each question the page prints one of three lines, chosen by where the reader's answer sits against the median peer.\n\nInputs. defaults.questions is the five questions, each with key, label, text and four options ordered from the weakest answer to the strongest. The peer answers, one row per question key, with n_1 to n_4 the number of peers who picked each option in the same order: {{ data.peers | json }}. Nothing else.\n\nReturn JSON with one key, lines: an array of exactly five objects, one per question in the same order, each {key, ahead, level, behind}. key is copied from the question. Each line is one sentence of 30 to 160 characters:\n- ahead: shown when the reader picked a stronger option than the median peer. Say what being ahead on this question usually means day to day for a company like {{ account.name }}, and the one thing that keeps that lead.\n- level: shown when the reader's option is the median peer's option. Say what most {{ account.industry | default: 'peer' }} companies do here and what the usual next step up looks like.\n- behind: shown when the reader picked a weaker option than the median peer. Say plainly what closing this gap usually involves, without blame and without alarm.\n\nFacts: write no numbers at all; the page prints the peer numbers next to each line. Never name a customer, a tool or a result. Never claim what {{ account.name }} does or does not do; you only know how its industry answered.\n\nVoice: one person telling a peer what they have seen. Plain, specific, short. Sentence case. No hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, transform, game changer). Never \"real\" as emphasis. No em dashes or en dashes. No exclamation marks. No email addresses or phone numbers."
+    },
+    {
+      "id": "grade_intro",
+      "kind": "grade",
+      "on": ["data.intro"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["unlock", "leverage", "seamless", "robust", "crucial", "elevate", "delve", "transform", "game changer", "revolutionize", "supercharge", "cutting edge", "world class", "best in class", "I noticed", "I saw", "I came across"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true
+      },
+      "rubric": "Grade the intro sentence the way its reader would, 0 to 10 each:\n- specific: it rests on one fact about the account or its industry from the inputs, not a generic opener.\n- plain: short words a person would say out loud, one sentence, no jargon.\n- honest: no number, name or result that is not in the inputs, and no promise of an outcome.\n- warm: it speaks to the reader without flattery.\nFail any sentence that invents a fact, flatters, or runs over 220 characters."
+    },
+    {
+      "id": "grade_lines",
+      "kind": "grade",
+      "requires": ["data.lines"],
+      "on": ["data.lines"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["unlock", "leverage", "seamless", "robust", "crucial", "elevate", "delve", "transform", "game changer", "revolutionize", "supercharge", "cutting edge", "world class", "best in class"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true,
+        "skip": ["key"]
+      },
+      "rubric": "Grade the fifteen comparison lines the way a reader scanning their result would, 0 to 10 each:\n- specific: each line is about its own question (what it measures and what the gap means in practice), not a line that could sit under any question.\n- plain: one short sentence a person would say out loud.\n- honest: no numbers, no customers, no tools, no results claimed, no statement about what the account does.\n- fair: behind lines describe the usual next step without blame or alarm, and ahead lines do not flatter.\nFail any line under 30 or over 160 characters, any line with a number, and any set where two lines for the same question say the same thing."
+    }
+  ],
+  "sections": [
+    { "id": "intro", "label": "Intro" },
+    { "id": "questions", "label": "Five questions" },
+    { "id": "result", "label": "Where you stand" },
+    { "id": "cta", "label": "Book a call" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

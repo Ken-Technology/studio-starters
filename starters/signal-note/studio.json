@@ -1,0 +1,232 @@
+{
+  "kenStudio": "1",
+  "name": "Three things we noticed",
+  "type": "other",
+  "format": "page",
+  "slug": "signal-note",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "raw_signals": {
+        "type": "array",
+        "maxItems": 10,
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 300
+            },
+            "date": {
+              "type": "string",
+              "maxLength": 10
+            },
+            "source_url": {
+              "type": "string",
+              "format": "uri",
+              "maxLength": 300
+            }
+          }
+        }
+      },
+      "careers": {
+        "type": "string",
+        "maxLength": 6000
+      },
+      "signals": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "maxLength": 24
+            },
+            "headline": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 90
+            },
+            "fact": {
+              "type": "string",
+              "minLength": 20,
+              "maxLength": 380
+            },
+            "means": {
+              "type": "string",
+              "minLength": 20,
+              "maxLength": 400
+            },
+            "idea": {
+              "type": "string",
+              "minLength": 20,
+              "maxLength": 300
+            },
+            "seen_on": {
+              "type": "string",
+              "maxLength": 10
+            },
+            "source_label": {
+              "type": "string",
+              "maxLength": 140
+            },
+            "source_url": {
+              "type": "string",
+              "format": "uri",
+              "maxLength": 300
+            }
+          },
+          "required": [
+            "kind",
+            "headline",
+            "fact",
+            "means",
+            "idea",
+            "source_label"
+          ]
+        }
+      },
+      "note": {
+        "type": "string",
+        "minLength": 80,
+        "maxLength": 560
+      }
+    },
+    "required": [
+      "signals",
+      "note"
+    ]
+  },
+  "recipe": [
+    {
+      "id": "raw_signals",
+      "kind": "bind",
+      "from": "account.signals",
+      "to": "data.raw_signals"
+    },
+    {
+      "id": "careers",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": {
+        "url": "https://{{ account.domain }}/careers",
+        "maxChars": 6000,
+        "mode": "markdown"
+      },
+      "to": "data.careers"
+    },
+    {
+      "id": "signals",
+      "kind": "prompt",
+      "model": "good",
+      "inputs": [
+        "account.name",
+        "account.domain",
+        "account.industry",
+        "account.size_band",
+        "account.dossier.summary",
+        "account.dossier.why_now",
+        "person.first_name",
+        "person.title",
+        "sender.name",
+        "brand.name",
+        "data.raw_signals",
+        "data.careers"
+      ],
+      "to": [
+        "data.signals"
+      ],
+      "prompt": "You are writing the observations in a short letter from {{ sender.name | default: 'the sender' }} at {{ brand.name | default: 'our company' }} about {{ account.name }} ({{ account.domain }}). The letter lists what changed at {{ account.name }} recently, what that usually means for a company like it, and one idea for each.\n\nInputs:\n- data.raw_signals: news on {{ account.name }} from public sources, a list of {type, title, date, source_url}, newest first. It may be empty.\n- data.careers: the text of {{ account.domain }}/careers. It may be empty.\n- account.dossier.summary and account.dossier.why_now: research notes on {{ account.name }}. They may be empty.\n- account.industry: {{ account.industry | default: 'unknown' }}. account.size_band: {{ account.size_band | default: 'unknown' }}.\n- person.first_name: {{ person.first_name | default: 'none' }}. person.title: {{ person.title | default: 'none' }}.\nUse these inputs only.\n\nStep 1, choose. Pick the one to three strongest items in data.raw_signals: the ones a person at {{ account.name }} would care about most (a new leader, a funding round or a hiring push beats a small mention), never two about the same event. Use data.careers only to add detail to a hiring signal, or, when data.raw_signals has no hiring signal and the careers page lists open roles, as one more observation. If data.raw_signals is empty, write one observation from account.dossier.why_now alone. If every input is empty, return {} and nothing else.\n\nStep 2, return JSON with one key, signals: a list of 1 to 3 items, newest first. Each item has:\n- kind: the signal's type copied, lowercase. Use hiring for a careers observation and note for one from why_now.\n- headline: at most 90 characters. One plain sentence on what happened, with no question.\n- fact: 1 or 2 sentences, at most 380 characters, on what the source says: who, what and when. Use only the signal's title and date, the careers text or the dossier. Add no number, place, name or detail that is not in the inputs. When the source is only a title, say only what the title says.\n- means: 1 to 3 sentences, at most 400 characters, on what this usually means for a company like {{ account.name }}. Describe the common pattern and hedge it with \"usually\" or \"often\". It is a general pattern, not a claim about {{ account.name }}. No statistics and no figures.\n- idea: 1 or 2 sentences, at most 300 characters. One concrete thing a team could do in about a month because of this. Start with a verb. Do not pitch a product or a service.\n- seen_on: the signal's date copied as YYYY-MM-DD. Leave the key out for a why_now or careers observation.\n- source_label: at most 140 characters. The signal's title copied, or \"{{ account.domain }}/careers\" for a careers observation, or \"Account research notes\" for why_now.\n- source_url: the signal's source_url copied exactly, or \"https://{{ account.domain }}/careers\" for a careers observation. Leave the key out for why_now.\n\nFacts: never invent customers, people, numbers, news, quotes or tools. Write about {{ account.name }} by name. Use \"you\" only when person.first_name is not none and the signal is about that person's own role.\n\nVoice: one person writing to a peer. Plain words, short sentences, sentence case. No flattery (impressive, great, exciting), no \"I noticed\", \"I saw\" or \"I came across\", no questions.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. No hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, transform, game changer, cutting-edge). Never \"real\" as emphasis."
+    },
+    {
+      "id": "note",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": [
+        "data.signals"
+      ],
+      "inputs": [
+        "account.name",
+        "sender.name",
+        "brand.name",
+        "data.signals"
+      ],
+      "to": [
+        "data.note"
+      ],
+      "prompt": "Write the short personal note that closes a letter from {{ sender.name | default: 'the sender' }} at {{ brand.name | default: 'our company' }} to a person at {{ account.name }}. The letter has just listed the observations in data.signals, each with a headline, a fact, what it usually means and one idea.\n\nReturn JSON with one key, note: 2 to 4 sentences, 80 to 560 characters, in the first person as the sender.\n- Sentence 1: what the observations have in common, using only what data.signals says. If there is just one observation, say why it is worth a look now.\n- Then say plainly that nothing in the letter needs an answer.\n- Close with one sentence asking them to reply if it is useful, and offering to stop writing if it is not. Never promise another letter or a date for one.\n\nFacts: use only data.signals. Never mention other customers, results, numbers or products. Do not name the reader; the page adds the greeting. Do not sign the note; the page adds the name.\n\nVoice: one person writing to a peer. Plain, warm, short sentences. No flattery, no \"I noticed\", \"I saw\" or \"I came across\", no questions.\n\nRules: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. No hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, transform, game changer, cutting-edge). Never \"real\" as emphasis."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": [
+        "data.signals",
+        "data.note"
+      ],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": [
+          "I noticed",
+          "I saw",
+          "I came across",
+          "caught my attention",
+          "impressive",
+          "congratulations",
+          "exciting",
+          "reach out",
+          "touch base",
+          "circle back"
+        ],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true,
+        "no_signoff": true,
+        "skip": [
+          "kind",
+          "seen_on",
+          "source_label",
+          "source_url"
+        ]
+      },
+      "rubric": "Grade the letter the way its reader would. 10 is a letter a busy person reads in one pass and trusts.\nScore these, 0 to 10 each:\n- sourced: every fact in data.signals traces to the matching entry in data.raw_signals, the careers text or the dossier. A number, name, place or date that none of them holds scores 0.\n- no_flattery: nothing praises the company or the reader, and nothing sounds like a sales opener.\n- means_is_general: \"what it usually means\" reads as a common pattern, hedged, with no statistic and no claim about the account that the inputs do not support.\n- idea_is_concrete: each idea is one specific thing a team could start this month, and none pitches a product.\n- note: the note says only what data.signals says, never claims results or customers, promises no further letter, and offers to stop.\nAnswer yes or no:\n- weird_word: is there a phrase a person would not say out loud (jargon, marketing adjectives, stacked nouns)? Quote it.\nAutomatic fail: an em dash or en dash, an exclamation mark, an email address or phone number, or a fact that the inputs do not hold."
+    }
+  ],
+  "sections": [
+    {
+      "id": "head",
+      "label": "Title"
+    },
+    {
+      "id": "opening",
+      "label": "Opening"
+    },
+    {
+      "id": "signals",
+      "label": "Three signals"
+    },
+    {
+      "id": "note",
+      "label": "Personal note"
+    },
+    {
+      "id": "cta",
+      "label": "Book or reply"
+    },
+    {
+      "id": "sources",
+      "label": "Sources"
+    }
+  ],
+  "cta": {
+    "primary": "booking",
+    "label": "Pick a time"
+  }
+}

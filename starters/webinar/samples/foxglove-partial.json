@@ -1,0 +1,52 @@
+{
+  "account": {
+    "name": "Foxglove Dental Partners",
+    "domain": "foxglove-dental.example",
+    "industry": "dental practice management",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Foxglove Dental Partners runs nine dental practices in the Pacific Northwest. Each practice hires its own hygienists and front-desk staff.",
+      "why_now": null
+    }
+  },
+  "person": { "first_name": "Rosa", "last_name": "Delgado", "title": "Practice Operations Director" },
+  "sender": { "name": "Sam Ortega", "title": null, "signature_html": null },
+  "brand": {
+    "name": "Halcyon",
+    "logo_url": null,
+    "colors": { "primary": "#0f766e", "secondary": "#1f2a24" },
+    "fonts": { "heading": "Fraunces", "body": "Source Sans 3" }
+  },
+  "data": {
+    "kicker": "Live session, 45 minutes",
+    "title": "Staffing a practice group without agencies",
+    "subtitle": "How multi-site healthcare groups fill hygienist and front-desk roles without paying agency fees. Two talks, then your questions.",
+    "date_text": "Wednesday, February 10, 2027",
+    "where_text": "Online. The link comes by email once you register.",
+    "zones": [
+      { "city": "Chicago", "time": "12:00 pm" },
+      { "city": "New York", "time": "1:00 pm" },
+      { "city": "Los Angeles", "time": "10:00 am" },
+      { "city": "London", "time": "6:00 pm" }
+    ],
+    "calendar_url": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Staffing+a+practice+group+without+agencies+(live+session)&dates=20270210T180000Z/20270210T184500Z",
+    "recording_note": "Cannot make it live? Register anyway. Everyone who registers gets the recording and the slides the next morning.",
+    "speakers": [
+      { "name": "Marguerite Voss", "role": "Operations Director, Linden Eye Care", "line": "Opened five locations in three years with one shared hiring bench." },
+      { "name": "Sam Ortega", "role": "Head of Talent, Halcyon", "line": "Hosts and reads out your questions." }
+    ],
+    "agenda": [
+      { "time": "12:00", "minutes": 5, "title": "Who is on the call", "note": "A quick round of the groups in the room, by number of locations.", "speaker": "Sam Ortega" },
+      { "time": "12:05", "minutes": 25, "title": "One hiring bench for five locations", "note": "How Linden shares hygienists and front-desk staff across sites, and how it fills a gap in a week.", "speaker": "Marguerite Voss" },
+      { "time": "12:30", "minutes": 15, "title": "Your questions", "note": "Send them in with your registration or ask live. Questions about your own locations are welcome.", "speaker": "Both speakers" },
+      { "time": "12:45", "title": "Close", "note": "The recording and the slides are in your inbox the next morning." }
+    ],
+    "register_note": "Register once. The recording and the slides come by email the day after, whether or not you join live.",
+    "why_you": "This session was planned with practice groups like Foxglove in mind: nine locations that each hire their own hygienists and front-desk staff. The main talk covers how another group shares one hiring bench across its sites.",
+    "takeaways": [
+      { "lead": "How a shared hiring bench works", "detail": "across locations, which Foxglove could try with two of its nine practices first." },
+      { "lead": "How to fill a gap in a week", "detail": "at one practice without calling an agency." },
+      { "lead": "What to ask before sharing staff", "detail": "between locations, so each practice keeps its own patients and schedule." }
+    ]
+  }
+}

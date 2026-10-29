@@ -123,6 +123,93 @@
       ]
     },
     {
+      "slug": "award-list",
+      "name": "Top 25 list",
+      "type": "report",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "tool",
+        "prompt",
+        "grade",
+        "ken_search.count",
+        "ken_search.companies",
+        "ken/chart",
+        "ken/cta"
+      ],
+      "description": "A ranked list of companies in the account's market that are adding people, with the account placed on it and a note on how the list was made.",
+      "category": "prospecting",
+      "tags": [
+        "top 25",
+        "ranked list",
+        "hiring signals",
+        "market",
+        "growth"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "tollgate",
+          "label": "Tollgate Logistics"
+        },
+        {
+          "id": "alder-health-shared",
+          "label": "Shared link (no person): Alder Health Partners"
+        },
+        {
+          "id": "pixelforge",
+          "label": "Pixelforge Studios"
+        },
+        {
+          "id": "marrow-partial",
+          "label": "Marrow Build Co"
+        }
+      ]
+    },
+    {
+      "slug": "benchmark-quiz",
+      "name": "How do you compare",
+      "type": "calculator",
+      "format": "page",
+      "showcases": [
+        "dataset",
+        "prompt",
+        "grade",
+        "ken/cta"
+      ],
+      "description": "Five quick questions, then where the account stands against peers in its industry. Ken fills the peer answers from your CSV and one line on each gap.",
+      "category": "interactive",
+      "tags": [
+        "benchmark",
+        "quiz",
+        "peers",
+        "self-assessment"
+      ],
+      "featured": false,
+      "needs": [
+        "dataset"
+      ],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "alder-ridge",
+          "label": "Alder Ridge Mechanical"
+        },
+        {
+          "id": "meridian-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "larkmoor",
+          "label": "Larkmoor Utility Partners"
+        }
+      ]
+    },
+    {
       "slug": "checklist-doc",
       "name": "Printable checklist",
       "type": "other",
@@ -208,6 +295,137 @@
       ]
     },
     {
+      "slug": "competitor-map",
+      "name": "Competitive map",
+      "type": "report",
+      "format": "page",
+      "showcases": [
+        "tool",
+        "prompt",
+        "grade",
+        "ken_search.count",
+        "ken_search.companies",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "The account's market on a 2x2: about six competitors from Ken Search, one line on how each one sells, and the open space the account could own.",
+      "category": "prospecting",
+      "tags": [
+        "competitors",
+        "positioning",
+        "market map",
+        "2x2"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "marrow",
+          "label": "Marrow Analytics"
+        },
+        {
+          "id": "corbel-shared",
+          "label": "Corbel Building Supply, shared link (no person)"
+        },
+        {
+          "id": "tessellate",
+          "label": "Tessellate Payroll"
+        },
+        {
+          "id": "ridgeline-partial",
+          "label": "Ridgeline Field Services, partial fill"
+        }
+      ]
+    },
+    {
+      "slug": "conference-meetup",
+      "name": "See you at the conference",
+      "type": "event",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/booking"
+      ],
+      "description": "Meet an account at a conference you both attend: your booth, hours and side events stay fixed, and Ken writes the one personal line for each account.",
+      "category": "events",
+      "tags": [
+        "conference",
+        "trade show",
+        "booth",
+        "events",
+        "meeting"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.2",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "kessler-foods",
+          "label": "Kessler Foods"
+        },
+        {
+          "id": "cedarpoint-credit-union",
+          "label": "Cedarpoint Credit Union"
+        },
+        {
+          "id": "tidewater-clinics-shared",
+          "label": "Tidewater Clinics, Shared link (no person)"
+        },
+        {
+          "id": "norwood-partial",
+          "label": "Norwood Equipment Rental, partial fill"
+        }
+      ]
+    },
+    {
+      "slug": "congrats",
+      "name": "Congratulations note",
+      "type": "other",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/cta"
+      ],
+      "description": "A short note congratulating an account on a new role, a funding round or a launch, with one idea for the next 90 days. Ken picks the occasion from their news.",
+      "category": "prospecting",
+      "tags": [
+        "congratulations",
+        "signals",
+        "new role",
+        "funding",
+        "launch"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "larkspur",
+          "label": "Larkspur Health"
+        },
+        {
+          "id": "ironvale",
+          "label": "Ironvale Materials"
+        },
+        {
+          "id": "quillbridge-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "copperfield",
+          "label": "Copperfield Dental Group"
+        }
+      ]
+    },
+    {
       "slug": "deal-room",
       "name": "Deal room",
       "type": "landing_page",
@@ -248,6 +466,177 @@
         {
           "id": "larkspur-empty",
           "label": "Larkspur Tooling, no deal notes yet"
+        }
+      ]
+    },
+    {
+      "slug": "event-recap",
+      "name": "Sorry we missed you",
+      "type": "event",
+      "format": "page",
+      "showcases": [
+        "prompt",
+        "grade",
+        "ken/cta"
+      ],
+      "description": "A follow-up page for people who missed a webinar: the recording in chapters, three takeaways for their role, slides and booking. Ken fills the role fit.",
+      "category": "events",
+      "tags": [
+        "webinar",
+        "recording",
+        "follow-up",
+        "missed event"
+      ],
+      "featured": false,
+      "needs": [
+        "video"
+      ],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics"
+        },
+        {
+          "id": "ridgeview",
+          "label": "Ridgeview Dental Group"
+        },
+        {
+          "id": "tallgrass-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "marlowe-no-video",
+          "label": "Marlowe and Pike Accounting"
+        }
+      ]
+    },
+    {
+      "slug": "exec-dinner",
+      "name": "Executive dinner",
+      "type": "event",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/form"
+      ],
+      "description": "A personal invitation to a private dinner: the table plan with the guest's seat marked, the evening, an RSVP and an add-to-calendar link. Ken writes the personal line.",
+      "category": "events",
+      "tags": [
+        "dinner",
+        "invitation",
+        "executive",
+        "event",
+        "rsvp"
+      ],
+      "featured": true,
+      "needs": [],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics"
+        },
+        {
+          "id": "kestrel-dental",
+          "label": "Kestrel Dental Group"
+        },
+        {
+          "id": "ledgerwood-shared",
+          "label": "Ledgerwood Software, shared link (no person)"
+        },
+        {
+          "id": "marlowe-partial",
+          "label": "Marlowe Biologics"
+        }
+      ]
+    },
+    {
+      "slug": "industry-guide",
+      "name": "Industry playbook",
+      "type": "other",
+      "format": "doc",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/cta",
+        "doc"
+      ],
+      "description": "A short guide to the account's industry and the reader's role: five moves, each with an example and a first step. Ken writes the moves from the sender's offer.",
+      "category": "content",
+      "tags": [
+        "industry",
+        "playbook",
+        "guide",
+        "pdf",
+        "content"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "juniper-dental",
+          "label": "Juniper Dental Group"
+        },
+        {
+          "id": "orwell-build",
+          "label": "Orwell Build, shared link (no person)"
+        },
+        {
+          "id": "fernlake",
+          "label": "Fernlake Outdoor"
+        }
+      ]
+    },
+    {
+      "slug": "market-report",
+      "name": "Market opportunity report",
+      "type": "report",
+      "format": "doc",
+      "showcases": [
+        "prompt",
+        "tool",
+        "grade",
+        "ken_search.count",
+        "ken/cta",
+        "doc"
+      ],
+      "description": "A printable market report on one account's segment: company counts by segment and region, buyer roles, growth signals and three plays, all counted in Ken Search.",
+      "category": "prospecting",
+      "tags": [
+        "market report",
+        "market size",
+        "ken search",
+        "buyer roles",
+        "signals"
+      ],
+      "featured": true,
+      "needs": [],
+      "version": "1.0.3",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics, filled for one person"
+        },
+        {
+          "id": "meridian-dental",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "lumen-payroll",
+          "label": "Lumen Payroll, filled for one person"
+        },
+        {
+          "id": "kestrel-solar",
+          "label": "Kestrel Solar, partial fill"
         }
       ]
     },
@@ -433,6 +822,87 @@
       ]
     },
     {
+      "slug": "personal-homepage",
+      "name": "Your homepage, for them",
+      "type": "landing_page",
+      "format": "page",
+      "showcases": [
+        "tool",
+        "bind",
+        "prompt",
+        "dataset",
+        "grade",
+        "scrape.page",
+        "ken/cta",
+        "ken/booking"
+      ],
+      "description": "The sender's homepage rewritten for one account: facts from their site, use cases for their role, a customer story, a rollout and a booking block.",
+      "category": "prospecting",
+      "tags": [
+        "homepage",
+        "landing page",
+        "account-based",
+        "personalized"
+      ],
+      "featured": true,
+      "needs": [],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics"
+        },
+        {
+          "id": "cedar-hollow-shared",
+          "label": "Cedar Hollow Veterinary, shared link (no person)"
+        },
+        {
+          "id": "marlow-packaging",
+          "label": "Marlow Packaging"
+        }
+      ]
+    },
+    {
+      "slug": "podcast-invite",
+      "name": "Be our guest",
+      "type": "event",
+      "format": "page",
+      "showcases": [
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "A guest invitation for your podcast or interview series. Ken reads the account's site and writes the angle and three questions for each guest.",
+      "category": "events",
+      "tags": [
+        "podcast",
+        "interview",
+        "guest",
+        "invitation"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "alder-mechanical",
+          "label": "Alder Mechanical"
+        },
+        {
+          "id": "northgate-credit-union",
+          "label": "Northgate Credit Union"
+        },
+        {
+          "id": "kessler-robotics-shared",
+          "label": "Shared link (no person)"
+        }
+      ]
+    },
+    {
       "slug": "proposal",
       "name": "Proposal and pilot plan",
       "type": "other",
@@ -478,6 +948,46 @@
       ]
     },
     {
+      "slug": "readiness-checklist",
+      "name": "Readiness checklist",
+      "type": "calculator",
+      "format": "page",
+      "showcases": [
+        "prompt",
+        "grade",
+        "ken/cta"
+      ],
+      "description": "A checklist the reader ticks to get a score and the gaps to close first. Ken writes the headline and intro and pre-ticks what the account's own facts show.",
+      "category": "interactive",
+      "tags": [
+        "checklist",
+        "readiness",
+        "self assessment",
+        "score",
+        "interactive"
+      ],
+      "featured": false,
+      "needs": [
+        "knowledge"
+      ],
+      "version": "1.0.2",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "fernhill",
+          "label": "Fernhill Software"
+        },
+        {
+          "id": "castellan",
+          "label": "Castellan Machine Works"
+        },
+        {
+          "id": "marlow-shared",
+          "label": "Shared link (no person)"
+        }
+      ]
+    },
+    {
       "slug": "roi-calculator",
       "name": "ROI calculator",
       "type": "calculator",
@@ -517,6 +1027,98 @@
         {
           "id": "oakfield-no-offer",
           "label": "Oakfield Insurance Brokers, no offer in Knowledge"
+        }
+      ]
+    },
+    {
+      "slug": "sample-work",
+      "name": "We did the first piece for you",
+      "type": "reverse_demo",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "A first piece of your service, made for the account before they asked. Ken reads their site and your Knowledge, writes it in 3 to 5 blocks and grades it.",
+      "category": "prospecting",
+      "tags": [
+        "work sample",
+        "first piece",
+        "plan",
+        "rewrite",
+        "knowledge"
+      ],
+      "featured": false,
+      "needs": [
+        "knowledge"
+      ],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "harrowgate",
+          "label": "Harrowgate Robotics"
+        },
+        {
+          "id": "cobalt-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "veridian-empty",
+          "label": "Veridian Water Systems"
+        },
+        {
+          "id": "saltmarsh",
+          "label": "Saltmarsh Cold Storage"
+        }
+      ]
+    },
+    {
+      "slug": "signal-note",
+      "name": "Three things we noticed",
+      "type": "other",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "A letter with three things noticed about each account this month, what each usually means and one idea. Ken fills it from hiring, news and leader signals.",
+      "category": "prospecting",
+      "tags": [
+        "signals",
+        "monthly note",
+        "hiring",
+        "news",
+        "outreach"
+      ],
+      "featured": true,
+      "needs": [],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics, three signals"
+        },
+        {
+          "id": "marlowe-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "copperline",
+          "label": "Copperline Software, two signals"
+        },
+        {
+          "id": "sunvale-research",
+          "label": "Sunvale Health Clinics, no signals"
         }
       ]
     },
@@ -606,6 +1208,47 @@
       ]
     },
     {
+      "slug": "trend-brief",
+      "name": "Trend brief",
+      "type": "report",
+      "format": "doc",
+      "showcases": [
+        "prompt",
+        "tool",
+        "grade",
+        "ken_search.count",
+        "ken/cta",
+        "doc"
+      ],
+      "description": "A short brief on three trends in the account's industry, each backed by a Ken Search company count, with what each one means for them. Prints to PDF.",
+      "category": "content",
+      "tags": [
+        "trends",
+        "market",
+        "ken search",
+        "brief",
+        "pdf"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.2",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "granite-peak",
+          "label": "Granite Peak Builders"
+        },
+        {
+          "id": "larkspur",
+          "label": "Larkspur Dental Partners"
+        },
+        {
+          "id": "pinecone-shared",
+          "label": "Pinecone Robotics, shared link (no person)"
+        }
+      ]
+    },
+    {
       "slug": "value-review",
       "name": "Quarterly value review",
       "type": "report",
@@ -648,6 +1291,136 @@
         {
           "id": "harlow-pike-partial",
           "label": "Harlow and Pike Architects, partial usage export"
+        }
+      ]
+    },
+    {
+      "slug": "video-intro",
+      "name": "Personal video page",
+      "type": "landing_page",
+      "format": "page",
+      "showcases": [
+        "dataset",
+        "prompt",
+        "grade",
+        "ken/booking"
+      ],
+      "description": "The sender's video up top, three reasons the page was made for this account, which Ken writes per account, and a booking block under it.",
+      "category": "prospecting",
+      "tags": [
+        "video",
+        "loom",
+        "personal",
+        "booking",
+        "intro"
+      ],
+      "featured": false,
+      "needs": [
+        "video"
+      ],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "orchard-mechanical",
+          "label": "Orchard Mechanical (no video)"
+        },
+        {
+          "id": "cobalt-street",
+          "label": "Cobalt Street Clinics"
+        },
+        {
+          "id": "pinecrest-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "larkspur",
+          "label": "Larkspur Software"
+        }
+      ]
+    },
+    {
+      "slug": "webinar",
+      "name": "Webinar invite",
+      "type": "event",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/form"
+      ],
+      "description": "A webinar invite with a time strip in the reader's time zone, speakers, an agenda and a sign-up form. Ken writes the takeaways for each person's role and company.",
+      "category": "events",
+      "tags": [
+        "webinar",
+        "invite",
+        "registration",
+        "live session"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.2",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics, filled for one person"
+        },
+        {
+          "id": "tidewater",
+          "label": "Tidewater Biologics, dark serif brand"
+        },
+        {
+          "id": "crestline-shared",
+          "label": "Crestline Outdoor Co., shared link (no person)"
+        },
+        {
+          "id": "foxglove-partial",
+          "label": "Foxglove Dental Partners, no time zone found"
+        }
+      ]
+    },
+    {
+      "slug": "workshop",
+      "name": "Workshop invite",
+      "type": "event",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/form"
+      ],
+      "description": "A hands-on workshop invitation with the agenda, what to bring and a seat form. Ken writes why it fits the account and what their team would leave with.",
+      "category": "events",
+      "tags": [
+        "workshop",
+        "event",
+        "invitation",
+        "training",
+        "seat form"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.1",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "bramblewood",
+          "label": "Bramblewood Foods"
+        },
+        {
+          "id": "lakeshore-shared",
+          "label": "Lakeshore Dental Partners, shared link (no person)"
+        },
+        {
+          "id": "tidewater",
+          "label": "Tidewater Marine Fabrication"
+        },
+        {
+          "id": "norland-waitlist",
+          "label": "Norland Packaging"
         }
       ]
     }

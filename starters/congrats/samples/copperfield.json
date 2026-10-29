@@ -1,0 +1,56 @@
+{
+  "account": {
+    "name": "Copperfield Dental Group",
+    "domain": "copperfielddental.example",
+    "industry": "medical practices",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Copperfield Dental Group runs four dental practices in South Yorkshire with about 90 staff. The practices share a central booking line and one patient record system, and the group has been buying single-dentist practices since 2024.",
+      "why_now": "Opened its fourth practice, in Sheffield, in October.",
+      "angle": null
+    },
+    "signals": []
+  },
+  "person": {
+    "first_name": "Rhian",
+    "last_name": "Pugh",
+    "title": "Operations Director"
+  },
+  "sender": {
+    "name": "Ada Kowalczyk",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Greenhill",
+    "logo_url": null,
+    "colors": {
+      "primary": "#2a6f4e",
+      "secondary": "#d9b24a"
+    },
+    "fonts": {
+      "heading": "Fraunces",
+      "body": "Figtree"
+    }
+  },
+  "data": {
+    "signals": [],
+    "why_now": "Opened its fourth practice, in Sheffield, in October.",
+    "occasion": {
+      "what": "Copperfield Dental Group opened its fourth practice, in Sheffield, in October.",
+      "kind": "milestone"
+    },
+    "headline": "Congratulations on the fourth practice, Rhian",
+    "note": [
+      "Four practices on one booking line and one record system is the point where a dental group stops being a few surgeries that share a phone number. Sheffield is the first one you have opened with the central setup already in place, rather than bolted on afterwards.",
+      "That makes it the cleanest test you will get of whether the shared booking line actually fills a new chair."
+    ],
+    "idea_title": "Track how long a new Sheffield patient waits from call to first appointment",
+    "idea": [
+      "For the next 90 days, log every new patient call that the central line routes to Sheffield and the date of the first appointment it turns into. One spreadsheet, two dates per row. By January you will know the real wait at a practice with no backlog, which is the number to hold the next acquisition to.",
+      "The groups we work with that measure this at a new site also find out quickly whether the central line sends patients to the nearest practice or to the one with the most free chairs, and those are not always the same thing."
+    ],
+    "ask": "If it would help to talk through how to set the log up so it takes nobody more than a minute a day, I have 15 minutes whenever suits you.",
+    "ps": ""
+  }
+}

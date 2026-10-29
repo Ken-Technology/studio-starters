@@ -1,0 +1,15 @@
+{
+  "description": "The account's market on a 2x2: about six competitors from Ken Search, one line on how each one sells, and the open space the account could own.",
+  "category": "prospecting",
+  "tags": ["competitors", "positioning", "market map", "2x2"],
+  "featured": false,
+  "needs": [],
+  "version": "1.0.1",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "marrow", "label": "Marrow Analytics" },
+    { "id": "corbel-shared", "label": "Corbel Building Supply, shared link (no person)" },
+    { "id": "tessellate", "label": "Tessellate Payroll" },
+    { "id": "ridgeline-partial", "label": "Ridgeline Field Services, partial fill" }
+  ]
+}

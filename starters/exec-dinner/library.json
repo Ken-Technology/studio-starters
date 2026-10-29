@@ -1,0 +1,15 @@
+{
+  "description": "A personal invitation to a private dinner: the table plan with the guest's seat marked, the evening, an RSVP and an add-to-calendar link. Ken writes the personal line.",
+  "category": "events",
+  "tags": ["dinner", "invitation", "executive", "event", "rsvp"],
+  "featured": true,
+  "needs": [],
+  "version": "1.0.1",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "brightwave", "label": "Brightwave Logistics" },
+    { "id": "kestrel-dental", "label": "Kestrel Dental Group" },
+    { "id": "ledgerwood-shared", "label": "Ledgerwood Software, shared link (no person)" },
+    { "id": "marlowe-partial", "label": "Marlowe Biologics" }
+  ]
+}

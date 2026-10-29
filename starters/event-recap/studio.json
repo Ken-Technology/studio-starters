@@ -1,0 +1,115 @@
+{
+  "kenStudio": "1",
+  "name": "Sorry we missed you",
+  "type": "event",
+  "format": "page",
+  "slug": "recording",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "event_title": { "type": "string", "minLength": 3, "maxLength": 90, "fallback": "The webinar recording" },
+      "recorded_on": { "type": "string", "maxLength": 40, "fallback": "" },
+      "speakers": { "type": "string", "maxLength": 120, "fallback": "" },
+      "video_url": { "type": "string", "maxLength": 300, "fallback": "" },
+      "duration_seconds": { "type": "integer", "fallback": 0 },
+      "chapters": {
+        "type": "array",
+        "maxItems": 12,
+        "fallback": [],
+        "items": {
+          "type": "object",
+          "properties": {
+            "start": { "type": "string", "maxLength": 8 },
+            "seconds": { "type": "integer" },
+            "title": { "type": "string", "maxLength": 90 },
+            "summary": { "type": "string", "maxLength": 200 }
+          },
+          "required": ["start", "seconds", "title"]
+        }
+      },
+      "slides_url": { "type": "string", "maxLength": 300, "fallback": "" },
+      "slide_pages": {
+        "type": "array",
+        "maxItems": 6,
+        "fallback": [],
+        "items": {
+          "type": "object",
+          "properties": {
+            "page": { "type": "integer" },
+            "caption": { "type": "string", "maxLength": 60 }
+          },
+          "required": ["page", "caption"]
+        }
+      },
+      "slide_count": { "type": "integer", "fallback": 0 },
+      "transcript": {
+        "type": "array",
+        "maxItems": 6,
+        "fallback": [],
+        "items": {
+          "type": "object",
+          "properties": {
+            "at": { "type": "string", "maxLength": 8 },
+            "speaker": { "type": "string", "maxLength": 40 },
+            "text": { "type": "string", "maxLength": 500 }
+          },
+          "required": ["at", "speaker", "text"]
+        }
+      },
+      "transcript_url": { "type": "string", "maxLength": 300, "fallback": "" },
+      "book_title": { "type": "string", "maxLength": 80, "fallback": "Want to talk it through?" },
+      "book_text": { "type": "string", "maxLength": 240, "fallback": "{{ sender.name | default: 'Our team' }} can answer questions about your own setup in 20 minutes." },
+      "book_label": { "type": "string", "maxLength": 40, "fallback": "Book 20 minutes" },
+      "start_at": { "type": "integer" },
+      "takeaways": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "minLength": 10, "maxLength": 80 },
+            "body": { "type": "string", "minLength": 40, "maxLength": 240 },
+            "at": { "type": "integer" }
+          },
+          "required": ["title", "body", "at"]
+        }
+      }
+    },
+    "required": ["event_title"]
+  },
+  "recipe": [
+    {
+      "id": "takeaways",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.industry", "account.size_band", "account.dossier.summary", "account.dossier.why_now", "person.title", "defaults.chapters", "defaults.transcript"],
+      "to": ["data.start_at", "data.takeaways"],
+      "prompt": "You are writing part of a follow-up page for someone at {{ account.name | default: 'a company' }} who registered for the webinar \"{{ defaults.event_title }}\" and missed it. The page shows the recording cut into chapters. You pick where this person should start and write three takeaways for their role.\n\nInputs: defaults.chapters is the chapter list, each with start (the label), seconds (the start in seconds), title and summary. The speakers: {{ defaults.speakers | default: 'not given' }}. defaults.transcript is the transcript excerpt, each line {at, speaker, text}, and may be empty. About the viewer: person.title is {{ person.title | default: 'not known' }}; account.industry is {{ account.industry | default: 'not known' }}; account.size_band is {{ account.size_band | default: 'not known' }}; account.dossier.summary is {{ account.dossier.summary | default: 'not known' }}; account.dossier.why_now is {{ account.dossier.why_now | default: 'not known' }}. Nothing else is known about them.\n\nIf defaults.chapters is empty, return {} and nothing else.\n\nReturn JSON with two keys:\n- start_at: the seconds value of the one chapter this person should watch first. Copy it exactly from a chapter. Choose by their role and company, using the chapter titles and summaries. Never pick the first chapter only because it is first.\n- takeaways: exactly three items, each {title, body, at}. title is at most 80 characters and says what to do or know, in plain words. body is 1 or 2 short sentences, 40 to 240 characters, from the chapter summaries and the transcript excerpt only, and says why it matters for this person's role or company when the inputs support that. at is the seconds value of the one chapter the takeaway comes from, copied exactly. Use three different chapters when the list allows it.\n\nFacts: use only what the inputs say. Never invent numbers, customers, quotes or results, and never name a person who is not among the speakers. If person.title or the account facts are not known, write for the audience of the webinar in general and do not guess their job.\n\nVoice: one person telling a peer what to watch. Plain, specific, short sentences. Sentence case.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. No hype words (unlock, leverage, seamless, robust, game changer, cutting-edge). Never \"real\" as emphasis."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.takeaways"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["demo", "unlock", "game changer", "I noticed", "I saw"],
+        "no_placeholders": true,
+        "no_prices": true,
+        "no_dashes": true,
+        "no_real_emphasis": true
+      },
+      "rubric": "Grade the three takeaways the way the viewer reads them, next to a chapter list. 10 is a set a busy person reads in 20 seconds and then clicks the right chapter.\nScore these, 0 to 10 each:\n- specific: each takeaway says one concrete thing from the chapter summaries or the transcript, not a general statement about the topic.\n- fits_role: each one says why it matters for this person's role or company when the inputs give a role or company, and stays general when they do not.\n- points_right: each `at` matches a chapter in the chapter list below, and the takeaway is about that chapter.\n- plain: short sentences, no marketing words, no pitch for the sender's product.\nAutomatic fail: a number, name, customer or result that the chapters and the transcript do not contain; a guess about the person's job when person.title is not known; an em dash or en dash; an exclamation mark; an email address or phone number.\nThe three takeaways must not repeat each other.\nThe chapters: {{ defaults.chapters | json }}\nThe transcript excerpt: {{ defaults.transcript | json }}"
+    }
+  ],
+  "sections": [
+    { "id": "top", "label": "Intro" },
+    { "id": "recording", "label": "Recording and chapters" },
+    { "id": "takeaways", "label": "Three takeaways" },
+    { "id": "slides", "label": "Slides" },
+    { "id": "transcript", "label": "Transcript excerpt" },
+    { "id": "book", "label": "Book a call" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

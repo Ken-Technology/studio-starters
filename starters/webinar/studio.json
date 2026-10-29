@@ -1,0 +1,171 @@
+{
+  "kenStudio": "1",
+  "name": "Webinar invite",
+  "type": "event",
+  "format": "page",
+  "slug": "live-session",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "kicker": { "type": "string", "minLength": 3, "maxLength": 60, "fallback": "Live session, 45 minutes" },
+      "title": { "type": "string", "minLength": 3, "maxLength": 70, "fallback": "Growing volume, not headcount" },
+      "subtitle": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 240,
+        "fallback": "How operations teams at mid-size logistics and manufacturing companies take on more freight with the same people. Two talks, then your questions."
+      },
+      "date_text": { "type": "string", "minLength": 3, "maxLength": 60, "fallback": "Thursday, November 12" },
+      "where_text": { "type": "string", "minLength": 3, "maxLength": 120, "fallback": "Online. The link comes by email once you register." },
+      "zones": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "city": { "type": "string", "minLength": 2, "maxLength": 30 },
+            "time": { "type": "string", "minLength": 4, "maxLength": 12 }
+          },
+          "required": ["city", "time"]
+        },
+        "fallback": [
+          { "city": "Chicago", "time": "11:00 am" },
+          { "city": "New York", "time": "12:00 pm" },
+          { "city": "Los Angeles", "time": "9:00 am" },
+          { "city": "London", "time": "5:00 pm" }
+        ]
+      },
+      "calendar_url": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 600,
+        "fallback": ""
+      },
+      "recording_note": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 200,
+        "fallback": "Cannot make it live? Register anyway. Everyone who registers gets the recording and the slides the next morning."
+      },
+      "speakers": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string", "minLength": 2, "maxLength": 60 },
+            "role": { "type": "string", "maxLength": 100 },
+            "line": { "type": "string", "maxLength": 160 }
+          },
+          "required": ["name", "role"]
+        },
+        "fallback": [
+          { "name": "Priya Natarajan", "role": "VP Operations, Kestrel Freight", "line": "Runs a 60-person operations team at a 600-person carrier in Columbus." },
+          { "name": "Daniel Okafor", "role": "Head of Customer Operations", "line": "Spent the past year inside the calendars of 40 operations teams." },
+          { "name": "Maya Chen", "role": "Account Executive", "line": "Hosts, keeps the clock and reads out your questions." }
+        ]
+      },
+      "agenda": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "time": { "type": "string", "maxLength": 12 },
+            "minutes": { "type": "integer" },
+            "title": { "type": "string", "minLength": 2, "maxLength": 90 },
+            "note": { "type": "string", "maxLength": 200 },
+            "speaker": { "type": "string", "maxLength": 60 }
+          },
+          "required": ["time", "title"]
+        },
+        "fallback": [
+          { "time": "11:00", "minutes": 5, "title": "Who is on the call", "note": "A quick round of the companies in the room, by industry and size, so the speakers can pitch the talks at the right level.", "speaker": "Maya Chen" },
+          { "time": "11:05", "minutes": 15, "title": "Where the hours go", "note": "A time audit of 40 operations teams: dispatch, billing, exceptions and customer updates, with the median hours per 100 loads for each.", "speaker": "Daniel Okafor" },
+          { "time": "11:20", "minutes": 15, "title": "Kestrel's year: 28% more loads, the same 60 people", "note": "What they centralized, what they left at the terminals, and the one change that failed in the first month.", "speaker": "Priya Natarajan" },
+          { "time": "11:35", "minutes": 10, "title": "Your questions", "note": "Send them in with your registration or ask live. Questions about your own setup are welcome.", "speaker": "All three" },
+          { "time": "11:45", "title": "Close", "note": "The recording and the slides are in your inbox the next morning." }
+        ]
+      },
+      "register_note": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 240,
+        "fallback": "Register once. The recording and the slides come by email the day after, whether or not you join live."
+      },
+      "why_now": { "type": "string", "maxLength": 1000 },
+      "local_zone": { "type": "string", "maxLength": 40 },
+      "why_you": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 320,
+        "fallback": "This session was planned with teams like the one at {{ account.name }} in mind, and there is time at the end for your questions."
+      },
+      "takeaways": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "lead": { "type": "string", "minLength": 6, "maxLength": 70 },
+            "detail": { "type": "string", "minLength": 20, "maxLength": 170 }
+          },
+          "required": ["lead", "detail"]
+        },
+        "fallback": [
+          { "lead": "The time audit as a sheet", "detail": "you can run on your own dispatch and billing teams in a week, with the median from 40 peers next to your numbers." },
+          { "lead": "What Kestrel centralized", "detail": "and what it left at the terminals, so you can judge which fits your own sites." },
+          { "lead": "A number for a flat operations team", "detail": "you can put in next year's plan before the headcount conversation starts." }
+        ]
+      }
+    },
+    "required": ["kicker", "title", "subtitle", "date_text", "where_text", "zones", "recording_note", "speakers", "agenda", "register_note", "why_you", "takeaways"]
+  },
+  "recipe": [
+    { "id": "why_now", "kind": "bind", "from": "account.dossier.why_now", "to": "data.why_now" },
+    {
+      "id": "copy",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.industry", "account.size_band", "account.dossier.summary", "person.title", "data.why_now", "defaults.agenda", "defaults.speakers"],
+      "to": ["data.why_you", "data.takeaways"],
+      "prompt": "Write two parts of a webinar invitation for someone at {{ account.name }}. {{ sender.name | default: 'The host' }} at {{ brand.name | default: 'our company' }} sends it.\n\nThe session: \"{{ defaults.title }}\" ({{ defaults.kicker }}). {{ defaults.subtitle }} defaults.agenda is its running order, each part {time, minutes, title, note, speaker}, and defaults.speakers is who speaks, each {name, role, line}. {{ defaults.recording_note }}\n\nInputs: account.industry and account.size_band describe the company. account.dossier.summary is our research summary. data.why_now is a recent reason to reach out and may be empty. person.title is the reader's role and may be empty. Use facts from these inputs and from the session only. Never invent news, numbers, customers, people or results.\n\nReturn JSON with two keys:\n- why_you: two sentences, at most 300 characters, on why this session was planned with a company like {{ account.name }} in mind. Tie one fact about them, data.why_now if there is one, to what the talks cover, so it reads like the host wrote it after looking them up. Write to \"you\" or to the company. Never use a first name; the page adds the greeting. No flattery (\"love what you're building\", \"impressive\"), no \"I noticed\", \"I saw\" or \"I came across\", no question.\n- takeaways: 4 items {lead, detail}, one for each part of the session that matters most to a {{ person.title | default: 'leader' }} at {{ account.name }}. lead is 3 to 8 words, at most 70 characters, naming the thing they take away, like \"The time audit as a sheet\". detail is one clause, 20 to 160 characters, that continues the lead into one sentence and says how it applies to their role and company, like \"you can run on your dispatch and billing teams in a week\". Start detail with a lowercase letter and end it with a period. Numbers come only from the session: its subtitle, agenda and speakers.\n\nRules: no em dashes or en dashes. No email addresses or phone numbers. Plain words a person would say out loud to a peer; no marketing words (unlock, seamless, game-changer, cutting-edge, leverage). Never \"real\" as emphasis."
+    },
+    {
+      "id": "zone",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.domain", "account.dossier.summary", "account.dossier.why_now", "defaults.zones"],
+      "to": ["data.local_zone"],
+      "prompt": "Pick the time zone to highlight on a webinar page for someone at {{ account.name }} ({{ account.domain }}).\n\ndefaults.zones lists the zones on the page, each {city, time}.\n\nInputs: account.dossier.summary and account.dossier.why_now. Summary: {{ account.dossier.summary | default: 'none' }}. Why now: {{ account.dossier.why_now | default: 'none' }}.\n\nStep 1: find the city of {{ account.name }}'s headquarters, only if the summary or the why now text says it. The domain name, the industry and the company size do not tell you a location. Never guess a city.\n\nStep 2: return JSON with one key, local_zone: the city of the one listed zone that is in the same time zone as that city, written exactly as listed. Dallas gives \"Chicago\", Boston gives \"New York\", Seattle gives \"Los Angeles\", Manchester gives \"London\". If the city is not stated, or no listed zone shares its time zone, return an empty string."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.why_you", "data.takeaways"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["webinar funnel", "caught my attention", "I noticed", "I saw", "I came across", "game-changer", "cutting-edge", "unlock", "seamless"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true
+      },
+      "rubric": "Grade the two pieces of copy the way the invited person reads them, on a page for a live session. 10 is copy that reads like the host wrote it after looking the person up and makes the session feel made for them.\nScore these, 0 to 10 each:\n- specific: why_you ties one real fact about {{ account.name }} to what the talks cover. Generic reasons that would fit any company fail this check.\n- fit: each takeaway is something the person can use in their own role at {{ account.name }}, and each one comes from a part of the session.\n- plain: short sentences, plain words, no pitch and no flattery.\nAnswer yes or no:\n- grounded: does every fact about {{ account.name }} come from the inputs below?\nAutomatic fail: an em dash or en dash, a number that is neither in the inputs nor in the session below, an email address or phone number, or a first name in why_you.\nInputs: {{ account.industry | default: 'no industry' }}, {{ account.size_band | default: 'no size' }}. {{ account.dossier.summary | default: 'No summary.' }} Why now: {{ data.why_now | default: 'none' }}. Reader's role: {{ person.title | default: 'not given' }}.\nThe session: {{ defaults.title }}. {{ defaults.subtitle }} Agenda: {{ defaults.agenda | json }} Speakers: {{ defaults.speakers | json }}\nPass when the overall score is 7.5 or higher, no 0 to 10 check is 6 or lower, and grounded is yes. On a fail, name the check and quote the phrase to change. The fix never supplies replacement facts, names, numbers or results."
+    }
+  ],
+  "sections": [
+    { "id": "program", "label": "Session and time" },
+    { "id": "hello", "label": "Note from the host" },
+    { "id": "speakers", "label": "Speakers" },
+    { "id": "agenda", "label": "Agenda" },
+    { "id": "takeaways", "label": "What you take away" },
+    { "id": "register", "label": "Register" }
+  ],
+  "cta": { "primary": "form", "label": "Save my seat" }
+}

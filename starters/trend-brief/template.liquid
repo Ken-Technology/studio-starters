@@ -1,0 +1,225 @@
+{%- assign accent = brand.colors.primary | default: '#0f5f52' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#c08a2e' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
+{%- assign font_body = brand.fonts.body | default: 'Instrument Sans' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign short_name = account.name | split: ' - ' | first | split: ' | ' | first | strip | default: account.name -%}
+{%- assign industry = account.industry | default: 'your industry' -%}
+{%- assign base = data.counts[0].value | default: 0 -%}
+{%- comment %} The counts as text with thousands commas: n0 is the baseline, n1 to n3 the three trends. {% endcomment -%}
+{%- for c in data.counts limit: 4 -%}
+{%- assign v = c.value | default: 0 | round -%}
+{%- capture f -%}
+{%- if v >= 1000 -%}
+{%- assign k = v | divided_by: 1000.0 | floor -%}
+{%- assign r = v | modulo: 1000 -%}
+{%- if k >= 1000 -%}
+{%- assign kk = k | divided_by: 1000.0 | floor -%}
+{%- assign kr = k | modulo: 1000 -%}
+{{ kk }},{% if kr < 10 %}00{% elsif kr < 100 %}0{% endif %}{{ kr }},{% if r < 10 %}00{% elsif r < 100 %}0{% endif %}{{ r }}
+{%- else -%}
+{{ k }},{% if r < 10 %}00{% elsif r < 100 %}0{% endif %}{{ r }}
+{%- endif -%}
+{%- else -%}
+{{ v }}
+{%- endif -%}
+{%- endcapture -%}
+{%- case forloop.index0 %}{% when 0 %}{% assign n0 = f %}{% when 1 %}{% assign n1 = f %}{% when 2 %}{% assign n2 = f %}{% else %}{% assign n3 = f %}{% endcase -%}
+{%- endfor -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ data.headline | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700{% if body_q != head_q %}&amp;family={{ body_q }}:wght@400;500;600;700{% endif %}&amp;display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tb{--p:{{ accent }};--s:{{ accent2 }};--ink:#15191c;--mute:#5d6871;--rule:#e1e4e7;--tint:color-mix(in srgb,var(--p) 6%,#fff);--track:color-mix(in srgb,var(--p) 14%,#fff);--fh:'{{ font_head }}',Georgia,'Times New Roman',serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,-apple-system,sans-serif;font-family:var(--fb);font-size:16px;line-height:1.6;color:var(--ink);-webkit-font-smoothing:antialiased;padding-bottom:4rem}
+.tb p{margin:0}
+.tb h1,.tb h2{font-family:var(--fh);font-weight:500;margin:0}
+.tb a{color:var(--p)}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.logo{height:26px;width:auto;display:block}
+.mark{font-weight:600;font-size:1rem;letter-spacing:-.01em}
+.kind{font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-align:right;line-height:1.35}
+.kind span{display:block;font-weight:400;letter-spacing:0;text-transform:none;color:var(--mute);font-size:.82rem}
+.cover{padding:2rem 0 2.25rem;display:grid;gap:2.25rem}
+.kicker{display:flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:1.1rem}
+.kicker::before{content:"";display:block;width:1.75rem;height:3px;background:var(--s)}
+.tb h1{font-size:clamp(2.35rem,9vw,3.9rem);line-height:1;letter-spacing:-.025em;max-width:15ch;text-wrap:balance;margin-bottom:1.1rem}
+.dek{font-size:1.08rem;line-height:1.5;color:var(--mute);max-width:33rem;margin-bottom:1.9rem}
+.plate{display:grid;gap:.9rem;border-top:1px solid var(--rule);padding-top:1rem;font-size:.9rem;line-height:1.45}
+.plate small{display:block;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+.plate b{font-weight:600}
+.glance{background:var(--tint);padding:1.35rem 1.25rem .3rem;margin:0 -1.25rem}
+.glance h2{font-family:var(--fb);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:.4rem}
+.g{display:grid;grid-template-columns:2.1rem minmax(0,1fr) auto;gap:.1rem .75rem;align-items:start;padding:.95rem 0 1.05rem;border-top:1px solid color-mix(in srgb,var(--p) 22%,#fff)}
+.g .n{font-family:var(--fh);font-size:1.2rem;line-height:1.25;color:var(--p)}
+.g .t{font-family:var(--fh);font-size:1.18rem;line-height:1.25;letter-spacing:-.01em}
+.g .c{font-family:var(--fh);font-size:1.45rem;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.g .c small{display:block;font-family:var(--fb);font-size:.72rem;color:var(--mute);letter-spacing:0;margin-top:.25rem}
+.sec{padding:2.5rem 0 1.5rem;border-top:1px solid var(--rule)}
+.num{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:.6rem}
+.sec h2{font-size:clamp(1.75rem,6.5vw,2.6rem);line-height:1.08;letter-spacing:-.02em;max-width:22ch;text-wrap:balance;margin-bottom:1.6rem}
+.grid{display:grid;gap:1.75rem}
+.stat{border-top:2px solid var(--ink);padding-top:.9rem}
+.count{font-family:var(--fh);font-size:clamp(3.2rem,15vw,5rem);line-height:.95;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.of{color:var(--mute);font-size:.95rem;margin:.55rem 0 1rem}
+.waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;max-width:11.5rem;margin:0 0 .7rem}
+.waffle i{display:block;aspect-ratio:1;background:var(--track);border-radius:1px}
+.waffle i.on{background:var(--p)}
+.share{font-size:.84rem;line-height:1.45;color:var(--mute);margin:0 0 1.25rem}
+.share b{font-weight:600;color:var(--ink);font-size:1rem;margin-right:.3rem}
+.how{font-size:.86rem;line-height:1.5;color:var(--mute);padding-top:.85rem;border-top:1px solid var(--rule)}
+.how b{display:block;font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:.3rem}
+.how span{display:block;margin-top:.3rem;font-size:.78rem}
+.prose h3{font-family:var(--fb);font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin:0 0 .55rem}
+.prose p{font-size:1.02rem;line-height:1.65;margin-bottom:1.6rem;max-width:40rem}
+.prose p:last-child{margin-bottom:0}
+.so{font-family:var(--fh);font-size:1.32rem!important;line-height:1.4!important;letter-spacing:-.01em;max-width:34rem!important}
+.cta{margin:.25rem 0 1.6rem}
+.cta .ken-cta{border-radius:3px!important;padding:.9rem 1.35rem!important;font-size:1rem}
+.print-only{display:none}
+.sign{font-size:.95rem;margin-top:.5rem}
+.sign b{display:block;font-weight:600}
+.sign span{display:block;color:var(--mute)}
+.method{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.8rem;line-height:1.55;color:var(--mute);max-width:46rem}
+.method b{color:var(--ink);font-weight:600}
+@media (min-width:760px){
+.tb{font-size:17px}
+.wrap{padding:0 2.5rem}
+.cover{padding:3rem 0}
+.plate{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.glance{margin:0;padding:1.5rem 1.5rem .5rem}
+.sec{padding:3.5rem 0 2rem}
+.grid{grid-template-columns:17rem minmax(0,1fr);gap:3.5rem;align-items:start}
+.count{font-size:4.6rem}
+}
+@media (min-width:1040px){
+.cover{grid-template-columns:minmax(0,1fr) 23rem;gap:4rem;align-items:start;padding:3.5rem 0}
+.glance{margin-top:.3rem}
+}
+@media print{
+@page{margin:14mm 16mm}
+.tb{padding-bottom:0;font-size:11.5pt}
+.wrap{max-width:none;padding:0}
+.cover{display:block;padding:1.5rem 0 0}
+.glance{margin:2rem 0 0}
+.sec{break-before:page;border-top:0;padding-top:.5rem}
+.grid{grid-template-columns:15rem minmax(0,1fr);gap:2.5rem}
+.stat,.g,.prose p{break-inside:avoid}
+.cta{display:none}
+.print-only{display:block}
+}
+</style>
+</head>
+<body>
+<main class="tb">
+<div class="wrap">
+<header class="top">
+{%- if brand.logo_url %}
+<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">
+{%- elsif brand.name %}
+<p class="mark">{{ brand.name | escape }}</p>
+{%- else %}
+<span></span>
+{%- endif %}
+<p class="kind">Trend brief<span>{{ industry | capitalize | escape }}</span></p>
+</header>
+<section data-section="cover" class="cover">
+<div class="lead">
+<p class="kicker">Three company counts</p>
+<h1>{{ data.headline | escape }}</h1>
+<p class="dek">{{ data.dek | escape }}</p>
+<div class="plate">
+<p><small>Prepared for</small>{% if person.first_name %}<b>{{ person.first_name | escape }} {{ person.last_name | escape }}</b>{% if person.title %}, {{ person.title | escape }}{% endif %}, {{ short_name | escape }}{% else %}<b>{{ short_name | escape }}</b>{% endif %}</p>
+<p><small>Written by</small><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title %}, {{ sender.title | escape }}{% endif %}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</p>
+<p><small>Source</small><b>Company profiles and hiring data</b>, {{ n0 }} companies in {{ industry | escape }}</p>
+</div>
+</div>
+<aside class="glance">
+<h2>The three trends</h2>
+{%- for t in data.trends limit: 3 %}
+{%- assign c = data.counts[forloop.index] %}
+{%- case forloop.index %}{% when 1 %}{% assign n = n1 %}{% when 2 %}{% assign n = n2 %}{% else %}{% assign n = n3 %}{% endcase %}
+{%- assign pct = 0 %}
+{%- if base > 0 and c %}{% assign pct = c.value | times: 100.0 | divided_by: base | round %}{% endif %}
+<div class="g">
+<span class="n">0{{ forloop.index }}</span>
+<span class="t">{{ t.title | escape }}</span>
+<span class="c">{{ n }}<small>{% if pct < 1 %}under 1%{% else %}{{ pct }}%{% endif %} of the industry</small></span>
+</div>
+{%- endfor %}
+</aside>
+</section>
+{%- comment %} One body for the three trend sections. Each trend gets its own data-section, so reading time is tracked per trend. {% endcomment %}
+{%- for t in data.trends limit: 3 %}
+{%- assign i = forloop.index %}
+{%- assign c = data.counts[i] %}
+{%- assign p = data.plan[forloop.index0] %}
+{%- case i %}{% when 1 %}{% assign n = n1 %}{% when 2 %}{% assign n = n2 %}{% else %}{% assign n = n3 %}{% endcase %}
+{%- assign pct = 0 %}
+{%- if base > 0 and c %}{% assign pct = c.value | times: 100.0 | divided_by: base | round %}{% endif %}
+{%- assign w = pct | at_least: 1 | at_most: 100 %}
+{%- case i %}
+{%- when 1 %}
+<section data-section="trend_1" class="sec trend">
+{%- when 2 %}
+<section data-section="trend_2" class="sec trend">
+{%- else %}
+<section data-section="trend_3" class="sec trend">
+{%- endcase %}
+<p class="num">Trend 0{{ i }}</p>
+<h2>{{ t.title | escape }}</h2>
+<div class="grid">
+<div class="stat">
+<p class="count">{{ n }}</p>
+{%- if c and c.label %}
+<p class="of">{{ c.label | escape }}</p>
+{%- endif %}
+<div class="waffle" role="img" aria-label="{{ pct }} percent of {{ n0 }}">{% for j in (1..100) %}<i{% if j <= w %} class="on"{% endif %}></i>{% endfor %}</div>
+<p class="share"><b>{% if pct < 1 %}Under 1%{% else %}{{ pct }}%{% endif %}</b>of {{ n0 }} companies in {{ industry | escape }}</p>
+{%- if p and p.counted %}
+<p class="how"><b>How we counted</b>{{ p.counted | escape }}<span>From company profiles and hiring data, counted on the day this brief was filled.</span></p>
+{%- endif %}
+</div>
+<div class="prose">
+<h3>What the count says</h3>
+<p>{{ t.what | escape | newline_to_br | strip_newlines | raw }}</p>
+<h3>What it means for {{ short_name | escape }}</h3>
+<p>{{ t.means | escape | newline_to_br | strip_newlines | raw }}</p>
+</div>
+</div>
+</section>
+{%- endfor %}
+<section data-section="next" class="sec next">
+<p class="num">What to do with this</p>
+<h2>Where I would start</h2>
+<div class="prose">
+<p class="so">{{ data.so_what | escape | newline_to_br | strip_newlines | raw }}</p>
+{%- if data.offer and data.offer != '' %}
+<h3>{% if brand.name %}Where {{ brand.name | escape }} fits{% else %}Where we fit{% endif %}</h3>
+<p>{{ data.offer | escape | newline_to_br | strip_newlines | raw }}</p>
+{%- endif %}
+<h3>Talk it through</h3>
+<p>Each count above is a list of companies, filtered the way the line under it says. I can pull the names behind any of the three, cut them to your region, and walk you through them in twenty minutes.</p>
+{%- if link.booking_url %}
+<div class="cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking', color: accent %}</div>
+<p class="print-only">To book the twenty minutes, reply to my email with a time that suits you.</p>
+{%- else %}
+<p>Reply to my email with a time that suits you and I will send an invite.</p>
+{%- endif %}
+<p class="sign"><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</div>
+<p class="method"><b>How this brief was built.</b> Every number is a count of companies, built from company profiles and hiring data on the day this brief was filled. The baseline is every company in {{ industry | escape }}. Each trend is that baseline with one filter added, named under its count. Shares are rounded to a whole percent. One count is one reading, so the brief says how many, not whether a number went up or down.</p>
+</section>
+</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{
+  "account": {
+    "name": "Bramblewood Foods",
+    "domain": "bramblewood.example",
+    "industry": "food and beverage manufacturing",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Bramblewood Foods makes frozen bakery products for grocery chains from two plants in Illinois. About 300 people. A finance team of six invoices 40 retail customers and pays bills from about 250 ingredient and packaging suppliers.",
+      "why_now": "Posted an opening for a senior accountant with month-end close in the description last month.",
+      "angle": null
+    }
+  },
+  "person": { "first_name": "Marta", "last_name": "Lindqvist", "title": "Controller" },
+  "sender": { "name": "Noor Haddad", "title": "Head of Customer Education", "signature_html": null },
+  "brand": { "name": "Ledgerline", "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "title": "Close the books in five days",
+    "tagline": "A hands-on afternoon for finance teams. You map your own month-end close, pick the three steps that cost the most days, and leave with a plan to fix them.",
+    "format": "in_person",
+    "date_text": "Thursday, December 4",
+    "time_text": "1:00 pm to 5:00 pm",
+    "venue": "The Loft, 24 Carver Street",
+    "city": "Chicago",
+    "seats": 12,
+    "seats_left": 4,
+    "audience": "Controllers, finance managers and the people who run month-end at companies with 50 to 500 people.",
+    "agenda": [
+      { "time": "1:00 pm", "length": "15 min", "title": "Arrivals and coffee", "kind": "break" },
+      { "time": "1:15 pm", "length": "30 min", "title": "Where the days go", "note": "What a five-day close looks like, and the four places most teams lose a week.", "kind": "talk" },
+      { "time": "1:45 pm", "length": "60 min", "title": "Map your own close", "note": "On paper, step by step: who does what, on which day, and what each step waits on.", "kind": "hands_on" },
+      { "time": "2:45 pm", "length": "15 min", "title": "Break", "kind": "break" },
+      { "time": "3:00 pm", "length": "60 min", "title": "Pick the three steps to fix first", "note": "Score each step by days lost and effort to change. Pair up and challenge each other's picks.", "kind": "hands_on" },
+      { "time": "4:00 pm", "length": "45 min", "title": "Write the 90-day plan", "note": "One page: the three steps, who owns each, and what changes in month one, two and three.", "kind": "hands_on" },
+      { "time": "4:45 pm", "length": "15 min", "title": "Read-outs and what we send you after", "kind": "talk" }
+    ],
+    "bring": [
+      "Your current close checklist or calendar, in whatever form it exists",
+      "The dates your last three closes finished",
+      "A laptop, for the templates we share in the room",
+      "The one step of the close that frustrates you most"
+    ],
+    "host_note": "Noor Haddad runs the session and reads every plan written in the room. The group stays at twelve on purpose, so there is time to go through each one.",
+    "confirm_note": "Your seat is confirmed by email within a day, with a short pre-read and directions to The Loft.",
+    "why_now": "Posted an opening for a senior accountant with month-end close in the description last month.",
+    "why_you": "Bramblewood closes two plants and pays about 250 suppliers with a finance team of six, and you are hiring a senior accountant for month-end. The afternoon is about the close that person inherits.",
+    "leave_with": [
+      {
+        "lead": "A close calendar for a six-person finance team",
+        "text": "Every step of Bramblewood's month-end on one page, split between the two plants and head office, with the day each step happens and what it waits on."
+      },
+      {
+        "lead": "The three steps to fix first",
+        "text": "Scored by days lost and effort to change. With bills from about 250 suppliers, invoice matching will be on the list, but the room decides from your own map."
+      },
+      {
+        "lead": "A one-page 90-day plan for your CFO",
+        "text": "What changes in month one, two and three, written so the senior accountant you are hiring can pick it up on day one."
+      }
+    ]
+  }
+}

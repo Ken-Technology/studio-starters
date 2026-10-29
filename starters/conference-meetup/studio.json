@@ -1,0 +1,120 @@
+{
+  "kenStudio": "1",
+  "name": "See you at the conference",
+  "type": "event",
+  "format": "page",
+  "slug": "see-you-at-the-show",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "conference_name": { "type": "string", "minLength": 3, "maxLength": 80, "fallback": "Supply Chain Forward" },
+      "dates_text": { "type": "string", "minLength": 3, "maxLength": 60, "fallback": "March 10 to 12" },
+      "venue": { "type": "string", "maxLength": 120, "fallback": "Lakeside Convention Center" },
+      "city": { "type": "string", "maxLength": 60, "fallback": "Chicago" },
+      "hall": { "type": "string", "maxLength": 24, "fallback": "Hall B" },
+      "booth": { "type": "string", "minLength": 1, "maxLength": 12, "fallback": "412" },
+      "booth_note": {
+        "type": "string",
+        "maxLength": 280,
+        "fallback": "Two of us at the stand the whole show, a live board on the big screen, and a quiet corner at the back with chairs and decent coffee."
+      },
+      "booth_hours": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "day": { "type": "string", "minLength": 2, "maxLength": 24 },
+            "hours": { "type": "string", "minLength": 2, "maxLength": 40 },
+            "who": { "type": "string", "maxLength": 100 }
+          },
+          "required": ["day", "hours"]
+        },
+        "fallback": [
+          { "day": "Tuesday, March 10", "hours": "9:00 am to 5:00 pm", "who": "Two of us, all day" },
+          { "day": "Wednesday, March 11", "hours": "9:00 am to 5:00 pm", "who": "Two of us, from 11:00 am" },
+          { "day": "Thursday, March 12", "hours": "9:00 am to 2:00 pm", "who": "One of us, all day" }
+        ]
+      },
+      "talk": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "minLength": 3, "maxLength": 120 },
+          "day": { "type": "string", "maxLength": 24 },
+          "time": { "type": "string", "maxLength": 40 },
+          "stage": { "type": "string", "maxLength": 60 },
+          "speaker": { "type": "string", "maxLength": 80 }
+        },
+        "required": ["title"]
+      },
+      "side_events": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "day": { "type": "string", "minLength": 2, "maxLength": 24 },
+            "time": { "type": "string", "maxLength": 40 },
+            "title": { "type": "string", "minLength": 2, "maxLength": 100 },
+            "where": { "type": "string", "maxLength": 100 },
+            "note": { "type": "string", "maxLength": 200 },
+            "host": { "type": "string", "maxLength": 80 }
+          },
+          "required": ["day", "title"]
+        },
+        "fallback": [
+          { "day": "Tuesday, March 10", "time": "6:30 pm", "title": "Opening night drinks", "where": "The Atrium, main entrance", "note": "Most of the exhibitors go. The easy place to find us if Tuesday is your only day.", "host": "The show" },
+          { "day": "Wednesday, March 11", "time": "8:00 am", "title": "Breakfast for operations leaders", "where": "Room 204, second floor", "note": "Twenty people, one table, no slides. Ask us for a seat.", "host": "Us" },
+          { "day": "Wednesday, March 11", "time": "7:00 pm", "title": "Shippers and carriers dinner", "where": "Off site, a ten minute walk", "note": "Invite only. We have two spare seats at our table.", "host": "Us" },
+          { "day": "Thursday, March 12", "time": "12:30 pm", "title": "Closing panel on the next twelve months", "where": "Main stage, Hall A", "note": "The one session worth staying for on the last day.", "host": "The show" }
+        ]
+      },
+      "why_now": { "type": "string", "maxLength": 1000 },
+      "personal_line": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 320,
+        "fallback": "I would like 20 minutes with {{ account.name }} at the show, at the booth or over a coffee nearby, whichever is easier for you."
+      }
+    },
+    "required": ["conference_name", "dates_text", "hall", "booth", "booth_hours", "side_events", "personal_line"]
+  },
+  "recipe": [
+    { "id": "why_now", "kind": "bind", "from": "account.dossier.why_now", "to": "data.why_now" },
+    {
+      "id": "personal_line",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.industry", "account.size_band", "account.dossier.summary", "data.why_now", "brand.name", "sender.name"],
+      "to": ["data.personal_line"],
+      "prompt": "Write the personal line on a page from {{ sender.name | default: 'our team' }} at {{ brand.name | default: 'our company' }} to someone at {{ account.name }}. The page says we are both going to {{ defaults.conference_name }} in {{ defaults.city | default: 'the same city' }}, shows where our booth is, and asks them to pick a time to meet there.\n\nInputs: account.name, account.industry and account.size_band describe the company. account.dossier.summary is our research summary. data.why_now is a recent reason to reach out and may be empty. Use facts from these inputs only. Never invent news, numbers, customers, people, or anything about the conference.\n\nReturn JSON with one key:\n- personal_line: one or two sentences, 40 to 300 characters, on why 20 minutes with {{ account.name }} at the show is worth their time. Tie one specific fact about them, data.why_now if there is one, to what we could talk through at the booth, so it reads like {{ sender.name | default: 'the sender' }} wrote it after looking them up. Write to \"you\" or to the company. Never use a first name; the page adds the greeting. No flattery (\"love what you're building\", \"impressive\"), no \"I noticed\", \"I saw\" or \"I came across\", no question, no sign-off.\n\nRules: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. Plain words a person would say out loud to a peer; no marketing words."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.personal_line"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["I noticed", "I saw", "I came across", "love what you", "impressive", "reach out", "touch base", "synergy", "demo"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true,
+        "no_signoff": true
+      },
+      "rubric": "Grade data.personal_line the way a busy buyer reads it on a phone during a conference. 10 is a line they read in one pass and then pick a time.\nScore these, 0 to 10 each:\n- specific: it names one fact about {{ account.name }} that the inputs below support, and ties it to a reason to meet. A line that only says what the company does, or that could go to any company, scores 3 or lower.\n- plain: short sentences a person would say out loud. Marketing words, stacked adjectives and jargon lower the score.\n- honest: it claims nothing about the conference, our product or results that the inputs do not support.\nAnswer yes or no:\n- would_stop: would someone at {{ account.name }} stop scrolling for this line?\n- weird_word: is there a phrase a person would not say out loud? Quote it.\nAutomatic fail: an em dash or en dash, an exclamation mark, a first name, a greeting, a sign-off, a question, flattery, an email address or phone number, a claim about {{ account.name }} that the inputs do not support, or any invented news, number, customer or person.\nInputs, the same the writer had: {{ account.name }}, {{ account.industry | default: 'industry unknown' }}, {{ account.size_band | default: 'size unknown' }}. Summary: {{ account.dossier.summary | default: 'none' }}. Why now: {{ data.why_now | default: 'none' }}.\nPass when the overall score is 7.5 or higher, no check is 6 or lower, would_stop is yes and weird_word is no. On a fail, name the check and quote the phrase to change. The fix never supplies replacement sentences, names, numbers or facts."
+    }
+  ],
+  "sections": [
+    { "id": "hero", "label": "See you there" },
+    { "id": "note", "label": "Personal note" },
+    { "id": "booth", "label": "At the booth" },
+    { "id": "talk", "label": "Our session" },
+    { "id": "events", "label": "Side events" },
+    { "id": "meet", "label": "Pick a time" }
+  ],
+  "cta": { "primary": "booking", "label": "Pick a time at the show" }
+}

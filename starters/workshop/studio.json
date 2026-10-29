@@ -1,0 +1,144 @@
+{
+  "kenStudio": "1",
+  "name": "Workshop invite",
+  "type": "event",
+  "format": "page",
+  "slug": "workshop",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "title": { "type": "string", "minLength": 3, "maxLength": 90, "fallback": "Close the books in five days" },
+      "tagline": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 240,
+        "fallback": "A hands-on afternoon for finance teams. You map your own month-end close, pick the three steps that cost the most days, and leave with a plan to fix them."
+      },
+      "format": { "type": "string", "enum": ["in_person", "online"], "fallback": "in_person" },
+      "date_text": { "type": "string", "minLength": 3, "maxLength": 60, "fallback": "Thursday, December 4" },
+      "time_text": { "type": "string", "minLength": 3, "maxLength": 60, "fallback": "1:00 pm to 5:00 pm" },
+      "venue": { "type": "string", "maxLength": 120, "fallback": "The Loft, 24 Carver Street" },
+      "city": { "type": "string", "maxLength": 60, "fallback": "Chicago" },
+      "platform": { "type": "string", "maxLength": 60, "fallback": "Zoom" },
+      "seats": { "type": "integer", "fallback": 12 },
+      "seats_left": { "type": "integer", "fallback": 4 },
+      "audience": {
+        "type": "string",
+        "maxLength": 200,
+        "fallback": "Controllers, finance managers and the people who run month-end at companies with 50 to 500 people."
+      },
+      "agenda": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 10,
+        "items": {
+          "type": "object",
+          "properties": {
+            "time": { "type": "string", "minLength": 1, "maxLength": 20 },
+            "length": { "type": "string", "maxLength": 20 },
+            "title": { "type": "string", "minLength": 2, "maxLength": 80 },
+            "note": { "type": "string", "maxLength": 200 },
+            "kind": { "type": "string", "enum": ["hands_on", "talk", "break"] }
+          },
+          "required": ["time", "title", "kind"]
+        },
+        "fallback": [
+          { "time": "1:00 pm", "length": "15 min", "title": "Arrivals and coffee", "kind": "break" },
+          { "time": "1:15 pm", "length": "30 min", "title": "Where the days go", "note": "What a five-day close looks like, and the four places most teams lose a week.", "kind": "talk" },
+          { "time": "1:45 pm", "length": "60 min", "title": "Map your own close", "note": "On paper, step by step: who does what, on which day, and what each step waits on.", "kind": "hands_on" },
+          { "time": "2:45 pm", "length": "15 min", "title": "Break", "kind": "break" },
+          { "time": "3:00 pm", "length": "60 min", "title": "Pick the three steps to fix first", "note": "Score each step by days lost and effort to change. Pair up and challenge each other's picks.", "kind": "hands_on" },
+          { "time": "4:00 pm", "length": "45 min", "title": "Write the 90-day plan", "note": "One page: the three steps, who owns each, and what changes in month one, two and three.", "kind": "hands_on" },
+          { "time": "4:45 pm", "length": "15 min", "title": "Read-outs and what we send you after", "kind": "talk" }
+        ]
+      },
+      "bring": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 6,
+        "items": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "fallback": [
+          "Your current close checklist or calendar, in whatever form it exists",
+          "The dates your last three closes finished",
+          "A laptop, for the templates we share in the room",
+          "The one step of the close that frustrates you most"
+        ]
+      },
+      "host_note": {
+        "type": "string",
+        "maxLength": 320,
+        "fallback": "{{ sender.name | default: 'Our team' }} runs the session and reads every plan written in the room. The group stays small on purpose, so there is time to go through each one."
+      },
+      "confirm_note": {
+        "type": "string",
+        "maxLength": 240,
+        "fallback": "Your seat is confirmed by email within a day, with a short pre-read and directions."
+      },
+      "why_now": { "type": "string", "maxLength": 1000 },
+      "why_you": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 320,
+        "fallback": "It's a small room of people who run month-end at companies like {{ account.name }}, and I would like your team's close on the wall next to theirs."
+      },
+      "leave_with": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "lead": { "type": "string", "minLength": 3, "maxLength": 60 },
+            "text": { "type": "string", "minLength": 20, "maxLength": 220 }
+          },
+          "required": ["lead", "text"]
+        },
+        "fallback": [
+          { "lead": "A close calendar for your team", "text": "Every step of your month-end on one page, with the day it happens and what it waits on." },
+          { "lead": "The three steps to fix first", "text": "Scored by days lost and effort to change, with an owner next to each one." },
+          { "lead": "A one-page 90-day plan", "text": "What changes in month one, two and three, written so you can hand it to your CFO as it is." }
+        ]
+      }
+    },
+    "required": ["title", "tagline", "format", "date_text", "time_text", "seats", "seats_left", "agenda", "bring", "why_you", "leave_with"]
+  },
+  "recipe": [
+    { "id": "why_now", "kind": "bind", "from": "account.dossier.why_now", "to": "data.why_now" },
+    {
+      "id": "write",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.industry", "account.size_band", "account.dossier.summary", "data.why_now", "sender.name", "brand.name", "defaults.agenda", "defaults.leave_with"],
+      "to": ["data.why_you", "data.leave_with"],
+      "prompt": "Write the personal part of a workshop invitation from {{ sender.name | default: 'our team' }} at {{ brand.name | default: 'our company' }} to someone at {{ account.name }}.\n\nThe workshop: \"{{ defaults.title }}\". {{ defaults.tagline }} Who it is for: {{ defaults.audience | default: 'not given' }} defaults.agenda is its running order, each part {time, length, title, note, kind}. defaults.leave_with is what everyone walks out with, each {lead, text}.\n\nInputs: account.name, account.industry and account.size_band describe the company. account.dossier.summary is our research summary. data.why_now is a recent reason to reach out and may be empty. Use facts from these inputs only. Never invent news, numbers, customers, tools or people.\n\nReturn JSON with two keys:\n- why_you: one or two sentences, at most 300 characters, on why this workshop fits {{ account.name }} now. Tie one specific fact about them, data.why_now if there is one, to what the room will work on, so it reads like the host wrote it after looking them up. Write to \"you\" or to the company. Never use a first name; the page adds the greeting. No flattery, no \"I noticed\", \"I saw\" or \"I came across\", no question.\n- leave_with: exactly 3 items {lead, text}, the things {{ account.name }}'s team would walk out with, one for each of the first three items in defaults.leave_with, in that order. lead is at most 60 characters, a noun phrase naming the thing, like that item's lead made specific to {{ account.name }} where the inputs allow. text is one or two sentences, at most 220 characters, saying what that thing would hold for {{ account.name }} specifically, from the inputs. When the inputs say nothing specific, describe the thing for a company in {{ account.industry | default: 'their industry' }} with {{ account.size_band | default: 'their number of' }} people, without guessing details.\n\nRules for every string: plain words a person would say out loud, no marketing words. Sentence case. No em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. Never name other attendees or say who else is coming."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.why_you", "data.leave_with"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["I noticed", "I saw", "I came across", "caught my attention", "impressive", "love what", "hope this finds you", "unlock", "leverage", "seamless", "supercharge", "game changer", "cutting edge", "revolutionize"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_test_noun": true,
+        "no_real_emphasis": true,
+        "no_signoff": true
+      },
+      "rubric": "Grade why_you and leave_with the way the recipient reads them on the invitation. 10 is copy a busy finance manager reads once and believes.\nScore these, 0 to 10 each:\n- specific: why_you names one fact about {{ account.name }} that the inputs below support and ties it to what the room will work on. Each leave_with item says what that thing would hold for this company, not a generic benefit.\n- plain: short sentences a person would say out loud. No marketing words, no stacked nouns, no phrase that sounds like a brochure. Quote any such phrase.\n- honest: every claim about {{ account.name }} comes from the inputs below. A customer, number, tool, person or news item the inputs do not support fails this check.\nAutomatic fail: an em dash or en dash, an exclamation mark, a first name or a greeting in why_you, a question in why_you, flattery such as \"impressive\" or \"love what you are building\", \"I noticed\", \"I saw\" or \"I came across\", or more or fewer than 3 leave_with items.\nInputs the writer had, the only source of facts about {{ account.name }}: industry {{ account.industry | default: 'unknown' }}, size {{ account.size_band | default: 'unknown' }}, research summary: {{ account.dossier.summary | default: 'none' }}, recent reason to reach out: {{ data.why_now | default: 'none' }}.\nPass when the overall score is 7.5 or higher and no check is 6 or lower. On a fail, name the check and quote the phrase to change. The fix never supplies replacement sentences, names, numbers or facts."
+    }
+  ],
+  "sections": [
+    { "id": "invite", "label": "Invitation" },
+    { "id": "details", "label": "When and where" },
+    { "id": "note", "label": "Personal note" },
+    { "id": "leave_with", "label": "What you leave with" },
+    { "id": "agenda", "label": "Agenda" },
+    { "id": "bring", "label": "What to bring" },
+    { "id": "host", "label": "Host" },
+    { "id": "seat", "label": "Seat form" }
+  ],
+  "cta": { "primary": "form", "label": "Hold my seat" }
+}

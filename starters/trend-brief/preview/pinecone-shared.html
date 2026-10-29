@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Three things moving in industrial automation this quarter</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tb{--p:#ff5a1f;--s:#0b3b2e;--ink:#15191c;--mute:#5d6871;--rule:#e1e4e7;--tint:color-mix(in srgb,var(--p) 6%,#fff);--track:color-mix(in srgb,var(--p) 14%,#fff);--fh:'Outfit',Georgia,'Times New Roman',serif;--fb:'DM Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;font-family:var(--fb);font-size:16px;line-height:1.6;color:var(--ink);-webkit-font-smoothing:antialiased;padding-bottom:4rem}
+.tb p{margin:0}
+.tb h1,.tb h2{font-family:var(--fh);font-weight:500;margin:0}
+.tb a{color:var(--p)}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.logo{height:26px;width:auto;display:block}
+.mark{font-weight:600;font-size:1rem;letter-spacing:-.01em}
+.kind{font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-align:right;line-height:1.35}
+.kind span{display:block;font-weight:400;letter-spacing:0;text-transform:none;color:var(--mute);font-size:.82rem}
+.cover{padding:2rem 0 2.25rem;display:grid;gap:2.25rem}
+.kicker{display:flex;align-items:center;gap:.65rem;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:1.1rem}
+.kicker::before{content:"";display:block;width:1.75rem;height:3px;background:var(--s)}
+.tb h1{font-size:clamp(2.35rem,9vw,3.9rem);line-height:1;letter-spacing:-.025em;max-width:15ch;text-wrap:balance;margin-bottom:1.1rem}
+.dek{font-size:1.08rem;line-height:1.5;color:var(--mute);max-width:33rem;margin-bottom:1.9rem}
+.plate{display:grid;gap:.9rem;border-top:1px solid var(--rule);padding-top:1rem;font-size:.9rem;line-height:1.45}
+.plate small{display:block;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+.plate b{font-weight:600}
+.glance{background:var(--tint);padding:1.35rem 1.25rem .3rem;margin:0 -1.25rem}
+.glance h2{font-family:var(--fb);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:.4rem}
+.g{display:grid;grid-template-columns:2.1rem minmax(0,1fr) auto;gap:.1rem .75rem;align-items:start;padding:.95rem 0 1.05rem;border-top:1px solid color-mix(in srgb,var(--p) 22%,#fff)}
+.g .n{font-family:var(--fh);font-size:1.2rem;line-height:1.25;color:var(--p)}
+.g .t{font-family:var(--fh);font-size:1.18rem;line-height:1.25;letter-spacing:-.01em}
+.g .c{font-family:var(--fh);font-size:1.45rem;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.g .c small{display:block;font-family:var(--fb);font-size:.72rem;color:var(--mute);letter-spacing:0;margin-top:.25rem}
+.sec{padding:2.5rem 0 1.5rem;border-top:1px solid var(--rule)}
+.num{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:.6rem}
+.sec h2{font-size:clamp(1.75rem,6.5vw,2.6rem);line-height:1.08;letter-spacing:-.02em;max-width:22ch;text-wrap:balance;margin-bottom:1.6rem}
+.grid{display:grid;gap:1.75rem}
+.stat{border-top:2px solid var(--ink);padding-top:.9rem}
+.count{font-family:var(--fh);font-size:clamp(3.2rem,15vw,5rem);line-height:.95;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.of{color:var(--mute);font-size:.95rem;margin:.55rem 0 1rem}
+.waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;max-width:11.5rem;margin:0 0 .7rem}
+.waffle i{display:block;aspect-ratio:1;background:var(--track);border-radius:1px}
+.waffle i.on{background:var(--p)}
+.share{font-size:.84rem;line-height:1.45;color:var(--mute);margin:0 0 1.25rem}
+.share b{font-weight:600;color:var(--ink);font-size:1rem;margin-right:.3rem}
+.how{font-size:.86rem;line-height:1.5;color:var(--mute);padding-top:.85rem;border-top:1px solid var(--rule)}
+.how b{display:block;font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:.3rem}
+.how span{display:block;margin-top:.3rem;font-size:.78rem}
+.prose h3{font-family:var(--fb);font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin:0 0 .55rem}
+.prose p{font-size:1.02rem;line-height:1.65;margin-bottom:1.6rem;max-width:40rem}
+.prose p:last-child{margin-bottom:0}
+.so{font-family:var(--fh);font-size:1.32rem!important;line-height:1.4!important;letter-spacing:-.01em;max-width:34rem!important}
+.cta{margin:.25rem 0 1.6rem}
+.cta .ken-cta{border-radius:3px!important;padding:.9rem 1.35rem!important;font-size:1rem}
+.print-only{display:none}
+.sign{font-size:.95rem;margin-top:.5rem}
+.sign b{display:block;font-weight:600}
+.sign span{display:block;color:var(--mute)}
+.method{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.8rem;line-height:1.55;color:var(--mute);max-width:46rem}
+.method b{color:var(--ink);font-weight:600}
+@media (min-width:760px){
+.tb{font-size:17px}
+.wrap{padding:0 2.5rem}
+.cover{padding:3rem 0}
+.plate{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.glance{margin:0;padding:1.5rem 1.5rem .5rem}
+.sec{padding:3.5rem 0 2rem}
+.grid{grid-template-columns:17rem minmax(0,1fr);gap:3.5rem;align-items:start}
+.count{font-size:4.6rem}
+}
+@media (min-width:1040px){
+.cover{grid-template-columns:minmax(0,1fr) 23rem;gap:4rem;align-items:start;padding:3.5rem 0}
+.glance{margin-top:.3rem}
+}
+@media print{
+@page{margin:14mm 16mm}
+.tb{padding-bottom:0;font-size:11.5pt}
+.wrap{max-width:none;padding:0}
+.cover{display:block;padding:1.5rem 0 0}
+.glance{margin:2rem 0 0}
+.sec{break-before:page;border-top:0;padding-top:.5rem}
+.grid{grid-template-columns:15rem minmax(0,1fr);gap:2.5rem}
+.stat,.g,.prose p{break-inside:avoid}
+.cta{display:none}
+.print-only{display:block}
+}
+</style>
+</head>
+<body>
+<main class="tb">
+<div class="wrap">
+<header class="top">
+<p class="mark">Kelp</p>
+<p class="kind">Trend brief<span>Industrial automation</span></p>
+</header>
+<section data-section="cover" class="cover">
+<div class="lead">
+<p class="kicker">Three company counts</p>
+<h1>Three things moving in industrial automation this quarter</h1>
+<p class="dek">We counted 9,480 industrial automation companies. Three signals describe the field Pinecone sells into and competes in, and what a 140-person robot maker should take from each.</p>
+<div class="plate">
+<p><small>Prepared for</small><b>Pinecone Robotics</b></p>
+<p><small>Written by</small><b>Sofia Lindqvist</b>, Founder, Kelp</p>
+<p><small>Source</small><b>Company profiles and hiring data</b>, 9,480 companies in industrial automation</p>
+</div>
+</div>
+<aside class="glance">
+<h2>The three trends</h2>
+<div class="g">
+<span class="n">01</span>
+<span class="t">One automation company in eight is hiring fast</span>
+<span class="c">1,120<small>12% of the industry</small></span>
+</div>
+<div class="g">
+<span class="n">02</span>
+<span class="t">New companies keep entering the field</span>
+<span class="c">640<small>7% of the industry</small></span>
+</div>
+<div class="g">
+<span class="n">03</span>
+<span class="t">Funding is flowing to a small group of automation firms</span>
+<span class="c">310<small>3% of the industry</small></span>
+</div>
+</aside>
+</section>
+<section data-section="trend_1" class="sec trend">
+<p class="num">Trend 01</p>
+<h2>One automation company in eight is hiring fast</h2>
+<div class="grid">
+<div class="stat">
+<p class="count">1,120</p>
+<p class="of">Hiring surge, 3 months</p>
+<div class="waffle" role="img" aria-label="12 percent of 9,480"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<p class="share"><b>12%</b>of 9,480 companies in industrial automation</p>
+<p class="how"><b>How we counted</b>Industrial automation companies that added staff fast in the last three months<span>From company profiles and hiring data, counted on the day this brief was filled.</span></p>
+</div>
+<div class="prose">
+<h3>What the count says</h3>
+<p>1,120 of the 9,480 industrial automation companies counted added staff fast in the last three months, about 12 percent of the industry. That is the largest share of the three counts in this brief. A hiring surge usually means an order book that outgrew the team, on the shop floor or in the field.</p>
+<h3>What it means for Pinecone Robotics</h3>
+<p>Pinecone opened a second assembly line in August, so it knows this pressure from the inside. The other 1,120 are hiring the same controls engineers and field technicians in the same cities. If the second line needs more hands, the window to hire before those firms do is this quarter, not next.</p>
+</div>
+</div>
+</section>
+<section data-section="trend_2" class="sec trend">
+<p class="num">Trend 02</p>
+<h2>New companies keep entering the field</h2>
+<div class="grid">
+<div class="stat">
+<p class="count">640</p>
+<p class="of">New entrants, 2 years</p>
+<div class="waffle" role="img" aria-label="7 percent of 9,480"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<p class="share"><b>7%</b>of 9,480 companies in industrial automation</p>
+<p class="how"><b>How we counted</b>Industrial automation companies founded in the last two years<span>From company profiles and hiring data, counted on the day this brief was filled.</span></p>
+</div>
+<div class="prose">
+<h3>What the count says</h3>
+<p>640 industrial automation companies were founded in the last two years, about 7 percent of the industry. Each one is younger than Pinecone&#39;s per-pick subscription model. A steady flow of new entrants changes how warehouse buyers compare vendors and how patient they are on price.</p>
+<h3>What it means for Pinecone Robotics</h3>
+<p>Some of the 640 will pitch the same mid-size warehouses as Pinecone, with newer demos and no installed base to defend. The per-pick subscription and the field service teams in three states are the things a two-year-old company cannot copy quickly. Those belong at the front of the pitch, not the end.</p>
+</div>
+</div>
+</section>
+<section data-section="trend_3" class="sec trend">
+<p class="num">Trend 03</p>
+<h2>Funding is flowing to a small group of automation firms</h2>
+<div class="grid">
+<div class="stat">
+<p class="count">310</p>
+<p class="of">Raised money, 6 months</p>
+<div class="waffle" role="img" aria-label="3 percent of 9,480"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<p class="share"><b>3%</b>of 9,480 companies in industrial automation</p>
+<p class="how"><b>How we counted</b>Industrial automation companies that announced funding in the last six months<span>From company profiles and hiring data, counted on the day this brief was filled.</span></p>
+</div>
+<div class="prose">
+<h3>What the count says</h3>
+<p>310 of the 9,480 industrial automation companies announced funding in the last six months, about 3 percent of the industry. It is the smallest count in this brief. A funded competitor can underprice a subscription for a year or two, so even 310 names matter when the buyer is the same warehouse operator.</p>
+<h3>What it means for Pinecone Robotics</h3>
+<p>For Pinecone the 310 are two lists at once. Some are competitors who will discount to win mid-size warehouses while the money lasts. Others are potential partners or acquirers who need a picking robot that already works in the field. Sorting the list by what each company builds is a one-afternoon job worth doing.</p>
+</div>
+</div>
+</section>
+<section data-section="next" class="sec next">
+<p class="num">What to do with this</p>
+<h2>Where I would start</h2>
+<div class="prose">
+<p class="so">Act on the hiring count first. 1,120 companies hiring fast is both the tightest labor market for the second assembly line and the clearest sign that automation buyers are spending. The new entrants and the funded group matter for the pitch, not the plan, so review them before the next trade show rather than this week.</p>
+<h3>Where Kelp fits</h3>
+<p>Kelp runs outbound for industrial hardware companies: the target list, the emails and the first meeting, with a team that has sold capital equipment before.</p>
+<h3>Talk it through</h3>
+<p>Each count above is a list of companies, filtered the way the line under it says. I can pull the names behind any of the three, cut them to your region, and walk you through them in twenty minutes.</p>
+<div class="cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#ff5a1f;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+<p class="print-only">To book the twenty minutes, reply to my email with a time that suits you.</p>
+<p class="sign"><b>Sofia Lindqvist</b><span>Founder, Kelp</span></p>
+</div>
+<p class="method"><b>How this brief was built.</b> Every number is a count of companies, built from company profiles and hiring data on the day this brief was filled. The baseline is every company in industrial automation. Each trend is that baseline with one filter added, named under its count. Shares are rounded to a whole percent. One count is one reading, so the brief says how many, not whether a number went up or down.</p>
+</section>
+</div>
+</main>
+</body>
+</html>

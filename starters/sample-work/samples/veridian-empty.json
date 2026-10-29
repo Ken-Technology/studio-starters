@@ -1,0 +1,55 @@
+{
+  "account": {
+    "name": "Veridian Water Systems",
+    "domain": "veridianwater.example",
+    "industry": "industrial machinery",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Veridian Water Systems builds and services water treatment skids for food plants and breweries in the Pacific Northwest. About 70 people, with a shop in Tacoma.",
+      "why_now": "Posted a controller role in October, the first finance hire on its careers page.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Marta",
+    "last_name": "Kowalczyk",
+    "title": "Chief Operating Officer"
+  },
+  "sender": {
+    "name": "Dev Rathore",
+    "title": "Partner",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northfork Advisory",
+    "logo_url": null,
+    "colors": {
+      "primary": "#f04e23",
+      "secondary": "#1a1a1a"
+    },
+    "fonts": {
+      "heading": "Outfit",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "knowledge": [],
+    "account_notes": [],
+    "site": {
+      "url": "https://veridianwater.example",
+      "title": "Veridian Water Systems: water treatment skids, built and serviced in Tacoma",
+      "description": "Reverse osmosis, softening and filtration skids for food plants and breweries, designed, built and serviced from Tacoma.",
+      "markdown": "# Water treatment skids for food plants and breweries\nDesigned, built and serviced from our shop in Tacoma. Reverse osmosis, softening and filtration skids sized to your line.\n\n## Service\nQuarterly service plans on every skid we build.\n\n## Careers\nWe are hiring a controller."
+    },
+    "dossier": "Veridian Water Systems builds and services water treatment skids for food plants and breweries in the Pacific Northwest. About 70 people, with a shop in Tacoma.",
+    "why_now": "Posted a controller role in October, the first finance hire on its careers page.",
+    "signals": [
+      {
+        "type": "hiring",
+        "title": "Controller role posted on the careers page",
+        "date": "2026-10-16",
+        "source_url": "https://veridianwater.example/careers/controller"
+      }
+    ]
+  }
+}

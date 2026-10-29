@@ -1,0 +1,248 @@
+{%- assign accent = brand.colors.primary | default: '#0f4c5c' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#d08c3a' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Bricolage Grotesque' -%}
+{%- assign font_body = brand.fonts.body | default: 'Instrument Sans' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign has_site = false -%}
+{%- if data.site.url and data.site.url != '' -%}{%- assign has_site = true -%}{%- endif -%}
+{%- assign has_signals = false -%}
+{%- if data.signals.size > 0 -%}{%- assign has_signals = true -%}{%- endif -%}
+{%- assign has_notes = false -%}
+{%- if data.dossier and data.dossier != '' -%}{%- assign has_notes = true -%}{%- endif -%}
+{%- assign has_sources = false -%}
+{%- if has_site or has_signals or has_notes -%}{%- assign has_sources = true -%}{%- endif -%}
+{%- assign has_work = false -%}
+{%- if data.blocks.size > 0 -%}{%- assign has_work = true -%}{%- endif -%}
+{%- assign has_full = false -%}
+{%- if data.full.size > 0 -%}{%- assign has_full = true -%}{%- endif -%}
+{%- assign n = 0 -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ data.headline | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f5f4f0;color:#17181a;font-family:'{{ font_body }}',ui-sans-serif,system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.sw{--a:{{ accent }};--a2:{{ accent2 }};--ink:#17181a;--text:#2b2a27;--mute:#6b6963;--line:#dbd9d2;--paper:#fff;--bg:#f5f4f0}
+.sw h1,.sw h2,.sw h3,.sw-num{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-.02em;text-wrap:balance;margin:0}
+.sw-mono,.sw-eyebrow,.sw-tag,.sw-url,.sw-ticket dt,.sw-top-tag,.sw-foot,.sw-label{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+p{margin:0}
+.sw a{color:inherit;text-decoration:underline;text-decoration-color:var(--a);text-decoration-thickness:1.5px;text-underline-offset:3px}
+.sw-band{height:5px;background:var(--a)}
+.sw-wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
+.sw-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:3.75rem;border-bottom:1px solid var(--line)}
+.sw-logo{display:block;height:28px;width:auto;max-width:11rem}
+.sw-brand{font-weight:700;font-size:1rem;letter-spacing:-.01em}
+.sw-top-tag{font-size:.74rem;color:var(--mute);text-align:right}
+.sw-cover{padding:2.4rem 0 2.2rem}
+.sw-kicker{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;font-weight:600;letter-spacing:.02em;color:var(--text);margin:0 0 1.1rem}
+.sw-kicker i{display:inline-block;width:.6rem;height:.6rem;background:var(--a);flex:none;margin-top:.33rem}
+.sw h1{font-size:2.3rem;line-height:1.04;overflow-wrap:anywhere}
+.sw-intro{font-size:1.12rem;line-height:1.5;color:var(--text);margin:1.2rem 0 0;max-width:38rem}
+.sw-ticket{margin:1.9rem 0 0;border:1.5px solid var(--ink);background:var(--paper)}
+.sw-ticket dl{margin:0;padding:0}
+.sw-ticket div{display:grid;grid-template-columns:6.4rem minmax(0,1fr);gap:.8rem;padding:.75rem .95rem;border-bottom:1px solid var(--line)}
+.sw-ticket div:last-child{border-bottom:0}
+.sw-ticket dt{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:.28rem}
+.sw-ticket dd{margin:0;font-weight:600;font-size:.98rem;line-height:1.35;overflow-wrap:anywhere}
+.sw-ticket small{display:block;font-weight:400;color:var(--mute);font-size:.86rem;margin-top:.15rem}
+.sw-sec{padding:2.3rem 0 2.5rem;border-top:1px solid var(--line)}
+.sw-rail{margin:0 0 1.4rem}
+.sw-eyebrow{display:flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:500;letter-spacing:.1em;color:var(--mute);margin:0 0 .7rem}
+.sw-eyebrow::before{content:"";width:1.4rem;height:2px;background:var(--a)}
+.sw h2{font-size:1.65rem;line-height:1.12}
+.sw-rail-note{font-size:.95rem;line-height:1.5;color:var(--mute);margin:.7rem 0 0;max-width:24rem}
+.sw-src,.sw-full,.sw-items{list-style:none;margin:0;padding:0}
+.sw-src{border-top:2px solid var(--ink)}
+.sw-src li{display:grid;grid-template-columns:3.6rem minmax(0,1fr);gap:.9rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.sw-tag{font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:.3rem}
+.sw-src b{display:block;font-weight:600;font-size:1rem;line-height:1.35}
+.sw-url{display:block;font-size:.78rem;color:var(--mute);margin-top:.25rem;overflow-wrap:anywhere}
+.sw-src p{font-size:.95rem;line-height:1.5;color:var(--text);margin-top:.45rem}
+.sw-block{background:var(--paper);border:1px solid var(--line);padding:1.25rem 1.15rem 1.35rem;margin:0 0 1.1rem;box-shadow:4px 4px 0 var(--paper),5px 5px 0 var(--line)}
+.sw-block-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin:0 0 .55rem}
+.sw-num{font-size:1.55rem;line-height:1;color:var(--a);font-weight:700;letter-spacing:-.03em}
+.sw-label{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:right}
+.sw h3{font-size:1.3rem;line-height:1.2;margin:0 0 .65rem}
+.sw-block>p{font-size:1rem;line-height:1.55;color:var(--text)}
+.sw-items{margin-top:1rem;border-top:1px solid var(--ink)}
+.sw-items li{padding:.6rem 0;border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.45}
+.sw-items b{display:block;font-weight:600;color:var(--ink)}
+.sw-items span{display:block;color:var(--mute);margin-top:.1rem}
+.sw-rw{display:grid;gap:.7rem;margin-top:1.1rem}
+.sw-rw>div{padding:.85rem 1rem .95rem;border-left:3px solid var(--line);background:var(--bg)}
+.sw-rw .sw-tag{display:block;padding:0;margin:0 0 .4rem}
+.sw-rw p{font-size:.98rem;line-height:1.5;color:var(--mute)}
+.sw-rw-after{border-left-color:var(--a)!important;background:var(--paper)!important;outline:1px solid var(--line)}
+.sw-rw-after p{color:var(--ink);font-weight:500}
+.sw-full{border-top:2px solid var(--ink)}
+.sw-full li{display:grid;grid-template-columns:1.1rem minmax(0,1fr);gap:.8rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.sw-ring{display:block;width:.8rem;height:.8rem;border:2.5px solid var(--a2);border-radius:50%;margin-top:.3rem}
+.sw-full b{display:block;font-weight:600;font-size:1rem;line-height:1.35}
+.sw-full p{font-size:.93rem;line-height:1.5;color:var(--mute);margin-top:.2rem}
+.sw-next{background:var(--paper);background:color-mix(in srgb,var(--a2) 12%,#fff);border-top:1px solid var(--line)}
+.sw-next .sw-sec{border-top:0}
+.sw-closing{font-size:1.12rem;line-height:1.5;color:var(--ink);max-width:36rem}
+.sw-cta{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 1.1rem;margin:1.5rem 0 1.6rem}
+.sw-cta .ken-cta{min-height:44px;display:inline-flex!important;align-items:center}
+.sw-or{font-size:.92rem;color:var(--mute)}
+.sw-sign{font-size:.95rem;line-height:1.4}
+.sw-sign b{display:block;font-weight:600}
+.sw-sign span{color:var(--mute)}
+.sw-foot{font-size:.72rem;color:var(--mute);padding:1.6rem 0 2.6rem;line-height:1.6}
+@media (min-width:900px){
+.sw-wrap{padding:0 2.5rem}
+.sw-top{min-height:4.25rem}
+.sw-cover{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:4rem;align-items:start;padding:4rem 0 3.6rem}
+.sw h1{font-size:3.7rem}
+.sw-intro{font-size:1.2rem;margin-top:1.5rem}
+.sw-ticket{margin:.4rem 0 0}
+.sw-ticket div{grid-template-columns:7rem minmax(0,1fr);padding:.9rem 1.1rem}
+.sw-sec{display:grid;grid-template-columns:16rem minmax(0,1fr);gap:4rem;padding:3.4rem 0 3.8rem}
+.sw-rail{margin:0}
+.sw h2{font-size:1.85rem}
+.sw-src li{grid-template-columns:4.5rem minmax(0,1fr);gap:1.2rem;padding:1.15rem 0}
+.sw-block{padding:1.7rem 1.8rem 1.9rem;margin-bottom:1.4rem}
+.sw-num{font-size:1.9rem}
+.sw h3{font-size:1.5rem}
+.sw-block>p{font-size:1.05rem}
+.sw-items li{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:1.2rem}
+.sw-items span{margin:0}
+.sw-rw{grid-template-columns:1fr 1fr;gap:1rem}
+.sw-full{display:grid;grid-template-columns:1fr 1fr;gap:0 2.5rem}
+.sw-full li{align-content:start}
+.sw-closing{font-size:1.2rem}
+}
+</style>
+</head>
+<body>
+<main class="sw">
+<div class="sw-band"></div>
+<div class="sw-wrap">
+<header class="sw-top">
+{%- if brand.logo_url %}<img class="sw-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<span class="sw-brand">{{ brand.name | escape }}</span>{% else %}<span></span>{% endif -%}
+<p class="sw-top-tag">For {{ account.name | escape }}</p>
+</header>
+<section data-section="cover" class="sw-cover">
+<div class="sw-cover-main">
+<p class="sw-kicker"><i aria-hidden="true"></i>Made for {% if person.first_name %}{{ person.first_name | escape }} at {% endif %}{{ account.name | escape }}, before you asked</p>
+<h1>{{ data.headline | escape }}</h1>
+<p class="sw-intro">{{ data.intro | escape | newline_to_br | strip_newlines | raw }}</p>
+</div>
+<aside class="sw-ticket" aria-label="About this piece">
+<dl>
+<div><dt>Prepared for</dt><dd>{% if person.first_name %}{{ person.first_name | escape }} {{ person.last_name | escape }}<small>{% if person.title %}{{ person.title | escape }}, {% endif %}{{ account.name | escape }}</small>{% else %}{{ account.name | escape }}{% if account.industry %}<small>{{ account.industry | capitalize | escape }}</small>{% endif %}{% endif %}</dd></div>
+<div><dt>Made by</dt><dd>{{ sender.name | default: 'Our team' | escape }}{% if sender.title or brand.name %}<small>{% if sender.title %}{{ sender.title | escape }}{% endif %}{% if sender.title and brand.name %}, {% endif %}{% if brand.name %}{{ brand.name | escape }}{% endif %}</small>{% endif %}</dd></div>
+{%- if data.kind and data.kind != '' %}
+<div><dt>The piece</dt><dd>{{ data.kind | escape }}</dd></div>
+{%- endif %}
+<div><dt>Built from</dt><dd>{% if has_site %}{{ account.domain | escape }}{% else %}What is public about {{ account.name | escape }}{% endif %}<small>{% if has_site %}Your site{% if has_signals %}, recent news{% endif %}{% if has_notes %} and our notes{% endif %}{% else %}{% if has_signals %}Recent news{% if has_notes %} and our notes{% endif %}{% elsif has_notes %}Our notes{% else %}No call, no questions asked{% endif %}{% endif %}</small></dd></div>
+<div><dt>What it costs</dt><dd>Nothing<small>Keep it either way</small></dd></div>
+</dl>
+</aside>
+</section>
+{%- if has_sources %}
+{%- assign n = n | plus: 1 %}
+<section data-section="sources" class="sw-sec">
+<div class="sw-rail">
+<p class="sw-eyebrow">0{{ n }}</p>
+<h2>What we looked at</h2>
+<p class="sw-rail-note">Everything on this page comes from these sources and from how we do this work. Nobody at {{ account.name | escape }} was asked anything.</p>
+</div>
+<div class="sw-body">
+<ol class="sw-src">
+{%- if has_site %}
+<li><span class="sw-tag">Site</span><div><b>{{ data.site.title | default: account.domain | escape }}</b><span class="sw-url">{{ data.site.url | escape }}</span>{% if data.site_note and data.site_note != '' %}<p>{{ data.site_note | escape }}</p>{% endif %}</div></li>
+{%- endif %}
+{%- for s in data.signals limit: 4 %}
+<li><span class="sw-tag">News</span><div><b>{% if s.source_url and s.source_url != '' %}<a href="{{ s.source_url | escape }}" target="_blank" rel="noopener noreferrer">{{ s.title | escape }}</a>{% else %}{{ s.title | escape }}{% endif %}</b>{% if s.date or s.type %}<span class="sw-url">{% if s.date %}{{ s.date | date: '%b %d, %Y' }}{% endif %}{% if s.date and s.type %}, {% endif %}{{ s.type | escape }}</span>{% endif %}</div></li>
+{%- endfor %}
+{%- if has_notes %}
+<li><span class="sw-tag">Notes</span><div><b>Our notes on {{ account.name | escape }}</b><p>{{ data.dossier | escape }}{% if data.why_now and data.why_now != '' %} {{ data.why_now | escape }}{% endif %}</p></div></li>
+{%- endif %}
+</ol>
+</div>
+</section>
+{%- endif %}
+{%- if has_work %}
+{%- assign n = n | plus: 1 %}
+<section data-section="work" class="sw-sec">
+<div class="sw-rail">
+<p class="sw-eyebrow">0{{ n }}</p>
+<h2>What we made</h2>
+<p class="sw-rail-note">{{ data.blocks.size }} parts, in the order to read them. Each one stands on its own, so take what is useful and leave the rest.</p>
+</div>
+<div class="sw-body">
+{%- for b in data.blocks %}
+<article class="sw-block">
+<div class="sw-block-top"><span class="sw-num">{{ forloop.index | prepend: '0' }}</span>{% if b.label and b.label != '' %}<span class="sw-label">{{ b.label | escape }}</span>{% endif %}</div>
+<h3>{{ b.title | escape }}</h3>
+<p>{{ b.body | escape | newline_to_br | strip_newlines | raw }}</p>
+{%- if b.items.size > 0 %}
+<ul class="sw-items">
+{%- for i in b.items %}
+<li><b>{{ i.name | escape }}</b>{% if i.note and i.note != '' %}<span>{{ i.note | escape }}</span>{% endif %}</li>
+{%- endfor %}
+</ul>
+{%- endif %}
+{%- if b.before and b.before != '' %}
+<div class="sw-rw">
+<div class="sw-rw-before"><span class="sw-tag">On your site now</span><p>{{ b.before | escape }}</p></div>
+<div class="sw-rw-after"><span class="sw-tag">Our version</span><p>{{ b.after | escape }}</p></div>
+</div>
+{%- endif %}
+</article>
+{%- endfor %}
+</div>
+</section>
+{%- endif %}
+{%- if has_full %}
+{%- assign n = n | plus: 1 %}
+<section data-section="full" class="sw-sec">
+<div class="sw-rail">
+<p class="sw-eyebrow">0{{ n }}</p>
+<h2>What the full version includes</h2>
+{%- if data.full_intro and data.full_intro != '' %}
+<p class="sw-rail-note">{{ data.full_intro | escape }}</p>
+{%- endif %}
+</div>
+<div class="sw-body">
+<ol class="sw-full">
+{%- for f in data.full %}
+<li><span class="sw-ring" aria-hidden="true"></span><div><b>{{ f.title | escape }}</b><p>{{ f.detail | escape }}</p></div></li>
+{%- endfor %}
+</ol>
+</div>
+</section>
+{%- endif %}
+</div>
+{%- assign n = n | plus: 1 %}
+<div class="sw-next">
+<div class="sw-wrap">
+<section data-section="next" class="sw-sec">
+<div class="sw-rail">
+<p class="sw-eyebrow">0{{ n }}</p>
+<h2>{% if has_work %}If this is useful{% else %}While it is being made{% endif %}</h2>
+</div>
+<div class="sw-body">
+<p class="sw-closing">{{ data.closing | escape | newline_to_br | strip_newlines | raw }}</p>
+<div class="sw-cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}<span class="sw-or">or reply to the email this came with</span></div>
+<p class="sw-sign"><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title or brand.name %}<span>{% if sender.title %}{{ sender.title | escape }}{% endif %}{% if sender.title and brand.name %}, {% endif %}{% if brand.name %}{{ brand.name | escape }}{% endif %}</span>{% endif %}</p>
+</div>
+</section>
+</div>
+</div>
+<div class="sw-wrap">
+<p class="sw-foot">Made for {{ account.name | escape }} by {{ sender.name | default: 'our team' | escape }}{% if brand.name %} at {{ brand.name | escape }}{% endif %}. This is a private link, not a public page.</p>
+</div>
+</main>
+</body>
+</html>

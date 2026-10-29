@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Where Marrow sits among six trial data software vendors, and the gap none of them fills</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f5f6f3;color:#1c1c1c;font-family:'Barlow',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.cm{--a:#0f6f6c;--a2:#e6c46b;--ink:#1c1c1c;--text:#2e302f;--mute:#6b706e;--line:#d7dad6;--mid:#c3c8c2;--grid:#e6e9e5;--paper:#f5f6f3;--white:#fff}
+.cm h1,.cm h2,.cm h3{font-family:'Barlow Semi Condensed',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-.01em;line-height:1.05;text-wrap:balance;margin:0}
+p{margin:0}
+.cm a:focus-visible{outline:3px solid var(--a);outline-offset:3px}
+.wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.logo{height:26px;width:auto;display:block}
+.brand{font-weight:700;font-size:1rem}
+.tag{font-size:.9rem;color:var(--mute)}
+.hero{padding:2.2rem 0 2rem}
+.kicker{font-size:.95rem;font-weight:600;color:var(--a);margin:0 0 .9rem}
+.hero h1{font-size:2.25rem}
+.intro{font-size:1.08rem;line-height:1.5;color:var(--text);margin:1.3rem 0 0;max-width:36rem}
+.facts{list-style:none;margin:1.9rem 0 0;padding:0;border-top:2px solid var(--ink)}
+.facts li{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:.9rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.facts b{font-family:'Barlow Semi Condensed',ui-sans-serif,system-ui,sans-serif;font-weight:600;font-size:1.7rem;line-height:1;min-width:2.6rem;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.facts span{font-size:.95rem;line-height:1.35;color:var(--text)}
+.map{padding:2rem 0 1.6rem}
+.map h2,.key h2{font-size:1.55rem;margin:0 0 1rem}
+.plot{display:grid;grid-template-columns:1.4rem 1fr;grid-template-rows:auto auto;gap:.45rem .55rem}
+.plot-y{display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.82rem;font-weight:600;color:var(--ink);line-height:1}
+.plot-area{position:relative;aspect-ratio:1/1;background-color:var(--white);background-image:linear-gradient(to right,var(--grid) 1px,transparent 1px),linear-gradient(to bottom,var(--grid) 1px,transparent 1px);background-size:10% 10%;border:1.5px solid var(--ink)}
+.plot-area::before,.plot-area::after{content:"";position:absolute;background:var(--mid)}
+.plot-area::before{left:50%;top:0;bottom:0;width:1px}
+.plot-area::after{top:50%;left:0;right:0;height:1px}
+.plot-end{position:absolute;left:.45rem;font-size:.72rem;line-height:1.1;font-weight:500;color:var(--mute);max-width:40%}
+.plot-end-top{top:.4rem}
+.plot-end-bottom{bottom:.4rem}
+.plot-x{grid-column:2;display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;font-size:.72rem;font-weight:500;color:var(--mute)}
+.plot-x b{font-size:.82rem;font-weight:600;color:var(--ink);text-align:center}
+.plot-open{position:absolute;width:27%;aspect-ratio:1/1;transform:translate(-50%,-50%);border:2px dashed var(--a);border-radius:50%;background:color-mix(in srgb,var(--a2) 24%,transparent);display:grid;place-items:center;z-index:1}
+.plot-open span{font-size:.68rem;font-weight:600;line-height:1.1;color:var(--a);text-align:center;padding:0 .3rem}
+.pt{position:absolute;width:0;height:0;z-index:2}
+.pt i{position:absolute;left:0;top:0;width:28px;height:28px;transform:translate(-50%,-50%);border-radius:50%;background:var(--white);border:1.5px solid var(--ink);color:var(--ink);font-style:normal;font-size:.8rem;font-weight:600;display:grid;place-items:center}
+.pt span{display:none;position:absolute;left:0;top:16px;transform:translateX(-50%);white-space:nowrap;font-size:.76rem;line-height:1.2;font-weight:600;color:var(--ink);background:rgba(255,255,255,.9);padding:.05rem .3rem;border-radius:3px}
+.pt.is-left span{left:-15px;transform:none}
+.pt.is-right span{left:auto;right:-15px;transform:none}
+.pt.is-low span{top:auto;bottom:16px}
+.pt.you{z-index:3}
+.pt.you i{width:32px;height:32px;border-radius:5px;background:var(--a);border-color:var(--a);color:#fff;font-size:.9rem}
+.pt.you span{display:block;top:19px;color:var(--a)}
+.pt.you.is-low span{top:auto;bottom:19px}
+.plot-note{font-size:.85rem;line-height:1.45;color:var(--mute);margin:1rem 0 0}
+.key{padding:.6rem 0 2.2rem}
+.key ol{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.key li{display:grid;grid-template-columns:28px 1fr;gap:.8rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
+.key li i{width:28px;height:28px;margin-top:.1rem;border-radius:50%;background:var(--white);border:1.5px solid var(--ink);color:var(--ink);font-style:normal;font-size:.8rem;font-weight:600;display:grid;place-items:center}
+.key li.you i{border-radius:5px;background:var(--a);border-color:var(--a);color:#fff}
+.key b{font-weight:600}
+.key small{font-size:.82rem;color:var(--mute);margin-left:.45rem;white-space:nowrap}
+.key p{font-size:.95rem;line-height:1.45;color:var(--text);margin:.15rem 0 0}
+.open-space{padding:0 0 2.4rem}
+.box{border:2px dashed var(--a);background:color-mix(in srgb,var(--a2) 16%,var(--paper));padding:1.4rem 1.25rem 1.35rem}
+.lbl{font-size:.9rem;font-weight:600;color:var(--a);margin:0 0 .45rem}
+.box h2{font-size:1.8rem;margin:0 0 .8rem}
+.box-why{font-size:1.02rem;line-height:1.5;color:var(--text)}
+.cta{padding:0 0 3rem}
+.cta-in{border-top:2px solid var(--ink);padding-top:1.5rem}
+.cta h2{font-size:1.65rem;margin:0 0 .7rem}
+.cta p{color:var(--text)}
+.btn{margin:1.2rem 0 1.2rem}
+.sign{font-size:.95rem}
+.sign span{display:block;color:var(--mute)}
+.foot{font-size:.8rem;line-height:1.45;color:var(--mute);border-top:1px solid var(--line);padding:1rem 0 2rem}
+@media (min-width:760px){
+body{font-size:18px}
+.wrap{padding:0 2rem}
+.hero{display:grid;grid-template-columns:7fr 4fr;gap:3.5rem;align-items:end;padding:3rem 0 2.4rem}
+.hero h1{font-size:3.15rem}
+.intro{font-size:1.15rem;margin-top:1.5rem}
+.facts{margin:0}
+.facts b{font-size:2rem;min-width:3rem}
+.grid{display:grid;grid-template-columns:7fr 5fr;gap:3.5rem;align-items:start}
+.map{padding:2.4rem 0 2rem}
+.key{padding:2.4rem 0 2rem}
+.map h2,.key h2{font-size:1.75rem}
+.plot{grid-template-columns:1.6rem 1fr}
+.plot-y{font-size:.88rem}
+.plot-end,.plot-x{font-size:.78rem}
+.plot-x b{font-size:.88rem}
+.pt span{display:block}
+.pt.you i{width:36px;height:36px;font-size:1rem}
+.pt.you span{top:21px;font-size:.84rem}
+.pt.you.is-low span{top:auto;bottom:21px}
+.plot-open span{font-size:.78rem}
+.open-space{padding:.6rem 0 3rem}
+.box{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;padding:2.2rem 2.4rem 2.3rem}
+.box h2{font-size:2.5rem;margin:0}
+.box-why{font-size:1.08rem;padding-top:.3rem}
+.cta-in{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;padding-top:2rem}
+.cta h2{font-size:2rem}
+.btn{margin:.4rem 0 1.2rem}
+.foot{padding:1.2rem 0 2.5rem}
+}
+</style>
+</head>
+<body>
+<main class="cm">
+<div class="wrap">
+<header class="top"><p class="brand">Fieldstone</p><p class="tag">Competitive map</p>
+</header>
+<section data-section="hero" class="hero">
+<div>
+<p class="kicker">For Dana at Marrow Analytics</p>
+<h1>Where Marrow sits among six trial data software vendors, and the gap none of them fills</h1>
+<p class="intro">We picked the six companies closest to Marrow. Each one is placed from what its own homepage says about who it sells to and what it sells. A position is a reading of how a company sells, not a measurement.</p>
+</div>
+<ul class="facts">
+<li><b>212,480</b><span>companies in software development, counted from company profiles</span></li>
+<li><b>38,210</b><span>of them growing headcount right now</span></li>
+<li><b>6</b><span>competitors placed from what their own homepages say</span></li>
+</ul>
+</section>
+<div class="grid">
+<section data-section="map" class="map">
+<h2>Where each one stands</h2>
+<div class="plot">
+<div class="plot-y"><span>What they sell</span></div>
+<div class="plot-area">
+<span class="plot-end plot-end-top">Full suite</span>
+<span class="plot-end plot-end-bottom">One tool</span>
+<div class="plot-open" style="left:56%;top:24%"><span>Open space</span></div>
+<div class="pt" style="left:42%;top:34%"><i>1</i><span>Trialdeck</span></div>
+<div class="pt is-right" style="left:90%;top:8%"><i>2</i><span>Cohort Health Systems</span></div>
+<div class="pt" style="left:14%;top:78%"><i>3</i><span>Sitewise</span></div>
+<div class="pt" style="left:72%;top:50%"><i>4</i><span>Verity Clinical</span></div>
+<div class="pt" style="left:36%;top:70%"><i>5</i><span>Pulsepoint Labs</span></div>
+<div class="pt" style="left:82%;top:66%"><i>6</i><span>Helix Oversight</span></div>
+<div class="pt you" style="left:40%;top:52%"><i>M</i><span>Marrow Analytics</span></div>
+</div>
+<div class="plot-x"><span>Small sponsors</span><b>Who they sell to</b><span>Large pharma</span></div>
+</div>
+<p class="plot-note">Placed by Priya Natarajan from what each company's own homepage says about who it sells to and how. A position is a reading of how a company sells, not a measurement.</p>
+</section>
+<section data-section="positions" class="key">
+<h2>How each one positions</h2>
+<ol>
+<li><i>1</i><div><b>Trialdeck</b><small>trialdeck.example</small><p>Sells a trial management suite to sponsors and CROs of any size, and leads with speed of study setup.</p></div></li>
+<li><i>2</i><div><b>Cohort Health Systems</b><small>cohorthealth.example</small><p>Sells an enterprise EDC and trial management suite to global pharma, on multi-year agreements with dedicated implementation teams.</p></div></li>
+<li><i>3</i><div><b>Sitewise</b><small>sitewise.example</small><p>Sells one scheduling and source document tool to research sites, priced per site, with online signup.</p></div></li>
+<li><i>4</i><div><b>Verity Clinical</b><small>verityclinical.example</small><p>Sells data management as a service to large sponsors in late-phase trials, with its software as the delivery vehicle, never sold alone.</p></div></li>
+<li><i>5</i><div><b>Pulsepoint Labs</b><small>pulsepointlabs.example</small><p>Sells one patient recruitment analytics tool to mid-size sponsors, and leads with enrolling faster.</p></div></li>
+<li><i>6</i><div><b>Helix Oversight</b><small>helixoversight.example</small><p>Sells a risk-based monitoring tool to large sponsors with global programs, and leads with inspection readiness.</p></div></li>
+<li class="you"><i>M</i><div><b>Marrow Analytics</b><small>where you sit today</small><p>Sells a site data dashboard to sponsors with 50 to 200 people, and leads with catching enrollment problems early without a services team.</p></div></li>
+</ol>
+</section>
+</div>
+<section data-section="open_space" class="open-space">
+<div class="box">
+<div><p class="lbl">The open space</p><h2>Mid-size sponsors who want the whole suite</h2></div>
+<p class="box-why">Trialdeck sells its suite to everyone and Cohort sells its suite to global pharma only. Nobody sells a full suite built for sponsors with 50 to 200 people, which is where Marrow already has its dashboard customers. Marrow already holds the site data layer those sponsors would start from.</p>
+</div>
+</section>
+<section data-section="cta" class="cta">
+<div class="cta-in">
+<div>
+<h2>Does the map match what you see?</h2>
+<p>Book 20 minutes and I will move the dots with you: who Marrow Analytics loses deals to, and whether the open space is worth going after.</p>
+</div>
+<div>
+<div class="btn"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#111827;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+<p class="sign">Priya Natarajan<span>Account Executive, Fieldstone</span></p>
+</div>
+</div>
+</section>
+<p class="foot">Drawn for Marrow Analytics by Priya Natarajan at Fieldstone. Company names come from company profiles and positions from each company's public website.</p>
+</div>
+</main>
+</body>
+</html>

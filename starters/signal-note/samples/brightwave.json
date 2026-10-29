@@ -1,0 +1,105 @@
+{
+  "account": {
+    "name": "Brightwave Logistics",
+    "domain": "brightwave.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Brightwave Logistics is a regional freight carrier and warehouse operator with about 420 people, based in Chicago.",
+      "why_now": "Opened a second hub in Dallas this month.",
+      "angle": null
+    },
+    "signals": [
+      {
+        "type": "hiring",
+        "title": "Brightwave posts six dispatch coordinator roles",
+        "date": "2026-10-24",
+        "source_url": "https://brightwave.example/careers"
+      },
+      {
+        "type": "news",
+        "title": "Brightwave opens a Dallas cross-dock, its first hub outside Chicago",
+        "date": "2026-10-14",
+        "source_url": "https://news.brightwave.example/dallas-cross-dock"
+      },
+      {
+        "type": "role_change",
+        "title": "Leo Marsh joins Brightwave as VP Operations",
+        "date": "2026-09-03",
+        "source_url": "https://www.linkedin.example/in/leo-marsh"
+      }
+    ]
+  },
+  "person": {
+    "first_name": "Leo",
+    "last_name": "Marsh",
+    "title": "VP Operations"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northbeam",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "raw_signals": [
+      {
+        "type": "hiring",
+        "title": "Brightwave posts six dispatch coordinator roles",
+        "date": "2026-10-24",
+        "source_url": "https://brightwave.example/careers"
+      },
+      {
+        "type": "news",
+        "title": "Brightwave opens a Dallas cross-dock, its first hub outside Chicago",
+        "date": "2026-10-14",
+        "source_url": "https://news.brightwave.example/dallas-cross-dock"
+      },
+      {
+        "type": "role_change",
+        "title": "Leo Marsh joins Brightwave as VP Operations",
+        "date": "2026-09-03",
+        "source_url": "https://www.linkedin.example/in/leo-marsh"
+      }
+    ],
+    "careers": "## Open roles\n\nDispatch coordinator, Chicago (4 openings)\nDispatch coordinator, Dallas (2 openings)\nRegional account manager, Chicago\nWarehouse supervisor, Dallas",
+    "signals": [
+      {
+        "kind": "hiring",
+        "headline": "Brightwave is hiring six dispatch coordinators",
+        "fact": "Brightwave's careers page lists six dispatch coordinator roles, four in Chicago and two in Dallas. The posting was seen on October 24.",
+        "means": "A company adds dispatch headcount when volume grows faster than the process that handles it. Six at once often means the current team is covering with overtime, and new hires take longer to reach full speed when the work lives in people's heads rather than in a system.",
+        "idea": "Before the six start, write down the ten decisions a coordinator makes most often, one page each. It shortens the ramp, and it shows which steps a system could take over.",
+        "seen_on": "2026-10-24",
+        "source_label": "Brightwave posts six dispatch coordinator roles",
+        "source_url": "https://brightwave.example/careers"
+      },
+      {
+        "kind": "news",
+        "headline": "A second hub opened in Dallas",
+        "fact": "Brightwave opened a cross-dock in Dallas, its first hub outside Chicago, in the middle of October.",
+        "means": "A second hub doubles the handoffs: two dispatch desks, two sets of carrier relationships, and customers who expect one answer. Companies often run the new site on the first site's playbook for months before they find out which parts did not travel.",
+        "idea": "Pick three numbers both hubs report the same way from day one, such as on-time pickup, dock dwell time and cost per load. Agree on them before Dallas has habits of its own.",
+        "seen_on": "2026-10-14",
+        "source_label": "Brightwave opens a Dallas cross-dock, its first hub outside Chicago",
+        "source_url": "https://news.brightwave.example/dallas-cross-dock"
+      },
+      {
+        "kind": "role_change",
+        "headline": "You started as VP Operations in September",
+        "fact": "You joined Brightwave as VP Operations in early September. A move like that was reported on September 3.",
+        "means": "The first months in an operations seat are usually when next year's tooling and headcount get decided. What is written down before the budget closes tends to be what gets funded.",
+        "idea": "Draw a one-page map of where operations time goes today, by task, before the plan is final. It turns \"we need more people\" into \"we need these two things fixed\".",
+        "seen_on": "2026-09-03",
+        "source_label": "Leo Marsh joins Brightwave as VP Operations",
+        "source_url": "https://www.linkedin.example/in/leo-marsh"
+      }
+    ],
+    "note": "I put these three together because they landed within weeks of each other, and together they point to a company adding people and a second site faster than its routines can follow. Nothing here needs an answer. If it is useful, reply and tell me which part. If it is not, tell me and I will stop writing."
+  }
+}

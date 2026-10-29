@@ -401,7 +401,15 @@ function checkLibrary(slug, dir, { err }) {
 
   const preview = path.join(dir, 'preview');
   const cover = path.join(preview, 'cover.png');
-  const isFile = (f) => fs.statSync(f, { throwIfNoEntry: false })?.isFile() ?? false;
+  // A try, not throwIfNoEntry: Node 20 still throws ENOTDIR when preview is a file.
+  const stat = (f) => {
+    try {
+      return fs.statSync(f);
+    } catch {
+      return null;
+    }
+  };
+  const isFile = (f) => stat(f)?.isFile() ?? false;
   if (!isFile(cover)) err('preview/cover.png', `missing; run npm run render -- ${slug}`);
   else {
     const size = pngSize(cover);
@@ -411,7 +419,7 @@ function checkLibrary(slug, dir, { err }) {
     if (bytes > COVER.bytes) err('preview/cover.png', `${Math.ceil(bytes / 1024)} KB, over ${COVER.bytes / 1024} KB`);
   }
   for (const id of listed) if (!isFile(path.join(preview, `${id}.html`))) err(`preview/${id}.html`, `missing; run npm run render -- ${slug}`);
-  for (const name of fs.statSync(preview, { throwIfNoEntry: false })?.isDirectory() ? fs.readdirSync(preview) : []) {
+  for (const name of stat(preview)?.isDirectory() ? fs.readdirSync(preview) : []) {
     if (name !== 'cover.png' && !(name.endsWith('.html') && listed.has(name.slice(0, -5)))) {
       err(`preview/${name}`, 'unexpected file; preview/ holds cover.png and one <sampleId>.html per listed sample');
     }

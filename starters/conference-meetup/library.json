@@ -4,7 +4,7 @@
   "tags": ["conference", "trade show", "booth", "events", "meeting"],
   "featured": false,
   "needs": [],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "updatedAt": "2026-10-29",
   "samples": [
     { "id": "kessler-foods", "label": "Kessler Foods" },

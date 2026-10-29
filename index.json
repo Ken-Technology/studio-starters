@@ -429,6 +429,49 @@
       ]
     },
     {
+      "slug": "newsletter",
+      "name": "Monthly brief",
+      "type": "other",
+      "format": "page",
+      "showcases": [
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "A one-screen monthly newsletter. Ken writes a note on the account's industry and one idea for them from their site, and picks one resource from your Knowledge.",
+      "category": "content",
+      "tags": [
+        "newsletter",
+        "monthly brief",
+        "nurture",
+        "industry note"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "coastline",
+          "label": "Coastline Produce"
+        },
+        {
+          "id": "ashgrove-shared",
+          "label": "Ashgrove Health Clinics, Shared link (no person)"
+        },
+        {
+          "id": "brightline",
+          "label": "Brightline Robotics"
+        },
+        {
+          "id": "pennant-partial",
+          "label": "Pennant Hospitality Group, partial fill"
+        }
+      ]
+    },
+    {
       "slug": "personal-homepage",
       "name": "Your homepage, for them",
       "type": "landing_page",

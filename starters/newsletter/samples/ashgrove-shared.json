@@ -1,0 +1,52 @@
+{
+  "account": {
+    "name": "Ashgrove Health Clinics",
+    "domain": "ashgrovehealth.example",
+    "industry": "healthcare providers and services",
+    "size_band": "1001-5000",
+    "dossier": {
+      "summary": "Ashgrove Health runs a network of outpatient clinics for primary care, physical therapy and imaging across the Midwest, with central scheduling and billing teams.",
+      "why_now": "Opened two imaging centers in Ohio this quarter.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Priya Natarajan",
+    "title": "Customer Success Lead",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Meridian",
+    "logo_url": null,
+    "colors": {
+      "primary": "#243b2f",
+      "secondary": "#b7791f"
+    },
+    "fonts": {
+      "heading": "Playfair Display",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "headline": "Imaging wait times, a two-week no-show review, and an opening checklist",
+    "intro": "Two new imaging centers means two new schedules to fill. This month's brief is about the weeks right after an opening, when a clinic's reputation for wait times gets set.",
+    "note": {
+      "title": "An imaging center earns its reputation in the first month",
+      "body": "Referring physicians decide quickly whether a new imaging site is easy to send patients to. What they judge is not the equipment. It is how long their patient waited for a slot and whether the report came back on time.\n\nYour site lists central scheduling across all Ashgrove locations, so the people booking the new Ohio centers already handle the rest of the network. That is an advantage, as long as the new sites get the same attention as the busy ones in the first weeks.\n\nThe usual pattern is the opposite: the new site has open slots, the older sites have queues, and nobody moves patients between them.",
+      "seen": "Two imaging centers opened in Ohio this quarter, and your site routes all booking through central scheduling"
+    },
+    "idea": {
+      "title": "Run a two-week no-show review for the new Ohio sites",
+      "body": "A new site with open capacity hides its no-shows, because an empty slot does not look like a loss yet. By the time the schedule is full, the pattern is set.\n\nFor the first two weeks, have one scheduler pull every missed imaging appointment at the two new centers each morning and note the reason given, if any. Group them by referring practice and by time of day.\n\nThe list usually points at a few referring practices and one time block. That is a phone call, not a project.",
+      "first_step": "Ask one scheduler to pull yesterday's missed imaging appointments at the two Ohio centers tomorrow morning and write down the reasons."
+    },
+    "resource": {
+      "kind": "checklist",
+      "title": "Imaging center opening checklist for scheduling teams",
+      "summary": "The scheduling, referral and reporting steps to settle in the first thirty days of a new imaging site, in the order teams usually need them.",
+      "url": "https://meridianhealth.example/resources/imaging-opening-checklist"
+    },
+    "ps": "If the Ohio centers use a different referral form than the rest of the network, that is worth fixing before the review, not after."
+  }
+}

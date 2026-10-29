@@ -1,0 +1,326 @@
+{
+  "kenStudio": "1",
+  "name": "Executive dinner",
+  "type": "event",
+  "format": "page",
+  "slug": "dinner",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "headline": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 90,
+        "fallback": "A private dinner for operations leaders"
+      },
+      "subline": {
+        "type": "string",
+        "maxLength": 80,
+        "fallback": "Eight seats, one table, no slides."
+      },
+      "date_text": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 40,
+        "fallback": "Thursday, November 19"
+      },
+      "date_short": {
+        "type": "string",
+        "maxLength": 20,
+        "fallback": "November 19"
+      },
+      "year_text": {
+        "type": "string",
+        "maxLength": 10,
+        "fallback": "2026"
+      },
+      "time_text": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 30,
+        "fallback": "7:00 pm"
+      },
+      "time_note": {
+        "type": "string",
+        "maxLength": 40,
+        "fallback": "Drinks from 6:30"
+      },
+      "venue": {
+        "type": "string",
+        "minLength": 2,
+        "maxLength": 80,
+        "fallback": "Linden House"
+      },
+      "venue_line": {
+        "type": "string",
+        "maxLength": 120,
+        "fallback": "West Randolph Street, West Loop, Chicago"
+      },
+      "calendar_start": {
+        "type": "string",
+        "maxLength": 20,
+        "fallback": "20261119T190000"
+      },
+      "calendar_end": {
+        "type": "string",
+        "maxLength": 20,
+        "fallback": "20261119T213000"
+      },
+      "calendar_tz": {
+        "type": "string",
+        "maxLength": 40,
+        "fallback": "America/Chicago"
+      },
+      "host": {
+        "type": "string",
+        "minLength": 2,
+        "maxLength": 80,
+        "fallback": "{{ sender.name | default: 'Our team' }}"
+      },
+      "featured_guest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 60
+          },
+          "role": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "bio": {
+            "type": "string",
+            "maxLength": 300
+          }
+        },
+        "required": [
+          "name",
+          "role"
+        ]
+      },
+      "guests": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 50
+            },
+            "company_type": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 60
+            }
+          },
+          "required": [
+            "title",
+            "company_type"
+          ]
+        },
+        "fallback": [
+          {
+            "title": "VP Operations",
+            "company_type": "a 3PL in Milwaukee"
+          },
+          {
+            "title": "COO",
+            "company_type": "a cold-chain carrier in Indianapolis"
+          },
+          {
+            "title": "SVP Supply Chain",
+            "company_type": "a food distributor in Chicago"
+          },
+          {
+            "title": "Head of Operations",
+            "company_type": "a last-mile delivery company in Minneapolis"
+          },
+          {
+            "title": "Director of Operations",
+            "company_type": "a regional LTL carrier in St. Louis"
+          }
+        ]
+      },
+      "topic": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 240,
+        "fallback": "Growing volume without growing the team: what to centralize at 400 people, and what to leave at the sites."
+      },
+      "topic_note": {
+        "type": "string",
+        "maxLength": 300,
+        "fallback": "One question goes around the table once. After that it is open."
+      },
+      "menu": {
+        "type": "string",
+        "maxLength": 240,
+        "fallback": "Four courses from the Linden House kitchen, served family style. Lake fish, a braise, autumn vegetables, one shared dessert."
+      },
+      "menu_note": {
+        "type": "string",
+        "maxLength": 160,
+        "fallback": "A vegetarian path through every course. Wine with each course, or not."
+      },
+      "run_of_show": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "time": {
+              "type": "string",
+              "maxLength": 12
+            },
+            "text": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 80
+            }
+          },
+          "required": [
+            "time",
+            "text"
+          ]
+        },
+        "fallback": [
+          {
+            "time": "6:30",
+            "text": "Drinks in the Aubrey Room"
+          },
+          {
+            "time": "7:15",
+            "text": "Seated"
+          },
+          {
+            "time": "9:30",
+            "text": "Last pour"
+          }
+        ]
+      },
+      "dress_note": {
+        "type": "string",
+        "maxLength": 120,
+        "fallback": "Come as you are from the office. Coats are taken at the door."
+      },
+      "rsvp_by": {
+        "type": "string",
+        "maxLength": 40,
+        "fallback": "Friday, November 13"
+      },
+      "why_now": {
+        "type": "string",
+        "maxLength": 1000
+      },
+      "invitee_title": {
+        "type": "string",
+        "maxLength": 80
+      },
+      "why_you": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 280,
+        "fallback": "{{ account.name }} is on the list for this table. The talk is about growing volume without growing the team, and I would like to hear how you handle it."
+      }
+    },
+    "required": [
+      "headline",
+      "date_text",
+      "time_text",
+      "venue",
+      "host",
+      "guests",
+      "topic",
+      "run_of_show",
+      "why_you"
+    ]
+  },
+  "recipe": [
+    {
+      "id": "why_now",
+      "kind": "bind",
+      "from": "account.dossier.why_now",
+      "to": "data.why_now"
+    },
+    {
+      "id": "invitee_title",
+      "kind": "bind",
+      "from": "person.title",
+      "to": "data.invitee_title"
+    },
+    {
+      "id": "why_you",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": [
+        "account.name",
+        "account.industry",
+        "account.size_band",
+        "account.dossier.summary",
+        "data.why_now",
+        "data.invitee_title"
+      ],
+      "to": [
+        "data.why_you"
+      ],
+      "prompt": "Write the personal line on a private dinner invitation from {{ sender.name | default: 'our team' }} to someone at {{ account.name }}.\n\nThe dinner (template owners: keep this paragraph in step with the event details in this template): a small private dinner for operations leaders at companies in the region. Eight seats, one table, no slides and no pitch. The conversation is about growing volume without growing the team: what to centralize at 400 people, and what to leave at the sites. The host is {{ sender.name | default: 'the sender' }} at {{ brand.name | default: 'our company' }}.\n\nInputs: account.name, account.industry and account.size_band describe the company. account.dossier.summary is our research summary. data.why_now is a recent reason to reach out and may be empty. data.invitee_title is the guest's job title and may be empty. Use facts from these inputs only. Never invent news, numbers, customers or people.\n\nReturn JSON with one key:\n- why_you: one or two sentences, 40 to 280 characters, on why the guest from {{ account.name }} belongs at this table. Tie one specific fact about the company, data.why_now if there is one, to what the table will talk about, so it reads like the host wrote it after looking them up. Write to \"you\" or to the company. Never use a first name; the page adds the greeting. If the inputs hold no specific fact, say plainly that the table is for people who run operations at a company this size, and stop. No flattery (\"love what you are building\", \"impressive\"), no \"I noticed\", \"I saw\" or \"I came across\", no question, no invitation to reply (the page has the RSVP).\n\nRules: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. Never name other guests or say who else is coming. Plain words a person would say out loud to a peer; no marketing words."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": [
+        "data.why_you"
+      ],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": [
+          "demo",
+          "I noticed",
+          "I saw",
+          "I came across",
+          "caught my attention",
+          "your profile",
+          "your headline",
+          "hope this finds you"
+        ],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true,
+        "no_signoff": true
+      },
+      "rubric": "Grade data.why_you the way the guest reads it: the first lines of a printed invitation, right under the greeting. 10 is a line a busy operations leader reads once and feels was written for them.\nScore these, 0 to 10 each:\n- specific: it ties one fact about {{ account.name }} from the inputs to the table's topic. A line that only restates the company's name or industry scores 4 or lower.\n- host_voice: it reads like the host wrote it by hand: plain, warm, short sentences, no pitch and no flattery.\n- fits_page: it does not repeat the greeting, the date, the venue or the guest list, and it asks for nothing.\nAnswer yes or no:\n- supported: is every claim about {{ account.name }} backed by the inputs below? Quote any that is not.\n- weird_word: is there a phrase a person would not say out loud (jargon, marketing adjectives)? Quote it.\nAutomatic fail: an em dash or en dash, an exclamation mark, an email address or phone number, a first name, a question, a mention of other guests, a price.\nInputs: company {{ account.name }}, industry {{ account.industry | default: 'unknown' }}, size {{ account.size_band | default: 'unknown' }}. Research summary: {{ account.dossier.summary | default: 'none' }}. Recent reason: {{ data.why_now | default: 'none' }}.\nPass when the overall score is 7.5 or higher, no 0 to 10 check is 6 or lower, supported is yes and weird_word is no. On a fail, name the check and quote the phrase to change. The fix never supplies replacement facts, names, numbers or customers."
+    }
+  ],
+  "sections": [
+    {
+      "id": "face",
+      "label": "Invitation"
+    },
+    {
+      "id": "note",
+      "label": "Personal note"
+    },
+    {
+      "id": "table",
+      "label": "The table"
+    },
+    {
+      "id": "evening",
+      "label": "The evening"
+    },
+    {
+      "id": "rsvp",
+      "label": "RSVP"
+    }
+  ],
+  "cta": {
+    "primary": "form",
+    "label": "Hold my seat"
+  }
+}

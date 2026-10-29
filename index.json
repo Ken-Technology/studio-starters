@@ -81,6 +81,49 @@
       "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
       "showcases": ["prompt", "person", "roles", "ken/cta"],
       "version": "1.0.0"
+    },
+    {
+      "slug": "exec-dinner",
+      "name": "Executive dinner",
+      "type": "event",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/form"
+      ],
+      "description": "A personal invitation to a private dinner: the table plan with the guest's seat marked, the evening, an RSVP and an add-to-calendar link. Ken writes the personal line.",
+      "category": "events",
+      "tags": [
+        "dinner",
+        "invitation",
+        "executive",
+        "event",
+        "rsvp"
+      ],
+      "featured": true,
+      "needs": [],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics"
+        },
+        {
+          "id": "kestrel-dental",
+          "label": "Kestrel Dental Group"
+        },
+        {
+          "id": "ledgerwood-shared",
+          "label": "Ledgerwood Software, shared link (no person)"
+        },
+        {
+          "id": "marlowe-partial",
+          "label": "Marlowe Biologics"
+        }
+      ]
     }
   ]
 }

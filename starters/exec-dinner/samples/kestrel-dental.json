@@ -1,0 +1,92 @@
+{
+  "account": {
+    "name": "Kestrel Dental Group",
+    "domain": "kestreldental.example",
+    "industry": "hospitals and health care",
+    "size_band": "501-1000",
+    "dossier": {
+      "summary": "Kestrel Dental Group runs 38 dental practices across New England and has bought nine of them since 2024.",
+      "why_now": "Closed its ninth practice acquisition in October.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Naomi",
+    "last_name": "Fraser",
+    "title": "Chief Financial Officer"
+  },
+  "sender": {
+    "name": "Daniel Okoye",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Ashgrove Partners",
+    "logo_url": null,
+    "colors": {
+      "primary": "#14213d",
+      "secondary": "#c8a45a"
+    },
+    "fonts": {
+      "heading": "Fraunces",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "headline": "A private dinner for finance leaders",
+    "subline": "Six seats, one table, off the record.",
+    "date_text": "Thursday, December 3",
+    "date_short": "December 3",
+    "year_text": "2026",
+    "time_text": "7:30 pm",
+    "time_note": "Reception from 7:00",
+    "venue": "The Gilt Room",
+    "venue_line": "Beacon Street, Back Bay, Boston",
+    "calendar_start": "20261203T193000",
+    "calendar_end": "20261203T220000",
+    "calendar_tz": "America/New_York",
+    "host": "Daniel Okoye",
+    "featured_guest": {
+      "name": "Helen Strand",
+      "role": "Former CFO, a national healthcare services group",
+      "bio": "She led finance through four acquisitions in three years, and will say which integration decisions she would make first."
+    },
+    "guests": [
+      {
+        "title": "CFO",
+        "company_type": "a multi-site physical therapy group in Hartford"
+      },
+      {
+        "title": "VP Finance",
+        "company_type": "a regional veterinary network in Providence"
+      },
+      {
+        "title": "Controller",
+        "company_type": "a dermatology practice group in Portland"
+      }
+    ],
+    "topic": "Buying practices without losing the margin: what finance should own on day one, and what to leave to the clinics.",
+    "topic_note": "One question goes around the table once. After that it is open.",
+    "menu": "Three courses from the Gilt Room kitchen, served at the table. Oysters, a roast, a seasonal tart.",
+    "menu_note": "Vegetarian and gluten-free paths on request. The wine pairing is optional.",
+    "run_of_show": [
+      {
+        "time": "7:00",
+        "text": "Reception in the library"
+      },
+      {
+        "time": "7:45",
+        "text": "Seated"
+      },
+      {
+        "time": "10:00",
+        "text": "Close"
+      }
+    ],
+    "dress_note": "Business casual. Coats are taken at the door.",
+    "rsvp_by": "Friday, November 27",
+    "why_now": "Closed its ninth practice acquisition in October.",
+    "invitee_title": "Chief Financial Officer",
+    "why_you": "Kestrel closed its ninth practice acquisition in October. Two people at this table have done the same in the last year, and will tell you what they would do differently."
+  }
+}

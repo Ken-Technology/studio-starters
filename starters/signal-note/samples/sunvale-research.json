@@ -1,0 +1,50 @@
+{
+  "account": {
+    "name": "Sunvale Health Clinics",
+    "domain": "sunvale.example",
+    "industry": "hospitals and health care",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Sunvale Health Clinics runs primary care clinics in two towns, with about 35 staff.",
+      "why_now": "Opened a third clinic in September.",
+      "angle": null
+    },
+    "signals": []
+  },
+  "person": {
+    "first_name": "Dana",
+    "last_name": "Whitfield",
+    "title": "Practice Manager"
+  },
+  "sender": {
+    "name": "Elena Varga",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Bellwether",
+    "logo_url": null,
+    "colors": {
+      "primary": "#0f766e",
+      "secondary": "#16302e"
+    },
+    "fonts": {
+      "heading": "Lora",
+      "body": "Nunito Sans"
+    }
+  },
+  "data": {
+    "raw_signals": [],
+    "signals": [
+      {
+        "kind": "note",
+        "headline": "Sunvale opened a third clinic in September",
+        "fact": "Our research notes say Sunvale Health Clinics opened a third clinic in September.",
+        "means": "A third site often means the front desk, scheduling and supply ordering that worked for two clinics start to strain. Small differences between sites tend to show up as patient complaints before they show up in a report.",
+        "idea": "Pick the three tasks every clinic does daily and write each one as a half-page checklist. Compare how each site does them this month.",
+        "source_label": "Account research notes"
+      }
+    ],
+    "note": "I wrote this one on a single thing, because that was the only change I could back up this month. Nothing here needs an answer. If it is useful, I will send another one next month. If it is not, tell me and I will stop."
+  }
+}

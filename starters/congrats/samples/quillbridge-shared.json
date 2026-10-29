@@ -1,0 +1,80 @@
+{
+  "account": {
+    "name": "Quillbridge",
+    "domain": "quillbridge.example",
+    "industry": "software development",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Quillbridge makes contract review software for in-house legal teams at mid-sized companies. About 35 people, most of them in Manchester. It sells annual subscriptions and has customers in the UK and the Netherlands.",
+      "why_now": "Launched a second product, Quillbridge Clause Library, in October.",
+      "angle": null
+    },
+    "signals": [
+      {
+        "type": "launch",
+        "title": "Quillbridge launches Clause Library, a shared library of approved contract clauses",
+        "date": "2026-10-08",
+        "source_url": "https://quillbridge.example/blog/introducing-clause-library"
+      },
+      {
+        "type": "event",
+        "title": "Quillbridge to speak at the Legal Operations Forum in Amsterdam",
+        "date": "2026-09-30",
+        "source_url": "https://quillbridge.example/blog/legal-operations-forum-2026"
+      }
+    ]
+  },
+  "person": null,
+  "sender": {
+    "name": "Sam Achterberg",
+    "title": "Head of Partnerships",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Brightline Growth",
+    "logo_url": null,
+    "colors": {
+      "primary": "#f04e23",
+      "secondary": "#1d1d1b"
+    },
+    "fonts": {
+      "heading": "Sora",
+      "body": "Inter"
+    }
+  },
+  "data": {
+    "signals": [
+      {
+        "type": "launch",
+        "title": "Quillbridge launches Clause Library, a shared library of approved contract clauses",
+        "date": "2026-10-08",
+        "source_url": "https://quillbridge.example/blog/introducing-clause-library"
+      },
+      {
+        "type": "event",
+        "title": "Quillbridge to speak at the Legal Operations Forum in Amsterdam",
+        "date": "2026-09-30",
+        "source_url": "https://quillbridge.example/blog/legal-operations-forum-2026"
+      }
+    ],
+    "why_now": "Launched a second product, Quillbridge Clause Library, in October.",
+    "occasion": {
+      "what": "Quillbridge launched Clause Library, a shared library of approved contract clauses, its second product.",
+      "kind": "launch",
+      "date": "2026-10-08",
+      "source_url": "https://quillbridge.example/blog/introducing-clause-library"
+    },
+    "headline": "Congratulations on the Clause Library launch",
+    "note": [
+      "A second product is a different company from a first one. Clause Library gives the legal teams who already review contracts with you a reason to open Quillbridge before the contract arrives, not only after, and that changes how often they see you.",
+      "It also lands a week after the Amsterdam talk went up, so the people who heard you there have something to click."
+    ],
+    "idea_title": "Ask ten existing customers to seed their library before you sell it to anyone new",
+    "idea": [
+      "Clause Library is only useful once it has clauses in it, and the fastest way to fill it is customers who already trust the review product. Pick ten of them, offer to load their twenty most-used clauses by hand, and watch which ones get reused in the first month. Note what they rename and what they leave out.",
+      "By January you will know which clause types a buyer expects on day one, which makes the sales conversation for the second product much shorter. The product teams we work with that skip this step usually spend the first quarter guessing."
+    ],
+    "ask": "If it would help to talk through which ten customers to start with, I have 15 minutes whenever suits you.",
+    "ps": "PS: the Amsterdam forum talk is a good excuse to follow up with the people who were in the room."
+  }
+}

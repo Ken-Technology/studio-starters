@@ -1,0 +1,131 @@
+{%- assign accent = brand.colors.primary | default: '#8a2a3e' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#c9a24a' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Instrument Sans' -%}
+{%- assign font_body = brand.fonts.body | default: 'Newsreader' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign kind_label = 'Milestone' -%}
+{%- case data.occasion.kind -%}
+{%- when 'role' -%}{%- assign kind_label = 'New role' -%}
+{%- when 'funding' -%}{%- assign kind_label = 'Funding' -%}
+{%- when 'launch' -%}{%- assign kind_label = 'Launch' -%}
+{%- endcase -%}
+{%- assign occ_date = '' -%}
+{%- if data.occasion.date and data.occasion.date != '' -%}{%- assign occ_date = data.occasion.date | date: '%B %-d, %Y' -%}{%- endif -%}
+{%- assign occ_host = '' -%}
+{%- if data.occasion.source_url and data.occasion.source_url != '' -%}{%- assign occ_host = data.occasion.source_url | remove: 'https://' | remove: 'http://' | split: '/' | first | remove: 'www.' -%}{%- endif -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ data.headline | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fcfbf8;color:#1f1b17;font-family:'{{ font_body }}',Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.cg{--a:{{ accent }};--a2:{{ accent2 }};--ink:#1f1b17;--mute:#6f6861;--line:#e6e1d8;--paper:#fcfbf8}
+.cg p{margin:0 0 1.1rem}
+.cg a{color:var(--a);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.16em}
+.cg a:focus-visible{outline:2px solid var(--a);outline-offset:3px;border-radius:2px}
+.cg h1,.cg h2,.cg-top,.cg-what,.cg-meta,.cg-idea-k,.cg-sign{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif}
+.cg-wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem}
+.cg-text{max-width:36rem}
+.cg-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.35rem 1.25rem;padding:1.05rem 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.cg-logo{height:26px;width:auto;display:block}
+.cg-brand{font-weight:600;color:var(--ink);margin:0!important}
+.cg-for{color:var(--mute);margin:0!important}
+.cg-for b{font-weight:500;color:var(--ink)}
+.cg-hero{padding:2.4rem 0 1.4rem}
+.cg h1{font-size:2.1rem;line-height:1.1;font-weight:600;letter-spacing:-.022em;margin:0 0 1.5rem;text-wrap:balance}
+.cg-clip{border-left:3px solid var(--a);padding:.15rem 0 .2rem 1.05rem;max-width:36rem}
+.cg-what{font-size:1.02rem;font-weight:500;line-height:1.45;color:var(--ink);margin:0 0 .35rem!important}
+.cg-meta{font-size:.86rem;color:var(--mute);margin:0!important}
+.cg-note{padding:1.6rem 0 .4rem}
+.cg-hi{font-size:1.45rem;line-height:1.3;font-weight:500;margin:0 0 1rem!important}
+.cg-note p,.cg-ask,.cg-idea p{font-size:1.125rem;line-height:1.6}
+.cg-idea{margin:1.4rem 0 2rem;padding:1.5rem 1.3rem 1rem;border-radius:6px;background:#f2eee8;background:color-mix(in srgb,{{ accent }} 7%,#fcfbf8)}
+.cg-idea-k{font-size:.86rem;font-weight:600;color:var(--a);margin:0 0 .75rem!important}
+.cg h2{font-size:1.45rem;line-height:1.2;font-weight:600;letter-spacing:-.015em;margin:0 0 .8rem;text-wrap:balance}
+.cg-idea p{font-size:1.08rem;margin-bottom:.9rem}
+.cg-next{padding:.2rem 0 3.5rem}
+.cg-btn{margin:1.3rem 0 1.5rem}
+.cg-btn .ken-cta{background:var(--a)!important;border-radius:6px!important;font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-size:1rem;line-height:1.3;min-height:44px}
+.cg-btn .ken-cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.cg-ps{font-size:1.02rem;color:var(--mute)}
+.cg-sign{margin-top:2.2rem;padding-top:1.3rem;border-top:2px solid var(--a2);font-size:.95rem}
+.cg-sign-name{font-weight:600;color:var(--ink);margin:0!important}
+.cg-sign-title{color:var(--mute);margin:0!important}
+@media (min-width:760px){
+body{font-size:18px}
+.cg-wrap{padding:0 2rem}
+.cg-top{padding:1.25rem 0;font-size:.95rem}
+.cg-hero{padding:3.4rem 0 1.8rem}
+.cg h1{font-size:3.4rem;line-height:1.04;margin:0 0 2rem}
+.cg-what{font-size:1.08rem}
+.cg-note{padding:2rem 0 .6rem}
+.cg-hi{font-size:1.6rem}
+.cg-note p,.cg-ask{font-size:1.25rem;line-height:1.55}
+.cg-idea{display:grid;grid-template-columns:11rem 1fr;gap:2rem;margin:1.8rem 0 2.4rem;padding:2.2rem 2.4rem 1.6rem}
+.cg-idea-k{margin:0!important;line-height:1.4}
+.cg h2{font-size:1.8rem}
+.cg-idea p{font-size:1.15rem}
+.cg-next{padding:.4rem 0 5rem}
+}
+@media (min-width:1040px){
+.cg-wrap{max-width:46rem}
+.cg h1{font-size:3.6rem}
+}
+</style>
+</head>
+<body>
+<main class="cg">
+<div class="cg-wrap">
+<header class="cg-top">
+{%- if brand.logo_url %}<img class="cg-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="cg-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="cg-for">For {% if person.first_name %}<b>{{ person.first_name | escape }} {{ person.last_name | escape }}</b>, {{ account.name | escape }}{% else %}the team at <b>{{ account.name | escape }}</b>{% endif %}</p>
+</header>
+<section data-section="occasion" class="cg-hero">
+<h1>{{ data.headline | escape }}</h1>
+{%- if data.occasion.what and data.occasion.what != '' %}
+<div class="cg-clip">
+<p class="cg-what">{{ data.occasion.what | escape }}</p>
+{%- if occ_date != '' or occ_host != '' %}
+<p class="cg-meta">{{ kind_label }}{% if occ_date != '' %} announced {{ occ_date | escape }}{% endif %}{% if occ_host != '' %}{% if occ_date != '' %} on{% else %} reported on{% endif %} <a href="{{ data.occasion.source_url | escape }}" target="_blank" rel="noopener noreferrer">{{ occ_host | escape }}</a>{% endif %}</p>
+{%- endif %}
+</div>
+{%- endif %}
+</section>
+<section data-section="note" class="cg-note cg-text">
+<p class="cg-hi">{% if person.first_name %}{{ person.first_name | escape }},{% else %}To the team at {{ account.name | escape }},{% endif %}</p>
+{%- for p in data.note %}
+<p>{{ p | escape }}</p>
+{%- endfor %}
+</section>
+<section data-section="idea" class="cg-idea">
+<p class="cg-idea-k">One idea for the next 90 days</p>
+<div>
+<h2>{{ data.idea_title | escape }}</h2>
+{%- for p in data.idea %}
+<p>{{ p | escape }}</p>
+{%- endfor %}
+</div>
+</section>
+<section data-section="next" class="cg-next cg-text">
+<p class="cg-ask">{{ data.ask | escape }}</p>
+<div class="cg-btn">{% render 'ken/cta', label: 'Book 15 minutes', kind: 'booking' %}</div>
+{%- if data.ps and data.ps != '' %}
+<p class="cg-ps">{{ data.ps | escape }}</p>
+{%- endif %}
+<div class="cg-sign">
+<p class="cg-sign-name">{{ sender.name | default: 'Our team' | escape }}</p>
+<p class="cg-sign-title">{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}{% elsif brand.name %}{{ brand.name | escape }}{% endif %}</p>
+</div>
+</section>
+</div>
+</main>
+</body>
+</html>

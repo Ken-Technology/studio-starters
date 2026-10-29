@@ -1,0 +1,15 @@
+{
+  "description": "A short note congratulating an account on a new role, a funding round or a launch, with one idea for the next 90 days. Ken picks the occasion from their news.",
+  "category": "prospecting",
+  "tags": ["congratulations", "signals", "new role", "funding", "launch"],
+  "featured": false,
+  "needs": [],
+  "version": "1.0.0",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "larkspur", "label": "Larkspur Health" },
+    { "id": "ironvale", "label": "Ironvale Materials" },
+    { "id": "quillbridge-shared", "label": "Shared link (no person)" },
+    { "id": "copperfield", "label": "Copperfield Dental Group" }
+  ]
+}

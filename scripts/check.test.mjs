@@ -1,15 +1,22 @@
 // Tests for check.mjs. Zero dependencies, Node 20+: node --test scripts/check.test.mjs
 //
 // Each test copies index.json, starters/ and check.mjs into a temp folder, applies one edit to a starter
-// and runs the real check there, so a rule is tested on the template line it guards.
+// and runs the real check there, so a rule is tested on the template line it guards. The Library tests
+// build their own repo from library-fixture.mjs instead, so they do not depend on the old starters.
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
+import { LIBRARY, SAMPLES, SLUG, png, writeLibrary } from './library-fixture.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+
+function copyScripts(dir) {
+  fs.mkdirSync(path.join(dir, 'scripts'));
+  for (const f of ['check.mjs', 'build-index.mjs']) fs.cpSync(path.join(ROOT, 'scripts', f), path.join(dir, 'scripts', f));
+}
 
 // edits: [file under starters/, text to find, replacement]. Each find must match exactly once.
 function check(edits = []) {
@@ -17,8 +24,7 @@ function check(edits = []) {
   try {
     fs.cpSync(path.join(ROOT, 'index.json'), path.join(dir, 'index.json'));
     fs.cpSync(path.join(ROOT, 'starters'), path.join(dir, 'starters'), { recursive: true });
-    fs.mkdirSync(path.join(dir, 'scripts'));
-    fs.cpSync(path.join(ROOT, 'scripts', 'check.mjs'), path.join(dir, 'scripts', 'check.mjs'));
+    copyScripts(dir);
     for (const [file, find, replace] of edits) {
       const full = path.join(dir, 'starters', file);
       const text = fs.readFileSync(full, 'utf8');
@@ -114,4 +120,189 @@ test('an unknown type still fails', () => {
   const { status, out } = check([['role-pitch/studio.json', '"type": "recruiting"', '"type": "hiring"']]);
   assert.equal(status, 1, out);
   assert.match(out, /type must be one of reverse_demo, landing_page, audit, report, event, calculator, recruiting, other/);
+});
+
+// --- Library templates -----------------------------------------------------------------------
+
+const EMPTY_INDEX = '{\n  "kenStudio": "1",\n  "starters": []\n}\n';
+const OLD_ENTRY = `{
+      "slug": "old-starter",
+      "name": "Signals brief",
+      "type": "report",
+      "format": "page",
+      "description": "A starter from before the Library.",
+      "showcases": ["bind", "tool", "prompt"],
+      "version": "1.0.0"
+    }`;
+
+const run = (dir, script) => spawnSync(process.execPath, [path.join(dir, 'scripts', script)], { encoding: 'utf8' });
+
+function editJson(file, change) {
+  const value = JSON.parse(fs.readFileSync(file, 'utf8'));
+  change(value);
+  fs.writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`);
+}
+
+// A repo holding the Library fixture with index.json built for it. `setup(dir)` runs before the index is built,
+// `edit(bundle, dir)` after, so an edit that changes the entry leaves index.json stale.
+function checkLibrary(edit = () => {}, { setup = () => {} } = {}) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'studio-library-'));
+  try {
+    copyScripts(dir);
+    const bundle = writeLibrary(dir);
+    fs.writeFileSync(path.join(dir, 'index.json'), EMPTY_INDEX);
+    setup(dir);
+    const built = run(dir, 'build-index.mjs');
+    assert.equal(built.status, 0, built.stdout + built.stderr);
+    edit(bundle, dir);
+    const res = run(dir, 'check.mjs');
+    return { status: res.status, out: res.stdout + res.stderr, index: fs.readFileSync(path.join(dir, 'index.json'), 'utf8') };
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+}
+
+const library = (change) => (bundle) => editJson(path.join(bundle, 'library.json'), change);
+
+test('a Library template passes', () => {
+  const { status, out } = checkLibrary();
+  assert.equal(status, 0, out);
+  assert.match(out, /OK\s+demo-library/);
+});
+
+const INVALID = [
+  ['no description', (l) => delete l.description, /library\.json: description must be a non-empty string/],
+  ['an exclamation mark in the description', (l) => { l.description = 'A brief for one account!'; }, /library\.json: description has an em or en dash or an exclamation mark/],
+  ['an en dash in the description', (l) => { l.description = 'A brief – for one account.'; }, /library\.json: description has an em or en dash or an exclamation mark/],
+  ['an unknown category', (l) => { l.category = 'sales'; }, /library\.json: category must be one of prospecting, deal, events, customers, interactive, content, partners, recruiting/],
+  ['seven tags', (l) => { l.tags = ['a', 'b', 'c', 'd', 'e', 'f', 'g']; }, /library\.json: tags must be a list of 0 to 6 strings of at most 32 characters/],
+  ['a tag over 32 characters', (l) => { l.tags = ['x'.repeat(33)]; }, /library\.json: tags must be a list of 0 to 6 strings of at most 32 characters/],
+  ['tags as a string', (l) => { l.tags = 'signals'; }, /library\.json: tags must be a list/],
+  ['featured as a string', (l) => { l.featured = 'yes'; }, /library\.json: featured must be true or false/],
+  ['an unknown need', (l) => { l.needs = ['crm']; }, /library\.json: needs must be a list of distinct values from dataset, webhook, knowledge, video/],
+  ['a two-part version', (l) => { l.version = '1.0'; }, /library\.json: version must be semver like 1\.0\.0/],
+  ['a date that does not exist', (l) => { l.updatedAt = '2026-02-30'; }, /library\.json: updatedAt must be a real date as YYYY-MM-DD/],
+  ['a date in another format', (l) => { l.updatedAt = '10/29/2026'; }, /library\.json: updatedAt must be a real date as YYYY-MM-DD/],
+  ['two samples', (l) => { l.samples = l.samples.slice(0, 2); }, /library\.json: samples must list at least 3 samples as \{id, label\}/],
+  ['a sample id with capitals', (l) => { l.samples[0].id = 'Acme'; }, /library\.json: samples\[0\]: id must match \^\[a-z0-9-\]\+\$/],
+  ['a duplicate sample id', (l) => { l.samples[2].id = 'acme'; }, /library\.json: samples\[2\]: duplicate id "acme"/],
+  ['a sample with no label', (l) => { delete l.samples[1].label; }, /library\.json: samples\[1\]: label is required/],
+  ['an exclamation mark in a sample label', (l) => { l.samples[1].label = 'Globex, shared link!'; }, /library\.json: samples\[1\]: label has an em or en dash or an exclamation mark/],
+  ['a listed sample with no file', (l) => { l.samples.push({ id: 'umbrella', label: 'Umbrella' }); }, /library\.json: samples\[3\]: samples\/umbrella\.json does not exist/],
+  ['an unknown field', (l) => { l.status = 'draft'; }, /library\.json: unknown field "status"/],
+];
+for (const [name, change, message] of INVALID) {
+  test(`library.json with ${name} fails`, () => {
+    const { status, out } = checkLibrary(library(change));
+    assert.equal(status, 1, out);
+    assert.match(out, message);
+  });
+}
+
+test('library.json that is not JSON fails', () => {
+  const { status, out } = checkLibrary((bundle) => fs.writeFileSync(path.join(bundle, 'library.json'), '{"description": '));
+  assert.equal(status, 1, out);
+  assert.match(out, /library\.json: not valid JSON/);
+});
+
+test('a missing cover fails', () => {
+  const { status, out } = checkLibrary((bundle) => fs.rmSync(path.join(bundle, 'preview', 'cover.png')));
+  assert.equal(status, 1, out);
+  assert.match(out, /preview\/cover\.png: missing; run npm run render -- demo-library/);
+});
+
+test('a cover of the wrong size fails', () => {
+  const { status, out } = checkLibrary((bundle) => fs.writeFileSync(path.join(bundle, 'preview', 'cover.png'), png(1280, 720)));
+  assert.equal(status, 1, out);
+  assert.match(out, /preview\/cover\.png: 1280x720, must be 1280x800/);
+});
+
+test('a cover that is not a PNG fails', () => {
+  const { status, out } = checkLibrary((bundle) => fs.writeFileSync(path.join(bundle, 'preview', 'cover.png'), 'GIF89a'));
+  assert.equal(status, 1, out);
+  assert.match(out, /preview\/cover\.png: not a PNG/);
+});
+
+test('a cover over 400 KB fails', () => {
+  const { status, out } = checkLibrary((bundle) => fs.writeFileSync(path.join(bundle, 'preview', 'cover.png'), png(1280, 800, 410 * 1024)));
+  assert.equal(status, 1, out);
+  assert.match(out, /preview\/cover\.png: \d+ KB, over 400 KB/);
+});
+
+test('a missing sample preview fails', () => {
+  const { status, out } = checkLibrary((bundle) => fs.rmSync(path.join(bundle, 'preview', 'acme.html')));
+  assert.equal(status, 1, out);
+  assert.match(out, /preview\/acme\.html: missing; run npm run render -- demo-library/);
+});
+
+test('any other file in preview/ fails', () => {
+  const { status, out } = checkLibrary((bundle) => fs.writeFileSync(path.join(bundle, 'preview', 'old-sample.html'), '<!doctype html>'));
+  assert.equal(status, 1, out);
+  assert.match(out, /preview\/old-sample\.html: unexpected file; preview\/ holds cover\.png and one <sampleId>\.html per listed sample/);
+});
+
+test('a stale index.json fails and names the entry', () => {
+  const { status, out } = checkLibrary(library((l) => { l.version = '1.0.1'; }));
+  assert.equal(status, 1, out);
+  assert.match(out, /ERROR index\.json: stale \("demo-library" differs\); run npm run build-index/);
+});
+
+test('an index.json without the Library entry fails and names it', () => {
+  const { status, out } = checkLibrary((bundle, dir) => fs.writeFileSync(path.join(dir, 'index.json'), EMPTY_INDEX));
+  assert.equal(status, 1, out);
+  assert.match(out, /ERROR index\.json: stale \("demo-library" is missing\); run npm run build-index/);
+});
+
+test('a sample file not listed in library.json fails', () => {
+  const { status, out } = checkLibrary((bundle) => fs.writeFileSync(path.join(bundle, 'samples', 'umbrella.json'), JSON.stringify(SAMPLES.acme)));
+  assert.equal(status, 1, out);
+  assert.match(out, /samples\/umbrella\.json: not listed in library\.json samples; list it or delete it/);
+});
+
+test('a CSV next to the samples is data, not a sample', () => {
+  const { status, out } = checkLibrary((bundle) => fs.writeFileSync(path.join(bundle, 'samples', 'peers.csv'), 'name,value\nAcme,1\n'));
+  assert.equal(status, 0, out);
+});
+
+test('a Library template with no "person": null sample fails', () => {
+  const { status, out } = checkLibrary((bundle) => editJson(path.join(bundle, 'samples', 'globex-shared.json'), (s) => {
+    s.person = { first_name: 'Ana', last_name: 'Lund', title: 'CFO' };
+  }));
+  assert.equal(status, 1, out);
+  assert.match(out, /library\.json: no listed sample has "person": null; add one for the shared link/);
+});
+
+test('a folder without library.json is checked as before and keeps its index entry', () => {
+  const setup = (dir) => {
+    const old = writeLibrary(dir, { slug: 'old-starter' });
+    fs.rmSync(path.join(old, 'library.json'));
+    fs.rmSync(path.join(old, 'preview'), { recursive: true });
+    fs.writeFileSync(path.join(dir, 'index.json'), `{\n  "kenStudio": "1",\n  "starters": [\n    ${OLD_ENTRY}\n  ]\n}\n`);
+  };
+  const ok = checkLibrary(() => {}, { setup });
+  assert.equal(ok.status, 0, ok.out);
+  assert.match(ok.out, /OK\s+old-starter/);
+  assert.ok(ok.index.includes(OLD_ENTRY), ok.index);
+  // A preview/ folder is still an unexpected file in a bundle without library.json.
+  const bad = checkLibrary((bundle, dir) => fs.mkdirSync(path.join(dir, 'starters', 'old-starter', 'preview')), { setup });
+  assert.equal(bad.status, 1, bad.out);
+  assert.match(bad.out, /preview: unexpected file/);
+});
+
+test('ken_search.count is a recipe tool', () => {
+  const ok = checkLibrary();
+  assert.equal(ok.status, 0, ok.out);
+  assert.doesNotMatch(ok.out, /tool must be one of/);
+  const bad = checkLibrary((bundle) => editJson(path.join(bundle, 'studio.json'), (m) => { m.recipe[1].tool = 'ken_search.counts'; }));
+  assert.equal(bad.status, 1, bad.out);
+  assert.match(bad.out, /recipe\[1\] \(market\): tool must be one of [^\n]*ken_search\.count,/);
+});
+
+test('a bind from account.signals passes', () => {
+  const ok = checkLibrary();
+  assert.equal(ok.status, 0, ok.out);
+  assert.doesNotMatch(ok.out, /bind from must start with/);
+  const bad = checkLibrary((bundle) => editJson(path.join(bundle, 'studio.json'), (m) => { m.recipe[0].from = 'signals'; }));
+  assert.equal(bad.status, 1, bad.out);
+  assert.match(bad.out, /recipe\[0\] \(signals\): bind from must start with account\./);
 });

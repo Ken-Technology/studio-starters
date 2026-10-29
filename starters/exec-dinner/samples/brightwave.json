@@ -1,0 +1,39 @@
+{
+  "account": {
+    "name": "Brightwave Logistics",
+    "domain": "brightwave.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Brightwave Logistics runs regional freight and warehousing across the Midwest, with six distribution sites and about 400 people.",
+      "why_now": "Opened two cross-dock sites this year and kept the operations team flat.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Leo",
+    "last_name": "Marsh",
+    "title": "VP Operations"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northbeam",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "why_now": "Opened two cross-dock sites this year and kept the operations team flat.",
+    "invitee_title": "VP Operations",
+    "why_you": "Brightwave opened two cross-dock sites this year and kept the operations team flat. Most of this table is trying to do the same thing next year, and I would like them to hear how you did it.",
+    "featured_guest": {
+      "name": "Ruth Adeyemi",
+      "role": "Former COO, a national freight brokerage",
+      "bio": "She ran operations as the company went from 300 to 1,100 people, and has clear views on which decisions she would make earlier."
+    }
+  }
+}

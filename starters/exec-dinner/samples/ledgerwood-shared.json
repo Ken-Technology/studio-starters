@@ -1,0 +1,90 @@
+{
+  "account": {
+    "name": "Ledgerwood Software",
+    "domain": "ledgerwood.example",
+    "industry": "software development",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Ledgerwood Software sells scheduling software to field service companies and has about 300 people.",
+      "why_now": "Launched a second product line in September.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Priya Nair",
+    "title": "Head of Partnerships",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Sprocket",
+    "logo_url": null,
+    "colors": {
+      "primary": "#ffb400",
+      "secondary": "#1c1c1c"
+    },
+    "fonts": {
+      "heading": "Space Grotesk",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "headline": "A private supper for revenue leaders",
+    "subline": "Seven seats, one long table, no slides.",
+    "date_text": "Thursday, December 10",
+    "date_short": "December 10",
+    "year_text": "2026",
+    "time_text": "6:45 pm",
+    "time_note": "Doors at 6:15",
+    "venue": "Juniper Table",
+    "venue_line": "East Sixth Street, Austin",
+    "calendar_start": "20261210T184500",
+    "calendar_end": "20261210T213000",
+    "calendar_tz": "America/Chicago",
+    "host": "Priya Nair",
+    "guests": [
+      {
+        "title": "CRO",
+        "company_type": "a payments software company in Dallas"
+      },
+      {
+        "title": "VP Sales",
+        "company_type": "an HR software company in Austin"
+      },
+      {
+        "title": "Chief Revenue Officer",
+        "company_type": "a cybersecurity vendor in Houston"
+      },
+      {
+        "title": "SVP Revenue Operations",
+        "company_type": "a logistics software company in San Antonio"
+      },
+      {
+        "title": "Head of Sales",
+        "company_type": "a construction software company in Denver"
+      }
+    ],
+    "topic": "Taking a sales team through a product launch: what to change in the quota plan, and what to leave alone for a quarter.",
+    "topic_note": "One question goes around the table once. After that it is open.",
+    "menu": "Family style from the Juniper Table kitchen. Smoked trout, charred greens, a long-braised brisket, one shared dessert.",
+    "menu_note": "A vegetarian path through every course.",
+    "run_of_show": [
+      {
+        "time": "6:15",
+        "text": "Drinks at the bar"
+      },
+      {
+        "time": "7:00",
+        "text": "Seated"
+      },
+      {
+        "time": "9:30",
+        "text": "Last round"
+      }
+    ],
+    "dress_note": "Come as you are. Parking is behind the restaurant.",
+    "rsvp_by": "Friday, December 4",
+    "why_now": "Launched a second product line in September.",
+    "why_you": "Ledgerwood launched a second product line in September. Most people at this table have taken a sales team through a launch like that, and will tell you what they would change."
+  }
+}

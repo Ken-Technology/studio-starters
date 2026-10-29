@@ -1,0 +1,64 @@
+{
+  "account": {
+    "name": "Lakeshore Dental Partners",
+    "domain": "lakeshore-dental.example",
+    "industry": "hospitals and health care",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Lakeshore Dental Partners runs nine dental offices around Milwaukee. Each office keeps its own front desk and its own intake forms, and the group added two offices in the past year.",
+      "why_now": "Opened its ninth office in September.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": { "name": "Rosa Imbert", "title": "Clinical onboarding lead", "signature_html": null },
+  "brand": {
+    "name": "Halden Practice Systems",
+    "logo_url": null,
+    "colors": { "primary": "#1c2b4a", "secondary": "#9a7b3c" },
+    "fonts": { "heading": "Playfair Display", "body": "Source Sans 3" }
+  },
+  "data": {
+    "title": "Your patient intake, rebuilt in one morning",
+    "tagline": "A hands-on morning for dental groups. You map how a new patient gets from the first call to the chair at your offices, find where the forms repeat, and leave with one intake flow and a rollout order.",
+    "format": "online",
+    "date_text": "Wednesday, January 14",
+    "time_text": "9:00 am to 12:30 pm Central",
+    "platform": "Zoom",
+    "seats": 10,
+    "seats_left": 6,
+    "audience": "Practice managers, office leads and the people who answer the phones at dental groups with 3 to 20 offices.",
+    "agenda": [
+      { "time": "9:00 am", "length": "20 min", "title": "How the morning works", "note": "Cameras on, one shared board, and a breakout room per group.", "kind": "talk" },
+      { "time": "9:20 am", "length": "50 min", "title": "Map your intake as it runs today", "note": "From the first call to the chair, one office at a time. Mark every form and every handoff.", "kind": "hands_on" },
+      { "time": "10:10 am", "length": "10 min", "title": "Break", "kind": "break" },
+      { "time": "10:20 am", "length": "50 min", "title": "Find the repeats", "note": "Lay the offices side by side. Circle the questions asked twice and the steps only one office does.", "kind": "hands_on" },
+      { "time": "11:10 am", "length": "50 min", "title": "Draw the one flow", "note": "Agree the shared steps, mark where an office can differ, and pick the forms to retire first.", "kind": "hands_on" },
+      { "time": "12:00 pm", "length": "30 min", "title": "Rollout order and read-outs", "note": "Each group shows its flow. We send the boards and the checklist the same day.", "kind": "talk" }
+    ],
+    "bring": [
+      "Your current intake forms, printed or as PDFs, from at least two offices",
+      "New patient numbers by office for last month",
+      "A second screen, if you have one",
+      "One front-desk person from one office, if they can join for the morning"
+    ],
+    "host_note": "Rosa Imbert runs the session with one colleague on the board. The group stays at ten so every office gets its intake looked at.",
+    "confirm_note": "Your seat is confirmed by email within a day, with the meeting link and a short pre-read.",
+    "why_now": "Opened its ninth office in September.",
+    "why_you": "Lakeshore opened its ninth office in September, and each office keeps its own front desk and intake forms. The morning is about turning nine versions of intake into one that every office can still run its own way.",
+    "leave_with": [
+      {
+        "lead": "One intake flow for all nine offices",
+        "text": "Each step from the first call to the chair, drawn once for the group, with the places an office is allowed to differ marked on it."
+      },
+      {
+        "lead": "A shortlist of the forms to retire first",
+        "text": "Which of the nine offices' forms ask the same thing twice, and the three to replace in the first month."
+      },
+      {
+        "lead": "A rollout order for the nine offices",
+        "text": "Which office switches first and why, who signs off at each one, and the checklist a new office would get on day one."
+      }
+    ]
+  }
+}

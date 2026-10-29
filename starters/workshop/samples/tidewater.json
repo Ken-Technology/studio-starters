@@ -1,0 +1,67 @@
+{
+  "account": {
+    "name": "Tidewater Marine Fabrication",
+    "domain": "tidewater-fab.example",
+    "industry": "fabricated metal products",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Tidewater Marine Fabrication builds aluminum hulls and deck structures for workboats at a yard in Wilmington, North Carolina. About 260 people, most of them welders and fitters. Welding runs on two shifts.",
+      "why_now": "Listed four open welder positions on its careers page this month.",
+      "angle": null
+    }
+  },
+  "person": { "first_name": "Dale", "last_name": "Whitcombe", "title": "Director of Operations" },
+  "sender": { "name": "Idris Okonkwo", "title": "Applications engineer", "signature_html": null },
+  "brand": {
+    "name": "Pellam Robotics",
+    "logo_url": null,
+    "colors": { "primary": "#e11d48", "secondary": "#0f172a" },
+    "fonts": { "heading": "Outfit", "body": "DM Sans" }
+  },
+  "data": {
+    "title": "Pick your first automation cell in one day",
+    "tagline": "A full day on the demo floor for fabricators. You bring drawings for the parts you weld most, score them for a robotic cell, and leave with one part picked, a layout sketch and a payback sheet.",
+    "format": "in_person",
+    "date_text": "Tuesday, February 10",
+    "time_text": "8:30 am to 4:00 pm",
+    "venue": "Pellam demo floor, 410 Industrial Way",
+    "city": "Charlotte",
+    "seats": 8,
+    "seats_left": 2,
+    "audience": "Operations and production leads at fabricators and job shops with 100 to 1,000 people.",
+    "agenda": [
+      { "time": "8:30 am", "length": "30 min", "title": "Coffee and safety briefing", "kind": "break" },
+      { "time": "9:00 am", "length": "45 min", "title": "What a cell does well, and what it does badly", "note": "Seam types, part sizes and fixturing, from cells we have put on shop floors.", "kind": "talk" },
+      { "time": "9:45 am", "length": "90 min", "title": "Score your parts", "note": "Run each drawing you brought through the scorecard: seam length, repeat volume, fixturing, rework.", "kind": "hands_on" },
+      { "time": "11:15 am", "length": "60 min", "title": "Weld it on the demo cell", "note": "We program your top-scoring part on the cell and run it, so you see a cycle time instead of hearing a claim.", "kind": "hands_on" },
+      { "time": "12:15 pm", "length": "45 min", "title": "Lunch", "kind": "break" },
+      { "time": "1:00 pm", "length": "90 min", "title": "Sketch the layout", "note": "Where the cell sits in your shop, what feeds it, and who runs it. On paper, on our floor plan grid.", "kind": "hands_on" },
+      { "time": "2:30 pm", "length": "60 min", "title": "Fill in the payback sheet", "note": "Hours by part from your own numbers, cell cost, and the staffing you have today. The sheet is yours to keep.", "kind": "hands_on" },
+      { "time": "3:30 pm", "length": "30 min", "title": "Read-outs", "note": "Each team shows its part, layout and sheet. We send the photos and the cell program after.", "kind": "talk" }
+    ],
+    "bring": [
+      "Drawings for the two or three parts you weld the most",
+      "Last quarter's hours by part, if you track them",
+      "Steel-toe boots and safety glasses for the floor",
+      "The person who would run the cell day to day"
+    ],
+    "host_note": "Idris Okonkwo programs the demo cell and runs the day with two applications engineers. Eight people, so every team gets time on the cell.",
+    "confirm_note": "Your seat is confirmed by email within a day, with directions to the floor and the scorecard to fill in beforehand.",
+    "why_now": "Listed four open welder positions on its careers page this month.",
+    "why_you": "Tidewater runs welding on two shifts and has four welder positions open this month. The day is built around that gap: which hull or deck parts a cell could take off your welders first, scored from your own drawings.",
+    "leave_with": [
+      {
+        "lead": "One hull or deck part picked for a cell",
+        "text": "Scored from the drawings you bring, by seam length, repeat volume and fixturing, then run on the demo cell so you leave with a measured cycle time."
+      },
+      {
+        "lead": "A layout sketch for the Wilmington yard",
+        "text": "Where the cell sits, how aluminum sections reach it across two shifts, and who on each shift runs it."
+      },
+      {
+        "lead": "A payback sheet using your own hours",
+        "text": "Hours by part from your records against the cell cost and the four welder openings, ready to take to whoever signs off."
+      }
+    ]
+  }
+}

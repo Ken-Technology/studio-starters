@@ -1,0 +1,108 @@
+{%- assign accent = brand.colors.primary | default: '#1a5e8a' -%}
+{%- assign stage = brand.colors.secondary | default: '#171a21' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
+{%- assign font_body = brand.fonts.body | default: 'Instrument Sans' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign first_name = person.first_name | default: '' -%}
+{%- assign sender_name = sender.name | default: 'Your contact' -%}
+{%- assign name_parts = sender_name | split: ' ' -%}
+{%- assign initial_a = name_parts | first | slice: 0, 1 -%}
+{%- assign initial_b = '' -%}
+{%- if name_parts.size > 1 -%}{%- assign initial_b = name_parts | last | slice: 0, 1 -%}{%- endif -%}
+{%- capture booking_title -%}Pick a time with {{ sender_name }}{%- endcapture -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>A short page for {{ account.name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f6f6f3;color:#1c1c1e;font-family:'{{ font_body }}',ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.vp{--a:{{ accent }};--stage:{{ stage }};--ink:#1c1c1e;--mute:#5d5f66;--line:#dcdcd6;--on-stage:#f4f3ef;--on-stage-mute:#a9abb3}
+.vp h1,.vp h2{font-family:'{{ font_head }}',Georgia,"Times New Roman",serif;font-weight:500;letter-spacing:-.01em;text-wrap:balance;margin:0}
+p{margin:0}
+.vp a{color:var(--a)}
+.vp-wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
+.vp-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:3.5rem;padding:.75rem 0}
+.vp-logo{height:28px;width:auto;display:block}
+.vp-brand{font-weight:600;font-size:1rem;letter-spacing:-.01em}
+.vp-for{font-size:.875rem;color:var(--mute);text-align:right}
+.vp-stage{background:var(--stage);color:var(--on-stage);padding:1.75rem 0 2rem}
+.vp-kicker{font-size:.9rem;color:var(--on-stage-mute);margin:0 0 .65rem}
+.vp-stage h1{font-size:1.9rem;line-height:1.15;color:#fff}
+.vp-aside{margin:1.5rem 0 0}
+.vp-who{display:flex;align-items:center;gap:.8rem}
+.vp-ava{width:44px;height:44px;border-radius:50%;background:var(--a);color:#fff;display:grid;place-items:center;font-weight:600;font-size:.95rem;flex:none;letter-spacing:.02em}
+.vp-who b{display:block;font-weight:600;color:#fff}
+.vp-who span{display:block;font-size:.9rem;color:var(--on-stage-mute)}
+.vp-intro{font-size:1.15rem;line-height:1.55;margin:1.1rem 0 0;max-width:36rem}
+.vp-intro+.vp-intro{margin-top:.8rem}
+.vp-book{padding:2rem 0 2.5rem}
+.vp-book h2{font-size:1.6rem;line-height:1.2}
+.vp-lead{color:var(--mute);margin:.6rem 0 1.4rem;max-width:34rem}
+.vp-cal{color:var(--mute)}
+.vp-sign{margin:1.4rem 0 0;font-size:.95rem}
+.vp-sign b{display:block;font-weight:600;color:var(--ink)}
+.vp-sign span{color:var(--mute)}
+.vp-foot{border-top:1px solid var(--line);padding:1.25rem 0 2.5rem;font-size:.85rem;color:var(--mute)}
+@media (min-width:900px){
+body{font-size:18px}
+.vp-wrap{padding:0 2.5rem}
+.vp-top{min-height:4.25rem}
+.vp-stage{padding:2.5rem 0 3rem}
+.vp-stage h1{font-size:2.75rem;max-width:30ch}
+.vp-aside{margin-top:1.75rem}
+.vp-intro{font-size:1.25rem;line-height:1.5;max-width:40rem}
+.vp-cols{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:auto 1fr;gap:0 3rem;align-items:start}
+.vp-book{padding:2.5rem 0 3.5rem}
+.vp-book h2{font-size:1.9rem}
+.vp-lead{margin-bottom:0}
+.vp-cal{grid-column:2;grid-row:1 / span 2}
+.vp-sign{grid-column:1;grid-row:2;margin-top:1.5rem}
+}
+</style>
+</head>
+<body>
+<main class="vp">
+<div class="vp-wrap">
+<header class="vp-top">
+{%- if brand.logo_url %}<img class="vp-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="vp-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="vp-for">A note for {{ account.name | escape }}</p>
+</header>
+</div>
+<section data-section="video" class="vp-stage">
+<div class="vp-wrap">
+<p class="vp-kicker">{% if first_name != '' %}For {{ first_name | escape }}{% if person.title %}, {{ person.title | escape }}{% endif %} at {{ account.name | escape }}{% else %}For the team at {{ account.name | escape }}{% endif %}</p>
+<h1>A short page for {{ account.name | escape }}</h1>
+<div class="vp-aside">
+<div class="vp-who">
+<div class="vp-ava" aria-hidden="true">{{ initial_a | upcase | escape }}{{ initial_b | upcase | escape }}</div>
+<p><b>{{ sender_name | escape }}</b><span>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}{% elsif brand.name %}{{ brand.name | escape }}{% else %}Made this for you{% endif %}</span></p>
+</div>
+<p class="vp-intro">Hi {{ first_name | default: 'there' | escape }}, I am putting together a short page for {{ account.name | escape }}: a video from me, three things I looked at about {{ account.name | escape }}, and what I would do about each one.</p>
+<p class="vp-intro">It is not on this page yet. The link stays the same, so check back later today.</p>
+</div>
+</div>
+</section>
+<section data-section="booking" class="vp-book" id="book">
+<div class="vp-wrap vp-cols">
+<div>
+<h2>Rather talk now?</h2>
+<p class="vp-lead">Pick twenty minutes with {{ sender_name | escape }} and I will walk you through the three points myself. On video, no slides.</p>
+</div>
+<div class="vp-cal">{% render 'ken/booking', height: 560, title: booking_title, label: 'Book 20 minutes' %}</div>
+<p class="vp-sign"><b>{{ sender_name | escape }}</b><span>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}{% elsif brand.name %}{{ brand.name | escape }}{% endif %}</span></p>
+</div>
+</section>
+<div class="vp-wrap">
+<p class="vp-foot">Made for {{ account.name | escape }} by {{ sender_name | escape }}{% if brand.name %} at {{ brand.name | escape }}{% endif %}.</p>
+</div>
+</main>
+</body>
+</html>

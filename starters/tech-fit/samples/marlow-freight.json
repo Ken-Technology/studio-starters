@@ -1,0 +1,304 @@
+{
+  "account": {
+    "name": "Marlow Freight Systems",
+    "domain": "marlowfreight.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Marlow Freight Systems is a regional LTL carrier with 11 terminals across the Southeast and about 380 employees. It leases most of its fleet and buys fuel, tires and maintenance from around 300 vendors.",
+      "why_now": "Announced a twelfth terminal in Savannah in September.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Rafael",
+    "last_name": "Quintero",
+    "title": "CFO"
+  },
+  "sender": {
+    "name": "Ines Kowalski",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Plinth",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1b2a4a",
+      "secondary": "#c8a24a"
+    },
+    "fonts": {
+      "heading": "Source Serif 4",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "integrations": [
+      {
+        "tool": "NetSuite",
+        "category": "ERP and accounting",
+        "aliases": "Oracle NetSuite",
+        "connection": "Native, two-way",
+        "summary": "A vendor approved in Plinth becomes a NetSuite vendor record, and a signed contract raises its purchase order. Bills and payment status come back, so the contract shows what has been paid.",
+        "syncs": "Vendors, purchase orders, bills and payment status, every 15 minutes",
+        "setup": "About an hour with a NetSuite admin, through a SuiteTalk integration role",
+        "docs_url": "https://docs.plinth.example/netsuite"
+      },
+      {
+        "tool": "QuickBooks Online",
+        "category": "ERP and accounting",
+        "aliases": "QuickBooks, QBO",
+        "connection": "Native, two-way",
+        "summary": "Vendors and bills sync between Plinth and QuickBooks, so a contract shows what has been billed against it without anyone retyping amounts.",
+        "syncs": "Vendors, bills and payment status, hourly",
+        "setup": "About 20 minutes; a QuickBooks admin signs in once",
+        "docs_url": "https://docs.plinth.example/quickbooks"
+      },
+      {
+        "tool": "Sage Intacct",
+        "category": "ERP and accounting",
+        "aliases": "Intacct",
+        "connection": "Native, two-way",
+        "summary": "Approved vendors and purchase orders flow from Plinth into Intacct, and posted bills flow back to the contract they belong to.",
+        "syncs": "Vendors, purchase orders, bills and dimensions, every 30 minutes",
+        "setup": "About an hour with an Intacct admin and a Web Services user",
+        "docs_url": "https://docs.plinth.example/sage-intacct"
+      },
+      {
+        "tool": "Xero",
+        "category": "ERP and accounting",
+        "aliases": "",
+        "connection": "Native, one-way",
+        "summary": "Vendors and purchase orders approved in Plinth are created in Xero. Xero stays the book of record.",
+        "syncs": "Vendors and purchase orders, Plinth to Xero, hourly",
+        "setup": "About 15 minutes; a Xero admin signs in once",
+        "docs_url": "https://docs.plinth.example/xero"
+      },
+      {
+        "tool": "Workday",
+        "category": "HR and finance",
+        "aliases": "Workday Financials, Workday HCM",
+        "connection": "Native, one-way",
+        "summary": "Plinth reads cost centers, departments and manager relationships from Workday, so approval chains follow your org chart and every contract lands on the right cost center.",
+        "syncs": "Workers, cost centers and supervisory orgs, Workday to Plinth, nightly",
+        "setup": "Half a day with a Workday admin, through an integration system user",
+        "docs_url": "https://docs.plinth.example/workday"
+      },
+      {
+        "tool": "Salesforce",
+        "category": "CRM",
+        "aliases": "SFDC, Sales Cloud",
+        "connection": "Native, one-way",
+        "summary": "Customer contracts start from a closed-won opportunity. Plinth pulls the account, the opportunity owner and the order form, so sales never emails a contract to legal.",
+        "syncs": "Accounts, closed-won opportunities and attached files, Salesforce to Plinth, every 5 minutes",
+        "setup": "About 30 minutes with a Salesforce admin; a connected app and one permission set",
+        "docs_url": "https://docs.plinth.example/salesforce"
+      },
+      {
+        "tool": "HubSpot",
+        "category": "CRM",
+        "aliases": "",
+        "connection": "Native, one-way",
+        "summary": "A deal moved to closed won opens a customer contract in Plinth with the company, the deal owner and the quote attached.",
+        "syncs": "Companies, closed-won deals and quotes, HubSpot to Plinth, every 5 minutes",
+        "setup": "About 15 minutes; a HubSpot super admin signs in once",
+        "docs_url": "https://docs.plinth.example/hubspot"
+      },
+      {
+        "tool": "Slack",
+        "category": "Messaging",
+        "aliases": "",
+        "connection": "Native",
+        "summary": "Approvals, renewal reminders and questions on a contract land in Slack. An approver reads the summary and approves or sends it back from the message.",
+        "syncs": "Approval requests, renewal reminders and comments, both ways, as they happen",
+        "setup": "About 10 minutes; a workspace admin installs the Plinth app",
+        "docs_url": "https://docs.plinth.example/slack"
+      },
+      {
+        "tool": "Microsoft Teams",
+        "category": "Messaging",
+        "aliases": "Teams",
+        "connection": "Native",
+        "summary": "Approvals and renewal reminders arrive as Teams messages with the contract summary, and approvers act on them without opening Plinth.",
+        "syncs": "Approval requests and renewal reminders, both ways, as they happen",
+        "setup": "About 20 minutes; a Teams admin approves the Plinth app",
+        "docs_url": "https://docs.plinth.example/teams"
+      },
+      {
+        "tool": "DocuSign",
+        "category": "E-signature",
+        "aliases": "",
+        "connection": "Native, two-way",
+        "summary": "A contract leaves Plinth for signature in DocuSign and comes back signed, filed against the vendor, with the signed PDF and the audit trail.",
+        "syncs": "Envelopes, signer status and signed PDFs, both ways, as they happen",
+        "setup": "About 15 minutes with a DocuSign admin",
+        "docs_url": "https://docs.plinth.example/docusign"
+      },
+      {
+        "tool": "Adobe Acrobat Sign",
+        "category": "E-signature",
+        "aliases": "Adobe Sign, EchoSign",
+        "connection": "Native, two-way",
+        "summary": "Contracts go out for signature from Plinth through Acrobat Sign and return signed, with the audit report attached.",
+        "syncs": "Agreements, signer status and signed PDFs, both ways, as they happen",
+        "setup": "About 15 minutes with an Acrobat Sign account admin",
+        "docs_url": "https://docs.plinth.example/acrobat-sign"
+      },
+      {
+        "tool": "Okta",
+        "category": "Identity and SSO",
+        "aliases": "",
+        "connection": "Native",
+        "summary": "People sign in to Plinth with Okta. SCIM creates and removes accounts as people join and leave, and Okta groups map to Plinth roles.",
+        "syncs": "Users and groups, Okta to Plinth, as they change",
+        "setup": "About 30 minutes with an Okta admin, SAML and SCIM",
+        "docs_url": "https://docs.plinth.example/okta"
+      },
+      {
+        "tool": "Microsoft Entra ID",
+        "category": "Identity and SSO",
+        "aliases": "Azure AD, Entra",
+        "connection": "Native",
+        "summary": "Single sign-on through Entra ID, with SCIM provisioning so leavers lose access the day they leave.",
+        "syncs": "Users and groups, Entra ID to Plinth, as they change",
+        "setup": "About 30 minutes with an Entra admin, SAML and SCIM",
+        "docs_url": "https://docs.plinth.example/entra"
+      },
+      {
+        "tool": "Google Workspace",
+        "category": "Identity and SSO",
+        "aliases": "G Suite, Google SSO",
+        "connection": "Native",
+        "summary": "Sign in with Google, and Plinth files each signed contract's PDF in the Drive folder you choose.",
+        "syncs": "Sign-in, plus signed PDFs to Drive, as they happen",
+        "setup": "About 10 minutes; a Workspace admin approves the app",
+        "docs_url": "https://docs.plinth.example/google-workspace"
+      },
+      {
+        "tool": "Jira",
+        "category": "Project tracking",
+        "aliases": "Jira Software, Jira Service Management",
+        "connection": "Native, one-way",
+        "summary": "A new vendor review or a security questionnaire opens a Jira issue in the queue you choose, and the contract links to it.",
+        "syncs": "Issues, Plinth to Jira, as they are raised",
+        "setup": "About 15 minutes with a Jira admin",
+        "docs_url": "https://docs.plinth.example/jira"
+      },
+      {
+        "tool": "Snowflake",
+        "category": "Data warehouse",
+        "aliases": "",
+        "connection": "Native, one-way",
+        "summary": "Every contract, vendor, spend commitment and renewal date lands in your Snowflake account as tables, refreshed nightly, for your own reporting.",
+        "syncs": "Contracts, vendors, commitments and renewals, Plinth to Snowflake, nightly",
+        "setup": "About an hour with a Snowflake admin, through a share",
+        "docs_url": "https://docs.plinth.example/snowflake"
+      },
+      {
+        "tool": "Coupa",
+        "category": "Procurement",
+        "aliases": "",
+        "connection": "CSV import",
+        "summary": "If you are moving off Coupa, Plinth imports your supplier list and open contracts from a Coupa export, with the original IDs kept.",
+        "syncs": "Suppliers and contracts, one-time import",
+        "setup": "A working session with our team, usually one afternoon",
+        "docs_url": "https://docs.plinth.example/coupa"
+      },
+      {
+        "tool": "Ironclad",
+        "category": "Contract management",
+        "aliases": "",
+        "connection": "CSV import",
+        "summary": "Plinth imports your Ironclad repository with its metadata, so no contract and no renewal date gets lost in a move.",
+        "syncs": "Contracts, metadata and signed PDFs, one-time import",
+        "setup": "A working session with our team, usually one afternoon",
+        "docs_url": "https://docs.plinth.example/ironclad"
+      },
+      {
+        "tool": "Ramp",
+        "category": "Spend management",
+        "aliases": "",
+        "connection": "Native, two-way",
+        "summary": "Vendor card spend in Ramp shows up against the vendor's contract in Plinth, so you see what is contracted next to what is being spent.",
+        "syncs": "Vendors and transactions, Ramp to Plinth, daily; vendor records, Plinth to Ramp",
+        "setup": "About 10 minutes; a Ramp admin signs in once",
+        "docs_url": "https://docs.plinth.example/ramp"
+      },
+      {
+        "tool": "Brex",
+        "category": "Spend management",
+        "aliases": "",
+        "connection": "Native, two-way",
+        "summary": "Brex card and bill spend is matched to the vendor's contract in Plinth, so unmanaged spend stands out.",
+        "syncs": "Vendors and transactions, Brex to Plinth, daily; vendor records, Plinth to Brex",
+        "setup": "About 10 minutes; a Brex admin signs in once",
+        "docs_url": "https://docs.plinth.example/brex"
+      },
+      {
+        "tool": "Zapier",
+        "category": "Automation",
+        "aliases": "",
+        "connection": "Native",
+        "summary": "A Plinth app on Zapier with triggers for new contracts, approvals and renewals, so you can wire Plinth to tools we do not connect to yet.",
+        "syncs": "Events out and actions in, as they happen",
+        "setup": "Minutes, by whoever owns your Zapier account",
+        "docs_url": "https://docs.plinth.example/zapier"
+      }
+    ],
+    "site": {
+      "url": "https://marlowfreight.example",
+      "title": "Marlow Freight Systems",
+      "description": "Regional LTL freight across the Southeast, terminal to terminal.",
+      "markdown": "# Marlow Freight Systems\n\nRegional LTL across the Southeast, with 11 terminals and next-day service between most of them.\n\n## Our fleet\n\nEvery tractor runs Samsara telematics, so you see your freight move terminal to terminal.\n\n## Shippers\n\nRequest a quote, track a shipment or set up a contract rate with your account manager."
+    },
+    "careers": {
+      "url": "https://marlowfreight.example/careers",
+      "title": "Careers at Marlow Freight",
+      "description": "Drivers, dock, dispatch and office roles across the Southeast.",
+      "markdown": "# Careers\n\n## Staff Accountant, Savannah\n\nDaily work in NetSuite: vendor bills, AP runs and vendor records for about 300 suppliers.\n\n## Sales Coordinator\n\nKeep shipper accounts and contract rates current in Salesforce, and prepare rate confirmations for the sales team.\n\n## Terminal Supervisor\n\nWe run the terminals on Slack and a phone. You will own one dock, one shift and the people on it."
+    },
+    "tools": [
+      {
+        "name": "NetSuite",
+        "category": "ERP and accounting",
+        "clue": "The staff accountant posting describes daily work in NetSuite on vendor bills, AP runs and vendor records.",
+        "source": "careers"
+      },
+      {
+        "name": "Salesforce",
+        "category": "CRM",
+        "clue": "The sales coordinator posting asks for keeping shipper accounts and contract rates current in Salesforce.",
+        "source": "careers"
+      },
+      {
+        "name": "Slack",
+        "category": "Messaging",
+        "clue": "The terminal supervisor posting says the terminals run on Slack and a phone.",
+        "source": "careers"
+      },
+      {
+        "name": "Samsara",
+        "category": "Fleet telematics",
+        "clue": "The fleet page says every tractor runs Samsara telematics.",
+        "source": "site"
+      }
+    ],
+    "headline": "Plinth next to NetSuite, Salesforce and Slack at Marlow Freight",
+    "intro": "I read your site and careers page to guess which tools Marlow already runs. The four below are guesses, so correct me where I am off. Three of them connect to Plinth today, and the fourth does not yet.",
+    "matches": [
+      {
+        "tool": "NetSuite",
+        "change": "A vendor your team approves in Plinth shows up as a NetSuite vendor record, and a signed contract raises its purchase order. The staff accountant stops retyping vendor details and sees paid status against the contract."
+      },
+      {
+        "tool": "Salesforce",
+        "change": "A shipper contract starts from the closed-won opportunity. Plinth pulls the account, the owner and the order form from Salesforce, so the sales coordinator does not email contract rates around to get them filed."
+      },
+      {
+        "tool": "Slack",
+        "change": "Approvals and renewal reminders land in Slack with the contract summary. A terminal supervisor or you can approve from the message, in the same channels the terminals already run on."
+      }
+    ],
+    "closing": "If a guess is wrong, or I missed a tool, reply and I will redo this page. Twenty minutes with you and whoever owns NetSuite is enough to agree on which tool to connect first."
+  }
+}

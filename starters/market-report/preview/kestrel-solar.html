@@ -5,264 +5,340 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>The residential solar installer market, in numbers</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
 <style>
 :root{
   --p:#6d28d9;
   --s:#1e1b3a;
   --fh:'Manrope',ui-sans-serif,system-ui,sans-serif;
   --fb:'Inter',ui-sans-serif,system-ui,sans-serif;
+  --hw:700;
+  --bg:#ebe5e3;
+  --surface:#e1dad7;
   --ink:var(--s);
-  --mute:color-mix(in srgb,var(--s) 62%,#fff);
-  --rule:color-mix(in srgb,var(--s) 14%,#fff);
-  --hair:color-mix(in srgb,var(--s) 9%,#fff);
-  --c1:var(--p);
-  --c2:color-mix(in srgb,var(--p) 78%,#fff);
-  --c3:color-mix(in srgb,var(--p) 60%,#fff);
-  --c4:color-mix(in srgb,var(--p) 44%,#fff);
-  --c5:color-mix(in srgb,var(--p) 30%,#fff);
-  --c6:color-mix(in srgb,var(--p) 18%,#fff);
+  --mute:color-mix(in srgb,var(--ink) 80%,var(--bg));
+  --on-p:#ffffff;
+  --mark:var(--p);
+  --c1:var(--ink);
+  --c2:color-mix(in srgb,var(--ink) 80%,var(--bg));
+  --c3:color-mix(in srgb,var(--ink) 62%,var(--bg));
+  --c4:color-mix(in srgb,var(--ink) 46%,var(--bg));
+  --c5:color-mix(in srgb,var(--ink) 32%,var(--bg));
+  --c6:color-mix(in srgb,var(--ink) 20%,var(--bg));
+  --m:clamp(1.25rem,3vw,2.5rem);
+  --t-small:.875rem;
+  --t-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --t-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --t-sub:clamp(1.5rem,1rem + 1.6vw,2.25rem);
+  --t-head:clamp(2.25rem,1.3rem + 3vw,3.75rem);
+  --t-fig:clamp(4rem,2rem + 7vw,8rem);
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased;padding-bottom:5.5rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.doc{max-width:58rem;margin:0 auto;padding:0 1.25rem}
-h1,h2,h3{font-family:var(--fh);font-weight:600;line-height:1.1;letter-spacing:-.015em;margin:0}
-p{margin:0 0 1rem}
-a{color:var(--p)}
-a:focus-visible{outline:2px solid var(--p);outline-offset:3px}
-.tn{font-variant-numeric:tabular-nums}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--t-body)/1.5 var(--fb);-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+h1,h2,h3{font-family:var(--fh);font-weight:var(--hw);margin:0;letter-spacing:-.03em;line-height:.95;text-wrap:balance}
+p{margin:0}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:.07em}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+::selection{background:var(--ink);color:var(--bg)}
+.tn{font-variant-numeric:tabular-nums lining-nums}
+.wrap{padding-inline:var(--m);max-width:96rem;margin-inline:auto}
+.n{font-variant-numeric:tabular-nums;color:var(--mute);margin-right:.35em}
 
-.brandline{display:flex;align-items:center;gap:.6rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.9rem}
-.logo{width:28px;height:28px;display:block;flex:none;border-radius:8px;background:var(--p);color:#fff;font:700 15px/28px var(--fh);text-align:center}
-.logo-img{height:28px;width:auto;max-width:9rem;display:block;flex:none}
-.bname{font-weight:600}
-.meta{margin-left:auto;color:var(--mute);text-align:right;line-height:1.45}
-
-.cover{padding-bottom:2.5rem}
-.cover-grid{display:grid;gap:2rem;margin-top:2.5rem}
-.cover h1{font-size:clamp(2.7rem,9vw,4.4rem);line-height:.98;letter-spacing:-.03em;max-width:13ch;margin:0 0 1.25rem;text-wrap:balance;overflow-wrap:break-word}
-.stand{font-size:1.15rem;line-height:1.5;color:var(--mute);max-width:32rem}
-.waffle{max-width:230px}
-.waffle svg{width:100%;height:auto;display:block}
-.waffle p{font-size:.78rem;color:var(--mute);margin:.6rem 0 0;line-height:1.45}
-.plate{display:grid;gap:1rem;border-top:3px solid var(--p);padding-top:1.25rem;margin-top:2.5rem;font-size:.92rem;line-height:1.45}
-.plate small{display:block;color:var(--mute);font-size:.78rem;margin-bottom:.2rem}
-.plate b{font-weight:600}
-.toc{list-style:none;margin:2.5rem 0 0;padding:0;max-width:30rem;counter-reset:t}
-.toc li{counter-increment:t;display:flex;gap:.9rem;align-items:baseline;padding:.45rem 0;border-top:1px solid var(--hair);font-size:.95rem}
-.toc li::before{content:counter(t);font:600 .9rem/1 var(--fh);color:var(--p);min-width:1.1rem}
-
-.sec{padding:2.5rem 0 .5rem;border-top:1px solid var(--rule);display:grid;gap:.2rem 3rem}
-.sec .n{font:700 1.6rem/1 var(--fh);letter-spacing:-.03em;color:var(--p)}
-.sec h2{font-size:1.9rem;margin:.1rem 0 1rem;text-wrap:balance}
-.body{max-width:44rem}
-.body p{font-size:1.02rem}
-.brief{list-style:none;margin:0;padding:0}
-.brief li{padding:.9rem 0;border-top:1px solid var(--hair);font-size:1.02rem}
-.brief li:first-child{border-top:0;padding-top:0}
-.brief b{font-family:var(--fh);font-weight:600;font-size:1.35rem;letter-spacing:-.01em;margin-right:.4rem;white-space:nowrap}
-
-figure{margin:1.75rem 0 2rem;display:grid;gap:.8rem}
-figure svg{width:100%;height:auto;display:block;overflow:visible}
-figure .fig{max-width:30rem}
-figcaption{font-size:.82rem;line-height:1.5;color:var(--mute)}
-figcaption b{color:var(--ink);font-weight:600}
-.lab{font:500 12px var(--fb);fill:var(--ink)}
-.val{font:600 12px var(--fb);fill:var(--ink);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
-.mut{font:500 10px var(--fb);fill:var(--mute)}
-.bar{fill:var(--p)}
-.bar2{fill:var(--c4)}
-.bar3{fill:var(--c5)}
-.ref{stroke:var(--mute);stroke-width:1;stroke-dasharray:3 3}
+.cover{min-height:100svh;display:flex;flex-direction:column;padding-bottom:3rem}
+.top{display:flex;align-items:center;gap:1rem;justify-content:space-between;padding-block:1.25rem;font-size:var(--t-small)}
+.brand{display:flex;align-items:center;gap:.55rem;font-weight:500}
+.logo-img{height:26px;width:auto;max-width:9rem;display:block}
+.mono{width:26px;height:26px;display:grid;place-items:center;background:var(--ink);color:var(--bg);font:var(--hw) .85rem/1 var(--fh)}
+.for{text-align:right;color:var(--mute);max-width:24rem}
+.hero{flex:1;display:grid;gap:2rem;align-content:center;padding-block:1.5rem 0}
+.cover h1{font-size:clamp(1.625rem,.7rem + 3.4vw,3.75rem);line-height:1;max-width:22ch}
+.count{display:grid;gap:1.75rem;align-items:end}
+.num{container-type:inline-size}
+.big{display:block;overflow:hidden;font:var(--hw) min(24rem,31cqi)/.82 var(--fh);letter-spacing:-.055em;padding-bottom:.04em;margin-left:-.04em}
+.big span{display:block}
+.what{font-size:var(--t-lead);line-height:1.3;max-width:30ch;margin-top:.75rem}
+.plate{width:min(100%,19rem)}
+.plate svg{display:block;width:100%;height:auto}
+.plate p{font-size:var(--t-small);line-height:1.45;color:var(--mute);margin-top:.7rem;max-width:34ch}
 .c1{fill:var(--c1)}.c2{fill:var(--c2)}.c3{fill:var(--c3)}.c4{fill:var(--c4)}.c5{fill:var(--c5)}.c6{fill:var(--c6)}
-.legend{list-style:none;margin:.6rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;font-size:.82rem}
-.legend li{display:flex;align-items:center;gap:.4rem}
-.legend i{width:11px;height:11px;border-radius:2px;display:inline-block;flex:none}
-.legend i.c1{background:var(--c1)}.legend i.c2{background:var(--c2)}.legend i.c3{background:var(--c3)}.legend i.c4{background:var(--c4)}.legend i.c5{background:var(--c5)}.legend i.c6{background:var(--c6)}
-.legend b{font-weight:600}
-.legend .tn{color:var(--mute)}
-.legend.top{margin:0 0 .7rem}
-.region .legend li{flex-basis:calc(50% - .55rem)}
+.foot{display:grid;gap:1rem;padding-top:2.5rem}
+.stand{font-size:var(--t-lead);line-height:1.35;max-width:36ch}
+.byline{max-width:44ch}
+.byline b{color:var(--ink);font-weight:500}
 
-.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin:1.5rem 0 1rem}
-.tile{border-top:2px solid var(--ink);padding-top:.7rem}
-.tile b{display:block;font:600 1.8rem/1 var(--fh);letter-spacing:-.03em;margin-bottom:.35rem}
-.tile span{display:block;font-size:.85rem;line-height:1.35;color:var(--mute)}
+.toc{list-style:none;margin:0;padding:3.5rem 0 0;display:grid;gap:.15rem;counter-reset:t}
+.toc li{counter-increment:t;font:500 var(--t-lead)/1.35 var(--fb);break-inside:avoid}
+.toc li::before{content:counter(t) " ";color:var(--mute);font-variant-numeric:tabular-nums}
 
-.plays{list-style:none;margin:0;padding:0;counter-reset:pl;display:grid;gap:1.5rem}
-.plays li{counter-increment:pl;padding-top:1rem;border-top:2px solid var(--ink)}
-.plays li::before{content:"Play " counter(pl);display:block;font:600 .85rem/1 var(--fb);color:var(--p);margin-bottom:.6rem}
-.plays h3{font-size:1.3rem;margin-bottom:.5rem}
-.plays p{margin:0;font-size:.98rem}
+.sec{padding-block:clamp(4.5rem,3rem + 8vw,10rem) 0}
+.sec h2{font-size:var(--t-head);max-width:18ch}
+.sec .lede{font-size:var(--t-lead);line-height:1.38;max-width:34ch;margin-top:1.5rem}
+.sec .after{max-width:60ch;margin-top:2rem}
+.split{display:grid;gap:2.5rem}
 
-.next{display:grid;gap:1rem;max-width:none}
-.cta-wrap{justify-self:start}
-.ken-cta{min-height:44px;line-height:20px;border-radius:3px!important;background:var(--p)!important}
-.sign{margin:0;font-size:.95rem}
-.sign b{display:block;font-weight:600}
+.ledger{list-style:none;margin:0;padding:0;display:grid;gap:1.75rem}
+.ledger li{display:grid;gap:.4rem}
+.ledger b{font:var(--hw) var(--t-fig)/.86 var(--fh);letter-spacing:-.045em;font-variant-numeric:tabular-nums lining-nums}
+.ledger span{max-width:40ch}
+
+.bars{list-style:none;margin:0;padding:0;display:grid;gap:.9rem}
+.bars li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.3rem 1rem;align-items:baseline}
+.bars .l{font-weight:500}
+.bars .v{font-variant-numeric:tabular-nums;font-weight:500;grid-row:1;grid-column:2;text-align:right}
+.bars .t{grid-column:1/-1;height:1.1rem;background:var(--surface)}
+.bars .f{display:block;height:100%;background:var(--ink)}
+.bars .f2{display:block;height:100%;background:var(--c4)}
+.bars .duo{display:flex;gap:3px}
+.bars .mk{position:relative}
+.bars .mk i{position:absolute;top:-.35rem;bottom:-.35rem;width:4px;margin-left:-2px;background:var(--mark)}
+.bars li.mine .l,.bars li.mine .v{font-weight:700}
+.bars li.mine .f{background:var(--mark)}
+figure{margin:0;display:grid;gap:1rem}
+figcaption{font-size:var(--t-small);line-height:1.5;color:var(--mute);max-width:52ch}
+figcaption b{color:var(--ink);font-weight:500}
+.key{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;font-size:var(--t-small);margin:0 0 .4rem;padding:0;list-style:none}
+.key li{display:flex;align-items:center;gap:.45rem}
+.key i{width:.9rem;height:.9rem;display:inline-block;background:var(--ink)}
+.key i.k2{background:var(--c4)}
+.key i.k3{background:var(--mark)}
+
+.field{background:var(--ink);color:var(--bg);margin-top:clamp(4.5rem,3rem + 8vw,10rem);padding-block:clamp(4rem,3rem + 5vw,8rem)}
+.field.sec{padding-top:clamp(4rem,3rem + 5vw,8rem)}
+.field .n{color:color-mix(in srgb,var(--bg) 70%,var(--ink))}
+.field figcaption{color:color-mix(in srgb,var(--bg) 78%,var(--ink))}
+.field figcaption b{color:var(--bg)}
+.stack{display:flex;gap:4px;height:clamp(5rem,3rem + 6vw,9rem);margin-top:3rem}
+.stack span{display:block;min-width:4px}
+.r1{background:var(--bg)}.r2{background:color-mix(in srgb,var(--bg) 78%,var(--ink))}.r3{background:color-mix(in srgb,var(--bg) 58%,var(--ink))}.r4{background:color-mix(in srgb,var(--bg) 42%,var(--ink))}.r5{background:color-mix(in srgb,var(--bg) 30%,var(--ink))}.r6{background:color-mix(in srgb,var(--bg) 20%,var(--ink))}
+.regs{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem 1.5rem}
+.regs li{display:grid;gap:.15rem}
+.regs i{width:1.4rem;height:.5rem;display:block;margin-bottom:.35rem}
+.regs b{font:var(--hw) var(--t-lead)/1 var(--fh);letter-spacing:-.02em}
+.regs span{font-variant-numeric:tabular-nums;color:color-mix(in srgb,var(--bg) 82%,var(--ink))}
+
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin:3rem 0}
+.pair div{display:grid;gap:.6rem;align-content:start}
+.pair b{font:var(--hw) var(--t-fig)/.85 var(--fh);letter-spacing:-.05em;font-variant-numeric:tabular-nums lining-nums}
+.pair div+div b{color:var(--c3)}
+.pair span{max-width:24ch}
+
+.sigs{list-style:none;margin:2.5rem 0 3rem;padding:0;display:grid;gap:1.75rem}
+.sigs li{display:grid;gap:.4rem}
+.sigs b{font:var(--hw) var(--t-fig)/.86 var(--fh);letter-spacing:-.045em;font-variant-numeric:tabular-nums lining-nums}
+.sigs span{max-width:28ch}
+
+.plays-f{background:var(--p);color:var(--on-p);margin-top:clamp(4.5rem,3rem + 8vw,10rem);padding-block:clamp(4rem,3rem + 5vw,8rem)}
+.plays-f .n{color:inherit;opacity:.72}
+.plays{list-style:none;margin:3rem 0 0;padding:0;display:grid;gap:2.75rem}
+.plays li{display:grid;gap:.8rem}
+.plays h3{font-size:var(--t-sub);line-height:1.05;max-width:24ch}
+.plays p{max-width:58ch}
+
+.close{padding-block:clamp(4.5rem,3rem + 8vw,10rem) 4rem;display:grid;gap:2rem}
+.close .ask{font:var(--hw) var(--t-sub)/1.12 var(--fh);letter-spacing:-.02em;max-width:26ch}
+.close .src{max-width:52ch}
+.act{display:flex;flex-wrap:wrap;gap:1.25rem 2rem;align-items:center}
+.ken-cta{display:inline-block!important;min-height:52px;padding:15px 26px!important;border-radius:0!important;background:var(--p)!important;color:var(--on-p)!important;font:600 var(--t-body)/1.3 var(--fb)!important;text-decoration:none!important}
+.ken-cta:hover{background:var(--ink)!important;color:var(--bg)!important}
+.sign b{display:block;font-weight:500}
 .sign span{color:var(--mute)}
-.method{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.8rem;line-height:1.55;color:var(--mute);max-width:46rem}
-.method b{color:var(--ink);font-weight:600}
+.method{font-size:var(--t-small);line-height:1.55;color:var(--mute);max-width:60ch;background:var(--surface);padding:1.25rem 1.4rem}
+.method b{color:var(--ink);font-weight:500}
+
+@keyframes up{from{transform:translateY(105%)}to{transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .big span{animation:up .9s cubic-bezier(.16,.84,.24,1) both}
+  .cover h1{animation:up .9s cubic-bezier(.16,.84,.24,1) .11s both}
+  .h1m{overflow:hidden;padding-bottom:.08em}
+}
 
 @media (min-width:760px){
-  .doc{padding:0 2.5rem}
-  .cover{padding-bottom:3.5rem}
-  .cover-grid{grid-template-columns:minmax(0,1fr) 15rem;gap:3rem;align-items:end;margin-top:4rem}
-  .waffle{max-width:15rem;justify-self:end}
-  .plate{grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;margin-top:3.5rem}
-  .sec{grid-template-columns:5.5rem minmax(0,1fr);padding:3.5rem 0 1rem}
-  .sec .n{font-size:2.6rem;padding-top:.35rem}
-  .sec h2{font-size:2.2rem;margin-bottom:1.25rem}
-  .tile b{font-size:2.1rem}
-  figure{grid-template-columns:minmax(0,1fr) 11rem;gap:1.5rem;align-items:end}
-  figure .fig{max-width:32rem}
-  .region .legend li{flex-basis:auto}
-  .plays{grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem}
-  .next{grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:1rem 3rem}
-  .next p{max-width:34rem}
-  .next .sign{grid-column:1}
-  .next .cta-wrap{grid-column:2;grid-row:1/3;align-self:center}
+  .hero{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;row-gap:2.5rem}
+  .h1m{grid-column:1/-1}
+  .count{grid-column:1/-1;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem}
+  .count .num{grid-column:1/9}
+  .count .plate{grid-column:9/-1;justify-self:end;width:100%;max-width:23rem}
+  .foot{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;align-items:end;padding-top:3rem}
+  .foot .stand{grid-column:1/7}
+  .foot .byline{grid-column:8/-1}
+  .toc{display:block;columns:2;column-gap:1.5rem}
+  .split{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem}
+  .split>.hd{grid-column:1/6}
+  .peers>.split>.hd{grid-column:1/-1}
+  .peers>.split>.bd{grid-column:6/-1}
+  .peers .hd h2{max-width:none}
+  .split>.bd{grid-column:7/-1}
+  .split.wide>.hd{grid-column:1/6}
+  .split.wide>.bd{grid-column:6/-1}
+  .brief>.hd,.brief>.bd{grid-column:1/-1}
+  .ledger li{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;align-items:baseline}
+  .ledger b{grid-column:1/6}
+  .ledger span{grid-column:6/-1}
+  .ledger b{text-align:right}
+  .bars li{grid-template-columns:minmax(0,15rem) minmax(0,1fr) 4.5rem;gap:1rem}
+  .bars .t{grid-column:2;grid-row:1;align-self:center}
+  .bars .v{grid-column:3}
+  .regs{grid-template-columns:repeat(var(--nr,5),minmax(0,1fr))}
+  .sigs{grid-template-columns:repeat(var(--ns,3),minmax(0,1fr));gap:1.5rem}
+  .close{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;row-gap:2.5rem}
+  .close .ask{grid-column:1/8}
+  .close .src{grid-column:1/7}
+  .close .act{grid-column:8/-1;grid-row:1/3;align-self:end;flex-direction:column;align-items:flex-start}
+  .close .method{grid-column:1/-1}
+}
+@media (min-width:1000px){
+  .h1m{grid-column:1/10}
+  .plays li{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;align-items:baseline}
+  .plays h3{grid-column:1/7}
+  .plays p{grid-column:7/-1}
 }
 @media print{
-  @page{margin:16mm}
-  body{padding:0}
-  .doc{max-width:none;padding:0}
-  .sec{break-before:page;border-top:0;padding-top:.5rem}
-  .method{break-inside:avoid;margin-top:1rem}
-  .cover{break-before:auto;padding-bottom:0}
-  .cover-grid{margin-top:1.5rem}
-  .cover h1{font-size:3.4rem}
-  .plate{margin-top:1.75rem}
-  .toc{margin-top:1.25rem}
-  .toc li{padding:.3rem 0}
-  .sec.last{break-before:auto;border-top:1px solid var(--rule);margin-top:.75rem;padding-top:1.5rem}
-  figure,.tile,.plays li{break-inside:avoid}
-  .cta-wrap{display:none}
+  @page{margin:15mm}
+  html,body{background:#fff}
+  .cover{min-height:auto}
+  .hero{padding-top:2rem}
+  .big{font-size:9rem}
+  .sec{break-before:page;padding-top:0}
+  .field,.plays-f{background:#fff;color:var(--ink);margin-top:0;padding-block:0}
+  .field .r1{background:var(--ink)}
+  .field figcaption,.field .regs span{color:var(--mute)}
+  .field figcaption b{color:var(--ink)}
+  .field .n{color:var(--mute)}
+  .close{break-before:auto;padding-top:2.5rem}
+  .act{display:none}
+  figure,.ledger li,.plays li,.pair,.sigs li{break-inside:avoid}
+  .big span,.cover h1{animation:none}
 }
 </style>
 </head>
 <body>
-<main class="doc">
-<section class="cover" data-section="cover">
-<div class="brandline"><span class="logo" aria-hidden="true">S</span><span class="bname">Sundial</span>
-<span class="meta">Market report<br>US residential solar installers</span>
-</div>
-<div class="cover-grid">
-<div>
+<main>
+<section class="cover wrap" data-section="cover">
+<header class="top">
+<div class="brand"><span class="mono" aria-hidden="true">S</span><span>Sundial</span></div>
+<p class="for">Market report for Kestrel Solar</p>
+</header>
+<div class="hero">
+<div class="h1m">
 <h1>The residential solar installer market, in numbers</h1>
-<p class="stand">What 3,300 US residential solar installers with 10 to 200 staff look like right now, and what that means for Kestrel Solar.</p>
-</div><div class="waffle">
-<svg viewBox="0 0 198 198" role="img" aria-label="US residential solar installers: companies as 100 squares, shaded by segment">
-<rect x="0" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="20" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="40" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="60" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="80" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="100" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="120" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="140" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="160" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="180" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="0" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="20" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="40" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="60" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="80" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="100" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="120" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="140" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="160" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="180" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="0" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="20" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="40" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="60" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="80" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="100" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="120" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="140" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="160" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="180" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="0" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="20" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="40" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="60" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="80" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="100" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="120" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="140" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="160" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="180" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="0" y="80" width="18" height="18" rx="2" class="c1"/>
-<rect x="20" y="80" width="18" height="18" rx="2" class="c1"/>
-<rect x="40" y="80" width="18" height="18" rx="2" class="c1"/>
-<rect x="60" y="80" width="18" height="18" rx="2" class="c1"/>
-<rect x="80" y="80" width="18" height="18" rx="2" class="c1"/>
-<rect x="100" y="80" width="18" height="18" rx="2" class="c1"/>
-<rect x="120" y="80" width="18" height="18" rx="2" class="c1"/>
-<rect x="140" y="80" width="18" height="18" rx="2" class="c1"/>
-<rect x="160" y="80" width="18" height="18" rx="2" class="c1"/>
-<rect x="180" y="80" width="18" height="18" rx="2" class="c1"/>
-<rect x="0" y="100" width="18" height="18" rx="2" class="c1"/>
-<rect x="20" y="100" width="18" height="18" rx="2" class="c1"/>
-<rect x="40" y="100" width="18" height="18" rx="2" class="c1"/>
-<rect x="60" y="100" width="18" height="18" rx="2" class="c1"/>
-<rect x="80" y="100" width="18" height="18" rx="2" class="c1"/>
-<rect x="100" y="100" width="18" height="18" rx="2" class="c1"/>
-<rect x="120" y="100" width="18" height="18" rx="2" class="c2"/>
-<rect x="140" y="100" width="18" height="18" rx="2" class="c2"/>
-<rect x="160" y="100" width="18" height="18" rx="2" class="c2"/>
-<rect x="180" y="100" width="18" height="18" rx="2" class="c2"/>
-<rect x="0" y="120" width="18" height="18" rx="2" class="c2"/>
-<rect x="20" y="120" width="18" height="18" rx="2" class="c2"/>
-<rect x="40" y="120" width="18" height="18" rx="2" class="c2"/>
-<rect x="60" y="120" width="18" height="18" rx="2" class="c2"/>
-<rect x="80" y="120" width="18" height="18" rx="2" class="c2"/>
-<rect x="100" y="120" width="18" height="18" rx="2" class="c2"/>
-<rect x="120" y="120" width="18" height="18" rx="2" class="c2"/>
-<rect x="140" y="120" width="18" height="18" rx="2" class="c2"/>
-<rect x="160" y="120" width="18" height="18" rx="2" class="c2"/>
-<rect x="180" y="120" width="18" height="18" rx="2" class="c2"/>
-<rect x="0" y="140" width="18" height="18" rx="2" class="c2"/>
-<rect x="20" y="140" width="18" height="18" rx="2" class="c2"/>
-<rect x="40" y="140" width="18" height="18" rx="2" class="c2"/>
-<rect x="60" y="140" width="18" height="18" rx="2" class="c2"/>
-<rect x="80" y="140" width="18" height="18" rx="2" class="c2"/>
-<rect x="100" y="140" width="18" height="18" rx="2" class="c2"/>
-<rect x="120" y="140" width="18" height="18" rx="2" class="c2"/>
-<rect x="140" y="140" width="18" height="18" rx="2" class="c2"/>
-<rect x="160" y="140" width="18" height="18" rx="2" class="c3"/>
-<rect x="180" y="140" width="18" height="18" rx="2" class="c3"/>
-<rect x="0" y="160" width="18" height="18" rx="2" class="c3"/>
-<rect x="20" y="160" width="18" height="18" rx="2" class="c3"/>
-<rect x="40" y="160" width="18" height="18" rx="2" class="c3"/>
-<rect x="60" y="160" width="18" height="18" rx="2" class="c3"/>
-<rect x="80" y="160" width="18" height="18" rx="2" class="c3"/>
-<rect x="100" y="160" width="18" height="18" rx="2" class="c3"/>
-<rect x="120" y="160" width="18" height="18" rx="2" class="c3"/>
-<rect x="140" y="160" width="18" height="18" rx="2" class="c3"/>
-<rect x="160" y="160" width="18" height="18" rx="2" class="c3"/>
-<rect x="180" y="160" width="18" height="18" rx="2" class="c3"/>
-<rect x="0" y="180" width="18" height="18" rx="2" class="c4"/>
-<rect x="20" y="180" width="18" height="18" rx="2" class="c4"/>
-<rect x="40" y="180" width="18" height="18" rx="2" class="c4"/>
-<rect x="60" y="180" width="18" height="18" rx="2" class="c4"/>
-<rect x="80" y="180" width="18" height="18" rx="2" class="c4"/>
-<rect x="100" y="180" width="18" height="18" rx="2" class="c4"/>
-<rect x="120" y="180" width="18" height="18" rx="2" class="c4"/>
-<rect x="140" y="180" width="18" height="18" rx="2" class="c4"/>
-<rect x="160" y="180" width="18" height="18" rx="2" class="c4"/>
-<rect x="180" y="180" width="18" height="18" rx="2" class="c4"/>
+</div>
+<div class="count">
+<div class="num">
+<p class="big tn" aria-label="3,300 companies"><span>3,300</span></p>
+<p class="what">US residential solar installers, 10 to 200 staff.</p>
+</div><div class="plate">
+<svg viewBox="0 0 200 200" role="img" aria-label="US residential solar installers: companies as 100 squares, shaded by segment">
+<rect x="0" y="0" width="17" height="17" class="c1"/>
+<rect x="20" y="0" width="17" height="17" class="c1"/>
+<rect x="40" y="0" width="17" height="17" class="c1"/>
+<rect x="60" y="0" width="17" height="17" class="c1"/>
+<rect x="80" y="0" width="17" height="17" class="c1"/>
+<rect x="100" y="0" width="17" height="17" class="c1"/>
+<rect x="120" y="0" width="17" height="17" class="c1"/>
+<rect x="140" y="0" width="17" height="17" class="c1"/>
+<rect x="160" y="0" width="17" height="17" class="c1"/>
+<rect x="180" y="0" width="17" height="17" class="c1"/>
+<rect x="0" y="20" width="17" height="17" class="c1"/>
+<rect x="20" y="20" width="17" height="17" class="c1"/>
+<rect x="40" y="20" width="17" height="17" class="c1"/>
+<rect x="60" y="20" width="17" height="17" class="c1"/>
+<rect x="80" y="20" width="17" height="17" class="c1"/>
+<rect x="100" y="20" width="17" height="17" class="c1"/>
+<rect x="120" y="20" width="17" height="17" class="c1"/>
+<rect x="140" y="20" width="17" height="17" class="c1"/>
+<rect x="160" y="20" width="17" height="17" class="c1"/>
+<rect x="180" y="20" width="17" height="17" class="c1"/>
+<rect x="0" y="40" width="17" height="17" class="c1"/>
+<rect x="20" y="40" width="17" height="17" class="c1"/>
+<rect x="40" y="40" width="17" height="17" class="c1"/>
+<rect x="60" y="40" width="17" height="17" class="c1"/>
+<rect x="80" y="40" width="17" height="17" class="c1"/>
+<rect x="100" y="40" width="17" height="17" class="c1"/>
+<rect x="120" y="40" width="17" height="17" class="c1"/>
+<rect x="140" y="40" width="17" height="17" class="c1"/>
+<rect x="160" y="40" width="17" height="17" class="c1"/>
+<rect x="180" y="40" width="17" height="17" class="c1"/>
+<rect x="0" y="60" width="17" height="17" class="c1"/>
+<rect x="20" y="60" width="17" height="17" class="c1"/>
+<rect x="40" y="60" width="17" height="17" class="c1"/>
+<rect x="60" y="60" width="17" height="17" class="c1"/>
+<rect x="80" y="60" width="17" height="17" class="c1"/>
+<rect x="100" y="60" width="17" height="17" class="c1"/>
+<rect x="120" y="60" width="17" height="17" class="c1"/>
+<rect x="140" y="60" width="17" height="17" class="c1"/>
+<rect x="160" y="60" width="17" height="17" class="c1"/>
+<rect x="180" y="60" width="17" height="17" class="c1"/>
+<rect x="0" y="80" width="17" height="17" class="c1"/>
+<rect x="20" y="80" width="17" height="17" class="c1"/>
+<rect x="40" y="80" width="17" height="17" class="c1"/>
+<rect x="60" y="80" width="17" height="17" class="c1"/>
+<rect x="80" y="80" width="17" height="17" class="c1"/>
+<rect x="100" y="80" width="17" height="17" class="c1"/>
+<rect x="120" y="80" width="17" height="17" class="c1"/>
+<rect x="140" y="80" width="17" height="17" class="c1"/>
+<rect x="160" y="80" width="17" height="17" class="c1"/>
+<rect x="180" y="80" width="17" height="17" class="c1"/>
+<rect x="0" y="100" width="17" height="17" class="c1"/>
+<rect x="20" y="100" width="17" height="17" class="c1"/>
+<rect x="40" y="100" width="17" height="17" class="c1"/>
+<rect x="60" y="100" width="17" height="17" class="c1"/>
+<rect x="80" y="100" width="17" height="17" class="c1"/>
+<rect x="100" y="100" width="17" height="17" class="c1"/>
+<rect x="120" y="100" width="17" height="17" class="c2"/>
+<rect x="140" y="100" width="17" height="17" class="c2"/>
+<rect x="160" y="100" width="17" height="17" class="c2"/>
+<rect x="180" y="100" width="17" height="17" class="c2"/>
+<rect x="0" y="120" width="17" height="17" class="c2"/>
+<rect x="20" y="120" width="17" height="17" class="c2"/>
+<rect x="40" y="120" width="17" height="17" class="c2"/>
+<rect x="60" y="120" width="17" height="17" class="c2"/>
+<rect x="80" y="120" width="17" height="17" class="c2"/>
+<rect x="100" y="120" width="17" height="17" class="c2"/>
+<rect x="120" y="120" width="17" height="17" class="c2"/>
+<rect x="140" y="120" width="17" height="17" class="c2"/>
+<rect x="160" y="120" width="17" height="17" class="c2"/>
+<rect x="180" y="120" width="17" height="17" class="c2"/>
+<rect x="0" y="140" width="17" height="17" class="c2"/>
+<rect x="20" y="140" width="17" height="17" class="c2"/>
+<rect x="40" y="140" width="17" height="17" class="c2"/>
+<rect x="60" y="140" width="17" height="17" class="c2"/>
+<rect x="80" y="140" width="17" height="17" class="c2"/>
+<rect x="100" y="140" width="17" height="17" class="c2"/>
+<rect x="120" y="140" width="17" height="17" class="c2"/>
+<rect x="140" y="140" width="17" height="17" class="c2"/>
+<rect x="160" y="140" width="17" height="17" class="c3"/>
+<rect x="180" y="140" width="17" height="17" class="c3"/>
+<rect x="0" y="160" width="17" height="17" class="c3"/>
+<rect x="20" y="160" width="17" height="17" class="c3"/>
+<rect x="40" y="160" width="17" height="17" class="c3"/>
+<rect x="60" y="160" width="17" height="17" class="c3"/>
+<rect x="80" y="160" width="17" height="17" class="c3"/>
+<rect x="100" y="160" width="17" height="17" class="c3"/>
+<rect x="120" y="160" width="17" height="17" class="c3"/>
+<rect x="140" y="160" width="17" height="17" class="c3"/>
+<rect x="160" y="160" width="17" height="17" class="c3"/>
+<rect x="180" y="160" width="17" height="17" class="c3"/>
+<rect x="0" y="180" width="17" height="17" class="c4"/>
+<rect x="20" y="180" width="17" height="17" class="c4"/>
+<rect x="40" y="180" width="17" height="17" class="c4"/>
+<rect x="60" y="180" width="17" height="17" class="c4"/>
+<rect x="80" y="180" width="17" height="17" class="c4"/>
+<rect x="100" y="180" width="17" height="17" class="c4"/>
+<rect x="120" y="180" width="17" height="17" class="c4"/>
+<rect x="140" y="180" width="17" height="17" class="c4"/>
+<rect x="160" y="180" width="17" height="17" class="c4"/>
+<rect x="180" y="180" width="17" height="17" class="c4"/>
 </svg>
-<p>3,300 companies. Each square is one percent of the segments in figure 1, shaded by segment: darkest for Residential installers, lightest for Roofing and solar.</p>
+<p>Each square is one percent of the segments in figure 1, darkest for Residential installers, lightest for Roofing and solar.</p>
 </div>
 </div>
-<div class="plate">
-<div><small>Prepared for</small><b>Dana Okafor</b><br>Sales Director, Kestrel Solar</div>
-<div><small>Written by</small><b>Reese Martin</b><br>Account Executive, Sundial</div>
-<div><small>Data</small><b>Company profiles and hiring data</b><br>3,300 companies</div>
+</div>
+<div class="foot">
+<p class="stand">What 3,300 US residential solar installers with 10 to 200 staff look like right now, and what that means for Kestrel Solar.</p>
+<p class="byline">Prepared for <b>Dana Okafor</b>, Sales Director at Kestrel Solar, by <b>Reese Martin</b>, Account Executive at Sundial. Counted from company profiles and hiring data: 3,300 companies.</p>
 </div>
 <ol class="toc" aria-label="Contents">
 <li>In brief</li>
@@ -272,124 +348,108 @@ figcaption b{color:var(--ink);font-weight:600}
 <li>Three plays for Kestrel Solar</li>
 </ol>
 </section>
-<section class="sec" data-section="brief">
-<span class="n">1</span>
-<div class="body">
-<h2>In brief</h2>
-<ul class="brief">
-<li><b class="tn">3,300</b>companies fit the profile. Residential installers are the largest segment at 1,840.</li>
-<li><b class="tn">1,260</b>companies are in the South, the largest region. The West has 1,190.</li>
-<li><b class="tn">612</b>companies are hiring in sales, and 74 raised money in the last twelve months.</li>
-<li><b class="tn">420</b>of the residential installers are hiring, the most of any segment.</li>
-</ul>
+<section class="sec wrap split brief" data-section="brief">
+<div class="hd">
+<h2><span class="n">1</span>In brief</h2>
 </div>
+<ul class="ledger bd">
+<li><b>3,300</b><span>companies fit the profile. Residential installers are the largest segment at 1,840.</span></li>
+<li><b>1,260</b><span>companies are in the South, the largest region. The West has 1,190.</span></li>
+<li><b>612</b><span>companies are hiring in sales, and 74 raised money in the last twelve months.</span></li>
+<li><b>420</b><span>of the residential installers are hiring, the most of any segment.</span></li>
+</ul>
 </section>
-
-<section class="sec" data-section="segments">
-<span class="n">2</span>
-<div class="body">
-<h2>Who is in the market</h2>
-<p>The profile is a US company with 10 to 200 staff that installs solar for homes or small businesses. There are 3,300 of them. Residential installers are the biggest group, and that is where Kestrel works.</p>
-<figure>
-<div class="fig"><svg viewBox="0 0 360 120" role="img" aria-label="Companies by segment, horizontal bars">
-<text x="0" y="16.5" class="lab">Residential installers</text>
-<rect x="164" y="4" width="136" height="16" rx="2" class="bar"/>
-<text x="306" y="16.5" class="val">1,840</text>
-<text x="0" y="46.5" class="lab">Commercial, industrial</text>
-<rect x="164" y="34" width="53.2" height="16" rx="2" class="bar"/>
-<text x="223.2" y="46.5" class="val">720</text>
-<text x="0" y="76.5" class="lab">Solar plus storage</text>
-<rect x="164" y="64" width="30.3" height="16" rx="2" class="bar"/>
-<text x="200.3" y="76.5" class="val">410</text>
-<text x="0" y="106.5" class="lab">Roofing and solar</text>
-<rect x="164" y="94" width="24.4" height="16" rx="2" class="bar"/>
-<text x="194.4" y="106.5" class="val">330</text>
-</svg></div>
+<section class="sec wrap" data-section="segments">
+<div class="split wide">
+<div class="hd">
+<h2><span class="n">2</span>Who is in the market</h2>
+<p class="lede">The profile is a US company with 10 to 200 staff that installs solar for homes or small businesses. There are 3,300 of them. Residential installers are the biggest group, and that is where Kestrel works.</p>
+</div>
+<figure class="bd">
+<ul class="bars" role="img" aria-label="Companies by segment, as bars">
+<li><span class="l">Residential installers</span><span class="t"><span class="f" style="width:100%"></span></span><span class="v">1,840</span></li>
+<li><span class="l">Commercial, industrial</span><span class="t"><span class="f" style="width:39.1%"></span></span><span class="v">720</span></li>
+<li><span class="l">Solar plus storage</span><span class="t"><span class="f" style="width:22.3%"></span></span><span class="v">410</span></li>
+<li><span class="l">Roofing and solar</span><span class="t"><span class="f" style="width:17.9%"></span></span><span class="v">330</span></li>
+</ul>
 <figcaption><b>Figure 1.</b> Companies by segment, 10 to 200 staff. Segments follow each company's primary industry in its profile. Total 3,300.</figcaption>
+<p class="after">Commercial, industrial is the second largest segment at 720 companies. Roofing and solar is the smallest at 330.</p>
 </figure>
-<p>Commercial, industrial is the second largest segment at 720 companies. Roofing and solar is the smallest at 330.</p>
 </div>
 </section>
-
-<section class="sec region" data-section="regions">
-<span class="n">3</span>
-<div class="body">
-<h2>Where they are</h2>
-<p>The South holds 1,260 of the 3,300 companies and the West holds 1,190, so two regions cover most of the market. The Midwest has the fewest at 310.</p>
-<figure>
-<div class="fig">
-<svg viewBox="0 0 360 28" role="img" aria-label="Share of companies by region, one stacked bar">
-<rect x="0" y="0" width="135.2" height="28" rx="2" class="c1"/>
-<rect x="137.2" y="0" width="127.7" height="28" rx="2" class="c2"/>
-<rect x="266.8" y="0" width="57.9" height="28" rx="2" class="c3"/>
-<rect x="326.7" y="0" width="33.3" height="28" rx="2" class="c4"/>
-</svg>
-<ul class="legend">
-<li><i class="c1"></i><b>South</b><span class="tn">38%, 1,260</span></li>
-<li><i class="c2"></i><b>West</b><span class="tn">36%, 1,190</span></li>
-<li><i class="c3"></i><b>Northeast</b><span class="tn">16%, 540</span></li>
-<li><i class="c4"></i><b>Midwest</b><span class="tn">9%, 310</span></li>
-</ul>
+<section class="sec field" data-section="regions">
+<div class="wrap">
+<div class="split">
+<div class="hd">
+<h2><span class="n">3</span>Where they are</h2>
 </div>
+<p class="lede bd">The South holds 1,260 of the 3,300 companies and the West holds 1,190, so two regions cover most of the market. The Midwest has the fewest at 310.</p>
+</div>
+<figure>
+<div class="stack" role="img" aria-label="Share of companies by region, one stacked bar">
+<span class="r1" style="flex:1260 1 0"></span>
+<span class="r2" style="flex:1190 1 0"></span>
+<span class="r3" style="flex:540 1 0"></span>
+<span class="r4" style="flex:310 1 0"></span>
+</div>
+<ul class="regs" style="--nr:4">
+<li><i class="r1"></i><b>South</b><span>38%, 1,260</span></li>
+<li><i class="r2"></i><b>West</b><span>36%, 1,190</span></li>
+<li><i class="r3"></i><b>Northeast</b><span>16%, 540</span></li>
+<li><i class="r4"></i><b>Midwest</b><span>9%, 310</span></li>
+</ul>
 <figcaption><b>Figure 2.</b> Share of companies by headquarters region, from company profiles.</figcaption>
 </figure>
-<p>Kestrel sells in the West, the second largest region, where 1,190 installers compete for the same homeowners.</p>
+<p class="after">Kestrel sells in the West, the second largest region, where 1,190 installers compete for the same homeowners.</p>
 </div>
 </section>
-
-<section class="sec" data-section="signals">
-<span class="n">4</span>
-<div class="body">
-<h2>Who is growing</h2>
-<p>A company that is hiring salespeople or has new money is about to spend on how it finds homeowners. Hiring comes from job posts and funding from announcements.</p>
-<div class="tiles">
-<div class="tile"><b class="tn">612</b><span>Hiring in sales. 19% of the market.</span></div>
-<div class="tile"><b class="tn">74</b><span>Raised in 12 months. 2% of the market.</span></div>
-<div class="tile"><b class="tn">39</b><span>Hiring and raised. 1% of the market.</span></div>
+<section class="sec wrap" data-section="signals">
+<div class="split">
+<div class="hd">
+<h2><span class="n">4</span>Who is growing</h2>
 </div>
-<figure>
-<div class="fig"><svg viewBox="0 0 360 136" role="img" aria-label="Share of companies hiring, by segment">
-<line x1="274.6" y1="14" x2="274.6" y2="136" class="ref"/>
-<text x="277.6" y="9" class="mut" text-anchor="end">All segments, 19%</text>
-<text x="0" y="32.5" class="lab">Residential installers</text>
-<rect x="164" y="20" width="136" height="16" rx="2" class="bar"/>
-<text x="306" y="32.5" class="val">23%</text>
-<text x="0" y="62.5" class="lab">Solar plus storage</text>
-<rect x="164" y="50" width="90.1" height="16" rx="2" class="bar"/>
-<text x="260.1" y="62.5" class="val">15%</text>
-<text x="0" y="92.5" class="lab">Commercial, industrial</text>
-<rect x="164" y="80" width="79.3" height="16" rx="2" class="bar"/>
-<text x="249.3" y="92.5" class="val">13%</text>
-<text x="0" y="122.5" class="lab">Roofing and solar</text>
-<rect x="164" y="110" width="61.4" height="16" rx="2" class="bar"/>
-<text x="231.4" y="122.5" class="val">10%</text>
-</svg></div>
-<figcaption><b>Figure 4.</b> Share of companies in each segment that are hiring. The dashed line is the whole market, 19 percent.</figcaption>
+<p class="lede bd">A company that is hiring salespeople or has new money is about to spend on how it finds homeowners. Hiring comes from job posts and funding from announcements.</p>
+</div>
+<ul class="sigs" style="--ns:3">
+<li><b>612</b><span>Hiring in sales. 19% of the market.</span></li>
+<li><b>74</b><span>Raised in 12 months. 2% of the market.</span></li>
+<li><b>39</b><span>Hiring and raised. 1% of the market.</span></li>
+</ul>
+<figure class="split">
+<div class="hd">
+<ul class="key"><li><i class="k3"></i>All segments, 19%</li></ul>
+<figcaption><b>Figure 4.</b> Share of companies in each segment that are hiring. The marked line is the whole market, 19 percent.</figcaption>
+</div>
+<div class="bd">
+<ul class="bars" role="img" aria-label="Share of companies hiring, by segment">
+<li><span class="l">Residential installers</span><span class="t mk"><span class="f" style="width:100%"></span><i style="left:81.3%"></i></span><span class="v">23%</span></li>
+<li><span class="l">Solar plus storage</span><span class="t mk"><span class="f" style="width:66.2%"></span><i style="left:81.3%"></i></span><span class="v">15%</span></li>
+<li><span class="l">Commercial, industrial</span><span class="t mk"><span class="f" style="width:58.3%"></span><i style="left:81.3%"></i></span><span class="v">13%</span></li>
+<li><span class="l">Roofing and solar</span><span class="t mk"><span class="f" style="width:45.2%"></span><i style="left:81.3%"></i></span><span class="v">10%</span></li>
+</ul>
+</div>
 </figure>
-<p>Residential installers have 420 companies hiring, the most of any segment. 74 companies raised money in the last twelve months, and 39 of them are also hiring.</p>
-</div>
+<p class="after">Residential installers have 420 companies hiring, the most of any segment. 74 companies raised money in the last twelve months, and 39 of them are also hiring.</p>
 </section>
-
-<section class="sec" data-section="plays">
-<span class="n">5</span>
-<div class="body" style="max-width:none">
-<h2>Three plays for Kestrel Solar</h2>
-<ol class="plays">
+<section class="sec plays-f" data-section="plays">
+<div class="wrap">
+<h2><span class="n">5</span>Three plays</h2>
+<p class="lede">For Kestrel Solar, drawn from the counts in this report.</p>
+<ul class="plays">
 <li><h3>Write to the 612 companies hiring in sales</h3><p>A company hiring salespeople is about to need more leads for them. 612 companies are hiring now, and 420 of them are residential installers. Write to the sales lead about what the new reps will work from.</p></li>
 <li><h3>Focus on residential installers first</h3><p>Residential installers are 1,840 of the 3,300 companies and the largest hiring group at 420. The pitch is the same for most of them, so one message can be tuned for the whole segment.</p></li>
 <li><h3>Reach the 39 that are funded and hiring</h3><p>74 companies raised money in the last twelve months and 39 of them are hiring. A funded installer tends to add crews and vendors fast, so a message now arrives early.</p></li>
-</ol>
+</ul>
 </div>
 </section>
-
-<section class="sec last" data-section="next">
-<span class="n" aria-hidden="true"></span>
-<div class="body next">
-<p>The companies and people behind this report come from company profiles and hiring data, filtered to Kestrel Solar&#39;s market. Book 30 minutes and I will go through the list with you.</p>
+<section class="close wrap" data-section="next">
+<p class="ask">Book 30 minutes and I will go through the list with you.</p>
+<p class="src">The companies and people behind this report come from company profiles and hiring data, filtered to Kestrel Solar&#39;s market.</p>
+<div class="act">
+<a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#6d28d9;color:#fff;text-decoration:none;font-weight:600">Book 30 minutes</a>
 <p class="sign"><b>Reese Martin</b><span>Account Executive, Sundial</span></p>
-<div class="cta-wrap"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#6d28d9;color:#fff;text-decoration:none;font-weight:600">Book 30 minutes</a></div>
-<p class="method" style="grid-column:1/-1"><b>How this was built.</b> The counts come from company profiles and hiring data at the time this page was filled. Companies: headquartered in the United States, 10 to 200 employees, in a solar or renewable energy installation industry. Hiring means a sales hiring surge in the last three months. Raised means a funding round in the last 365 days. Counts of buyers and of size bands were not available for this report.</p>
 </div>
+<p class="method"><b>How this was built.</b> The counts come from company profiles and hiring data at the time this page was filled. Companies: headquartered in the United States, 10 to 200 employees, in a solar or renewable energy installation industry. Hiring means a sales hiring surge in the last three months. Raised means a funding round in the last 365 days. Counts of buyers and of size bands were not available for this report.</p>
 </section>
 </main>
 </body>

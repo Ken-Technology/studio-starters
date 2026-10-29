@@ -1,0 +1,104 @@
+{
+  "kenStudio": "1",
+  "name": "Readiness checklist",
+  "type": "calculator",
+  "format": "page",
+  "slug": "readiness-checklist",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "topic": { "type": "string", "maxLength": 60 },
+      "checklist": {
+        "type": "array",
+        "minItems": 6,
+        "maxItems": 12,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string", "maxLength": 70 },
+            "detail": { "type": "string", "maxLength": 160 },
+            "first_step": { "type": "string", "maxLength": 200 }
+          },
+          "required": ["label", "detail", "first_step"]
+        }
+      },
+      "items": {
+        "type": "array",
+        "minItems": 6,
+        "maxItems": 12,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string", "maxLength": 70 },
+            "detail": { "type": "string", "maxLength": 160 },
+            "first_step": { "type": "string", "maxLength": 200 },
+            "done": { "type": "boolean" },
+            "note": { "type": "string", "maxLength": 120 }
+          },
+          "required": ["label", "detail", "first_step", "done"]
+        }
+      },
+      "headline": {
+        "type": "string",
+        "minLength": 16,
+        "maxLength": 90,
+        "fallback": "Where {{ account.name }} stands today"
+      },
+      "intro": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 400,
+        "fallback": "Tick what {{ account.name }} already has in place. The score and the list of gaps update as you go. Nothing you tick is saved or shared."
+      },
+      "closing": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 300,
+        "fallback": "If you want a second pair of eyes on the gaps, book 20 minutes and we will go through them in the order above."
+      }
+    },
+    "required": ["items", "headline", "intro", "closing"]
+  },
+  "recipe": [
+    {
+      "id": "checklist",
+      "kind": "prompt",
+      "inputs": ["knowledge.stable", "brand.name", "sender.name"],
+      "to": ["data.topic", "data.checklist"],
+      "prompt": "You are writing the readiness checklist that {{ brand.name | default: 'our company' }} uses with prospects. \"We\" and \"us\" mean {{ brand.name | default: 'our company' }}. The page is sent by {{ sender.name | default: 'the sender' }}.\n\nInputs: knowledge.stable is a list of {citationId, kind, title, text} with what we know about our own company: what we sell, who buys it, and the outcome our buyers are working toward. Use only those inputs. If the list is empty or does not say what we sell, return {} and nothing else.\n\nStep 1, pick the topic: the outcome our buyers get ready for and that our offer helps with, in 1 to 4 words, like \"SOC 2\", \"ERP go-live\" or \"Peak season returns\". The page shows it as \"<topic> readiness\", so no verbs, no product names and at most 60 characters.\n\nStep 2, write the checklist: 8 to 10 items a buyer can check in a minute each, in the order to fix them, the item to fix first at the top. Each item has:\n- label: at most 70 characters, sentence case, a thing that is in place or not, like \"A named owner for the audit\". Not a question and not an instruction.\n- detail: at most 160 characters, what \"in place\" looks like, specific enough that the reader can answer yes or no.\n- first_step: at most 200 characters, the first concrete step to close the gap, something they can do this week without buying anything. Never a pitch for us.\n\nReturn JSON: {topic, checklist: [{label, detail, first_step}]}.\n\nFacts: use only what the inputs say. No numbers, customers, tools or claims that are not in the inputs. No prices.\n\nVoice: one experienced person telling a peer what to check. Plain words, short sentences. Rules for every string: sentence case, no em dashes or en dashes, no exclamation marks, no hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, transform, game changer). Never \"real\" as emphasis."
+    },
+    {
+      "id": "fit",
+      "kind": "prompt",
+      "requires": ["data.checklist"],
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "account.dossier.why_now", "account.signals", "knowledge.scoped", "person.first_name", "person.title", "brand.name", "sender.name", "data.topic", "data.checklist"],
+      "to": ["data.headline", "data.intro", "data.items", "data.closing"],
+      "prompt": "You are filling a readiness checklist page for {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it. The reader is {{ person.first_name | default: 'unknown' }} ({{ person.title | default: 'title unknown' }}). When the reader is unknown, the page is a shared link for the whole team at {{ account.name }}, so write for the team and never guess a name. \"We\" and \"us\" mean {{ brand.name | default: 'our company' }}.\n\nInputs: data.topic is the topic and data.checklist is our checklist for it, a list of {label, detail, first_step} in order. What we know about {{ account.name }}: account.industry, account.size_band, account.dossier.summary, account.dossier.why_now, account.signals (recent news, each {type, title, date, source_url}) and knowledge.scoped (our own notes and files on this account, each {citationId, kind, title, text}). Nothing else.\n\nReturn JSON with these keys:\n- headline: at most 90 characters, sentence case, says where {{ account.name }} stands on {{ data.topic | default: 'this' }}, like \"Where Fernhill stands on SOC 2 before the first audit\". Name the account, not the reader. No question marks.\n- intro: 2 to 4 sentences, 60 to 400 characters. The first sentence says why this matters for {{ account.name }} now, from why_now, the signals or the notes; with nothing recent, say what the dossier says they do. Then say what the list is. If you ticked anything, say how many you ticked and where you saw it. End by asking them to tick the rest as it stands today.\n- items: data.checklist in the same order, with label, detail and first_step copied word for word, plus done and note for each item. done is true only when the inputs state plainly that this item is in place at {{ account.name }}; otherwise false. note is at most 120 characters, starts with \"Seen:\" and says which input supports the tick, or what the inputs show about the item when it is a gap. Leave note out when the inputs say nothing about the item. Never tick from a guess, and never tick more than the inputs support. With no facts about {{ account.name }}, every item is false with no note.\n- closing: 1 or 2 sentences, 20 to 300 characters, inviting them to book 20 minutes to go through the gaps, naming the first gap in the list. No pressure and no pitch.\n\nFacts: use only the inputs. Never invent customers, numbers, news, tools or quotes. A number appears only when an input states it. Do not name people who are not the reader.\n\nVoice: one person writing to a peer. Plain words, short sentences a person would say out loud, a little warm. Rules for every string: sentence case, no em dashes or en dashes, no exclamation marks, no email addresses or phone numbers, no prices, no hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, transform, game changer). Never \"real\" as emphasis. No sign-off at the end of the closing; the page adds the name."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.headline", "data.intro", "data.items", "data.closing"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["demo", "reverse demo", "I noticed", "I saw", "I came across", "game changer", "unlock", "seamless", "leverage", "robust", "cutting edge", "revolutionize", "supercharge", "best in class", "world class"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_test_noun": true,
+        "no_real_emphasis": true,
+        "no_signoff": true
+      },
+      "rubric": "Grade the page the way its reader does: headline, intro, the checklist with its notes, then the closing. 10 is a page a busy operator reads in one pass and starts ticking.\nScore these, 0 to 10 each:\n- specific: the intro names something true about {{ account.name }} from the facts below, not a line that fits any company.\n- honest_ticks: every item with done true has a note that points to a fact in the inputs, and no note claims more than the facts say. An item ticked on a guess scores 0 here.\n- plain: short sentences a person would say out loud, no marketing adjectives, no stacked nouns.\n- useful_steps: each first_step is something the reader can do this week without buying anything from us.\nAnswer yes or no:\n- would_tick: would a buyer in this role start ticking rather than close the tab?\n- weird_word: is there a phrase a person would not say out loud (jargon, marketing adjectives, stacked nouns)? Quote it.\nAutomatic fail: an em dash or en dash, an exclamation mark, an email address or phone number, a price, a customer name or a number the facts below do not contain, a claim about {{ account.name }} that the facts below do not support, a headline that is a question, or a sign-off at the end of the closing.\nFacts about {{ account.name }}: industry {{ account.industry | default: 'unknown' }}, size {{ account.size_band | default: 'unknown' }}. Dossier: {{ account.dossier.summary | default: 'none' }} Why now: {{ account.dossier.why_now | default: 'none' }} Signals: {{ account.signals | json | default: 'none' }}. The writer also had our own notes on the account; a note that starts with \"Seen:\" and names a document or call is acceptable when the dossier does not cover it."
+    }
+  ],
+  "sections": [
+    { "id": "hero", "label": "Hero" },
+    { "id": "score", "label": "Score" },
+    { "id": "checklist", "label": "The checklist" },
+    { "id": "gaps", "label": "Close these first" },
+    { "id": "cta", "label": "Book a call" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

@@ -1,6 +1,7 @@
-{%- assign accent = brand.colors.primary | default: '#0e5c63' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
-{%- assign font_body = brand.fonts.body | default: 'Hanken Grotesk' -%}
+{%- assign accent = brand.colors.primary | default: '#007bab' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#121316' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Alfa Slab One' -%}
+{%- assign font_body = brand.fonts.body | default: 'Golos Text' -%}
 {%- assign head_q = font_head | replace: ' ', '+' -%}
 {%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign us = brand.name | default: 'Us' -%}
@@ -11,62 +12,103 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ us | escape }} next to what {{ account.name | escape }} uses today</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+{%- if font_head == 'Alfa Slab One' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;700&display=swap">
+{%- endif %}
+{%- if font_body == 'Golos Text' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;800&display=swap">
+{%- elsif font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;700&display=swap">
+{%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f6f4ef;color:#1b1a17;font-family:'{{ font_body }}',ui-sans-serif,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.vs{--p:{{ accent }};--ink:#1b1a17;--mute:#66635b;--line:#dcd8cf;--card:#fff}
-.vs h1,.vs h2{font-family:'{{ font_head }}',Georgia,'Times New Roman',serif;font-weight:500;letter-spacing:-.012em;line-height:1.1;margin:0;text-wrap:balance}
-.vs p{margin:0 0 1rem}
-.vs-wrap{max-width:44rem;margin:0 auto;padding:0 1.15rem}
-.vs-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
-.vs-logo{height:26px;width:auto;display:block}
-.vs-brand{font-weight:700;font-size:1rem;margin:0!important;letter-spacing:-.01em}
-.vs-tag{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;text-align:right}
-.vs-hero{padding:2.2rem 0 1.4rem}
-.vs-kicker{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin:0 0 1rem!important}
-.vs h1{font-size:2.35rem;margin:0 0 1.1rem}
-.vs-intro{font-size:1.1rem;line-height:1.5;color:#3a3832}
-.vs-cta{padding:.6rem 0 3.5rem}
-.vs-box{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--ink);padding:1.6rem 1.3rem 1.4rem}
-.vs-box h2{font-size:1.6rem;margin:0 0 .6rem}
-.vs-btn{margin:1.3rem 0 1.5rem}
-.vs .ken-cta{display:inline-flex!important;align-items:center;min-height:48px;padding:.7rem 1.4rem!important;border-radius:4px!important;background:var(--p)!important;color:#fff!important;font-weight:600;font-size:1rem;text-decoration:none}
-.vs-sign{font-size:.97rem;font-weight:600;margin:0!important}
-.vs-sign span{display:block;color:var(--mute);font-size:.88rem;font-weight:400}
+body{margin:0;background:#f2f2ef;color:#121316;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.vs{--a:{{ accent }};--a2:{{ accent2 }};--hw:{% if font_head == 'Alfa Slab One' %}400{% else %}700{% endif %};--ink:#121316;--soft:#4a4c52;--paper:#f2f2ef;
+--on-a:#fff;--on-a:oklch(from var(--a) clamp(0.2,(0.6 - l) * 1000,0.99) 0.01 h);
+--on-a2:#f2f2ef;--on-a2:oklch(from var(--a2) clamp(0.2,(0.6 - l) * 1000,0.97) 0.01 h);
+--m:clamp(1.125rem,3vw,2.5rem);overflow-x:clip}
+.vs h1,.vs h2,.c-name,.disc{font-family:'{{ font_head }}',Rockwell,Georgia,serif;font-weight:var(--hw);letter-spacing:-.005em;line-height:1.02;text-wrap:balance;margin:0}
+.vs p{margin:0}
+.vs .ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{padding:0 var(--m);max-width:90rem;margin:0 auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
+.logo{height:26px;width:auto;display:block}
+.brand{font-weight:800;font-size:1rem}
+.tag{font-size:.875rem;color:var(--soft)}
+.hero-head{padding-top:.8rem;padding-bottom:2.2rem}
+.hero h1{font-size:2rem;margin-bottom:1.2rem}
+.intro{font-size:1.125rem;max-width:38rem}
+.for{font-size:1rem;color:var(--soft);margin-top:.9rem!important}
+.for b{color:var(--ink);font-weight:600}
+.bill{position:relative;display:grid}
+.corner{padding:2.2rem var(--m) 3.4rem}
+.corner.t{background:var(--a2);color:var(--on-a2)}
+.corner.u{background:var(--a);color:var(--on-a);padding-top:3.4rem}
+.c-name{font-size:2rem}
+.c-lab{font-size:1rem;font-weight:600;margin-top:.5rem!important}
+.disc{position:relative;z-index:2;justify-self:center;width:4.5rem;height:4.5rem;margin:-2.25rem 0;display:grid;place-items:center;border-radius:50%;background:var(--paper);color:var(--ink);font-size:1.5rem;border:5px solid var(--ink)}
+.cta{padding:3rem 0 3rem}
+.cta-in{border-top:6px solid var(--ink);padding-top:2.4rem;display:grid;gap:1.6rem}
+.cta h2{font-size:2rem}
+.cta p{font-size:1.125rem;max-width:36rem}
+.btn{margin:1.6rem 0 1.4rem}
+.btn .ken-cta{display:inline-flex!important;align-items:center;min-height:56px;padding:.9rem 1.8rem!important;border-radius:0!important;background:var(--a)!important;color:var(--on-a)!important;font-family:inherit;font-size:1.125rem;font-weight:800!important;text-decoration:none}
+.btn .ken-cta:hover{background:var(--ink)!important;color:var(--paper)!important}
+.sign{font-size:1rem;font-weight:800}
+.sign span{display:block;font-weight:400}
 @media (min-width:760px){
-body{font-size:17px}
-.vs-wrap{padding:0 2rem}
-.vs-hero{padding:3.6rem 0 2rem}
-.vs h1{font-size:3.3rem}
-.vs-intro{font-size:1.18rem}
-.vs-box{padding:2.2rem 2.4rem 2rem}
+body{font-size:18px}
+.hero h1{font-size:3rem}
+.bill{grid-template-columns:1fr 1fr}
+.corner,.corner.u{padding:2.6rem var(--m) 3rem}
+.corner.t{padding-right:3.6rem}
+.corner.u{padding-left:3.6rem}
+.disc{position:absolute;left:50%;top:50%;width:6rem;height:6rem;margin:-3rem 0 0 -3rem;font-size:2rem}
+.c-name{font-size:3rem}
+.cta{padding:5rem 0 3rem}
+.cta-in{grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:4rem;align-items:end;padding-top:3.2rem}
+.cta h2{font-size:3rem}
+}
+@media (min-width:1100px){
+.hero h1{font-size:4rem}
 }
 </style>
 </head>
 <body>
 <main class="vs">
-<div class="vs-wrap">
-<header class="vs-top">
-{%- if brand.logo_url %}<img class="vs-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="vs-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
-<p class="vs-tag">Side by side</p>
+<div class="wrap">
+<header class="top">
+{%- if brand.logo_url %}<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="tag">Side by side</p>
 </header>
-<section data-section="hero" class="vs-hero">
-<p class="vs-kicker">{% if person.first_name %}For {{ person.first_name | escape }} at {{ account.name | escape }}{% else %}For {{ account.name | escape }}{% endif %}</p>
+</div>
+<section data-section="hero" class="hero">
+<div class="wrap hero-head">
 <h1>{{ us | escape }} next to what {{ account.name | escape }} uses today</h1>
-<p class="vs-intro">Hi {{ person.first_name | default: 'there' | escape }}, I am putting together a row-by-row look at how {{ us | escape }} lines up with the tool {{ account.name | escape }} runs on today, including the rows where yours is the better fit. It is not on this page yet.</p>
+<p class="intro">Hi {{ person.first_name | default: 'there' | escape }}, I am putting together a row-by-row look at how {{ us | escape }} lines up with the tool {{ account.name | escape }} runs on today, including the rows where yours is the better fit. It is not on this page yet.</p>
+<p class="for">{% if person.first_name %}For <b>{{ person.first_name | escape }}</b> at <b>{{ account.name | escape }}</b>{% else %}For <b>{{ account.name | escape }}</b>{% endif %}</p>
+</div>
+<div class="bill" aria-hidden="true">
+<div class="corner t"><p class="c-name">What you use today</p><p class="c-lab">Being worked out</p></div>
+<span class="disc">vs</span>
+<div class="corner u"><p class="c-name">{{ us | escape }}</p><p class="c-lab">What we offer</p></div>
+</div>
 </section>
-<section data-section="cta" class="vs-cta">
-<div class="vs-box">
+<section data-section="cta" class="cta">
+<div class="wrap">
+<div class="cta-in">
 <h2>Rather go through it now?</h2>
+<div>
 <p>Book 20 minutes. Tell me what {{ account.name | escape }} runs on today and I will take you through the rows myself, the ones that go your way included.</p>
-<div class="vs-btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
-<p class="vs-sign">{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+<div class="btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+<p class="sign">{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</div>
+</div>
 </div>
 </section>
-</div>
 </main>
 </body>
 </html>

@@ -1,0 +1,315 @@
+{
+  "account": {
+    "name": "Cobble Hill Plumbing and Heating",
+    "domain": "cobblehillph.example",
+    "industry": "construction",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Cobble Hill Plumbing and Heating is a residential plumbing and HVAC contractor with about 60 technicians across two branches. Most work is same-day service calls booked by phone or through the website.",
+      "why_now": "Posted three dispatcher openings this month.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Marcus",
+    "last_name": "Delgado",
+    "title": "Operations Manager"
+  },
+  "sender": {
+    "name": "Noor Haddad",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Tidewell",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "catalog": [
+      {
+        "competitor": "Routeboard",
+        "clues": "Careers pages that ask for Routeboard experience; a Book online page that loads the Routeboard widget; HVAC and plumbing companies with 50 or more technicians",
+        "criterion": "Dispatch board",
+        "us": "One board per day with crews as rows. Drag a job to a crew and the technician's phone updates on the spot.",
+        "them": "A list-style board with a map view. Moving a job means editing it, and the technician sees it on the next sync.",
+        "better_fit": "us",
+        "note": "Matters most when the day changes after 8 am."
+      },
+      {
+        "competitor": "Routeboard",
+        "criterion": "Technician app",
+        "us": "Works without signal. Checklists, photos and the customer's signature sync when the phone is back online.",
+        "them": "Needs a connection for job details and photos, which bites in basements and rural areas.",
+        "better_fit": "us",
+        "note": "Ask your technicians how often the app spins."
+      },
+      {
+        "competitor": "Routeboard",
+        "criterion": "Online booking",
+        "us": "A booking page with your services and time windows. No branded widget for your own site yet.",
+        "them": "A booking widget that sits on your site and shows live availability. Customers already know it.",
+        "better_fit": "them",
+        "note": "If most jobs come in through your website, this row counts double."
+      },
+      {
+        "competitor": "Routeboard",
+        "criterion": "Invoicing",
+        "us": "Invoice from the job, card on file, deposit links.",
+        "them": "Invoice from the job, card on file, financing offers built in.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Routeboard",
+        "criterion": "Reporting",
+        "us": "Twelve standard reports and a CSV export for anything else.",
+        "them": "A report builder you shape yourself, plus a dashboard per branch.",
+        "better_fit": "them",
+        "note": "A plus if someone on your team lives in reports."
+      },
+      {
+        "competitor": "Routeboard",
+        "criterion": "Accounting sync",
+        "us": "Two-way sync with the common accounting tools. Invoices and payments post the same day.",
+        "them": "One-way export, run by hand, with a reconcile step at month end.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Routeboard",
+        "criterion": "Getting set up",
+        "us": "We import customers, equipment and open jobs from your export. Most teams of your size run live within two weeks.",
+        "them": "A guided setup over six to eight weeks with a dedicated onboarding manager.",
+        "better_fit": "us",
+        "note": "Routeboard's longer setup also covers more custom work."
+      },
+      {
+        "competitor": "Jobtrack Pro",
+        "clues": "Job postings that mention Jobtrack; shops with fewer than 20 technicians; plumbing and electrical",
+        "criterion": "Dispatch board",
+        "us": "One board per day with crews as rows. Drag a job to a crew and the technician's phone updates on the spot.",
+        "them": "A weekly calendar per technician. Fine for a few crews, hard past ten.",
+        "better_fit": "us",
+        "note": "Shows up once a shop passes ten technicians."
+      },
+      {
+        "competitor": "Jobtrack Pro",
+        "criterion": "Technician app",
+        "us": "Works without signal. Checklists, photos and the customer's signature sync when the phone is back online.",
+        "them": "Works offline for job details. Photos wait for signal.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Jobtrack Pro",
+        "criterion": "Online booking",
+        "us": "A booking page with your services and time windows. No branded widget for your own site yet.",
+        "them": "A request form that emails the office. Someone still calls back to confirm.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Jobtrack Pro",
+        "criterion": "Invoicing",
+        "us": "Invoice from the job, card on file, deposit links.",
+        "them": "Invoice from the job, card payments. No deposits or financing.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Jobtrack Pro",
+        "criterion": "Reporting",
+        "us": "Twelve standard reports and a CSV export for anything else.",
+        "them": "A handful of fixed reports.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Jobtrack Pro",
+        "criterion": "Accounting sync",
+        "us": "Two-way sync with the common accounting tools. Invoices and payments post the same day.",
+        "them": "Two-way sync with one accounting tool.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Jobtrack Pro",
+        "criterion": "Getting set up",
+        "us": "We import customers, equipment and open jobs from your export. Most teams of your size run live within two weeks.",
+        "them": "Self-serve in an afternoon. Import by CSV.",
+        "better_fit": "them",
+        "note": "Hard to beat if you want to start tomorrow."
+      },
+      {
+        "competitor": "Crewline",
+        "clues": "Commercial and multi-site contractors; maintenance contracts; Crewline named on partner or integrations pages",
+        "criterion": "Dispatch board",
+        "us": "One board per day with crews as rows. Drag a job to a crew and the technician's phone updates on the spot.",
+        "them": "Built for recurring maintenance routes. Same-day changes take a planner.",
+        "better_fit": "us",
+        "note": "Fine for route work, slow for service calls."
+      },
+      {
+        "competitor": "Crewline",
+        "criterion": "Technician app",
+        "us": "Works without signal. Checklists, photos and the customer's signature sync when the phone is back online.",
+        "them": "Strong on forms and compliance checklists, offline too.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Crewline",
+        "criterion": "Online booking",
+        "us": "A booking page with your services and time windows. No branded widget for your own site yet.",
+        "them": "None. Work comes in through contracts and the office.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Crewline",
+        "criterion": "Invoicing",
+        "us": "Invoice from the job, card on file, deposit links.",
+        "them": "Contract billing, progress invoices and retainage.",
+        "better_fit": "them",
+        "note": "If you bill against contracts, Crewline is ahead here."
+      },
+      {
+        "competitor": "Crewline",
+        "criterion": "Reporting",
+        "us": "Twelve standard reports and a CSV export for anything else.",
+        "them": "Contract margin and technician utilisation reports out of the box.",
+        "better_fit": "them"
+      },
+      {
+        "competitor": "Crewline",
+        "criterion": "Accounting sync",
+        "us": "Two-way sync with the common accounting tools. Invoices and payments post the same day.",
+        "them": "Two-way sync, including job costing.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Crewline",
+        "criterion": "Getting set up",
+        "us": "We import customers, equipment and open jobs from your export. Most teams of your size run live within two weeks.",
+        "them": "A project with their services team, usually a quarter.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Spreadsheets and a whiteboard",
+        "clues": "No software named anywhere on the site; a Request service page that lists only a phone line; shops with fewer than 15 people",
+        "criterion": "Dispatch board",
+        "us": "One board per day with crews as rows. Drag a job to a crew and the technician's phone updates on the spot.",
+        "them": "The whiteboard in the office. Everyone can see it, as long as they are in the office.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Spreadsheets and a whiteboard",
+        "criterion": "Technician app",
+        "us": "Works without signal. Checklists, photos and the customer's signature sync when the phone is back online.",
+        "them": "Texts and photos in a group chat. Nothing is tied to the job afterwards.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Spreadsheets and a whiteboard",
+        "criterion": "Online booking",
+        "us": "A booking page with your services and time windows. No branded widget for your own site yet.",
+        "them": "A phone number. Customers call, and after hours they wait.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Spreadsheets and a whiteboard",
+        "criterion": "Invoicing",
+        "us": "Invoice from the job, card on file, deposit links.",
+        "them": "An invoice template and a card reader. Fine until someone forgets to send one.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Spreadsheets and a whiteboard",
+        "criterion": "Reporting",
+        "us": "Twelve standard reports and a CSV export for anything else.",
+        "them": "Whatever someone builds in a spreadsheet on Sunday night.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Spreadsheets and a whiteboard",
+        "criterion": "Accounting sync",
+        "us": "Two-way sync with the common accounting tools. Invoices and payments post the same day.",
+        "them": "Typed in by hand, usually once a week.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Spreadsheets and a whiteboard",
+        "criterion": "Getting set up",
+        "us": "We import customers, equipment and open jobs from your export. Most teams of your size run live within two weeks.",
+        "them": "Nothing to set up and nothing to learn. Everyone already knows how it works.",
+        "better_fit": "them",
+        "note": "The honest advantage of the whiteboard."
+      }
+    ],
+    "site": {
+      "url": "https://cobblehillph.example",
+      "title": "Cobble Hill Plumbing and Heating",
+      "description": "Same-day plumbing, heating and cooling service across the county, since 1994.",
+      "markdown": "# Cobble Hill Plumbing and Heating\n\nSame-day plumbing, heating and cooling service across the county. Two branches, 60 technicians, trucks stocked for most repairs on the first visit.\n\n## Book online\n\nPick a service and a time window. Our booking widget shows live availability. Powered by Routeboard.\n\n## Careers\n\nWe are hiring dispatchers for both branches. Two years of experience with Routeboard or a similar dispatch system preferred. Technicians: apply with your license number.\n\n## Services\n\nWater heaters, drain cleaning, furnace repair, AC installs, maintenance plans."
+    },
+    "current_tool": "Routeboard",
+    "evidence": [
+      "The Book online page says its booking widget is powered by Routeboard.",
+      "The careers page asks dispatcher applicants for two years of experience with Routeboard or a similar system."
+    ],
+    "rows": [
+      {
+        "competitor": "Routeboard",
+        "clues": "Careers pages that ask for Routeboard experience; a Book online page that loads the Routeboard widget; HVAC and plumbing companies with 50 or more technicians",
+        "criterion": "Dispatch board",
+        "us": "One board per day with crews as rows. Drag a job to a crew and the technician's phone updates on the spot.",
+        "them": "A list-style board with a map view. Moving a job means editing it, and the technician sees it on the next sync.",
+        "better_fit": "us",
+        "note": "Matters most when the day changes after 8 am."
+      },
+      {
+        "competitor": "Routeboard",
+        "criterion": "Technician app",
+        "us": "Works without signal. Checklists, photos and the customer's signature sync when the phone is back online.",
+        "them": "Needs a connection for job details and photos, which bites in basements and rural areas.",
+        "better_fit": "us",
+        "note": "Ask your technicians how often the app spins."
+      },
+      {
+        "competitor": "Routeboard",
+        "criterion": "Online booking",
+        "us": "A booking page with your services and time windows. No branded widget for your own site yet.",
+        "them": "A booking widget that sits on your site and shows live availability. Customers already know it.",
+        "better_fit": "them",
+        "note": "If most jobs come in through your website, this row counts double."
+      },
+      {
+        "competitor": "Routeboard",
+        "criterion": "Invoicing",
+        "us": "Invoice from the job, card on file, deposit links.",
+        "them": "Invoice from the job, card on file, financing offers built in.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Routeboard",
+        "criterion": "Reporting",
+        "us": "Twelve standard reports and a CSV export for anything else.",
+        "them": "A report builder you shape yourself, plus a dashboard per branch.",
+        "better_fit": "them",
+        "note": "A plus if someone on your team lives in reports."
+      },
+      {
+        "competitor": "Routeboard",
+        "criterion": "Accounting sync",
+        "us": "Two-way sync with the common accounting tools. Invoices and payments post the same day.",
+        "them": "One-way export, run by hand, with a reconcile step at month end.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Routeboard",
+        "criterion": "Getting set up",
+        "us": "We import customers, equipment and open jobs from your export. Most teams of your size run live within two weeks.",
+        "them": "A guided setup over six to eight weeks with a dedicated onboarding manager.",
+        "better_fit": "us",
+        "note": "Routeboard's longer setup also covers more custom work."
+      }
+    ],
+    "headline": "Tidewell next to Routeboard, for Cobble Hill",
+    "intro": "Your site names Routeboard: the booking widget runs on it and your dispatcher openings ask for it. Below is how Tidewell lines up with it on the seven things a dispatch team touches every day. Routeboard is the better fit on two rows, Tidewell on four, and one is a wash.",
+    "them_fit": "Stay with Routeboard if most of your jobs come in through the booking widget on your site, or if someone on your team builds their own reports and would miss the report builder and the per-branch dashboard.",
+    "us_fit": "Tidewell is the better fit if your day changes after 8 am and you want the board and the technician's phone to move together, if your technicians lose signal in basements, and if you want to be live in two weeks rather than six to eight."
+  }
+}

@@ -27,7 +27,7 @@
 :root{--p:{{ accent | escape }};--s:{{ accent2 | escape }};--fh:'{{ font_head | escape }}',ui-serif,Georgia,serif;--fb:'{{ font_body | escape }}',ui-serif,Georgia,serif;--pad:#fbeb98;--ink:#1e2532;--desk:{% if has_brand_colour %}color-mix(in srgb,var(--s) 85%,#000){% else %}var(--s){% endif %};--m:clamp(.5rem,3vw,3rem);--px:clamp(1rem,4vw,3.5rem);--mw:clamp(1.25rem,1rem + 7vw,7.5rem);--gap:clamp(1rem,2.5vw,2.25rem)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;min-height:100svh;font:400 clamp(1.0625rem,1rem + .3vw,1.25rem)/1.55 var(--fb);-webkit-font-smoothing:antialiased;overflow-wrap:break-word;background:var(--desk);color:#fff;color:rgb(from var(--desk) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255))}
+body{margin:0;min-height:100svh;font:400 clamp(1.0625rem,1rem + .3vw,1.25rem)/1.55 var(--fb);-webkit-font-smoothing:antialiased;overflow-wrap:break-word;background:var(--desk);color:#fff;color:rgb(from var(--desk) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))}
 h1{font-family:var(--fh);font-weight:700;margin:0;letter-spacing:-.01em;line-height:1;text-wrap:balance;font-size:clamp(1.75rem,.6rem + 4.2vw,5rem);max-width:22ch}
 p{margin:0;text-wrap:pretty}
 a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
@@ -39,7 +39,7 @@ a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .pad section p{margin-top:.75rem}
 .pad h1+p{margin-top:2rem}
 .cta{margin-top:2.5rem}
-.cta .ken-cta{display:inline-flex!important;align-items:center;min-height:50px;background:var(--p)!important;color:#fff!important;color:rgb(from var(--p) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255))!important;font:700 1rem/1.1 var(--fb)!important;padding:.85rem 1.4rem!important;border-radius:3px!important;text-decoration:none}
+.cta .ken-cta{display:inline-flex!important;align-items:center;min-height:50px;background:var(--p)!important;color:#fff!important;color:rgb(from var(--p) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))!important;font:700 1rem/1.1 var(--fb)!important;padding:.85rem 1.4rem!important;border-radius:3px!important;text-decoration:none}
 @media (max-width:759px){:root{--mw:0rem;--gap:1.5rem;--px:.875rem}.pad::before{border-left-width:5px}}
 </style>
 </head>

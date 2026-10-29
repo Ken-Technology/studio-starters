@@ -1,0 +1,88 @@
+{
+  "account": {
+    "name": "Copperline Software",
+    "domain": "copperline.example",
+    "industry": "software development",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Copperline Software sells scheduling software to field service teams. It has about 90 people and a small sales team.",
+      "why_now": "Hired a new head of revenue operations in September.",
+      "angle": null
+    },
+    "signals": [
+      {
+        "type": "news",
+        "title": "Copperline launches a mobile app for technicians",
+        "date": "2026-10-22",
+        "source_url": "https://copperline.example/blog/technician-app"
+      },
+      {
+        "type": "role_change",
+        "title": "Sam Ortega joins Copperline as Head of Revenue Operations",
+        "date": "2026-09-15",
+        "source_url": "https://www.linkedin.example/in/sam-ortega"
+      }
+    ]
+  },
+  "person": {
+    "first_name": "Sam",
+    "last_name": "Ortega",
+    "title": "Head of Revenue Operations"
+  },
+  "sender": {
+    "name": "Jonas Weber",
+    "title": "Partner Manager",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Forgeline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#e4572e",
+      "secondary": "#1c1c1c"
+    },
+    "fonts": {
+      "heading": "Space Grotesk",
+      "body": "IBM Plex Sans"
+    }
+  },
+  "data": {
+    "raw_signals": [
+      {
+        "type": "news",
+        "title": "Copperline launches a mobile app for technicians",
+        "date": "2026-10-22",
+        "source_url": "https://copperline.example/blog/technician-app"
+      },
+      {
+        "type": "role_change",
+        "title": "Sam Ortega joins Copperline as Head of Revenue Operations",
+        "date": "2026-09-15",
+        "source_url": "https://www.linkedin.example/in/sam-ortega"
+      }
+    ],
+    "signals": [
+      {
+        "kind": "news",
+        "headline": "Copperline launched a mobile app for technicians",
+        "fact": "Copperline published a post on October 22 launching a mobile app for technicians.",
+        "means": "A product moves to a new kind of user when it gets an app for them. Support questions usually change first, then pricing questions, and the sales team starts hearing from people who do not run the account.",
+        "idea": "Read the first month of support tickets from technicians and tag each one by cause. Share the top three with sales before the next pricing call.",
+        "seen_on": "2026-10-22",
+        "source_label": "Copperline launches a mobile app for technicians",
+        "source_url": "https://copperline.example/blog/technician-app"
+      },
+      {
+        "kind": "role_change",
+        "headline": "You became Head of Revenue Operations in September",
+        "fact": "You joined Copperline as Head of Revenue Operations. A change like that was reported on September 15.",
+        "means": "A new revenue operations lead usually spends the first quarter on one question: which numbers the team trusts. Tooling choices often follow that answer, not the other way round.",
+        "idea": "Pick one number the sales team and finance report differently, and trace both back to where they start. Fix that one before you add a dashboard.",
+        "seen_on": "2026-09-15",
+        "source_label": "Sam Ortega joins Copperline as Head of Revenue Operations",
+        "source_url": "https://www.linkedin.example/in/sam-ortega"
+      }
+    ],
+    "note": "I put these two together because a new app and a new revenue operations lead tend to need the same thing: one agreed set of numbers about who uses the product. Nothing here needs an answer. If it is useful, I will send another one next month. If it is not, tell me and I will stop."
+  }
+}

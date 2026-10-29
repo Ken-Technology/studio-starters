@@ -1,0 +1,67 @@
+account_domain,kind,label,quarter,marker,date,hours_saved,active_seats,seats,tasks_done,median_hours,detail
+brightwave.example,quarter,Q2 2026,,,,1510,82,120,9520,4.6,April to June 2026
+brightwave.example,quarter,Q3 2026,,,,1840,96,120,12460,3.1,July to September 2026
+brightwave.example,month,Feb,Q1 2026,,,,18,,,,
+brightwave.example,month,Mar,Q1 2026,,,,31,,,,
+brightwave.example,month,Apr,Q2 2026,,,,44,,,,
+brightwave.example,month,May,Q2 2026,,,,62,,,,
+brightwave.example,month,Jun,Q2 2026,,,,82,,,,
+brightwave.example,month,Jul,Q3 2026,,,,83,,,,
+brightwave.example,month,Aug,Q3 2026,,,,94,,,,"Dispatch rollout to the Chicago yard, 11 seats added in one week."
+brightwave.example,month,Sep,Q3 2026,,,,96,,,,
+brightwave.example,month,Oct,Q4 2026,,,,97,,,,
+brightwave.example,team,Dispatch,,,,760,38,40,,,Works the exception queue in the platform instead of over the radio and a spreadsheet.
+brightwave.example,team,Customer service,,,,480,24,30,,,Answers ETA questions from the live board instead of calling the cab.
+brightwave.example,team,Fleet maintenance,,,,190,14,20,,,Logs breakdowns and repairs on the load record.
+brightwave.example,team,Finance,,,,250,12,18,,,"Detention and accessorial charges arrive with the load record, so nobody re-keys them from emails."
+brightwave.example,team,Sales,,,,160,8,12,,,Checks load status before calling a customer back.
+brightwave.example,milestone,Contract start,,start,2026-01-29,,,,,,"120 seats, 12-month term."
+brightwave.example,milestone,Q3 value review,,review,2026-10-29,,,,,,Usage for July to September.
+brightwave.example,milestone,Q4 planning call,,,2026-11-05,,,,,,30 minutes to agree the Q4 targets.
+brightwave.example,milestone,Dallas terminal rollout,,,2026-11-17,,,,,,"28 new seats, with the same two sessions of training as Chicago."
+brightwave.example,milestone,All 120 seats active,,,2026-12-15,,,,,,"Finance, fleet maintenance and sales bring their unused seats into use."
+brightwave.example,milestone,Q4 value review,,,2027-01-14,,,,,,Includes the renewal proposal.
+brightwave.example,milestone,Renewal date,,renewal,2027-01-29,,,,,,
+oaklinefoods.example,quarter,Q1 2026,,,,3120,268,400,41300,2.4,January to March 2026
+oaklinefoods.example,quarter,Q2 2026,,,,4265,311,400,55870,1.9,April to June 2026
+oaklinefoods.example,month,Oct,Q4 2025,,,,140,,,,
+oaklinefoods.example,month,Nov,Q4 2025,,,,178,,,,
+oaklinefoods.example,month,Dec,Q4 2025,,,,215,,,,
+oaklinefoods.example,month,Jan,Q1 2026,,,,232,,,,
+oaklinefoods.example,month,Feb,Q1 2026,,,,249,,,,
+oaklinefoods.example,month,Mar,Q1 2026,,,,268,,,,
+oaklinefoods.example,month,Apr,Q2 2026,,,,281,,,,
+oaklinefoods.example,month,May,Q2 2026,,,,297,,,,
+oaklinefoods.example,month,Jun,Q2 2026,,,,311,,,,
+oaklinefoods.example,team,Plant operations,,,,1480,118,140,,,Records line stoppages and changeovers in the platform instead of on whiteboards.
+oaklinefoods.example,team,Quality assurance,,,,980,62,70,,,"Closes deviation reports in the platform, with the batch record attached."
+oaklinefoods.example,team,Procurement,,,,720,41,60,,,Matches supplier invoices to purchase orders in one queue.
+oaklinefoods.example,team,Supply planning,,,,640,38,45,,,Reviews stock exceptions each morning from one list.
+oaklinefoods.example,team,Finance,,,,260,28,50,,,Uses the platform for month-end accruals only.
+oaklinefoods.example,team,Customer service,,,,185,24,35,,,Answers order status questions from the shared board.
+oaklinefoods.example,milestone,Contract start,,start,2025-10-01,,,,,,"400 seats, 24-month term."
+oaklinefoods.example,milestone,Q2 value review,,review,2026-07-14,,,,,,Usage for April to June.
+oaklinefoods.example,milestone,Q3 planning call,,,2026-08-04,,,,,,45 minutes to agree the Q3 targets.
+oaklinefoods.example,milestone,Finance onboarding,,,2026-09-01,,,,,,Two sessions to bring the 22 unused finance seats into use.
+oaklinefoods.example,milestone,Q3 value review,,,2026-10-13,,,,,,
+oaklinefoods.example,milestone,Renewal date,,renewal,2027-10-01,,,,,,
+pinecrestcare.example,quarter,Q4 2025,,,,212,19,35,1760,5.2,October to December 2025
+pinecrestcare.example,quarter,Q1 2026,,,,268,27,35,2310,4.4,January to March 2026
+pinecrestcare.example,month,Oct,Q4 2025,,,,11,,,,
+pinecrestcare.example,month,Nov,Q4 2025,,,,15,,,,
+pinecrestcare.example,month,Dec,Q4 2025,,,,19,,,,
+pinecrestcare.example,month,Jan,Q1 2026,,,,22,,,,
+pinecrestcare.example,month,Feb,Q1 2026,,,,25,,,,
+pinecrestcare.example,month,Mar,Q1 2026,,,,27,,,,
+pinecrestcare.example,team,Intake,,,,120,12,12,,,Logs every new referral in the platform on the day it arrives.
+pinecrestcare.example,team,Care coordination,,,,96,9,14,,,Schedules visits from the shared calendar instead of text messages.
+pinecrestcare.example,team,Billing,,,,52,6,9,,,"Submits claims from the visit record, with no re-keying."
+pinecrestcare.example,milestone,Contract start,,start,2025-04-15,,,,,,"35 seats, 12-month term."
+pinecrestcare.example,milestone,Q1 value review,,review,2026-04-02,,,,,,Usage for January to March.
+pinecrestcare.example,milestone,Q2 planning call,,,2026-04-09,,,,,,30 minutes to agree the Q2 targets.
+pinecrestcare.example,milestone,Renewal proposal,,,2026-04-10,,,,,,Sent in writing before the renewal date.
+pinecrestcare.example,milestone,Renewal date,,renewal,2026-04-15,,,,,,
+harlowpike.example,quarter,Q3 2026,,,,96,9,12,410,1.8,July to September 2026
+harlowpike.example,month,Jul,Q3 2026,,,,5,,,,
+harlowpike.example,month,Aug,Q3 2026,,,,7,,,,
+harlowpike.example,month,Sep,Q3 2026,,,,9,,,,

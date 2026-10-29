@@ -1,0 +1,35 @@
+{
+  "description": "A quarterly review for one customer: usage against last quarter, adoption by team, three wins, the plan and the renewal timeline. Ken fills it from a usage CSV.",
+  "category": "customers",
+  "tags": [
+    "customer success",
+    "quarterly review",
+    "renewal",
+    "usage",
+    "qbr"
+  ],
+  "featured": true,
+  "needs": [
+    "dataset"
+  ],
+  "version": "1.0.0",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    {
+      "id": "brightwave",
+      "label": "Brightwave Logistics"
+    },
+    {
+      "id": "oakline-shared",
+      "label": "Oakline Foods, Shared link (no person)"
+    },
+    {
+      "id": "pinecrest",
+      "label": "Pinecrest Home Care"
+    },
+    {
+      "id": "harlow-pike-partial",
+      "label": "Harlow and Pike Architects, partial usage export"
+    }
+  ]
+}

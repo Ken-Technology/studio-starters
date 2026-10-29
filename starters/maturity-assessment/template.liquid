@@ -47,7 +47,7 @@ p{margin:0}
 button{font:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--p);outline-offset:3px}
 [tabindex="-1"]:focus{outline:none}
-[x-cloak]{display:none!important}
+[x-cloak],.shut{display:none!important}
 
 .top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem}
 .brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fh);font-weight:600;color:var(--ink);min-width:0}
@@ -240,7 +240,7 @@ button{font:inherit;cursor:pointer}
     </section>
 
     <!-- Questions -->
-    <section data-section="questions" x-cloak x-show="q >= 0 && q < {{ qcount }}">
+    <section data-section="questions" x-cloak :class="q >= 0 && q < {{ qcount }} ? '' : 'shut'">
       <div class="prog" aria-hidden="true">
         {%- for i in (0..last_q) %}<i :class="q > {{ i }} ? 'done' : q === {{ i }} ? 'now' : ''"></i>{% endfor %}
       </div>
@@ -248,7 +248,7 @@ button{font:inherit;cursor:pointer}
       {%- assign di = qu.dimension | minus: 1 %}
       {%- assign dim = data.dimensions[di] %}
       {%- assign qi = forloop.index0 %}
-      <div class="q" x-cloak x-show="q === {{ qi }}">
+      <div class="q" x-cloak :class="q === {{ qi }} ? '' : 'shut'">
         <div class="meta"><span>Question <b>{{ forloop.index }}</b> of {{ qcount }}</span><span>{{ dim.name | escape }}</span></div>
         <h2 tabindex="-1" x-effect="(q === {{ qi }}) && $el.focus({ preventScroll: true })">{{ qu.text | escape }}</h2>
         <ul class="opts">
@@ -263,10 +263,10 @@ button{font:inherit;cursor:pointer}
     </section>
 
     <!-- Result -->
-    <div x-cloak x-show="q === {{ qcount }}">
+    <div x-cloak :class="q === {{ qcount }} ? '' : 'shut'">
     <section class="res" data-section="result">
       <p class="stage-line">{{ account.name | escape }}{% if person.first_name %}, answered by {{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}{% else %}, self-assessed{% endif %}</p>
-      <h1>{{ account.name | escape }} is at the <em>
+      <h1 tabindex="-1" x-effect="(q === {{ qcount }}) && $el.focus({ preventScroll: true })">{{ account.name | escape }} is at the <em>
         {%- for name in data.stages -%}<span x-cloak x-show="st === {{ forloop.index0 }}">{{ name | escape }}</span>{%- endfor -%}
       </em> stage</h1>
       <p class="score"><b x-text="o.toFixed(1)"></b> of 4 overall.

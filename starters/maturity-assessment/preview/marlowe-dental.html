@@ -32,7 +32,7 @@ p{margin:0}
 button{font:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--p);outline-offset:3px}
 [tabindex="-1"]:focus{outline:none}
-[x-cloak]{display:none!important}
+[x-cloak],.shut{display:none!important}
 
 .top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem}
 .brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fh);font-weight:600;color:var(--ink);min-width:0}
@@ -211,10 +211,10 @@ button{font:inherit;cursor:pointer}
     </section>
 
     <!-- Questions -->
-    <section data-section="questions" x-cloak x-show="q >= 0 && q < 8">
+    <section data-section="questions" x-cloak :class="q >= 0 && q < 8 ? '' : 'shut'">
       <div class="prog" aria-hidden="true"><i :class="q > 0 ? 'done' : q === 0 ? 'now' : ''"></i><i :class="q > 1 ? 'done' : q === 1 ? 'now' : ''"></i><i :class="q > 2 ? 'done' : q === 2 ? 'now' : ''"></i><i :class="q > 3 ? 'done' : q === 3 ? 'now' : ''"></i><i :class="q > 4 ? 'done' : q === 4 ? 'now' : ''"></i><i :class="q > 5 ? 'done' : q === 5 ? 'now' : ''"></i><i :class="q > 6 ? 'done' : q === 6 ? 'now' : ''"></i><i :class="q > 7 ? 'done' : q === 7 ? 'now' : ''"></i>
       </div>
-      <div class="q" x-cloak x-show="q === 0">
+      <div class="q" x-cloak :class="q === 0 ? '' : 'shut'">
         <div class="meta"><span>Question <b>1</b> of 8</span><span>Process</span></div>
         <h2 tabindex="-1" x-effect="(q === 0) && $el.focus({ preventScroll: true })">How are the core processes written down?</h2>
         <ul class="opts">
@@ -224,7 +224,7 @@ button{font:inherit;cursor:pointer}
           <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[0] === 4" @click="(a[0] = 4) && (q = 1)"><span class="n">4</span><span><b>Documented and measured</b><span>Written down, measured, and improved each quarter</span></span></button></li>
         </ul>
       </div>
-      <div class="q" x-cloak x-show="q === 1">
+      <div class="q" x-cloak :class="q === 1 ? '' : 'shut'">
         <div class="meta"><span>Question <b>2</b> of 8</span><span>Process</span></div>
         <h2 tabindex="-1" x-effect="(q === 1) && $el.focus({ preventScroll: true })">When something goes wrong, how does the fix reach the rest of the team?</h2>
         <ul class="opts">
@@ -234,7 +234,7 @@ button{font:inherit;cursor:pointer}
           <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[1] === 4" @click="(a[1] = 4) && (q = 2)"><span class="n">4</span><span><b>A change to the system</b><span>The process and the tool that enforces it both change</span></span></button></li>
         </ul>
       </div>
-      <div class="q" x-cloak x-show="q === 2">
+      <div class="q" x-cloak :class="q === 2 ? '' : 'shut'">
         <div class="meta"><span>Question <b>3</b> of 8</span><span>Data</span></div>
         <h2 tabindex="-1" x-effect="(q === 2) && $el.focus({ preventScroll: true })">Where does the team look for the numbers that matter?</h2>
         <ul class="opts">
@@ -244,7 +244,7 @@ button{font:inherit;cursor:pointer}
           <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[2] === 4" @click="(a[2] = 4) && (q = 3)"><span class="n">4</span><span><b>Live dashboards</b><span>Everyone reads the same numbers and trusts them</span></span></button></li>
         </ul>
       </div>
-      <div class="q" x-cloak x-show="q === 3">
+      <div class="q" x-cloak :class="q === 3 ? '' : 'shut'">
         <div class="meta"><span>Question <b>4</b> of 8</span><span>Data</span></div>
         <h2 tabindex="-1" x-effect="(q === 3) && $el.focus({ preventScroll: true })">How long does a new question about last month take to answer, such as cost per order by region?</h2>
         <ul class="opts">
@@ -254,7 +254,7 @@ button{font:inherit;cursor:pointer}
           <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[3] === 4" @click="(a[3] = 4) && (q = 4)"><span class="n">4</span><span><b>Minutes</b><span>Managers answer it themselves</span></span></button></li>
         </ul>
       </div>
-      <div class="q" x-cloak x-show="q === 4">
+      <div class="q" x-cloak :class="q === 4 ? '' : 'shut'">
         <div class="meta"><span>Question <b>5</b> of 8</span><span>Automation</span></div>
         <h2 tabindex="-1" x-effect="(q === 4) && $el.focus({ preventScroll: true })">How much of the repetitive work is done by software rather than people?</h2>
         <ul class="opts">
@@ -264,7 +264,7 @@ button{font:inherit;cursor:pointer}
           <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[4] === 4" @click="(a[4] = 4) && (q = 5)"><span class="n">4</span><span><b>Only exceptions are manual</b><span>Everything routine happens without a person</span></span></button></li>
         </ul>
       </div>
-      <div class="q" x-cloak x-show="q === 5">
+      <div class="q" x-cloak :class="q === 5 ? '' : 'shut'">
         <div class="meta"><span>Question <b>6</b> of 8</span><span>Automation</span></div>
         <h2 tabindex="-1" x-effect="(q === 5) && $el.focus({ preventScroll: true })">How are the tools your team uses connected to each other?</h2>
         <ul class="opts">
@@ -274,7 +274,7 @@ button{font:inherit;cursor:pointer}
           <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[5] === 4" @click="(a[5] = 4) && (q = 6)"><span class="n">4</span><span><b>One connected stack</b><span>Every change flows through with an audit trail</span></span></button></li>
         </ul>
       </div>
-      <div class="q" x-cloak x-show="q === 6">
+      <div class="q" x-cloak :class="q === 6 ? '' : 'shut'">
         <div class="meta"><span>Question <b>7</b> of 8</span><span>Team</span></div>
         <h2 tabindex="-1" x-effect="(q === 6) && $el.focus({ preventScroll: true })">How long does a new hire take to work without supervision?</h2>
         <ul class="opts">
@@ -284,7 +284,7 @@ button{font:inherit;cursor:pointer}
           <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[6] === 4" @click="(a[6] = 4) && (q = 7)"><span class="n">4</span><span><b>Under a month</b><span>A written ramp, practice cases and a sign-off</span></span></button></li>
         </ul>
       </div>
-      <div class="q" x-cloak x-show="q === 7">
+      <div class="q" x-cloak :class="q === 7 ? '' : 'shut'">
         <div class="meta"><span>Question <b>8</b> of 8</span><span>Team</span></div>
         <h2 tabindex="-1" x-effect="(q === 7) && $el.focus({ preventScroll: true })">Who owns operational improvement on your team?</h2>
         <ul class="opts">
@@ -299,10 +299,10 @@ button{font:inherit;cursor:pointer}
     </section>
 
     <!-- Result -->
-    <div x-cloak x-show="q === 8">
+    <div x-cloak :class="q === 8 ? '' : 'shut'">
     <section class="res" data-section="result">
       <p class="stage-line">Marlowe Dental Partners, answered by Priya Nair</p>
-      <h1>Marlowe Dental Partners is at the <em><span x-cloak x-show="st === 0">Starting</span><span x-cloak x-show="st === 1">Building</span><span x-cloak x-show="st === 2">Scaling</span><span x-cloak x-show="st === 3">Leading</span></em> stage</h1>
+      <h1 tabindex="-1" x-effect="(q === 8) && $el.focus({ preventScroll: true })">Marlowe Dental Partners is at the <em><span x-cloak x-show="st === 0">Starting</span><span x-cloak x-show="st === 1">Building</span><span x-cloak x-show="st === 2">Scaling</span><span x-cloak x-show="st === 3">Leading</span></em> stage</h1>
       <p class="score"><b x-text="o.toFixed(1)"></b> of 4 overall. Peers average <b x-text="po.toFixed(1)"></b>, which puts Marlowe Dental Partners <span x-cloak x-show="ah === 4">ahead in all four areas</span><span x-cloak x-show="ah === 3">ahead in three of the four areas</span><span x-cloak x-show="ah === 2">ahead in two of the four areas</span><span x-cloak x-show="ah === 1">ahead in one of the four areas</span><span x-cloak x-show="ah === 0">level with or behind peers in every area</span>.</p>
       <ol class="ladder">
         <li :class="{ done: st > 0, now: st === 0, peer: pst === 0 }">Starting</li>

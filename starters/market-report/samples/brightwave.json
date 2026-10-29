@@ -241,13 +241,13 @@
       }
     ],
     "narrative": {
-      "segments": "The profile is a US company with 200 to 1,000 staff whose main business is moving or storing freight. Ken Search finds 4,170 of them. Trucking carriers and brokers are the two largest segments, which is where Brightwave's direct competitors sit. Warehousing and forwarding come next, and they buy differently.",
+      "segments": "The profile is a US company with 200 to 1,000 staff whose main business is moving or storing freight. There are 4,170 of them. Trucking carriers and brokers are the two largest segments, which is where Brightwave's direct competitors sit. Warehousing and forwarding come next, and they buy differently.",
       "segments_after": "Intermodal and rail is the smallest segment at 180 companies, and trucking is the largest at 1,240. The market leans towards carriers and brokers, not last mile.",
       "regions": "Freight follows the interstates and the ports. The Midwest holds 1,293 of the 4,170 companies, more than any other region, and the South is close behind with 1,126.",
       "regions_after": "For Brightwave this cuts both ways. The Midwest has the most companies bidding on the same shippers, and it is the region the size comparison in section 6 is drawn from.",
       "buyers": "Five titles decide on operations spend in this market. Across the 4,170 companies, 9,270 people hold one of them. At the smaller companies there are more people in every role than at the larger ones.",
       "buyers_after": "VP or Director of Operations is the largest group at 2,960 people, and Director of Logistics comes next at 2,310. Together they are the best place to start.",
-      "signals": "Two signals say a company may be about to change how it runs operations: it is hiring for operations, or it has new money. Ken Search tracks both from job posts and funding announcements.",
+      "signals": "Two signals say a company may be about to change how it runs operations: it is hiring for operations, or it has new money. Both come from job posts and funding announcements.",
       "signals_after": "Brokers and 3PLs have 323 companies hiring, the most of any segment. 86 companies raised money in the last twelve months, and 61 of them are also hiring.",
       "peers": "Brightwave is in the 201 to 500 band. The peer group is every freight and logistics company in its region, split by headcount, with the share of each band that is hiring.",
       "peers_after": "Brightwave's band holds 276 companies and 83 of them are hiring. The band above it, 501 to 1,000, holds 110 companies and 41 of them are hiring. The share hiring rises with size, from 224 of 902 companies in the smallest band to 5 of 9 in the largest."
@@ -266,6 +266,6 @@
         "body": "86 companies raised money in the last twelve months and 61 of them are hiring. New money tends to turn into new hires and new vendors within a few quarters, so a first message now arrives before their plans are set."
       }
     ],
-    "method": "The counts come from Ken Search at the time this page was filled. Companies: headquartered in the United States, 200 to 1,000 employees, in a freight, trucking, logistics or warehousing industry. People: a current title in one of five operations and finance roles at those companies. Hiring means an operations hiring surge in the last three months. Raised means a funding round in the last 365 days. The peer group is the same industries in the Midwest, split by headcount."
+    "method": "The counts come from company profiles and hiring data at the time this page was filled. Companies: headquartered in the United States, 200 to 1,000 employees, in a freight, trucking, logistics or warehousing industry. People: a current title in one of five operations and finance roles at those companies. Hiring means an operations hiring surge in the last three months. Raised means a funding round in the last 365 days. The peer group is the same industries in the Midwest, split by headcount."
   }
 }

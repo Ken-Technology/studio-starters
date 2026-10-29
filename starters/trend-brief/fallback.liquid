@@ -62,9 +62,9 @@ body{margin:0;background:#fff}
 <p class="kind">Trend brief<span>{{ industry | capitalize | escape }}</span></p>
 </header>
 <section data-section="cover" class="cover">
-<p class="kicker">Three counts from Ken Search</p>
+<p class="kicker">Three company counts</p>
 <h1>A trend brief for {{ short_name | escape }}</h1>
-<p class="dek">Hi {{ person.first_name | default: 'there' | escape }}, I am pulling three counts from Ken Search on {{ industry | escape }} right now: how many companies are hiring fast, raising money, growing or moving up a size band, and what each one means for {{ short_name | escape }}.</p>
+<p class="dek">Hi {{ person.first_name | default: 'there' | escape }}, I am pulling three counts on {{ industry | escape }} right now: how many companies are hiring fast, raising money, growing or moving up a size band, and what each one means for {{ short_name | escape }}.</p>
 <p class="dek">The counts are not on this page yet.</p>
 </section>
 <section data-section="next" class="next">

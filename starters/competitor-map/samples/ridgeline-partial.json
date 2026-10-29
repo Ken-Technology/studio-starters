@@ -100,8 +100,8 @@
       "description": "Fixed-price annual HVAC maintenance subscriptions for school districts and universities in Texas.",
       "markdown": "# Fixed-price maintenance for every campus\n\nCampus Air maintains HVAC systems for school districts and universities across Texas on an annual subscription.\n\n## One fixed price\n\nBudget the year in one line. No surprise invoices.\n\n## Summer ready\n\nWe schedule the heavy work for the breaks so classrooms are never without air."
     },
-    "headline": "Where Ridgeline stands among the four contractors Ken Search puts closest to it",
-    "intro": "Ken Search found four contractors it lists as similar to Ridgeline. Each one is placed from what its own website says about the sites it serves and how much of the building it takes on. One homepage could not be read, so that company is placed from its description alone.",
+    "headline": "Where Ridgeline stands among the four contractors closest to it",
+    "intro": "We found four contractors whose profiles are similar to Ridgeline. Each one is placed from what its own website says about the sites it serves and how much of the building it takes on. One homepage could not be read, so that company is placed from its description alone.",
     "axes": {
       "x": { "name": "Site type", "low": "Offices and schools", "high": "Hospitals and plants" },
       "y": { "name": "Scope", "low": "HVAC only", "high": "Whole facility" }

@@ -213,7 +213,7 @@ figcaption b{color:var(--ink);font-weight:600}
 <div class="plate">
 <div><small>Prepared for</small>{% if person.first_name %}<b>{{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}</b><br>{% if person.title %}{{ person.title | escape }}, {% endif %}{{ acct | escape }}{% else %}<b>{{ acct | escape }}</b>{% endif %}</div>
 <div><small>Written by</small><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title or brand.name %}<br>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {% endif %}{% endif %}{% if brand.name %}{{ brand.name | escape }}{% endif %}{% endif %}</div>
-<div><small>Data</small><b>Ken Search</b>{% if total > 0 %}<br>{% assign nv = total %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %} companies{% if has_roles %}, {% assign nv = people %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %} people{% endif %}{% endif %}</div>
+<div><small>Data</small><b>Company profiles and hiring data</b>{% if total > 0 %}<br>{% assign nv = total %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %} companies{% if has_roles %}, {% assign nv = people %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %} people{% endif %}{% endif %}</div>
 </div>
 <ol class="toc" aria-label="Contents">
 <li>In brief</li>
@@ -264,7 +264,7 @@ figcaption b{color:var(--ink);font-weight:600}
 <text x="{{ s.value | times: 136.0 | divided_by: segmax | plus: 170 | round: 1 }}" y="{{ y | plus: 12.5 }}" class="val">{% assign nv = s.value %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}</text>
 {%- endfor %}
 </svg></div>
-<figcaption><b>Figure 1.</b> Companies by segment, {{ data.scope.size | default: 'all sizes' | escape }}. Segments follow the company's primary industry in Ken Search.{% if total > 0 %} Total {% assign nv = total %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}.{% endif %}</figcaption>
+<figcaption><b>Figure 1.</b> Companies by segment, {{ data.scope.size | default: 'all sizes' | escape }}. Segments follow each company's primary industry in its profile.{% if total > 0 %} Total {% assign nv = total %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}.{% endif %}</figcaption>
 </figure>
 {%- if data.narrative.segments_after and data.narrative.segments_after != '' %}
 <p>{{ data.narrative.segments_after | escape }}</p>
@@ -297,7 +297,7 @@ figcaption b{color:var(--ink);font-weight:600}
 {%- endfor %}
 </ul>
 </div>
-<figcaption><b>Figure 2.</b> Share of companies by headquarters region, from Ken Search company records.</figcaption>
+<figcaption><b>Figure 2.</b> Share of companies by headquarters region, from company profiles.</figcaption>
 </figure>
 {%- if data.narrative.regions_after and data.narrative.regions_after != '' %}
 <p>{{ data.narrative.regions_after | escape }}</p>
@@ -335,7 +335,7 @@ figcaption b{color:var(--ink);font-weight:600}
 {%- endfor %}
 </svg>
 </div>
-<figcaption><b>Figure 3.</b> People in each buying role, by the size of their company. Ken Search, current titles only. Total {% assign nv = people %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}.</figcaption>
+<figcaption><b>Figure 3.</b> People in each buying role, by the size of their company. Current titles only. Total {% assign nv = people %}{% if nv >= 1000000 %}{{ nv | divided_by: 1000000.0 | floor }},{{ nv | divided_by: 1000.0 | floor | modulo: 1000 | prepend: '000' | slice: -3, 3 }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% elsif nv >= 1000 %}{{ nv | divided_by: 1000.0 | floor }},{{ nv | modulo: 1000 | prepend: '000' | slice: -3, 3 }}{% else %}{{ nv }}{% endif %}.</figcaption>
 </figure>
 {%- if data.narrative.buyers_after and data.narrative.buyers_after != '' %}
 <p>{{ data.narrative.buyers_after | escape }}</p>
@@ -451,7 +451,7 @@ figcaption b{color:var(--ink);font-weight:600}
 <section class="sec last" data-section="next">
 <span class="n" aria-hidden="true"></span>
 <div class="body next">
-<p>The companies and people behind this report are in Ken Search, filtered to {{ acct_s | escape }} market. Book 30 minutes and I will go through the list with you.</p>
+<p>The companies and people behind this report come from company profiles and hiring data, filtered to {{ acct_s | escape }} market. Book 30 minutes and I will go through the list with you.</p>
 <p class="sign"><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title or brand.name %}<span>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {% endif %}{% endif %}{% if brand.name %}{{ brand.name | escape }}{% endif %}</span>{% endif %}</p>
 <div class="cta-wrap">{% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking' %}</div>
 {%- if data.method and data.method != '' %}

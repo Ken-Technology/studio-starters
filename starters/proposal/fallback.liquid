@@ -1,7 +1,9 @@
-{%- assign c_primary = brand.colors.primary | default: '#2a4bd7' | escape -%}
-{%- assign c_secondary = brand.colors.secondary | default: '#0e1530' | escape -%}
-{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' | escape -%}
-{%- assign font_body = brand.fonts.body | default: 'Inter' | escape -%}
+{%- assign c_primary = brand.colors.primary | default: '#f7941d' | escape -%}
+{%- assign c_secondary = brand.colors.secondary | default: '#1f2b4d' | escape -%}
+{%- assign font_head = brand.fonts.heading | default: 'Imbue' | escape -%}
+{%- assign font_body = brand.fonts.body | default: 'Albert Sans' | escape -%}
+{%- assign head_q = ':wght@400;700' -%}
+{%- if font_head == 'Imbue' -%}{%- assign head_q = ':opsz,wght@10..100,500..700' -%}{%- endif -%}
 {%- assign company = brand.name | default: 'our company' -%}
 {%- assign acct = account.name | default: 'your company' -%}
 {%- assign person_name = person.first_name | append: ' ' | append: person.last_name | strip -%}
@@ -12,44 +14,45 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Proposal and pilot plan for {{ acct | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | replace: ' ', '+' }}:wght@500;600;700{% if font_body != font_head %}&family={{ font_body | replace: ' ', '+' }}:wght@400;500;600{% endif %}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}{{ head_q }}&amp;display=swap">
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;600&amp;display=swap">
+{%- endif %}
 <style>
-:root{--p:{{ c_primary }};--s:{{ c_secondary }};--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--mute:color-mix(in srgb,var(--s) 60%,#fff);--line:color-mix(in srgb,var(--s) 14%,#fff);--tint:color-mix(in srgb,var(--p) 10%,#fff);--p-deep:color-mix(in srgb,var(--p) 72%,var(--s))}
+:root{--p:{{ c_primary }};--ink:color-mix(in srgb,{{ c_secondary }} 45%,#141b30);--fh:'{{ font_head }}',Georgia,serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif}
 *{box-sizing:border-box}
-body{margin:0;background:#fff;color:var(--s);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased}
-h1{font-family:var(--fh);font-size:2.4rem;line-height:1.15;letter-spacing:-.01em;font-weight:600;margin:0 0 1.2rem;padding-left:1.1rem;border-left:5px solid var(--p);overflow-wrap:break-word}
-p{margin:0 0 .9rem}
-.doc{max-width:46rem;margin:0 auto;padding:0 1.1rem 4rem}
-.run{padding:.8rem 0;border-bottom:1px solid var(--line);font-family:var(--fh);font-weight:600;font-size:.95rem}
-.cover{padding:3rem 0 1rem}
-.kind{font-size:.9rem;color:var(--p-deep);font-weight:500;margin:0 0 1.2rem}
-.sub{color:var(--mute);max-width:32rem;margin:0 0 1.6rem}
-.wait{background:var(--tint);border-left:3px solid var(--p);padding:.8rem 1rem;max-width:32rem;font-size:.95rem;margin:0 0 1.4rem}
-.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.5rem;margin:2rem 0 0;border-top:1px solid var(--s)}
-.meta div{padding:.65rem 0;border-bottom:1px solid var(--line)}
-.meta dt{color:var(--mute);font-variant-caps:all-small-caps;letter-spacing:.04em;font-size:.88rem}
-.meta dd{margin:.05rem 0 0;font-weight:500;font-size:.95rem;overflow-wrap:anywhere}
-.meta dd small{display:block;font-weight:400;color:var(--mute);font-size:.82rem}
-.ken-cta{min-height:44px;line-height:1.4;background:var(--p)!important;color:#fff!important}
-.cover .ken-cta{margin:0 0 1.8rem}
-@media (min-width:640px){.doc{padding:0 2rem 5rem}.cover{padding:4rem 0 1rem}h1{font-size:3.2rem}.meta{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media print{.ken-cta{display:none!important}}
+body{margin:0;background:#fff;color:var(--ink);font:400 1.0625rem/1.55 var(--fb);-webkit-font-smoothing:antialiased}
+p{margin:0}
+.field{background:var(--ink);color:#fff}
+.wrap{max-width:60rem;margin:0 auto;padding:1.25rem clamp(1.25rem,4vw,3rem)}
+.run{font-weight:600;font-size:.875rem;margin-bottom:clamp(2.5rem,8vw,5rem)}
+.mon{font:600 clamp(3rem,11vw,7.5rem)/.88 var(--fh);letter-spacing:-.02em;overflow-wrap:break-word;margin-bottom:2rem}
+h1{font:600 clamp(1.875rem,1.3rem + 2vw,2.75rem)/1.06 var(--fh);margin:0 0 1.25rem;max-width:26ch}
+.sub{font-size:1.25rem;line-height:1.4;max-width:40ch;margin-bottom:1rem}
+.wait{max-width:40ch;margin-bottom:1.75rem}
+.field .ken-cta{display:inline-block!important;min-height:52px;padding:15px 26px!important;border-radius:0!important;background:#fff!important;color:var(--ink)!important;font:600 1.0625rem/1.3 var(--fb)!important;text-decoration:none!important;margin-bottom:2.5rem}
+.ken-cta:focus-visible{outline:3px solid var(--p);outline-offset:3px}
+.by{font-size:1.25rem;line-height:1.4;max-width:44ch;padding-block:2rem 4rem}
+@media print{.ken-cta{display:none!important}.field{background:#fff;color:var(--ink)}}
 </style>
 </head>
 <body>
-<div class="doc">
-<header class="run">{{ brand.name | default: acct | escape }}</header>
+<main>
 <section class="cover" data-section="cover">
-<p class="kind">Proposal and pilot plan</p>
+<div class="field">
+<div class="wrap">
+<header class="run">{{ brand.name | default: acct | escape }}</header>
+<p class="mon">{{ acct | escape }}</p>
 <h1>Proposal and pilot plan for {{ acct | escape }}</h1>
 <p class="sub">A formal proposal for a 30-day pilot: the problem, the scope, the success criteria, a timeline, the team, the investment and the sign-off.</p>
 <p class="wait">The full plan is not ready yet. It follows once the scope is agreed on a short call.</p>
 {%- render 'ken/cta', label: 'Book the scoping call', kind: 'booking' %}
-<dl class="meta">
-<div><dt>Prepared for</dt><dd>{% if person %}{{ person_name | escape }}<small>{{ acct | escape }}</small>{% else %}{{ acct | escape }}{% endif %}</dd></div>
-<div><dt>Prepared by</dt><dd>{{ sender.name | default: company | escape }}<small>{{ company | escape }}</small></dd></div>
-</dl>
-</section>
 </div>
+</div>
+<div class="wrap">
+<p class="by">Prepared for {% if person %}{{ person_name | escape }} at {{ acct | escape }}{% else %}{{ acct | escape }}{% endif %} by {% if sender.name %}{{ sender.name | escape }} at {{ company | escape }}{% else %}{{ company | escape }}{% endif %}.</p>
+</div>
+</section>
+</main>
 </body>
 </html>

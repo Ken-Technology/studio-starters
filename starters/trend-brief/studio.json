@@ -92,7 +92,7 @@
       "kind": "tool",
       "tool": "ken_search.count",
       "requires": ["data.segments"],
-      "args": { "kind": "companies", "segments": "data.segments" },
+      "args": { "kind": "companies", "segments": "{{ data.segments }}" },
       "to": "data.counts"
     },
     {

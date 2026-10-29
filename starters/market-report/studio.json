@@ -595,7 +595,7 @@
       ],
       "args": {
         "kind": "companies",
-        "segments": "data.total_defs"
+        "segments": "{{ data.total_defs }}"
       },
       "to": "data.total"
     },
@@ -608,7 +608,7 @@
       ],
       "args": {
         "kind": "companies",
-        "segments": "data.segment_defs"
+        "segments": "{{ data.segment_defs }}"
       },
       "to": "data.segments"
     },
@@ -621,7 +621,7 @@
       ],
       "args": {
         "kind": "companies",
-        "segments": "data.region_defs"
+        "segments": "{{ data.region_defs }}"
       },
       "to": "data.regions"
     },
@@ -634,7 +634,7 @@
       ],
       "args": {
         "kind": "people",
-        "segments": "data.role_small_defs"
+        "segments": "{{ data.role_small_defs }}"
       },
       "to": "data.roles_small"
     },
@@ -647,7 +647,7 @@
       ],
       "args": {
         "kind": "people",
-        "segments": "data.role_large_defs"
+        "segments": "{{ data.role_large_defs }}"
       },
       "to": "data.roles_large"
     },
@@ -660,7 +660,7 @@
       ],
       "args": {
         "kind": "companies",
-        "segments": "data.signal_defs"
+        "segments": "{{ data.signal_defs }}"
       },
       "to": "data.signals"
     },
@@ -673,7 +673,7 @@
       ],
       "args": {
         "kind": "companies",
-        "segments": "data.hiring_defs"
+        "segments": "{{ data.hiring_defs }}"
       },
       "to": "data.hiring"
     },
@@ -686,7 +686,7 @@
       ],
       "args": {
         "kind": "companies",
-        "segments": "data.band_defs"
+        "segments": "{{ data.band_defs }}"
       },
       "to": "data.bands"
     },
@@ -699,7 +699,7 @@
       ],
       "args": {
         "kind": "companies",
-        "segments": "data.band_hiring_defs"
+        "segments": "{{ data.band_hiring_defs }}"
       },
       "to": "data.band_hiring"
     },

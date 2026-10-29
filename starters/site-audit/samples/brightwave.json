@@ -64,16 +64,14 @@
         "where": "Hero headline",
         "before": "Moving your world forward, one shipment at a time.",
         "after": "Full truckload and LTL across the Midwest, run out of Chicago and Columbus.",
-        "why": "Says what you haul, where, and where it runs from. A shipper searching for Midwest capacity knows in one read that this is the right site.",
-        "grade": 8.4
+        "why": "Says what you haul, where, and where it runs from. A shipper searching for Midwest capacity knows in one read that this is the right site."
       },
       {
         "kind": "button",
         "where": "Main button",
         "before": "Learn more",
         "after": "Request a quote",
-        "why": "Names what happens next and points at the quote form instead of the About page, which is the page a shipper with a load to cover came for.",
-        "grade": 9.1
+        "why": "Names what happens next and points at the quote form instead of the About page, which is the page a shipper with a load to cover came for."
       }
     ],
     "callouts": [

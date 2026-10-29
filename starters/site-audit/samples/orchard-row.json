@@ -69,16 +69,14 @@
         "where": "Hero headline",
         "before": "Payroll that works the way your business does.",
         "after": "Payroll and tip pooling for restaurants and cafes with 5 to 100 staff.",
-        "why": "Names who it is for and two things a restaurant owner cares about. An owner knows in one read that this was built for a kitchen, not an office.",
-        "grade": 8.7
+        "why": "Names who it is for and two things a restaurant owner cares about. An owner knows in one read that this was built for a kitchen, not an office."
       },
       {
         "kind": "button",
         "where": "Main button",
         "before": "Start free trial",
         "after": "Try payroll free for 14 days",
-        "why": "Says what you get and for how long. The buyer knows what the click starts before they make it.",
-        "grade": 7.9
+        "why": "Says what you get and for how long. The buyer knows what the click starts before they make it."
       }
     ],
     "callouts": [

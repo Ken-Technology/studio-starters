@@ -1,0 +1,14 @@
+{
+  "description": "The sender's homepage rewritten for one account: facts from their site, use cases for their role, a customer story, a rollout and a booking block.",
+  "category": "prospecting",
+  "tags": ["homepage", "landing page", "account-based", "personalized"],
+  "featured": true,
+  "needs": [],
+  "version": "1.0.0",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "brightwave", "label": "Brightwave Logistics" },
+    { "id": "cedar-hollow-shared", "label": "Cedar Hollow Veterinary, shared link (no person)" },
+    { "id": "marlow-packaging", "label": "Marlow Packaging" }
+  ]
+}

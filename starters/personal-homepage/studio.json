@@ -1,0 +1,224 @@
+{
+  "kenStudio": "1",
+  "name": "Your homepage, for them",
+  "type": "landing_page",
+  "format": "page",
+  "slug": "for-you",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "site": { "type": "object" },
+      "careers": { "type": "object" },
+      "signals_raw": {
+        "type": "array",
+        "maxItems": 10,
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string", "maxLength": 40 },
+            "title": { "type": "string", "maxLength": 240 },
+            "date": { "type": "string", "maxLength": 10 },
+            "source_url": { "type": "string", "maxLength": 400 }
+          }
+        }
+      },
+      "product": { "type": "string", "maxLength": 3000 },
+      "stories": {
+        "type": "array",
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "customer": { "type": "string", "maxLength": 80 },
+            "industry": { "type": "string", "maxLength": 120 },
+            "size_band": { "type": "string", "maxLength": 20 },
+            "city": { "type": "string", "maxLength": 60 },
+            "summary": { "type": "string", "maxLength": 500 },
+            "quote": { "type": "string", "maxLength": 320 },
+            "quote_author_title": { "type": "string", "maxLength": 80 },
+            "chart_title": { "type": "string", "maxLength": 80 },
+            "chart_note": { "type": "string", "maxLength": 100 },
+            "chart_points": { "type": "string", "maxLength": 200 }
+          },
+          "required": ["customer", "summary", "chart_title", "chart_points"]
+        }
+      },
+      "hero": {
+        "type": "object",
+        "properties": {
+          "headline": { "type": "string", "minLength": 20, "maxLength": 90 },
+          "sub": { "type": "string", "minLength": 80, "maxLength": 320 }
+        },
+        "required": ["headline", "sub"]
+      },
+      "noticed": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "fact": { "type": "string", "minLength": 20, "maxLength": 150 },
+            "source": { "type": "string", "minLength": 4, "maxLength": 60 },
+            "source_url": { "type": "string", "format": "uri", "maxLength": 400 }
+          },
+          "required": ["fact", "source", "source_url"]
+        }
+      },
+      "uses_lead": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 240,
+        "fallback": "Three places {{ brand.name | default: 'we' }} could help {{ account.name }}, picked from what your site shows."
+      },
+      "uses": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "minLength": 10, "maxLength": 60 },
+            "today": { "type": "string", "minLength": 40, "maxLength": 230 },
+            "after": { "type": "string", "minLength": 40, "maxLength": 250 }
+          },
+          "required": ["title", "today", "after"]
+        }
+      },
+      "story": {
+        "type": "object",
+        "properties": {
+          "headline": { "type": "string", "minLength": 20, "maxLength": 90 },
+          "who": { "type": "string", "minLength": 60, "maxLength": 340 },
+          "quote": {
+            "type": "object",
+            "properties": {
+              "text": { "type": "string", "maxLength": 280 },
+              "author_title": { "type": "string", "maxLength": 80 }
+            },
+            "required": ["text"]
+          },
+          "chart_title": { "type": "string", "maxLength": 80 },
+          "chart_note": { "type": "string", "maxLength": 100 },
+          "chart": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": { "type": "string", "maxLength": 10 },
+                "value": { "type": "number" }
+              },
+              "required": ["label", "value"]
+            }
+          }
+        },
+        "required": ["headline", "who", "chart_title", "chart"]
+      },
+      "rollout_lead": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 260,
+        "fallback": "Three steps, starting small at {{ account.name }} and widening once the first one has worked."
+      },
+      "rollout": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "when": { "type": "string", "minLength": 3, "maxLength": 24 },
+            "title": { "type": "string", "minLength": 3, "maxLength": 32 },
+            "body": { "type": "string", "minLength": 40, "maxLength": 230 }
+          },
+          "required": ["when", "title", "body"]
+        }
+      },
+      "faq": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "q": { "type": "string", "minLength": 10, "maxLength": 90 },
+            "a": { "type": "string", "minLength": 40, "maxLength": 330 }
+          },
+          "required": ["q", "a"]
+        }
+      }
+    },
+    "required": ["hero", "noticed", "uses", "rollout", "faq"]
+  },
+  "recipe": [
+    {
+      "id": "site",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}", "maxChars": 12000, "mode": "markdown" },
+      "to": "data.site"
+    },
+    {
+      "id": "careers",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}/careers", "maxChars": 6000, "mode": "markdown" },
+      "to": "data.careers"
+    },
+    { "id": "signals", "kind": "bind", "from": "account.signals", "to": "data.signals_raw" },
+    { "id": "product", "kind": "bind", "from": "knowledge.product", "to": "data.product" },
+    {
+      "id": "write",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.site"],
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "account.dossier.why_now", "person.first_name", "person.title", "sender.name", "brand.name", "data.product", "data.site", "data.careers", "data.signals_raw"],
+      "to": ["data.hero", "data.noticed", "data.uses_lead", "data.uses", "data.rollout_lead", "data.rollout", "data.faq"],
+      "prompt": "You are rewriting {{ brand.name | default: 'our company' }}'s homepage as a page for one account, {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it. \"We\" and \"us\" mean {{ brand.name | default: 'our company' }}. The reader is {{ person.first_name | default: 'someone' }}, {{ person.title | default: 'on the team that would use this' }}. If there is no name or title, write for the team that would own this at {{ account.name }}.\n\nInputs. What we sell, in our own words: {{ data.product | default: 'not given' }}. Their website: data.site. Their careers page: data.careers (may be empty). News on them: data.signals_raw (may be empty). What we know about them: {{ account.industry | default: 'industry unknown' }}, {{ account.size_band | default: 'size unknown' }} people, {{ account.dossier.summary | default: 'no summary' }} Why now: {{ account.dossier.why_now | default: 'none' }}. Nothing else.\n\nReturn JSON with these keys:\n- hero: {headline, sub}. headline is 20 to 90 characters and names the result {{ account.name }}'s team wants, in their industry's words, not our product category. sub is 2 sentences, 80 to 320 characters: what we do for a team like theirs, tied to one fact from their site. Do not name the person in either.\n- noticed: 3 items {fact, source, source_url}, the three most telling things we can see about {{ account.name }}. fact is one sentence of at most 150 characters, written as what you see, like \"Seven terminals, each with its own dispatch desk.\" source is where you saw it, at most 60 characters, like \"brightwave.example/locations\" or \"brightwave.example/careers, October 2026\" (add a month and year only when the page or news item gives one). source_url is the full https URL of that page or of the news item's source_url. Every fact must be on data.site, data.careers or in data.signals_raw, and the source must be the page it is on. If you can support only 2, return 2. Never guess a count, a place or a date.\n- uses_lead: one sentence, 40 to 240 characters, saying these three are picked for {{ person.title | default: 'their team' }} at {{ account.name }}, and what they were picked from (their site, their careers page, news).\n- uses: 3 items {title, today, after}, each a job we would do for {{ person.title | default: 'their team' }}. title is a short plain phrase of at most 60 characters. today starts from something specific about {{ account.name }} that you can see in the inputs and says what that means for the work today, in 1 or 2 sentences of at most 230 characters. after says what changes with {{ brand.name | default: 'us' }}, in 1 or 2 sentences of at most 250 characters, using only what data.product says we do. Never put a number, a customer or a time saving in today or after unless an input states it.\n- rollout_lead: one sentence, 40 to 260 characters, on how we would start small at {{ account.name }} and where. Name a place or team only if an input shows it.\n- rollout: 3 steps {when, title, body}. when is at most 24 characters: use a timing only when data.product states one (like \"Weeks 1 and 2\"); otherwise use \"First\", \"Then\" and \"After that\". title is at most 32 characters. body is 1 or 2 sentences of at most 230 characters on what happens and what changes for their people. Use only steps that data.product supports. Do not name anyone at {{ account.name }} except {{ person.first_name | default: 'the reader' }}.\n- faq: 3 or 4 items {q, a}, the questions someone in {{ person.title | default: 'their role' }} would ask before a first call. q is at most 90 characters. a is 1 to 3 sentences, 40 to 330 characters, answered from data.product only. When data.product does not say, answer that it depends on the setup and that we go through it on the call. If asked about price, never give an amount; say we share pricing on the call.\n\nFacts: use only the inputs. Never invent customers, people, numbers, news, quotes, integrations or results. Do not state anything about {{ account.name }} that the inputs do not show.\n\nVoice: one person writing to one person. Plain, specific, a little warm. Short sentences a person would say out loud. Sentence case everywhere.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. No prices. No hype words (revolutionize, supercharge, unlock, leverage, seamless, robust, game changer, cutting-edge, transform). Never \"real\" as emphasis."
+    },
+    {
+      "id": "peers",
+      "kind": "dataset",
+      "dataset": "customer-stories",
+      "where": [{ "column": "industry", "op": "eq", "value": "account.industry" }],
+      "limit": 3,
+      "to": "data.stories"
+    },
+    {
+      "id": "peer_story",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.stories"],
+      "inputs": ["account.name", "account.industry", "account.size_band", "brand.name", "data.stories"],
+      "to": ["data.story"],
+      "prompt": "You are picking one customer story for the homepage that {{ brand.name | default: 'our company' }} sends to {{ account.name }} ({{ account.industry | default: 'industry unknown' }}, {{ account.size_band | default: 'size unknown' }} people).\n\nInput: data.stories are our customer stories from the same industry. Each row has customer, industry, size_band, city, summary, quote, quote_author_title, chart_title, chart_note and chart_points. chart_points is a list like \"Wk 1:142|2:131|Wk 8:76\", each point label:value.\n\nPick the row whose size_band is closest to {{ account.size_band | default: 'unknown' }}. If data.stories is empty, return {} and nothing else.\n\nReturn JSON for that one row:\n- headline: 20 to 90 characters, saying a customer like {{ account.name }} ran something similar and what happened, like \"A carrier like Brightwave ran the same pilot in spring\". Only claim what the row says.\n- who: 2 or 3 sentences, 60 to 340 characters: the customer, its size and city when the row gives them, and what it did, from summary only.\n- quote: {text, author_title}, copied word for word from quote and quote_author_title. Leave the key out when the row has no quote. Never name the person.\n- chart_title and chart_note: copied exactly from the row.\n- chart: 3 to 8 items {label, value} read from chart_points in order. label is at most 10 characters, copied as written. value is the number, copied exactly. Add, drop or change no point.\n\nFacts: use only the chosen row. Never invent customers, numbers or quotes.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. No hype words (revolutionize, supercharge, unlock, leverage, seamless, robust, game changer, cutting-edge, transform). Never \"real\" as emphasis."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.hero", "data.noticed", "data.uses_lead", "data.uses", "data.rollout_lead", "data.rollout", "data.faq", "data.story"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["revolutionize", "supercharge", "unlock", "seamless", "game-changer", "game changer", "cutting-edge", "leverage", "robust", "transform"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true,
+        "skip": ["source", "source_url", "label", "customer"]
+      },
+      "rubric": "Grade this page the way its reader sees it: someone on a busy day who opens a link from a stranger and decides in a few seconds whether it is about them. 10 is a page that is clearly about their company, says only what is true, and reads like one person wrote it.\nScore these, 0 to 10 each:\n- specific: the hero, the noticed facts and the use cases are about this account and could not go to another one unchanged.\n- sourced: every noticed fact is on the site text or the news below, and its source says where.\n- plain: short sentences a person would say out loud; no jargon, no stacked nouns, no marketing adjectives.\n- grounded: what we say we do comes from the product text below; the rollout and FAQ promise nothing it does not say.\nAnswer yes or no:\n- invented: is there a customer, number, news item, quote, integration or result that no input supports? Quote it.\n- weird_word: is there a phrase a person would not say out loud? Quote it.\nPass when the overall score is 7.5 or higher, no 0 to 10 check is 6 or lower, invented is no and weird_word is no. On a fail, name the check and quote the phrase to change. The fix never supplies replacement names, numbers, customers or results.\nWhat we sell: {{ data.product | default: 'not given' }}\nSite text ({{ data.site.url | default: 'no site' }}): {{ data.site.title }}. {{ data.site.description }} {{ data.site.markdown }}\nCareers text: {{ data.careers.markdown | default: 'none' }}\nNews: {{ data.signals_raw | json }}\nStory rows: {{ data.stories | json }}"
+    }
+  ],
+  "sections": [
+    { "id": "hero", "label": "Hero" },
+    { "id": "uses", "label": "Use cases" },
+    { "id": "proof", "label": "Customer story" },
+    { "id": "rollout", "label": "Rollout" },
+    { "id": "faq", "label": "Questions" },
+    { "id": "booking", "label": "Book a time" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

@@ -1,0 +1,283 @@
+{
+  "account": {
+    "name": "Redhill Fabrication",
+    "domain": "redhill.example",
+    "industry": "machinery manufacturing",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Custom sheet-metal and structural fabricator with one plant.",
+      "why_now": "Lost two large bids this quarter."
+    }
+  },
+  "person": {
+    "first_name": "Ruth",
+    "last_name": "Castellano",
+    "title": "Operations Manager"
+  },
+  "sender": {
+    "name": "Dev Anand",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Forgeline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#e4572e",
+      "secondary": "#1c1c1c"
+    },
+    "fonts": {
+      "heading": "Space Grotesk",
+      "body": "IBM Plex Sans"
+    }
+  },
+  "data": {
+    "notes": "Redhill Fabrication (redhill.example). Custom sheet-metal and structural fabricator, one plant, about 90 people. Champion: Ruth Castellano, Operations Manager.\nCalls: Oct 15 (Ruth Castellano, Gary Lindqvist, Pablo Ortiz, Jess Hart) and Oct 23 (Ruth Castellano, Jess Hart).\nQuotes, Oct 15. Ruth Castellano, Operations Manager: \"We lose bids on speed. By the time our quote lands the buyer has two others and a favorite.\" Gary Lindqvist, Lead Estimator: \"Two of us price everything. A big drawing set eats a full day and the small jobs wait behind it.\"\nQuote, Oct 23. Pablo Ortiz, Sales Manager: \"I promise buyers a quote in two days and I find out Friday whether we made it.\"\nNumbers from Gary's September quote log, shared Oct 21: 46 quote requests received, 10 answered within 2 working days; median 62 hours from request to quote sent; about 2.5 estimator hours per quote.\nPilot scope: the sheet-metal line, which gets about 60 percent of requests. Quotes are built from drawings and the ERP price list, read-only. Weekly 30-minute review with Ruth and Kit.\nOut until year one: structural quotes, the ERP write-back, customer portal.\nWants: median request to quote at 24 hours or less; 70 percent of quotes out within 2 working days; estimator time per quote at 1.5 hours or less. Today 10 of 46 quotes go out within 2 working days (22 percent).\nStakeholders: Ruth Castellano (sponsor and pilot lead, 1 hour a week); Gary Lindqvist (estimating, 3 hours a week); Pablo Ortiz (sales, 30 minutes a week); Jess Hart, Controller (pricing rules sign-off and the readout, 2 hours in total).\nDates: proposal sent Oct 29, valid for 30 days. Scoping call Nov 3. Price list export Nov 6. Proposal version 2 on Nov 9. Decision on the pilot Nov 12. Kickoff Nov 16. Pilot Nov 16 to Dec 16. Weekly reviews Nov 23, Nov 30, Dec 7 and Dec 14. Readout Dec 17. Decision on year one Dec 18.",
+    "offer": "Pilot: 30 days on one production line, fixed fee $2,900. It covers the price-list and drawing intake setup, training, four weekly reviews and the readout. The pilot fee is credited in full against year one if the customer signs by Dec 31, 2026.\nYear one: sheet-metal and structural quoting for one plant, up to 8 users, $24,000 a year, billed annually.\nPrices in US dollars, before tax. Proposals are valid for 30 days.",
+    "our_team": "Dev Anand, Account Executive: owns the proposal and the commercial side, as needed.\nLena Brandt, Solutions Engineer: price list setup and quote rules, weeks 1 to 3.\nKit Moreau, Customer Success: training, the weekly review and the readout, through the end of the pilot.",
+    "title": "Faster quotes for Redhill's sheet-metal line",
+    "sub": "A 30-day pilot on the sheet-metal line, the criteria it has to meet, and what year one would involve. Written to be forwarded: everything Jess and Gary need is in here.",
+    "valid_until": "Nov 28, 2026",
+    "pilot_window": "Nov 16 to Dec 16",
+    "problem_when": "Calls of Oct 15 and 23",
+    "problem_lead": "These are the three things we heard on Oct 15 and Oct 23, as close to how they were said as our notes allow.",
+    "quotes": [
+      {
+        "text": "We lose bids on speed. By the time our quote lands the buyer has two others and a favorite.",
+        "who": "Ruth Castellano, Operations Manager",
+        "date": "Oct 15"
+      },
+      {
+        "text": "Two of us price everything. A big drawing set eats a full day and the small jobs wait behind it.",
+        "who": "Gary Lindqvist, Lead Estimator",
+        "date": "Oct 15"
+      },
+      {
+        "text": "I promise buyers a quote in two days and I find out Friday whether we made it.",
+        "who": "Pablo Ortiz, Sales Manager",
+        "date": "Oct 23"
+      }
+    ],
+    "cost_source": "From Gary's September quote log, shared Oct 21.",
+    "cost_today": [
+      {
+        "value": "10 of 46",
+        "label": "quote requests were answered within 2 working days"
+      },
+      {
+        "value": "62 h",
+        "label": "median time from request to quote sent"
+      },
+      {
+        "value": "2.5 h",
+        "label": "of estimator time on each quote, on average"
+      }
+    ],
+    "problem_close": "The estimators are not slow. Every quote starts from a blank sheet and the same price list is retyped each time.",
+    "scope_lead": "One quote builder for the sheet-metal line, fed by your drawings and your ERP price list. The platform reads the price list; nothing is written back.",
+    "scope_in": [
+      "Read-only import of the ERP price list for sheet-metal parts",
+      "Quote draft built from the drawing set, with every price line traceable",
+      "Review screen for Gary and the second estimator before a quote goes out",
+      "Quote status board for Pablo's sales team",
+      "Weekly 30-minute review with Ruth and Kit"
+    ],
+    "scope_out": [
+      "Structural quotes",
+      "Write-back to the ERP",
+      "Customer portal"
+    ],
+    "scope_close": "If the pilot passes, year one covers sheet-metal and structural quoting for the whole plant, up to 8 users.",
+    "pilot_lead": "Nov 16 to Dec 16 on the sheet-metal line with Gary Lindqvist's estimating team. Three criteria, measured against September.",
+    "criteria": [
+      {
+        "name": "Median hours from request to quote sent",
+        "baseline": "62",
+        "target": "24 or fewer",
+        "measured_by": "Quote log timestamps"
+      },
+      {
+        "name": "Quotes sent within 2 working days",
+        "baseline": "22 percent",
+        "target": "70 percent",
+        "measured_by": "Quote log timestamps"
+      },
+      {
+        "name": "Estimator hours per quote",
+        "baseline": "2.5",
+        "target": "1.5 or fewer",
+        "measured_by": "Weekly time check"
+      }
+    ],
+    "pass_rule": "The pilot passes when all three criteria are met across the last two weeks, Dec 3 to Dec 16. If it does not pass, there is no year-one commitment and the pilot fee is the only cost.",
+    "timeline_lead": "Six weeks from the scoping call to a decision on year one. The price list export and the quote rules run in parallel so the pilot can start on Nov 16.",
+    "timeline_span": "Nov 3 to Dec 18",
+    "weeks": [
+      "Nov 2",
+      "Nov 9",
+      "Nov 16",
+      "Nov 23",
+      "Nov 30",
+      "Dec 7",
+      "Dec 14",
+      "Dec 21"
+    ],
+    "tasks": [
+      {
+        "label": "Price list export",
+        "who": "Jess",
+        "side": "them",
+        "span": {
+          "start": 1,
+          "end": 4
+        }
+      },
+      {
+        "label": "Quote rules and setup",
+        "who": "Lena",
+        "side": "us",
+        "span": {
+          "start": 2,
+          "end": 6
+        }
+      },
+      {
+        "label": "Estimator training",
+        "who": "Kit",
+        "side": "us",
+        "span": {
+          "start": 5,
+          "end": 6
+        }
+      },
+      {
+        "label": "Pilot on the sheet-metal line",
+        "who": "Gary's team",
+        "side": "them",
+        "span": {
+          "start": 5,
+          "end": 14
+        }
+      },
+      {
+        "label": "Weekly review",
+        "who": "Ruth, Kit",
+        "side": "us",
+        "marks": [
+          7,
+          9,
+          11,
+          13
+        ]
+      },
+      {
+        "label": "Readout",
+        "who": "Ruth, Jess, Dev",
+        "side": "us",
+        "marks": [
+          14
+        ]
+      },
+      {
+        "label": "Decision on year one",
+        "who": "Ruth, Jess",
+        "side": "them",
+        "marks": [
+          14
+        ]
+      }
+    ],
+    "timeline_note": "Diamonds are single-day events. The Dec 18 decision keeps the pilot credit inside the year.",
+    "team_lead": "Seven people. Ruth, Gary and Pablo give about four and a half hours a week, plus 2 hours from Jess.",
+    "team": [
+      {
+        "name": "Ruth Castellano",
+        "title": "Operations Manager, Redhill",
+        "role": "Executive sponsor and pilot lead. Owns the pass decision.",
+        "time": "1 h a week"
+      },
+      {
+        "name": "Gary Lindqvist",
+        "title": "Lead Estimator, Redhill",
+        "role": "Reviews every draft quote and checks the price lines.",
+        "time": "3 h a week"
+      },
+      {
+        "name": "Pablo Ortiz",
+        "title": "Sales Manager, Redhill",
+        "role": "Uses the status board with his team.",
+        "time": "30 min a week"
+      },
+      {
+        "name": "Jess Hart",
+        "title": "Controller, Redhill",
+        "role": "Signs off the pricing rules and joins the readout.",
+        "time": "2 h in total"
+      },
+      {
+        "name": "Dev Anand",
+        "title": "Account Executive, Forgeline",
+        "role": "Owns this plan and the commercial side.",
+        "time": "As needed"
+      },
+      {
+        "name": "Lena Brandt",
+        "title": "Solutions Engineer, Forgeline",
+        "role": "Price list setup and quote rules.",
+        "time": "Weeks 1 to 3"
+      },
+      {
+        "name": "Kit Moreau",
+        "title": "Customer Success, Forgeline",
+        "role": "Training, the weekly review and the readout.",
+        "time": "Through Dec 16"
+      }
+    ],
+    "investment_lead": "A fixed pilot fee, credited in full against year one if Redhill signs by Dec 31, 2026.",
+    "investment": [
+      {
+        "item": "30-day pilot, sheet-metal line",
+        "covers": "Price list and drawing intake setup, training, four weekly reviews, readout",
+        "amount": "$2,900"
+      },
+      {
+        "item": "Year one, one plant",
+        "covers": "Sheet-metal and structural quoting, up to 8 users",
+        "amount": "$24,000 a year"
+      }
+    ],
+    "investment_total": {
+      "label": "Year one, with the pilot credit applied",
+      "amount": "$21,100"
+    },
+    "investment_note": "Prices in US dollars, before tax. Year one is billed annually.",
+    "next_steps": [
+      {
+        "date": "Nov 3",
+        "title": "Scoping call",
+        "detail": "Agree the criteria and the part families in the pilot. Ruth, Gary, Jess, Dev, Lena."
+      },
+      {
+        "date": "Nov 6",
+        "title": "Price list export",
+        "detail": "Jess sends the sheet-metal price list from the ERP."
+      },
+      {
+        "date": "Nov 9",
+        "title": "Final proposal",
+        "detail": "Dev sends version 2 with anything that changed on the call."
+      },
+      {
+        "date": "Nov 12",
+        "title": "Decision on the pilot",
+        "detail": "Ruth and Jess approve, below or by reply."
+      },
+      {
+        "date": "Nov 16",
+        "title": "Kickoff on the line",
+        "detail": "Gary's team, Kit and Lena, on site."
+      }
+    ],
+    "signoff_lead": "Approval of the 30-day pilot and its criteria at the fee above. Year one is a separate decision after the readout."
+  }
+}

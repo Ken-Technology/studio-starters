@@ -1,0 +1,69 @@
+{
+  "account": {
+    "name": "Marlowe Dental Partners",
+    "domain": "marlowedental.example",
+    "industry": "hospitals and health care",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Marlowe Dental Partners runs eleven general dentistry clinics in one metro area, with a shared back office for billing and scheduling.",
+      "why_now": "Added two clinics this year.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Priya",
+    "last_name": "Nair",
+    "title": "Practice Operations Director"
+  },
+  "sender": {
+    "name": "Elena Brandt",
+    "title": "Customer Success Lead",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Cedarline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1f3d36",
+      "secondary": "#2b2430"
+    },
+    "fonts": {
+      "heading": "Fraunces",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "peers": [
+      {
+        "industry": "hospitals and health care",
+        "peer_group": "multi-site health care providers with 50 to 250 people",
+        "assessments": 41,
+        "score_1": 2.3,
+        "score_2": 2.7,
+        "score_3": 1.8,
+        "score_4": 2.5,
+        "source": "Collected by Cedarline in 2026"
+      }
+    ],
+    "headline": "How mature are Marlowe's clinic operations?",
+    "intro": "Priya, every new clinic adds a copy of the same routines. Three minutes shows which ones are written down well enough to copy again.",
+    "steps": [
+      {
+        "title": "Write down the ten routines every clinic repeats",
+        "body": "Opening, patient check-in, sterilization logs, handoffs to billing. One page each, owned by one person, so the eleventh clinic runs like the first."
+      },
+      {
+        "title": "Pick five numbers every clinic manager reads weekly",
+        "body": "Chair utilization, no-shows, claims sent late and similar figures. Put them in one view so a manager sees their clinic next to the others without asking the back office."
+      },
+      {
+        "title": "Move appointment reminders and claim checks to rules",
+        "body": "Reminders, recall lists and claim checks repeat all day in every clinic. Let software run them and keep people for the exceptions."
+      },
+      {
+        "title": "Name one owner for clinic improvement",
+        "body": "One person with a short backlog and two hours a week. With a new clinic every few months, it keeps the fixes from one clinic reaching the others."
+      }
+    ]
+  }
+}

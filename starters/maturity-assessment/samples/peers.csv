@@ -1,0 +1,8 @@
+industry,peer_group,assessments,score_1,score_2,score_3,score_4,source
+"transportation, logistics, supply chain and storage","logistics companies between 200 and 1,000 people",64,2.6,2.1,1.9,2.8,Collected by Northbeam in 2026
+hospitals and health care,multi-site health care providers with 50 to 250 people,41,2.3,2.7,1.8,2.5,Collected by Northbeam in 2026
+construction,construction firms with up to 50 people,87,1.9,1.6,1.4,2.2,Collected by Northbeam in 2026
+software development,software companies between 50 and 500 people,112,2.9,3.1,2.7,2.6,Collected by Northbeam in 2026
+financial services,"financial services firms between 100 and 1,000 people",58,3.0,2.8,2.4,2.7,Collected by Northbeam in 2026
+manufacturing,"manufacturers between 100 and 1,000 people",73,2.4,2.0,2.1,2.3,Collected by Northbeam in 2026
+retail,retailers between 50 and 500 people,95,2.2,2.5,2.3,2.1,Collected by Northbeam in 2026

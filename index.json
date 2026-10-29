@@ -170,6 +170,51 @@
       ]
     },
     {
+      "slug": "maturity-assessment",
+      "name": "Maturity assessment",
+      "type": "calculator",
+      "format": "page",
+      "showcases": [
+        "dataset",
+        "prompt",
+        "grade",
+        "ken/cta"
+      ],
+      "description": "A self-assessment page: eight questions, a score and stage, a peer comparison from your CSV. Ken writes each account's intro and next steps.",
+      "category": "interactive",
+      "tags": [
+        "assessment",
+        "maturity",
+        "benchmark",
+        "quiz",
+        "scorecard"
+      ],
+      "featured": true,
+      "needs": [
+        "dataset"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "brightwave",
+          "label": "Brightwave Logistics, filled for one person"
+        },
+        {
+          "id": "marlowe-dental",
+          "label": "Marlowe Dental Partners, dark brand with a serif"
+        },
+        {
+          "id": "stonegate-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "quillmark-partial",
+          "label": "Quillmark Publishing, no peer data"
+        }
+      ]
+    },
+    {
       "slug": "personal-homepage",
       "name": "Your homepage, for them",
       "type": "landing_page",

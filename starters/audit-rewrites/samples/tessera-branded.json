@@ -14,7 +14,7 @@
   "brand": {
     "name": "Copper and Co",
     "logo_url": null,
-    "colors": { "primary": "#0f5f4a", "secondary": "#c2410c" },
+    "colors": { "primary": "#0f5f4a", "accent": "#c2410c", "secondary": "#c2410c" },
     "fonts": { "heading": "Fraunces", "body": "Work Sans" }
   },
   "data": {

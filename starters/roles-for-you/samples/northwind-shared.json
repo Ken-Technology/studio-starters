@@ -40,7 +40,7 @@
   "brand": {
     "name": "Northwind Health",
     "logo_url": null,
-    "colors": { "primary": "#2b3a67", "secondary": "#e0a100" },
+    "colors": { "primary": "#2b3a67", "accent": "#e0a100", "secondary": "#e0a100" },
     "fonts": { "heading": "Fraunces", "body": "Inter" }
   },
   "data": {

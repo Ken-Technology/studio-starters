@@ -8,7 +8,7 @@
       "format": "doc",
       "description": "A multi-page doc with a campaign built for one account: strategy, segment and funnel charts, sample leads from Ken Search, and graded first emails. Downloads as a PDF.",
       "showcases": ["tool", "bind", "prompt", "grade", "ken/chart", "doc"],
-      "version": "1.3.0"
+      "version": "1.3.1"
     },
     {
       "slug": "rd-ken-native",
@@ -17,7 +17,7 @@
       "format": "page",
       "description": "A one-page campaign preview for an account: the people Ken Search found for them and the first emails, written by Ken's copy step.",
       "showcases": ["tool", "ken_search.people", "ken.copy", "prompt"],
-      "version": "1.1.1"
+      "version": "1.1.2"
     },
     {
       "slug": "rd-your-product",
@@ -26,7 +26,7 @@
       "format": "page",
       "description": "Shows an account what your product finds when it runs on their own data. Your endpoint does the work through a webhook step.",
       "showcases": ["webhook", "prompt"],
-      "version": "1.1.1"
+      "version": "1.1.2"
     },
     {
       "slug": "benchmark-report",
@@ -35,7 +35,7 @@
       "format": "doc",
       "description": "A short report that puts one account next to its peers, from a CSV you upload to the template. Downloads as a PDF.",
       "showcases": ["dataset", "prompt", "ken/chart", "doc"],
-      "version": "1.1.1"
+      "version": "1.1.2"
     },
     {
       "slug": "audit-rewrites",
@@ -44,7 +44,7 @@
       "format": "page",
       "description": "Scrapes an account's site, lists what gets in a buyer's way, and rewrites three pieces of copy. A grader checks the rewrites before the page goes out.",
       "showcases": ["tool", "scrape.page", "prompt", "grade"],
-      "version": "1.0.2"
+      "version": "1.0.3"
     },
     {
       "slug": "event-invite",
@@ -53,7 +53,7 @@
       "format": "page",
       "description": "A personal invite to a dinner or webinar with a form that saves the seat. Each submission becomes a signal on the account.",
       "showcases": ["ken/form", "bind", "prompt"],
-      "version": "1.0.2"
+      "version": "1.0.3"
     },
     {
       "slug": "case-study",
@@ -62,7 +62,7 @@
       "format": "page",
       "description": "Picks the customer story closest to each account from a CSV of your case studies and retells it for them.",
       "showcases": ["dataset", "prompt", "ken/cta"],
-      "version": "1.0.2"
+      "version": "1.0.3"
     },
     {
       "slug": "role-pitch",
@@ -71,7 +71,7 @@
       "format": "page",
       "description": "One page per candidate on a recruiting campaign: why their background fits the role, the role and the team, the pay range and the hiring process, with a booking button and an optional video from the hiring manager.",
       "showcases": ["bind", "prompt", "person", "role", "ken/cta", "video"],
-      "version": "1.0.0"
+      "version": "1.0.1"
     },
     {
       "slug": "roles-for-you",
@@ -80,7 +80,7 @@
       "format": "page",
       "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
       "showcases": ["prompt", "person", "roles", "ken/cta"],
-      "version": "1.0.0"
+      "version": "1.0.1"
     }
   ]
 }

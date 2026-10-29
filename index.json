@@ -81,6 +81,49 @@
       "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
       "showcases": ["prompt", "person", "roles", "ken/cta"],
       "version": "1.0.0"
+    },
+    {
+      "slug": "workshop",
+      "name": "Workshop invite",
+      "type": "event",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/form"
+      ],
+      "description": "A hands-on workshop invitation with the agenda, what to bring and a seat form. Ken writes why it fits the account and what their team would leave with.",
+      "category": "events",
+      "tags": [
+        "workshop",
+        "event",
+        "invitation",
+        "training",
+        "seat form"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "bramblewood",
+          "label": "Bramblewood Foods"
+        },
+        {
+          "id": "lakeshore-shared",
+          "label": "Lakeshore Dental Partners, shared link (no person)"
+        },
+        {
+          "id": "tidewater",
+          "label": "Tidewater Marine Fabrication"
+        },
+        {
+          "id": "norland-waitlist",
+          "label": "Norland Packaging"
+        }
+      ]
     }
   ]
 }

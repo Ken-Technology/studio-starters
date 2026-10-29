@@ -1,0 +1,70 @@
+{%- assign accent = brand.colors.primary | default: '#c2410c' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Archivo' -%}
+{%- assign font_body = brand.fonts.body | default: 'Instrument Sans' -%}
+{%- assign head_q = font_head | url_encode -%}
+{%- assign body_q = font_body | url_encode -%}
+{%- assign first = person.first_name | default: '' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>A workshop seat for {{ account.name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@500;600;700&display=swap">
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600&display=swap">
+{%- endif %}
+<style>
+:root{--p:{{ accent | escape }};--paper:#f4f2ec;--card:#fffdfa;--ink:#1b1a17;--text:#3b3934;--mute:#6b675e;--line:#d9d5cb;--fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,'Helvetica Neue',Arial,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,'Helvetica Neue',Arial,sans-serif;--mono:ui-monospace,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--fh);font-weight:700;letter-spacing:-.02em;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0 0 .9rem}
+.ws{max-width:72rem;margin:0 auto;padding:0 1.1rem 2.5rem}
+.ws-mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase}
+.ws-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.ws-logo{height:24px;width:auto;display:block}
+.ws-brand{font-weight:600;font-size:1rem;margin:0}
+.ws-tag{color:var(--mute);margin:0;white-space:nowrap}
+.ws-hero{padding:2.2rem 0 1.4rem}
+.ws-kicker{color:var(--p);margin:0 0 1rem;font-weight:500}
+.ws-hero h1{font-size:2.55rem}
+.ws-dek{font-size:1.1rem;line-height:1.5;color:var(--text);max-width:36rem;margin:1rem 0 0}
+.ws-card{max-width:36rem;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p);border-radius:4px;padding:1.3rem 1.1rem;margin-top:1.2rem}
+.ws-card h2{font-size:1.4rem;margin:0 0 .7rem}
+.ws-card p{color:var(--text)}
+.ws-card p:last-child{margin:0}
+.ws-sig{font-weight:600;margin:1rem 0 0}
+.ws-sig span{display:block;font-weight:400;color:var(--mute);font-size:.92rem}
+@media (min-width:900px){
+body{font-size:17px}
+.ws{padding:0 2rem 4rem}
+.ws-hero{padding:3.6rem 0 2rem}
+.ws-hero h1{font-size:4.2rem;max-width:17ch}
+.ws-dek{font-size:1.25rem;margin-top:1.3rem}
+.ws-card{padding:1.8rem 1.8rem;margin-top:1.6rem}
+}
+</style>
+</head>
+<body>
+<main class="ws">
+<header class="ws-top">
+{%- if brand.logo_url %}<img class="ws-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="ws-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="ws-tag ws-mono">Workshop</p>
+</header>
+<section data-section="invite" class="ws-hero">
+<p class="ws-kicker ws-mono">{% if first != '' %}A seat held for {{ first | escape }} at {{ account.name | escape }}{% else %}A seat held for {{ account.name | escape }}{% endif %}</p>
+<h1>A workshop seat for {{ account.name | escape }}</h1>
+<p class="ws-dek">{% if first != '' %}Hi {{ first | escape }}, I{% else %}I{% endif %}'m writing the invitation for {{ account.name | escape }} now: the agenda, what to bring, and what your team would leave with.</p>
+</section>
+<section data-section="note" class="ws-card">
+<h2>The details are on their way</h2>
+<p>This link stays the same, so check back later today. Once the page is ready you can hold a seat here in under a minute.</p>
+<p>If you would rather hear about it now, reply to my email.</p>
+<p class="ws-sig">{{ sender.name | default: 'The host' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</section>
+</main>
+</body>
+</html>

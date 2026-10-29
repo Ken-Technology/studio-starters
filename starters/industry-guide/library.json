@@ -4,7 +4,7 @@
   "tags": ["industry", "playbook", "guide", "pdf", "content"],
   "featured": false,
   "needs": [],
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updatedAt": "2026-10-29",
   "samples": [
     { "id": "juniper-dental", "label": "Juniper Dental Group" },

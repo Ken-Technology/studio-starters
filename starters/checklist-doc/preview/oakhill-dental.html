@@ -5,223 +5,255 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>14 checks before you move 23 practices to one system</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600&amp;display=swap">
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-html,body{margin:0;background:#fff}
-.ck{--a:#1b2a41;--a2:#b8862b;--ink:#161616;--mute:#67665f;--line:#e4e2dc;--soft:#f5f4f0;font-family:'Source Sans 3',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;color:var(--ink);-webkit-font-smoothing:antialiased;max-width:70rem;margin:0 auto;padding:0 1.25rem 3rem}
-.ck h1,.ck-mono{font-family:'Lora',ui-sans-serif,system-ui,sans-serif}
-.ck h1{font-size:2rem;line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
+html,body{margin:0;background:#e8e8e3}
+.ck{--p:#1b2a41;--s:#b8862b;--bg:#e8e8e3;--ink:#181715;--mute:#55544e;--onp:#181715;--onp:oklch(from var(--p) clamp(0.2, (0.6 - l) * 100, 0.97) min(c, 0.03) h);--ons:#e8e8e3;--ons:oklch(from var(--s) clamp(0.2, (0.6 - l) * 100, 0.93) min(c, 0.02) h);--fh:'Lora',ui-sans-serif,system-ui,sans-serif;--fb:'Source Sans 3',ui-sans-serif,system-ui,sans-serif;--m:clamp(1.25rem,3vw,3rem);background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.5;-webkit-font-smoothing:antialiased}
 .ck p{margin:0}
-.ck-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
-.ck-brand{display:flex;align-items:center;gap:.6rem;min-height:28px}
+.ck h1,.ck h2{font-family:var(--fh);font-weight:600;margin:0;text-wrap:balance}
+.wrap{max-width:86rem;margin:0 auto;padding:0 var(--m)}
+.ck-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:1.25rem;padding-bottom:1.25rem;font-size:.875rem}
 .ck-logo{height:26px;width:auto;display:block}
-.ck-mono{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:6px;background:var(--a);color:#fff;font-weight:700;font-size:.85rem;line-height:1}
-.ck-wordmark{font-weight:600;font-size:.95rem}
-.ck-doc{font-size:.8rem;color:var(--mute);text-align:right}
-.ck-cover{padding:2rem 0 1.25rem}
-.ck-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--a);margin:0 0 1rem}
-.ck-intro{font-size:1.0625rem;line-height:1.55;margin:1.25rem 0 0;color:#3a3935}
-.ck-meta{margin:1.5rem 0 0;padding:0;border-top:1px solid var(--line)}
-.ck-meta div{display:grid;grid-template-columns:6.5rem 1fr;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--line)}
-.ck-meta dt{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:.25rem}
-.ck-meta dd{margin:0;font-weight:500;font-size:.95rem;line-height:1.4}
-.ck-meta small{display:block;font-weight:400;color:var(--mute);font-size:.85rem}
-.ck-list{padding-top:.5rem}
-.ck-rows{list-style:none;margin:0;padding:0;counter-reset:done;border-top:1px solid var(--ink)}
-.ck-row{border-bottom:1px solid var(--line)}
-.ck-lab{position:relative;display:grid;grid-template-columns:44px 1fr;gap:.9rem;padding:.9rem 0;cursor:pointer;align-items:start}
-.ck-box{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
-.ck-n{display:grid;place-items:center;width:44px;height:44px;border:1.5px solid var(--ink);border-radius:8px;font-weight:600;font-size:.95rem;font-variant-numeric:tabular-nums;color:var(--ink);background:#fff}
-.ck-lab:hover .ck-n{border-color:var(--a)}
-.ck-body{display:block;padding-top:.15rem;min-width:0}
-.ck-title{display:block;font-weight:600;font-size:1.0625rem;line-height:1.35}
-.ck-why{display:block;color:var(--mute);font-size:.95rem;line-height:1.5;margin-top:.2rem}
-.ck-box:checked+.ck-n{background:var(--a);border-color:var(--a);color:transparent;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4.5 10.5l3.8 3.8L15.5 6' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:22px 22px}
-.ck-box:checked~.ck-body .ck-title{color:var(--mute);text-decoration:line-through;text-decoration-color:var(--a);text-decoration-thickness:2px}
-.ck-box:focus-visible+.ck-n{outline:2px solid var(--a);outline-offset:3px}
+.ck-wordmark{font-family:var(--fh);font-weight:600;font-size:1.125rem}
+.ck-doc{color:var(--mute);text-align:right}
+.ck-cover{container-type:inline-size;padding-top:3.5rem;padding-bottom:4.5rem}
+.ck h1{font-size:min(8.5rem,9.297297297297296cqi);line-height:.94;letter-spacing:-.04em}
+.tick{display:inline-block;width:.8em;height:.8em;vertical-align:-.04em;margin:0 .04em}
+.tick svg{display:block;width:100%;height:100%;overflow:visible}
+.tick rect{fill:var(--p);stroke:var(--ink);stroke-width:7}
+.tick path{fill:none;stroke:var(--onp);stroke-width:13;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:90;stroke-dashoffset:0}
+.ck-lead{display:grid;gap:1.5rem;margin-top:3rem}
+.ck-title{font-family:var(--fh);font-weight:500;font-size:1.5rem;line-height:1.15;letter-spacing:-.015em;max-width:24ch;text-wrap:balance}
+.ck-intro{max-width:36rem}
+.ck-for{color:var(--mute);margin-top:1rem!important;max-width:36rem}
+.ck-list{padding-top:4rem;padding-bottom:5rem}
+.ck-head{margin-bottom:2.5rem}
+.ck h2{font-size:clamp(2rem,5.4vw,3.5rem);line-height:1;letter-spacing:-.035em;max-width:12ch}
+.ck-how{color:var(--mute);margin-top:1rem!important;max-width:24rem}
+.ck-rows{list-style:none;margin:0;padding:0;counter-reset:done}
+.ck-row+.ck-row{margin-top:1.4rem}
+.ck-row:nth-child(4n+1):not(:first-child){margin-top:2.75rem}
+.ck-lab{position:relative;display:grid;grid-template-columns:2.25rem minmax(0,1fr);gap:1rem;cursor:pointer;align-items:start}
+.ck-box{position:absolute;inset:0;opacity:0;width:100%;height:100%;margin:0;pointer-events:none}
+.ck-n{display:grid;place-items:center;width:2.25rem;height:2.25rem;border:3px solid var(--ink);border-radius:4px;background:var(--bg);color:var(--onp);transition:background-color .15s ease}
+.ck-n svg{width:1.5rem;height:1.5rem;opacity:0;transform:scale(.6);transition:opacity .15s ease,transform .2s cubic-bezier(.3,1.4,.5,1)}
+.ck-n path{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ck-lab:hover .ck-n{background:color-mix(in oklab,var(--p) 30%,var(--bg))}
+.ck-body{display:block;padding-top:.1rem;min-width:0}
+.ck-t{display:block;font-family:var(--fh);font-weight:500;font-size:1.25rem;line-height:1.25;letter-spacing:-.01em}
+.ck-why{display:block;color:var(--mute);margin-top:.3rem;max-width:40rem}
+.ck-box:checked+.ck-n{background:var(--p)}
+.ck-box:checked+.ck-n svg{opacity:1;transform:none}
+.ck-box:checked~.ck-body .ck-t{text-decoration:line-through;text-decoration-thickness:2px}
+.ck-box:focus-visible+.ck-n{outline:3px solid var(--ink);outline-offset:3px}
 .ck-lab:has(.ck-box:checked){counter-increment:done}
-.ck-tally{display:none;font-size:.85rem;color:var(--mute);padding:.85rem 0 0}
+.ck-tally{display:none;margin-top:2.5rem!important;font-family:var(--fh);font-weight:500;font-size:1.25rem}
 @supports selector(:has(a)){.ck-tally{display:block}}
-.ck-done::after{content:counter(done);font-weight:600;color:var(--ink)}
-.ck-close{margin-top:2.25rem;padding:1.4rem 1.4rem 1.5rem;background:var(--soft);border-radius:12px;border-left:4px solid var(--a2)}
-.ck-closing{font-size:1rem;line-height:1.55}
-.ck-cta{margin:1.1rem 0 1.2rem}
-.ck-sign{font-size:.95rem;font-weight:600;line-height:1.4}
-.ck-sign span{display:block;font-weight:400;color:var(--mute);font-size:.85rem}
-@media (min-width:1024px){
-.ck{padding:0 3rem 5rem}
-.ck-grid{display:grid;grid-template-columns:minmax(18rem,22rem) minmax(0,42rem);grid-template-rows:auto 1fr;column-gap:5rem;justify-content:space-between;align-items:start}
-.ck-cover{grid-column:1;grid-row:1;padding:2.75rem 0 .5rem}
-.ck-list{grid-column:2;grid-row:1 / span 2;padding-top:2.75rem}
-.ck-close{grid-column:1;grid-row:2;margin-top:1.5rem;padding:1.5rem 1.6rem 1.6rem}
-.ck h1{font-size:2.6rem}
-.ck-lab{grid-template-columns:40px 1fr;gap:1.1rem;padding:1rem 0}
-.ck-n{width:40px;height:40px}
+.ck-done::after{content:counter(done)}
+.ck-close{background:var(--s);color:var(--ons);padding-top:5rem;padding-bottom:5.5rem}
+.ck-close h2{font-size:clamp(2.5rem,9vw,6rem);max-width:10ch}
+.ck-closing{font-size:1.25rem;line-height:1.45;max-width:34rem;margin-top:2rem!important}
+.ck-cta{margin:2rem 0}
+.ck-cta .ken-cta{display:inline-block!important;min-height:56px;padding:17px 28px!important;border-radius:4px!important;background:var(--p)!important;color:var(--onp)!important;font-family:var(--fh);font-weight:600!important;font-size:1.125rem;line-height:22px}
+.ck-cta .ken-cta:focus-visible{outline:3px solid var(--ons);outline-offset:3px}
+.ck-sign{font-family:var(--fh)}
+.ck-sign b{display:block;font-weight:600;font-size:1.25rem}
+@media (prefers-reduced-motion:no-preference){
+.tick rect{animation:fill-in .35s ease-out .35s both}
+.tick path{animation:tick-in .5s cubic-bezier(.6,0,.3,1) .7s both}
+@keyframes fill-in{from{fill:var(--bg)}to{fill:var(--p)}}
+@keyframes tick-in{from{stroke-dashoffset:90}to{stroke-dashoffset:0}}
+}
+@media (min-width:760px){
+.ck-title{font-size:2rem}
+}
+@media (min-width:1000px){
+.ck-cover{padding-top:5rem;padding-bottom:6rem}
+.ck-lead{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:4rem;margin-top:4rem}
+.ck-title{font-size:2.25rem}
+.ck-list .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:4rem}
+.ck-head{align-self:start}
+.ck-list{padding-top:5rem;padding-bottom:7rem}
+.ck-close{padding-top:7rem;padding-bottom:7rem}
+.ck-close .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:4rem;align-items:end}
+.ck-closing{margin-top:0!important}
 }
 @page{margin:10mm 13mm 10mm}
 @media print{
 *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.ck{max-width:none;padding:0;font-size:10pt;line-height:1.35}
-.ck-top{padding:0 0 6pt;border-bottom-width:1pt}
-.ck-mono{width:18pt;height:18pt;font-size:8pt;border-radius:3pt}
+html,body,.ck{background:#fff}
+.ck{--bg:#fff;font-size:9.5pt;line-height:1.35}
+.tick rect,.tick path{animation:none}
+.wrap{max-width:none;padding:0}
+.ck-top{padding:0 0 6pt}
 .ck-logo{height:18pt}
-.ck-wordmark{font-size:9.5pt}
-.ck-doc{font-size:8pt}
-.ck-grid{display:block}
-.ck-cover{padding:11pt 0 4pt}
-.ck-eyebrow{font-size:7pt;margin-bottom:5pt}
-.ck h1{font-size:20pt;text-wrap:initial}
-.ck-intro{font-size:9.5pt;margin-top:5pt;max-width:60em}
-.ck-meta{margin-top:8pt;display:grid;grid-template-columns:1fr 1.6fr;gap:0 14pt}
-.ck-meta div{display:block;padding:5pt 0;border-bottom:0}
-.ck-meta dt{font-size:6.5pt;padding:0 0 2pt}
-.ck-meta dd{font-size:9pt}
-.ck-meta small{font-size:8pt}
-.ck-list{padding-top:3pt}
-.ck-rows{border-top-width:1pt}
-.ck-row{break-inside:avoid}
-.ck-lab{grid-template-columns:20pt 1fr;gap:8pt;padding:4.5pt 0;cursor:auto}
-.ck-n{width:20pt;height:20pt;border-radius:4pt;font-size:8pt;border-width:1pt}
-.ck-box:checked+.ck-n{background-size:13pt 13pt}
-.ck-body{padding-top:1pt}
-.ck-title{font-size:10pt;line-height:1.3}
-.ck-why{font-size:8.5pt;line-height:1.35;margin-top:1pt}
+.ck-cover{padding:6pt 0 8pt}
+.ck h1{font-size:34pt}
+.ck-lead{display:grid;grid-template-columns:1fr 1fr;gap:14pt;margin-top:8pt}
+.ck-title{font-size:14pt}
+.ck-for{margin-top:4pt!important}
+.ck-list{padding:4pt 0 0}
+.ck-head{margin-bottom:8pt;display:flex;gap:14pt;align-items:baseline}
+.ck h2{font-size:15pt;max-width:none}
+.ck-how{margin:0!important;max-width:none}
+.ck-rows{columns:2;column-gap:14pt}
+.ck-row,.ck-row+.ck-row,.ck-row:nth-child(4n+1):not(:first-child){break-inside:avoid;margin:0;padding:3.5pt 0}
+.ck-lab{grid-template-columns:15pt 1fr;gap:7pt;cursor:auto}
+.ck-n{width:15pt;height:15pt;border-width:1.5pt;border-radius:2pt}
+.ck-n svg{width:11pt;height:11pt}
+.ck-t{font-size:10pt}
+.ck-why{font-size:8.5pt;margin-top:1pt}
 .ck-tally,.ck-cta{display:none}
-.ck-close{break-inside:avoid;break-before:avoid;margin-top:8pt;padding:7pt 0 0;background:none;border-radius:0;border-left:0;border-top:1pt solid var(--ink)}
-.ck-closing{font-size:9pt;line-height:1.35}
-.ck-sign{font-size:9pt;margin-top:3pt}
-.ck-sign span{display:inline;font-size:9pt}
-.ck-sign span::before{content:', '}
+.ck-close{break-inside:avoid;break-before:avoid;background:none;color:var(--ink);padding:8pt 0 0}
+.ck-close .wrap{display:block}
+.ck-close h2{font-size:15pt;max-width:none}
+.ck-closing{font-size:9.5pt;margin-top:3pt!important}
+.ck-sign{margin-top:4pt}
+.ck-sign b{display:inline;font-size:9.5pt}
+.ck-sign span::before{content:", "}
 }
 </style>
 </head>
 <body>
 <main class="ck">
-<header class="ck-top">
-<div class="ck-brand"><span class="ck-mono" aria-hidden="true">C</span><span class="ck-wordmark">Clearwater Practice Systems</span></div>
+<header class="ck-top wrap">
+<p class="ck-wordmark">Clearwater Practice Systems</p>
 <p class="ck-doc">Checklist for Oakhill Dental Partners</p>
 </header>
-<div class="ck-grid">
-<section data-section="cover" class="ck-cover">
-<p class="ck-eyebrow">Printable checklist</p>
-<h1>14 checks before you move 23 practices to one system</h1>
+<section data-section="cover" class="ck-cover wrap">
+<h1>14 <span class="tick" role="img" aria-label="checks"><svg viewBox="0 0 100 100" aria-hidden="true"><rect x="4" y="4" width="92" height="92" rx="6"/><path d="M24 52 L43 70 L77 31"/></svg></span> for Oakhill Dental Partners</h1>
+<div class="ck-lead">
+<p class="ck-title">14 checks before you move 23 practices to one system</p>
+<div>
 <p class="ck-intro">For the operations and revenue cycle leads at Oakhill Dental Partners who will run the move to a single practice management system. It covers patient records, insurance, the people at each practice and the order to move them in.</p>
-<dl class="ck-meta">
-<div><dt>Prepared for</dt><dd>Marcus Oyelaran<small>VP of Operations, Oakhill Dental Partners</small></dd></div>
-<div><dt>How to use it</dt><dd>Tick what you already have covered. Print it for the team, or send the link.</dd></div>
-</dl>
+<p class="ck-for">Prepared for Marcus Oyelaran, VP of Operations, Oakhill Dental Partners.</p>
+</div>
+</div>
 </section>
 <section data-section="checks" class="ck-list">
+<div class="wrap">
+<div class="ck-head">
+<h2>Tick what you have covered</h2>
+<p class="ck-how">Print it for the team, or send the link.</p>
+</div>
+<div>
 <ol class="ck-rows">
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">01</span>
-<span class="ck-body"><span class="ck-title">Count the active patient records at each practice before you start</span><span class="ck-why">The number you migrate is the number you reconcile, and every practice counts differently.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Count the active patient records at each practice before you start</span><span class="ck-why">The number you migrate is the number you reconcile, and every practice counts differently.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">02</span>
-<span class="ck-body"><span class="ck-title">List which clinical systems stay, including imaging and charting</span><span class="ck-why">A move that breaks the imaging link stops the clinic, not just the front desk.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">List which clinical systems stay, including imaging and charting</span><span class="ck-why">A move that breaks the imaging link stops the clinic, not just the front desk.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">03</span>
-<span class="ck-body"><span class="ck-title">Confirm the new system holds every insurance plan each practice bills</span><span class="ck-why">A plan that does not map cleanly becomes a pile of rejected claims in the first month.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Confirm the new system holds every insurance plan each practice bills</span><span class="ck-why">A plan that does not map cleanly becomes a pile of rejected claims in the first month.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">04</span>
-<span class="ck-body"><span class="ck-title">Decide on one fee schedule and one procedure code list for the group</span><span class="ck-why">Importing 23 versions of the same list means 23 ways to bill the same filling.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Decide on one fee schedule and one procedure code list for the group</span><span class="ck-why">Importing 23 versions of the same list means 23 ways to bill the same filling.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">05</span>
-<span class="ck-body"><span class="ck-title">Pick the first two practices to move and write down why they go first</span><span class="ck-why">The first move sets the playbook, and a practice with a steady team teaches more than a struggling one.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Pick the first two practices to move and write down why they go first</span><span class="ck-why">The first move sets the playbook, and a practice with a steady team teaches more than a struggling one.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">06</span>
-<span class="ck-body"><span class="ck-title">Close out open claims older than 90 days before each migration</span><span class="ck-why">Old claims that move with the data are the ones nobody follows up on afterwards.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Close out open claims older than 90 days before each migration</span><span class="ck-why">Old claims that move with the data are the ones nobody follows up on afterwards.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">07</span>
-<span class="ck-body"><span class="ck-title">Agree how the recall and hygiene schedule carries over</span><span class="ck-why">A lost recall list is six months of missed appointments that nobody notices at once.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Agree how the recall and hygiene schedule carries over</span><span class="ck-why">A lost recall list is six months of missed appointments that nobody notices at once.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">08</span>
-<span class="ck-body"><span class="ck-title">Name a lead at every practice who signs off on their migrated data</span><span class="ck-why">Without a local owner, errors are found by patients at the front desk.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Name a lead at every practice who signs off on their migrated data</span><span class="ck-why">Without a local owner, errors are found by patients at the front desk.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">09</span>
-<span class="ck-body"><span class="ck-title">Test online booking and reminders with a live appointment before go-live</span><span class="ck-why">Reminders that stop for a week fill the schedule with no-shows.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Test online booking and reminders with a live appointment before go-live</span><span class="ck-why">Reminders that stop for a week fill the schedule with no-shows.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">10</span>
-<span class="ck-body"><span class="ck-title">Set the reports the group needs on day one, by practice and in total</span><span class="ck-why">If the reports are built later, the first quarter on the new system has no baseline.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Set the reports the group needs on day one, by practice and in total</span><span class="ck-why">If the reports are built later, the first quarter on the new system has no baseline.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">11</span>
-<span class="ck-body"><span class="ck-title">Plan each cutover for a short week and a light schedule</span><span class="ck-why">A switch on the busiest Monday of the month costs the practice its best day.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Plan each cutover for a short week and a light schedule</span><span class="ck-why">A switch on the busiest Monday of the month costs the practice its best day.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">12</span>
-<span class="ck-body"><span class="ck-title">Train front desk and billing staff on cases from their own practice</span><span class="ck-why">Generic training does not cover the plan quirks each office deals with daily.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Train front desk and billing staff on cases from their own practice</span><span class="ck-why">Generic training does not cover the plan quirks each office deals with daily.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">13</span>
-<span class="ck-body"><span class="ck-title">Keep read access to each old system until its last claim is paid</span><span class="ck-why">Payments and appeals reference charts and claims that only exist in the old system.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Keep read access to each old system until its last claim is paid</span><span class="ck-why">Payments and appeals reference charts and claims that only exist in the old system.</span></span>
 </label>
 </li>
 <li class="ck-row">
 <label class="ck-lab">
 <input class="ck-box" type="checkbox">
-<span class="ck-n" aria-hidden="true">14</span>
-<span class="ck-body"><span class="ck-title">Hold a 30 day review with each practice after its move</span><span class="ck-why">Problems that are small at week one are habits by month three.</span></span>
+<span class="ck-n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span class="ck-body"><span class="ck-t">Hold a 30 day review with each practice after its move</span><span class="ck-why">Problems that are small at week one are habits by month three.</span></span>
 </label>
 </li>
 </ol>
 <p class="ck-tally"><span class="ck-done"></span> of 14 ticked</p>
+</div>
+</div>
 </section>
 <section data-section="close" class="ck-close">
+<div class="wrap">
+<h2>Anything still open?</h2>
+<div>
 <p class="ck-closing">If you want a second pair of eyes on the order of practices or the claims cutoff, reply to my email and I will share what I have seen go wrong at that step.</p>
 <div class="ck-cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1b2a41;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
-<p class="ck-sign">Hannah Weiss<span>Partnerships Lead, Clearwater Practice Systems</span></p>
-</section>
+<p class="ck-sign"><b>Hannah Weiss</b><span>Partnerships Lead, Clearwater Practice Systems</span></p>
 </div>
+</div>
+</section>
 </main>
 </body>
 </html>

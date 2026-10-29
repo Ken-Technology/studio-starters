@@ -4,7 +4,7 @@
   "tags": ["competitors", "positioning", "market map", "2x2"],
   "featured": false,
   "needs": [],
-  "version": "1.0.1",
+  "version": "1.1.0",
   "updatedAt": "2026-10-29",
   "samples": [
     { "id": "marrow", "label": "Marrow Analytics" },

@@ -5,224 +5,264 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Marlowe next to the shared drive, for Pemberton Family Law</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&display=swap">
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f6f4ef;color:#1b1a17;font-family:'Source Sans 3',ui-sans-serif,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
-.vs{--p:#1e3a2f;--s:#b08d57;--ink:#1b1a17;--mute:#66635b;--line:#dcd8cf;--paper:#f6f4ef;--card:#fff}
-.vs h1,.vs h2,.vs-guess-name{font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-weight:500;letter-spacing:-.012em;line-height:1.1;margin:0;text-wrap:balance}
-.vs p{margin:0 0 1rem}
-.vs-wrap{max-width:72rem;margin:0 auto;padding:0 1.15rem}
-.vs-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
-.vs-logo{height:26px;width:auto;display:block}
-.vs-brand{font-weight:700;font-size:1rem;margin:0!important;letter-spacing:-.01em}
-.vs-tag{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;text-align:right}
-.vs-hero{padding:2.2rem 0 2.2rem;display:grid;gap:2rem}
-.vs-kicker{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin:0 0 1rem!important}
-.vs h1{font-size:2.35rem}
-.vs-intro{font-size:1.1rem;line-height:1.5;color:#3a3832;margin:1.1rem 0 0!important;max-width:38rem}
-.vs-by{font-size:.9rem;color:var(--mute);margin:1.2rem 0 0!important}
-.vs-guess{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p);padding:1.15rem 1.2rem 1rem;align-self:start}
-.vs-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 .55rem!important}
-.vs-guess .vs-guess-name{font-size:1.9rem;line-height:1.1;margin:0 0 .75rem}
-.vs-guess ul{list-style:none;margin:0;padding:0}
-.vs-guess li{position:relative;padding:.5rem 0 .5rem 1.1rem;border-top:1px solid var(--line);font-size:.95rem;line-height:1.45}
-.vs-guess li::before{content:'';position:absolute;left:0;top:1.05rem;width:.4rem;height:.4rem;background:var(--p)}
-.vs-guess p{font-size:.95rem;margin:0 0 .5rem}
-.vs-guess-foot{font-size:.86rem;color:var(--mute);margin:.5rem 0 0!important;padding-top:.75rem;border-top:1px solid var(--line)}
-.vs-comp{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.3rem 0 2.4rem}
-.vs h2{font-size:1.7rem;margin:0 0 .6rem}
-.vs-sub{color:var(--mute);margin:0 0 1.5rem!important;max-width:42rem}
-.vs-tally{margin:0 0 1.9rem}
-.vs-bar{display:flex;gap:3px;height:10px;border-radius:999px;overflow:hidden}
-.vs-bar span{display:block;min-width:0}
-.vs-bar .t{background:var(--s)}
-.vs-bar .e{background:var(--line)}
-.vs-bar .u{background:var(--p)}
-.vs-legend{list-style:none;margin:.75rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;font-size:.9rem;color:var(--mute)}
-.vs-legend li{display:flex;align-items:center;gap:.5rem}
-.vs-legend i{width:.62rem;height:.62rem;border-radius:2px;flex:none}
-.vs-legend .t i{background:var(--s)}
-.vs-legend .e i{background:var(--line)}
-.vs-legend .u i{background:var(--p)}
-.vs-legend b{color:var(--ink);font-weight:700;font-size:1.05rem;margin-right:.1rem}
-.vs-grid{border-top:2px solid var(--ink)}
-.vs-head{display:none}
-.vs-row{padding:1.1rem 0 1.2rem;border-bottom:1px solid var(--line)}
-.vs-crit b{display:block;font-weight:600;font-size:1.06rem;line-height:1.3}
-.vs-crit small{display:block;color:var(--mute);font-size:.86rem;margin-top:.15rem;line-height:1.4}
-.vs-cell{position:relative;margin-top:.75rem;padding:.75rem .9rem .85rem;border:1px solid var(--line);border-radius:4px;background:var(--card);display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"who pill" "text text";align-items:center;column-gap:.6rem}
-.vs-cell.win{border-color:transparent}
-.vs-cell.win::before{content:'';position:absolute;inset:0;border-radius:inherit;background:var(--s);opacity:.12;pointer-events:none}
-.vs-cell.u.win::before{background:var(--p);opacity:.09}
-.vs-cell>*{position:relative}
-.vs-who{grid-area:who;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
-.vs-cell.u .vs-who{color:var(--p)}
-.vs-cell.t.win .vs-who{color:var(--ink)}
-.vs-cell p{grid-area:text;margin:.35rem 0 0;font-size:.97rem;line-height:1.5}
-.vs-pill{grid-area:pill;font-style:normal;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;border:1px solid currentColor;border-radius:999px;padding:.15rem .5rem;white-space:nowrap;color:var(--s)}
-.vs-cell.u .vs-pill{color:var(--p)}
-.vs-note{font-size:.86rem;color:var(--mute);margin:1.1rem 0 0!important}
-.vs-fit{padding:2.4rem 0 1.2rem}
-.vs-fit.is-empty{display:none}
-.vs-cols{display:grid;gap:1.6rem;margin-top:1.5rem}
-.vs-col{border-top:2px solid var(--s);padding-top:1rem}
-.vs-col.u{border-top-color:var(--p)}
-.vs-col h3{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 .7rem;line-height:1.4}
-.vs-col.u h3{color:var(--p)}
-.vs-col p{font-size:1.03rem;margin:0 0 1rem}
-.vs-col .vs-none{color:var(--mute);font-size:.95rem}
-.vs-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
-.vs-chips li{font-size:.86rem;font-weight:600;border:1px solid var(--line);background:var(--card);padding:.35rem .7rem;border-radius:999px;line-height:1.3}
-.vs-same{font-size:.92rem;color:var(--mute);margin:1.5rem 0 0!important}
-.vs-cta{padding:1.6rem 0 3.5rem}
-.vs-box{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--ink);padding:1.6rem 1.3rem 1.4rem}
-.vs-box h2{font-size:1.6rem;margin:0 0 .6rem}
-.vs-box p{max-width:36rem}
-.vs-btn{margin:1.3rem 0 1.5rem}
-.vs .ken-cta{display:inline-flex!important;align-items:center;min-height:48px;padding:.7rem 1.4rem!important;border-radius:4px!important;background:var(--p)!important;color:#fff!important;font-weight:600;font-size:1rem;text-decoration:none}
-.vs .ken-cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.vs-sign{font-size:.97rem;font-weight:600;margin:0!important}
-.vs-sign span{display:block;color:var(--mute);font-size:.88rem;font-weight:400}
-.vs-foot{font-size:.8rem;color:var(--mute);padding:0 0 1rem;max-width:40rem}
-.vs-sronly{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+body{margin:0;background:#f2f2ef;color:#121316;font-family:'Source Sans 3',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.vs{--a:#1e3a2f;--a2:#b08d57;--hw:700;--ink:#121316;--soft:#4a4c52;--paper:#f2f2ef;--tone:#e3e3de;
+--on-a:#fff;--on-a:oklch(from var(--a) clamp(0.2,(0.6 - l) * 1000,0.99) 0.01 h);
+--on-a2:#f2f2ef;--on-a2:oklch(from var(--a2) clamp(0.2,(0.6 - l) * 1000,0.97) 0.01 h);
+--mark:#1e3a2f;--mark:oklch(from var(--a) min(l,0.5) c h);
+--mark2:#b08d57;--mark2:oklch(from var(--a2) min(l,0.45) c h);
+--m:clamp(1.125rem,3vw,2.5rem);overflow-x:clip}
+.vs h1,.vs h2,.vs h3,.c-name,.c-score b,.disc{font-family:'Source Serif 4',Rockwell,Georgia,serif;font-weight:var(--hw);letter-spacing:-.005em;line-height:1.02;text-wrap:balance;margin:0}
+.vs p{margin:0}
+.vs ul,.vs ol{margin:0;padding:0;list-style:none}
+.vs .ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{padding:0 var(--m);max-width:90rem;margin:0 auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
+.logo{height:26px;width:auto;display:block}
+.brand{font-weight:800;font-size:1rem}
+.tag{font-size:.875rem;color:var(--soft)}
+.hero-head{display:grid;gap:1.2rem;padding-top:.8rem;padding-bottom:2.2rem}
+.hero h1{font-size:2rem}
+.intro{font-size:1.125rem;max-width:38rem}
+.by{font-size:1rem;color:var(--soft);margin-top:.9rem!important}
+.by b{color:var(--ink);font-weight:600}
+.bill{position:relative;display:grid}
+.corner{position:relative;padding:2rem var(--m) 2.2rem;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name num" "lab num" "more more";column-gap:1.2rem;align-items:end}
+.corner.t{background:var(--a2);color:var(--on-a2);padding-bottom:3.4rem}
+.corner.u{background:var(--a);color:var(--on-a);padding-top:3.4rem}
+.c-lab{grid-area:lab;font-size:1rem;font-weight:600;margin-top:.5rem!important}
+.c-name{grid-area:name;font-size:2rem;overflow-wrap:anywhere}
+.c-score{grid-area:num;text-align:center;line-height:1}
+.c-score b{display:block;font-size:6rem;line-height:.85}
+.c-score span{display:block;font-size:.875rem;font-weight:600;margin-top:.5rem!important}
+.c-more{grid-area:more;margin-top:1.4rem;font-size:1rem;max-width:34rem}
+.c-more li{padding:.55rem 0 .55rem 1.3rem;position:relative;border-top:2px solid currentColor}
+.c-more li::before{content:'';position:absolute;left:0;top:1.05rem;width:.55rem;height:.55rem;background:currentColor}
+.c-more p+p,.c-more ul+p{margin-top:.8rem!important;font-weight:600}
+.disc{position:relative;z-index:2;justify-self:center;width:4.5rem;height:4.5rem;margin:-2.25rem 0;display:grid;place-items:center;border-radius:50%;background:var(--paper);color:var(--ink);font-size:1.5rem;border:5px solid var(--ink)}
+.even{grid-area:more;font-size:1rem;font-weight:600;margin-top:1rem!important}
+.tape{padding:4rem 0 3rem}
+.vs h2{font-size:2rem;margin:0 0 .9rem}
+.sub{font-size:1.125rem;max-width:40rem;color:var(--soft)}
+.tape-head{display:none}
+.rows{margin-top:2rem!important;border-top:6px solid var(--ink)}
+.row{padding:1.4rem 0 1.6rem;border-bottom:2px solid var(--tone)}
+.crit h3{font-size:1.5rem}
+.crit small{display:block;font-size:1rem;color:var(--soft);margin-top:.4rem;line-height:1.4}
+.call{font-size:1rem;font-weight:800;margin-top:.6rem!important}
+.call.t{color:var(--mark2)}
+.call.u{color:var(--mark)}
+.call.e{color:var(--soft);font-weight:600}
+.cell{margin-top:.9rem;padding:1rem 1.1rem;background:#fff;font-size:1rem}
+.cell.t.win{background:var(--a2);color:var(--on-a2)}
+.cell.u.win{background:var(--a);color:var(--on-a)}
+.who{display:block;font-weight:800;margin-bottom:.25rem}
+.tape-foot{font-size:1rem;color:var(--soft);margin-top:1.6rem!important;max-width:44rem}
+.tape-wait{background:#fff;padding:1.6rem;margin-top:1.4rem}
+.fit{padding:0 0 1rem}
+.fit.is-empty{display:none}
+.fit-head{padding-top:1rem;padding-bottom:2rem}
+.fit-cols{display:grid}
+.side{padding:2.4rem var(--m) 2.6rem}
+.side.t{background:var(--a2);color:var(--on-a2)}
+.side.u{background:var(--a);color:var(--on-a)}
+.side h3{font-size:1.5rem;margin:0 0 1rem}
+.side p{font-size:1.125rem;max-width:34rem}
+.side p+ul{margin-top:1.4rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chips li{font-size:1rem;font-weight:600;border:2px solid currentColor;padding:.3rem .75rem}
+.same{font-size:1.125rem;padding-top:1.6rem;padding-bottom:1rem}
+.same b{font-weight:800}
+.cta{padding:3rem 0 2.4rem}
+.cta-in{border-top:6px solid var(--ink);padding-top:2.4rem;display:grid;gap:1.6rem}
+.cta h2{font-size:2rem}
+.cta p{font-size:1.125rem;max-width:36rem}
+.btn{margin:1.6rem 0 1.4rem}
+.hero .btn{margin:1.4rem 0 0}
+.btn .ken-cta{display:inline-flex!important;align-items:center;min-height:56px;padding:.9rem 1.8rem!important;border-radius:0!important;background:var(--a)!important;color:var(--on-a)!important;font-family:inherit;font-size:1.125rem;font-weight:800!important;text-decoration:none}
+.btn .ken-cta:hover{background:var(--ink)!important;color:var(--paper)!important}
+.sign{font-size:1rem;font-weight:800}
+.sign span{display:block;font-weight:400}
+.foot{font-size:.875rem;color:var(--soft);padding:2.4rem 0 0;max-width:44rem}
+@media (prefers-reduced-motion:no-preference){
+.corner.t{animation:vs-in-l .7s cubic-bezier(.2,.8,.2,1) both}
+.corner.u{animation:vs-in-r .7s cubic-bezier(.2,.8,.2,1) both}
+.disc{animation:vs-disc .5s .45s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes vs-in-l{from{transform:translateX(-40px);opacity:0}}
+@keyframes vs-in-r{from{transform:translateX(40px);opacity:0}}
+@keyframes vs-disc{from{transform:scale(.3);opacity:0}}
+}
 @media (min-width:760px){
-body{font-size:17px}
-.vs-wrap{padding:0 2rem}
-.vs-hero{grid-template-columns:minmax(0,1fr) 21rem;gap:3rem;padding:3.2rem 0 3rem;align-items:start}
-.vs h1{font-size:3.3rem}
-.vs-intro{font-size:1.18rem}
-.vs h2{font-size:2.05rem}
-.vs-comp{padding:3rem 0 3.2rem}
-.vs-head{display:grid;grid-template-columns:13rem minmax(0,1fr) minmax(0,1fr);border-bottom:1px solid var(--ink);padding:0 0 .8rem}
-.vs-head span{display:block;font-weight:600;font-size:1.02rem;line-height:1.3;padding:0 1.2rem}
-.vs-head .c{padding-left:0;color:var(--mute);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;align-self:end;padding-bottom:.2rem}
-.vs-head .u{color:var(--p)}
-.vs-head small{display:block;font-weight:400;color:var(--mute);font-size:.84rem;margin-top:.1rem}
-.vs-row{display:grid;grid-template-columns:13rem minmax(0,1fr) minmax(0,1fr);padding:0}
-.vs-crit{padding:1.15rem 1.2rem 1.2rem 0}
-.vs-cell{display:block;margin:0;border:0;border-left:1px solid var(--line);border-radius:0;padding:1.1rem 1.2rem 1.2rem;background:transparent}
-.vs-cell.win{border-left-color:var(--line)}
-.vs-cell.win::before{border-radius:0}
-.vs-who{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.vs-cell p{margin:0}
-.vs-pill{display:inline-block;margin-top:.7rem}
-.vs-fit{padding:3rem 0 1.5rem}
-.vs-cols{grid-template-columns:1fr 1fr;gap:3rem}
-.vs-cta{padding:2rem 0 4rem}
-.vs-box{padding:2.2rem 2.4rem 2rem}
+body{font-size:18px}
+.hero-head{padding-top:1.4rem;padding-bottom:2.8rem}
+.hero h1{font-size:3rem}
+.bill{grid-template-columns:1fr 1fr}
+.corner{padding:2.6rem 3.6rem 2.8rem var(--m);align-content:start;align-items:start;grid-template-rows:auto 1fr}
+.corner.t{padding-bottom:2.8rem}
+.corner.u{padding:2.6rem var(--m) 2.8rem 3.6rem;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"num name" "num lab" "more more"}
+.c-name{font-size:2rem}
+.c-score b{font-size:6rem}
+.disc{position:absolute;left:50%;top:6rem;width:6rem;height:6rem;margin:-3rem 0 0 -3rem;font-size:2rem}
+.tape{padding:5.5rem 0 4rem}
+.vs h2{font-size:2rem}
+.tape-head{display:grid;grid-template-columns:minmax(0,1fr) 14rem minmax(0,1fr);gap:1.4rem;margin-top:2.4rem;align-items:end}
+.tape-head span{font-family:'Source Serif 4',Rockwell,Georgia,serif;font-weight:var(--hw);font-size:1.5rem;line-height:1.05}
+.tape-head .t{text-align:right;color:var(--mark2)}
+.tape-head .c{text-align:center;font-family:inherit;font-weight:600;font-size:1rem;color:var(--soft)}
+.tape-head .u{color:var(--mark)}
+.rows{margin-top:.8rem!important}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 14rem minmax(0,1fr);grid-template-areas:"t crit u";gap:1.4rem;padding:1.2rem 0;align-items:stretch}
+.crit{grid-area:crit;text-align:center;align-self:center}
+.cell{margin:0;padding:1.1rem 1.3rem}
+.cell.t{grid-area:t;text-align:right}
+.cell.u{grid-area:u}
+.who{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.fit-head{padding-top:2rem}
+.fit-cols{grid-template-columns:1fr 1fr}
+.side{padding:3.4rem var(--m) 3.6rem}
+.side.u{padding-left:3.6rem}
+.side.t{padding-right:3.6rem}
+.side h3{font-size:1.5rem}
+.cta{padding:5rem 0 2.6rem}
+.cta-in{padding-top:3.2rem}
+.cta h2{font-size:3rem}
+.foot{grid-column:1 / -1}
 }
 @media (min-width:1100px){
-.vs-hero{grid-template-columns:minmax(0,1fr) 24rem;gap:4.5rem;padding:3.8rem 0 3.4rem}
-.vs h1{font-size:3.9rem}
-.vs-row,.vs-head{grid-template-columns:15rem minmax(0,1fr) minmax(0,1fr)}
+.corner.t,.side.t{padding-left:max(var(--m),calc(50vw - 45rem + var(--m)))}
+.corner.u,.side.u{padding-right:max(var(--m),calc(50vw - 45rem + var(--m)))}
+.row,.tape-head{grid-template-columns:minmax(0,1fr) 17rem minmax(0,1fr);gap:2rem}
+.hero-head>div{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:3.5rem;align-items:start}
+.intro{grid-row:1 / 3}
+.by{margin-top:.3rem!important}
+.hero h1{font-size:4rem}
+.c-name{font-size:3rem}
+.c-score b{font-size:8rem}
+.disc{top:7rem}
+.vs h2,.cta h2{font-size:3rem}
+.side h3{font-size:2rem}
+.cta-in{grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:4rem;align-items:end}
 }
 </style>
 </head>
 <body>
 <main class="vs">
-<div class="vs-wrap">
-<header class="vs-top"><p class="vs-brand">Marlowe</p><p class="vs-tag">Side by side</p>
+<div class="wrap">
+<header class="top"><p class="brand">Marlowe</p><p class="tag">Side by side</p>
 </header>
-<section data-section="hero" class="vs-hero">
-<div class="vs-hero-main">
-<p class="vs-kicker">For Pemberton Family Law</p>
-<h1>Marlowe next to the shared drive, for Pemberton Family Law</h1>
-<p class="vs-intro">Your site names no intake tool. The New clients page sends a PDF by email and the engagement letter comes back on paper, so this page compares Marlowe with what that suggests you use today: shared drives and email. The drive is the better fit on one of the six rows, Marlowe on four, and one is a wash.</p>
-<p class="vs-by">From Ines Carvalho, Founder at Marlowe</p>
 </div>
-<aside class="vs-guess">
-<p class="vs-label">What your site points to</p>
-<p class="vs-guess-name">Shared drives and email</p>
+<section data-section="hero" class="hero">
+<div class="wrap hero-head">
+<h1>Marlowe next to the shared drive, for Pemberton Family Law</h1>
+<div>
+<p class="intro">Your site names no intake tool. The New clients page sends a PDF by email and the engagement letter comes back on paper, so this page compares Marlowe with what that suggests you use today: shared drives and email. The drive is the better fit on one of the six rows, Marlowe on four, and one is a wash.</p>
+<p class="by">For <b>Pemberton Family Law</b>, from Ines Carvalho, Founder at Marlowe</p>
+<div class="btn"><a class="ken-cta" data-ken-cta="hero" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1e3a2f;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+</div>
+</div>
+<div class="bill">
+<div class="corner t">
+<p class="c-name">Shared drives and email</p>
+<p class="c-lab">What your site points to</p>
+<p class="c-score"><b>1</b><span>row goes to it</span></p>
+<div class="c-more">
 <ul>
 <li>The New clients page says the intake questionnaire comes by email as a PDF, to print and fill in or scan back.</li>
 <li>The engagement letter page asks clients to print, sign and return the letter by mail, scan or in person.</li>
 </ul>
-<p class="vs-guess-foot">Wrong tool? Tell me and I will redo this page for the one you use.</p>
-</aside>
-</section>
+<p>Wrong tool? Tell me and I will redo this page for the one you use.</p>
 </div>
-<section data-section="comparison" class="vs-comp">
-<div class="vs-wrap">
+</div>
+<span class="disc" aria-hidden="true">vs</span>
+<div class="corner u">
+<p class="c-name">Marlowe</p>
+<p class="c-lab">What we offer</p>
+<p class="c-score"><b>4</b><span>rows go to it</span></p>
+<p class="even">1 row is about the same either way.</p>
+</div>
+</div>
+</section>
+<section data-section="comparison" class="tape">
+<div class="wrap">
 <h2>Shared drives and email next to Marlowe, row by row</h2>
-<p class="vs-sub">Both columns are our own notes, written to be fair to both. The marked cell is the better fit on that row, in our view.</p>
-<div class="vs-tally">
-<p class="vs-label">Rows where each one is the better fit</p>
-<div class="vs-bar" aria-hidden="true"><span class="t" style="flex:1"></span><span class="e" style="flex:1"></span><span class="u" style="flex:4"></span></div>
-<ul class="vs-legend">
-<li class="t"><i></i><b>1</b> Shared drives and email</li>
-<li class="e"><i></i><b>1</b> about the same</li>
-<li class="u"><i></i><b>4</b> Marlowe</li>
-</ul>
-</div>
-<div class="vs-grid">
-<div class="vs-head" aria-hidden="true"><span class="c">Criterion</span><span class="t">Shared drives and email<small>What you use today</small></span><span class="u">Marlowe<small>What we offer</small></span></div>
-<div class="vs-row">
-<div class="vs-crit"><b>Client intake</b><small>The first hour on every new matter.</small></div>
-<div class="vs-cell t"><span class="vs-who">Shared drives and email</span><p>A PDF form sent by email, filled in by hand and scanned back. Someone retypes it.</p></div>
-<div class="vs-cell u win"><span class="vs-who">Marlowe</span><em class="vs-pill">Better fit</em><p>A link the prospective client fills in on their phone. Answers land in the matter, and the paralegal sees what is missing.</p></div>
-</div>
-<div class="vs-row">
-<div class="vs-crit"><b>Engagement letters</b></div>
-<div class="vs-cell t"><span class="vs-who">Shared drives and email</span><p>A Word template copied from the last matter, with the find and replace risk that comes with it.</p></div>
-<div class="vs-cell u win"><span class="vs-who">Marlowe</span><em class="vs-pill">Better fit</em><p>Built from your letter templates with the matter details filled in. One click to send.</p></div>
-</div>
-<div class="vs-row">
-<div class="vs-crit"><b>Signatures</b></div>
-<div class="vs-cell t"><span class="vs-who">Shared drives and email</span><p>Printed, signed, then scanned or dropped off. Clients who are far away mail it.</p></div>
-<div class="vs-cell u win"><span class="vs-who">Marlowe</span><em class="vs-pill">Better fit</em><p>Signed on a phone, with the signed copy filed to the matter.</p></div>
-</div>
-<div class="vs-row">
-<div class="vs-crit"><b>Conflict checks</b></div>
-<div class="vs-cell t"><span class="vs-who">Shared drives and email</span><p>A search in the shared drive and a question around the office.</p></div>
-<div class="vs-cell u win"><span class="vs-who">Marlowe</span><em class="vs-pill">Better fit</em><p>A name search across every matter and contact, logged with who ran it and when.</p></div>
-</div>
-<div class="vs-row">
-<div class="vs-crit"><b>Where the file lives</b><small>If your drive is tidy, this row is a wash.</small></div>
-<div class="vs-cell t"><span class="vs-who">Shared drives and email</span><p>In the shared drive everyone knows, in whatever folder structure each attorney prefers.</p></div>
-<div class="vs-cell u"><span class="vs-who">Marlowe</span><p>In Marlowe, with the drive you already use mirrored so nothing moves.</p></div>
-</div>
-<div class="vs-row">
-<div class="vs-crit"><b>Getting set up</b><small>Worth saying plainly.</small></div>
-<div class="vs-cell t win"><span class="vs-who">Shared drives and email</span><em class="vs-pill">Better fit</em><p>Nothing to set up. Everyone already knows email and the drive.</p></div>
-<div class="vs-cell u"><span class="vs-who">Marlowe</span><p>We load your templates and open matters in the first week. Training is one hour per person.</p></div>
-</div>
-</div>
-<p class="vs-note">A row with no mark is about the same either way. Where a row says nothing about your setup, ask and I will fill it in.</p>
+<p class="sub">Both columns are our own notes, written to be fair to both. The filled cell is the better fit on that row, in our view.</p>
+<div class="tape-head" aria-hidden="true"><span class="t">Shared drives and email</span><span class="c">The row</span><span class="u">Marlowe</span></div>
+<ol class="rows">
+<li class="row">
+<div class="crit"><h3>Client intake</h3><small>The first hour on every new matter.</small><p class="call u">Better fit: Marlowe</p></div>
+<div class="cell t"><span class="who">Shared drives and email</span><p>A PDF form sent by email, filled in by hand and scanned back. Someone retypes it.</p></div>
+<div class="cell u win"><span class="who">Marlowe</span><p>A link the prospective client fills in on their phone. Answers land in the matter, and the paralegal sees what is missing.</p></div>
+</li>
+<li class="row">
+<div class="crit"><h3>Engagement letters</h3><p class="call u">Better fit: Marlowe</p></div>
+<div class="cell t"><span class="who">Shared drives and email</span><p>A Word template copied from the last matter, with the find and replace risk that comes with it.</p></div>
+<div class="cell u win"><span class="who">Marlowe</span><p>Built from your letter templates with the matter details filled in. One click to send.</p></div>
+</li>
+<li class="row">
+<div class="crit"><h3>Signatures</h3><p class="call u">Better fit: Marlowe</p></div>
+<div class="cell t"><span class="who">Shared drives and email</span><p>Printed, signed, then scanned or dropped off. Clients who are far away mail it.</p></div>
+<div class="cell u win"><span class="who">Marlowe</span><p>Signed on a phone, with the signed copy filed to the matter.</p></div>
+</li>
+<li class="row">
+<div class="crit"><h3>Conflict checks</h3><p class="call u">Better fit: Marlowe</p></div>
+<div class="cell t"><span class="who">Shared drives and email</span><p>A search in the shared drive and a question around the office.</p></div>
+<div class="cell u win"><span class="who">Marlowe</span><p>A name search across every matter and contact, logged with who ran it and when.</p></div>
+</li>
+<li class="row">
+<div class="crit"><h3>Where the file lives</h3><small>If your drive is tidy, this row is a wash.</small><p class="call e">About the same</p></div>
+<div class="cell t"><span class="who">Shared drives and email</span><p>In the shared drive everyone knows, in whatever folder structure each attorney prefers.</p></div>
+<div class="cell u"><span class="who">Marlowe</span><p>In Marlowe, with the drive you already use mirrored so nothing moves.</p></div>
+</li>
+<li class="row">
+<div class="crit"><h3>Getting set up</h3><small>Worth saying plainly.</small><p class="call t">Better fit: Shared drives and email</p></div>
+<div class="cell t win"><span class="who">Shared drives and email</span><p>Nothing to set up. Everyone already knows email and the drive.</p></div>
+<div class="cell u"><span class="who">Marlowe</span><p>We load your templates and open matters in the first week. Training is one hour per person.</p></div>
+</li>
+</ol>
+<p class="tape-foot">A row marked about the same is close either way. Where a row says nothing about your setup, ask and I will fill it in.</p>
 </div>
 </section>
-<div class="vs-wrap">
-<section data-section="fit" class="vs-fit">
-<p class="vs-label">The honest split</p>
+<section data-section="fit" class="fit">
+<div class="wrap fit-head">
 <h2>Where each one is the better fit</h2>
-<div class="vs-cols">
-<div class="vs-col t">
+<p class="sub">The honest split, from the rows above.</p>
+</div>
+<div class="fit-cols">
+<div class="side t">
 <h3>Where Shared drives and email is the better fit</h3>
 <p>Keep shared drives and email if your drive is tidy and nobody wants to learn a new tool. There is nothing to set up, and everyone already knows how it works.</p>
-<ul class="vs-chips"><li>Getting set up</li>
+<ul class="chips"><li>Getting set up</li>
 </ul>
 </div>
-<div class="vs-col u">
+<div class="side u">
 <h3>Where Marlowe is the better fit</h3>
 <p>Marlowe is the better fit if the first hour on each new matter, the intake form, the engagement letter, the signature and the conflict check, is paralegal time you would rather have back across both offices.</p>
-<ul class="vs-chips"><li>Client intake</li><li>Engagement letters</li><li>Signatures</li><li>Conflict checks</li>
+<ul class="chips"><li>Client intake</li><li>Engagement letters</li><li>Signatures</li><li>Conflict checks</li>
 </ul>
 </div>
 </div>
-<p class="vs-same">About the same either way: Where the file lives.</p>
+<p class="wrap same"><b>About the same either way:</b> Where the file lives.</p>
 </section>
-<section data-section="cta" class="vs-cta">
-<div class="vs-box">
-<h2>Want this checked against your setup?</h2>
+<section data-section="cta" class="cta">
+<div class="wrap">
+<div class="cta-in">
+<div>
+<h2>Want it checked for your setup?</h2>
+</div>
+<div>
 <p>Book 20 minutes. Tell me what Pemberton Family Law runs on today and I will go through the rows that do not hold for you, as well as the ones that do.</p>
-<div class="vs-btn"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1e3a2f;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
-<p class="vs-sign">Ines Carvalho<span>Founder, Marlowe</span></p>
+<div class="btn"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1e3a2f;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+<p class="sign">Ines Carvalho<span>Founder, Marlowe</span></p>
 </div>
-<p class="vs-foot">Written for Pemberton Family Law by Ines Carvalho. Both columns come from our own comparison notes, so they carry our view.</p>
+<p class="foot">Written for Pemberton Family Law by Ines Carvalho. Both columns come from our own comparison notes, so they carry our view.</p>
+</div>
+</div>
 </section>
-</div>
 </main>
 </body>
 </html>

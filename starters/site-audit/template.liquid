@@ -27,7 +27,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Website audit for {{ site | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;700{% if font_head == 'Schibsted Grotesk' %};900{% endif %}&display=swap">
 {%- if font_body != font_head %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;700&display=swap">
 {%- endif %}
@@ -50,7 +50,7 @@
   --step-small:clamp(.875rem,.85rem + .1vw,.9375rem);
   --step-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
   --step-lead:clamp(1.25rem,1.05rem + .8vw,1.75rem);
-  --step-head:clamp(2.125rem,1.3rem + 3.2vw,4rem);
+  --step-head:{% if font_head == 'Schibsted Grotesk' %}clamp(2.125rem,1.3rem + 3.2vw,4rem){% else %}clamp(1.75rem,.2rem + 4.3vw,4rem){% endif %};
   --m:clamp(1.25rem,3.4vw,3rem);
   --axis:42%;
 }
@@ -63,7 +63,7 @@ a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:.07em}
 a:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .tn,.val,.big{font-variant-numeric:tabular-nums}
 /* a field of the brand colour picks black or white text from that colour */
-.on{background:var(--f);color:#000;color:rgb(from var(--f) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255))}
+.on{background:var(--f);color:#000;color:rgb(from var(--f) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))}
 /* the highlighter: every line quoted from their site, and every rewrite */
 mark{background:var(--hl);color:var(--ink);padding:.04em .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .row{display:grid;gap:1rem 2rem;padding:0 var(--m)}
@@ -75,7 +75,7 @@ mark{background:var(--hl);color:var(--ink);padding:.04em .12em;-webkit-box-decor
 .top .for{margin-left:auto;text-align:right;max-width:28rem}
 .top .book{margin-left:auto}
 .top .for + .book{margin-left:1.5rem}
-.top .ken-cta{display:inline-flex!important;align-items:center;min-height:44px;background:var(--s)!important;color:#fff!important;color:rgb(from var(--s) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255))!important;font:700 var(--step-small)/1.1 var(--fb)!important;padding:.7rem 1.1rem!important;border-radius:4px!important;text-decoration:none;white-space:nowrap}
+.top .ken-cta{display:inline-flex!important;align-items:center;min-height:44px;background:var(--s)!important;color:#fff!important;color:rgb(from var(--s) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))!important;font:700 var(--step-small)/1.1 var(--fb)!important;padding:.7rem 1.1rem!important;border-radius:4px!important;text-decoration:none;white-space:nowrap}
 .top .ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .hero{padding-bottom:clamp(2.5rem,5vw,4rem)}
 .hero .row{padding-top:clamp(2rem,6vh,4rem)}
@@ -98,7 +98,7 @@ mark{background:var(--hl);color:var(--ink);padding:.04em .12em;-webkit-box-decor
 .criteria li{display:flex;flex-direction:column;justify-content:flex-end;height:100%}
 .criteria .bar{display:flex;align-items:flex-start;height:calc(var(--n) * 10%);min-height:2.5rem;padding:.5rem .6rem;background:currentColor}
 .criteria .val{font:900 var(--step-lead)/1 var(--fh);color:var(--f);color:rgb(from currentColor calc(255 - r) calc(255 - g) calc(255 - b))}
-.criteria .val small{font:700 var(--step-small)/1 var(--fb)}
+.criteria .val small{font:700 var(--step-small)/1 var(--fh)}
 .criteria .name{display:block;font-weight:700;font-size:var(--step-small);line-height:1.25;padding:.6rem 0 0;min-height:3.6rem}
 .criteria .verdict{display:block;font-size:var(--step-small);padding-bottom:1.25rem}
 
@@ -125,7 +125,7 @@ blockquote cite{display:block;font:400 var(--step-small)/1.4 var(--fb);font-styl
 .after mark,.btn-demo,.now del{justify-self:start}
 .now{color:var(--mute);font-size:var(--step-body);max-width:58ch}
 .now del{text-decoration-thickness:2px}
-.after{font:900 clamp(1.5rem,1rem + 2vw,2.5rem)/1.15 var(--fh);letter-spacing:-.025em;max-width:34ch;margin-top:1.25rem}
+.after{font:900 clamp(1.1875rem,.5rem + 1.95vw,2.25rem)/1.15 var(--fh);letter-spacing:-.025em;max-width:34ch;margin-top:1.25rem}
 .btn-demo{display:inline-block;font:700 var(--step-body)/1 var(--fb);letter-spacing:0;padding:.85rem 1.2rem;border-radius:4px}
 .btn-demo.off{background:color-mix(in srgb,var(--ink) 10%,var(--tint));color:var(--mute)}
 .btn-demo.on{--f:var(--s)}
@@ -154,7 +154,7 @@ blockquote cite{display:block;font:400 var(--step-small)/1.4 var(--fb);font-styl
 .next .text p{max-width:44ch}
 .next .sign{margin-top:1.5rem}
 .next .sign b{display:block;font-weight:700}
-.next .ken-cta{--f:var(--s);display:inline-flex!important;align-items:center;min-height:52px;background:var(--s)!important;color:#fff!important;color:rgb(from var(--s) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255))!important;font:700 var(--step-body)/1.1 var(--fb)!important;padding:.9rem 1.5rem!important;border-radius:4px!important;text-decoration:none;margin-top:1.75rem}
+.next .ken-cta{--f:var(--s);display:inline-flex!important;align-items:center;min-height:52px;background:var(--s)!important;color:#fff!important;color:rgb(from var(--s) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))!important;font:700 var(--step-body)/1.1 var(--fb)!important;padding:.9rem 1.5rem!important;border-radius:4px!important;text-decoration:none;margin-top:1.75rem}
 .next .ken-cta:focus-visible{outline:3px solid var(--paper);outline-offset:3px}
 .foot{padding:1.5rem var(--m) 2.5rem;font-size:var(--step-small);color:var(--mute)}
 .foot p{max-width:70ch}
@@ -279,7 +279,7 @@ blockquote cite{display:block;font:400 var(--step-small)/1.4 var(--fb);font-styl
 <section class="sec" data-section="wireframe">
   <div class="row">
     <div>
-      <h2>Your first screen, marked up</h2>
+      <h2>Your first screen</h2>
       <p class="sub">A sketch of the first screen a visitor sees on a laptop, with a note on each part.</p>
     </div>
     <div class="wire">

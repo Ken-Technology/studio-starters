@@ -1,0 +1,48 @@
+{
+  "account": {
+    "name": "Pennant Hospitality Group",
+    "domain": "pennanthospitality.example",
+    "industry": "hospitality and hotels",
+    "size_band": "1001-5000",
+    "dossier": {
+      "summary": "Pennant Hospitality operates full-service hotels under franchise agreements in the Southeast, with group sales and events handled by each property.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Elena",
+    "last_name": "Marsh",
+    "title": "Director of Revenue"
+  },
+  "sender": {
+    "name": "Rafael Ortiz",
+    "title": "Partnerships",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Oakline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#0f766e",
+      "secondary": "#0f172a"
+    },
+    "fonts": {
+      "heading": "Lora",
+      "body": "Nunito Sans"
+    }
+  },
+  "data": {
+    "headline": "Group sales run property by property, and a question for your sales managers",
+    "intro": "Your properties each run their own group and events sales, which is where this month's note and idea both come from.",
+    "note": {
+      "title": "Group business is the one revenue line each hotel still owns",
+      "body": "Transient rates at a franchised hotel are mostly set by the brand's systems and the market. Group and events revenue is different: it is sold by a person at the property, on the phone, from a lead that came in that week.\n\nYour site lists group sales and events contacts on every property page, which means the quality of that revenue line depends on how each of those people spends a Tuesday afternoon.\n\nThat is not a weakness. It is the part of the business where a small change in habit shows up in the numbers within a quarter."
+    },
+    "idea": {
+      "title": "Ask every sales manager for last month's lost group leads",
+      "body": "Won business gets reported. Lost leads mostly get deleted. Yet the lost list is where the pattern is: the same competitor hotel, the same date block, the same missing meeting room.\n\nAsk each property's sales manager for a short list of the group leads they lost last month, with the reason they believe it went elsewhere. Do not build a form for it. A reply to an email is fine.\n\nRead all of them in one sitting. You will know more about your group pricing after an hour than any report shows.",
+      "first_step": "Send one email to each property's sales manager today asking for last month's lost group leads and the reason for each."
+    }
+  }
+}

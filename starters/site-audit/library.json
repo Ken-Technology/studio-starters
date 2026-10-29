@@ -1,0 +1,14 @@
+{
+  "description": "A scorecard of the account's own website: six scored criteria that quote their copy, two rewrites, a marked-up first screen and the three fixes to make first.",
+  "category": "prospecting",
+  "tags": ["website audit", "conversion", "copy rewrite", "scorecard"],
+  "featured": true,
+  "needs": [],
+  "version": "1.0.1",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "brightwave", "label": "Brightwave Logistics, filled for one person" },
+    { "id": "tidewater-shared", "label": "Shared link (no person)" },
+    { "id": "orchard-row", "label": "Orchard Row Payroll, filled for one person" }
+  ]
+}

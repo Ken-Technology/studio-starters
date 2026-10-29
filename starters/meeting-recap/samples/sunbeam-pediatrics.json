@@ -1,0 +1,179 @@
+{
+  "account": {
+    "name": "Sunbeam Pediatrics",
+    "domain": "sunbeampediatrics.example",
+    "industry": "hospitals and health care",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Sunbeam Pediatrics runs six pediatric clinics in the Twin Cities with 14 providers and about 1,100 visits a week.",
+      "why_now": "Opened its sixth clinic, Northgate, in August.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Marcus",
+    "last_name": "Oyelaran",
+    "title": "Practice Manager"
+  },
+  "sender": {
+    "name": "Lena Fischer",
+    "title": "Customer Lead",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Kite",
+    "logo_url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 92 28'><path d='M14 2l10 12-10 12L4 14z' fill='%23f0541e'/><path d='M14 14l10 12' stroke='%231b1a2f' stroke-width='2'/><text x='32' y='20' font-family='Arial,Helvetica,sans-serif' font-size='19' font-weight='700' fill='%231b1a2f'>Kite</text></svg>",
+    "colors": {
+      "primary": "#f0541e",
+      "secondary": "#1b1a2f"
+    },
+    "fonts": {
+      "heading": "Outfit",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "notes": [
+      {
+        "citationId": "k-c501",
+        "kind": "note",
+        "title": "Call notes, Oct 23: Sunbeam Pediatrics, visit to the Lakeview clinic",
+        "sourceDate": "2026-10-23",
+        "sourceUrls": [],
+        "text": "Friday October 23, 2026, 40 min, in person at the Lakeview clinic. Sunbeam: Marcus Oyelaran (Practice Manager), Dr. Aisha Rahman (Medical Director), Tom Nakamura (Front Desk Lead). Kite: Lena Fischer, Priyanka Shah (Onboarding).\n\nSix clinics, 14 providers, about 1,100 visits a week. No-show rate was 11 percent in September (Marcus pulled the report last week). Front desk staff make reminder calls by hand on Thursday afternoons for the following week; Tom said it takes two people most of the afternoon and they still miss people. Well-visit recall letters go out by mail twice a year. Parents ask for text reminders; the clinics have no texting today. Their EHR stays with its current vendor.\n\nDr. Rahman: any text that goes to parents gets reviewed by the clinical team first. A text never includes a diagnosis or a reason for the visit.\n\nAgreed: a 30 day trial at the Lakeview and Northgate clinics starting Tuesday November 17. Tom sends the reminder call script and the September no-show report by Friday October 30. Priyanka sends the EHR connection checklist and sample parent texts by Tuesday November 3. The clinical team reviews the texts before go-live. Next call Friday November 6 to confirm the connection and the text wording. After the trial, Marcus wants a number for the other four clinics before the year ends; Lena to send it.\n\nResources: EHR connection checklist (https://kite.example/docs/ehr-checklist), sample parent texts (https://kite.example/samples/parent-texts), the reminders walkthrough video Lena showed on the tablet (https://kite.example/video/reminders-walkthrough)."
+      },
+      {
+        "citationId": "k-c502",
+        "kind": "transcript",
+        "title": "Transcript, Oct 23 visit (phone recording)",
+        "sourceDate": "2026-10-23",
+        "sourceUrls": [],
+        "text": "[00:03:30] Marcus Oyelaran: September was 11 percent no-shows. I pulled it last week. That is a lot of empty slots for 14 providers.\n[00:05:12] Tom Nakamura: Thursday afternoons, two of us call next week's list. It takes most of the afternoon and we still miss people.\n[00:09:48] Dr. Aisha Rahman: I am fine with texts, with two conditions. My team reads every message before it goes out, and a message never says why the child is coming in.\n[00:10:05] Lena Fischer: Both are standard for us. The texts say the time, the clinic and how to reschedule, nothing else.\n[00:22:40] Marcus Oyelaran: Start with Lakeview and Northgate. If the trial works I need a number for the other four before the year ends.\n[00:23:10] Priyanka Shah: Thirty days from November 17. I will send the connection checklist and the sample texts by the third so the clinical team has time.\n[00:23:30] Tom Nakamura: I will get you the call script and the September report by the end of next week."
+      }
+    ],
+    "title": "Our visit to Lakeview on Friday, October 23",
+    "note": "Thanks for having us at Lakeview on Friday, and for pulling the September numbers ahead of time. Here is what we heard, what we agreed and who does what before the trial starts on November 17. If anything is off, reply to my email and I will fix it the same day.",
+    "call": {
+      "date": "Friday, October 23",
+      "length": "40 minutes",
+      "channel": "in person",
+      "them": [
+        {
+          "name": "Marcus Oyelaran",
+          "title": "Practice Manager"
+        },
+        {
+          "name": "Dr. Aisha Rahman",
+          "title": "Medical Director"
+        },
+        {
+          "name": "Tom Nakamura",
+          "title": "Front Desk Lead"
+        }
+      ],
+      "us": [
+        {
+          "name": "Lena Fischer"
+        },
+        {
+          "name": "Priyanka Shah",
+          "title": "Onboarding"
+        }
+      ]
+    },
+    "heard": [
+      {
+        "topic": "The clinics",
+        "text": "Six clinics, 14 providers and about 1,100 visits a week."
+      },
+      {
+        "topic": "No-shows",
+        "text": "The no-show rate was 11 percent in September. Marcus pulled the report last week."
+      },
+      {
+        "topic": "Reminder calls",
+        "text": "On Thursday afternoons two front desk staff call next week's list by hand. It takes most of the afternoon and people still get missed."
+      },
+      {
+        "topic": "Recall letters",
+        "text": "Well-visit recall letters go out by mail twice a year."
+      },
+      {
+        "topic": "Texting",
+        "text": "Parents ask for text reminders and the clinics have none today. Your EHR stays with its current vendor."
+      },
+      {
+        "topic": "Clinical review",
+        "text": "Dr. Rahman's team reads every parent text before it goes out, and a text never says why the child is coming in."
+      }
+    ],
+    "agreed": [
+      "A 30 day trial at the Lakeview and Northgate clinics, starting Tuesday, November 17.",
+      "Texts say the time, the clinic and how to reschedule. Never a diagnosis or a reason for the visit.",
+      "The clinical team reviews every text before the trial goes live.",
+      "After the trial, Marcus gets a number for the other four clinics before the year ends."
+    ],
+    "steps": [
+      {
+        "what": "Send the reminder call script and the September no-show report",
+        "owner": "Tom Nakamura",
+        "side": "them",
+        "due": "Fri Oct 30"
+      },
+      {
+        "what": "Send the EHR connection checklist and the sample parent texts",
+        "owner": "Priyanka Shah",
+        "side": "us",
+        "due": "Tue Nov 3"
+      },
+      {
+        "what": "Confirm the connection and the text wording on the next call",
+        "owner": "Kite",
+        "side": "us",
+        "due": "Fri Nov 6"
+      },
+      {
+        "what": "Review the sample texts with the clinical team",
+        "owner": "Dr. Aisha Rahman",
+        "side": "them",
+        "due": "before Nov 17"
+      },
+      {
+        "what": "Start the trial at Lakeview and Northgate",
+        "owner": "Priyanka Shah",
+        "side": "us",
+        "due": "Tue Nov 17"
+      },
+      {
+        "what": "Send a number for the other four clinics",
+        "owner": "Lena Fischer",
+        "side": "us",
+        "due": "before the year ends"
+      }
+    ],
+    "resources": [
+      {
+        "title": "EHR connection checklist",
+        "kind": "Doc",
+        "note": "What your EHR vendor needs from us to connect. Comes by November 3.",
+        "url": "https://kite.example/docs/ehr-checklist"
+      },
+      {
+        "title": "Sample parent texts",
+        "kind": "Page",
+        "note": "The reminder wording for Dr. Rahman's team to review.",
+        "url": "https://kite.example/samples/parent-texts"
+      },
+      {
+        "title": "Reminders walkthrough",
+        "kind": "Video",
+        "note": "The walkthrough Lena showed on the tablet at Lakeview.",
+        "url": "https://kite.example/video/reminders-walkthrough"
+      }
+    ],
+    "sources": [
+      "Call notes, Oct 23: Sunbeam Pediatrics, visit to the Lakeview clinic",
+      "Transcript, Oct 23 visit (phone recording)"
+    ]
+  }
+}

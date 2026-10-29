@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Your lessees decide which mowers to replace from hours nobody wrote down</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f5f3ee;color:#1b1e22;font-family:'DM Sans',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.pp{--p:#ff5a1f;--s:#15202b;--ink:#1b1e22;--mute:#636a73;--line:#d9d5cc;--paper:#f5f3ee;--card:#fffdfa;--p-deep:color-mix(in srgb,var(--p) 75%,#111);--tint:color-mix(in srgb,var(--p) 8%,#fff);--tint-line:color-mix(in srgb,var(--p) 32%,#fff)}
+.pp h1,.pp h2,.pp h3{font-family:'Space Grotesk',Georgia,'Times New Roman',serif;font-weight:500;letter-spacing:-.012em;text-wrap:balance;margin:0}
+.pp p{margin:0 0 1rem}
+.pp ul,.pp ol{margin:0;padding:0;list-style:none}
+.pp-wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
+.pp-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--ink)}
+.pp-logo{height:26px;width:auto;display:block}
+.pp-brand{font-weight:700;font-size:.95rem;margin:0!important}
+.pp-tag{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;text-align:right}
+.pp-kicker{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p-deep);margin:0 0 .9rem!important}
+.pp-kicker::before{content:'';display:inline-block;width:1.4rem;height:3px;background:var(--s);vertical-align:.25em;margin-right:.6rem}
+.pp-open{padding:2.5rem 0 2.4rem}
+.pp h1{font-size:2.2rem;line-height:1.08;margin:0 0 1.1rem;max-width:22ch}
+.pp-lede{font-size:1.12rem;line-height:1.55;max-width:38rem;color:#33383e}
+.pp-memo{margin:1.8rem 0 0;padding:0;border-top:2px solid var(--ink)}
+.pp-memo div{display:grid;grid-template-columns:5.2rem 1fr;gap:.6rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.pp-memo dt{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);padding-top:.3rem}
+.pp-memo dd{margin:0;font-weight:600}
+.pp-memo small{display:block;font-weight:400;color:var(--mute);font-size:.88rem}
+.pp-memo .pp-why dd{font-weight:400}
+section.is-empty{display:none}
+.pp-head{margin:0 0 1.4rem}
+.pp h2{font-size:1.7rem;line-height:1.15;margin:0 0 .6rem}
+.pp-note{color:var(--mute);font-size:.97rem;max-width:30rem}
+.pp-overlap{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.6rem 0 2.8rem}
+.pp-lens{display:grid;gap:1rem}
+.pp-side{border:1px solid var(--line);background:var(--paper);padding:1.2rem 1.15rem .4rem;border-radius:4px}
+.pp-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 .8rem!important}
+.pp-them .pp-label{color:var(--ink)}
+.pp-us .pp-label{color:var(--p-deep)}
+.pp-sells{font-size:.97rem;margin:0 0 .85rem}
+.pp-sells b{display:block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:.15rem}
+.pp-both{background:var(--tint);border:2px solid var(--p);border-radius:4px;padding:1.3rem 1.15rem .5rem;margin:0 .8rem;position:relative;z-index:1}
+.pp-both .pp-label{color:var(--p-deep)}
+.pp-both h3{font-size:1.35rem;line-height:1.2;margin:0 0 .8rem}
+.pp-both li{position:relative;padding:.5rem 0 .5rem 1.2rem;border-top:1px solid var(--tint-line);font-size:.97rem}
+.pp-both li::before{content:'';position:absolute;left:0;top:1.1rem;width:.5rem;height:.5rem;border-radius:50%;background:var(--p)}
+.pp-examples{padding:2.6rem 0 2.4rem}
+.pp-list{border-top:2px solid var(--ink)}
+.pp-list li{padding:.85rem 0;border-bottom:1px solid var(--line)}
+.pp-co b{display:block;font-weight:600}
+.pp-co span{display:block;font-size:.85rem;color:var(--mute);margin:.1rem 0 .35rem}
+.pp-list p{margin:0;font-size:.97rem}
+.pp-offer{padding:.4rem 0 2.6rem}
+.pp-terms{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p);border-radius:4px;padding:1.3rem 1.15rem .4rem}
+.pp-term{padding:0 0 1rem;margin:0 0 1rem;border-bottom:1px solid var(--line)}
+.pp-term h3,.pp-steps h3{font-family:inherit;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 .6rem;letter-spacing:.12em}
+.pp-term li{position:relative;padding:.25rem 0 .25rem 1.1rem;font-size:.97rem}
+.pp-term li::before{content:'';position:absolute;left:0;top:.9rem;width:.45rem;height:2px;background:var(--p)}
+.pp-term p{font-size:.97rem;margin:0}
+.pp-term-cust p{font-family:'Space Grotesk',Georgia,'Times New Roman',serif;font-size:1.2rem;line-height:1.35;color:var(--p-deep)}
+.pp-steps{padding:0 0 .6rem}
+.pp-steps ol{counter-reset:step}
+.pp-steps li{display:grid;grid-template-columns:2rem 1fr;gap:.1rem .5rem;padding:.65rem 0;border-top:1px solid var(--line);counter-increment:step}
+.pp-steps li::before{content:counter(step);font-family:'Space Grotesk',Georgia,'Times New Roman',serif;font-size:1.3rem;color:var(--p-deep);line-height:1.2;grid-row:1/3}
+.pp-steps b{display:block;font-weight:600}
+.pp-steps span{display:block;color:#33383e;font-size:.95rem}
+.pp-first{padding:0 0 3.5rem}
+.pp-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p);border-radius:4px;padding:1.5rem 1.15rem 1.3rem}
+.pp-card h2{font-size:1.65rem}
+.pp-ask{border-left:2px solid var(--p);padding-left:.9rem;margin:1.2rem 0 0}
+.pp-ask b{display:block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+.pp-btn{margin:1.4rem 0 1.5rem}
+.ken-cta{font-family:inherit;font-size:1rem;line-height:1.25;min-height:44px}
+.pp-sign{margin:0!important;font-weight:600;border-top:1px solid var(--line);padding-top:1.1rem}
+.pp-sign span{display:block;font-weight:400;color:var(--mute);font-size:.9rem}
+.pp-foot{font-size:.8rem;color:var(--mute);margin:1.4rem 0 0}
+@media (min-width:760px){
+body{font-size:18px}
+.pp-wrap{padding:0 2rem}
+.pp-open{padding:4rem 0 3.4rem}
+.pp h1{font-size:3.4rem}
+.pp-memo{display:grid;grid-template-columns:repeat(3,1fr);gap:0 2rem}
+.pp-memo div{grid-template-columns:1fr;gap:.2rem;border-bottom:0;align-content:start}
+.pp-grid{display:grid;grid-template-columns:17rem 1fr;gap:3rem;align-items:start}
+.pp-grid .pp-head{position:sticky;top:1.5rem}
+.pp h2{font-size:2.05rem}
+.pp-overlap{padding:3.4rem 0 3.6rem}
+.pp-lens.lens-3{grid-template-columns:1fr 1.15fr 1fr;gap:0;align-items:stretch}
+.pp-lens.lens-3 .pp-both{margin:-1.25rem -.5rem;padding:1.6rem 1.4rem .7rem}
+.pp-lens.lens-3 .pp-them{border-right:0;border-radius:4px 0 0 4px}
+.pp-lens.lens-3 .pp-us{border-left:0;border-radius:0 4px 4px 0}
+.pp-lens.lens-2{grid-template-columns:1fr 1fr;gap:1.5rem}
+.pp-lens.lens-1{grid-template-columns:minmax(0,44rem)}
+.pp-side{padding:1.4rem 1.4rem .6rem}
+.pp-examples{padding:3.4rem 0 3rem}
+.pp-list li{display:grid;grid-template-columns:16rem 1fr;gap:1.5rem;padding:1rem 0}
+.pp-co span{margin-bottom:0}
+.pp-offer{padding:.4rem 0 3.4rem}
+.pp-terms{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 2rem;padding:1.8rem 1.8rem .8rem}
+.pp-term{border-bottom:0;border-right:1px solid var(--line);padding:0 1.6rem .6rem 0;margin:0}
+.pp-term-cust{border-right:0;padding-right:0}
+.pp-steps{grid-column:1/-1;border-top:1px solid var(--line);padding:1.4rem 0 .4rem;margin-top:1.2rem}
+.pp-steps ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:0 2rem}
+.pp-steps li{border-top:0;padding:.3rem 0}
+.pp-card{display:grid;grid-template-columns:1fr 15rem;gap:3rem;padding:2.4rem 2.4rem 2rem;align-items:end}
+.pp-card h2{font-size:2.1rem}
+.pp-sign{border-top:0;padding:0;text-align:right}
+}
+@media (min-width:1000px){
+.pp-open{display:grid;grid-template-columns:minmax(0,1fr) 19rem;gap:0 5rem;align-items:start}
+.pp-memo{display:block;margin:2.7rem 0 0}
+.pp-memo div{border-bottom:1px solid var(--line);padding:.8rem 0}
+}
+</style>
+</head>
+<body>
+<main class="pp">
+<div class="pp-wrap">
+<header class="pp-top"><p class="pp-brand">Fieldstone</p><p class="pp-tag">Partnership proposal</p>
+</header>
+<section data-section="open" class="pp-open">
+<div class="pp-open-main">
+<p class="pp-kicker">For Aspen Equipment Finance</p>
+<h1>Your lessees decide which mowers to replace from hours nobody wrote down</h1>
+<p class="pp-lede">We both sell to landscaping and snow contractors with a few dozen to a few hundred field staff, in the same states. And we care about the same machines: you finance them, and our customers log every hour they run. Here is a way to sell to those contractors together.</p>
+</div>
+<dl class="pp-memo">
+<div><dt>From</dt><dd>Rosa Alvarez<small>Fieldstone</small></dd></div>
+<div><dt>To</dt><dd>Aspen Equipment Finance<small>Partnerships and leadership</small></dd></div>
+<div class="pp-why"><dt>Why now</dt><dd>Added a page for landscaping contractors to its site in October 2026.</dd></div>
+</dl>
+</section>
+</div>
+<section data-section="overlap" class="pp-overlap">
+<div class="pp-wrap">
+<div class="pp-head">
+<p class="pp-kicker">Customers</p>
+<h2>Where our customers meet</h2>
+<p class="pp-note">Your side comes from your website. Ours comes from what we know about our own customers.</p>
+</div>
+<div class="pp-lens lens-3">
+<div class="pp-side pp-them">
+<p class="pp-label">Aspen Equipment Finance</p>
+<p class="pp-sells"><b>Sells</b>Leases and loans for mowers, loaders, trucks and snow equipment, with seasonal payment plans for landscaping and snow removal contractors.</p>
+<p class="pp-sells"><b>To</b>You sell to landscaping, lawn care and snow removal contractors with 10 to 300 employees across Colorado, Utah, Arizona and the Midwest. Most lease a fleet of five to fifty machines, replace part of it every spring, and use your seasonal payment plans to match winter and summer cash flow.</p>
+</div>
+<div class="pp-both">
+<p class="pp-label">Where they meet</p>
+<h3>Landscaping and snow contractors with 4 to 25 crews</h3>
+<ul>
+<li>The same buyer: the owner or operations manager who leases the fleet is the one who schedules the crews.</li>
+<li>The same states: Colorado, Utah, Arizona and the Midwest on your side, the Midwest and the Mountain West on ours.</li>
+<li>The same season: contractors add crews and replace machines every spring, which is when both of us get the call.</li>
+<li>The same machines: you finance the mowers and trucks, and our customers log the hours each one runs.</li>
+</ul>
+</div>
+<div class="pp-side pp-us">
+<p class="pp-label">Fieldstone</p>
+<p class="pp-sells"><b>Sells</b>Crew scheduling and time tracking for outdoor services contractors: routes on the crew&#39;s phone, clock-in at the job, and hours per crew and per machine for the office.</p>
+<p class="pp-sells"><b>To</b>Landscaping, lawn care and snow removal companies with 20 to 300 field staff, mostly in the Midwest, the Mountain West and the Northeast. They run 4 to 25 crews, own their mowers and trucks, and add snow removal in winter. The buyer is the owner or the operations manager, and most come to us in spring when paper route sheets stop working.</p>
+</div>
+</div>
+</div>
+</section>
+<section data-section="examples" class="pp-examples">
+<div class="pp-wrap pp-grid">
+<div class="pp-head">
+<p class="pp-kicker">Examples</p>
+<h2>Companies in the overlap</h2>
+<p class="pp-note">6 companies that fit both customer bases, picked from a company search. Neither of us has named a customer here.</p>
+</div>
+<ol class="pp-list">
+<li><div class="pp-co"><b>Front Range Grounds</b><span>landscaping services &middot; 51-200 &middot; Fort Collins, Colorado</span></div><p>Twelve summer crews doing landscaping and snow removal on the Front Range, in your home state and our core size.</p></li>
+<li><div class="pp-co"><b>Prairie Edge Landscapes</b><span>landscaping services &middot; 51-200 &middot; Des Moines, Iowa</span></div><p>Design, install and maintenance crews across two Midwest states, the fleet size that gets replaced in parts.</p></li>
+<li><div class="pp-co"><b>Great Lakes Snow and Turf</b><span>landscaping services &middot; 51-200 &middot; Grand Rapids, Michigan</span></div><p>Thirty trucks that plow in winter and mow in summer, which is a seasonal fleet and a seasonal payroll.</p></li>
+<li><div class="pp-co"><b>Wasatch Lawn and Snow</b><span>landscaping services &middot; 11-50 &middot; Salt Lake City, Utah</span></div><p>Lawn care plus snow plowing for the same customers in Utah, at the small end of both our ranges.</p></li>
+<li><div class="pp-co"><b>Blue Spruce Property Care</b><span>landscaping services &middot; 11-50 &middot; Boulder, Colorado</span></div><p>Adding a sixth crew this year, which is when route sheets and the fleet both need to grow.</p></li>
+<li><div class="pp-co"><b>Timberline Outdoor Services</b><span>facilities services &middot; 51-200 &middot; Bozeman, Montana</span></div><p>Landscaping, snow and parking lot work for commercial clients in Montana and Idaho, with 130 people.</p></li>
+</ol>
+</div>
+</section>
+<section data-section="offer" class="pp-offer">
+<div class="pp-wrap pp-grid">
+<div class="pp-head">
+<p class="pp-kicker">The joint offer</p>
+<h2>Equipment hours that set the replacement plan</h2>
+<p class="pp-note">Contractors on Fieldstone get a leasing offer from Aspen built on the hours their machines ran last season, instead of a guess. You get a lessee who knows which five machines to replace. We get a referral partner that sees contractors the week they lease a new fleet.</p>
+</div>
+<div class="pp-terms">
+<div class="pp-term"><h3>Aspen Equipment Finance brings</h3><ul>
+<li>Seasonal leases and loans for mowers, loaders, trucks and snow equipment, decided in two business days</li>
+<li>A dedicated contact for referral partners</li>
+<li>Contractors replacing part of a fleet every spring</li>
+</ul></div>
+<div class="pp-term"><h3>Fieldstone brings</h3><ul>
+<li>Hours per machine from crew clock-ins, which a contractor can share with you when they ask for a lease</li>
+<li>Routes and time tracking the crews already use, so the hours are there without extra work</li>
+<li>Around 900 contractors, most of them in your states</li>
+</ul></div>
+<div class="pp-term pp-term-cust"><h3>The customer gets</h3><p>A replacement plan and a lease built on the hours each machine actually ran, from two companies that already know their crews and their fleet.</p></div>
+<div class="pp-steps"><h3>How it runs</h3><ol>
+<li><b>Agree what a contractor shares</b><span>We settle on one export: machine, hours last season, crew. The contractor chooses to send it to Aspen. Nothing moves without them.</span></li>
+<li><b>Add Fieldstone to your landscaping page</b><span>Your new landscaping page lists us as a way to track machine hours. Our help center lists Aspen as a way to finance a replacement.</span></li>
+<li><b>Refer both ways through one contact</b><span>Your partner contact and I trade introductions every two weeks and keep one shared list of who was referred.</span></li>
+<li><b>Check the first season</b><span>After the spring season we look at how many contractors used the export and whether their lease decisions changed.</span></li>
+</ol></div>
+</div>
+</div>
+</section>
+<section data-section="first_step" class="pp-first">
+<div class="pp-wrap">
+<div class="pp-card">
+<div class="pp-card-main">
+<p class="pp-kicker">The first step</p>
+<h2>A 30 minute call on the machine hours export</h2>
+<p>I show you the equipment hours a contractor sees in Fieldstone, and you tell me whether that is what your underwriters want to see for a replacement lease. If it is, we write the export together. If it is not, we know what to change.</p>
+<p class="pp-ask"><b>What I need from you</b>Pick a week, and bring whoever reads a contractor&#39;s equipment list when a lease comes in.</p>
+<div class="pp-btn"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#ff5a1f;color:#fff;text-decoration:none;font-weight:600">Book 30 minutes</a></div>
+</div>
+<p class="pp-sign">Rosa Alvarez<span>Fieldstone</span></p>
+</div>
+<p class="pp-foot">Written for Aspen Equipment Finance by Rosa Alvarez at Fieldstone. A private link, not a public page.</p>
+</div>
+</section>
+</main>
+</body>
+</html>

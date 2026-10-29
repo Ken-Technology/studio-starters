@@ -1,0 +1,236 @@
+{
+  "account": {
+    "name": "Brightwave Logistics",
+    "domain": "brightwave.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Brightwave Logistics is a regional freight carrier and broker with terminals in Chicago and Memphis.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Leo",
+    "last_name": "Marsh",
+    "title": "VP Operations"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northbeam",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "rows": [
+      {
+        "kind": "quarter",
+        "label": "Q2 2026",
+        "hours_saved": 1510,
+        "active_seats": 82,
+        "seats": 120,
+        "tasks_done": 9520,
+        "median_hours": 4.6,
+        "detail": "April to June 2026"
+      },
+      {
+        "kind": "quarter",
+        "label": "Q3 2026",
+        "hours_saved": 1840,
+        "active_seats": 96,
+        "seats": 120,
+        "tasks_done": 12460,
+        "median_hours": 3.1,
+        "detail": "July to September 2026"
+      },
+      {
+        "kind": "month",
+        "label": "Feb",
+        "quarter": "Q1 2026",
+        "active_seats": 18
+      },
+      {
+        "kind": "month",
+        "label": "Mar",
+        "quarter": "Q1 2026",
+        "active_seats": 31
+      },
+      {
+        "kind": "month",
+        "label": "Apr",
+        "quarter": "Q2 2026",
+        "active_seats": 44
+      },
+      {
+        "kind": "month",
+        "label": "May",
+        "quarter": "Q2 2026",
+        "active_seats": 62
+      },
+      {
+        "kind": "month",
+        "label": "Jun",
+        "quarter": "Q2 2026",
+        "active_seats": 82
+      },
+      {
+        "kind": "month",
+        "label": "Jul",
+        "quarter": "Q3 2026",
+        "active_seats": 83
+      },
+      {
+        "kind": "month",
+        "label": "Aug",
+        "quarter": "Q3 2026",
+        "active_seats": 94,
+        "detail": "Dispatch rollout to the Chicago yard, 11 seats added in one week."
+      },
+      {
+        "kind": "month",
+        "label": "Sep",
+        "quarter": "Q3 2026",
+        "active_seats": 96
+      },
+      {
+        "kind": "month",
+        "label": "Oct",
+        "quarter": "Q4 2026",
+        "active_seats": 97
+      },
+      {
+        "kind": "team",
+        "label": "Dispatch",
+        "seats": 40,
+        "active_seats": 38,
+        "hours_saved": 760,
+        "detail": "Works the exception queue in the platform instead of over the radio and a spreadsheet."
+      },
+      {
+        "kind": "team",
+        "label": "Customer service",
+        "seats": 30,
+        "active_seats": 24,
+        "hours_saved": 480,
+        "detail": "Answers ETA questions from the live board instead of calling the cab."
+      },
+      {
+        "kind": "team",
+        "label": "Fleet maintenance",
+        "seats": 20,
+        "active_seats": 14,
+        "hours_saved": 190,
+        "detail": "Logs breakdowns and repairs on the load record."
+      },
+      {
+        "kind": "team",
+        "label": "Finance",
+        "seats": 18,
+        "active_seats": 12,
+        "hours_saved": 250,
+        "detail": "Detention and accessorial charges arrive with the load record, so nobody re-keys them from emails."
+      },
+      {
+        "kind": "team",
+        "label": "Sales",
+        "seats": 12,
+        "active_seats": 8,
+        "hours_saved": 160,
+        "detail": "Checks load status before calling a customer back."
+      },
+      {
+        "kind": "milestone",
+        "label": "Contract start",
+        "date": "2026-01-29",
+        "marker": "start",
+        "detail": "120 seats, 12-month term."
+      },
+      {
+        "kind": "milestone",
+        "label": "Q3 value review",
+        "date": "2026-10-29",
+        "marker": "review",
+        "detail": "Usage for July to September."
+      },
+      {
+        "kind": "milestone",
+        "label": "Q4 planning call",
+        "date": "2026-11-05",
+        "detail": "30 minutes to agree the Q4 targets."
+      },
+      {
+        "kind": "milestone",
+        "label": "Dallas terminal rollout",
+        "date": "2026-11-17",
+        "detail": "28 new seats, with the same two sessions of training as Chicago."
+      },
+      {
+        "kind": "milestone",
+        "label": "All 120 seats active",
+        "date": "2026-12-15",
+        "detail": "Finance, fleet maintenance and sales bring their unused seats into use."
+      },
+      {
+        "kind": "milestone",
+        "label": "Q4 value review",
+        "date": "2027-01-14",
+        "detail": "Includes the renewal proposal."
+      },
+      {
+        "kind": "milestone",
+        "label": "Renewal date",
+        "date": "2027-01-29",
+        "marker": "renewal"
+      }
+    ],
+    "headline": "Brightwave Logistics saved 1,840 hours in Q3, 22 percent more than in Q2, with 96 of 120 seats active.",
+    "usage_note": "Active seats grew from 18 in February to 97 in October, and grew every month. August added 11 seats, the month of the dispatch rollout to the Chicago yard.",
+    "adoption_note": "Dispatch has 38 of its 40 seats active and Customer service 24 of 30. Fleet maintenance, Finance and Sales have 16 seats not yet active between them.",
+    "wins": [
+      {
+        "stat": "760",
+        "unit": "hours",
+        "title": "Hours saved by Dispatch",
+        "body": "Dispatch works the exception queue in the platform instead of over the radio and a spreadsheet. 38 of 40 seats are active.",
+        "team": "Dispatch, 38 of 40 seats"
+      },
+      {
+        "stat": "480",
+        "unit": "hours",
+        "title": "Hours saved by Customer service",
+        "body": "Customer service answers ETA questions from the live board instead of calling the cab. 24 of 30 seats are active.",
+        "team": "Customer service, 24 of 30 seats"
+      },
+      {
+        "stat": "250",
+        "unit": "hours",
+        "title": "Hours saved by Finance",
+        "body": "Detention and accessorial charges arrive with the load record, so nobody in finance re-keys them from emails. 12 of 18 seats are active.",
+        "team": "Finance, 12 of 18 seats"
+      }
+    ],
+    "plan": [
+      {
+        "when": "5 Nov 2026",
+        "what": "Agree the Q4 targets on a 30-minute call.",
+        "who": "Leo Marsh, Maya Chen"
+      },
+      {
+        "when": "17 Nov 2026",
+        "what": "Roll out to the Dallas terminal: 28 new seats, with the same two sessions of training as Chicago.",
+        "who": "Leo Marsh, Maya Chen"
+      },
+      {
+        "when": "15 Dec 2026",
+        "what": "Bring the 24 seats not yet in use into use, starting with finance, fleet maintenance and sales.",
+        "who": "Maya Chen"
+      }
+    ],
+    "next_note": "The Dallas rollout adds 28 seats before the renewal date, so it is the one thing to settle first. The 5 Nov call is the place to do it. Pick a time and I will take you through the plan."
+  }
+}

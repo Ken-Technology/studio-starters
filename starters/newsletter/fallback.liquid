@@ -1,0 +1,84 @@
+{%- assign accent = brand.colors.primary | default: '#b4381c' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#1c2430' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
+{%- assign font_body = brand.fonts.body | default: 'Hanken Grotesk' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign sender_name = sender.name | default: 'Our team' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>A monthly brief for {{ account.name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#ebe9e3;color:#16181d;font-family:'{{ font_body }}',ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.nb{--a:{{ accent }};--a2:{{ accent2 }};--ink:#16181d;--mute:#626772;--line:#d8d5cd;--paper:#f3f1ec;--sheet:#fff}
+.nb h1,.nb-name,.nb-hi{font-family:'{{ font_head }}',Georgia,"Times New Roman",serif;font-weight:500;letter-spacing:-.01em}
+.nb h1{text-wrap:balance}
+:where(.nb) p{margin:0 0 1rem}
+.nb-sheet{background:var(--sheet);max-width:66rem;margin:0 auto;padding:0 1.25rem 2.5rem}
+.nb-mast{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;padding:1.3rem 0 .75rem;border-bottom:3px solid var(--ink);position:relative}
+.nb-mast::after{content:"";position:absolute;left:0;right:0;bottom:-6px;border-bottom:1px solid var(--ink)}
+.nb-name{font-size:1.65rem;line-height:1;margin:0;font-weight:600}
+.nb-logo{height:28px;width:auto;display:block}
+.nb-issue{text-align:right;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;line-height:1.55;color:var(--mute);margin:0;flex:none}
+.nb-issue b{display:block;color:var(--ink);font-weight:700}
+.nb-hero{padding:2.3rem 0 1.4rem}
+.nb-kicker{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--a);margin:0 0 1rem}
+.nb h1{font-size:2.05rem;line-height:1.1;margin:0 0 1.5rem;max-width:22ch}
+.nb-hi{font-size:1.35rem;line-height:1.3;margin:0 0 .35rem}
+.nb-intro{font-size:1.08rem;line-height:1.55;color:#363a42;max-width:38rem}
+.nb-reply{margin:1rem -1.25rem 0;padding:2rem 1.25rem 2.2rem;background:var(--paper);border-top:1px solid var(--line)}
+.nb-lab{display:block;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 .9rem}
+.nb-lead{font-size:1.08rem;line-height:1.55;max-width:38rem}
+.nb-btn{margin:1.2rem 0 0}
+.nb-sign{margin:1.5rem 0 0;font-weight:600;line-height:1.35}
+.nb-sign span{display:block;font-weight:400;color:var(--mute);font-size:.92rem}
+.nb-foot{font-size:.78rem;line-height:1.5;color:var(--mute);padding:1.6rem 0 0;margin:0}
+@media (min-width:760px){
+body{font-size:18px}
+.nb{padding:2rem 1.5rem 3rem}
+.nb-sheet{padding:0 3.5rem 3rem;border:1px solid var(--line)}
+.nb-mast{padding:1.7rem 0 .9rem}
+.nb-name{font-size:2.3rem}
+.nb-logo{height:36px}
+.nb-hero{padding:3rem 0 2.2rem}
+.nb h1{font-size:3.3rem;line-height:1.04;margin:0 0 1.8rem}
+.nb-hi{font-size:1.5rem}
+.nb-reply{margin:1rem -3.5rem 0;padding:2.6rem 3.5rem 2.8rem;display:grid;grid-template-columns:11rem minmax(0,42rem);gap:2.5rem}
+.nb-reply .nb-lab{padding-top:.35rem}
+}
+</style>
+</head>
+<body>
+<main class="nb">
+<div class="nb-sheet">
+<header class="nb-mast">
+{%- if brand.logo_url %}<img class="nb-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% else %}<p class="nb-name">{{ brand.name | default: sender_name | escape }}</p>{% endif -%}
+<p class="nb-issue"><b>Monthly brief</b>for {{ account.name | escape }}</p>
+</header>
+<section data-section="hero" class="nb-hero">
+<p class="nb-kicker">{% if person.first_name %}For {{ person.first_name | escape }}{% if person.title %}, {{ person.title | escape }}{% endif %} at {{ account.name | escape }}{% else %}For the team at {{ account.name | escape }}{% endif %}</p>
+<h1>This month's brief for {{ account.name | escape }} is still being written</h1>
+<p class="nb-hi">Hi {{ person.first_name | default: 'there' | escape }},</p>
+<p class="nb-intro">Each month I send one note on your industry, one idea for {{ account.name | escape }} and one thing worth reading. This month's three are not on the page yet. The link stays the same, so check back later today.</p>
+</section>
+<section data-section="reply" class="nb-reply">
+<span class="nb-lab">Before you go</span>
+<div>
+<p class="nb-lead">If you would rather hear the three in person, pick a time and I will walk you through them.</p>
+<div class="nb-btn">{% render 'ken/cta', label: 'Book 15 minutes', kind: 'booking' %}</div>
+<p class="nb-sign">{{ sender_name | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</div>
+</section>
+<p class="nb-foot">Written for {{ account.name | escape }} by {{ sender_name | escape }}. One note, one idea and one resource, once a month.</p>
+</div>
+</main>
+</body>
+</html>

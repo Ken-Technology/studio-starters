@@ -1,0 +1,91 @@
+{
+  "account": {
+    "name": "Juniper Payroll",
+    "domain": "juniperpayroll.example",
+    "industry": "software development",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Juniper Payroll is payroll and tip-pooling software for restaurant groups with 5 to 50 locations. It connects to the main restaurant point-of-sale systems and pays staff weekly.",
+      "why_now": "Hiring a head of growth, posted in October.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Marcus",
+    "last_name": "Bell",
+    "title": "VP Marketing"
+  },
+  "sender": {
+    "name": "Lena Hartmann",
+    "title": "Partner",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Studio Vire",
+    "logo_url": null,
+    "colors": {
+      "primary": "#0a7cff",
+      "secondary": "#0b1b35"
+    },
+    "fonts": {
+      "heading": "Outfit",
+      "body": "Figtree"
+    }
+  },
+  "data": {
+    "summary": "Your homepage leads with the modern payroll platform for hospitality. The sketch leads with tip pooling and weekly pay for restaurant groups, which your How it works section already describes.",
+    "today": {
+      "headline": "The modern payroll platform for hospitality",
+      "sub": "Juniper brings payroll, tips and scheduling together in one place so you can focus on running great restaurants.",
+      "cta": "Get started",
+      "section_name": "How it works",
+      "section_heading": "How it works",
+      "section_body": "Connect your point of sale, import your team, and run payroll in minutes. Tips are pooled and split by the rules you set, and every employee gets paid on time."
+    },
+    "sketch": {
+      "headline": "Payroll and tip pooling for restaurant groups, paid out weekly",
+      "sub": "Juniper runs payroll for groups with 5 to 50 locations, pools tips by the rules you set, and pays staff every week.",
+      "cta": "See a sample payroll",
+      "proof": "Built for groups with 5 to 50 locations, connected to your point of sale",
+      "image": "A manager closing out Friday tips on a phone in the back office",
+      "section_heading": "From point of sale to payday in three steps",
+      "section_intro": "What a payroll week looks like once Juniper is connected to the tills.",
+      "points": [
+        {
+          "title": "Connect the point of sale",
+          "text": "Hours and tips come in from the tills at each location, so nothing is keyed in twice."
+        },
+        {
+          "title": "Set the tip rules",
+          "text": "Pool and split tips by the rules you set once, and Juniper applies them every week."
+        },
+        {
+          "title": "Run payroll weekly",
+          "text": "Every employee at every location is paid on time, every week."
+        }
+      ]
+    },
+    "notes": [
+      {
+        "on": "headline",
+        "note": "Names the two things the product does and the buyer it is for. The modern payroll platform could sit on a competitor's site unchanged."
+      },
+      {
+        "on": "sub",
+        "note": "The 5 to 50 locations line tells a group with 12 restaurants in one read that this is sized for them."
+      },
+      {
+        "on": "cta",
+        "note": "A sample payroll shows the product doing the work. Get started asks for a sign-up before the reader knows what it does."
+      },
+      {
+        "on": "section_intro",
+        "note": "Frames the section as a week in the life, so an operations lead reads it as their own routine."
+      },
+      {
+        "on": "points",
+        "note": "The three steps keep your order and get a line each on what happens at the till, in the rules and on payday."
+      }
+    ]
+  }
+}

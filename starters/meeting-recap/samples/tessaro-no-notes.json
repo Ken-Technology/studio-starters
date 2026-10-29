@@ -1,0 +1,36 @@
+{
+  "account": {
+    "name": "Tessaro Foods",
+    "domain": "tessarofoods.example",
+    "industry": "food and beverage manufacturing",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Tessaro Foods makes pasta sauces and pestos for grocery chains from a plant in New Jersey, with about 260 staff.",
+      "why_now": "Hired a VP of Supply Chain in September.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Giulia",
+    "last_name": "Tessaro",
+    "title": "Chief Operating Officer"
+  },
+  "sender": {
+    "name": "Owen Blake",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Granary",
+    "logo_url": null,
+    "colors": {
+      "primary": "#5b3bd1",
+      "secondary": "#1f1d2b"
+    },
+    "fonts": {
+      "heading": "Space Grotesk",
+      "body": "IBM Plex Sans"
+    }
+  },
+  "data": {}
+}

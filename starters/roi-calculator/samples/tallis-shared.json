@@ -1,0 +1,51 @@
+{
+  "account": {
+    "name": "Tallis Staffing",
+    "domain": "tallisstaffing.example",
+    "industry": "staffing and recruiting",
+    "size_band": "1001-5000",
+    "dossier": {
+      "summary": "Tallis Staffing places temporary and contract workers with warehouses and light manufacturers. It runs branches in nine cities and pays its workers every week.",
+      "why_now": "Opened its ninth branch last month.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Owen Park",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Forgeline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#e4572e",
+      "secondary": "#1c1c1c"
+    },
+    "fonts": {
+      "heading": "Outfit",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "work_name": "timesheet work",
+    "team_size": 85,
+    "hours_per_week": 7,
+    "hourly_cost": 29,
+    "tool_spend": 5200,
+    "reasons": {
+      "team": "We assumed about 1 in 35 of the 1,001 to 5,000 people check and fix timesheets by hand, mostly branch coordinators and payroll staff.",
+      "hours": "Chasing missing hours, correcting entries and re-sending approvals. We assumed 7 hours a week each.",
+      "rate": "Pay for a branch coordinator plus benefits and overhead, in US dollars. Change it if your blended cost is different.",
+      "tools": "Timesheet software seats, a payroll add-on and shared trackers across nine branches. You will know the actual figure."
+    },
+    "offer": {
+      "seat_price": 29,
+      "setup_fee": 15000,
+      "recovered_share": 30,
+      "tool_replaced_share": 50,
+      "ramp_months": 3
+    }
+  }
+}

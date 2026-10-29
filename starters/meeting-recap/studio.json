@@ -1,0 +1,325 @@
+{
+  "kenStudio": "1",
+  "name": "Meeting recap",
+  "type": "other",
+  "format": "page",
+  "slug": "meeting-recap",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "notes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "citationId": {
+              "type": "string"
+            },
+            "kind": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "sourceDate": {
+              "type": "string"
+            },
+            "sourceUrls": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "title": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 90,
+        "fallback": "Recap of our call with {{ account.name }}"
+      },
+      "note": {
+        "type": "string",
+        "minLength": 60,
+        "maxLength": 600,
+        "fallback": "Thanks for the time. I am writing up what we covered, what we agreed and who does what next. This page fills in as soon as my notes are in, and the link stays the same."
+      },
+      "call": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "length": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "channel": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "them": {
+            "type": "array",
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "maxLength": 60
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          },
+          "us": {
+            "type": "array",
+            "maxItems": 6,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "maxLength": 60
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        }
+      },
+      "heard": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "topic": {
+              "type": "string",
+              "maxLength": 28
+            },
+            "text": {
+              "type": "string",
+              "maxLength": 360
+            }
+          },
+          "required": [
+            "topic",
+            "text"
+          ]
+        }
+      },
+      "agreed": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 6,
+        "items": {
+          "type": "string",
+          "maxLength": 240
+        }
+      },
+      "steps": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "what": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "owner": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "side": {
+              "type": "string",
+              "enum": [
+                "them",
+                "us"
+              ]
+            },
+            "due": {
+              "type": "string",
+              "maxLength": 32
+            }
+          },
+          "required": [
+            "what",
+            "owner",
+            "side"
+          ]
+        }
+      },
+      "resources": {
+        "type": "array",
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "kind": {
+              "type": "string",
+              "maxLength": 24
+            },
+            "note": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "title",
+            "kind"
+          ]
+        }
+      },
+      "sources": {
+        "type": "array",
+        "maxItems": 4,
+        "items": {
+          "type": "string",
+          "maxLength": 80
+        }
+      }
+    },
+    "required": [
+      "title",
+      "note"
+    ]
+  },
+  "recipe": [
+    {
+      "id": "notes",
+      "kind": "bind",
+      "from": "knowledge.scoped",
+      "to": "data.notes"
+    },
+    {
+      "id": "recap",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": [
+        "data.notes"
+      ],
+      "inputs": [
+        "account.name",
+        "account.domain",
+        "person.first_name",
+        "person.last_name",
+        "person.title",
+        "sender.name",
+        "brand.name",
+        "data.notes"
+      ],
+      "to": [
+        "data.title",
+        "data.note",
+        "data.call",
+        "data.heard",
+        "data.agreed",
+        "data.steps",
+        "data.resources",
+        "data.sources"
+      ],
+      "prompt": "You are writing a meeting recap page for {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it to {{ person.first_name | default: 'the people on the call' }} after a call. \"We\" and \"us\" mean {{ brand.name | default: 'our company' }}. \"You\" means {{ account.name }}.\n\nInputs: data.notes is the Knowledge for this account, a list of items, each {kind, title, text, sourceDate, sourceUrls}. Use only the items that are notes or a transcript of a call or meeting with {{ account.name }}. Ignore every item that is not about a call. If no item is a call note or transcript, return {} and nothing else. If the notes cover several calls, write about the most recent one and read the earlier ones for context only.\n\nReturn JSON with these keys:\n- title: at most 90 characters, sentence case, naming the call and its date the way the notes give it, like \"Our call on Tuesday, October 21\". No company name.\n- note: 2 to 4 sentences, 60 to 600 characters, in the first person from {{ sender.name | default: 'the sender' }} to {{ person.first_name | default: 'the people on the call' }}. Thank them for the time, say in one line what the call was about, and ask them to reply with anything that is off. No greeting line and no sign-off: the page adds both.\n- call: {date, length, channel, them, us}. date is the day of the call as the notes write it, like \"Tuesday, October 21\". length is like \"45 minutes\". channel is \"video\", \"phone\" or \"in person\". them lists the people from {{ account.name }} on the call and us the people from {{ brand.name | default: 'our side' }}, each {name, title}, in the order the notes name them, names copied exactly. Leave out any field the notes do not give.\n- heard: 3 to 6 items {topic, text}. What {{ account.name }} told us about their situation: the numbers, tools, people and problems they described. topic is a label of at most 28 characters, like \"Tax season\" or \"Current tools\". text is 1 to 3 sentences, at most 360 characters, in plain words, addressed to them (\"you\", \"your team\"). Every number, name and fact comes from the notes.\n- agreed: 1 to 6 strings, each at most 240 characters. The decisions both sides made on the call, as plain statements, like \"A 60 day pilot in the Bend office, starting December 1.\" Decisions only: tasks go in steps.\n- steps: 1 to 8 items {what, owner, side, due}. what is at most 160 characters and starts with a verb. owner is the person's name as the notes write it, or the team name when the notes name no person. side is \"them\" for {{ account.name }} and \"us\" for {{ brand.name | default: 'our side' }}. due is the date or deadline as the notes give it, at most 32 characters, like \"Fri Oct 31\" or \"before Nov 12\". Leave due out when the notes give none. Order by due date, earliest first, with undated steps last.\n- resources: 0 to 6 items {title, kind, note, url}. Files, links, documents, recordings and customer stories that were mentioned or promised on the call. kind is a short word for what it is, at most 24 characters, like \"PDF\", \"Doc\", \"Page\", \"Recording\" or \"Video\". note is at most 160 characters on what it is and who asked for it. Set url only when the notes give a link for that item, copied exactly. Otherwise leave url out.\n- sources: the titles of the notes items you used, copied exactly, at most 4.\n\nFacts: use only the call notes and transcript. Never add a person, company, number, date, tool or result that the notes do not contain. Leave prices out, even ones the notes give: the proposal carries them. When the notes are unclear on a point, leave the point out rather than guess. Quote nobody: write what was said in your own plain words.\n\nVoice: one person writing to the people they just met. Plain, direct, specific, a little warm. Short sentences a person would say out loud. Sentence case everywhere.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. No hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, transform, game changer). Never \"real\" as emphasis. Never \"as discussed\", \"per our conversation\", \"touch base\" or \"circle back\"."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "requires": [
+        "data.notes",
+        "data.heard"
+      ],
+      "on": [
+        "data.note",
+        "data.heard",
+        "data.agreed",
+        "data.steps"
+      ],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": [
+          "as discussed",
+          "per our conversation",
+          "touch base",
+          "circle back",
+          "synergy",
+          "game changer"
+        ],
+        "no_placeholders": true,
+        "no_prices": true,
+        "no_dashes": true,
+        "no_real_emphasis": true,
+        "no_signoff": true,
+        "skip": [
+          "owner",
+          "due",
+          "side",
+          "topic"
+        ]
+      },
+      "rubric": "Grade the recap the way the person who was on the call reads it, against the call notes below. 10 is a recap they would forward to their team without edits.\nScore these, 0 to 10 each:\n- faithful: every point in heard, agreed and steps is in the notes. A name, date, number, tool, price or promise the notes do not contain fails this check.\n- clear: each item says one thing in plain words, and a reader who was not on the call understands it.\n- complete: the decisions and the tasks the notes record are all here, with the owner and date the notes give.\n- tone: the note reads like one person writing to the people they just met, not a company announcement, and thanks them without flattery.\nAnswer yes or no:\n- owners_named: does every step name an owner the notes name?\n- weird_word: is there a phrase a person would not say out loud (jargon, marketing adjectives, stacked nouns)? Quote it.\nAutomatic fail: an em dash or en dash, an exclamation mark, an email address or phone number, a greeting or a sign-off inside the note, words presented as someone's exact quote, or any fact the notes do not support.\nThe notes, the only source: {{ data.notes | json }}\nPass when the overall score is 7.5 or higher, no 0 to 10 check is 6 or lower, owners_named is yes and weird_word is no. On a fail, name the check and quote the phrase to change. The fix never supplies replacement names, dates, numbers or decisions."
+    }
+  ],
+  "sections": [
+    {
+      "id": "head",
+      "label": "Title and call details"
+    },
+    {
+      "id": "note",
+      "label": "Note from the sender"
+    },
+    {
+      "id": "heard",
+      "label": "What we heard"
+    },
+    {
+      "id": "agreed",
+      "label": "What we agreed"
+    },
+    {
+      "id": "steps",
+      "label": "Next steps"
+    },
+    {
+      "id": "resources",
+      "label": "What we mentioned"
+    },
+    {
+      "id": "next",
+      "label": "Book the next call"
+    }
+  ],
+  "cta": {
+    "primary": "booking",
+    "label": "Book the next call"
+  }
+}

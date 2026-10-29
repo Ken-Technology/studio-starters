@@ -1,0 +1,15 @@
+{
+  "description": "A partnership proposal for one company: where the two customer bases meet, a joint offer and a first step. Ken fills it from Knowledge, their site and a company search.",
+  "category": "partners",
+  "tags": ["partnership", "co-selling", "partners", "channel", "overlap"],
+  "featured": false,
+  "needs": ["knowledge"],
+  "version": "1.0.0",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "ledgerline", "label": "Ledgerline POS" },
+    { "id": "northgate", "label": "Northgate Cloud" },
+    { "id": "aspen-shared", "label": "Shared link (no person)" },
+    { "id": "rivet", "label": "Rivet Safety" }
+  ]
+}

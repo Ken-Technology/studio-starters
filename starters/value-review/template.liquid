@@ -1,0 +1,719 @@
+{%- comment -%}Brand: validate the two colours, then read how light each one is so text on them stays readable.{%- endcomment -%}
+{%- assign bname = brand.name | default: '' | strip -%}
+{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+{%- assign c1 = brand.colors.primary | default: '#2a4bd7' | strip | downcase -%}
+{%- assign c2 = brand.colors.secondary | default: '#0e1530' | strip | downcase -%}
+{%- assign hexd = '0123456789abcdef' | split: '' -%}
+{%- assign cols = c1 | append: '|' | append: c2 | split: '|' -%}
+{%- assign okc = '' -%}
+{%- assign lumc = '' -%}
+{%- for c in cols -%}
+{%- assign n = c | size -%}
+{%- assign chars = c | split: '' -%}
+{%- assign digits = '' -%}
+{%- assign bad = false -%}
+{%- if n != 7 and n != 4 -%}{%- assign bad = true -%}{%- endif -%}
+{%- for ch in chars offset: 1 -%}
+{%- assign found = -1 -%}
+{%- for hd in hexd -%}{%- if hd == ch -%}{%- assign found = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+{%- if found < 0 -%}{%- assign bad = true -%}{%- endif -%}
+{%- assign digits = digits | append: found | append: ',' -%}
+{%- endfor -%}
+{%- if bad -%}
+{%- assign okc = okc | append: 'n|' -%}
+{%- assign lumc = lumc | append: '0|' -%}
+{%- else -%}
+{%- assign dg = digits | split: ',' -%}
+{%- if n == 7 -%}
+{%- assign cr = dg[0] | times: 16 | plus: dg[1] -%}
+{%- assign cg = dg[2] | times: 16 | plus: dg[3] -%}
+{%- assign cb = dg[4] | times: 16 | plus: dg[5] -%}
+{%- else -%}
+{%- assign cr = dg[0] | times: 17 -%}
+{%- assign cg = dg[1] | times: 17 -%}
+{%- assign cb = dg[2] | times: 17 -%}
+{%- endif -%}
+{%- assign lum = cr | times: 299 -%}
+{%- assign lum_g = cg | times: 587 -%}
+{%- assign lum_b = cb | times: 114 -%}
+{%- assign lum = lum | plus: lum_g | plus: lum_b -%}
+{%- assign okc = okc | append: 'y|' -%}
+{%- assign lumc = lumc | append: lum | append: '|' -%}
+{%- endif -%}
+{%- endfor -%}
+{%- assign oks = okc | split: '|' -%}
+{%- assign lums = lumc | split: '|' -%}
+{%- assign primary = c1 -%}
+{%- assign p_lum = lums[0] | plus: 0 -%}
+{%- if oks[0] != 'y' -%}{%- assign primary = '#2a4bd7' -%}{%- assign p_lum = 81093 -%}{%- endif -%}
+{%- assign secondary = c2 -%}
+{%- assign s_lum = lums[1] | plus: 0 -%}
+{%- if oks[1] != 'y' -%}{%- assign secondary = '#0e1530' -%}{%- assign s_lum = 21985 -%}{%- endif -%}
+{%- if p_lum < 110000 -%}
+{%- assign pt_css = 'var(--p)' -%}
+{%- assign cta_bg = 'var(--p)' -%}
+{%- assign cta_fg = '#fff' -%}
+{%- elsif p_lum < 165000 -%}
+{%- assign pt_css = 'color-mix(in srgb,var(--p) 78%,#000)' -%}
+{%- assign cta_bg = pt_css -%}
+{%- assign cta_fg = '#fff' -%}
+{%- else -%}
+{%- assign pt_css = 'color-mix(in srgb,var(--p) 50%,#000)' -%}
+{%- assign cta_bg = 'var(--p)' -%}
+{%- assign cta_fg = '#111' -%}
+{%- endif -%}
+{%- if s_lum < 125000 -%}
+{%- assign ink_css = 'var(--brand-secondary)' -%}
+{%- else -%}
+{%- assign ink_css = 'color-mix(in srgb,var(--brand-secondary) 30%,#0b0d12)' -%}
+{%- endif -%}
+{%- comment -%}Rows: one pass for the quarters and the counts, one for the months.{%- endcomment -%}
+{%- assign cq = nil -%}
+{%- assign pq = nil -%}
+{%- assign nq = 0 -%}
+{%- assign nm = 0 -%}
+{%- assign nt = 0 -%}
+{%- assign ns = 0 -%}
+{%- assign sum_a = 0 -%}
+{%- assign sum_s = 0 -%}
+{%- assign lab_max = 0 -%}
+{%- assign vlen_max = 0 -%}
+{%- assign m_start = '' -%}
+{%- assign m_review = '' -%}
+{%- assign m_renew = '' -%}
+{%- for r in data.rows -%}
+{%- if r.kind == 'quarter' -%}
+{%- assign nq = nq | plus: 1 -%}
+{%- assign pq = cq -%}
+{%- assign cq = r -%}
+{%- elsif r.kind == 'month' -%}
+{%- assign nm = nm | plus: 1 -%}
+{%- elsif r.kind == 'team' -%}
+{%- assign nt = nt | plus: 1 -%}
+{%- assign ta = r.active_seats | default: 0 -%}
+{%- assign ts = r.seats | default: 0 -%}
+{%- assign sum_a = sum_a | plus: ta -%}
+{%- assign sum_s = sum_s | plus: ts -%}
+{%- assign ln = r.label | truncate: 24 | size -%}
+{%- if ln > lab_max -%}{%- assign lab_max = ln -%}{%- endif -%}
+{%- assign vtext = ta | append: ' of ' | append: ts -%}
+{%- assign vl = vtext | size -%}
+{%- if vl > vlen_max -%}{%- assign vlen_max = vl -%}{%- endif -%}
+{%- elsif r.kind == 'milestone' -%}
+{%- assign ns = ns | plus: 1 -%}
+{%- if r.marker == 'start' and r.date -%}{%- assign m_start = r.date -%}{%- endif -%}
+{%- if r.marker == 'review' and r.date -%}{%- assign m_review = r.date -%}{%- endif -%}
+{%- if r.marker == 'renewal' and r.date -%}{%- assign m_renew = r.date -%}{%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- assign mi = 0 -%}
+{%- assign max_m = 0 -%}
+{%- assign qa = -1 -%}
+{%- assign qz = -1 -%}
+{%- assign m_first = '' -%}
+{%- assign m_last = '' -%}
+{%- assign v_first = 0 -%}
+{%- assign v_last = 0 -%}
+{%- for r in data.rows -%}
+{%- if r.kind == 'month' -%}
+{%- assign v = r.active_seats | default: 0 -%}
+{%- if v > max_m -%}{%- assign max_m = v -%}{%- endif -%}
+{%- if cq and r.quarter == cq.label -%}
+{%- if qa < 0 -%}{%- assign qa = mi -%}{%- endif -%}
+{%- assign qz = mi -%}
+{%- endif -%}
+{%- if mi == 0 -%}{%- assign m_first = r.label -%}{%- assign v_first = v -%}{%- endif -%}
+{%- assign m_last = r.label -%}
+{%- assign v_last = v -%}
+{%- assign mi = mi | plus: 1 -%}
+{%- endif -%}
+{%- endfor -%}
+{%- comment -%}Quarter names: the big numeral, and the quarter after this one.{%- endcomment -%}
+{%- assign qt = '' -%}
+{%- assign nextq = '' -%}
+{%- assign pqt = '' -%}
+{%- if cq -%}
+{%- assign qt = cq.label | split: ' ' | first -%}
+{%- assign qnum = qt | remove: 'Q' | remove: 'q' | plus: 0 -%}
+{%- assign q1 = qt | slice: 0, 1 | upcase -%}
+{%- if q1 == 'Q' and qnum >= 1 and qnum <= 4 -%}
+{%- if qnum == 4 -%}
+{%- assign nextq = 'Q1' -%}
+{%- else -%}
+{%- assign qn1 = qnum | plus: 1 -%}
+{%- assign nextq = 'Q' | append: qn1 -%}
+{%- endif -%}
+{%- endif -%}
+{%- endif -%}
+{%- if pq -%}{%- assign pqt = pq.label | split: ' ' | first -%}{%- endif -%}
+{%- assign cta_label = 'Book the planning call' -%}
+{%- if nextq != '' -%}{%- assign cta_label = 'Book the ' | append: nextq | append: ' planning call' -%}{%- endif -%}
+{%- comment -%}Term: months from contract start to renewal, how many have passed at the review, and the days left.{%- endcomment -%}
+{%- assign term_ok = false -%}
+{%- assign total = 0 -%}
+{%- assign elapsed = 0 -%}
+{%- assign days_left = 0 -%}
+{%- if m_start != '' and m_renew != '' and m_review != '' -%}
+{%- assign s_y = m_start | date: '%Y' | plus: 0 -%}
+{%- assign s_m = m_start | date: '%-m' | plus: 0 -%}
+{%- assign s_d = m_start | date: '%-d' | plus: 0 -%}
+{%- assign r_y = m_renew | date: '%Y' | plus: 0 -%}
+{%- assign r_m = m_renew | date: '%-m' | plus: 0 -%}
+{%- assign r_d = m_renew | date: '%-d' | plus: 0 -%}
+{%- assign v_y = m_review | date: '%Y' | plus: 0 -%}
+{%- assign v_m = m_review | date: '%-m' | plus: 0 -%}
+{%- assign v_d = m_review | date: '%-d' | plus: 0 -%}
+{%- assign s_ym = s_y | times: 12 | plus: s_m -%}
+{%- assign r_ym = r_y | times: 12 | plus: r_m -%}
+{%- assign v_ym = v_y | times: 12 | plus: v_m -%}
+{%- assign total = r_ym | minus: s_ym -%}
+{%- if r_d < s_d -%}{%- assign total = total | minus: 1 -%}{%- endif -%}
+{%- assign elapsed = v_ym | minus: s_ym -%}
+{%- if v_d < s_d -%}{%- assign elapsed = elapsed | minus: 1 -%}{%- endif -%}
+{%- if total >= 1 and total <= 36 -%}
+{%- assign term_ok = true -%}
+{%- assign elapsed = elapsed | at_least: 0 | at_most: total -%}
+{%- assign s_sec = m_start | date: '%s' | plus: 0 -%}
+{%- assign r_sec = m_renew | date: '%s' | plus: 0 -%}
+{%- assign v_sec = m_review | date: '%s' | plus: 0 -%}
+{%- assign days_left = r_sec | minus: v_sec | divided_by: 86400.0 | round -%}
+{%- endif -%}
+{%- endif -%}
+{%- comment -%}Whole numbers with thousands commas, and the changes against last quarter.{%- endcomment -%}
+{%- assign h_cur = cq.hours_saved | default: 0 -%}
+{%- assign h_prev = pq.hours_saved | default: 0 -%}
+{%- assign t_cur = cq.tasks_done | default: 0 -%}
+{%- assign t_prev = pq.tasks_done | default: 0 -%}
+{%- assign a_cur = cq.active_seats | default: 0 -%}
+{%- assign a_prev = pq.active_seats | default: 0 -%}
+{%- assign seats_cap = cq.seats | default: 0 -%}
+{%- assign raws = h_cur | append: '|' | append: h_prev | append: '|' | append: t_cur | append: '|' | append: t_prev | append: '|' | append: a_cur | append: '|' | append: a_prev | append: '|' | append: seats_cap | split: '|' -%}
+{%- assign fmts = '' -%}
+{%- for rv in raws -%}
+{%- assign nv = rv | plus: 0 | round -%}
+{%- if nv < 1000 -%}
+{%- assign fv = nv -%}
+{%- else -%}
+{%- assign k1 = nv | divided_by: 1000.0 | floor -%}
+{%- assign r1 = nv | modulo: 1000 -%}
+{%- assign p1 = r1 -%}
+{%- if r1 < 10 -%}{%- assign p1 = '00' | append: r1 -%}{%- elsif r1 < 100 -%}{%- assign p1 = '0' | append: r1 -%}{%- endif -%}
+{%- if k1 < 1000 -%}
+{%- assign fv = k1 | append: ',' | append: p1 -%}
+{%- else -%}
+{%- assign m1 = k1 | divided_by: 1000.0 | floor -%}
+{%- assign r2 = k1 | modulo: 1000 -%}
+{%- assign p2 = r2 -%}
+{%- if r2 < 10 -%}{%- assign p2 = '00' | append: r2 -%}{%- elsif r2 < 100 -%}{%- assign p2 = '0' | append: r2 -%}{%- endif -%}
+{%- assign fv = m1 | append: ',' | append: p2 | append: ',' | append: p1 -%}
+{%- endif -%}
+{%- endif -%}
+{%- assign fmts = fmts | append: fv | append: '|' -%}
+{%- endfor -%}
+{%- assign fm = fmts | split: '|' -%}
+{%- assign fm0_sz = fm[0] | size -%}
+{%- assign fm2_sz = fm[2] | size -%}
+{%- assign fm4_sz = fm[4] | size -%}
+{%- assign h_pct = 0 -%}
+{%- if h_prev > 0 -%}{%- assign h_pct = h_cur | minus: h_prev | times: 100.0 | divided_by: h_prev | round -%}{%- endif -%}
+{%- assign t_pct = 0 -%}
+{%- if t_prev > 0 -%}{%- assign t_pct = t_cur | minus: t_prev | times: 100.0 | divided_by: t_prev | round -%}{%- endif -%}
+{%- assign a_diff = a_cur | minus: a_prev -%}
+{%- assign md_cur = cq.median_hours | default: 0 -%}
+{%- assign md_prev = pq.median_hours | default: 0 -%}
+{%- assign md_pct = 0 -%}
+{%- if md_prev > 0 -%}{%- assign md_pct = md_prev | minus: md_cur | times: 100.0 | divided_by: md_prev | round -%}{%- endif -%}
+{%- assign tile_count = 0 -%}
+{%- if cq.hours_saved -%}{%- assign tile_count = tile_count | plus: 1 -%}{%- endif -%}
+{%- if cq.active_seats -%}{%- assign tile_count = tile_count | plus: 1 -%}{%- endif -%}
+{%- if cq.tasks_done -%}{%- assign tile_count = tile_count | plus: 1 -%}{%- endif -%}
+{%- if cq.median_hours -%}{%- assign tile_count = tile_count | plus: 1 -%}{%- endif -%}
+{%- comment -%}Chart 1 geometry: y axis up to the seats on the contract, or the busiest month.{%- endcomment -%}
+{%- assign top = max_m -%}
+{%- if seats_cap > top -%}{%- assign top = seats_cap -%}{%- endif -%}
+{%- assign top = top | at_least: 1 -%}
+{%- assign steps = '1,2,5,10,20,25,40,50,100,200,250,400,500,1000,2000,2500,4000,5000,10000,20000,50000' | split: ',' -%}
+{%- assign step_v = 1 -%}
+{%- assign step_found = false -%}
+{%- for sv in steps -%}
+{%- unless step_found -%}
+{%- assign svn = sv | plus: 0 -%}
+{%- assign sv3 = svn | times: 3 -%}
+{%- if sv3 >= top -%}{%- assign step_v = svn -%}{%- assign step_found = true -%}{%- endif -%}
+{%- endunless -%}
+{%- endfor -%}
+{%- assign nm_1 = nm | minus: 1 | at_least: 1 -%}
+{%- assign step_x = 310.0 | divided_by: nm_1 -%}
+{%- assign lab_every = nm | plus: 8 | divided_by: 9.0 | floor | at_least: 1 -%}
+{%- assign mid_i = nm | minus: 1 | divided_by: 2.0 | floor -%}
+{%- assign last_i = nm | minus: 1 -%}
+{%- assign path = '' -%}
+{%- assign mj = 0 -%}
+{%- for r in data.rows -%}
+{%- if r.kind == 'month' -%}
+{%- assign v = r.active_seats | default: 0 -%}
+{%- if nm == 1 -%}{%- assign px = 195 -%}{%- else -%}{%- assign px = step_x | times: mj | plus: 40 | round: 1 -%}{%- endif -%}
+{%- assign py = v | times: 150.0 | divided_by: top -%}
+{%- assign py = 170 | minus: py | round: 1 -%}
+{%- if mj == 0 -%}{%- assign path = path | append: 'M' | append: px | append: ',' | append: py -%}{%- else -%}{%- assign path = path | append: ' L' | append: px | append: ',' | append: py -%}{%- endif -%}
+{%- assign mj = mj | plus: 1 -%}
+{%- endif -%}
+{%- endfor -%}
+{%- assign band_x1 = step_x | times: qa | plus: 40 -%}
+{%- assign half = step_x | divided_by: 2.0 -%}
+{%- assign band_x1 = band_x1 | minus: half | at_least: 36 | round: 1 -%}
+{%- assign band_x2 = step_x | times: qz | plus: 40 | plus: half | at_most: 358 | round: 1 -%}
+{%- assign band_w = band_x2 | minus: band_x1 | round: 1 -%}
+{%- assign band_mid = band_x1 | plus: band_x2 | divided_by: 2.0 | round: 1 -%}
+{%- assign cap_y = seats_cap | times: 150.0 | divided_by: top -%}
+{%- assign cap_y = 170 | minus: cap_y | round: 1 -%}
+{%- comment -%}Chart 2 geometry: label column from the longest team name, value column from the longest "a of b".{%- endcomment -%}
+{%- assign lab_w = lab_max | times: 6.2 | plus: 12 | at_least: 60 | at_most: 150 | round -%}
+{%- assign val_w = vlen_max | times: 6.8 | plus: 4 | round -%}
+{%- assign bar_end = 360 | minus: val_w | minus: 8 -%}
+{%- assign bar_w = bar_end | minus: lab_w -%}
+{%- assign val_x = bar_end | plus: 8 -%}
+{%- assign team_h = nt | times: 32 | plus: 2 -%}
+{%- comment -%}Renewal meter geometry.{%- endcomment -%}
+{%- assign unit_w = 360.0 | divided_by: total | at_least: 1 -%}
+{%- assign block_w = unit_w | minus: 2 | round: 1 -%}
+{%- assign marker_x = unit_w | times: elapsed | minus: 1 | round: 1 -%}
+{%- assign total_1 = total | minus: 1 -%}
+{%- assign meter_anchor = 'middle' -%}
+{%- if marker_x < 60 -%}{%- assign meter_anchor = 'start' -%}{%- elsif marker_x > 300 -%}{%- assign meter_anchor = 'end' -%}{%- endif -%}
+{%- assign show_renewal = false -%}
+{%- if ns > 0 -%}{%- assign show_renewal = true -%}{%- endif -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="A quarterly value review for {{ account.name | escape }}: usage against last quarter, adoption by team, wins, the plan for next quarter and the renewal timeline.">
+<title>{% if cq %}{{ cq.label | escape }} value review{% else %}Quarterly value review{% endif %} for {{ account.name | escape }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;500;600;700{% if font_body != font_head %}&amp;family={{ font_body | url_encode }}:wght@400;500;600;700{% endif %}&amp;display=swap">
+<style>
+:root{
+  --brand-primary:{{ primary }};
+  --brand-secondary:{{ secondary }};
+  --brand-heading-font:'{{ font_head | escape }}';
+  --brand-body-font:'{{ font_body | escape }}';
+  --p:var(--brand-primary);
+  --s:{{ ink_css }};
+  --fh:var(--brand-heading-font),ui-sans-serif,system-ui,sans-serif;
+  --fb:var(--brand-body-font),ui-sans-serif,system-ui,sans-serif;
+  --ink:var(--s);
+  --pt:{{ pt_css }};
+  --cta-bg:{{ cta_bg }};
+  --cta-fg:{{ cta_fg }};
+  --mute:color-mix(in srgb,var(--s) 62%,#fff);
+  --rule:color-mix(in srgb,var(--s) 14%,#fff);
+  --hair:color-mix(in srgb,var(--s) 9%,#fff);
+  --tint:color-mix(in srgb,var(--p) 7%,#fff);
+  --track:color-mix(in srgb,var(--p) 15%,#fff);
+  --onDark:color-mix(in srgb,var(--p) 55%,#fff);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased;padding-bottom:5.5rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.doc{max-width:60rem;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--fh);font-weight:600;line-height:1.1;letter-spacing:-.015em;margin:0}
+p{margin:0 0 1rem}
+a{color:var(--pt)}
+a:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+.tn{font-variant-numeric:tabular-nums}
+
+.cover{background:var(--s);color:#fff;margin:0 -1.25rem;padding:1rem 1.25rem 2.25rem}
+.cover .brandline{display:flex;align-items:center;gap:.6rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.18);font-size:.9rem}
+.logo{width:28px;height:28px;display:grid;place-items:center;flex:none;border-radius:8px;background:var(--p);color:var(--cta-fg);font:700 .95rem/1 var(--fh);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.logo-img{display:block;flex:none;height:28px;width:auto;max-width:9rem;object-fit:contain;background:#fff;border-radius:4px;padding:3px 6px;box-sizing:content-box}
+.bname{font-weight:600}
+.cover .meta{margin-left:auto;color:rgba(255,255,255,.72);text-align:right}
+.q{display:block;font:700 clamp(5rem,22vw,9rem)/0.9 var(--fh);letter-spacing:-.05em;margin:2rem 0 .6rem;padding-bottom:.06em;color:var(--onDark)}
+.cover h1{font-size:clamp(1.6rem,5vw,2.4rem);color:#fff;margin:2rem 0 1rem}
+.q+h1{margin-top:0}
+.cover .who{color:rgba(255,255,255,.72);font-size:.95rem;max-width:34rem;margin-bottom:1.75rem}
+.cover .head{font-family:var(--fh);font-weight:500;font-size:1.3rem;line-height:1.3;max-width:30rem;margin:0;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.18)}
+
+.sec{padding:2.5rem 0 .5rem}
+.sh{border-top:3px solid var(--ink);padding-top:.9rem;margin-bottom:1.25rem;display:grid;gap:.25rem}
+.sh h2{font-size:1.7rem}
+.sh .note{font-size:.82rem;color:var(--mute)}
+.body{max-width:44rem}
+.body p{font-size:1.02rem}
+
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 1.25rem;margin:0 0 1.5rem}
+.tile span{display:block;font-size:.85rem;color:var(--mute);margin-bottom:.35rem}
+.tile>b{display:block;font:600 2.6rem/1 var(--fh);letter-spacing:-.035em;margin-bottom:.5rem}
+.tile>b.sm{font-size:2.1rem}
+.tile>b small{font-size:1.1rem;font-weight:500;color:var(--mute);letter-spacing:0;margin-left:.15rem}
+.delta{display:flex;flex-wrap:wrap;align-items:center;gap:.2rem .35rem;font-size:.85rem;color:var(--ink);margin:0}
+.delta svg{width:10px;height:10px;fill:var(--pt);flex:none}
+.delta b{color:var(--pt);font-weight:600;white-space:nowrap}
+.delta i{font-style:normal;color:var(--mute);white-space:nowrap}
+
+figure{margin:0 0 1.5rem;display:grid;gap:.8rem}
+figure svg{width:100%;height:auto;display:block;overflow:visible}
+figure .fig{max-width:34rem}
+figcaption{font-size:.82rem;line-height:1.5;color:var(--mute)}
+figcaption b{color:var(--ink);font-weight:600}
+.ax{font:500 10px var(--fb);fill:var(--mute)}
+.lab{font:500 11.5px var(--fb);fill:var(--ink)}
+.val{font:600 11.5px var(--fb);fill:var(--ink);font-variant-numeric:tabular-nums}
+.mut{font:500 10px var(--fb);fill:var(--mute)}
+.grid{stroke:var(--hair);stroke-width:1}
+.cap{stroke:var(--mute);stroke-width:1;stroke-dasharray:3 3}
+.qband{fill:color-mix(in srgb,var(--s) 4%,#fff)}
+.line{fill:none;stroke:var(--p);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.dot{fill:var(--p);stroke:#fff;stroke-width:2}
+.track{fill:var(--track)}
+.bar{fill:var(--p)}
+.m-on{fill:var(--p)}
+.m-off{fill:var(--track)}
+.m-today{stroke:var(--ink);stroke-width:2}
+
+.wins{list-style:none;margin:0;padding:0;display:grid;gap:1.5rem}
+.wins li{border-top:1px solid var(--rule);padding-top:1rem}
+.wins b{display:block;font:600 2.2rem/1 var(--fh);letter-spacing:-.03em;margin-bottom:.3rem}
+.wins b small{font-size:1rem;font-weight:500;color:var(--mute);letter-spacing:0;margin-left:.15rem}
+.wins h3{font-size:1.05rem;margin-bottom:.5rem}
+.wins p{margin:0;font-size:.95rem}
+.wins .team{display:block;font-size:.8rem;color:var(--mute);margin-top:.6rem}
+
+.plan{width:100%;border-collapse:collapse;font-size:.95rem}
+.plan thead{display:none}
+.plan tr{display:block;padding:.8rem 0;border-top:1px solid var(--rule)}
+.plan td{display:block;padding:.1rem 0}
+.plan td.when{font-weight:600;font-variant-numeric:tabular-nums}
+.plan td.who{color:var(--mute);font-size:.85rem}
+
+.meter{max-width:34rem;margin-bottom:1.5rem}
+.meter svg{width:100%;height:auto;display:block;overflow:visible}
+.rail{list-style:none;margin:0;padding:0;position:relative;max-width:34rem}
+.rail::before{content:"";position:absolute;left:.45rem;top:.6rem;bottom:.6rem;width:2px;background:var(--rule)}
+.rail li{position:relative;padding:0 0 1.1rem 2rem;display:grid;gap:.1rem}
+.rail li::before{content:"";position:absolute;left:0;top:.35rem;width:1rem;height:1rem;border-radius:50%;background:#fff;border:2px solid var(--p)}
+.rail li.past::before{background:var(--p)}
+.rail li.today::before{background:var(--p);box-shadow:0 0 0 4px var(--track)}
+.rail .d{font-weight:600;font-variant-numeric:tabular-nums}
+.rail .d em{font-style:normal;font-weight:500;color:var(--pt);margin-left:.4rem}
+.rail .w{color:var(--mute);font-size:.92rem}
+.rail li.past .d,.rail li.past .w{color:var(--mute)}
+.rail li.past .d{font-weight:500}
+
+.next{display:grid;gap:1rem;border-top:3px solid var(--ink);padding-top:1.5rem;margin-top:2.5rem}
+.next p{max-width:36rem;margin:0}
+.cta-wrap{justify-self:start}
+.cta-wrap .ken-cta{display:inline-block!important;background:var(--cta-bg)!important;color:var(--cta-fg)!important;text-decoration:none!important;font-weight:600!important;padding:.95rem 1.4rem!important;border-radius:3px!important;min-height:44px}
+.cta-wrap .ken-cta:hover{filter:brightness(.92)}
+.sign{font-size:.95rem}
+.sign b{display:block;font-weight:600}
+.sign span{color:var(--mute)}
+.method{grid-column:1/-1;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.8rem;line-height:1.55;color:var(--mute);max-width:46rem}
+.method b{color:var(--ink);font-weight:600}
+
+@media (min-width:760px){
+  .doc{padding:0 2.5rem}
+  .cover{margin:1.5rem 0 0;padding:1.5rem 3rem 3rem}
+  .cover .brandline{padding-bottom:1.25rem}
+  .cover-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3rem;align-items:end}
+  .q{margin-top:2.5rem}
+  .cover .head{border-top:0;padding-top:0;font-size:1.5rem;max-width:none}
+  .cover .who{margin-bottom:0}
+  .sec{padding:3.5rem 0 .5rem}
+  .sh{grid-template-columns:minmax(0,1fr) auto;align-items:baseline;padding-top:1.1rem;margin-bottom:1.75rem}
+  .sh h2{font-size:2.1rem}
+  .sh .note{text-align:right;max-width:22rem}
+  .tiles{grid-template-columns:repeat(var(--tiles,4),minmax(0,1fr));gap:2rem;margin-bottom:2rem}
+  .tile>b{font-size:3rem}
+  .tile>b.sm{font-size:2.4rem}
+  figure{grid-template-columns:minmax(0,1fr) 12rem;gap:2rem;align-items:end}
+  figure .fig{max-width:36rem}
+  .wins{grid-template-columns:repeat(var(--wins,3),minmax(0,1fr));gap:2.5rem}
+  .plan thead{display:table-header-group}
+  .plan th{text-align:left;font-weight:600;font-size:.85rem;color:var(--mute);padding:0 1.5rem .6rem 0;border-bottom:2px solid var(--ink)}
+  .plan tr{display:table-row;padding:0}
+  .plan td{display:table-cell;padding:.85rem 1.5rem .85rem 0;border-top:1px solid var(--rule);vertical-align:top}
+  .plan td.when{white-space:nowrap;width:9rem}
+  .plan td.who{width:16rem;font-size:.9rem}
+  .renew{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3rem;align-items:start}
+  .meter{margin-bottom:0}
+  .next{grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:1rem 3rem}
+  .next .sign{grid-column:1}
+  .next .cta-wrap{grid-column:2;grid-row:1/3;align-self:center}
+}
+@media print{
+  @page{margin:16mm}
+  body{padding:0}
+  .doc{max-width:none;padding:0}
+  .cover{background:#fff;color:var(--ink);margin:0;padding:0 0 2rem;border-bottom:3px solid var(--ink)}
+  .cover h1,.cover .head{color:var(--ink)}
+  .cover .who,.cover .meta{color:#555}
+  .cover .brandline{border-bottom-color:var(--rule)}
+  .cover .head{border-top-color:var(--rule)}
+  .q{color:var(--pt)}
+  .sec{break-before:page}
+  .cover,.sec:first-of-type{break-before:auto}
+  figure,.tile,.wins li,.rail li,.plan tr{break-inside:avoid}
+  .sec{padding-top:0}
+  .rail li{padding-bottom:.6rem}
+  .next{break-inside:avoid;margin-top:1.5rem;padding-top:1rem}
+  .cta-wrap{display:none}
+}
+</style>
+</head>
+<body>
+<main class="doc">
+<section class="cover" data-section="cover">
+<div class="brandline">
+{%- if brand.logo_url -%}
+<img class="logo-img" src="{{ brand.logo_url | escape }}" alt="">
+{%- elsif bname != '' -%}
+<span class="logo" aria-hidden="true">{{ bname | slice: 0, 1 | upcase | escape }}</span>
+{%- endif -%}
+{%- if bname != '' -%}
+<span class="bname">{{ bname | escape }}</span>
+{%- endif -%}
+<span class="meta">Quarterly value review{% if m_review != '' %}<br>{{ m_review | date: '%-d %b %Y' }}{% endif %}</span>
+</div>
+<div class="cover-grid">
+<div>
+{%- if qt != '' and qt.size <= 4 -%}
+<span class="q">{{ qt | escape }}</span>
+{%- endif -%}
+<h1>{{ account.name | escape }}{% if cq.detail and cq.detail != '' %}, {{ cq.detail | escape }}{% elsif cq %}, {{ cq.label | escape }}{% endif %}</h1>
+<p class="who">Prepared for {% if person.first_name %}{{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}{% if person.title %}, {{ person.title | escape }}{% endif %}{% else %}the {{ account.name | escape }} team{% endif %}{% if sender.name %}, by {{ sender.name | escape }}{% if sender.title %}, {{ sender.title | escape }}{% endif %}{% if bname != '' %} at {{ bname | escape }}{% endif %}{% elsif bname != '' %}, by {{ bname | escape }}{% endif %}.{% if term_ok %} Month {{ elapsed }} of a {{ total }}-month term. The contract renews on {{ m_renew | date: '%-d %B %Y' }}.{% endif %}</p>
+</div>
+<p class="head">{{ data.headline | escape }}</p>
+</div>
+</section>
+{%- if cq -%}
+<section class="sec" data-section="outcomes">
+<div class="sh"><h2>Headline outcomes</h2><span class="note">{{ cq.label | escape }}{% if pq %} against {{ pq.label | escape }}{% endif %}, from the usage export</span></div>
+<div class="tiles" style="--tiles:{{ tile_count | at_least: 1 }}">
+{%- if cq.hours_saved -%}
+<div class="tile"><span>Hours saved</span><b class="tn{% if fm0_sz > 6 %} sm{% endif %}">{{ fm[0] }}</b>
+{%- if pq and pq.hours_saved and h_prev > 0 -%}
+{%- if h_pct > 0 -%}
+<p class="delta"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1.5L9 8.5H1Z"/></svg><b>+{{ h_pct }}%</b><i>vs {{ fm[1] }} in {{ pqt | escape }}</i></p>
+{%- elsif h_pct < 0 -%}
+<p class="delta"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 8.5L1 1.5H9Z"/></svg><b>{{ h_pct }}%</b><i>vs {{ fm[1] }} in {{ pqt | escape }}</i></p>
+{%- else -%}
+<p class="delta"><b>No change</b><i>vs {{ fm[1] }} in {{ pqt | escape }}</i></p>
+{%- endif -%}
+{%- endif -%}
+</div>
+{%- endif -%}
+{%- if cq.active_seats -%}
+<div class="tile"><span>Active seats</span><b class="tn{% if fm4_sz > 6 %} sm{% endif %}">{{ fm[4] }}{% if seats_cap > 0 %}<small>of {{ fm[6] }}</small>{% endif %}</b>
+{%- if pq and pq.active_seats -%}
+{%- if a_diff > 0 -%}
+<p class="delta"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1.5L9 8.5H1Z"/></svg><b>+{{ a_diff }}</b><i>vs {{ fm[5] }} in {{ pqt | escape }}</i></p>
+{%- elsif a_diff < 0 -%}
+<p class="delta"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 8.5L1 1.5H9Z"/></svg><b>{{ a_diff }}</b><i>vs {{ fm[5] }} in {{ pqt | escape }}</i></p>
+{%- else -%}
+<p class="delta"><b>No change</b><i>vs {{ fm[5] }} in {{ pqt | escape }}</i></p>
+{%- endif -%}
+{%- endif -%}
+</div>
+{%- endif -%}
+{%- if cq.tasks_done -%}
+<div class="tile"><span>Tasks completed</span><b class="tn{% if fm2_sz > 6 %} sm{% endif %}">{{ fm[2] }}</b>
+{%- if pq and pq.tasks_done and t_prev > 0 -%}
+{%- if t_pct > 0 -%}
+<p class="delta"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1.5L9 8.5H1Z"/></svg><b>+{{ t_pct }}%</b><i>vs {{ fm[3] }} in {{ pqt | escape }}</i></p>
+{%- elsif t_pct < 0 -%}
+<p class="delta"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 8.5L1 1.5H9Z"/></svg><b>{{ t_pct }}%</b><i>vs {{ fm[3] }} in {{ pqt | escape }}</i></p>
+{%- else -%}
+<p class="delta"><b>No change</b><i>vs {{ fm[3] }} in {{ pqt | escape }}</i></p>
+{%- endif -%}
+{%- endif -%}
+</div>
+{%- endif -%}
+{%- if cq.median_hours -%}
+<div class="tile"><span>Median time per task</span><b class="tn">{{ md_cur | round: 1 }}<small>hours</small></b>
+{%- if pq and pq.median_hours and md_prev > 0 -%}
+{%- if md_pct > 0 -%}
+<p class="delta"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 8.5L1 1.5H9Z"/></svg><b>{{ md_pct }}% faster</b><i>vs {{ md_prev | round: 1 }} h in {{ pqt | escape }}</i></p>
+{%- elsif md_pct < 0 -%}
+<p class="delta"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1.5L9 8.5H1Z"/></svg><b>{{ md_pct | abs }}% slower</b><i>vs {{ md_prev | round: 1 }} h in {{ pqt | escape }}</i></p>
+{%- else -%}
+<p class="delta"><b>No change</b><i>vs {{ md_prev | round: 1 }} h in {{ pqt | escape }}</i></p>
+{%- endif -%}
+{%- endif -%}
+</div>
+{%- endif -%}
+</div>
+<div class="body">
+<p>Every figure on this page is read from the usage export for {{ account.name | escape }}, so it counts what people did in the product, not what they said they did.</p>
+</div>
+</section>
+{%- endif -%}
+{%- if nm > 1 -%}
+<section class="sec" data-section="usage">
+<div class="sh"><h2>Usage by month</h2><span class="note">Active seats in each month</span></div>
+<figure>
+<div class="fig"><svg viewBox="0 0 360 200" role="img" aria-label="Active seats per month, {{ m_first | escape }} to {{ m_last | escape }}, from {{ v_first }} to {{ v_last }}">
+{%- if qa >= 0 -%}
+<rect x="{{ band_x1 }}" y="20" width="{{ band_w }}" height="150" class="qband"/>
+{%- if qt != '' -%}
+<text x="{{ band_mid }}" y="33" class="mut" text-anchor="middle">{{ qt | escape }}</text>
+{%- endif -%}
+{%- endif -%}
+{%- for k in (0..4) -%}
+{%- assign tv = step_v | times: k -%}
+{%- assign near_cap = false -%}
+{%- if seats_cap > 0 and k > 0 -%}
+{%- assign gap = seats_cap | minus: tv | abs | times: 8.0 -%}
+{%- if gap < top -%}{%- assign near_cap = true -%}{%- endif -%}
+{%- endif -%}
+{%- if tv <= top and near_cap == false -%}
+{%- assign ty = tv | times: 150.0 | divided_by: top -%}
+{%- assign ty = 170 | minus: ty | round: 1 -%}
+{%- assign tl = ty | plus: 3.5 | round: 1 -%}
+<line x1="36" y1="{{ ty }}" x2="350" y2="{{ ty }}" class="grid"/>
+<text x="32" y="{{ tl }}" class="ax" text-anchor="end">{{ tv }}</text>
+{%- endif -%}
+{%- endfor -%}
+{%- if seats_cap > 0 -%}
+{%- assign cap_l = cap_y | plus: 3.5 | round: 1 -%}
+<line x1="36" y1="{{ cap_y }}" x2="350" y2="{{ cap_y }}" class="cap"/>
+<text x="32" y="{{ cap_l }}" class="ax" text-anchor="end">{{ seats_cap }}</text>
+{%- endif -%}
+<path d="{{ path }}" class="line"/>
+{%- assign mj = 0 -%}
+{%- for r in data.rows -%}
+{%- if r.kind == 'month' -%}
+{%- assign v = r.active_seats | default: 0 -%}
+{%- if nm == 1 -%}{%- assign px = 195 -%}{%- else -%}{%- assign px = step_x | times: mj | plus: 40 | round: 1 -%}{%- endif -%}
+{%- assign py = v | times: 150.0 | divided_by: top -%}
+{%- assign py = 170 | minus: py | round: 1 -%}
+<circle cx="{{ px }}" cy="{{ py }}" r="3.5" class="dot"/>
+{%- assign show_ax = false -%}
+{%- if mj == last_i -%}
+{%- assign show_ax = true -%}
+{%- else -%}
+{%- assign rem = mj | modulo: lab_every -%}
+{%- assign left_i = last_i | minus: mj -%}
+{%- if rem == 0 and left_i >= lab_every -%}{%- assign show_ax = true -%}{%- endif -%}
+{%- endif -%}
+{%- if show_ax -%}
+<text x="{{ px }}" y="188" class="ax" text-anchor="middle">{{ r.label | escape }}</text>
+{%- endif -%}
+{%- if mj == 0 or mj == mid_i or mj == last_i -%}
+{%- assign vy = py | minus: 9 | round: 1 -%}
+<text x="{{ px }}" y="{{ vy }}" class="val" text-anchor="middle">{{ v }}</text>
+{%- endif -%}
+{%- assign mj = mj | plus: 1 -%}
+{%- endif -%}
+{%- endfor -%}
+</svg></div>
+<figcaption><b>Figure 1.</b> Active seats per month, {{ m_first | escape }} to {{ m_last | escape }}.{% if seats_cap > 0 %} The dashed line is the {{ seats_cap }} seats on the contract.{% endif %}</figcaption>
+</figure>
+{%- if data.usage_note and data.usage_note != '' -%}
+<div class="body">
+<p>{{ data.usage_note | escape }}</p>
+</div>
+{%- endif -%}
+</section>
+{%- endif -%}
+{%- if nt > 0 -%}
+<section class="sec" data-section="adoption">
+<div class="sh"><h2>Adoption by team</h2><span class="note">Seats active against seats assigned, by team</span></div>
+<figure>
+<div class="fig"><svg viewBox="0 0 360 {{ team_h }}" role="img" aria-label="Active seats against assigned seats per team">
+{%- assign tj = 0 -%}
+{%- for r in data.rows -%}
+{%- if r.kind == 'team' -%}
+{%- assign ta = r.active_seats | default: 0 -%}
+{%- assign ts = r.seats | default: 0 -%}
+{%- assign ty = tj | times: 32 | plus: 4 -%}
+{%- assign tly = ty | plus: 12.5 -%}
+{%- assign fill_w = 0 -%}
+{%- if ts > 0 -%}{%- assign fill_w = ta | times: bar_w | divided_by: ts | at_most: bar_w | round: 1 -%}{%- endif -%}
+<text x="0" y="{{ tly }}" class="lab">{{ r.label | truncate: 24 | escape }}</text>
+<rect x="{{ lab_w }}" y="{{ ty }}" width="{{ bar_w }}" height="16" rx="2" class="track"/>
+<rect x="{{ lab_w }}" y="{{ ty }}" width="{{ fill_w }}" height="16" rx="2" class="bar"/>
+<text x="{{ val_x }}" y="{{ tly }}" class="val">{{ ta }} of {{ ts }}</text>
+{%- assign tj = tj | plus: 1 -%}
+{%- endif -%}
+{%- endfor -%}
+</svg></div>
+<figcaption><b>Figure 2.</b> Active seats against seats assigned, per team. {{ sum_a }} of {{ sum_s }} across these teams.</figcaption>
+</figure>
+{%- if data.adoption_note and data.adoption_note != '' -%}
+<div class="body">
+<p>{{ data.adoption_note | escape }}</p>
+</div>
+{%- endif -%}
+</section>
+{%- endif -%}
+{%- assign win_count = data.wins | size -%}
+{%- if win_count > 0 -%}
+<section class="sec" data-section="wins">
+<div class="sh"><h2>{% if win_count == 1 %}One win{% elsif win_count == 2 %}Two wins{% else %}Three wins{% endif %}</h2><span class="note">One per team, from the usage export</span></div>
+<ol class="wins" style="--wins:{{ win_count }}">
+{%- for w in data.wins -%}
+<li><b class="tn">{{ w.stat | escape }}{% if w.unit and w.unit != '' %}<small>{{ w.unit | escape }}</small>{% endif %}</b><h3>{{ w.title | escape }}</h3><p>{{ w.body | escape }}</p><span class="team">{{ w.team | escape }}</span></li>
+{%- endfor -%}
+</ol>
+</section>
+{%- endif -%}
+{%- assign plan_count = data.plan | size -%}
+{%- if plan_count > 0 -%}
+<section class="sec" data-section="plan">
+<div class="sh"><h2>{% if nextq != '' %}Plan for {{ nextq | escape }}{% else %}Plan for next quarter{% endif %}</h2><span class="note">Next steps, each with a date and an owner</span></div>
+<table class="plan">
+<thead><tr><th>When</th><th>What</th><th>Who</th></tr></thead>
+<tbody>
+{%- for p in data.plan -%}
+<tr><td class="when">{{ p.when | escape }}</td><td>{{ p.what | escape }}</td><td class="who">{{ p.who | escape }}</td></tr>
+{%- endfor -%}
+</tbody>
+</table>
+</section>
+{%- endif -%}
+{%- if ns > 0 -%}
+<section class="sec" data-section="renewal">
+<div class="sh"><h2>Renewal timeline</h2><span class="note">{% if term_ok %}{{ total }}-month term from {{ m_start | date: '%-d %b %Y' }}, renews {{ days_left }} day{% if days_left != 1 %}s{% endif %} after this review{% else %}The dates ahead for {{ account.name | escape }}{% endif %}</span></div>
+<div class="renew">
+{%- if term_ok -%}
+<div class="meter"><svg viewBox="0 -10 360 68" role="img" aria-label="Month {{ elapsed }} of a {{ total }}-month term">
+{%- for b in (0..total_1) -%}
+{%- assign bx = unit_w | times: b | round: 1 -%}
+<rect x="{{ bx }}" y="14" width="{{ block_w }}" height="18" rx="2" class="{% if b < elapsed %}m-on{% else %}m-off{% endif %}"/>
+{%- endfor -%}
+<line x1="{{ marker_x }}" y1="8" x2="{{ marker_x }}" y2="38" class="m-today"/>
+<text x="{{ marker_x }}" y="5" class="val" text-anchor="{{ meter_anchor }}">Month {{ elapsed }} of {{ total }}</text>
+<text x="0" y="50" class="mut">{{ m_start | date: '%-d %b %Y' }}</text>
+<text x="358" y="50" class="mut" text-anchor="end">{{ m_renew | date: '%-d %b %Y' }}</text>
+</svg></div>
+{%- endif -%}
+<ol class="rail">
+{%- for r in data.rows -%}
+{%- if r.kind == 'milestone' -%}
+{%- assign rail_class = '' -%}
+{%- if term_ok and r.date -%}
+{%- assign row_sec = r.date | date: '%s' | plus: 0 -%}
+{%- if r.marker == 'review' -%}{%- assign rail_class = 'today' -%}{%- elsif row_sec < v_sec -%}{%- assign rail_class = 'past' -%}{%- endif -%}
+{%- endif -%}
+<li{% if rail_class != '' %} class="{{ rail_class }}"{% endif %}><span class="d">{% if r.date %}{{ r.date | date: '%-d %b %Y' }}{% endif %}{% if r.marker == 'review' %}<em>This review</em>{% endif %}</span><span class="w">{{ r.label | escape }}{% if r.detail and r.detail != '' %}. {{ r.detail | escape }}{% endif %}</span></li>
+{%- endif -%}
+{%- endfor -%}
+</ol>
+</div>
+</section>
+{%- endif -%}
+<section class="next" data-section="next">
+<p>{{ data.next_note | escape }}</p>
+{%- if sender.name -%}
+<p class="sign"><b>{{ sender.name | escape }}</b><span>{% if sender.title %}{{ sender.title | escape }}{% if bname != '' %}, {% endif %}{% endif %}{{ bname | escape }}</span></p>
+{%- endif -%}
+<div class="cta-wrap">{% render 'ken/cta', label: cta_label, kind: 'booking' %}</div>
+<p class="method"><b>Where the numbers come from.</b> The usage export for {{ account.name | escape }}, uploaded as a CSV. Each change is against the previous quarter in that file, rounded to a whole percent. Time per task is the median.</p>
+</section>
+</main>
+</body>
+</html>

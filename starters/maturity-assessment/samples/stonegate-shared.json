@@ -1,0 +1,65 @@
+{
+  "account": {
+    "name": "Stonegate Builders",
+    "domain": "stonegatebuilders.example",
+    "industry": "construction",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Stonegate Builders does residential remodels and small additions with about thirty people and a handful of crews.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Sam Okafor",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Forgeline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#e4572e",
+      "secondary": "#1c1c1c"
+    },
+    "fonts": {
+      "heading": "Space Grotesk",
+      "body": "IBM Plex Sans"
+    }
+  },
+  "data": {
+    "peers": [
+      {
+        "industry": "construction",
+        "peer_group": "construction firms with up to 50 people",
+        "assessments": 87,
+        "score_1": 1.9,
+        "score_2": 1.6,
+        "score_3": 1.4,
+        "score_4": 2.2,
+        "source": "Collected by Forgeline in 2026"
+      }
+    ],
+    "headline": "How mature are Stonegate's operations?",
+    "intro": "Small remodeling firms often run on a few people who remember how every job goes. Three minutes shows how much of that is written down.",
+    "steps": [
+      {
+        "title": "Write down the steps of one job from quote to final walkthrough",
+        "body": "One page for the job you do most often. The next crew lead starts from it instead of from memory, and you see which steps slip."
+      },
+      {
+        "title": "Keep job costs in one place and read them every Friday",
+        "body": "Put estimates, change orders and actual costs in one sheet or tool. Review it weekly so a job that runs over shows up while there is still time to act."
+      },
+      {
+        "title": "Put change orders and scheduling reminders on rules",
+        "body": "Pick the two messages your office sends most each week and let software send them. It gives the office back time without adding a person."
+      },
+      {
+        "title": "Name one person to own how jobs get run",
+        "body": "One owner, a short list, and an hour a week. In a firm of thirty, the owner usually holds this role without calling it that."
+      }
+    ]
+  }
+}

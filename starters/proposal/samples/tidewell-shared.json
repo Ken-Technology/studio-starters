@@ -1,0 +1,286 @@
+{
+  "account": {
+    "name": "Tidewell Dental Group",
+    "domain": "tidewell.example",
+    "industry": "medical practices",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Group of 14 dental clinics across two states.",
+      "why_now": "Opened two clinics this year."
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Nora Vance",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Halcyon",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1b2f5e",
+      "secondary": "#1f2429"
+    },
+    "fonts": {
+      "heading": "Fraunces",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "notes": "Tidewell Dental Group (tidewell.example). 14 dental clinics across two states, about 320 staff. Champion: Ines Calder, Chief Operating Officer. Shared link goes to the operations leadership.\nCalls: Oct 12 (Ines Calder, Marcus Webb, Rosa Delgado, Elena Park) and Oct 22 (Ines Calder, Elena Park).\nQuotes, Oct 12. Ines Calder, Chief Operating Officer: \"A referral goes out the door and we never see it again. The patient tells us three weeks later that nobody called.\" Rosa Delgado, Regional Clinic Manager: \"My front desk keeps referrals in a shared inbox and a binder. When someone is off, the binder wins.\"\nQuote, Oct 22. Marcus Webb, Director of Patient Access: \"New patients fill in a paper form on arrival. That is ten minutes of the first appointment gone.\"\nNumbers from Rosa's September referral log for Riverside and Eastgate, shared Oct 20: 212 specialist referrals sent, 61 with no confirmed appointment after 14 days; front desks spend about 9 hours a week chasing referrals per clinic; 38 percent of new patients complete their forms before arrival.\nPilot sites: Riverside and Eastgate clinics, 6 front-desk staff. Scheduling system is read-only for the pilot. SSO through Google Workspace. Weekly 30-minute review with Rosa and Anika.\nOut until year one: the other 12 clinics, the patient text-message reminders, insurance pre-checks, billing.\nWants: referrals with a confirmed appointment within 14 days up from 71 percent to 88 percent; front-desk time chasing referrals down to 4 hours a week per clinic or less; 80 percent of new patients complete forms before arrival; 5 of 6 front-desk staff use the tracker every working day. Today none of the front-desk staff use a shared tracker.\nStakeholders: Ines Calder (sponsor, 30 minutes a week); Rosa Delgado (pilot lead, 2 hours a week); Marcus Webb (intake forms, 1 hour a week); Elena Park, Compliance Lead (privacy review, 3 hours in weeks 1 and 2).\nDates: proposal sent Oct 29, valid for 30 days. Scoping call Nov 5. Privacy review answers Nov 9. Proposal version 2 on Nov 11. Decision on the pilot Nov 13. Kickoff at Riverside Nov 16. Pilot Nov 16 to Dec 16. Weekly reviews Nov 23, Nov 30, Dec 7 and Dec 14. Readout Dec 17. Decision on year one Dec 21.",
+    "offer": "Pilot: 30 days at up to two clinics, fixed fee $3,600. It covers the scheduling connector, intake form setup, training, four weekly reviews and the readout. The pilot fee is credited in full against year one if the customer signs by Dec 31, 2026.\nYear one: up to 14 clinics from January 2027, $41,000 a year, billed annually. Onboarding for every additional clinic is included.\nPrices in US dollars, before tax. Proposals are valid for 30 days.",
+    "our_team": "Nora Vance, Account Executive: owns the proposal and the commercial side, as needed.\nTheo Marsh, Implementation Lead: connector, SSO and privacy answers, weeks 1 to 3.\nAnika Rao, Customer Success: training, the weekly review and the readout, through the end of the pilot.",
+    "title": "Referral tracking and digital intake at Tidewell's 14 clinics",
+    "sub": "A 30-day pilot at the Riverside and Eastgate clinics, the criteria it has to meet, and what a year-one rollout would involve. Written to be forwarded to operations leadership and compliance.",
+    "valid_until": "Nov 28, 2026",
+    "pilot_window": "Nov 16 to Dec 16",
+    "problem_when": "Calls of Oct 12 and 22",
+    "problem_lead": "These are the three things we heard on Oct 12 and Oct 22, as close to how they were said as our notes allow.",
+    "quotes": [
+      {
+        "text": "A referral goes out the door and we never see it again. The patient tells us three weeks later that nobody called.",
+        "who": "Ines Calder, Chief Operating Officer",
+        "date": "Oct 12"
+      },
+      {
+        "text": "My front desk keeps referrals in a shared inbox and a binder. When someone is off, the binder wins.",
+        "who": "Rosa Delgado, Regional Clinic Manager",
+        "date": "Oct 12"
+      },
+      {
+        "text": "New patients fill in a paper form on arrival. That is ten minutes of the first appointment gone.",
+        "who": "Marcus Webb, Director of Patient Access",
+        "date": "Oct 22"
+      }
+    ],
+    "cost_source": "From Rosa's September referral log for Riverside and Eastgate, shared Oct 20.",
+    "cost_today": [
+      {
+        "value": "61 of 212",
+        "label": "specialist referrals had no confirmed appointment after 14 days"
+      },
+      {
+        "value": "9 h",
+        "label": "a week at each front desk spent chasing referrals"
+      },
+      {
+        "value": "38%",
+        "label": "of new patients completed their forms before arrival"
+      }
+    ],
+    "problem_close": "The referrals are sent. They are not tracked after that. Each clinic keeps its own record, so nobody can see which ones are open.",
+    "scope_lead": "One referral tracker and one digital intake form for the front desk, starting at two clinics. The platform reads from your scheduling system; nothing is written back.",
+    "scope_in": [
+      "Read-only connector to the scheduling system at Riverside and Eastgate",
+      "Referral tracker with an owner and a next step on every open referral",
+      "Digital new-patient form, sent before the first visit",
+      "Single sign-on through Google Workspace",
+      "Weekly 30-minute review with Rosa and Anika"
+    ],
+    "scope_out": [
+      "The other 12 clinics",
+      "Patient text-message reminders",
+      "Insurance pre-checks",
+      "Billing"
+    ],
+    "scope_close": "If the pilot passes, year one extends the same setup to all 14 clinics, with the Riverside team training the next ones.",
+    "pilot_lead": "Nov 16 to Dec 16 at Riverside and Eastgate with Rosa Delgado's front-desk teams. Four criteria, measured against September.",
+    "criteria": [
+      {
+        "name": "Referrals with a confirmed appointment within 14 days",
+        "baseline": "71 percent",
+        "target": "88 percent",
+        "measured_by": "The referral tracker"
+      },
+      {
+        "name": "Front-desk hours a week spent chasing referrals",
+        "baseline": "9 per clinic",
+        "target": "4 or fewer",
+        "measured_by": "Weekly time check"
+      },
+      {
+        "name": "New patients who complete forms before arrival",
+        "baseline": "38 percent",
+        "target": "80 percent",
+        "measured_by": "Form submissions"
+      },
+      {
+        "name": "Front-desk staff using the tracker each working day",
+        "baseline": "0 of 6",
+        "target": "5 of 6",
+        "measured_by": "Sign-ins"
+      }
+    ],
+    "pass_rule": "The pilot passes when three of the four criteria are met across the last two weeks, Dec 3 to Dec 16. If it does not pass, there is no year-one commitment and the pilot fee is the only cost.",
+    "timeline_lead": "Seven weeks from the scoping call to a decision on year one. The privacy review and the connector run in parallel so the pilot can start on Nov 16.",
+    "timeline_span": "Nov 5 to Dec 21",
+    "weeks": [
+      "Nov 2",
+      "Nov 9",
+      "Nov 16",
+      "Nov 23",
+      "Nov 30",
+      "Dec 7",
+      "Dec 14",
+      "Dec 21"
+    ],
+    "tasks": [
+      {
+        "label": "Privacy review",
+        "who": "Elena, Theo",
+        "side": "them",
+        "span": {
+          "start": 2,
+          "end": 5
+        }
+      },
+      {
+        "label": "Connect scheduling and tracker",
+        "who": "Theo",
+        "side": "us",
+        "span": {
+          "start": 3,
+          "end": 6
+        }
+      },
+      {
+        "label": "Front-desk training",
+        "who": "Anika",
+        "side": "us",
+        "span": {
+          "start": 5,
+          "end": 7
+        }
+      },
+      {
+        "label": "Pilot at two clinics",
+        "who": "Rosa's teams",
+        "side": "them",
+        "span": {
+          "start": 5,
+          "end": 14
+        }
+      },
+      {
+        "label": "Weekly review",
+        "who": "Rosa, Anika",
+        "side": "us",
+        "marks": [
+          7,
+          9,
+          11,
+          13
+        ]
+      },
+      {
+        "label": "Readout",
+        "who": "Ines, Rosa, Nora",
+        "side": "us",
+        "marks": [
+          14
+        ]
+      },
+      {
+        "label": "Decision on year one",
+        "who": "Ines",
+        "side": "them",
+        "marks": [
+          15
+        ]
+      }
+    ],
+    "timeline_note": "Diamonds are single-day events. The Dec 21 decision keeps the pilot credit inside the year.",
+    "team_lead": "Seven people. Tidewell's part is about three and a half hours a week during the pilot, plus 3 hours of privacy review before it.",
+    "team": [
+      {
+        "name": "Ines Calder",
+        "title": "Chief Operating Officer, Tidewell",
+        "role": "Executive sponsor. Owns the pass decision.",
+        "time": "30 min a week"
+      },
+      {
+        "name": "Rosa Delgado",
+        "title": "Regional Clinic Manager, Tidewell",
+        "role": "Pilot lead. Runs the tracker with both front desks.",
+        "time": "2 h a week"
+      },
+      {
+        "name": "Marcus Webb",
+        "title": "Director of Patient Access, Tidewell",
+        "role": "Owns the intake form and its wording.",
+        "time": "1 h a week"
+      },
+      {
+        "name": "Elena Park",
+        "title": "Compliance Lead, Tidewell",
+        "role": "Privacy review before the pilot starts.",
+        "time": "3 h, weeks 1 and 2"
+      },
+      {
+        "name": "Nora Vance",
+        "title": "Account Executive, Halcyon",
+        "role": "Owns this plan and the commercial side.",
+        "time": "As needed"
+      },
+      {
+        "name": "Theo Marsh",
+        "title": "Implementation Lead, Halcyon",
+        "role": "Connector, SSO and the privacy answers.",
+        "time": "Weeks 1 to 3"
+      },
+      {
+        "name": "Anika Rao",
+        "title": "Customer Success, Halcyon",
+        "role": "Training, the weekly review and the readout.",
+        "time": "Through Dec 16"
+      }
+    ],
+    "investment_lead": "A fixed pilot fee, credited in full against year one if Tidewell signs by Dec 31, 2026.",
+    "investment": [
+      {
+        "item": "30-day pilot at two clinics",
+        "covers": "Scheduling connector, intake form setup, training, four weekly reviews, readout",
+        "amount": "$3,600"
+      },
+      {
+        "item": "Year one, up to 14 clinics",
+        "covers": "All clinics from January 2027, onboarding for each additional clinic included",
+        "amount": "$41,000 a year"
+      }
+    ],
+    "investment_total": {
+      "label": "Year one, with the pilot credit applied",
+      "amount": "$37,400"
+    },
+    "investment_note": "Prices in US dollars, before tax. Year one is billed annually.",
+    "next_steps": [
+      {
+        "date": "Nov 5",
+        "title": "Scoping call",
+        "detail": "Agree the criteria and the two clinics. Ines, Rosa, Elena, Nora, Theo."
+      },
+      {
+        "date": "Nov 9",
+        "title": "Privacy answers back",
+        "detail": "Elena returns the review questions."
+      },
+      {
+        "date": "Nov 11",
+        "title": "Final proposal",
+        "detail": "Nora sends version 2 with anything that changed on the call."
+      },
+      {
+        "date": "Nov 13",
+        "title": "Decision on the pilot",
+        "detail": "Ines approves, below or by reply."
+      },
+      {
+        "date": "Nov 16",
+        "title": "Kickoff at Riverside",
+        "detail": "Rosa's teams, Anika and Theo, on site."
+      }
+    ],
+    "signoff_lead": "Approval of the 30-day pilot and its criteria at the fee above. Year one is a separate decision after the readout."
+  }
+}

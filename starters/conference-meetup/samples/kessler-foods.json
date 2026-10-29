@@ -1,0 +1,58 @@
+{
+  "account": {
+    "name": "Kessler Foods",
+    "domain": "kesslerfoods.example",
+    "industry": "food and beverage manufacturing",
+    "size_band": "501-1000",
+    "dossier": {
+      "summary": "Kessler Foods makes frozen meals and sauces for grocery private labels at two plants in Ohio, and ships to regional distribution centers through outside carriers.",
+      "why_now": "Announced a third plant in Indiana, due to open in 2027.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Dana",
+    "last_name": "Okafor",
+    "title": "VP Supply Chain"
+  },
+  "sender": {
+    "name": "Maya Lindqvist",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Lanternline",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "conference_name": "Supply Chain Forward 2026",
+    "dates_text": "March 10 to 12, 2026",
+    "venue": "Lakeside Convention Center",
+    "city": "Chicago",
+    "hall": "Hall B",
+    "booth": "412",
+    "booth_note": "Two of us at the stand the whole show, the dispatch board running live on the big screen, and a quiet corner at the back with chairs and decent coffee.",
+    "booth_hours": [
+      { "day": "Tuesday, March 10", "hours": "9:00 am to 5:00 pm", "who": "Maya Lindqvist, all day" },
+      { "day": "Wednesday, March 11", "hours": "9:00 am to 5:00 pm", "who": "Maya Lindqvist from 11:00 am, Jonas Petrov all day" },
+      { "day": "Thursday, March 12", "hours": "9:00 am to 2:00 pm", "who": "Jonas Petrov, all day" }
+    ],
+    "talk": {
+      "title": "What a new plant does to your carrier mix, and how to plan it a year out",
+      "day": "Wednesday, March 11",
+      "time": "2:00 pm to 2:40 pm",
+      "stage": "Stage 3, Hall A",
+      "speaker": "Jonas Petrov, Lanternline"
+    },
+    "side_events": [
+      { "day": "Tuesday, March 10", "time": "6:30 pm", "title": "Opening night drinks", "where": "The Atrium, main entrance", "note": "Most of the exhibitors go. The easy place to find us if Tuesday is your only day.", "host": "The show" },
+      { "day": "Wednesday, March 11", "time": "8:00 am", "title": "Breakfast for food and beverage operations leaders", "where": "Room 204, second floor", "note": "Twenty people, one table, no slides. Ask Maya for a seat.", "host": "Lanternline" },
+      { "day": "Wednesday, March 11", "time": "7:00 pm", "title": "Shippers and carriers dinner", "where": "Off site, a ten minute walk from the hall", "note": "Invite only. We have two spare seats at our table.", "host": "Midwest Shippers Council" },
+      { "day": "Thursday, March 12", "time": "12:30 pm", "title": "Closing panel on the next twelve months in freight", "where": "Main stage, Hall A", "note": "The one session worth staying for on the last day.", "host": "The show" }
+    ],
+    "why_now": "Announced a third plant in Indiana, due to open in 2027.",
+    "personal_line": "A third plant in Indiana means new lanes and new carriers to set up before it opens, and that is the exact problem the board on our stand is built around. Twenty minutes is enough to see whether it fits how Kessler runs the Ohio plants today."
+  }
+}

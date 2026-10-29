@@ -1,0 +1,60 @@
+{
+  "account": {
+    "name": "Tidewater Clinics",
+    "domain": "tidewaterclinics.example",
+    "industry": "hospitals and health care",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Tidewater Clinics runs nine urgent care sites along the Gulf Coast with a shared pool of nurses and physician assistants, and opened two more sites this year.",
+      "why_now": "Opened two new sites this year, bringing the total to eleven by December.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Lena Fischer",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Kitewire",
+    "logo_url": null,
+    "colors": {
+      "primary": "#ff5a1f",
+      "secondary": "#101418"
+    },
+    "fonts": {
+      "heading": "Outfit",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "conference_name": "ModernOps Summit 2026",
+    "dates_text": "September 15 to 17, 2026",
+    "venue": "Riverside Center",
+    "city": "Austin",
+    "hall": "Hall 2",
+    "booth": "1407",
+    "booth_note": "The scheduling board running on a full week of shifts across eleven sites, and two of us there to walk through it with your own rota if you bring it.",
+    "booth_hours": [
+      { "day": "Tuesday, September 15", "hours": "10:00 am to 6:00 pm", "who": "Lena Fischer and Omar Haddad, all day" },
+      { "day": "Wednesday, September 16", "hours": "9:00 am to 6:00 pm", "who": "Omar Haddad all day, Lena from 1:00 pm" },
+      { "day": "Thursday, September 17", "hours": "9:00 am to 1:00 pm", "who": "Lena Fischer, all day" }
+    ],
+    "talk": {
+      "title": "Staffing eleven clinic sites from one pool without a spreadsheet",
+      "day": "Tuesday, September 15",
+      "time": "11:15 am to 11:45 am",
+      "stage": "Clinic operations track, room 2B",
+      "speaker": "Lena Fischer, Kitewire"
+    },
+    "side_events": [
+      { "day": "Tuesday, September 15", "time": "5:30 pm", "title": "Healthcare operations happy hour", "where": "The courtyard bar, ground floor", "note": "Clinic and practice operators only, about sixty people last year. Easy to find us there.", "host": "The show" },
+      { "day": "Wednesday, September 16", "time": "7:30 am", "title": "Breakfast for multi-site clinic operators", "where": "Room 108", "note": "Sixteen seats, one topic: keeping a shared staff pool fair across sites. Ask Lena for a seat.", "host": "Kitewire" },
+      { "day": "Wednesday, September 16", "time": "4:00 pm", "title": "Urgent care growth panel", "where": "Stage 1, Hall 1", "note": "Three operators on how they opened sites without losing the people they already had.", "host": "The show" },
+      { "day": "Thursday, September 17", "time": "11:00 am", "title": "Closing coffee at the stand", "where": "Booth 1407, Hall 2", "note": "The last hour before the hall closes is the quietest. Good time for a proper look.", "host": "Kitewire" }
+    ],
+    "why_now": "Opened two new sites this year, bringing the total to eleven by December.",
+    "personal_line": "Eleven urgent care sites by December means the rota that worked for nine is about to break. Our stand runs the scheduling board live on a full week of shifts, so twenty minutes is enough to tell whether it fits how Tidewater shares staff across sites."
+  }
+}

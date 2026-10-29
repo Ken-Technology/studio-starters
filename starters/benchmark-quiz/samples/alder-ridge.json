@@ -1,0 +1,71 @@
+{
+  "account": {
+    "name": "Alder Ridge Mechanical",
+    "domain": "alderridgemech.example",
+    "industry": "construction",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Alder Ridge Mechanical installs and services heating, cooling and plumbing for homes and small commercial buildings around Bend, Oregon, with about 40 technicians across three branches. Its site advertises same-day service and a membership plan.",
+      "why_now": "Opened a third branch in Redmond this spring and is hiring two dispatchers.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Dana",
+    "last_name": "Whitaker",
+    "title": "Director of Operations"
+  },
+  "sender": {
+    "name": "Priya Natarajan",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Wrenfield",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "peers": [
+      { "industry": "construction", "question": "dispatch", "n_1": 14, "n_2": 22, "n_3": 19, "n_4": 9, "source": "Wrenfield field operations survey, 2026" },
+      { "industry": "construction", "question": "jobs", "n_1": 9, "n_2": 27, "n_3": 21, "n_4": 7, "source": "Wrenfield field operations survey, 2026" },
+      { "industry": "construction", "question": "invoice", "n_1": 12, "n_2": 25, "n_3": 17, "n_4": 10, "source": "Wrenfield field operations survey, 2026" },
+      { "industry": "construction", "question": "fix", "n_1": 6, "n_2": 20, "n_3": 26, "n_4": 12, "source": "Wrenfield field operations survey, 2026" },
+      { "industry": "construction", "question": "updates", "n_1": 18, "n_2": 23, "n_3": 16, "n_4": 7, "source": "Wrenfield field operations survey, 2026" }
+    ],
+    "intro": "Alder Ridge just opened its third branch and is hiring dispatchers, so how jobs reach about 40 technicians each morning is about to matter more than it did with one office.",
+    "lines": [
+      {
+        "key": "dispatch",
+        "ahead": "Live dispatch usually shows up as fewer wasted drives and faster emergency calls, and the lead holds as long as someone owns the board all day.",
+        "level": "Most construction firms set the day the night before, and the usual next step is letting the board change while the trucks are already out.",
+        "behind": "Closing this gap usually starts with one shared schedule every technician can see on a phone, before any automation."
+      },
+      {
+        "key": "jobs",
+        "ahead": "Finishing more jobs a day usually means tight routing and parts on the truck, and the lead holds when the first job of the day starts on time.",
+        "level": "Most construction firms sit in the middle on jobs per day, and the next step up usually comes from shorter drives, not faster work.",
+        "behind": "Closing this gap usually means looking at drive time and parts runs first, since those eat hours that never show up on a job ticket."
+      },
+      {
+        "key": "invoice",
+        "ahead": "Same-day or next-day invoicing usually means the technician closes the job on site, and keeping it there is what keeps cash arriving sooner.",
+        "level": "Most construction firms invoice within the week, and the next step is usually letting the technician finish the paperwork before leaving the job.",
+        "behind": "Closing this gap usually means moving the invoice from the office to the job site, so it goes out while the customer still remembers the visit."
+      },
+      {
+        "key": "fix",
+        "ahead": "A high first-time fix rate usually comes from good job notes and the right parts on the truck, and it holds while dispatch keeps matching skills to calls.",
+        "level": "Most construction firms fix the majority of jobs on the first visit, and the next step is usually better notes before the technician leaves the office.",
+        "behind": "Closing this gap usually starts with what a technician knows before arriving: the history, the photos and the parts that job usually needs."
+      },
+      {
+        "key": "updates",
+        "ahead": "Live arrival updates usually mean fewer calls into the office and fewer missed appointments, and the lead holds as long as the schedule stays accurate.",
+        "level": "Most construction firms send a message by hand on the day, and the next step is usually an automatic text tied to the schedule.",
+        "behind": "Closing this gap usually starts with an automatic message on the morning of the job, which also cuts the calls your office answers."
+      }
+    ]
+  }
+}

@@ -81,6 +81,46 @@
       "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
       "showcases": ["prompt", "person", "roles", "ken/cta"],
       "version": "1.0.0"
+    },
+    {
+      "slug": "benchmark-quiz",
+      "name": "How do you compare",
+      "type": "calculator",
+      "format": "page",
+      "showcases": [
+        "dataset",
+        "prompt",
+        "grade",
+        "ken/cta"
+      ],
+      "description": "Five quick questions, then where the account stands against peers in its industry. Ken fills the peer answers from your CSV and one line on each gap.",
+      "category": "interactive",
+      "tags": [
+        "benchmark",
+        "quiz",
+        "peers",
+        "self-assessment"
+      ],
+      "featured": false,
+      "needs": [
+        "dataset"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "alder-ridge",
+          "label": "Alder Ridge Mechanical"
+        },
+        {
+          "id": "meridian-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "larkmoor",
+          "label": "Larkmoor Utility Partners"
+        }
+      ]
     }
   ]
 }

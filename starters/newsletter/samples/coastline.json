@@ -1,0 +1,50 @@
+{
+  "account": {
+    "name": "Coastline Produce",
+    "domain": "coastlineproduce.example",
+    "industry": "food and beverage distribution",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Coastline Produce distributes fresh produce to grocery chains and restaurants across the Pacific Northwest from three cold storage warehouses, with its own fleet of refrigerated trucks.",
+      "why_now": "Posted four night-shift warehouse lead roles in Tacoma this month.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Dana",
+    "last_name": "Whitaker",
+    "title": "VP Operations"
+  },
+  "sender": {
+    "name": "Tom Okafor",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Larkspur",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "headline": "Night shifts in cold storage, a shorter exception loop, and a guide to temperature claims",
+    "intro": "You are hiring night-shift leads in Tacoma while produce margins stay thin, so this month's note and idea are both about what happens between the dock and the delivery.",
+    "note": {
+      "title": "Night shifts are where cold chain breaks go unnoticed",
+      "body": "Most produce distributors run their busiest receiving hours after dark, and that is also when the fewest experienced eyes are on the dock. A pallet that sits too long at the wrong temperature looks fine at night and shows up as a rejected load later in the week.\n\nYour site describes three cold storage warehouses and your own refrigerated fleet, which puts more of that handoff under your control than most of your peers have. It also means every gap in a night shift is yours to find.\n\nThe teams that handle this well do not add more sensors first. They give the night lead one short rule and one person to call when a reading drifts.",
+      "seen": "Four night-shift warehouse lead roles posted for Tacoma this month"
+    },
+    "idea": {
+      "title": "Give the night lead a one-page temperature exception loop",
+      "body": "Right now a drifting reading on a night shift probably waits for the morning. The fix is not a new system. It is a written rule for what a lead does in the next ten minutes when a reefer or a room reads out of range: who they call, what they move, and what they write down.\n\nStart with one warehouse and one week. Keep the sheet to a single page and put it where the lead stands, not in a shared drive. At the end of the week, read every entry with the lead who wrote it.\n\nIf the loop works on paper, it is easy to move into whatever tool you already use. If it does not, no tool would have saved it.",
+      "first_step": "Pick one Tacoma warehouse and write the out-of-range rule for its night lead on one page before the new hires start."
+    },
+    "resource": {
+      "kind": "guide",
+      "title": "Writing a temperature claims playbook for grocery deliveries",
+      "summary": "A short guide to the records a grocery buyer asks for when a load is rejected, and how to keep them during the shift instead of rebuilding them afterwards.",
+      "url": "https://larkspur.example/guides/temperature-claims-playbook"
+    },
+    "ps": "If the Tacoma leads start before the sheet exists, send me what you have and I will mark up a draft in an afternoon."
+  }
+}

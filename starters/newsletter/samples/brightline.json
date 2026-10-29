@@ -1,0 +1,56 @@
+{
+  "account": {
+    "name": "Brightline Robotics",
+    "domain": "brightlinerobotics.example",
+    "industry": "industrial automation and machinery",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Brightline Robotics builds palletizing robots for food and beverage plants and sells them through regional integrators, with a service team that handles installs.",
+      "why_now": "Added a page for a new service plan with remote monitoring last month.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Sofia",
+    "last_name": "Lindqvist",
+    "title": "Head of Sales"
+  },
+  "sender": {
+    "name": "Jonas Beck",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Kiln",
+    "logo_url": null,
+    "colors": {
+      "primary": "#ff5a1f",
+      "secondary": "#111111"
+    },
+    "fonts": {
+      "heading": "Outfit",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "headline": "Service plans after the install, a renewal calendar, and a recording on pricing them",
+    "intro": "Your new service plan page is the reason for this one. The note and the idea are both about the months after an install, where most machine builders leave money and goodwill on the floor.",
+    "note": {
+      "title": "The integrator sells the robot. Nobody sells the second year",
+      "body": "When a machine goes in through an integrator, the plant's relationship is with the integrator. The builder meets the customer at the install and then mostly at a breakdown.\n\nYour site now lists a service plan with remote monitoring, which is the first thing a plant hears from you after the install that is not a repair. How that plan is offered matters as much as what is in it. If it arrives as a line on the integrator's quote, it gets cut first.\n\nThe builders who keep plants on a plan treat the handover at install as the start of their own relationship, with their own name on it.",
+      "seen": "A new service plan page with remote monitoring appeared on your site last month"
+    },
+    "idea": {
+      "title": "Put a renewal date on every installed robot",
+      "body": "Most service plans lapse because nobody saw the date coming. A renewal calendar is unglamorous and it works.\n\nList every robot your service team has installed, with the plant, the integrator, the install date and whether it is on a plan. Put a renewal date on each, even the ones with no plan today, and give every plant one owner on your side.\n\nThen, ninety days before each date, that owner sends one short note with the machine's monitoring data from the last quarter. A plant that sees its own numbers rarely lets the plan lapse.",
+      "first_step": "Export the install list from your service team and add two columns: plan status and renewal date."
+    },
+    "resource": {
+      "kind": "recording",
+      "title": "Pricing service plans for installed machines",
+      "summary": "A forty-minute conversation with two machine builders on how they price monitoring and service plans, and what they stopped bundling into the integrator's quote.",
+      "url": "https://kiln.example/recordings/pricing-service-plans"
+    },
+    "ps": "If the install list already exists in a spreadsheet, send it over and I will draft the first ninety-day note from it."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "studio-starters",
+  "private": true,
+  "description": "Ken Studio Library templates and the scripts that check, index and preview them.",
+  "license": "MIT",
+  "scripts": {
+    "render": "node scripts/render.mjs",
+    "build-index": "node scripts/build-index.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node --test scripts/*.test.mjs"
+  },
+  "devDependencies": {
+    "liquidjs": "10.30.0",
+    "playwright": "1.64.1",
+    "sharp": "0.35.5"
+  }
+}

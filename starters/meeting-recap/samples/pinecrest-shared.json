@@ -1,0 +1,158 @@
+{
+  "account": {
+    "name": "Pinecrest Mutual",
+    "domain": "pinecrestmutual.example",
+    "industry": "insurance",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Pinecrest Mutual is a regional auto and home insurer with about 320 staff and policyholders in four states.",
+      "why_now": "Named a new VP of Claims in August.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Elena Marsh",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northfield",
+    "logo_url": null,
+    "colors": {
+      "primary": "#4a1d24",
+      "secondary": "#b08d57"
+    },
+    "fonts": {
+      "heading": "Newsreader",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "notes": [
+      {
+        "citationId": "k-a210",
+        "kind": "note",
+        "title": "Call notes, Oct 22: Pinecrest Mutual claims intake",
+        "sourceDate": "2026-10-22",
+        "sourceUrls": [],
+        "text": "Thursday October 22, 2026, 30 min, phone. Pinecrest: Robert Kaminski (VP Claims), Dana Oyelowo (Claims Operations Lead), Luis Ferreira (IT Director). Northfield: Elena Marsh, Theo Brandt (Implementation Lead).\n\nAbout 38,000 auto and home claims a year. First notice of loss comes in by phone (about 70 percent) and a web form (the rest). The web form writes into the claims system, which dates from 2009. A phone intake takes 22 minutes on average; Dana measured it in September. Adjusters re-key the photos policyholders email in. Policyholders call back to ask for status because there is no status page or text.\n\nRobert wants: photo upload at first notice, status texts, and a shorter phone intake. Not replacing the core system this year.\n\nLuis: the core system has no live API. It takes a batch file nightly. Anything we do has to work with the nightly batch. He wants a technical review before any proposal.\n\nAgreed: Northfield runs a technical review with Luis's team on Wednesday November 4. Pinecrest shares a sample of 50 anonymized claims by Friday October 30 so Theo can map the fields. Northfield sends a proposal scoped to auto claims only by Thursday November 12. Robert takes it to the Q4 operations review on Thursday December 3. Dana sends the September intake timing report (no date given).\n\nResources: Northfield integration guide (https://northfield.example/docs/integration-guide.pdf), call recording (https://northfield.example/rec/pinecrest-oct-22)."
+      },
+      {
+        "citationId": "k-a211",
+        "kind": "transcript",
+        "title": "Transcript, Oct 22 call (auto)",
+        "sourceDate": "2026-10-22",
+        "sourceUrls": [],
+        "text": "[00:02:10] Robert Kaminski: We are not replacing the core system this year. I want to fix the front door: how a claim comes in and what the policyholder hears afterwards.\n[00:06:45] Dana Oyelowo: I timed phone intakes in September. Twenty-two minutes on average. A lot of that is the adjuster typing while the caller looks for the policy number.\n[00:12:30] Luis Ferreira: Whatever you build has to feed the nightly batch. There is no live API and there will not be one before next year.\n[00:13:02] Theo Brandt: Understood. If you can share a sample of claims with the personal details removed, I can map the fields before we talk again.\n[00:13:20] Luis Ferreira: Fifty claims, anonymized, by the end of the month.\n[00:24:15] Robert Kaminski: Scope it to auto first. Home claims have a different intake and I do not want to fight two battles.\n[00:25:00] Elena Marsh: Auto only, proposal by the twelfth, and Luis gets the technical review before that.\n[00:25:10] Robert Kaminski: Then I take it to the ops review on December 3."
+      }
+    ],
+    "title": "Our call on Thursday, October 22",
+    "note": "Thanks for the 30 minutes on Thursday, and for being so direct about the nightly batch. This page holds what we heard about claims intake at Pinecrest, what we agreed and who does what before the December 3 review. If anything here is off, reply to my email and I will fix it the same day.",
+    "call": {
+      "date": "Thursday, October 22",
+      "length": "30 minutes",
+      "channel": "phone",
+      "them": [
+        {
+          "name": "Robert Kaminski",
+          "title": "VP Claims"
+        },
+        {
+          "name": "Dana Oyelowo",
+          "title": "Claims Operations Lead"
+        },
+        {
+          "name": "Luis Ferreira",
+          "title": "IT Director"
+        }
+      ],
+      "us": [
+        {
+          "name": "Elena Marsh"
+        },
+        {
+          "name": "Theo Brandt",
+          "title": "Implementation Lead"
+        }
+      ]
+    },
+    "heard": [
+      {
+        "topic": "Claims volume",
+        "text": "About 38,000 auto and home claims a year. Around 70 percent come in by phone and the rest through a web form that writes into a claims system from 2009."
+      },
+      {
+        "topic": "Phone intake",
+        "text": "A phone intake takes 22 minutes on average, which Dana measured in September. Much of that is the adjuster typing while the caller looks for the policy number."
+      },
+      {
+        "topic": "Photos and status",
+        "text": "Adjusters re-key the photos policyholders email in. Policyholders call back to ask for status because there is no status page or text."
+      },
+      {
+        "topic": "What Robert wants",
+        "text": "Photo upload at first notice, status texts and a shorter phone intake. The core system stays this year."
+      },
+      {
+        "topic": "The nightly batch",
+        "text": "The core system has no live API and takes a batch file once a night. Anything we build has to feed that batch, and Luis wants a technical review before he sees a proposal."
+      }
+    ],
+    "agreed": [
+      "Scope is auto claims only. Home claims have a different intake and wait.",
+      "The core claims system stays. We work with the nightly batch, not around it.",
+      "Luis's team gets a technical review before Pinecrest sees a proposal.",
+      "Robert takes the proposal to the Q4 operations review on December 3."
+    ],
+    "steps": [
+      {
+        "what": "Share a sample of 50 anonymized claims so Theo can map the fields",
+        "owner": "Luis Ferreira",
+        "side": "them",
+        "due": "Fri Oct 30"
+      },
+      {
+        "what": "Run the technical review with Luis's team",
+        "owner": "Northfield",
+        "side": "us",
+        "due": "Wed Nov 4"
+      },
+      {
+        "what": "Send a proposal scoped to auto claims",
+        "owner": "Elena Marsh",
+        "side": "us",
+        "due": "Thu Nov 12"
+      },
+      {
+        "what": "Take the proposal to the Q4 operations review",
+        "owner": "Robert Kaminski",
+        "side": "them",
+        "due": "Thu Dec 3"
+      },
+      {
+        "what": "Send the September intake timing report",
+        "owner": "Dana Oyelowo",
+        "side": "them"
+      }
+    ],
+    "resources": [
+      {
+        "title": "Northfield integration guide",
+        "kind": "PDF",
+        "note": "How intake feeds a nightly batch file. For Luis's team before November 4.",
+        "url": "https://northfield.example/docs/integration-guide.pdf"
+      },
+      {
+        "title": "Recording of the October 22 call",
+        "kind": "Recording",
+        "note": "The full call, 30 minutes.",
+        "url": "https://northfield.example/rec/pinecrest-oct-22"
+      }
+    ],
+    "sources": [
+      "Call notes, Oct 22: Pinecrest Mutual claims intake",
+      "Transcript, Oct 22 call (auto)"
+    ]
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "account": {
+    "name": "Ridgeback Foods",
+    "domain": "ridgebackfoods.example",
+    "industry": "food manufacturing",
+    "size_band": "1001-5000",
+    "dossier": {
+      "summary": "Ridgeback Foods makes packaged soups and sauces at three plants and employs about 2,400 people.",
+      "why_now": "Added a third production line at its Dayton plant.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Noor Hakim",
+    "title": "Solutions Lead",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Forgeline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#e4572e",
+      "secondary": "#1c1c1c"
+    },
+    "fonts": {
+      "heading": "Space Grotesk",
+      "body": "IBM Plex Sans"
+    }
+  },
+  "data": {
+    "notes": [
+      {
+        "citationId": "k-n-1",
+        "kind": "note",
+        "title": "Call notes, Oct 6",
+        "text": "Oct 6 call with the plant managers at Dayton and Reno. Quality checks on the line are done on clipboards and typed in at the end of the shift. Goal: a line-side check that flags drift while the batch is still running."
+      },
+      {
+        "citationId": "k-n-2",
+        "kind": "note",
+        "title": "Call notes, Oct 15",
+        "text": "Oct 15 site visit at Dayton with Gabriela Moreno (plant manager) and Sipho Dlamini (quality lead). Noor Hakim ran the check on Line 3 for two shifts."
+      },
+      {
+        "citationId": "k-n-3",
+        "kind": "note",
+        "title": "Call notes, Oct 27",
+        "text": "Oct 27 draft proposal sent to Gabriela. Reno has not been scheduled yet. Next call Nov 3 at 9:30 AM PT, 40 minutes."
+      }
+    ],
+    "company": [
+      {
+        "citationId": "k-c-1",
+        "kind": "org_file",
+        "title": "Our deal team and what we share with buyers",
+        "text": "Team: Noor Hakim, solutions lead. Callum Reyes, field engineer. Shared with buyers: Line 3 two-shift trial summary (PDF, 3 pages), proposal for the Dayton plant (PDF, 8 pages), recording of the Oct 15 readout."
+      }
+    ],
+    "lede": "One room for the line-side quality checks at Ridgeback's plants: what the Dayton trial showed, the proposal, and who does what next.",
+    "facts": [
+      {
+        "label": "Next meeting",
+        "value": "Tue Nov 3",
+        "detail": "9:30 to 10:10 AM PT, video"
+      },
+      {
+        "label": "Stage",
+        "value": "Proposal review",
+        "detail": "Draft sent Oct 27"
+      },
+      {
+        "label": "Trial site",
+        "value": "Dayton, Line 3",
+        "detail": "Two shifts, Oct 15"
+      }
+    ],
+    "note": "This page holds the Dayton trial results, the draft proposal and the plan for the next four weeks in one place. Read the plan and tell Noor what is off before Tuesday's call, so the page matches what each plant needs. The trial summary is the three-pager Sipho asked for after the second shift.",
+    "agenda": {
+      "heading": "Agenda for Tuesday, Nov 3",
+      "meta": "40 minutes, video",
+      "items": [
+        {
+          "time": "9:30",
+          "title": "What the Line 3 trial showed",
+          "detail": "Two shifts of checks compared with the clipboard record.",
+          "who": "Noor and Sipho"
+        },
+        {
+          "time": "9:45",
+          "title": "Dayton proposal",
+          "detail": "Scope, the lines in it and what is left out for now.",
+          "who": "Noor and Gabriela"
+        },
+        {
+          "time": "10:00",
+          "title": "Reno plant",
+          "detail": "Who from Reno joins, and when a site visit could happen.",
+          "who": "Gabriela"
+        }
+      ]
+    },
+    "plan": [
+      {
+        "date": "Oct 6",
+        "title": "Call with the Dayton and Reno plant managers",
+        "side": "both",
+        "owner": "Gabriela, Noor and the Reno team",
+        "weekday": "Tue",
+        "done": true
+      },
+      {
+        "date": "Oct 15",
+        "title": "Two-shift trial on Line 3",
+        "side": "both",
+        "owner": "Noor, Sipho and Callum",
+        "weekday": "Thu",
+        "done": true
+      },
+      {
+        "date": "Oct 27",
+        "title": "Draft proposal for Dayton sent",
+        "side": "us",
+        "owner": "Noor Hakim",
+        "weekday": "Tue",
+        "done": true
+      },
+      {
+        "date": "Nov 3",
+        "title": "Proposal review call",
+        "side": "both",
+        "owner": "Gabriela, Sipho and Noor",
+        "weekday": "Tue"
+      },
+      {
+        "date": "Nov 6",
+        "title": "Comments on the proposal back",
+        "side": "them",
+        "owner": "Gabriela Moreno",
+        "weekday": "Fri"
+      },
+      {
+        "date": "Nov 11",
+        "title": "Final proposal with the Reno option",
+        "side": "us",
+        "owner": "Noor Hakim",
+        "weekday": "Wed"
+      },
+      {
+        "date": "Nov 20",
+        "title": "Decision on Dayton",
+        "side": "them",
+        "owner": "Gabriela Moreno",
+        "weekday": "Fri"
+      }
+    ],
+    "their_people": [
+      {
+        "name": "Gabriela Moreno",
+        "title": "Plant Manager, Dayton"
+      },
+      {
+        "name": "Sipho Dlamini",
+        "title": "Quality Lead"
+      }
+    ],
+    "our_people": [
+      {
+        "name": "Noor Hakim",
+        "title": "Solutions Lead"
+      },
+      {
+        "name": "Callum Reyes",
+        "title": "Field Engineer"
+      }
+    ],
+    "resources": [
+      {
+        "title": "Line 3 trial summary",
+        "kind": "document",
+        "detail": "PDF, 3 pages. Two shifts compared with the clipboard record.",
+        "url": "https://forgeline.example/resources/line-3-trial.pdf"
+      },
+      {
+        "title": "Proposal for the Dayton plant",
+        "kind": "pricing",
+        "detail": "PDF, 8 pages. Draft sent to Gabriela on Oct 27.",
+        "url": "https://forgeline.example/resources/dayton-proposal.pdf"
+      },
+      {
+        "title": "Oct 15 readout",
+        "kind": "recording",
+        "detail": "Recording, 24 min. Callum walks through the Line 3 results.",
+        "url": "https://forgeline.example/recordings/dayton-readout"
+      }
+    ],
+    "as_of": "Based on notes through Oct 27"
+  }
+}

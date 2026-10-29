@@ -1,0 +1,238 @@
+{
+  "account": {
+    "name": "Oakline Foods",
+    "domain": "oaklinefoods.example",
+    "industry": "food and beverage manufacturing",
+    "size_band": "501-1000",
+    "dossier": {
+      "summary": "Oakline Foods bakes and packs bread and snacks for grocery chains from three plants.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Tom Reyes",
+    "title": "Customer Success Manager",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Halcyon",
+    "logo_url": null,
+    "colors": {
+      "primary": "#0f766e",
+      "secondary": "#1f2a24"
+    },
+    "fonts": {
+      "heading": "Fraunces",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "rows": [
+      {
+        "kind": "quarter",
+        "label": "Q1 2026",
+        "hours_saved": 3120,
+        "active_seats": 268,
+        "seats": 400,
+        "tasks_done": 41300,
+        "median_hours": 2.4,
+        "detail": "January to March 2026"
+      },
+      {
+        "kind": "quarter",
+        "label": "Q2 2026",
+        "hours_saved": 4265,
+        "active_seats": 311,
+        "seats": 400,
+        "tasks_done": 55870,
+        "median_hours": 1.9,
+        "detail": "April to June 2026"
+      },
+      {
+        "kind": "month",
+        "label": "Oct",
+        "quarter": "Q4 2025",
+        "active_seats": 140
+      },
+      {
+        "kind": "month",
+        "label": "Nov",
+        "quarter": "Q4 2025",
+        "active_seats": 178
+      },
+      {
+        "kind": "month",
+        "label": "Dec",
+        "quarter": "Q4 2025",
+        "active_seats": 215
+      },
+      {
+        "kind": "month",
+        "label": "Jan",
+        "quarter": "Q1 2026",
+        "active_seats": 232
+      },
+      {
+        "kind": "month",
+        "label": "Feb",
+        "quarter": "Q1 2026",
+        "active_seats": 249
+      },
+      {
+        "kind": "month",
+        "label": "Mar",
+        "quarter": "Q1 2026",
+        "active_seats": 268
+      },
+      {
+        "kind": "month",
+        "label": "Apr",
+        "quarter": "Q2 2026",
+        "active_seats": 281
+      },
+      {
+        "kind": "month",
+        "label": "May",
+        "quarter": "Q2 2026",
+        "active_seats": 297
+      },
+      {
+        "kind": "month",
+        "label": "Jun",
+        "quarter": "Q2 2026",
+        "active_seats": 311
+      },
+      {
+        "kind": "team",
+        "label": "Plant operations",
+        "seats": 140,
+        "active_seats": 118,
+        "hours_saved": 1480,
+        "detail": "Records line stoppages and changeovers in the platform instead of on whiteboards."
+      },
+      {
+        "kind": "team",
+        "label": "Quality assurance",
+        "seats": 70,
+        "active_seats": 62,
+        "hours_saved": 980,
+        "detail": "Closes deviation reports in the platform, with the batch record attached."
+      },
+      {
+        "kind": "team",
+        "label": "Procurement",
+        "seats": 60,
+        "active_seats": 41,
+        "hours_saved": 720,
+        "detail": "Matches supplier invoices to purchase orders in one queue."
+      },
+      {
+        "kind": "team",
+        "label": "Supply planning",
+        "seats": 45,
+        "active_seats": 38,
+        "hours_saved": 640,
+        "detail": "Reviews stock exceptions each morning from one list."
+      },
+      {
+        "kind": "team",
+        "label": "Finance",
+        "seats": 50,
+        "active_seats": 28,
+        "hours_saved": 260,
+        "detail": "Uses the platform for month-end accruals only."
+      },
+      {
+        "kind": "team",
+        "label": "Customer service",
+        "seats": 35,
+        "active_seats": 24,
+        "hours_saved": 185,
+        "detail": "Answers order status questions from the shared board."
+      },
+      {
+        "kind": "milestone",
+        "label": "Contract start",
+        "date": "2025-10-01",
+        "marker": "start",
+        "detail": "400 seats, 24-month term."
+      },
+      {
+        "kind": "milestone",
+        "label": "Q2 value review",
+        "date": "2026-07-14",
+        "marker": "review",
+        "detail": "Usage for April to June."
+      },
+      {
+        "kind": "milestone",
+        "label": "Q3 planning call",
+        "date": "2026-08-04",
+        "detail": "45 minutes to agree the Q3 targets."
+      },
+      {
+        "kind": "milestone",
+        "label": "Finance onboarding",
+        "date": "2026-09-01",
+        "detail": "Two sessions to bring the 22 unused finance seats into use."
+      },
+      {
+        "kind": "milestone",
+        "label": "Q3 value review",
+        "date": "2026-10-13"
+      },
+      {
+        "kind": "milestone",
+        "label": "Renewal date",
+        "date": "2027-10-01",
+        "marker": "renewal"
+      }
+    ],
+    "headline": "Oakline Foods saved 4,265 hours in Q2, 37 percent more than in Q1, with 311 of 400 seats active.",
+    "usage_note": "Active seats grew from 140 in October to 311 in June, and grew every month.",
+    "adoption_note": "Quality assurance has 62 of 70 seats active and Plant operations 118 of 140. Finance has 28 of 50 and Customer service 24 of 35.",
+    "wins": [
+      {
+        "stat": "1,480",
+        "unit": "hours",
+        "title": "Hours saved by Plant operations",
+        "body": "Plant operations records line stoppages and changeovers in the platform instead of on whiteboards. 118 of 140 seats are active.",
+        "team": "Plant operations, 118 of 140 seats"
+      },
+      {
+        "stat": "980",
+        "unit": "hours",
+        "title": "Hours saved by Quality assurance",
+        "body": "Quality assurance closes deviation reports in the platform, with the batch record attached. 62 of 70 seats are active.",
+        "team": "Quality assurance, 62 of 70 seats"
+      },
+      {
+        "stat": "720",
+        "unit": "hours",
+        "title": "Hours saved by Procurement",
+        "body": "Procurement matches supplier invoices to purchase orders in one queue. 41 of 60 seats are active.",
+        "team": "Procurement, 41 of 60 seats"
+      }
+    ],
+    "plan": [
+      {
+        "when": "4 Aug 2026",
+        "what": "Agree the Q3 targets on a 45-minute call.",
+        "who": "Oakline Foods team, Tom Reyes"
+      },
+      {
+        "when": "1 Sep 2026",
+        "what": "Run two sessions to bring the 22 unused finance seats into use.",
+        "who": "Tom Reyes"
+      },
+      {
+        "when": "13 Oct 2026",
+        "what": "Go through the quarter together at the Q3 value review.",
+        "who": "Oakline Foods team, Tom Reyes"
+      }
+    ],
+    "next_note": "The date to plan around is the finance onboarding on 1 Sep, which targets the 22 unused finance seats. Book a time and we will go through the Q3 targets together."
+  }
+}

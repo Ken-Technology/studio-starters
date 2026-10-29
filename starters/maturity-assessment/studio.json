@@ -1,0 +1,503 @@
+{
+  "kenStudio": "1",
+  "name": "Maturity assessment",
+  "type": "calculator",
+  "format": "page",
+  "slug": "maturity-assessment",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "peers": {
+        "type": "array",
+        "maxItems": 1,
+        "items": {
+          "type": "object",
+          "properties": {
+            "industry": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "peer_group": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "assessments": {
+              "type": "integer"
+            },
+            "score_1": {
+              "type": "number"
+            },
+            "score_2": {
+              "type": "number"
+            },
+            "score_3": {
+              "type": "number"
+            },
+            "score_4": {
+              "type": "number"
+            },
+            "source": {
+              "type": "string",
+              "maxLength": 120
+            }
+          },
+          "required": [
+            "peer_group",
+            "assessments",
+            "score_1",
+            "score_2",
+            "score_3",
+            "score_4"
+          ]
+        }
+      },
+      "headline": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 90,
+        "fallback": "How mature are {{ account.name }}'s operations?"
+      },
+      "intro": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 220,
+        "fallback": "Most people at {{ account.name }} could answer these from memory. This puts the answers on one page."
+      },
+      "steps": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 70
+            },
+            "body": {
+              "type": "string",
+              "minLength": 40,
+              "maxLength": 320
+            }
+          },
+          "required": [
+            "title",
+            "body"
+          ]
+        },
+        "fallback": [
+          {
+            "title": "Write down the ten decisions your team makes most",
+            "body": "Ten decisions, one page each. New hires ramp faster, and you see which steps a system could take over."
+          },
+          {
+            "title": "Agree on five Monday numbers and one view that holds them",
+            "body": "Choose the five figures every manager reads on Monday, build the single view that shows them, and retire the spreadsheets that fed the old ones."
+          },
+          {
+            "title": "Put the three most repeated handoffs on rules",
+            "body": "Pick the three handoffs your team repeats most each day and let software do them before you add people. It is usually where the first month of time comes back."
+          },
+          {
+            "title": "Name one owner for improvement, with two hours a week",
+            "body": "One person, a backlog, and a slot every week. It is the cheapest change on this page and it makes the other moves stick."
+          }
+        ]
+      },
+      "dimensions": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 12
+            },
+            "blurb": {
+              "type": "string",
+              "maxLength": 60
+            }
+          },
+          "required": [
+            "name",
+            "blurb"
+          ]
+        },
+        "fallback": [
+          {
+            "name": "Process",
+            "blurb": "How the work is written down and improved"
+          },
+          {
+            "name": "Data",
+            "blurb": "Where the numbers live and who trusts them"
+          },
+          {
+            "name": "Automation",
+            "blurb": "How much repeat work software does"
+          },
+          {
+            "name": "Team",
+            "blurb": "How fast people ramp and who owns change"
+          }
+        ]
+      },
+      "questions": {
+        "type": "array",
+        "minItems": 8,
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "dimension": {
+              "type": "integer",
+              "enum": [
+                1,
+                2,
+                3,
+                4
+              ]
+            },
+            "text": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 110
+            },
+            "answers": {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 40
+                  },
+                  "hint": {
+                    "type": "string",
+                    "maxLength": 90
+                  }
+                },
+                "required": [
+                  "label",
+                  "hint"
+                ]
+              }
+            }
+          },
+          "required": [
+            "dimension",
+            "text",
+            "answers"
+          ]
+        },
+        "fallback": [
+          {
+            "dimension": 1,
+            "text": "How are the core processes written down?",
+            "answers": [
+              {
+                "label": "In people's heads",
+                "hint": "The experienced people know; everyone else asks them"
+              },
+              {
+                "label": "Partly written",
+                "hint": "Some documents exist, often out of date"
+              },
+              {
+                "label": "Documented and reviewed",
+                "hint": "Written down and checked about once a year"
+              },
+              {
+                "label": "Documented and measured",
+                "hint": "Written down, measured, and improved each quarter"
+              }
+            ]
+          },
+          {
+            "dimension": 1,
+            "text": "When something goes wrong, how does the fix reach the rest of the team?",
+            "answers": [
+              {
+                "label": "Word of mouth",
+                "hint": "Whoever was there tells whoever asks"
+              },
+              {
+                "label": "A message in chat",
+                "hint": "It is announced once and scrolls away"
+              },
+              {
+                "label": "A change to the process",
+                "hint": "The written process is updated"
+              },
+              {
+                "label": "A change to the system",
+                "hint": "The process and the tool that enforces it both change"
+              }
+            ]
+          },
+          {
+            "dimension": 2,
+            "text": "Where does the team look for the numbers that matter?",
+            "answers": [
+              {
+                "label": "Several spreadsheets",
+                "hint": "Each slightly different, none quite trusted"
+              },
+              {
+                "label": "One spreadsheet",
+                "hint": "Someone maintains it by hand each week"
+              },
+              {
+                "label": "A daily dashboard",
+                "hint": "Updated every day from the main systems"
+              },
+              {
+                "label": "Live dashboards",
+                "hint": "Everyone reads the same numbers and trusts them"
+              }
+            ]
+          },
+          {
+            "dimension": 2,
+            "text": "How long does a new question about last month take to answer, such as cost per order by region?",
+            "answers": [
+              {
+                "label": "Days",
+                "hint": "Someone pulls exports and stitches them together"
+              },
+              {
+                "label": "About a day",
+                "hint": "A known person builds it on request"
+              },
+              {
+                "label": "About an hour",
+                "hint": "The data is there, the view needs building"
+              },
+              {
+                "label": "Minutes",
+                "hint": "Managers answer it themselves"
+              }
+            ]
+          },
+          {
+            "dimension": 3,
+            "text": "How much of the repetitive work is done by software rather than people?",
+            "answers": [
+              {
+                "label": "Almost none",
+                "hint": "People rekey data between tools"
+              },
+              {
+                "label": "A few scripts and templates",
+                "hint": "They help, and they break when someone leaves"
+              },
+              {
+                "label": "Most handoffs run on rules",
+                "hint": "People handle the exceptions and the rules"
+              },
+              {
+                "label": "Only exceptions are manual",
+                "hint": "Everything routine happens without a person"
+              }
+            ]
+          },
+          {
+            "dimension": 3,
+            "text": "How are the tools your team uses connected to each other?",
+            "answers": [
+              {
+                "label": "They are not",
+                "hint": "Copy and paste between them"
+              },
+              {
+                "label": "A few one-way exports",
+                "hint": "Nightly files, mostly"
+              },
+              {
+                "label": "Key systems sync both ways",
+                "hint": "The main records match across tools"
+              },
+              {
+                "label": "One connected stack",
+                "hint": "Every change flows through with an audit trail"
+              }
+            ]
+          },
+          {
+            "dimension": 4,
+            "text": "How long does a new hire take to work without supervision?",
+            "answers": [
+              {
+                "label": "More than three months",
+                "hint": "They learn by sitting next to someone"
+              },
+              {
+                "label": "Two to three months",
+                "hint": "There is a checklist and a buddy"
+              },
+              {
+                "label": "Four to eight weeks",
+                "hint": "A structured ramp with a few written modules"
+              },
+              {
+                "label": "Under a month",
+                "hint": "A written ramp, practice cases and a sign-off"
+              }
+            ]
+          },
+          {
+            "dimension": 4,
+            "text": "Who owns operational improvement on your team?",
+            "answers": [
+              {
+                "label": "No one in particular",
+                "hint": "It happens when there is time, which is rarely"
+              },
+              {
+                "label": "Managers, on top of their day job",
+                "hint": "Improvements compete with the daily fires"
+              },
+              {
+                "label": "A named owner with a backlog",
+                "hint": "Someone is accountable and keeps a list"
+              },
+              {
+                "label": "A team with a budget and targets",
+                "hint": "Improvement is a function, not a favor"
+              }
+            ]
+          }
+        ]
+      },
+      "stages": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 4,
+        "items": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 16
+        },
+        "fallback": [
+          "Starting",
+          "Building",
+          "Scaling",
+          "Leading"
+        ]
+      }
+    },
+    "required": [
+      "headline",
+      "intro",
+      "steps",
+      "dimensions",
+      "questions",
+      "stages"
+    ]
+  },
+  "recipe": [
+    {
+      "id": "peer_scores",
+      "kind": "dataset",
+      "dataset": "peers",
+      "where": [
+        {
+          "column": "industry",
+          "op": "eq",
+          "value": "account.industry"
+        }
+      ],
+      "limit": 1,
+      "to": "data.peers"
+    },
+    {
+      "id": "copy",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": [
+        "account.name",
+        "account.domain",
+        "account.industry",
+        "account.size_band",
+        "account.dossier.summary",
+        "account.dossier.why_now",
+        "person.first_name",
+        "person.title",
+        "sender.name",
+        "brand.name"
+      ],
+      "to": [
+        "data.headline",
+        "data.intro",
+        "data.steps"
+      ],
+      "prompt": "You are writing copy for an operations maturity self-assessment page for {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it. The page asks eight questions across four areas (Process, Data, Automation, Team), scores the answers from 1 to 4, and shows where {{ account.name }} stands next to its peers. \"We\" and \"us\" mean {{ brand.name | default: 'our company' }}.\n\nInputs: account.industry, account.size_band, account.dossier.summary and account.dossier.why_now describe {{ account.name }}. The reader is {{ person.first_name | default: 'not named' }}, {{ person.title | default: 'title not known' }}. Nothing else. You do not know how mature {{ account.name }} is: the reader has not answered yet.\n\nReturn JSON with these keys:\n- headline: 20 to 90 characters, a question about {{ account.name }}'s operations, in sentence case. \"How mature are {{ account.name }}'s operations?\" is the plain version; change it only if the dossier gives a more specific word than operations.\n- intro: 1 or 2 sentences, 40 to 220 characters, spoken to the reader, on why a few minutes on this is worth it for a {{ account.industry }} company of {{ account.size_band }} people. Start with the reader's first name only if it is given. Draw on the industry, the size or the dossier; add no fact about {{ account.name }} that those inputs do not state. Say nothing about how mature they are. Do not write \"pick the closest option\" or anything about honesty: the page adds that line after yours.\n- steps: exactly 4 items, in this order: Process, Data, Automation, Team. Each is {title, body}. The page shows the three that match the reader's weakest areas, so each one has to stand alone. title is at most 70 characters, one concrete move that starts with a verb. body is 2 or 3 short sentences, 40 to 320 characters: what to do first, and what it gives a {{ account.industry }} company of {{ account.size_band }} people. This is common practice for companies like that, not a claim about {{ account.name }}.\n\nFacts: use only the inputs. Never invent customers, numbers, tools, results or quotes about {{ account.name }} or anyone else, and never add a statistic.\n\nVoice: one person talking to a peer. Plain, specific, a little warm. Short sentences a person would say out loud.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. No hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, transform, game changer, cutting-edge, best-in-class). Never \"real\" as emphasis."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": [
+        "data.headline",
+        "data.intro",
+        "data.steps"
+      ],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": [
+          "unlock",
+          "leverage",
+          "seamless",
+          "robust",
+          "crucial",
+          "elevate",
+          "delve",
+          "transform",
+          "game changer",
+          "cutting-edge",
+          "best-in-class",
+          "revolutionize",
+          "supercharge"
+        ],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true
+      },
+      "rubric": "Grade the page copy the way its reader meets it: the headline, then the intro, then the four steps. 10 is copy a busy operations lead reads once and finds specific to their company.\nScore these, 0 to 10 each:\n- specific: the intro and the steps fit the account's industry and size from the inputs, and could not be pasted onto any other company unchanged.\n- plain: short sentences, plain words, one idea per line, no jargon stack.\n- honest: no claim about {{ account.name }}'s current state, no flattery, no invented number, customer, tool or result.\n- usable: each step is one move a team could start this week, and the four steps do not repeat each other.\nAutomatic fail: an em dash or en dash, an exclamation mark, an email address or phone number, a hype word, or any sentence that says how mature {{ account.name }} already is."
+    }
+  ],
+  "sections": [
+    {
+      "id": "start",
+      "label": "Start"
+    },
+    {
+      "id": "questions",
+      "label": "Questions"
+    },
+    {
+      "id": "result",
+      "label": "Result"
+    },
+    {
+      "id": "steps",
+      "label": "Next steps"
+    },
+    {
+      "id": "book",
+      "label": "Book a call"
+    }
+  ],
+  "cta": {
+    "primary": "booking",
+    "label": "Book 30 minutes"
+  }
+}

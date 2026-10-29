@@ -1,0 +1,161 @@
+{
+  "kenStudio": "1",
+  "name": "Deal room",
+  "type": "landing_page",
+  "format": "page",
+  "slug": "deal-room",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "notes": { "type": "array", "maxItems": 60, "items": { "type": "object", "properties": { "citationId": { "type": "string" }, "kind": { "type": "string" }, "title": { "type": "string" }, "text": { "type": "string" } } } },
+      "company": { "type": "array", "maxItems": 60, "items": { "type": "object", "properties": { "citationId": { "type": "string" }, "kind": { "type": "string" }, "title": { "type": "string" }, "text": { "type": "string" } } } },
+      "lede": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 260,
+        "fallback": "Everything we are working on with {{ account.name }} in one place: the next meeting, the plan, who is involved and what to read."
+      },
+      "facts": {
+        "type": "array",
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string", "maxLength": 24 },
+            "value": { "type": "string", "maxLength": 40 },
+            "detail": { "type": "string", "maxLength": 60 }
+          },
+          "required": ["label", "value"]
+        }
+      },
+      "note": { "type": "string", "minLength": 120, "maxLength": 640 },
+      "agenda": {
+        "type": "object",
+        "properties": {
+          "heading": { "type": "string", "maxLength": 70 },
+          "meta": { "type": "string", "maxLength": 40 },
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 7,
+            "items": {
+              "type": "object",
+              "properties": {
+                "time": { "type": "string", "maxLength": 12 },
+                "title": { "type": "string", "maxLength": 80 },
+                "detail": { "type": "string", "maxLength": 200 },
+                "who": { "type": "string", "maxLength": 60 }
+              },
+              "required": ["time", "title"]
+            }
+          }
+        }
+      },
+      "plan": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 12,
+        "items": {
+          "type": "object",
+          "properties": {
+            "weekday": { "type": "string", "maxLength": 9 },
+            "date": { "type": "string", "maxLength": 20 },
+            "title": { "type": "string", "maxLength": 110 },
+            "side": { "type": "string", "enum": ["them", "us", "both"] },
+            "owner": { "type": "string", "maxLength": 80 },
+            "done": { "type": "boolean" }
+          },
+          "required": ["date", "title", "side", "owner"]
+        }
+      },
+      "their_people": {
+        "type": "array",
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string", "maxLength": 60 },
+            "title": { "type": "string", "maxLength": 80 }
+          },
+          "required": ["name"]
+        }
+      },
+      "our_people": {
+        "type": "array",
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string", "maxLength": 60 },
+            "title": { "type": "string", "maxLength": 80 }
+          },
+          "required": ["name"]
+        }
+      },
+      "resources": {
+        "type": "array",
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "maxLength": 80 },
+            "kind": { "type": "string", "enum": ["document", "security", "pricing", "recording"] },
+            "detail": { "type": "string", "maxLength": 140 },
+            "url": { "type": "string", "format": "uri" }
+          },
+          "required": ["title", "kind"]
+        }
+      },
+      "as_of": { "type": "string", "maxLength": 60 }
+    },
+    "required": ["lede"]
+  },
+  "recipe": [
+    { "id": "notes", "kind": "bind", "from": "knowledge.scoped", "to": "data.notes" },
+    { "id": "company", "kind": "bind", "from": "knowledge.stable", "to": "data.company" },
+    {
+      "id": "room",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.notes"],
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "person.first_name", "person.last_name", "person.title", "sender.name", "sender.title", "brand.name", "data.notes", "data.company"],
+      "to": ["data.lede", "data.facts", "data.agenda", "data.plan", "data.their_people", "data.our_people", "data.resources", "data.as_of"],
+      "prompt": "You are building a deal room page for {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The seller' }} at {{ brand.name | default: 'our company' }} sends it to {{ person.first_name | default: 'the buyer' }}so everyone on the buying side can see one live view of the deal: the next meeting, who does what by when, who is involved and what to read. \"We\" and \"us\" mean {{ brand.name | default: 'our company' }}. \"They\" means {{ account.name }}.\n\nInputs: data.notes is our Knowledge about {{ account.name }}, a list of items {citationId, kind, title, text}: deal notes, call transcripts and files. data.company is our workspace Knowledge, items of the same shape: our own team and what we share with buyers, such as case studies, a security pack and a pricing summary. Also account.industry ({{ account.industry | default: 'unknown' }}), account.size_band ({{ account.size_band | default: 'unknown' }}), the buyer ({{ person.first_name | default: 'unknown' }} {{ person.last_name | default: '' }}, {{ person.title | default: 'title unknown' }}) and the sender ({{ sender.name | default: 'unknown' }}, {{ sender.title | default: 'title unknown' }}). Nothing else. If data.notes is empty, return {} and nothing else.\n\nReturn JSON with all of these keys. When the inputs do not support a key, return [] for a list, {} for agenda and an empty string for as_of. Never fill a gap with a guess.\n- lede: 1 or 2 sentences, 40 to 260 characters, saying what this room is for, in the deal's own words (for example the pilot or the rollout it is about). Say who it is made for only if the buyer is known.\n- facts: 2 to 4 items {label, value, detail}, the facts a buyer scans first. Pick from: next meeting (value is the date, detail the time and format), stage (value like \"Pilot scoping\", detail what was last done and when), scope (the pilot, site or team size, if the notes give it), decision date (value the date, detail who decides). label is at most 24 characters, value at most 40, detail at most 60. Dates exactly as the notes write them.\n- agenda: {heading, meta, items} for the next meeting, only if the notes say one is booked. heading is like \"Agenda for Tuesday, Nov 4\". meta is its length and format, like \"50 minutes, video\". items is 3 to 6 topics in the order they will run, each {time, title, detail, who}: time is a clock time (\"10:00\") when the notes give the start and length, else minutes (\"15 min\"); title is at most 80 characters; detail is one sentence, at most 200 characters, on what will be covered or decided; who is at most 60 characters, the people who lead it, by first name.\n- plan: the mutual action plan, 4 to 12 steps in date order. Each step {weekday, date, title, side, owner, done}. date is like \"Oct 14\", weekday like \"Tue\" and only when the notes give it. title is at most 110 characters, starts with what is produced or decided, and says what it is. side is \"them\" when a person at {{ account.name }} owns it, \"us\" when we own it, \"both\" for a meeting or a joint step. owner is the names that own it, at most 80 characters. done is true only when the notes show the step happened (a call held, a file sent, an answer received), else false. List done steps first. Include the steps the notes already commit to and the natural ones between them (proposal, decision, kickoff) only when the notes name a date or an owner for them.\n- their_people: the people at {{ account.name }} named in the notes, each {name, title}. Names and titles only, the title as the notes give it, no contact details. At most 8.\n- our_people: {{ sender.name | default: 'the sender' }} first, then the others on our side named in data.company or the notes, each {name, title}. Names and titles only. At most 6.\n- resources: what we have shared or promised to share, from data.company and the notes. Each {title, kind, detail, url}. kind is \"document\" for a case study or other file, \"security\" for a security or data handling pack, \"pricing\" for a pricing summary, \"recording\" for a call recording. detail is at most 140 characters: the format and length if known, and who it went to and when. url is a link that appears in the inputs, copied exactly; leave the key out when no link is given. At most 6.\n- as_of: \"Based on notes through <date>\", where the date is the latest dated note. At most 60 characters.\n\nFacts: use only what data.notes and data.company say. Never invent people, titles, dates, numbers, documents or quotes. Never put an email address, a phone number or a price in any string.\n\nVoice: a colleague writing a plan down for people who are busy. Plain words, short sentences, sentence case, specific. No em dashes or en dashes anywhere (use a hyphen or rewrite). No exclamation marks or emoji. No hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, transform, game changer). Never \"real\" as emphasis."
+    },
+    {
+      "id": "write_note",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.notes"],
+      "inputs": ["account.name", "person.first_name", "sender.name", "brand.name", "data.notes", "data.facts", "data.agenda", "data.plan", "data.resources"],
+      "to": ["data.note"],
+      "prompt": "Write the personal note at the top of a deal room for {{ account.name }}. It is in the first person, from {{ sender.name | default: 'the seller' }} at {{ brand.name | default: 'our company' }}, and it is the first thing {{ person.first_name | default: 'the reader' }} reads.\n\nInputs: data.notes (our Knowledge about {{ account.name }}: deal notes, call transcripts and files), data.facts, data.agenda, data.plan and data.resources (what the page shows below the note). Nothing else.\n\nWrite 3 sentences, 120 to 640 characters in all, as one plain paragraph:\n1. What this page holds, in one sentence, naming the deal in the notes' own words.\n2. What the reader is asked to do: check the plan, and say what is off so you can change it before the next meeting. Name the next meeting only if data.agenda has one.\n3. One specific thing from data.resources or data.notes that a person on their side asked for, said as what you did about it.\nThe buyer's first name is {{ person.first_name | default: 'unknown' }}. If it is known, start with that name and a comma. If it is unknown, do not start with a name: the page is a shared link and nobody is named.\n\nFacts: use only what the inputs say. Never invent a person, a date, a document or a number. Do not sign off: a signature sits under the note. No email addresses, phone numbers or prices.\n\nVoice: one person writing to a peer about a deal that is moving. Plain, specific, a little warm. Short sentences a person would say out loud. No em dashes or en dashes. No exclamation marks or emoji. No hype words (unlock, leverage, seamless, robust, crucial, elevate, delve, transform, game changer). No filler openers (\"I hope this finds you well\", \"just checking in\"). Never \"real\" as emphasis."
+    },
+    {
+      "id": "grade_note",
+      "kind": "grade",
+      "on": ["data.note"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["hope this finds you well", "just checking in", "circle back", "touch base", "reaching out", "I noticed", "I came across", "synergy"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true,
+        "no_signoff": true
+      },
+      "rubric": "Grade the note the way the buyer reads it, at the top of a page about their own deal. 10 is a note a busy person reads in 15 seconds and acts on.\nScore these, 0 to 10 each:\n- specific: it names the deal and one concrete thing from the notes, not a generic line any seller could write.\n- clear_ask: the reader knows what to do next (check the plan and say what is off) and by when, if a meeting is named.\n- true: every fact appears in data.notes, data.facts, data.agenda, data.plan or data.resources. Nothing is invented.\n- human: it sounds like one person writing to another, in short sentences. No filler, no sales language, no sign-off.\nA score below 5 on true fails the note whatever the average."
+    }
+  ],
+  "sections": [
+    { "id": "head", "label": "Deal header" },
+    { "id": "note", "label": "Personal note" },
+    { "id": "agenda", "label": "Agenda" },
+    { "id": "plan", "label": "Action plan" },
+    { "id": "people", "label": "People" },
+    { "id": "resources", "label": "Resources" },
+    { "id": "booking", "label": "Book a call" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

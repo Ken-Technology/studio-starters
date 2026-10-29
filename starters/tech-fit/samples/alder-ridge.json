@@ -1,0 +1,308 @@
+{
+  "account": {
+    "name": "Alder Ridge Health",
+    "domain": "alderridgehealth.example",
+    "industry": "hospitals and health care",
+    "size_band": "1001-5000",
+    "dossier": {
+      "summary": "Alder Ridge Health runs four hospitals and about 30 clinics across Minnesota and Wisconsin. A central supply chain team manages roughly 2,400 vendor contracts, from medical devices to facilities services.",
+      "why_now": "Posted an opening for a contracts analyst on the supply chain team in October.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Elin",
+    "last_name": "Sorensen",
+    "title": "Director of Supply Chain"
+  },
+  "sender": {
+    "name": "Ines Kowalski",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Plinth",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "integrations": [
+      {
+        "tool": "NetSuite",
+        "category": "ERP and accounting",
+        "aliases": "Oracle NetSuite",
+        "connection": "Native, two-way",
+        "summary": "A vendor approved in Plinth becomes a NetSuite vendor record, and a signed contract raises its purchase order. Bills and payment status come back, so the contract shows what has been paid.",
+        "syncs": "Vendors, purchase orders, bills and payment status, every 15 minutes",
+        "setup": "About an hour with a NetSuite admin, through a SuiteTalk integration role",
+        "docs_url": "https://docs.plinth.example/netsuite"
+      },
+      {
+        "tool": "QuickBooks Online",
+        "category": "ERP and accounting",
+        "aliases": "QuickBooks, QBO",
+        "connection": "Native, two-way",
+        "summary": "Vendors and bills sync between Plinth and QuickBooks, so a contract shows what has been billed against it without anyone retyping amounts.",
+        "syncs": "Vendors, bills and payment status, hourly",
+        "setup": "About 20 minutes; a QuickBooks admin signs in once",
+        "docs_url": "https://docs.plinth.example/quickbooks"
+      },
+      {
+        "tool": "Sage Intacct",
+        "category": "ERP and accounting",
+        "aliases": "Intacct",
+        "connection": "Native, two-way",
+        "summary": "Approved vendors and purchase orders flow from Plinth into Intacct, and posted bills flow back to the contract they belong to.",
+        "syncs": "Vendors, purchase orders, bills and dimensions, every 30 minutes",
+        "setup": "About an hour with an Intacct admin and a Web Services user",
+        "docs_url": "https://docs.plinth.example/sage-intacct"
+      },
+      {
+        "tool": "Xero",
+        "category": "ERP and accounting",
+        "aliases": "",
+        "connection": "Native, one-way",
+        "summary": "Vendors and purchase orders approved in Plinth are created in Xero. Xero stays the book of record.",
+        "syncs": "Vendors and purchase orders, Plinth to Xero, hourly",
+        "setup": "About 15 minutes; a Xero admin signs in once",
+        "docs_url": "https://docs.plinth.example/xero"
+      },
+      {
+        "tool": "Workday",
+        "category": "HR and finance",
+        "aliases": "Workday Financials, Workday HCM",
+        "connection": "Native, one-way",
+        "summary": "Plinth reads cost centers, departments and manager relationships from Workday, so approval chains follow your org chart and every contract lands on the right cost center.",
+        "syncs": "Workers, cost centers and supervisory orgs, Workday to Plinth, nightly",
+        "setup": "Half a day with a Workday admin, through an integration system user",
+        "docs_url": "https://docs.plinth.example/workday"
+      },
+      {
+        "tool": "Salesforce",
+        "category": "CRM",
+        "aliases": "SFDC, Sales Cloud",
+        "connection": "Native, one-way",
+        "summary": "Customer contracts start from a closed-won opportunity. Plinth pulls the account, the opportunity owner and the order form, so sales never emails a contract to legal.",
+        "syncs": "Accounts, closed-won opportunities and attached files, Salesforce to Plinth, every 5 minutes",
+        "setup": "About 30 minutes with a Salesforce admin; a connected app and one permission set",
+        "docs_url": "https://docs.plinth.example/salesforce"
+      },
+      {
+        "tool": "HubSpot",
+        "category": "CRM",
+        "aliases": "",
+        "connection": "Native, one-way",
+        "summary": "A deal moved to closed won opens a customer contract in Plinth with the company, the deal owner and the quote attached.",
+        "syncs": "Companies, closed-won deals and quotes, HubSpot to Plinth, every 5 minutes",
+        "setup": "About 15 minutes; a HubSpot super admin signs in once",
+        "docs_url": "https://docs.plinth.example/hubspot"
+      },
+      {
+        "tool": "Slack",
+        "category": "Messaging",
+        "aliases": "",
+        "connection": "Native",
+        "summary": "Approvals, renewal reminders and questions on a contract land in Slack. An approver reads the summary and approves or sends it back from the message.",
+        "syncs": "Approval requests, renewal reminders and comments, both ways, as they happen",
+        "setup": "About 10 minutes; a workspace admin installs the Plinth app",
+        "docs_url": "https://docs.plinth.example/slack"
+      },
+      {
+        "tool": "Microsoft Teams",
+        "category": "Messaging",
+        "aliases": "Teams",
+        "connection": "Native",
+        "summary": "Approvals and renewal reminders arrive as Teams messages with the contract summary, and approvers act on them without opening Plinth.",
+        "syncs": "Approval requests and renewal reminders, both ways, as they happen",
+        "setup": "About 20 minutes; a Teams admin approves the Plinth app",
+        "docs_url": "https://docs.plinth.example/teams"
+      },
+      {
+        "tool": "DocuSign",
+        "category": "E-signature",
+        "aliases": "",
+        "connection": "Native, two-way",
+        "summary": "A contract leaves Plinth for signature in DocuSign and comes back signed, filed against the vendor, with the signed PDF and the audit trail.",
+        "syncs": "Envelopes, signer status and signed PDFs, both ways, as they happen",
+        "setup": "About 15 minutes with a DocuSign admin",
+        "docs_url": "https://docs.plinth.example/docusign"
+      },
+      {
+        "tool": "Adobe Acrobat Sign",
+        "category": "E-signature",
+        "aliases": "Adobe Sign, EchoSign",
+        "connection": "Native, two-way",
+        "summary": "Contracts go out for signature from Plinth through Acrobat Sign and return signed, with the audit report attached.",
+        "syncs": "Agreements, signer status and signed PDFs, both ways, as they happen",
+        "setup": "About 15 minutes with an Acrobat Sign account admin",
+        "docs_url": "https://docs.plinth.example/acrobat-sign"
+      },
+      {
+        "tool": "Okta",
+        "category": "Identity and SSO",
+        "aliases": "",
+        "connection": "Native",
+        "summary": "People sign in to Plinth with Okta. SCIM creates and removes accounts as people join and leave, and Okta groups map to Plinth roles.",
+        "syncs": "Users and groups, Okta to Plinth, as they change",
+        "setup": "About 30 minutes with an Okta admin, SAML and SCIM",
+        "docs_url": "https://docs.plinth.example/okta"
+      },
+      {
+        "tool": "Microsoft Entra ID",
+        "category": "Identity and SSO",
+        "aliases": "Azure AD, Entra",
+        "connection": "Native",
+        "summary": "Single sign-on through Entra ID, with SCIM provisioning so leavers lose access the day they leave.",
+        "syncs": "Users and groups, Entra ID to Plinth, as they change",
+        "setup": "About 30 minutes with an Entra admin, SAML and SCIM",
+        "docs_url": "https://docs.plinth.example/entra"
+      },
+      {
+        "tool": "Google Workspace",
+        "category": "Identity and SSO",
+        "aliases": "G Suite, Google SSO",
+        "connection": "Native",
+        "summary": "Sign in with Google, and Plinth files each signed contract's PDF in the Drive folder you choose.",
+        "syncs": "Sign-in, plus signed PDFs to Drive, as they happen",
+        "setup": "About 10 minutes; a Workspace admin approves the app",
+        "docs_url": "https://docs.plinth.example/google-workspace"
+      },
+      {
+        "tool": "Jira",
+        "category": "Project tracking",
+        "aliases": "Jira Software, Jira Service Management",
+        "connection": "Native, one-way",
+        "summary": "A new vendor review or a security questionnaire opens a Jira issue in the queue you choose, and the contract links to it.",
+        "syncs": "Issues, Plinth to Jira, as they are raised",
+        "setup": "About 15 minutes with a Jira admin",
+        "docs_url": "https://docs.plinth.example/jira"
+      },
+      {
+        "tool": "Snowflake",
+        "category": "Data warehouse",
+        "aliases": "",
+        "connection": "Native, one-way",
+        "summary": "Every contract, vendor, spend commitment and renewal date lands in your Snowflake account as tables, refreshed nightly, for your own reporting.",
+        "syncs": "Contracts, vendors, commitments and renewals, Plinth to Snowflake, nightly",
+        "setup": "About an hour with a Snowflake admin, through a share",
+        "docs_url": "https://docs.plinth.example/snowflake"
+      },
+      {
+        "tool": "Coupa",
+        "category": "Procurement",
+        "aliases": "",
+        "connection": "CSV import",
+        "summary": "If you are moving off Coupa, Plinth imports your supplier list and open contracts from a Coupa export, with the original IDs kept.",
+        "syncs": "Suppliers and contracts, one-time import",
+        "setup": "A working session with our team, usually one afternoon",
+        "docs_url": "https://docs.plinth.example/coupa"
+      },
+      {
+        "tool": "Ironclad",
+        "category": "Contract management",
+        "aliases": "",
+        "connection": "CSV import",
+        "summary": "Plinth imports your Ironclad repository with its metadata, so no contract and no renewal date gets lost in a move.",
+        "syncs": "Contracts, metadata and signed PDFs, one-time import",
+        "setup": "A working session with our team, usually one afternoon",
+        "docs_url": "https://docs.plinth.example/ironclad"
+      },
+      {
+        "tool": "Ramp",
+        "category": "Spend management",
+        "aliases": "",
+        "connection": "Native, two-way",
+        "summary": "Vendor card spend in Ramp shows up against the vendor's contract in Plinth, so you see what is contracted next to what is being spent.",
+        "syncs": "Vendors and transactions, Ramp to Plinth, daily; vendor records, Plinth to Ramp",
+        "setup": "About 10 minutes; a Ramp admin signs in once",
+        "docs_url": "https://docs.plinth.example/ramp"
+      },
+      {
+        "tool": "Brex",
+        "category": "Spend management",
+        "aliases": "",
+        "connection": "Native, two-way",
+        "summary": "Brex card and bill spend is matched to the vendor's contract in Plinth, so unmanaged spend stands out.",
+        "syncs": "Vendors and transactions, Brex to Plinth, daily; vendor records, Plinth to Brex",
+        "setup": "About 10 minutes; a Brex admin signs in once",
+        "docs_url": "https://docs.plinth.example/brex"
+      },
+      {
+        "tool": "Zapier",
+        "category": "Automation",
+        "aliases": "",
+        "connection": "Native",
+        "summary": "A Plinth app on Zapier with triggers for new contracts, approvals and renewals, so you can wire Plinth to tools we do not connect to yet.",
+        "syncs": "Events out and actions in, as they happen",
+        "setup": "Minutes, by whoever owns your Zapier account",
+        "docs_url": "https://docs.plinth.example/zapier"
+      }
+    ],
+    "site": {
+      "url": "https://alderridgehealth.example",
+      "title": "Alder Ridge Health",
+      "description": "Four hospitals and 30 clinics across Minnesota and Wisconsin.",
+      "markdown": "# Alder Ridge Health\n\nFour hospitals and 30 clinics across Minnesota and Wisconsin, with more than 9,000 staff.\n\n## Patients\n\nYour records live in Epic MyChart. Sign in to see results, messages and bills.\n\n## For vendors\n\nAlder Ridge signs every vendor agreement electronically through DocuSign. New vendors register with Supply Chain before a first order and are reviewed once a year.\n\n## For employees\n\nStaff sign in with their Alder Ridge ID through Microsoft 365."
+    },
+    "careers": {
+      "url": "https://alderridgehealth.example/careers",
+      "title": "Careers at Alder Ridge Health",
+      "description": "Open roles across our hospitals, clinics and support teams.",
+      "markdown": "# Careers at Alder Ridge Health\n\n## Contracts Analyst, Supply Chain\n\nReview, route and track vendor contracts for four hospitals and 30 clinics. Experience with Workday Supply Chain Management and Workday Procurement required.\n\n## Identity Engineer\n\nAdminister Okta, SAML integrations and SCIM provisioning for 9,000 staff across hospitals and clinics.\n\n## How we work\n\nMost teams run their day in Microsoft Teams. Support teams work on site three days a week."
+    },
+    "tools": [
+      {
+        "name": "Workday",
+        "category": "HR and finance",
+        "clue": "The contracts analyst posting requires experience with Workday Supply Chain Management and Workday Procurement.",
+        "source": "careers"
+      },
+      {
+        "name": "DocuSign",
+        "category": "E-signature",
+        "clue": "The vendor page says Alder Ridge signs every vendor agreement electronically through DocuSign.",
+        "source": "site"
+      },
+      {
+        "name": "Microsoft Teams",
+        "category": "Messaging",
+        "clue": "The careers page says most teams run their day in Microsoft Teams.",
+        "source": "careers"
+      },
+      {
+        "name": "Okta",
+        "category": "Identity and SSO",
+        "clue": "An identity engineer posting covers Okta administration, SAML and SCIM provisioning for staff.",
+        "source": "careers"
+      },
+      {
+        "name": "Epic",
+        "category": "Electronic health records",
+        "clue": "The patient page says records live in Epic MyChart.",
+        "source": "site"
+      }
+    ],
+    "headline": "Plinth next to Workday, DocuSign and Teams at Alder Ridge",
+    "intro": "I read your site and careers page to guess which tools your supply chain team already runs. Each one below is a guess, so tell me where I am wrong. Four of the five connect to Plinth today.",
+    "matches": [
+      {
+        "tool": "Workday",
+        "change": "Approval chains follow the org chart you already keep in Workday. A contract on a cost center reaches the right manager, and nobody maintains a second list of approvers."
+      },
+      {
+        "tool": "DocuSign",
+        "change": "Vendor agreements keep going out through DocuSign. What changes is where they come back: filed against the vendor in Plinth with the audit trail, not in one person's inbox."
+      },
+      {
+        "tool": "Microsoft Teams",
+        "change": "Approvals and renewal reminders arrive in Teams with the contract summary attached. A department director can approve from the message between meetings."
+      },
+      {
+        "tool": "Okta",
+        "change": "Everyone signs in through Okta, and SCIM removes access the day someone leaves. IT adds Plinth as an Okta app and is done."
+      }
+    ],
+    "closing": "If I guessed a tool wrong, or missed one, reply and I will redo this page. Twenty minutes with your supply chain and IT leads is enough to agree on which tool to connect first."
+  }
+}

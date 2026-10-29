@@ -1,0 +1,32 @@
+{
+  "account": {
+    "name": "Cobalt Harbor Foods",
+    "domain": "cobaltharbor.example",
+    "industry": "food production",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Regional producer of frozen seafood.",
+      "why_now": null
+    }
+  },
+  "person": {
+    "first_name": "Amara",
+    "last_name": "Nwosu",
+    "title": "Director of Supply Chain"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northbeam",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "title": "Proposal and pilot plan for Cobalt Harbor Foods",
+    "sub": "The pilot plan is being prepared with Maya Chen. Book the scoping call and it follows once the scope is agreed."
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "account": {
+    "name": "Pinecrest Home Care",
+    "domain": "pinecrestcare.example",
+    "industry": "hospitals and health care",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Pinecrest Home Care sends nurses and aides to about 300 clients in their homes.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Marcus",
+    "last_name": "Webb",
+    "title": "Director of Operations"
+  },
+  "sender": {
+    "name": "Dana Ruiz",
+    "title": "Customer Success Manager",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Forgeline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#e4572e",
+      "secondary": "#1c1c1c"
+    },
+    "fonts": {
+      "heading": "Space Grotesk",
+      "body": "IBM Plex Sans"
+    }
+  },
+  "data": {
+    "rows": [
+      {
+        "kind": "quarter",
+        "label": "Q4 2025",
+        "hours_saved": 212,
+        "active_seats": 19,
+        "seats": 35,
+        "tasks_done": 1760,
+        "median_hours": 5.2,
+        "detail": "October to December 2025"
+      },
+      {
+        "kind": "quarter",
+        "label": "Q1 2026",
+        "hours_saved": 268,
+        "active_seats": 27,
+        "seats": 35,
+        "tasks_done": 2310,
+        "median_hours": 4.4,
+        "detail": "January to March 2026"
+      },
+      {
+        "kind": "month",
+        "label": "Oct",
+        "quarter": "Q4 2025",
+        "active_seats": 11
+      },
+      {
+        "kind": "month",
+        "label": "Nov",
+        "quarter": "Q4 2025",
+        "active_seats": 15
+      },
+      {
+        "kind": "month",
+        "label": "Dec",
+        "quarter": "Q4 2025",
+        "active_seats": 19
+      },
+      {
+        "kind": "month",
+        "label": "Jan",
+        "quarter": "Q1 2026",
+        "active_seats": 22
+      },
+      {
+        "kind": "month",
+        "label": "Feb",
+        "quarter": "Q1 2026",
+        "active_seats": 25
+      },
+      {
+        "kind": "month",
+        "label": "Mar",
+        "quarter": "Q1 2026",
+        "active_seats": 27
+      },
+      {
+        "kind": "team",
+        "label": "Intake",
+        "seats": 12,
+        "active_seats": 12,
+        "hours_saved": 120,
+        "detail": "Logs every new referral in the platform on the day it arrives."
+      },
+      {
+        "kind": "team",
+        "label": "Care coordination",
+        "seats": 14,
+        "active_seats": 9,
+        "hours_saved": 96,
+        "detail": "Schedules visits from the shared calendar instead of text messages."
+      },
+      {
+        "kind": "team",
+        "label": "Billing",
+        "seats": 9,
+        "active_seats": 6,
+        "hours_saved": 52,
+        "detail": "Submits claims from the visit record, with no re-keying."
+      },
+      {
+        "kind": "milestone",
+        "label": "Contract start",
+        "date": "2025-04-15",
+        "marker": "start",
+        "detail": "35 seats, 12-month term."
+      },
+      {
+        "kind": "milestone",
+        "label": "Q1 value review",
+        "date": "2026-04-02",
+        "marker": "review",
+        "detail": "Usage for January to March."
+      },
+      {
+        "kind": "milestone",
+        "label": "Q2 planning call",
+        "date": "2026-04-09",
+        "detail": "30 minutes to agree the Q2 targets."
+      },
+      {
+        "kind": "milestone",
+        "label": "Renewal proposal",
+        "date": "2026-04-10",
+        "detail": "Sent in writing before the renewal date."
+      },
+      {
+        "kind": "milestone",
+        "label": "Renewal date",
+        "date": "2026-04-15",
+        "marker": "renewal"
+      }
+    ],
+    "headline": "Pinecrest Home Care saved 268 hours in Q1, 26 percent more than in Q4, with 27 of 35 seats active.",
+    "usage_note": "Active seats grew from 11 in October to 27 in March, and grew every month.",
+    "adoption_note": "Intake has all 12 seats active. Care coordination has 9 of 14 and Billing 6 of 9.",
+    "wins": [
+      {
+        "stat": "120",
+        "unit": "hours",
+        "title": "Hours saved by Intake",
+        "body": "Intake logs every new referral in the platform on the day it arrives. All 12 seats are active.",
+        "team": "Intake, 12 of 12 seats"
+      },
+      {
+        "stat": "96",
+        "unit": "hours",
+        "title": "Hours saved by Care coordination",
+        "body": "Care coordination schedules visits from the shared calendar instead of text messages. 9 of 14 seats are active.",
+        "team": "Care coordination, 9 of 14 seats"
+      },
+      {
+        "stat": "52",
+        "unit": "hours",
+        "title": "Hours saved by Billing",
+        "body": "Billing submits claims from the visit record, with no re-keying. 6 of 9 seats are active.",
+        "team": "Billing, 6 of 9 seats"
+      }
+    ],
+    "plan": [
+      {
+        "when": "9 Apr 2026",
+        "what": "Agree the Q2 targets on a 30-minute call.",
+        "who": "Marcus Webb, Dana Ruiz"
+      },
+      {
+        "when": "10 Apr 2026",
+        "what": "Send the renewal proposal in writing.",
+        "who": "Dana Ruiz"
+      },
+      {
+        "when": "Next quarter",
+        "what": "Bring the 8 seats not yet in use into use: 5 in Care coordination and 3 in Billing.",
+        "who": "Dana Ruiz"
+      }
+    ],
+    "next_note": "The renewal date is 15 Apr, so the planning call on 9 Apr is the time to agree the Q2 targets and look at the proposal. Book a time that suits you."
+  }
+}

@@ -1,0 +1,72 @@
+{%- assign accent = brand.colors.primary | default: '#0e5c63' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
+{%- assign font_body = brand.fonts.body | default: 'Hanken Grotesk' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign us = brand.name | default: 'Us' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ us | escape }} next to what {{ account.name | escape }} uses today</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f6f4ef;color:#1b1a17;font-family:'{{ font_body }}',ui-sans-serif,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.vs{--p:{{ accent }};--ink:#1b1a17;--mute:#66635b;--line:#dcd8cf;--card:#fff}
+.vs h1,.vs h2{font-family:'{{ font_head }}',Georgia,'Times New Roman',serif;font-weight:500;letter-spacing:-.012em;line-height:1.1;margin:0;text-wrap:balance}
+.vs p{margin:0 0 1rem}
+.vs-wrap{max-width:44rem;margin:0 auto;padding:0 1.15rem}
+.vs-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.vs-logo{height:26px;width:auto;display:block}
+.vs-brand{font-weight:700;font-size:1rem;margin:0!important;letter-spacing:-.01em}
+.vs-tag{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;text-align:right}
+.vs-hero{padding:2.2rem 0 1.4rem}
+.vs-kicker{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin:0 0 1rem!important}
+.vs h1{font-size:2.35rem;margin:0 0 1.1rem}
+.vs-intro{font-size:1.1rem;line-height:1.5;color:#3a3832}
+.vs-cta{padding:.6rem 0 3.5rem}
+.vs-box{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--ink);padding:1.6rem 1.3rem 1.4rem}
+.vs-box h2{font-size:1.6rem;margin:0 0 .6rem}
+.vs-btn{margin:1.3rem 0 1.5rem}
+.vs .ken-cta{display:inline-flex!important;align-items:center;min-height:48px;padding:.7rem 1.4rem!important;border-radius:4px!important;background:var(--p)!important;color:#fff!important;font-weight:600;font-size:1rem;text-decoration:none}
+.vs-sign{font-size:.97rem;font-weight:600;margin:0!important}
+.vs-sign span{display:block;color:var(--mute);font-size:.88rem;font-weight:400}
+@media (min-width:760px){
+body{font-size:17px}
+.vs-wrap{padding:0 2rem}
+.vs-hero{padding:3.6rem 0 2rem}
+.vs h1{font-size:3.3rem}
+.vs-intro{font-size:1.18rem}
+.vs-box{padding:2.2rem 2.4rem 2rem}
+}
+</style>
+</head>
+<body>
+<main class="vs">
+<div class="vs-wrap">
+<header class="vs-top">
+{%- if brand.logo_url %}<img class="vs-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="vs-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="vs-tag">Side by side</p>
+</header>
+<section data-section="hero" class="vs-hero">
+<p class="vs-kicker">{% if person.first_name %}For {{ person.first_name | escape }} at {{ account.name | escape }}{% else %}For {{ account.name | escape }}{% endif %}</p>
+<h1>{{ us | escape }} next to what {{ account.name | escape }} uses today</h1>
+<p class="vs-intro">Hi {{ person.first_name | default: 'there' | escape }}, I am putting together a row-by-row look at how {{ us | escape }} lines up with the tool {{ account.name | escape }} runs on today, including the rows where yours is the better fit. It is not on this page yet.</p>
+</section>
+<section data-section="cta" class="vs-cta">
+<div class="vs-box">
+<h2>Rather go through it now?</h2>
+<p>Book 20 minutes. Tell me what {{ account.name | escape }} runs on today and I will take you through the rows myself, the ones that go your way included.</p>
+<div class="vs-btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+<p class="vs-sign">{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</div>
+</section>
+</div>
+</main>
+</body>
+</html>

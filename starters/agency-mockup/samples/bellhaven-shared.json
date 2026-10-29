@@ -1,0 +1,87 @@
+{
+  "account": {
+    "name": "Bellhaven Physio",
+    "domain": "bellhavenphysio.example",
+    "industry": "hospitals and health care",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Bellhaven Physio runs four physiotherapy clinics in and around Leeds, with same-week appointments and direct billing to the main private insurers. The site offers online booking.",
+      "why_now": "Opened a fourth clinic in Headingley in September.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Priya Natarajan",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Oldfield & Co",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1f2d3d",
+      "secondary": "#b08d57"
+    },
+    "fonts": {
+      "heading": "Newsreader",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "summary": "Your homepage leads with a welcome and a line about moving better. The sketch leads with same-week appointments at four clinics around Leeds, which the page says further down.",
+    "today": {
+      "headline": "Welcome to Bellhaven Physio",
+      "sub": "We are dedicated to helping you move better, feel better and live better through expert, personalised physiotherapy care.",
+      "cta": "Book now",
+      "section_name": "What we treat",
+      "section_heading": "What we treat",
+      "section_body": "Our highly qualified physiotherapists treat a wide range of conditions, from sports injuries and back pain to post-surgical rehabilitation. Whatever your goal, we will create a personalised treatment plan to get you there."
+    },
+    "sketch": {
+      "headline": "Physio in Leeds this week, at four clinics, billed to your insurer",
+      "sub": "Same-week appointments at Bellhaven's four clinics around Leeds, with direct billing to the main private insurers.",
+      "cta": "Book now",
+      "proof": "Four clinics, including the new one in Headingley",
+      "image": "A physiotherapist with a patient in the Headingley treatment room",
+      "section_heading": "What we treat, and how soon you are seen",
+      "section_intro": "Three things Bellhaven treats, and what the first visit looks like for each.",
+      "points": [
+        {
+          "title": "Sports injuries",
+          "text": "Assessed at the first visit, with a plan that gets you back to training in steps."
+        },
+        {
+          "title": "Back pain",
+          "text": "Treatment in the clinic and exercises to keep up at home, in one personalised plan."
+        },
+        {
+          "title": "After surgery",
+          "text": "Rehabilitation in steps, from the first weeks after the operation to full movement."
+        }
+      ]
+    },
+    "notes": [
+      {
+        "on": "headline",
+        "note": "Leads with the three things a patient in pain checks first: where, how soon and who pays. Welcome to Bellhaven Physio tells them none of those."
+      },
+      {
+        "on": "sub",
+        "note": "Keeps to the facts the page already states lower down, so the reader does not have to scroll to find the four clinics."
+      },
+      {
+        "on": "proof",
+        "note": "The new Headingley clinic is news for anyone nearby, and it backs the four clinics line with a name."
+      },
+      {
+        "on": "section_heading",
+        "note": "Adds how soon to the what, because the wait is the question a patient asks before the condition."
+      },
+      {
+        "on": "points",
+        "note": "The three conditions you list get a line each on what the first visit looks like, so a reader can see themselves in one of them."
+      }
+    ]
+  }
+}

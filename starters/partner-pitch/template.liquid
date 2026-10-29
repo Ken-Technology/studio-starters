@@ -1,0 +1,273 @@
+{%- assign accent = brand.colors.primary | default: '#0b5563' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#c7792b' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Source Serif 4' -%}
+{%- assign font_body = brand.fonts.body | default: 'Public Sans' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign has_brand = false -%}
+{%- if brand.name and brand.name != '' -%}{%- assign has_brand = true -%}{%- endif -%}
+{%- assign has_partner = false -%}
+{%- if data.partner_customers and data.partner_customers != '' -%}{%- assign has_partner = true -%}{%- endif -%}
+{%- assign has_ours = false -%}
+{%- if data.our_customers and data.our_customers != '' -%}{%- assign has_ours = true -%}{%- endif -%}
+{%- assign has_overlap = false -%}
+{%- if has_ours and data.overlap.name and data.overlap.name != '' -%}{%- assign has_overlap = true -%}{%- endif -%}
+{%- assign has_offer = false -%}
+{%- if data.offer.name and data.offer.name != '' -%}{%- assign has_offer = true -%}{%- endif -%}
+{%- assign n_examples = data.examples | size -%}
+{%- assign has_examples = false -%}
+{%- if n_examples > 0 -%}{%- assign has_examples = true -%}{%- endif -%}
+{%- assign has_why = false -%}
+{%- if data.why_now and data.why_now != '' -%}{%- assign has_why = true -%}{%- endif -%}
+{%- assign has_ask = false -%}
+{%- if data.first_step.ask and data.first_step.ask != '' -%}{%- assign has_ask = true -%}{%- endif -%}
+{%- assign lens = 'lens-1' -%}
+{%- if has_overlap -%}{%- assign lens = 'lens-3' -%}{%- elsif has_partner and has_ours -%}{%- assign lens = 'lens-2' -%}{%- endif -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ data.headline | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f5f3ee;color:#1b1e22;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.pp{--p:{{ accent }};--s:{{ accent2 }};--ink:#1b1e22;--mute:#636a73;--line:#d9d5cc;--paper:#f5f3ee;--card:#fffdfa;--p-deep:color-mix(in srgb,var(--p) 75%,#111);--tint:color-mix(in srgb,var(--p) 8%,#fff);--tint-line:color-mix(in srgb,var(--p) 32%,#fff)}
+.pp h1,.pp h2,.pp h3{font-family:'{{ font_head }}',Georgia,'Times New Roman',serif;font-weight:500;letter-spacing:-.012em;text-wrap:balance;margin:0}
+.pp p{margin:0 0 1rem}
+.pp ul,.pp ol{margin:0;padding:0;list-style:none}
+.pp-wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
+.pp-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--ink)}
+.pp-logo{height:26px;width:auto;display:block}
+.pp-brand{font-weight:700;font-size:.95rem;margin:0!important}
+.pp-tag{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;text-align:right}
+.pp-kicker{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p-deep);margin:0 0 .9rem!important}
+.pp-kicker::before{content:'';display:inline-block;width:1.4rem;height:3px;background:var(--s);vertical-align:.25em;margin-right:.6rem}
+.pp-open{padding:2.5rem 0 2.4rem}
+.pp h1{font-size:2.2rem;line-height:1.08;margin:0 0 1.1rem;max-width:22ch}
+.pp-lede{font-size:1.12rem;line-height:1.55;max-width:38rem;color:#33383e}
+.pp-memo{margin:1.8rem 0 0;padding:0;border-top:2px solid var(--ink)}
+.pp-memo div{display:grid;grid-template-columns:5.2rem 1fr;gap:.6rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.pp-memo dt{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);padding-top:.3rem}
+.pp-memo dd{margin:0;font-weight:600}
+.pp-memo small{display:block;font-weight:400;color:var(--mute);font-size:.88rem}
+.pp-memo .pp-why dd{font-weight:400}
+section.is-empty{display:none}
+.pp-head{margin:0 0 1.4rem}
+.pp h2{font-size:1.7rem;line-height:1.15;margin:0 0 .6rem}
+.pp-note{color:var(--mute);font-size:.97rem;max-width:30rem}
+.pp-overlap{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.6rem 0 2.8rem}
+.pp-lens{display:grid;gap:1rem}
+.pp-side{border:1px solid var(--line);background:var(--paper);padding:1.2rem 1.15rem .4rem;border-radius:4px}
+.pp-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 .8rem!important}
+.pp-them .pp-label{color:var(--ink)}
+.pp-us .pp-label{color:var(--p-deep)}
+.pp-sells{font-size:.97rem;margin:0 0 .85rem}
+.pp-sells b{display:block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:.15rem}
+.pp-both{background:var(--tint);border:2px solid var(--p);border-radius:4px;padding:1.3rem 1.15rem .5rem;margin:0 .8rem;position:relative;z-index:1}
+.pp-both .pp-label{color:var(--p-deep)}
+.pp-both h3{font-size:1.35rem;line-height:1.2;margin:0 0 .8rem}
+.pp-both li{position:relative;padding:.5rem 0 .5rem 1.2rem;border-top:1px solid var(--tint-line);font-size:.97rem}
+.pp-both li::before{content:'';position:absolute;left:0;top:1.1rem;width:.5rem;height:.5rem;border-radius:50%;background:var(--p)}
+.pp-examples{padding:2.6rem 0 2.4rem}
+.pp-list{border-top:2px solid var(--ink)}
+.pp-list li{padding:.85rem 0;border-bottom:1px solid var(--line)}
+.pp-co b{display:block;font-weight:600}
+.pp-co span{display:block;font-size:.85rem;color:var(--mute);margin:.1rem 0 .35rem}
+.pp-list p{margin:0;font-size:.97rem}
+.pp-offer{padding:.4rem 0 2.6rem}
+.pp-terms{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p);border-radius:4px;padding:1.3rem 1.15rem .4rem}
+.pp-term{padding:0 0 1rem;margin:0 0 1rem;border-bottom:1px solid var(--line)}
+.pp-term h3,.pp-steps h3{font-family:inherit;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 .6rem;letter-spacing:.12em}
+.pp-term li{position:relative;padding:.25rem 0 .25rem 1.1rem;font-size:.97rem}
+.pp-term li::before{content:'';position:absolute;left:0;top:.9rem;width:.45rem;height:2px;background:var(--p)}
+.pp-term p{font-size:.97rem;margin:0}
+.pp-term-cust p{font-family:'{{ font_head }}',Georgia,'Times New Roman',serif;font-size:1.2rem;line-height:1.35;color:var(--p-deep)}
+.pp-steps{padding:0 0 .6rem}
+.pp-steps ol{counter-reset:step}
+.pp-steps li{display:grid;grid-template-columns:2rem 1fr;gap:.1rem .5rem;padding:.65rem 0;border-top:1px solid var(--line);counter-increment:step}
+.pp-steps li::before{content:counter(step);font-family:'{{ font_head }}',Georgia,'Times New Roman',serif;font-size:1.3rem;color:var(--p-deep);line-height:1.2;grid-row:1/3}
+.pp-steps b{display:block;font-weight:600}
+.pp-steps span{display:block;color:#33383e;font-size:.95rem}
+.pp-first{padding:0 0 3.5rem}
+.pp-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p);border-radius:4px;padding:1.5rem 1.15rem 1.3rem}
+.pp-card h2{font-size:1.65rem}
+.pp-ask{border-left:2px solid var(--p);padding-left:.9rem;margin:1.2rem 0 0}
+.pp-ask b{display:block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+.pp-btn{margin:1.4rem 0 1.5rem}
+.ken-cta{font-family:inherit;font-size:1rem;line-height:1.25;min-height:44px}
+.pp-sign{margin:0!important;font-weight:600;border-top:1px solid var(--line);padding-top:1.1rem}
+.pp-sign span{display:block;font-weight:400;color:var(--mute);font-size:.9rem}
+.pp-foot{font-size:.8rem;color:var(--mute);margin:1.4rem 0 0}
+@media (min-width:760px){
+body{font-size:18px}
+.pp-wrap{padding:0 2rem}
+.pp-open{padding:4rem 0 3.4rem}
+.pp h1{font-size:3.4rem}
+.pp-memo{display:grid;grid-template-columns:repeat(3,1fr);gap:0 2rem}
+.pp-memo div{grid-template-columns:1fr;gap:.2rem;border-bottom:0;align-content:start}
+.pp-grid{display:grid;grid-template-columns:17rem 1fr;gap:3rem;align-items:start}
+.pp-grid .pp-head{position:sticky;top:1.5rem}
+.pp h2{font-size:2.05rem}
+.pp-overlap{padding:3.4rem 0 3.6rem}
+.pp-lens.lens-3{grid-template-columns:1fr 1.15fr 1fr;gap:0;align-items:stretch}
+.pp-lens.lens-3 .pp-both{margin:-1.25rem -.5rem;padding:1.6rem 1.4rem .7rem}
+.pp-lens.lens-3 .pp-them{border-right:0;border-radius:4px 0 0 4px}
+.pp-lens.lens-3 .pp-us{border-left:0;border-radius:0 4px 4px 0}
+.pp-lens.lens-2{grid-template-columns:1fr 1fr;gap:1.5rem}
+.pp-lens.lens-1{grid-template-columns:minmax(0,44rem)}
+.pp-side{padding:1.4rem 1.4rem .6rem}
+.pp-examples{padding:3.4rem 0 3rem}
+.pp-list li{display:grid;grid-template-columns:16rem 1fr;gap:1.5rem;padding:1rem 0}
+.pp-co span{margin-bottom:0}
+.pp-offer{padding:.4rem 0 3.4rem}
+.pp-terms{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 2rem;padding:1.8rem 1.8rem .8rem}
+.pp-term{border-bottom:0;border-right:1px solid var(--line);padding:0 1.6rem .6rem 0;margin:0}
+.pp-term-cust{border-right:0;padding-right:0}
+.pp-steps{grid-column:1/-1;border-top:1px solid var(--line);padding:1.4rem 0 .4rem;margin-top:1.2rem}
+.pp-steps ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:0 2rem}
+.pp-steps li{border-top:0;padding:.3rem 0}
+.pp-card{display:grid;grid-template-columns:1fr 15rem;gap:3rem;padding:2.4rem 2.4rem 2rem;align-items:end}
+.pp-card h2{font-size:2.1rem}
+.pp-sign{border-top:0;padding:0;text-align:right}
+}
+@media (min-width:1000px){
+.pp-open{display:grid;grid-template-columns:minmax(0,1fr) 19rem;gap:0 5rem;align-items:start}
+.pp-memo{display:block;margin:2.7rem 0 0}
+.pp-memo div{border-bottom:1px solid var(--line);padding:.8rem 0}
+}
+</style>
+</head>
+<body>
+<main class="pp">
+<div class="pp-wrap">
+<header class="pp-top">
+{%- if brand.logo_url %}<img class="pp-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif has_brand %}<p class="pp-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="pp-tag">Partnership proposal</p>
+</header>
+<section data-section="open" class="pp-open">
+<div class="pp-open-main">
+<p class="pp-kicker">For {{ account.name | escape }}</p>
+<h1>{{ data.headline | escape }}</h1>
+<p class="pp-lede">{{ data.summary | escape | newline_to_br | strip_newlines | raw }}</p>
+</div>
+<dl class="pp-memo">
+<div><dt>From</dt><dd>{{ sender.name | default: 'Our team' | escape }}<small>{% if sender.title %}{{ sender.title | escape }}{% if has_brand %}, {{ brand.name | escape }}{% endif %}{% elsif has_brand %}{{ brand.name | escape }}{% else %}Partnerships{% endif %}</small></dd></div>
+<div><dt>To</dt><dd>{% if person.first_name %}{{ person.first_name | escape }} {{ person.last_name | escape }}<small>{% if person.title %}{{ person.title | escape }}, {% endif %}{{ account.name | escape }}</small>{% else %}{{ account.name | escape }}<small>Partnerships and leadership</small>{% endif %}</dd></div>
+{%- if has_why %}
+<div class="pp-why"><dt>Why now</dt><dd>{{ data.why_now | escape }}</dd></div>
+{%- endif %}
+</dl>
+</section>
+</div>
+<section data-section="overlap" class="pp-overlap{% unless has_partner or has_ours %} is-empty{% endunless %}">
+<div class="pp-wrap">
+<div class="pp-head">
+<p class="pp-kicker">Customers</p>
+<h2>{% if has_overlap %}Where our customers meet{% elsif has_partner %}Who {{ account.name | escape }} serves{% else %}Who we serve{% endif %}</h2>
+{%- if has_overlap %}
+<p class="pp-note">Your side comes from your website. Ours comes from what we know about our own customers.</p>
+{%- elsif has_partner %}
+<p class="pp-note">Read from your website. Tell me what I got wrong.</p>
+{%- endif %}
+</div>
+<div class="pp-lens {{ lens }}">
+{%- if has_partner %}
+<div class="pp-side pp-them">
+<p class="pp-label">{{ account.name | escape }}</p>
+{%- if data.partner_offer and data.partner_offer != '' %}
+<p class="pp-sells"><b>Sells</b>{{ data.partner_offer | escape }}</p>
+{%- endif %}
+<p class="pp-sells"><b>To</b>{{ data.partner_customers | escape | newline_to_br | strip_newlines | raw }}</p>
+</div>
+{%- endif %}
+{%- if has_overlap %}
+<div class="pp-both">
+<p class="pp-label">Where they meet</p>
+<h3>{{ data.overlap.name | escape }}</h3>
+<ul>
+{%- for point in data.overlap.points %}
+<li>{{ point | escape }}</li>
+{%- endfor %}
+</ul>
+</div>
+{%- endif %}
+{%- if has_ours %}
+<div class="pp-side pp-us">
+<p class="pp-label">{% if has_brand %}{{ brand.name | escape }}{% else %}Us{% endif %}</p>
+{%- if data.our_offer and data.our_offer != '' %}
+<p class="pp-sells"><b>Sells</b>{{ data.our_offer | escape }}</p>
+{%- endif %}
+<p class="pp-sells"><b>To</b>{{ data.our_customers | escape | newline_to_br | strip_newlines | raw }}</p>
+</div>
+{%- endif %}
+</div>
+</div>
+</section>
+<section data-section="examples" class="pp-examples{% unless has_examples %} is-empty{% endunless %}">
+<div class="pp-wrap pp-grid">
+<div class="pp-head">
+<p class="pp-kicker">Examples</p>
+<h2>{% if has_ours %}Companies in the overlap{% else %}Companies like the ones you serve{% endif %}</h2>
+<p class="pp-note">{{ n_examples }} companies that fit {% if has_ours %}both customer bases{% else %}the customers {{ account.name | escape }} serves{% endif %}, picked from a company search. Neither of us has named a customer here.</p>
+</div>
+<ol class="pp-list">
+{%- for c in data.examples %}
+<li><div class="pp-co"><b>{{ c.name | escape }}</b><span>{{ c.industry | escape }}{% if c.size and c.size != '' %} &middot; {{ c.size | escape }}{% endif %}{% if c.hq and c.hq != '' %} &middot; {{ c.hq | escape }}{% endif %}</span></div><p>{{ c.why | escape }}</p></li>
+{%- endfor %}
+</ol>
+</div>
+</section>
+<section data-section="offer" class="pp-offer{% unless has_offer %} is-empty{% endunless %}">
+<div class="pp-wrap pp-grid">
+<div class="pp-head">
+<p class="pp-kicker">The joint offer</p>
+<h2>{{ data.offer.name | escape }}</h2>
+<p class="pp-note">{{ data.offer.summary | escape | newline_to_br | strip_newlines | raw }}</p>
+</div>
+<div class="pp-terms">
+<div class="pp-term"><h3>{{ account.name | escape }} brings</h3><ul>
+{%- for item in data.offer.you_bring %}
+<li>{{ item | escape }}</li>
+{%- endfor %}
+</ul></div>
+<div class="pp-term"><h3>{% if has_brand %}{{ brand.name | escape }} brings{% else %}We bring{% endif %}</h3><ul>
+{%- for item in data.offer.we_bring %}
+<li>{{ item | escape }}</li>
+{%- endfor %}
+</ul></div>
+<div class="pp-term pp-term-cust"><h3>The customer gets</h3><p>{{ data.offer.customer_gets | escape }}</p></div>
+{%- if data.offer.steps.size > 0 %}
+<div class="pp-steps"><h3>How it runs</h3><ol>
+{%- for s in data.offer.steps %}
+<li><b>{{ s.title | escape }}</b><span>{{ s.detail | escape }}</span></li>
+{%- endfor %}
+</ol></div>
+{%- endif %}
+</div>
+</div>
+</section>
+<section data-section="first_step" class="pp-first">
+<div class="pp-wrap">
+<div class="pp-card">
+<div class="pp-card-main">
+<p class="pp-kicker">The first step</p>
+<h2>{{ data.first_step.title | escape }}</h2>
+<p>{{ data.first_step.detail | escape | newline_to_br | strip_newlines | raw }}</p>
+{%- if has_ask %}
+<p class="pp-ask"><b>What I need from you</b>{{ data.first_step.ask | escape }}</p>
+{%- endif %}
+<div class="pp-btn">{% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking', color: accent %}</div>
+</div>
+<p class="pp-sign">{{ sender.name | default: 'Our team' | escape }}<span>{% if sender.title %}{{ sender.title | escape }}{% if has_brand %}, {{ brand.name | escape }}{% endif %}{% elsif has_brand %}{{ brand.name | escape }}{% else %}Partnerships{% endif %}</span></p>
+</div>
+<p class="pp-foot">Written for {{ account.name | escape }} by {{ sender.name | default: 'our team' | escape }}{% if has_brand %} at {{ brand.name | escape }}{% endif %}. A private link, not a public page.</p>
+</div>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "description": "A redesign of one account's homepage hero and one section, written from their own copy and shown next to what their page says today.",
+  "category": "partners",
+  "tags": ["agency", "homepage", "redesign", "website copy", "mockup"],
+  "featured": false,
+  "needs": [],
+  "version": "1.0.1",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "marlow", "label": "Marlow Fastening" },
+    { "id": "bellhaven-shared", "label": "Shared link (no person)" },
+    { "id": "juniper", "label": "Juniper Payroll" }
+  ]
+}

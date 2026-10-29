@@ -1,0 +1,254 @@
+{
+  "account": {
+    "name": "Brightwave Logistics",
+    "domain": "brightwave.example",
+    "industry": "logistics",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Brightwave Logistics is a regional freight forwarder with about 300 people and five cross-docks in the Midwest.",
+      "why_now": "Expanding the Joliet cross-dock this year.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Leo",
+    "last_name": "Marsh",
+    "title": "VP Operations"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northbeam",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "notes": [
+      {
+        "citationId": "k-n-1",
+        "kind": "note",
+        "title": "Call notes, Oct 13",
+        "text": "Oct 13 discovery call. Leo Marsh (VP Operations) and Dana Whitfield (Director of Dispatch) for Brightwave, Maya Chen for Northbeam. Dispatch runs on spreadsheets and a TMS, and the Joliet cross-dock misses late-load alerts. Leo wants a 30-day pilot at Joliet with 12 dispatchers."
+      },
+      {
+        "citationId": "k-n-2",
+        "kind": "note",
+        "title": "Call notes, Oct 21",
+        "text": "Oct 21 walkthrough with Sam Okoye (solutions engineer), using Dana's September exception log. Recording saved."
+      },
+      {
+        "citationId": "k-n-3",
+        "kind": "note",
+        "title": "Call notes, Oct 27",
+        "text": "Oct 27 security pack (14 pages) sent to Priya Okafor, head of IT security. Tomas Reyes, CFO, asked for a pricing summary and signs with Leo. Decision on the pilot targeted for Nov 13. Next call Nov 4 at 10:00 CT, 50 minutes, video."
+      }
+    ],
+    "company": [
+      {
+        "citationId": "k-c-1",
+        "kind": "org_file",
+        "title": "Our deal team and what we share with buyers",
+        "text": "Team: Maya Chen, account executive. Sam Okoye, solutions engineer. Jordan Lee, customer success. Shared with buyers: Lakeshore Freight customer story (PDF, 6 pages), security and data handling pack (PDF, 14 pages), Joliet pilot pricing summary (PDF, 2 pages)."
+      }
+    ],
+    "lede": "One room for the operations visibility pilot at Joliet, so Leo, Dana, Priya and Tomas can find everything without digging through email.",
+    "facts": [
+      {
+        "label": "Next meeting",
+        "value": "Wed Nov 4",
+        "detail": "10:00 to 10:50 CT, video"
+      },
+      {
+        "label": "Stage",
+        "value": "Pilot scoping",
+        "detail": "Second call held Oct 21"
+      },
+      {
+        "label": "Pilot site",
+        "value": "Joliet cross-dock",
+        "detail": "12 dispatchers, 30 days"
+      },
+      {
+        "label": "Decision by",
+        "value": "Fri Nov 13",
+        "detail": "Leo and Tomas"
+      }
+    ],
+    "note": "Leo, this page holds everything from our two calls on the Joliet pilot in one place. The plan below is my draft of who does what and when, so check it and tell me what is off before Wednesday's scoping call. Priya has the security pack, and the pricing summary is the two-pager Tomas asked for.",
+    "agenda": {
+      "heading": "Agenda for Wednesday, Nov 4",
+      "meta": "50 minutes, video",
+      "items": [
+        {
+          "time": "10:00",
+          "title": "Where we landed on Oct 21",
+          "detail": "Two-minute recap of the walkthrough and the questions it raised.",
+          "who": "Maya"
+        },
+        {
+          "time": "10:05",
+          "title": "Pilot scope at Joliet",
+          "detail": "12 dispatchers, inbound and outbound lanes, 30 days starting Nov 18. What counts as a pass.",
+          "who": "Leo and Dana"
+        },
+        {
+          "time": "10:20",
+          "title": "Priya's open security questions",
+          "detail": "Single sign-on, data retention, and how the TMS connector reads load data.",
+          "who": "Priya and Sam"
+        },
+        {
+          "time": "10:35",
+          "title": "Pricing summary",
+          "detail": "The pilot fee and what it credits toward if Brightwave goes ahead in December.",
+          "who": "Maya"
+        },
+        {
+          "time": "10:45",
+          "title": "Who signs, and when",
+          "detail": "What Tomas needs before Nov 13.",
+          "who": "Leo"
+        }
+      ]
+    },
+    "plan": [
+      {
+        "date": "Oct 13",
+        "title": "Discovery call",
+        "side": "both",
+        "owner": "Leo, Dana and Maya",
+        "weekday": "Tue",
+        "done": true
+      },
+      {
+        "date": "Oct 21",
+        "title": "Walkthrough of the Joliet dispatch workflow",
+        "side": "us",
+        "owner": "Maya and Sam, recording below",
+        "weekday": "Wed",
+        "done": true
+      },
+      {
+        "date": "Oct 23",
+        "title": "September exception log shared",
+        "side": "them",
+        "owner": "Dana Whitfield",
+        "weekday": "Fri",
+        "done": true
+      },
+      {
+        "date": "Oct 27",
+        "title": "Security pack sent to Priya",
+        "side": "us",
+        "owner": "Maya Chen",
+        "weekday": "Tue",
+        "done": true
+      },
+      {
+        "date": "Nov 4",
+        "title": "Scoping call, agenda above",
+        "side": "both",
+        "owner": "Leo, Dana, Priya, Maya and Sam",
+        "weekday": "Wed"
+      },
+      {
+        "date": "Nov 6",
+        "title": "Security review questions back",
+        "side": "them",
+        "owner": "Priya Okafor",
+        "weekday": "Fri"
+      },
+      {
+        "date": "Nov 10",
+        "title": "Pilot proposal with pricing sent to Leo",
+        "side": "us",
+        "owner": "Maya Chen",
+        "weekday": "Tue"
+      },
+      {
+        "date": "Nov 13",
+        "title": "Decision on the pilot",
+        "side": "them",
+        "owner": "Leo Marsh and Tomas Reyes",
+        "weekday": "Fri"
+      },
+      {
+        "date": "Nov 18",
+        "title": "Pilot kickoff at Joliet",
+        "side": "both",
+        "owner": "Dana and Jordan",
+        "weekday": "Wed"
+      },
+      {
+        "date": "Dec 18",
+        "title": "Pilot readout",
+        "side": "both",
+        "owner": "Leo, Tomas and Maya",
+        "weekday": "Fri"
+      }
+    ],
+    "their_people": [
+      {
+        "name": "Leo Marsh",
+        "title": "VP Operations"
+      },
+      {
+        "name": "Dana Whitfield",
+        "title": "Director of Dispatch"
+      },
+      {
+        "name": "Priya Okafor",
+        "title": "Head of IT Security"
+      },
+      {
+        "name": "Tomas Reyes",
+        "title": "CFO"
+      }
+    ],
+    "our_people": [
+      {
+        "name": "Maya Chen",
+        "title": "Account Executive"
+      },
+      {
+        "name": "Sam Okoye",
+        "title": "Solutions Engineer"
+      },
+      {
+        "name": "Jordan Lee",
+        "title": "Customer Success"
+      }
+    ],
+    "resources": [
+      {
+        "title": "Customer story: Lakeshore Freight",
+        "kind": "document",
+        "detail": "PDF, 6 pages. The closest story to Joliet.",
+        "url": "https://northbeam.example/resources/lakeshore-freight.pdf"
+      },
+      {
+        "title": "Security and data handling pack",
+        "kind": "security",
+        "detail": "PDF, 14 pages. Sent to Priya on Oct 27.",
+        "url": "https://northbeam.example/resources/security-pack.pdf"
+      },
+      {
+        "title": "Pricing summary for the Joliet pilot",
+        "kind": "pricing",
+        "detail": "PDF, 2 pages. Made for Tomas.",
+        "url": "https://northbeam.example/resources/joliet-pricing.pdf"
+      },
+      {
+        "title": "Oct 21 walkthrough",
+        "kind": "recording",
+        "detail": "Recording, 32 min. Sam shows the dispatch board with Dana's September data.",
+        "url": "https://northbeam.example/recordings/joliet-walkthrough"
+      }
+    ],
+    "as_of": "Based on notes through Oct 27"
+  }
+}

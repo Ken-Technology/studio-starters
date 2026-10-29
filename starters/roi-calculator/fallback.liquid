@@ -1,0 +1,60 @@
+{%- assign accent = brand.colors.primary | default: '#2a4bd7' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#0e1530' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign brand_name = brand.name | default: '' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>What manual work costs {{ account.name | escape }} each year</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600;700&display=swap">
+<style>
+:root{--p:{{ accent }};--s:{{ accent2 }};--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--mute:color-mix(in srgb,var(--s) 54%,#fff);--hair:color-mix(in srgb,var(--s) 8%,#fff);--wash:color-mix(in srgb,var(--p) 6%,#fff)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:color-mix(in srgb,var(--s) 84%,#fff);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--fh);color:var(--s);margin:0;line-height:1.1;letter-spacing:-.015em;font-weight:600;text-wrap:balance}
+p{margin:0}
+.top{display:flex;align-items:center;gap:.6rem;padding:1rem 1.25rem;border-bottom:1px solid var(--hair);font-family:var(--fh);font-weight:600;color:var(--s)}
+.logo{height:26px;width:auto;max-width:8rem;display:block}
+.mark{width:26px;height:26px;border-radius:7px;background:var(--p);color:#fff;display:grid;place-items:center;font-size:.85rem;font-weight:700}
+.wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem 4rem}
+.intro{padding:2.2rem 0 1.6rem}
+.intro h1{font-size:2.1rem;margin-bottom:.9rem}
+.intro p{font-size:1.05rem;max-width:36rem;margin-bottom:.8rem}
+.cta{border-radius:16px;background:var(--wash);padding:1.6rem 1.4rem;display:grid;gap:1rem;justify-items:start}
+.cta h2{font-size:1.5rem}
+.cta .who{font-size:.9rem;color:var(--mute)}
+.cta .who b{display:block;color:var(--s);font-weight:600}
+.cta .ken-cta{display:inline-flex!important;align-items:center;justify-content:center;min-height:48px;padding:.9rem 1.5rem!important;border-radius:10px!important;background:color-mix(in srgb,var(--p) 86%,#000)!important;font-weight:600!important}
+@media (min-width:760px){.top{padding:1.1rem 2rem}.wrap{padding:0 2rem 5rem}.intro{padding:4rem 0 2.4rem}.intro h1{font-size:2.9rem}.cta{padding:2rem 2.2rem}}
+</style>
+</head>
+<body>
+<header class="top">
+  {%- if brand.logo_url and brand.logo_url != '' %}<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand_name | default: 'Logo' | escape }}">
+  {%- elsif brand_name != '' %}<span class="mark" aria-hidden="true">{{ brand_name | slice: 0, 1 | upcase | escape }}</span><span>{{ brand_name | escape }}</span>{% endif -%}
+</header>
+<main class="wrap">
+  <section class="intro" data-section="intro">
+    <h1>What manual work costs {{ account.name | escape }} each year</h1>
+    <p>Hi {{ person.first_name | default: 'there' | escape }}, we are putting together a short worksheet for {{ account.name | escape }}. It estimates what the repetitive manual work in your team costs each year and what taking it off your plate would save.</p>
+    <p>The worksheet is not ready on this page yet. On a call we can fill in the numbers together.</p>
+  </section>
+  <section class="cta" data-section="cta">
+    <h2>Rather go through it now?</h2>
+    <p>Thirty minutes. We go through the numbers together, using your own figures.</p>
+    {%- if sender.name and sender.name != '' %}
+    <p class="who"><b>{{ sender.name | escape }}</b>{% if sender.title and sender.title != '' %}{{ sender.title | escape }}{% if brand_name != '' %}, {{ brand_name | escape }}{% endif %}{% elsif brand_name != '' %}{{ brand_name | escape }}{% endif %}</p>
+    {%- endif %}
+    {% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking' %}
+  </section>
+</main>
+</body>
+</html>

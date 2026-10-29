@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>What manual timesheet work costs Tallis Staffing each year</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap">
+<style>
+:root{
+  --p:#e4572e;
+  --s:#1c1c1c;
+  --fh:'Outfit',ui-sans-serif,system-ui,sans-serif;
+  --fb:'DM Sans',ui-sans-serif,system-ui,sans-serif;
+  --ink:var(--s);
+  --text:color-mix(in srgb,var(--s) 84%,#fff);
+  --mute:color-mix(in srgb,var(--s) 54%,#fff);
+  --line:color-mix(in srgb,var(--s) 13%,#fff);
+  --hair:color-mix(in srgb,var(--s) 8%,#fff);
+  --wash:color-mix(in srgb,var(--p) 6%,#fff);
+  --p-deep:color-mix(in srgb,var(--p) 80%,#000);
+  --on-dark:color-mix(in srgb,#fff 72%,var(--s));
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--text);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--fh);color:var(--ink);margin:0;line-height:1.1;letter-spacing:-.015em;font-weight:600}
+p{margin:0}
+a{color:var(--p)}
+button,input{font:inherit}
+:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid var(--hair)}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fh);font-weight:600;color:var(--ink);font-size:1rem;min-width:0}
+.logo{height:26px;width:auto;max-width:8rem;display:block;flex:none}
+.mark{width:26px;height:26px;border-radius:7px;background:var(--p);color:#fff;display:grid;place-items:center;font-size:.85rem;font-weight:700;flex:none}
+.for{font-size:.85rem;color:var(--mute);text-align:right}
+
+.wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem 4rem}
+.intro{padding:2rem 0 1.6rem;max-width:40rem}
+.intro h1{font-size:2.1rem;margin-bottom:.9rem;text-wrap:balance}
+.intro .lede{font-size:1.05rem;color:var(--text);max-width:36rem}
+.intro .lede b{font-weight:600;color:var(--ink)}
+
+.grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"hero" "inputs" "detail";gap:1.5rem}
+
+/* Hero result: on a phone it sticks to the top while sliders move. */
+.hero{grid-area:hero;background:var(--s);color:#fff;border-radius:14px;padding:1.1rem 1.25rem 1.05rem;position:sticky;top:.5rem;z-index:5;box-shadow:0 10px 30px color-mix(in srgb,var(--s) 25%,transparent)}
+.hero .label{font-size:.85rem;color:var(--on-dark)}
+.hero .big{font-family:var(--fh);font-weight:600;font-size:2.4rem;line-height:1;letter-spacing:-.025em;margin:.2rem 0 .6rem;color:#fff}
+.hero .row{display:flex;gap:1.4rem;flex-wrap:wrap}
+.hero .row div{display:grid;gap:.05rem}
+.hero .row small{font-size:.78rem;color:var(--on-dark)}
+.hero .row span{font-family:var(--fh);font-size:1.15rem;font-weight:600;line-height:1.2}
+
+.inputs{grid-area:inputs}
+.inputs h2,.detail h2{font-size:1.15rem;padding-bottom:.6rem;border-bottom:1px solid var(--line);margin-bottom:.4rem}
+.field{padding:1rem 0 .9rem;border-bottom:1px solid var(--hair)}
+.field:last-child{border-bottom:0}
+.fhead{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;margin-bottom:.2rem}
+.fhead label{font-weight:600;color:var(--ink)}
+.tag{flex:none;font-size:.74rem;font-weight:600;color:var(--p-deep);background:color-mix(in srgb,var(--p) 12%,#fff);border-radius:999px;padding:.15rem .55rem}
+.tag[data-state=edited]{color:var(--mute);background:var(--hair)}
+.frow{display:grid;grid-template-columns:minmax(0,1fr) 8.6rem;gap:1rem;align-items:center}
+.range{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin:0;cursor:pointer}
+.range::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:linear-gradient(to right,var(--p) var(--pct),var(--line) var(--pct))}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--p);margin-top:-9.5px;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+.range::-moz-range-track{height:3px;border-radius:2px;background:var(--line)}
+.range::-moz-range-progress{height:3px;border-radius:2px;background:var(--p)}
+.range::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--p);box-shadow:0 1px 3px rgba(0,0,0,.18)}
+.numwrap{display:flex;align-items:center;min-height:44px;border:1px solid var(--line);border-radius:8px;padding:0 .6rem 0 0;background:#fff}
+.numwrap:focus-within{border-color:var(--p);box-shadow:0 0 0 3px color-mix(in srgb,var(--p) 18%,transparent)}
+.numwrap input{width:100%;min-width:0;border:0;background:none;padding:.65rem .25rem .65rem .7rem;color:var(--ink);font-family:var(--fh);font-weight:600;font-size:1.05rem;text-align:right;-moz-appearance:textfield}
+.numwrap input::-webkit-outer-spin-button,.numwrap input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.numwrap input:focus{outline:none}
+.numwrap span{font-size:.8rem;color:var(--mute);white-space:nowrap}
+.fnote{font-size:.84rem;color:var(--mute);margin-top:.1rem;max-width:34rem}
+
+.detail{grid-area:detail;display:grid;gap:1.6rem;align-content:start}
+.chart{margin:0;border:1px solid var(--line);border-radius:14px;padding:1rem 1rem .8rem;background:#fff}
+.chart figcaption{display:grid;gap:.15rem;margin-bottom:.8rem}
+.chart figcaption b{font-family:var(--fh);font-weight:600;color:var(--ink);font-size:1rem}
+.chart figcaption span{font-size:.82rem;color:var(--mute)}
+.chart svg{display:block;width:100%;height:auto}
+.chart .pos{fill:var(--p)}
+.chart .neg{fill:color-mix(in srgb,var(--s) 28%,#fff)}
+.chart .base{stroke:var(--ink);stroke-width:1.5}
+.chart .gl{stroke:var(--hair);stroke-width:1}
+.chart text{font-family:var(--fb);fill:var(--mute);font-size:19px}
+.chart text.v{fill:var(--ink);font-weight:600;font-family:var(--fh)}
+.chart .pb{stroke:var(--ink);stroke-dasharray:4 5;stroke-width:1.5}
+.chart text.pbl{fill:var(--ink);font-weight:600}
+@media (max-width:759px){.chart text{font-size:25px}}
+
+.ledger{width:100%;border-collapse:collapse}
+.ledger th,.ledger td{padding:.65rem 0;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top;font-weight:400}
+.ledger td{text-align:right;white-space:nowrap;font-family:var(--fh);font-weight:600;color:var(--ink);padding-left:1rem}
+.ledger th small{display:block;color:var(--mute);font-size:.82rem;font-weight:400}
+.ledger tr.sum th,.ledger tr.sum td{border-bottom:0;border-top:2px solid var(--ink);padding-top:.8rem;font-weight:600;color:var(--ink);font-size:1.05rem}
+.ledger td.minus{color:var(--mute)}
+.ledger sup{font-size:.7em;color:var(--p-deep);margin-left:.15rem}
+
+.cta{margin-top:3rem;border-radius:16px;background:var(--wash);padding:1.6rem 1.4rem;display:grid;gap:1rem}
+.cta h2{font-size:1.5rem;text-wrap:balance}
+.cta p{max-width:36rem}
+.cta .who{display:flex;align-items:center;gap:.8rem;font-size:.9rem;color:var(--mute)}
+.cta .who b{display:block;color:var(--ink);font-weight:600}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--s);color:#fff;display:grid;place-items:center;font-family:var(--fh);font-weight:600;flex:none}
+.cta .ken-cta{display:inline-flex!important;align-items:center;justify-content:center;min-height:48px;padding:.9rem 1.5rem!important;border-radius:10px!important;background:color-mix(in srgb,var(--p) 86%,#000)!important;font-weight:600!important;width:fit-content}
+.cta .ken-cta:hover{background:var(--p-deep)!important}
+
+.notes{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.84rem;color:var(--mute);max-width:44rem}
+.notes h2{font-size:.9rem;margin-bottom:.5rem;color:var(--mute);font-weight:600}
+.notes ol{margin:0;padding-left:1.2rem;display:grid;gap:.3rem}
+.notes li::marker{color:var(--p-deep)}
+
+@media (min-width:760px){
+  .top{padding:1.1rem 2rem}
+  .wrap{padding:0 2rem 5rem}
+  .intro{padding:3.2rem 0 2.4rem}
+  .intro h1{font-size:2.9rem;max-width:18ch}
+  .grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"inputs hero" "inputs detail";grid-template-rows:auto 1fr;column-gap:3rem;row-gap:1.6rem;align-items:start}
+  .hero{position:static;padding:1.6rem 1.8rem 1.5rem;box-shadow:none}
+  .hero .big{font-size:3.6rem;margin:.3rem 0 1rem}
+  .hero .row{gap:2.2rem}
+  .hero .row span{font-size:1.35rem}
+  .inputs{position:sticky;top:1.5rem}
+  .field{padding:1.15rem 0 1.05rem}
+  .cta{grid-template-columns:minmax(0,1fr) auto;align-items:center;padding:2rem 2.2rem;margin-top:4rem}
+  .cta .who{grid-column:1}
+  .cta .ken-cta{grid-column:2;grid-row:1/4;justify-self:end}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero .big{transition:opacity .15s}
+}
+@media print{.hero{position:static;box-shadow:none}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="mark" aria-hidden="true">F</span><span>Forgeline</span></div>
+  <p class="for">Prepared for<br>Tallis Staffing</p>
+</header>
+
+<main class="wrap">
+  <section class="intro" data-section="intro">
+    <h1>What manual timesheet work costs Tallis Staffing each year</h1>
+    <p class="lede">We prefilled the four inputs from what we know about Tallis Staffing: 1001 to 5000 people in staffing and recruiting. <b>They are estimates.</b> Move the sliders to match your team and every number on this page updates.</p>
+  </section>
+
+  <div class="grid" x-data="{ team: 85, hours: 7, rate: 29, tools: 5200, seat: 29, setup: 15000, share: 30, toolShare: 50, ramp: 3, weeks: 48, manual: 0, labor: 0, toolSave: 0, platform: 0, gross: 0, net: 0, hoursBack: 0, g: 0, c: 0, pb: 0, three: 0, mult: 0, hi1: 0, hi: 0, lo1: 0, lo2: 0, lo3: 0, lo: 0, k: 0, base: 0, z1: 0, z2: 0, z3: 0, z4: 0, z5: 0, z6: 0, z7: 0, z8: 0, z9: 0, z10: 0, z11: 0, z12: 0, z13: 0, z14: 0, z15: 0, z16: 0, z17: 0, z18: 0, z19: 0, z20: 0, z21: 0, z22: 0, z23: 0, z24: 0, z25: 0, z26: 0, z27: 0, z28: 0, z29: 0, z30: 0, z31: 0, z32: 0, z33: 0, z34: 0, z35: 0, z36: 0}">
+    <div hidden aria-hidden="true">
+      <i x-effect="manual = team * hours * weeks * rate"></i>
+      <i x-effect="labor = manual * share / 100"></i>
+      <i x-effect="toolSave = tools * 12 * toolShare / 100"></i>
+      <i x-effect="platform = team * seat * 12"></i>
+      <i x-effect="gross = labor + toolSave"></i>
+      <i x-effect="net = gross - platform"></i>
+      <i x-effect="hoursBack = team * hours * weeks * share / 100"></i>
+      <i x-effect="g = gross / 12"></i>
+      <i x-effect="c = platform / 12"></i>
+      <i x-effect="z1 = g * (1 &lt;= ramp ? 1 * 2 / (2 * ramp) : (ramp + 1) / 2 + 1 - ramp) - c * 1 - setup"></i>
+      <i x-effect="z2 = g * (2 &lt;= ramp ? 2 * 3 / (2 * ramp) : (ramp + 1) / 2 + 2 - ramp) - c * 2 - setup"></i>
+      <i x-effect="z3 = g * (3 &lt;= ramp ? 3 * 4 / (2 * ramp) : (ramp + 1) / 2 + 3 - ramp) - c * 3 - setup"></i>
+      <i x-effect="z4 = g * (4 &lt;= ramp ? 4 * 5 / (2 * ramp) : (ramp + 1) / 2 + 4 - ramp) - c * 4 - setup"></i>
+      <i x-effect="z5 = g * (5 &lt;= ramp ? 5 * 6 / (2 * ramp) : (ramp + 1) / 2 + 5 - ramp) - c * 5 - setup"></i>
+      <i x-effect="z6 = g * (6 &lt;= ramp ? 6 * 7 / (2 * ramp) : (ramp + 1) / 2 + 6 - ramp) - c * 6 - setup"></i>
+      <i x-effect="z7 = g * (7 &lt;= ramp ? 7 * 8 / (2 * ramp) : (ramp + 1) / 2 + 7 - ramp) - c * 7 - setup"></i>
+      <i x-effect="z8 = g * (8 &lt;= ramp ? 8 * 9 / (2 * ramp) : (ramp + 1) / 2 + 8 - ramp) - c * 8 - setup"></i>
+      <i x-effect="z9 = g * (9 &lt;= ramp ? 9 * 10 / (2 * ramp) : (ramp + 1) / 2 + 9 - ramp) - c * 9 - setup"></i>
+      <i x-effect="z10 = g * (10 &lt;= ramp ? 10 * 11 / (2 * ramp) : (ramp + 1) / 2 + 10 - ramp) - c * 10 - setup"></i>
+      <i x-effect="z11 = g * (11 &lt;= ramp ? 11 * 12 / (2 * ramp) : (ramp + 1) / 2 + 11 - ramp) - c * 11 - setup"></i>
+      <i x-effect="z12 = g * (12 &lt;= ramp ? 12 * 13 / (2 * ramp) : (ramp + 1) / 2 + 12 - ramp) - c * 12 - setup"></i>
+      <i x-effect="z13 = g * (13 &lt;= ramp ? 13 * 14 / (2 * ramp) : (ramp + 1) / 2 + 13 - ramp) - c * 13 - setup"></i>
+      <i x-effect="z14 = g * (14 &lt;= ramp ? 14 * 15 / (2 * ramp) : (ramp + 1) / 2 + 14 - ramp) - c * 14 - setup"></i>
+      <i x-effect="z15 = g * (15 &lt;= ramp ? 15 * 16 / (2 * ramp) : (ramp + 1) / 2 + 15 - ramp) - c * 15 - setup"></i>
+      <i x-effect="z16 = g * (16 &lt;= ramp ? 16 * 17 / (2 * ramp) : (ramp + 1) / 2 + 16 - ramp) - c * 16 - setup"></i>
+      <i x-effect="z17 = g * (17 &lt;= ramp ? 17 * 18 / (2 * ramp) : (ramp + 1) / 2 + 17 - ramp) - c * 17 - setup"></i>
+      <i x-effect="z18 = g * (18 &lt;= ramp ? 18 * 19 / (2 * ramp) : (ramp + 1) / 2 + 18 - ramp) - c * 18 - setup"></i>
+      <i x-effect="z19 = g * (19 &lt;= ramp ? 19 * 20 / (2 * ramp) : (ramp + 1) / 2 + 19 - ramp) - c * 19 - setup"></i>
+      <i x-effect="z20 = g * (20 &lt;= ramp ? 20 * 21 / (2 * ramp) : (ramp + 1) / 2 + 20 - ramp) - c * 20 - setup"></i>
+      <i x-effect="z21 = g * (21 &lt;= ramp ? 21 * 22 / (2 * ramp) : (ramp + 1) / 2 + 21 - ramp) - c * 21 - setup"></i>
+      <i x-effect="z22 = g * (22 &lt;= ramp ? 22 * 23 / (2 * ramp) : (ramp + 1) / 2 + 22 - ramp) - c * 22 - setup"></i>
+      <i x-effect="z23 = g * (23 &lt;= ramp ? 23 * 24 / (2 * ramp) : (ramp + 1) / 2 + 23 - ramp) - c * 23 - setup"></i>
+      <i x-effect="z24 = g * (24 &lt;= ramp ? 24 * 25 / (2 * ramp) : (ramp + 1) / 2 + 24 - ramp) - c * 24 - setup"></i>
+      <i x-effect="z25 = g * (25 &lt;= ramp ? 25 * 26 / (2 * ramp) : (ramp + 1) / 2 + 25 - ramp) - c * 25 - setup"></i>
+      <i x-effect="z26 = g * (26 &lt;= ramp ? 26 * 27 / (2 * ramp) : (ramp + 1) / 2 + 26 - ramp) - c * 26 - setup"></i>
+      <i x-effect="z27 = g * (27 &lt;= ramp ? 27 * 28 / (2 * ramp) : (ramp + 1) / 2 + 27 - ramp) - c * 27 - setup"></i>
+      <i x-effect="z28 = g * (28 &lt;= ramp ? 28 * 29 / (2 * ramp) : (ramp + 1) / 2 + 28 - ramp) - c * 28 - setup"></i>
+      <i x-effect="z29 = g * (29 &lt;= ramp ? 29 * 30 / (2 * ramp) : (ramp + 1) / 2 + 29 - ramp) - c * 29 - setup"></i>
+      <i x-effect="z30 = g * (30 &lt;= ramp ? 30 * 31 / (2 * ramp) : (ramp + 1) / 2 + 30 - ramp) - c * 30 - setup"></i>
+      <i x-effect="z31 = g * (31 &lt;= ramp ? 31 * 32 / (2 * ramp) : (ramp + 1) / 2 + 31 - ramp) - c * 31 - setup"></i>
+      <i x-effect="z32 = g * (32 &lt;= ramp ? 32 * 33 / (2 * ramp) : (ramp + 1) / 2 + 32 - ramp) - c * 32 - setup"></i>
+      <i x-effect="z33 = g * (33 &lt;= ramp ? 33 * 34 / (2 * ramp) : (ramp + 1) / 2 + 33 - ramp) - c * 33 - setup"></i>
+      <i x-effect="z34 = g * (34 &lt;= ramp ? 34 * 35 / (2 * ramp) : (ramp + 1) / 2 + 34 - ramp) - c * 34 - setup"></i>
+      <i x-effect="z35 = g * (35 &lt;= ramp ? 35 * 36 / (2 * ramp) : (ramp + 1) / 2 + 35 - ramp) - c * 35 - setup"></i>
+      <i x-effect="z36 = g * (36 &lt;= ramp ? 36 * 37 / (2 * ramp) : (ramp + 1) / 2 + 36 - ramp) - c * 36 - setup"></i>
+      <i x-effect="pb = 1 + (z1 &lt; 0) + (z2 &lt; 0) + (z3 &lt; 0) + (z4 &lt; 0) + (z5 &lt; 0) + (z6 &lt; 0) + (z7 &lt; 0) + (z8 &lt; 0) + (z9 &lt; 0) + (z10 &lt; 0) + (z11 &lt; 0) + (z12 &lt; 0) + (z13 &lt; 0) + (z14 &lt; 0) + (z15 &lt; 0) + (z16 &lt; 0) + (z17 &lt; 0) + (z18 &lt; 0) + (z19 &lt; 0) + (z20 &lt; 0) + (z21 &lt; 0) + (z22 &lt; 0) + (z23 &lt; 0) + (z24 &lt; 0) + (z25 &lt; 0) + (z26 &lt; 0) + (z27 &lt; 0) + (z28 &lt; 0) + (z29 &lt; 0) + (z30 &lt; 0) + (z31 &lt; 0) + (z32 &lt; 0) + (z33 &lt; 0) + (z34 &lt; 0) + (z35 &lt; 0) + (z36 &lt; 0)"></i>
+      <i x-effect="three = z36"></i>
+      <i x-effect="mult = g * ((ramp + 1) / 2 + 36 - ramp) / (setup + c * 36)"></i>
+      <i x-effect="hi1 = z3 &gt; z36 ? z3 : z36"></i>
+      <i x-effect="hi = hi1 &gt; 1 ? hi1 : 1"></i>
+      <i x-effect="lo1 = z3 &lt; z6 ? z3 : z6"></i>
+      <i x-effect="lo2 = lo1 &lt; z9 ? lo1 : z9"></i>
+      <i x-effect="lo3 = lo2 &lt; z36 ? lo2 : z36"></i>
+      <i x-effect="lo = lo3 &lt; 0 ? lo3 : 0"></i>
+      <i x-effect="k = 154 / (hi - lo)"></i>
+      <i x-effect="base = 34 + hi * k"></i>
+    </div>
+
+    <section class="hero" data-section="result" aria-live="polite">
+      <p class="label">Annual savings for Tallis Staffing, after rollout</p>
+      <p class="big" x-text="(net &lt; 0 ? '-$' : '$') + (net &lt; 0 ? -net : net).toLocaleString('en-US', {maximumFractionDigits: 0})">$250,092</p>
+      <div class="row">
+        <div><small>Payback</small><span x-text="pb &gt; 36 ? 'Over 3 years' : pb == 1 ? '1 month' : pb + ' months'">2 months</span></div>
+        <div><small>3-year net return</small><span x-text="(three &lt; 0 ? '-$' : '$') + (three &lt; 0 ? -three : three).toLocaleString('en-US', {maximumFractionDigits: 0})">$711,970</span></div>
+        <div><small>Return on cost</small><span x-text="mult.toFixed(1) + 'x'">7.9x</span></div>
+      </div>
+    </section>
+
+    <section class="inputs" data-section="inputs">
+      <h2>Your inputs</h2>
+
+      <div class="field">
+        <div class="fhead"><label for="team">People doing manual timesheet work</label><span class="tag" data-state="estimate" x-bind:data-state="team == 85 ? 'estimate' : 'edited'" x-text="team == 85 ? 'Estimate' : 'Yours'">Estimate</span></div>
+        <div class="frow">
+          <input class="range" type="range" min="1" max="340" step="1" value="85" style="--pct:24.8%" x-model.number="team" x-bind:style="'--pct:' + ((team - 1) * 100 / 339) + '%'" aria-label="People doing manual timesheet work, slider">
+          <div class="numwrap"><input type="number" id="team" min="1" max="2000" step="1" value="85" x-model.number="team"><span>people</span></div>
+        </div>
+        <p class="fnote">We assumed about 1 in 35 of the 1,001 to 5,000 people check and fix timesheets by hand, mostly branch coordinators and payroll staff.</p>
+      </div>
+
+      <div class="field">
+        <div class="fhead"><label for="hours">Hours a week each spends on it</label><span class="tag" data-state="estimate" x-bind:data-state="hours == 7 ? 'estimate' : 'edited'" x-text="hours == 7 ? 'Estimate' : 'Yours'">Estimate</span></div>
+        <div class="frow">
+          <input class="range" type="range" min="1" max="30" step="0.5" value="7" style="--pct:20.7%" x-model.number="hours" x-bind:style="'--pct:' + ((hours - 1) * 100 / 29) + '%'" aria-label="Hours a week spent on manual timesheet work, slider">
+          <div class="numwrap"><input type="number" id="hours" min="0" max="60" step="0.5" value="7" x-model.number="hours"><span>hours</span></div>
+        </div>
+        <p class="fnote">Chasing missing hours, correcting entries and re-sending approvals. We assumed 7 hours a week each.</p>
+      </div>
+
+      <div class="field">
+        <div class="fhead"><label for="rate">Loaded hourly cost per person</label><span class="tag" data-state="estimate" x-bind:data-state="rate == 29 ? 'estimate' : 'edited'" x-text="rate == 29 ? 'Estimate' : 'Yours'">Estimate</span></div>
+        <div class="frow">
+          <input class="range" type="range" min="10" max="120" step="1" value="29" style="--pct:17.3%" x-model.number="rate" x-bind:style="'--pct:' + ((rate - 10) * 100 / 110) + '%'" aria-label="Loaded hourly cost, slider">
+          <div class="numwrap"><input type="number" id="rate" min="1" max="1000" step="1" value="29" x-model.number="rate"><span>$ an hour</span></div>
+        </div>
+        <p class="fnote">Pay for a branch coordinator plus benefits and overhead, in US dollars. Change it if your blended cost is different.</p>
+      </div>
+
+      <div class="field">
+        <div class="fhead"><label for="tools">Current tool spend a month</label><span class="tag" data-state="estimate" x-bind:data-state="tools == 5200 ? 'estimate' : 'edited'" x-text="tools == 5200 ? 'Estimate' : 'Yours'">Estimate</span></div>
+        <div class="frow">
+          <input class="range" type="range" min="0" max="20800" step="100" value="5200" style="--pct:25%" x-model.number="tools" x-bind:style="'--pct:' + (tools * 100 / 20800) + '%'" aria-label="Current tool spend a month, slider">
+          <div class="numwrap"><input type="number" id="tools" min="0" max="200000" step="50" value="5200" x-model.number="tools"><span>$ a month</span></div>
+        </div>
+        <p class="fnote">Timesheet software seats, a payroll add-on and shared trackers across nine branches. You will know the actual figure.</p>
+      </div>
+    </section>
+
+    <div class="detail">
+      <figure class="chart" data-section="chart">
+        <figcaption><b>Cumulative return, quarter by quarter</b><span>Net of the platform cost and setup fee. Grey bars are below zero, before payback.</span></figcaption>
+        <svg viewBox="0 0 600 230" role="img" aria-label="Cumulative return over three years, by quarter">
+          <line class="gl" x1="8" x2="592" y1="34" y2="34"/>
+          <rect class="pos" x="13.4" y="181.8" width="38" height="6.2" rx="3" x-bind:y="z3 &lt; 0 ? base : base - (z3 * k + 1)" x-bind:height="(z3 &lt; 0 ? -z3 : z3) * k + 1" x-bind:class="z3 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="13.4" y="185" width="38" height="3" x-bind:y="z3 &lt; 0 ? base : base - 3" x-bind:height="(z3 &lt; 0 ? -z3 : z3) * k &gt; 3 ? 3 : 0" x-bind:class="z3 &lt; 0 ? 'neg' : 'pos'"/>
+          <text class="v" x="8" y="173.8" text-anchor="start" x-bind:y="(z3 &lt; 0 ? base : base - (z3 * k + 1)) - 8" x-text="(z3 &lt; 0 ? '-$' : '$') + ((z3 &lt; 0 ? -z3 : z3) &gt;= 1000000 ? ((z3 &lt; 0 ? -z3 : z3) / 1000000).toFixed(1) + 'M' : (z3 &lt; 0 ? -z3 : z3) &gt;= 1000 ? ((z3 &lt; 0 ? -z3 : z3) / 1000).toFixed(0) + 'k' : (z3 &lt; 0 ? -z3 : z3).toFixed(0))">$24k</text>
+          <rect class="pos" x="62" y="168.2" width="38" height="19.8" rx="3" x-bind:y="z6 &lt; 0 ? base : base - (z6 * k + 1)" x-bind:height="(z6 &lt; 0 ? -z6 : z6) * k + 1" x-bind:class="z6 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="62" y="185" width="38" height="3" x-bind:y="z6 &lt; 0 ? base : base - 3" x-bind:height="(z6 &lt; 0 ? -z6 : z6) * k &gt; 3 ? 3 : 0" x-bind:class="z6 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="110.7" y="154.7" width="38" height="33.3" rx="3" x-bind:y="z9 &lt; 0 ? base : base - (z9 * k + 1)" x-bind:height="(z9 &lt; 0 ? -z9 : z9) * k + 1" x-bind:class="z9 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="110.7" y="185" width="38" height="3" x-bind:y="z9 &lt; 0 ? base : base - 3" x-bind:height="(z9 &lt; 0 ? -z9 : z9) * k &gt; 3 ? 3 : 0" x-bind:class="z9 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="159.4" y="141.2" width="38" height="46.8" rx="3" x-bind:y="z12 &lt; 0 ? base : base - (z12 * k + 1)" x-bind:height="(z12 &lt; 0 ? -z12 : z12) * k + 1" x-bind:class="z12 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="159.4" y="185" width="38" height="3" x-bind:y="z12 &lt; 0 ? base : base - 3" x-bind:height="(z12 &lt; 0 ? -z12 : z12) * k &gt; 3 ? 3 : 0" x-bind:class="z12 &lt; 0 ? 'neg' : 'pos'"/>
+          <text class="v" x="178.3" y="133.2" text-anchor="middle" x-bind:y="(z12 &lt; 0 ? base : base - (z12 * k + 1)) - 8" x-text="(z12 &lt; 0 ? '-$' : '$') + ((z12 &lt; 0 ? -z12 : z12) &gt;= 1000000 ? ((z12 &lt; 0 ? -z12 : z12) / 1000000).toFixed(1) + 'M' : (z12 &lt; 0 ? -z12 : z12) &gt;= 1000 ? ((z12 &lt; 0 ? -z12 : z12) / 1000).toFixed(0) + 'k' : (z12 &lt; 0 ? -z12 : z12).toFixed(0))">$212k</text>
+          <rect class="pos" x="208" y="127.7" width="38" height="60.3" rx="3" x-bind:y="z15 &lt; 0 ? base : base - (z15 * k + 1)" x-bind:height="(z15 &lt; 0 ? -z15 : z15) * k + 1" x-bind:class="z15 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="208" y="185" width="38" height="3" x-bind:y="z15 &lt; 0 ? base : base - 3" x-bind:height="(z15 &lt; 0 ? -z15 : z15) * k &gt; 3 ? 3 : 0" x-bind:class="z15 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="256.7" y="114.1" width="38" height="73.9" rx="3" x-bind:y="z18 &lt; 0 ? base : base - (z18 * k + 1)" x-bind:height="(z18 &lt; 0 ? -z18 : z18) * k + 1" x-bind:class="z18 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="256.7" y="185" width="38" height="3" x-bind:y="z18 &lt; 0 ? base : base - 3" x-bind:height="(z18 &lt; 0 ? -z18 : z18) * k &gt; 3 ? 3 : 0" x-bind:class="z18 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="305.4" y="100.6" width="38" height="87.4" rx="3" x-bind:y="z21 &lt; 0 ? base : base - (z21 * k + 1)" x-bind:height="(z21 &lt; 0 ? -z21 : z21) * k + 1" x-bind:class="z21 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="305.4" y="185" width="38" height="3" x-bind:y="z21 &lt; 0 ? base : base - 3" x-bind:height="(z21 &lt; 0 ? -z21 : z21) * k &gt; 3 ? 3 : 0" x-bind:class="z21 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="354" y="87.1" width="38" height="100.9" rx="3" x-bind:y="z24 &lt; 0 ? base : base - (z24 * k + 1)" x-bind:height="(z24 &lt; 0 ? -z24 : z24) * k + 1" x-bind:class="z24 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="354" y="185" width="38" height="3" x-bind:y="z24 &lt; 0 ? base : base - 3" x-bind:height="(z24 &lt; 0 ? -z24 : z24) * k &gt; 3 ? 3 : 0" x-bind:class="z24 &lt; 0 ? 'neg' : 'pos'"/>
+          <text class="v" x="373" y="79.1" text-anchor="middle" x-bind:y="(z24 &lt; 0 ? base : base - (z24 * k + 1)) - 8" x-text="(z24 &lt; 0 ? '-$' : '$') + ((z24 &lt; 0 ? -z24 : z24) &gt;= 1000000 ? ((z24 &lt; 0 ? -z24 : z24) / 1000000).toFixed(1) + 'M' : (z24 &lt; 0 ? -z24 : z24) &gt;= 1000 ? ((z24 &lt; 0 ? -z24 : z24) / 1000).toFixed(0) + 'k' : (z24 &lt; 0 ? -z24 : z24).toFixed(0))">$462k</text>
+          <rect class="pos" x="402.7" y="73.6" width="38" height="114.4" rx="3" x-bind:y="z27 &lt; 0 ? base : base - (z27 * k + 1)" x-bind:height="(z27 &lt; 0 ? -z27 : z27) * k + 1" x-bind:class="z27 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="402.7" y="185" width="38" height="3" x-bind:y="z27 &lt; 0 ? base : base - 3" x-bind:height="(z27 &lt; 0 ? -z27 : z27) * k &gt; 3 ? 3 : 0" x-bind:class="z27 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="451.4" y="60" width="38" height="128" rx="3" x-bind:y="z30 &lt; 0 ? base : base - (z30 * k + 1)" x-bind:height="(z30 &lt; 0 ? -z30 : z30) * k + 1" x-bind:class="z30 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="451.4" y="185" width="38" height="3" x-bind:y="z30 &lt; 0 ? base : base - 3" x-bind:height="(z30 &lt; 0 ? -z30 : z30) * k &gt; 3 ? 3 : 0" x-bind:class="z30 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="500" y="46.5" width="38" height="141.5" rx="3" x-bind:y="z33 &lt; 0 ? base : base - (z33 * k + 1)" x-bind:height="(z33 &lt; 0 ? -z33 : z33) * k + 1" x-bind:class="z33 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="500" y="185" width="38" height="3" x-bind:y="z33 &lt; 0 ? base : base - 3" x-bind:height="(z33 &lt; 0 ? -z33 : z33) * k &gt; 3 ? 3 : 0" x-bind:class="z33 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="548.7" y="33" width="38" height="155" rx="3" x-bind:y="z36 &lt; 0 ? base : base - (z36 * k + 1)" x-bind:height="(z36 &lt; 0 ? -z36 : z36) * k + 1" x-bind:class="z36 &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="pos" x="548.7" y="185" width="38" height="3" x-bind:y="z36 &lt; 0 ? base : base - 3" x-bind:height="(z36 &lt; 0 ? -z36 : z36) * k &gt; 3 ? 3 : 0" x-bind:class="z36 &lt; 0 ? 'neg' : 'pos'"/>
+          <text class="v" x="592" y="25" text-anchor="end" x-bind:y="(z36 &lt; 0 ? base : base - (z36 * k + 1)) - 8" x-text="(z36 &lt; 0 ? '-$' : '$') + ((z36 &lt; 0 ? -z36 : z36) &gt;= 1000000 ? ((z36 &lt; 0 ? -z36 : z36) / 1000000).toFixed(1) + 'M' : (z36 &lt; 0 ? -z36 : z36) &gt;= 1000 ? ((z36 &lt; 0 ? -z36 : z36) / 1000).toFixed(0) + 'k' : (z36 &lt; 0 ? -z36 : z36).toFixed(0))">$712k</text>
+          <line class="base" x1="8" x2="592" y1="188" y2="188" x-bind:y1="base" x-bind:y2="base"/>
+          <text x="105.3" y="216" text-anchor="middle">Year 1</text>
+          <text x="300" y="216" text-anchor="middle">Year 2</text>
+          <line class="gl" x1="202.7" x2="202.7" y1="192" y2="202"/>
+          <text x="494.7" y="216" text-anchor="middle">Year 3</text>
+          <line class="gl" x1="397.3" x2="397.3" y1="192" y2="202"/>
+          <line class="pb" x1="40.4" x2="40.4" y1="28" y2="188" x-show="pb &lt; 37" x-bind:x1="8 + pb * 16.22222222222222" x-bind:x2="8 + pb * 16.22222222222222" x-bind:y2="base"/>
+          <text class="pbl" x="48.4" y="36" text-anchor="start" x-show="pb &lt; 37" x-bind:x="pb &gt; 22 ? 8 + pb * 16.22222222222222 - 8 : 8 + pb * 16.22222222222222 + 8" x-bind:text-anchor="pb &gt; 22 ? 'end' : 'start'" x-text="'Payback, month ' + pb">Payback, month 2</text>
+        </svg>
+      </figure>
+
+      <div data-section="ledger">
+        <h2>Where the number comes from</h2>
+        <table class="ledger">
+          <tbody>
+            <tr><th>Manual timesheet work today<small><span x-text="team">85</span> <span x-text="team == 1 ? 'person' : 'people'">people</span>, <span x-text="hours">7</span> hours a week, 48 weeks<sup>1</sup></small></th><td x-text="'$' + manual.toLocaleString('en-US', {maximumFractionDigits: 0})">$828,240</td></tr>
+            <tr><th>Hours the platform takes back<small>30% of that time<sup>2</sup></small></th><td x-text="'$' + labor.toLocaleString('en-US', {maximumFractionDigits: 0})">$248,472</td></tr>
+            <tr><th>Tool spend that goes away<small>50% of today's spend<sup>3</sup></small></th><td x-text="'$' + toolSave.toLocaleString('en-US', {maximumFractionDigits: 0})">$31,200</td></tr>
+            <tr><th>Platform cost<small><span x-text="team">85</span> <span x-text="team == 1 ? 'person' : 'people'">people</span> at $29 a month<sup>4</sup></small></th><td class="minus" x-text="'-$' + platform.toLocaleString('en-US', {maximumFractionDigits: 0})">-$29,580</td></tr>
+            <tr class="sum"><th>Annual savings</th><td x-text="(net &lt; 0 ? '-$' : '$') + (net &lt; 0 ? -net : net).toLocaleString('en-US', {maximumFractionDigits: 0})">$250,092</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <section class="cta" data-section="cta">
+    <h2>Walk through the numbers with Owen</h2>
+    <p>Thirty minutes. We go through the four inputs together, swap in your real figures, and look at which assumption moves the result most for a team like yours.</p>
+    <div class="who"><span class="avatar" aria-hidden="true">O</span><span><b>Owen Park</b>Forgeline</span></div>
+    <a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#e4572e;color:#fff;text-decoration:none;font-weight:600">Book 30 minutes</a>
+  </section>
+
+  <footer class="notes" data-section="assumptions">
+    <h2>Assumptions</h2>
+    <ol>
+      <li>48 working weeks a year.</li>
+      <li>Forgeline takes back 30% of the hours spent on manual timesheet work. This is an assumption, not a measured result, and it moves the answer more than any other number on this page.</li>
+      <li>50% of the current tool spend is replaced. The rest stays.</li>
+      <li>$29 per person a month, plus a one-time setup fee of $15,000. This is list pricing. Nothing on this page is a quote.</li>
+      <li>Savings ramp up evenly over the first 3 months. The chart and the payback figure include that ramp. Payback is the first month the running total is above zero.</li>
+    </ol>
+  </footer>
+</main>
+</body>
+</html>

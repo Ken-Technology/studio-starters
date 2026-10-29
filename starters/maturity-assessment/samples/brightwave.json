@@ -1,0 +1,63 @@
+{
+  "account": {
+    "name": "Brightwave Logistics",
+    "domain": "brightwavelogistics.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Brightwave Logistics runs regional freight and warehousing for retailers, with three distribution centers and about 350 people.",
+      "why_now": "Opened a third distribution center this spring.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Leo",
+    "last_name": "Marsh",
+    "title": "VP Operations"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Northbeam",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "peers": [
+      {
+        "industry": "transportation, logistics, supply chain and storage",
+        "peer_group": "logistics companies between 200 and 1,000 people",
+        "assessments": 64,
+        "score_1": 2.6,
+        "score_2": 2.1,
+        "score_3": 1.9,
+        "score_4": 2.8,
+        "source": "Collected by Northbeam in 2026"
+      }
+    ],
+    "headline": "How mature are Brightwave's operations?",
+    "intro": "Leo, logistics teams your size run on a lot of know-how that sits in a few heads. Three minutes shows which parts are already written down and which are not.",
+    "steps": [
+      {
+        "title": "Write down the ten decisions a coordinator makes most",
+        "body": "Ten decisions, one page each. New coordinators ramp faster, and you see which steps a system could take over."
+      },
+      {
+        "title": "Agree on five Monday numbers and one view that holds them",
+        "body": "Choose the five figures every operations manager reads on Monday, such as cost per load and on-time rate. Build one view for them and retire the spreadsheets that fed the old ones."
+      },
+      {
+        "title": "Put the three most repeated handoffs on rules",
+        "body": "Pick the three handoffs coordinators repeat most each day, such as load confirmation to carrier update, and let software do them before you add people. At your size this is usually where the first month of time comes back."
+      },
+      {
+        "title": "Name one owner for improvement, with two hours a week",
+        "body": "One person, a backlog, and a slot every week. It is the cheapest change on this page and it makes the other moves stick."
+      }
+    ]
+  }
+}

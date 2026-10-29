@@ -1,0 +1,184 @@
+{
+  "kenStudio": "1",
+  "name": "Partnership pitch",
+  "type": "landing_page",
+  "format": "page",
+  "slug": "partner-pitch",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "knowledge": {
+        "type": "array",
+        "maxItems": 60,
+        "items": {
+          "type": "object",
+          "properties": {
+            "citationId": { "type": "string", "maxLength": 80 },
+            "kind": { "type": "string", "maxLength": 40 },
+            "title": { "type": "string", "maxLength": 200 },
+            "text": { "type": "string", "maxLength": 6000 }
+          }
+        }
+      },
+      "why_now": { "type": "string", "maxLength": 400 },
+      "site": { "type": "object" },
+      "partner_customers": { "type": "string", "minLength": 40, "maxLength": 500 },
+      "partner_offer": { "type": "string", "minLength": 20, "maxLength": 300 },
+      "search": { "type": "object" },
+      "candidates": { "type": "array", "maxItems": 20, "items": { "type": "object" } },
+      "examples": {
+        "type": "array",
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string", "maxLength": 80 },
+            "industry": { "type": "string", "maxLength": 120 },
+            "size": { "type": "string", "maxLength": 40 },
+            "hq": { "type": "string", "maxLength": 120 },
+            "why": { "type": "string", "maxLength": 140 }
+          },
+          "required": ["name", "why"]
+        }
+      },
+      "headline": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 90,
+        "fallback": "A partnership idea for {{ account.name }}"
+      },
+      "summary": {
+        "type": "string",
+        "minLength": 60,
+        "maxLength": 360,
+        "fallback": "I think {{ brand.name | default: 'we' }} and {{ account.name }} sell to the same kind of company. This page is my case for working together: where our customers meet, what we could offer them as one, and a small first step."
+      },
+      "our_customers": { "type": "string", "minLength": 40, "maxLength": 500 },
+      "our_offer": { "type": "string", "minLength": 20, "maxLength": 300 },
+      "overlap": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "maxLength": 70 },
+          "points": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 4,
+            "items": { "type": "string", "maxLength": 160 }
+          }
+        },
+        "required": ["name", "points"]
+      },
+      "offer": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "maxLength": 70 },
+          "summary": { "type": "string", "minLength": 40, "maxLength": 400 },
+          "you_bring": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "type": "string", "maxLength": 120 } },
+          "we_bring": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "type": "string", "maxLength": 120 } },
+          "customer_gets": { "type": "string", "maxLength": 240 },
+          "steps": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string", "maxLength": 60 },
+                "detail": { "type": "string", "maxLength": 200 }
+              },
+              "required": ["title", "detail"]
+            }
+          }
+        },
+        "required": ["name", "summary", "you_bring", "we_bring", "customer_gets", "steps"]
+      },
+      "first_step": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "maxLength": 70 },
+          "detail": { "type": "string", "minLength": 40, "maxLength": 340 },
+          "ask": { "type": "string", "maxLength": 200 }
+        },
+        "required": ["title", "detail"],
+        "fallback": {
+          "title": "A 30 minute call to compare customer lists",
+          "detail": "Bring the five customers you would most like to grow with, and I bring ours. If the lists look alike, we pick one joint offer and one month to try it. If they do not, we have lost half an hour.",
+          "ask": "A yes or no on the call, and a week that works for you."
+        }
+      }
+    },
+    "required": ["headline", "summary", "first_step"]
+  },
+  "recipe": [
+    { "id": "knowledge", "kind": "bind", "from": "knowledge.stable", "to": "data.knowledge" },
+    { "id": "why_now", "kind": "bind", "from": "account.dossier.why_now", "to": "data.why_now" },
+    {
+      "id": "site",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}", "maxChars": 12000, "mode": "markdown" },
+      "to": "data.site"
+    },
+    {
+      "id": "read",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.site"],
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "brand.name", "sender.name", "data.site", "data.knowledge"],
+      "to": ["data.partner_customers", "data.partner_offer", "data.search"],
+      "prompt": "You are reading the website of {{ account.name }} ({{ account.domain }}) for {{ sender.name | default: 'someone' }} at {{ brand.name | default: 'our company' }}, who wants to propose a partnership to {{ account.name }}. \"We\" and \"us\" mean {{ brand.name | default: 'our company' }}.\n\nInputs: data.site is the text of {{ account.name }}'s website (url, title, description, markdown). Their industry on record is {{ account.industry | default: 'unknown' }} and their size band is {{ account.size_band | default: 'unknown' }}. data.knowledge is a list of notes about us, each with a kind, a title and a text; the notes about our offer and our customers say who we sell to. The list may be empty. Use these inputs only.\n\nReturn JSON with these keys:\n- partner_customers: 2 or 3 sentences, 40 to 500 characters, on who {{ account.name }} sells to, from the site only: the kind of company, its size, where it is, and the job the product does for it. Address {{ account.name }} as \"you\". Say only what the site says. If the site does not say who the customers are, say what the product is and who it is plainly built for, and nothing more.\n- partner_offer: 1 or 2 sentences, 20 to 300 characters, on what {{ account.name }} sells, in plain words, without \"you\".\n- search: a Ken Search company filter object in camelCase that finds companies like the ones {{ account.name }} sells to and, when data.knowledge says who we sell to, companies that fit both customer bases. Keys: industries (a list of lowercase LinkedIn industry names, like \"restaurants\" or \"construction\") and employeeRanges (a list of LinkedIn size bands from \"1-10\", \"11-50\", \"51-200\", \"201-500\", \"501-1000\" and \"1001-5000\"). Always set industries. Aim for a few hundred to a few thousand companies.\n\nRules for every string: plain words, short sentences, sentence case. No em dashes or en dashes. No exclamation marks. No hype words. Never invent customers, numbers, news or claims the inputs do not hold. No email addresses or phone numbers."
+    },
+    {
+      "id": "lookalikes",
+      "kind": "tool",
+      "tool": "ken_search.companies",
+      "requires": ["data.search"],
+      "args": { "mode": "filters", "filters": "{{ data.search }}", "limit": 12 },
+      "to": "data.candidates"
+    },
+    {
+      "id": "examples",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.candidates"],
+      "inputs": ["account.name", "brand.name", "sender.name", "data.candidates", "data.partner_customers", "data.knowledge"],
+      "to": ["data.examples"],
+      "prompt": "Pick example companies for a partnership page that {{ sender.name | default: 'someone' }} at {{ brand.name | default: 'our company' }} sends to {{ account.name }}. The page shows companies that look like the customers both sides sell to.\n\nInputs: data.candidates are companies from a company search, each with name, domain, industry, size, employee_count, hq, country, description and founded. data.partner_customers says who {{ account.name }} sells to. data.knowledge is a list of notes about us (kind, title, text); the notes about our offer and our customers say who we sell to, and the list may be empty. Use these inputs only.\n\nReturn JSON with one key:\n- examples: 4 to 6 companies from data.candidates that fit {{ account.name }}'s customers best and, when data.knowledge says who we sell to, ours too. Best fit first. Each is {name, industry, size, hq, why}. Copy name, industry, size and hq from the candidate as given. For size use the candidate's size, or its employee_count followed by \" people\" when size is empty. Leave a field out when the candidate has nothing for it. why is one sentence of at most 140 characters on why this company fits, from the candidate's own fields only: what it does, its size or where it is. Never \"likely\", \"probably\" or \"could\". If fewer than 4 candidates fit, return the ones that do. If none fit, return an empty list. Never add a company that is not in data.candidates, and never list {{ account.name }} or {{ brand.name | default: 'our company' }} as an example.\n\nRules for every string: plain words, sentence case. No em dashes or en dashes. No exclamation marks. No hype words. No email addresses or phone numbers."
+    },
+    {
+      "id": "pitch",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.site", "data.knowledge"],
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "brand.name", "sender.name", "data.knowledge", "data.site", "data.partner_customers", "data.partner_offer", "data.examples", "data.why_now"],
+      "to": ["data.headline", "data.summary", "data.our_customers", "data.our_offer", "data.overlap", "data.offer", "data.first_step"],
+      "prompt": "Write a partnership proposal page from {{ sender.name | default: 'someone' }} at {{ brand.name | default: 'our company' }} to {{ account.name }} ({{ account.domain }}). \"We\", \"us\" and \"our\" mean {{ brand.name | default: 'our company' }}. \"You\" means {{ account.name }}. The page makes one case: our customers and yours overlap, so a joint offer would sell, and here is a small first step.\n\nInputs: data.knowledge is a list of notes about us (kind, title, text): the notes about our offer say what we sell, and the notes about our customers say who buys it. data.site is the text of {{ account.name }}'s website. data.partner_customers says who {{ account.name }} sells to and data.partner_offer says what they sell. data.examples are companies from a company search that fit both customer bases; the list may be empty. data.why_now is a recent reason to write now: {{ data.why_now | default: 'none' }}. Their industry on record is {{ account.industry | default: 'unknown' }} and their size band is {{ account.size_band | default: 'unknown' }}. Use these inputs only. If data.knowledge holds nothing about what we sell or who we sell to, return {} and nothing else.\n\nReturn JSON with these keys:\n- headline: at most 90 characters, sentence case. The one fact that shows the two customer bases overlap, said to {{ account.name }}, like \"Your groups run payroll by hand the week they open a fourth site\". No question, no colon, no company names.\n- summary: 2 or 3 sentences, 60 to 360 characters, in the first person, on why this page is worth two minutes: who both of us sell to and what we could offer them together.\n- our_customers: 2 or 3 sentences, 40 to 500 characters, on who we sell to, from data.knowledge only: the kind of company, its size, where it is, who the buyer is and the job we do for it.\n- our_offer: 1 or 2 sentences, 20 to 300 characters, on what we sell, from data.knowledge only, in plain words.\n- overlap: {name, points}. name is the shared customer in at most 70 characters, like \"Restaurant groups with 3 to 30 locations\". points are 2 to 4 strings of at most 160 characters, each one specific thing both customer bases share: the same buyer, the same size, the same tool, the same moment, the same problem. Each point comes from data.site, data.partner_customers or data.knowledge.\n- offer: {name, summary, you_bring, we_bring, customer_gets, steps}. name is the joint offer in at most 70 characters, like \"Payroll that reads your timeclock\". summary is 2 or 3 sentences, 40 to 400 characters, on what the two companies would sell together and to whom. you_bring is 1 to 3 strings of at most 120 characters on what {{ account.name }} contributes, from data.site and data.partner_offer. we_bring is 1 to 3 strings of at most 120 characters on what we contribute, from data.knowledge. customer_gets is one sentence of at most 240 characters on what a shared customer gets that neither of us gives alone. steps are 2 to 4 {title, detail} on how the offer runs, in order: title at most 60 characters, detail at most 200 characters.\n- first_step: {title, detail, ask}. title is a small first step in at most 70 characters, like \"A 30 minute call to compare ten customers\". detail is 2 or 3 sentences, 40 to 340 characters, on what happens on that step and what both sides walk away with. ask is one sentence of at most 200 characters on what we need from {{ account.name }} to take it. Never a step that needs a contract, a budget or engineering work.\n\nFacts: every claim about {{ account.name }} comes from data.site or data.partner_customers, and every claim about us comes from data.knowledge. Never invent customers, numbers, news, results, prices or quotes. Mention data.why_now only when it is not \"none\", and only as given. Do not name the companies in data.examples; the page lists them.\n\nVoice: one person writing to a peer at another company. Plain, direct, specific, a little warm. Short sentences a person would say out loud. Sentence case everywhere.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses or phone numbers. No prices. No hype words (synergy, win-win, leverage, seamless, unlock, elevate, game changer, excited, thrilled). Never \"real\" as emphasis. No sign-off and no name at the end: the page adds the signature."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "requires": ["data.headline"],
+      "on": ["data.headline", "data.summary", "data.our_customers", "data.our_offer", "data.overlap", "data.offer", "data.first_step", "data.examples"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["synergy", "synergies", "win-win", "leverage", "seamless", "unlock", "elevate", "game changer", "game-changer", "excited", "thrilled", "reach out", "circle back", "touch base", "partnership opportunity"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true,
+        "no_signoff": true,
+        "skip": ["name", "industry", "size", "hq"]
+      },
+      "rubric": "Grade the partnership page the way a partnerships lead at {{ account.name }} reads it: headline, summary, the overlap, the example companies, the joint offer, then the first step. 10 is a page they would forward to a colleague with \"worth a call\".\nScore these, 0 to 10 each:\n- specific: the overlap and the offer name a concrete shared customer, a buyer and a job, not a category. A point or a line that could go to any company unchanged scores low.\n- grounded: every claim about {{ account.name }} is in the site text below, and every claim about us is in the notes below.\n- balanced: the offer gives both companies a job, and the customer gets something neither gives alone.\n- small_step: the first step takes under an hour of {{ account.name }}'s time and needs no contract, budget or engineering work.\n- plain: short sentences a person would say out loud; no jargon, no marketing adjectives, no stacked nouns. Quote any phrase that fails.\nAutomatic fail: an invented customer, number, news item, result or quote; an em dash or en dash; an exclamation mark; a price; an email address or phone number; a sign-off or a name at the end of a text; an example company that is not in the company list below, or a why line its record does not support.\nSite text ({{ data.site.url | default: 'no site' }}), the same text the writer had: {{ data.site.title }}. {{ data.site.description }} {{ data.site.markdown }}\nNotes about us, the only source for claims about us: {{ data.knowledge | json }}\nCompanies from the company search, the only source for the examples: {{ data.candidates | json }}\nPass when the overall score is 7.5 or higher and no check is 6 or lower. On a fail, name the check and quote the phrase to change. The fix never supplies replacement sentences, names, numbers, customers or results."
+    }
+  ],
+  "sections": [
+    { "id": "open", "label": "Opening" },
+    { "id": "overlap", "label": "Where customers meet" },
+    { "id": "examples", "label": "Example companies" },
+    { "id": "offer", "label": "The joint offer" },
+    { "id": "first_step", "label": "First step" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 30 minutes" }
+}

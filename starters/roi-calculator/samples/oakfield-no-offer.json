@@ -1,0 +1,45 @@
+{
+  "account": {
+    "name": "Oakfield Insurance Brokers",
+    "domain": "oakfieldbrokers.example",
+    "industry": "insurance",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Oakfield Insurance Brokers places commercial and personal lines for about 4,000 clients. Account managers renew policies by hand each quarter.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Mara",
+    "last_name": "Lindqvist",
+    "title": "Operations Manager"
+  },
+  "sender": {
+    "name": "Sam Okoro",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Halcyon",
+    "logo_url": null,
+    "colors": {
+      "primary": "#0f766e",
+      "secondary": "#1f2a24"
+    },
+    "fonts": null
+  },
+  "data": {
+    "work_name": "policy renewal work",
+    "team_size": 12,
+    "hours_per_week": 8,
+    "hourly_cost": 38,
+    "tool_spend": 900,
+    "reasons": {
+      "team": "We assumed about 1 in 10 of the 51 to 200 people spend time on renewals, mostly account managers and their assistants.",
+      "hours": "Pulling policy details, re-keying them into carrier portals and chasing signatures. We assumed 8 hours a week each.",
+      "rate": "Pay for an account manager plus benefits and overhead, in US dollars. Change it if your blended cost is different.",
+      "tools": "A policy system add-on and a few spreadsheets. You will know the actual figure."
+    }
+  }
+}

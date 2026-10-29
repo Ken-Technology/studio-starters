@@ -1,0 +1,86 @@
+{
+  "kenStudio": "1",
+  "name": "Printable checklist",
+  "type": "other",
+  "format": "doc",
+  "slug": "checklist",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "dossier": { "type": "string", "maxLength": 4000 },
+      "offer": { "type": "string", "maxLength": 300 },
+      "title": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 72,
+        "fallback": "A checklist for {{ account.name }}"
+      },
+      "intro": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 320,
+        "fallback": "The checks worth doing before the next change to how your team works. Tick the ones you have covered and share the rest with the people who own them."
+      },
+      "checks": {
+        "type": "array",
+        "minItems": 10,
+        "maxItems": 14,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "minLength": 8, "maxLength": 72 },
+            "why": { "type": "string", "minLength": 10, "maxLength": 140 }
+          },
+          "required": ["title", "why"]
+        }
+      },
+      "closing": {
+        "type": "string",
+        "maxLength": 240,
+        "fallback": "If any of these is still open, reply to my email and I will send what we have seen work for teams like yours."
+      }
+    },
+    "required": ["title", "checks"]
+  },
+  "recipe": [
+    { "id": "dossier", "kind": "bind", "from": "account.dossier.summary", "to": "data.dossier" },
+    {
+      "id": "offer",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["knowledge.stable"],
+      "to": "data.offer",
+      "prompt": "Say in one or two plain sentences what the sender's company sells and who buys it, from our Knowledge. knowledge.stable is a list of our workspace items, each {citationId, kind, title, text}: instructions, company files and the offer. Use nothing else.\n\nReturn JSON with one key, offer: at most 300 characters, no prices, no customer names and nothing the items do not state. When no item says what we sell, offer is an empty string."
+    },
+    {
+      "id": "write",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.industry", "account.size_band", "data.dossier", "data.offer", "sender.name"],
+      "to": ["data.title", "data.intro", "data.checks", "data.closing"],
+      "prompt": "Write a printable checklist for {{ account.name }}, a company in {{ account.industry | default: 'its industry' }} with {{ account.size_band | default: 'an unknown number of' }} people. {{ sender.name | default: 'The sender' }} sends it as a useful document, not a pitch.\n\nInputs. Research on the account: {{ data.dossier | default: 'none' }}. What the sender sells, for context only: {{ data.offer | default: 'not given' }}.\n\nPick the one decision a team at {{ account.name }} makes that the sender's offer relates to, such as switching a system, picking a vendor or starting a new process, and write the checks a careful person there goes through before making it. The list has to be useful even if they never buy from the sender, so no check may name, recommend or describe the sender's product.\n\nReturn JSON with these keys:\n- title: '<number> checks before you <decision>', where the number is the number of checks, like '12 checks before you switch freight software'. Lowercase except the first letter and names. At most 72 characters.\n- intro: 1 or 2 sentences, at most 320 characters, saying who at {{ account.name }} the list is for and what it covers. No greeting.\n- checks: 10 to 14 items, each {title, why}. title is one check the reader can answer with yes or no, written as an instruction that starts with a verb, like 'Export a full year of load history', at most 72 characters. why is one sentence, at most 140 characters, saying what goes wrong when the check is skipped. Order them the way the work happens. No two checks cover the same ground.\n- closing: 1 or 2 sentences, at most 240 characters, from the sender to the reader, offering help with the list. No sales language and no sign-off: the page adds the name.\n\nUse only the inputs above. Never invent customers, numbers, laws, dates or quotes. Plain words, short sentences, sentence case. No em dashes or en dashes, no exclamation marks, no hype words."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.title", "data.intro", "data.checks", "data.closing"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["demo", "reverse demo", "best-in-class", "seamless", "game-changer", "cutting-edge", "unlock", "supercharge", "revolutionize", "world-class", "leverage"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true,
+        "no_signoff": true
+      },
+      "rubric": "Grade the checklist the way a person at {{ account.name }} reads it, printed on one page. 10 is a list they would pin up and work through.\nScore these, 0 to 10 each:\n- useful: every check is something they can verify with a yes or no, and its why says what goes wrong without it.\n- specific: the checks fit {{ account.industry | default: 'their industry' }} and the decision in the title, not any company. A list that could go to another industry unchanged scores 4 or lower.\n- distinct: no two checks cover the same ground, and the order follows the work.\n- neutral: no check names, recommends or describes the sender's product. The list is useful even if they never buy.\nAutomatic fail: the number in the title differs from the number of checks; a check title that is not an instruction starting with a verb; an invented customer, number, law, date or quote; an em dash or en dash; a sign-off or a name at the end of closing.\nThe only facts allowed are these. Research: {{ data.dossier | default: 'none' }}. Sender's offer: {{ data.offer | default: 'not given' }}.\nPass when the overall score is 7.5 or higher and no check is 6 or lower. On a fail, name the check and quote the phrase to change. The fix never supplies replacement sentences, numbers or names."
+    }
+  ],
+  "sections": [
+    { "id": "cover", "label": "Title and intro" },
+    { "id": "checks", "label": "The checks" },
+    { "id": "close", "label": "Next step" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

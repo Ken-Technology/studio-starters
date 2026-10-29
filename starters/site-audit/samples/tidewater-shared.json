@@ -1,0 +1,107 @@
+{
+  "account": {
+    "name": "Tidewater Dental Group",
+    "domain": "tidewaterdental.example",
+    "industry": "dental practices",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Tidewater Dental Group runs seven family dental practices along the Virginia coast. The site lists each location and offers online booking for new patients.",
+      "why_now": "Added a seventh practice in Norfolk."
+    }
+  },
+  "person": null,
+  "sender": { "name": "Priya Raman", "title": "Partner, Growth", "signature_html": null },
+  "brand": {
+    "name": "Halcyon Growth",
+    "logo_url": null,
+    "colors": { "primary": "#1f3d36", "secondary": "#1b2421" },
+    "fonts": { "heading": "Fraunces", "body": "Source Sans 3" }
+  },
+  "data": {
+    "headline": "Tidewater Dental is clear about who it treats, but a new patient must hunt for where to start",
+    "criteria": [
+      {
+        "name": "Message clarity",
+        "score": 7,
+        "quote": "Family dentistry for every stage of life, in seven coastal communities.",
+        "where": "Homepage headline",
+        "cost": "A new patient learns who you treat and roughly where in one line. It stops short of saying which services you lead with, so someone looking for an implant or braces has to read on."
+      },
+      {
+        "name": "Proof",
+        "score": 5,
+        "quote": "Patients love us.",
+        "where": "Homepage, under the headline",
+        "cost": "A claim with nothing behind it. No patient is quoted, no review count is shown and no years in practice are given, so a visitor has nothing to weigh the line against."
+      },
+      {
+        "name": "Call to action",
+        "score": 6,
+        "quote": "Book your visit",
+        "where": "Main button",
+        "cost": "The label is clear and the button works. It opens a list of all seven locations first, which adds a step before a patient can pick a time."
+      },
+      {
+        "name": "Trust",
+        "score": 7,
+        "quote": "Every practice is led by a licensed dentist. Meet the team.",
+        "where": "Footer",
+        "cost": "Named dentists, practice addresses and the licence note are on the site, which is what a cautious patient looks for. They sit in the footer and on the team page, not near the booking button."
+      },
+      {
+        "name": "Navigation",
+        "score": 4,
+        "quote": "Care | Smiles | Community | Visit | Journal",
+        "where": "Main menu",
+        "cost": "Five labels and none of them is a plain word a patient would search for. Services, Locations and Insurance are all inside the menu, so a visitor has to open each one to find them."
+      },
+      {
+        "name": "Contact path",
+        "score": 8,
+        "quote": "Call your practice or book online in two minutes.",
+        "where": "Locations page",
+        "cost": "The best part of the site. Each location has its own page with hours and a booking link. The same line is missing from the homepage, where most visitors arrive."
+      }
+    ],
+    "rewrites": [
+      {
+        "kind": "headline",
+        "where": "Hero headline",
+        "before": "Family dentistry for every stage of life, in seven coastal communities.",
+        "after": "Family dentistry in seven coastal Virginia towns, with new patient visits open this week.",
+        "why": "Keeps what already works and adds the state and the next step. A new patient knows they are in the right place and that they can book now."
+      },
+      {
+        "kind": "button",
+        "where": "Main button",
+        "before": "Book your visit",
+        "after": "Book a new patient visit",
+        "why": "Tells new patients this button is for them and skips the sense that it is for existing ones only. It still opens the booking flow."
+      }
+    ],
+    "callouts": [
+      "Clear about who you treat. Add the state and the next step so a search visitor lands knowing they are in the right place.",
+      "Patients love us is the weakest line on the page. Replace it with a review count, years in practice or a named patient quote.",
+      "The label is good. Send it straight to a time picker for the nearest practice and skip the list of seven.",
+      "The labels are creative, not searchable. Services, Locations, Insurance and Book are what a patient looks for.",
+      "No proof row at all. Put the review rating, the years in practice and the number of dentists in a single line here."
+    ],
+    "fixes": [
+      {
+        "title": "Rename the five menu items",
+        "body": "Use Services, Locations, Insurance, About and Book a visit. It costs nothing and every visitor passes through the menu before they decide.",
+        "effort": "About an hour. Today."
+      },
+      {
+        "title": "Replace Patients love us with something checkable",
+        "body": "Use your review rating and count from the places patients already rate you, or a named patient quote you have permission to print.",
+        "effort": "Half a day. This week."
+      },
+      {
+        "title": "Open the booking button on the nearest practice",
+        "body": "Ask for a postcode or use the visitor's location, then show times for that practice. A list of seven locations is one step too many on a phone.",
+        "effort": "One ticket for your web team. This quarter."
+      }
+    ]
+  }
+}

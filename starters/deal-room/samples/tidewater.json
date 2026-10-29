@@ -1,0 +1,203 @@
+{
+  "account": {
+    "name": "Tidewater Health Partners",
+    "domain": "tidewaterhealth.example",
+    "industry": "healthcare",
+    "size_band": "501-1000",
+    "dossier": {
+      "summary": "Tidewater Health Partners runs six outpatient clinics on the coast and employs about 700 people.",
+      "why_now": "Opened its sixth clinic in September.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Marcus",
+    "last_name": "Bell",
+    "title": "Chief Operating Officer"
+  },
+  "sender": {
+    "name": "Hannah Ortiz",
+    "title": "Enterprise Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Cedarline",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1d2f5c",
+      "secondary": "#1b1a17"
+    },
+    "fonts": {
+      "heading": "Playfair Display",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "notes": "Oct 8 intro call with Marcus Bell (COO) and Ines Calderon (Director of Patient Access). Front desks at all six clinics take intake on paper and re-key it. They want one intake flow live at two clinics first.\nOct 20 working session with Ahmed Rahimi (Compliance Officer). Ahmed needs the data handling answers in writing and a call with our security lead, Tobias Lind.\nOct 28 Hannah sent the data handling pack and a draft rollout plan. Marcus wants a decision by Nov 20 so the first two clinics can go live before the holidays. Next call Thu Nov 5 at 2:00 PM ET, 45 minutes.",
+    "company": "Team: Hannah Ortiz, enterprise account executive. Tobias Lind, security lead. Mei Tanaka, implementation manager. Shared with buyers: data handling pack for healthcare (PDF, 11 pages), rollout plan template for multi-clinic groups (PDF, 4 pages), customer story: Harbor Pediatrics (PDF, 5 pages).",
+    "lede": "One room for the patient intake rollout across Tidewater's clinics, so Marcus, Ines and Ahmed can see the plan and the paperwork in one place.",
+    "facts": [
+      {
+        "label": "Next meeting",
+        "value": "Thu Nov 5",
+        "detail": "2:00 to 2:45 PM ET, video"
+      },
+      {
+        "label": "Stage",
+        "value": "Compliance review",
+        "detail": "Data handling pack sent Oct 28"
+      },
+      {
+        "label": "First clinics",
+        "value": "Two of six",
+        "detail": "Go live before the holidays"
+      },
+      {
+        "label": "Decision by",
+        "value": "Fri Nov 20",
+        "detail": "Marcus Bell"
+      }
+    ],
+    "note": "Marcus, this page puts the intake rollout, the compliance questions and the paperwork in one place. The plan is my draft of the steps between now and a go-live at two clinics, so tell me what is off before Thursday's call. Ahmed has the data handling pack, and Tobias will be on the call for his questions.",
+    "agenda": {
+      "heading": "Agenda for Thursday, Nov 5",
+      "meta": "45 minutes, video",
+      "items": [
+        {
+          "time": "2:00",
+          "title": "Where the rollout plan stands",
+          "detail": "A short walk through the draft plan and the two clinics to start with.",
+          "who": "Hannah and Mei"
+        },
+        {
+          "time": "2:10",
+          "title": "Ahmed's data handling questions",
+          "detail": "Where patient data is stored, who can see it and how long it is kept.",
+          "who": "Ahmed and Tobias"
+        },
+        {
+          "time": "2:30",
+          "title": "Front desk training",
+          "detail": "How long training takes per clinic and who needs to be there.",
+          "who": "Ines and Mei"
+        },
+        {
+          "time": "2:40",
+          "title": "Decision timeline",
+          "detail": "What Marcus needs in hand before Nov 20.",
+          "who": "Marcus"
+        }
+      ]
+    },
+    "plan": [
+      {
+        "date": "Oct 8",
+        "title": "Intro call on patient intake",
+        "side": "both",
+        "owner": "Marcus, Ines and Hannah",
+        "weekday": "Thu",
+        "done": true
+      },
+      {
+        "date": "Oct 20",
+        "title": "Working session on the intake flow",
+        "side": "both",
+        "owner": "Ines, Ahmed and Hannah",
+        "weekday": "Tue",
+        "done": true
+      },
+      {
+        "date": "Oct 28",
+        "title": "Data handling pack and draft rollout plan sent",
+        "side": "us",
+        "owner": "Hannah Ortiz",
+        "weekday": "Wed",
+        "done": true
+      },
+      {
+        "date": "Nov 5",
+        "title": "Review call with security lead",
+        "side": "both",
+        "owner": "Marcus, Ahmed, Tobias and Hannah",
+        "weekday": "Thu"
+      },
+      {
+        "date": "Nov 11",
+        "title": "Written answers on data handling signed off",
+        "side": "them",
+        "owner": "Ahmed Rahimi",
+        "weekday": "Wed"
+      },
+      {
+        "date": "Nov 13",
+        "title": "Final rollout plan and training schedule",
+        "side": "us",
+        "owner": "Mei Tanaka",
+        "weekday": "Fri"
+      },
+      {
+        "date": "Nov 20",
+        "title": "Decision on the first two clinics",
+        "side": "them",
+        "owner": "Marcus Bell",
+        "weekday": "Fri"
+      },
+      {
+        "date": "Dec 7",
+        "title": "First clinic goes live",
+        "side": "both",
+        "owner": "Ines and Mei",
+        "weekday": "Mon"
+      }
+    ],
+    "their_people": [
+      {
+        "name": "Marcus Bell",
+        "title": "Chief Operating Officer"
+      },
+      {
+        "name": "Ines Calderon",
+        "title": "Director of Patient Access"
+      },
+      {
+        "name": "Ahmed Rahimi",
+        "title": "Compliance Officer"
+      }
+    ],
+    "our_people": [
+      {
+        "name": "Hannah Ortiz",
+        "title": "Enterprise Account Executive"
+      },
+      {
+        "name": "Tobias Lind",
+        "title": "Security Lead"
+      },
+      {
+        "name": "Mei Tanaka",
+        "title": "Implementation Manager"
+      }
+    ],
+    "resources": [
+      {
+        "title": "Data handling pack for healthcare",
+        "kind": "security",
+        "detail": "PDF, 11 pages. Sent to Ahmed on Oct 28.",
+        "url": "https://cedarline.example/resources/data-handling.pdf"
+      },
+      {
+        "title": "Rollout plan for a multi-clinic group",
+        "kind": "document",
+        "detail": "PDF, 4 pages. The draft Tidewater plan follows it.",
+        "url": "https://cedarline.example/resources/rollout-plan.pdf"
+      },
+      {
+        "title": "Customer story: Harbor Pediatrics",
+        "kind": "document",
+        "detail": "PDF, 5 pages. A group with four clinics.",
+        "url": "https://cedarline.example/resources/harbor-pediatrics.pdf"
+      }
+    ],
+    "as_of": "Based on notes through Oct 28"
+  }
+}

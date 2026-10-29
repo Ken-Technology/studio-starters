@@ -1,0 +1,55 @@
+{%- assign accent = brand.colors.primary | default: '#2a4bd7' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#0e1530' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign us_name = brand.name | default: '' -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Deal room: {{ account.name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+<style>
+:root{--p:{{ accent }};--s:{{ accent2 }};--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--ink:var(--s);--mute:color-mix(in srgb,var(--s) 60%,#fff);--line:color-mix(in srgb,var(--s) 13%,#fff);--paper:color-mix(in srgb,var(--s) 4.5%,#fff)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--fh);margin:0;line-height:1.15;letter-spacing:-.01em;font-weight:600}
+p{margin:0 0 .8rem}
+.wrap{max-width:44rem;margin:0 auto;padding:0 1rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line);font-size:.85rem;color:var(--mute)}
+.top b{font-family:var(--fh);font-size:1rem;color:var(--ink)}
+.top img{height:26px;width:auto;max-width:9rem;display:block}
+.head{padding:2.4rem 0 1.4rem}
+.head h1{font-size:1.9rem;margin-bottom:.9rem}
+.lede{color:var(--mute);font-size:1.02rem;max-width:36rem}
+.book{background:#fff;border:1px solid var(--line);border-left:3px solid var(--p);padding:1.2rem 1.3rem;margin:1rem 0 4rem}
+.book h2{font-size:1.1rem;margin-bottom:.4rem}
+.book p{font-size:.95rem;color:var(--mute)}
+.book .ken-cta{display:inline-flex!important;align-items:center;min-height:44px;background:var(--p)!important;border-radius:4px!important;font-weight:500!important;padding:0 1.3rem!important;text-decoration:none!important}
+@media (min-width:700px){.head{padding:3.5rem 0 1.8rem}.head h1{font-size:2.6rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  {%- if brand.logo_url %}<img src="{{ brand.logo_url | escape }}" alt="{{ us_name | default: 'Logo' | escape }}">{% elsif us_name != '' %}<b>{{ us_name | escape }}</b>{% else %}<span></span>{% endif %}
+  <span>Deal room for {{ account.name | escape }}</span>
+</header>
+<section data-section="head" class="head">
+  <h1>{{ person.first_name | default: 'Hello' | escape }}, your deal room is on its way</h1>
+  <p class="lede">I am pulling together everything from our calls with {{ account.name | escape }}: the next meeting, the plan, who is involved and what to read. It is not on this page yet.</p>
+</section>
+<section data-section="booking" class="book">
+  <h2>Want to talk now?</h2>
+  <p>Twenty minutes with {{ sender.name | default: 'us' | escape }}, at a time that suits you.</p>
+  {% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}
+</section>
+</div>
+</body>
+</html>

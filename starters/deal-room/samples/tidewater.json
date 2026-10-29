@@ -33,8 +33,34 @@
     }
   },
   "data": {
-    "notes": "Oct 8 intro call with Marcus Bell (COO) and Ines Calderon (Director of Patient Access). Front desks at all six clinics take intake on paper and re-key it. They want one intake flow live at two clinics first.\nOct 20 working session with Ahmed Rahimi (Compliance Officer). Ahmed needs the data handling answers in writing and a call with our security lead, Tobias Lind.\nOct 28 Hannah sent the data handling pack and a draft rollout plan. Marcus wants a decision by Nov 20 so the first two clinics can go live before the holidays. Next call Thu Nov 5 at 2:00 PM ET, 45 minutes.",
-    "company": "Team: Hannah Ortiz, enterprise account executive. Tobias Lind, security lead. Mei Tanaka, implementation manager. Shared with buyers: data handling pack for healthcare (PDF, 11 pages), rollout plan template for multi-clinic groups (PDF, 4 pages), customer story: Harbor Pediatrics (PDF, 5 pages).",
+    "notes": [
+      {
+        "citationId": "k-n-1",
+        "kind": "note",
+        "title": "Call notes, Oct 8",
+        "text": "Oct 8 intro call with Marcus Bell (COO) and Ines Calderon (Director of Patient Access). Front desks at all six clinics take intake on paper and re-key it. They want one intake flow live at two clinics first."
+      },
+      {
+        "citationId": "k-n-2",
+        "kind": "note",
+        "title": "Call notes, Oct 20",
+        "text": "Oct 20 working session with Ahmed Rahimi (Compliance Officer). Ahmed needs the data handling answers in writing and a call with our security lead, Tobias Lind."
+      },
+      {
+        "citationId": "k-n-3",
+        "kind": "note",
+        "title": "Call notes, Oct 28",
+        "text": "Oct 28 Hannah sent the data handling pack and a draft rollout plan. Marcus wants a decision by Nov 20 so the first two clinics can go live before the holidays. Next call Thu Nov 5 at 2:00 PM ET, 45 minutes."
+      }
+    ],
+    "company": [
+      {
+        "citationId": "k-c-1",
+        "kind": "org_file",
+        "title": "Our deal team and what we share with buyers",
+        "text": "Team: Hannah Ortiz, enterprise account executive. Tobias Lind, security lead. Mei Tanaka, implementation manager. Shared with buyers: data handling pack for healthcare (PDF, 11 pages), rollout plan template for multi-clinic groups (PDF, 4 pages), customer story: Harbor Pediatrics (PDF, 5 pages)."
+      }
+    ],
     "lede": "One room for the patient intake rollout across Tidewater's clinics, so Marcus, Ines and Ahmed can see the plan and the paperwork in one place.",
     "facts": [
       {

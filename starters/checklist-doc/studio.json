@@ -44,7 +44,14 @@
   },
   "recipe": [
     { "id": "dossier", "kind": "bind", "from": "account.dossier.summary", "to": "data.dossier" },
-    { "id": "offer", "kind": "bind", "from": "knowledge.offer", "to": "data.offer" },
+    {
+      "id": "offer",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["knowledge.stable"],
+      "to": "data.offer",
+      "prompt": "Say in one or two plain sentences what the sender's company sells and who buys it, from our Knowledge. knowledge.stable is a list of our workspace items, each {citationId, kind, title, text}: instructions, company files and the offer. Use nothing else.\n\nReturn JSON with one key, offer: at most 300 characters, no prices, no customer names and nothing the items do not state. When no item says what we sell, offer is an empty string."
+    },
     {
       "id": "write",
       "kind": "prompt",

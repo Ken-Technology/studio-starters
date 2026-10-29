@@ -168,7 +168,14 @@
       "to": "data.careers"
     },
     { "id": "signals", "kind": "bind", "from": "account.signals", "to": "data.signals_raw" },
-    { "id": "product", "kind": "bind", "from": "knowledge.product", "to": "data.product" },
+    {
+      "id": "product",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["brand.name", "knowledge.stable"],
+      "to": "data.product",
+      "prompt": "Write down what {{ brand.name | default: 'our company' }} sells, in our own words, from our Knowledge. knowledge.stable is a list of our workspace items, each {citationId, kind, title, text}: instructions, company files and the offer. Use nothing else.\n\nReturn JSON with one key, product: at most 3000 characters of plain sentences on what we sell, who it is for, what changes for a customer, how a rollout runs and what the items say about setup, timing and support. Copy names, numbers, timings and customers exactly as the items state them and add none. Leave out prices. When no item says what we sell, product is an empty string."
+    },
     {
       "id": "write",
       "kind": "prompt",

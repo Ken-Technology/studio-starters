@@ -1,0 +1,15 @@
+{
+  "description": "A follow-up page for people who missed a webinar: the recording in chapters, three takeaways for their role, slides and booking. Ken fills the role fit.",
+  "category": "events",
+  "tags": ["webinar", "recording", "follow-up", "missed event"],
+  "featured": false,
+  "needs": ["video"],
+  "version": "1.0.0",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    { "id": "brightwave", "label": "Brightwave Logistics" },
+    { "id": "ridgeview", "label": "Ridgeview Dental Group" },
+    { "id": "tallgrass-shared", "label": "Shared link (no person)" },
+    { "id": "marlowe-no-video", "label": "Marlowe and Pike Accounting" }
+  ]
+}

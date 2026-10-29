@@ -1,0 +1,72 @@
+{
+  "account": {
+    "name": "Marlowe and Pike Accounting",
+    "domain": "marlowepike.example",
+    "industry": "accounting",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Marlowe and Pike is a 30-person accounting firm that does bookkeeping and tax for small businesses.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Ines",
+    "last_name": "Carvalho",
+    "title": "Managing Partner"
+  },
+  "sender": {
+    "name": "Owen Park",
+    "title": "Partner Success",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Lumen Works",
+    "logo_url": null,
+    "colors": { "primary": "#0b6e4f", "secondary": "#12263a" },
+    "fonts": null
+  },
+  "data": {
+    "event_title": "A four-day month-end close",
+    "recorded_on": "October 20",
+    "speakers": "Owen Park and Rosa Lindqvist.",
+    "video_url": "",
+    "duration_seconds": 1860,
+    "chapters": [
+      { "start": "0:00", "seconds": 0, "title": "Why the close drags", "summary": "Owen Park lists the four places a close stalls: bank feeds, receipts, accruals and review." },
+      { "start": "5:15", "seconds": 315, "title": "Fix the feeds before the first of the month", "summary": "Rosa Lindqvist says most late closes start with bank feeds that were never reconciled mid-month." },
+      { "start": "13:40", "seconds": 820, "title": "A review checklist partners will use", "summary": "A one-page review checklist cut partner review from two days to half a day at Rosa's firm." },
+      { "start": "22:05", "seconds": 1325, "title": "Questions: clients who send receipts late", "summary": "Questions on clients who send receipts late and on how to staff the last two days of the close." }
+    ],
+    "slides_url": "",
+    "slide_pages": [],
+    "slide_count": 0,
+    "transcript": [
+      { "at": "13:40", "speaker": "Rosa", "text": "The checklist is one page. Partners do not read a close package, they look for what is different from last month, so the checklist asks only for that." },
+      { "at": "14:12", "speaker": "Owen", "text": "And that took review from two days to half a day?" },
+      { "at": "14:16", "speaker": "Rosa", "text": "At our firm, yes. It was not faster reading. It was fewer things to read." }
+    ],
+    "transcript_url": "",
+    "book_title": "Want the checklist set up for your firm?",
+    "book_text": "Owen can walk you through the one-page checklist in 20 minutes and adapt it to your clients.",
+    "book_label": "Book 20 minutes with Owen",
+    "start_at": 820,
+    "takeaways": [
+      {
+        "title": "Reconcile the bank feeds mid-month",
+        "body": "Most late closes started with bank feeds that were never reconciled mid-month. A check partway through the month gets ahead of the biggest source of delay.",
+        "at": 315
+      },
+      {
+        "title": "Give partners a one-page review checklist",
+        "body": "A one-page checklist cut partner review from two days to half a day at Rosa's firm. For a managing partner, that is time back in the last two days of the close.",
+        "at": 820
+      },
+      {
+        "title": "Plan for clients who send receipts late",
+        "body": "The questions at the end cover clients who send receipts late and how to staff the last two days of the close.",
+        "at": 1325
+      }
+    ]
+  }
+}

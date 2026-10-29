@@ -1,0 +1,69 @@
+{
+  "account": {
+    "name": "Tallgrass Packaging",
+    "domain": "tallgrasspackaging.example",
+    "industry": "packaging and containers",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Tallgrass Packaging makes folding cartons and corrugated boxes on six production lines at one plant.",
+      "why_now": "Added a sixth production line this spring.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Marcus Hale",
+    "title": "Solutions Engineer",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Forgeline",
+    "logo_url": null,
+    "colors": { "primary": "#e4572e", "secondary": "#1c1c1c" },
+    "fonts": { "heading": "Space Grotesk", "body": "IBM Plex Sans" }
+  },
+  "data": {
+    "event_title": "Changeovers in under ten minutes",
+    "recorded_on": "October 23",
+    "speakers": "Marcus Hale and Tess Okonkwo.",
+    "video_url": "https://forgeline.example/recordings/changeovers-under-ten-minutes",
+    "duration_seconds": 2280,
+    "chapters": [
+      { "start": "0:00", "seconds": 0, "title": "What a changeover costs", "summary": "Marcus Hale frames changeover time as lost output, and shows how the plants in the study counted it." },
+      { "start": "4:30", "seconds": 270, "title": "Where the minutes go", "summary": "Cleaning, setup and first-article checks took most of the time. Waiting for tools or approvals took more than people expected." },
+      { "start": "12:10", "seconds": 730, "title": "Standard kits at the line", "summary": "Tess Okonkwo shows a tool kit staged at each line before the job ends. Her plant took changeovers from 25 minutes to under 10 on its busiest line." },
+      { "start": "21:45", "seconds": 1305, "title": "Who signs off the first article", "summary": "Moving first-article sign-off to the operator, with a photo standard, removed the longest wait." },
+      { "start": "30:20", "seconds": 1820, "title": "Questions and the changeover log", "summary": "Questions on short runs, shift handover and the log template." }
+    ],
+    "slides_url": "https://forgeline.example/decks/changeovers-under-ten-minutes",
+    "slide_pages": [],
+    "slide_count": 16,
+    "transcript": [
+      { "at": "12:10", "speaker": "Tess", "text": "We stopped treating the changeover as one job. The kit is staged while the last job is still running, so the crew starts with every tool in reach." },
+      { "at": "12:48", "speaker": "Marcus", "text": "And that was the whole saving on your busiest line?" },
+      { "at": "12:53", "speaker": "Tess", "text": "Most of it. Twenty-five minutes down to under ten. The first article sign-off was the rest, and we got to that later." }
+    ],
+    "transcript_url": "",
+    "book_title": "Want to run the changeover log on your lines?",
+    "book_text": "Marcus can set up the log with your line leads in 20 minutes, on the lines you pick.",
+    "book_label": "Book 20 minutes with Marcus",
+    "start_at": 730,
+    "takeaways": [
+      {
+        "title": "Count the waiting, not only the work",
+        "body": "Cleaning, setup and checks took most of the time, but waiting for tools or approvals took more than people expected. A log shows it per line.",
+        "at": 270
+      },
+      {
+        "title": "Stage a tool kit at each line",
+        "body": "One plant took its busiest line from 25 minutes to under 10 by staging the kit before the last job ended. Tallgrass has a sixth line to set up this way.",
+        "at": 730
+      },
+      {
+        "title": "Let the operator sign off the first article",
+        "body": "Moving first-article sign-off to the operator, with a photo standard, removed the longest wait in the study.",
+        "at": 1305
+      }
+    ]
+  }
+}

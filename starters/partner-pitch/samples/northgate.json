@@ -1,0 +1,117 @@
+{
+  "account": {
+    "name": "Northgate Cloud",
+    "domain": "northgate.example",
+    "industry": "it services and it consulting",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Northgate Cloud runs managed Kubernetes and hosting for software companies in Europe and North America. About 260 people, headquartered in Amsterdam, with data centers in the Netherlands, Germany and Virginia.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Tobias",
+    "last_name": "Lindqvist",
+    "title": "VP Alliances"
+  },
+  "sender": {
+    "name": "Amara Odum",
+    "title": "Director of Partnerships",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Kestrel Compliance",
+    "logo_url": null,
+    "colors": { "primary": "#1c1f3a", "secondary": "#b08d57" },
+    "fonts": { "heading": "Playfair Display", "body": "Source Sans 3" }
+  },
+  "data": {
+    "knowledge": [
+      {
+        "citationId": "k-offer-1",
+        "kind": "offer",
+        "title": "What Kestrel sells",
+        "text": "Kestrel gets B2B software companies with 30 to 400 people through SOC 2 and ISO 27001 and keeps them there. We connect to the cloud account, the identity provider and the ticketing tool, collect evidence automatically, and assign a named compliance lead who runs the audit with the customer. Subscription per year, with the audit firm paid separately."
+      },
+      {
+        "citationId": "k-file-2",
+        "kind": "org_file",
+        "title": "Customer profile, 2026",
+        "text": "About 240 customers, mostly software companies with 30 to 400 people in the UK, the Netherlands, Germany and the US. The buyer is the CTO or the head of engineering, and in larger companies the head of security. Most come to us when a first enterprise prospect sends a security questionnaire, or a hosting provider asks for a SOC 2 report before renewing. Almost all run on a managed cloud or Kubernetes provider, not on their own servers."
+      },
+      {
+        "citationId": "k-claim-3",
+        "kind": "claim",
+        "title": "Proof we may use",
+        "text": "Our evidence collection covers the cloud account, the identity provider and the ticketing tool without an agent on the servers. Customers who start with a clean cloud setup reach the audit in four months on average, measured across customers who signed in 2025."
+      }
+    ],
+    "site": {
+      "url": "https://northgate.example",
+      "title": "Northgate Cloud, managed Kubernetes for software companies",
+      "description": "Managed Kubernetes, hosting and 24/7 operations for software companies that would rather build product than run clusters.",
+      "markdown": "# Managed Kubernetes for software companies\n\nNorthgate runs the clusters, the upgrades, the backups and the on-call so your engineers ship product. Data centers in Amsterdam, Frankfurt and Ashburn.\n\n## Who runs on Northgate\n\nMore than 400 software companies, from a team of ten to a few hundred engineers. Most are B2B SaaS companies selling to enterprises in Europe and North America.\n\n## Security and compliance\n\nISO 27001 certified data centers. Single sign-on, audit logs and a shared responsibility matrix for your own audits. Many customers use the matrix in their SOC 2 and ISO 27001 work.\n\n## Partners\n\nWe work with monitoring, backup and security vendors. Ask about the alliances program."
+    },
+    "partner_customers": "You sell to software companies with ten to a few hundred engineers, mostly B2B SaaS businesses selling to enterprises in Europe and North America. Your service runs their Kubernetes clusters, upgrades, backups and on-call so their engineers can ship product.",
+    "partner_offer": "Managed Kubernetes, hosting and round-the-clock operations for software companies, from data centers in Amsterdam, Frankfurt and Ashburn.",
+    "search": {
+      "industries": ["software development"],
+      "employeeRanges": ["11-50", "51-200", "201-500"]
+    },
+    "candidates": [
+      { "name": "Fenwick Analytics", "domain": "fenwickanalytics.example", "industry": "software development", "size": "51-200", "employee_count": 85, "hq": "London, United Kingdom", "country": "United Kingdom", "description": "B2B analytics software for insurance companies, selling to carriers in the UK and Germany.", "founded": 2017 },
+      { "name": "Tidewell Health Software", "domain": "tidewell.example", "industry": "software development", "size": "51-200", "employee_count": 140, "hq": "Utrecht, Netherlands", "country": "Netherlands", "description": "Scheduling and records software for private clinics, with hospital groups as its newest customers.", "founded": 2015 },
+      { "name": "Bramble Logistics Software", "domain": "bramblelogistics.example", "industry": "software development", "size": "11-50", "employee_count": 40, "hq": "Hamburg, Germany", "country": "Germany", "description": "Dispatch software for freight forwarders, moving upmarket to companies with more than 500 trucks.", "founded": 2019 },
+      { "name": "Larkspur Procurement", "domain": "larkspur.example", "industry": "software development", "size": "201-500", "employee_count": 230, "hq": "Boston, Massachusetts", "country": "United States", "description": "Procurement software for mid-size manufacturers, sold to CFOs in the US and Canada.", "founded": 2012 },
+      { "name": "Quillon Legal Tech", "domain": "quillon.example", "industry": "software development", "size": "51-200", "employee_count": 70, "hq": "Dublin, Ireland", "country": "Ireland", "description": "Contract review software for in-house legal teams at companies with more than 1,000 employees.", "founded": 2018 },
+      { "name": "Orrin Fleet Systems", "domain": "orrinfleet.example", "industry": "software development", "size": "11-50", "employee_count": 30, "hq": "Austin, Texas", "country": "United States", "description": "Telematics software for municipal fleets, selling to city governments.", "founded": 2020 },
+      { "name": "Saffron Payroll Software", "domain": "saffronpayroll.example", "industry": "software development", "size": "201-500", "employee_count": 310, "hq": "Manchester, United Kingdom", "country": "United Kingdom", "description": "Payroll software for UK accounting firms, now piloting with enterprise employers.", "founded": 2010 }
+    ],
+    "examples": [
+      { "name": "Fenwick Analytics", "industry": "software development", "size": "51-200", "hq": "London, United Kingdom", "why": "Sells analytics to insurance carriers in the UK and Germany, the kind of buyer that sends a security questionnaire." },
+      { "name": "Tidewell Health Software", "industry": "software development", "size": "51-200", "hq": "Utrecht, Netherlands", "why": "Clinic software now selling to hospital groups, with 140 people in the Netherlands." },
+      { "name": "Larkspur Procurement", "industry": "software development", "size": "201-500", "hq": "Boston, Massachusetts", "why": "Procurement software sold to CFOs at mid-size manufacturers in the US and Canada." },
+      { "name": "Quillon Legal Tech", "industry": "software development", "size": "51-200", "hq": "Dublin, Ireland", "why": "Sells to in-house legal teams at companies with more than 1,000 employees, the enterprise end of both our lists." }
+    ],
+    "headline": "Your customers get a SOC 2 questionnaire the year they land their first enterprise deal",
+    "summary": "We both sell to B2B software companies with 30 to 400 people that sell to enterprises. You run their clusters. We get them through SOC 2 and ISO 27001, and the first thing an auditor asks about is the hosting. This page is my case for handling that moment together.",
+    "our_customers": "B2B software companies with 30 to 400 people in the UK, the Netherlands, Germany and the US. The buyer is the CTO or the head of engineering. They come to us when a first enterprise prospect sends a security questionnaire, or a hosting provider asks for a SOC 2 report, and almost all of them already run on a managed cloud or Kubernetes provider.",
+    "our_offer": "SOC 2 and ISO 27001 readiness for software companies: evidence collected from the cloud account, the identity provider and the ticketing tool, with a named compliance lead who runs the audit.",
+    "overlap": {
+      "name": "B2B software companies with 30 to 400 people selling to enterprises",
+      "points": [
+        "The same buyer: the CTO or head of engineering who chose Northgate is the one who gets the security questionnaire.",
+        "The same trigger: a first enterprise deal, which asks for a SOC 2 report and for proof of where the software runs.",
+        "The same artifact: your shared responsibility matrix is the evidence our customers need for the hosting controls.",
+        "The same markets: Europe and North America, with ISO 27001 as the standard on one side of the Atlantic and SOC 2 on the other."
+      ]
+    },
+    "offer": {
+      "name": "A compliance path for every Northgate customer",
+      "summary": "Software companies on Northgate get SOC 2 or ISO 27001 readiness with the hosting controls already covered by your matrix and your certified data centers. You offer it when a customer asks for a SOC 2 report at renewal. We offer Northgate to customers whose hosting cannot pass an audit.",
+      "you_bring": [
+        "ISO 27001 certified data centers and a shared responsibility matrix our customers can cite as evidence",
+        "An alliances program and the renewal conversation where a customer first asks about SOC 2",
+        "More than 400 software companies on your platform, most of them selling to enterprises"
+      ],
+      "we_bring": [
+        "Evidence collection from the cloud account, the identity provider and the ticketing tool, with no agent on your clusters",
+        "A named compliance lead who runs the audit with the customer",
+        "A hosting control set mapped to your matrix once, so every shared customer starts with it filled in"
+      ],
+      "customer_gets": "An audit where the hosting controls are answered on day one, by the two companies that run the cluster and collect the evidence, instead of by the customer's own engineers.",
+      "steps": [
+        { "title": "Map the matrix to our controls", "detail": "We map your shared responsibility matrix to the SOC 2 and ISO 27001 hosting controls once. Every shared customer inherits it." },
+        { "title": "Add a line to your renewal checklist", "detail": "When a customer asks for a SOC 2 report or an ISO certificate, your account manager introduces us. We do the same for hosting." },
+        { "title": "Run the first three audits together", "detail": "We take three shared customers through the audit and note what the auditor still asked about hosting." },
+        { "title": "Decide on a bundle", "detail": "After the three audits we decide whether to sell it as one package or keep it as a referral." }
+      ]
+    },
+    "first_step": {
+      "title": "A 30 minute call with your alliances lead",
+      "detail": "We walk through your shared responsibility matrix next to our hosting control list and count how many controls it already answers. You leave with that count. I leave knowing whether the mapping is a week of work or a month.",
+      "ask": "Send the current matrix before the call, and tell me who owns renewals on your side."
+    }
+  }
+}

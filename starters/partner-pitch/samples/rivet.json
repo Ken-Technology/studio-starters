@@ -1,0 +1,58 @@
+{
+  "account": {
+    "name": "Rivet Safety",
+    "domain": "rivetsafety.example",
+    "industry": "professional training and coaching",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Rivet Safety sells protective equipment and runs safety training for small and mid-size manufacturers in Ohio, Pennsylvania and Michigan. About 30 people in Toledo.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Lena",
+    "last_name": "Hoffmann",
+    "title": "Co-founder"
+  },
+  "sender": {
+    "name": "Hal Brennan",
+    "title": "Partnerships",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Oakline Benefits",
+    "logo_url": null,
+    "colors": { "primary": "#355070", "secondary": "#9a8c98" },
+    "fonts": null
+  },
+  "data": {
+    "knowledge": [],
+    "site": {
+      "url": "https://rivetsafety.example",
+      "title": "Rivet Safety, protective equipment and safety training for manufacturers",
+      "description": "PPE supply and on-site safety training for manufacturers with 50 to 500 employees in Ohio, Pennsylvania and Michigan.",
+      "markdown": "# Safety gear and training for the plant floor\n\nRivet supplies gloves, eye protection, hearing protection and fall gear on a monthly schedule, and runs OSHA training on site.\n\n## Who we serve\n\nManufacturers with 50 to 500 employees in Ohio, Pennsylvania and Michigan: metal fabrication, plastics, food processing and packaging plants.\n\n## Training\n\nForklift, lockout tagout, hazard communication and confined space, delivered at your plant by our trainers.\n\n## Work with us\n\nWe partner with insurance brokers, staffing firms and equipment dealers that serve the same plants."
+    },
+    "partner_customers": "You sell to manufacturers with 50 to 500 employees in Ohio, Pennsylvania and Michigan: metal fabrication, plastics, food processing and packaging plants. Your monthly PPE supply and on-site OSHA training keep their plant floors equipped and their training records current.",
+    "partner_offer": "Protective equipment delivered on a monthly schedule, and OSHA safety training run on site at the plant.",
+    "search": {
+      "industries": ["manufacturing", "plastics manufacturing", "food and beverage manufacturing", "packaging and containers manufacturing"],
+      "employeeRanges": ["51-200", "201-500"]
+    },
+    "candidates": [
+      { "name": "Maumee Metal Works", "domain": "maumeemetal.example", "industry": "fabricated metal products", "size": "51-200", "employee_count": 140, "hq": "Toledo, Ohio", "country": "United States", "description": "Contract metal fabrication and powder coating for truck and trailer makers in the Midwest.", "founded": 1987 },
+      { "name": "Keystone Plastics Molding", "domain": "keystoneplastics.example", "industry": "plastics manufacturing", "size": "201-500", "employee_count": 220, "hq": "Erie, Pennsylvania", "country": "United States", "description": "Injection molding for appliance and automotive parts, running three shifts.", "founded": 1995 },
+      { "name": "Lakeside Packaging Co", "domain": "lakesidepackaging.example", "industry": "packaging and containers manufacturing", "size": "51-200", "employee_count": 180, "hq": "Grand Rapids, Michigan", "country": "United States", "description": "Corrugated boxes and displays for food and consumer goods brands in the Great Lakes region.", "founded": 1979 },
+      { "name": "Allegheny Foods", "domain": "alleghenyfoods.example", "industry": "food and beverage manufacturing", "size": "201-500", "employee_count": 310, "hq": "Pittsburgh, Pennsylvania", "country": "United States", "description": "Frozen and refrigerated prepared meals for grocery chains in the Northeast and Midwest.", "founded": 2001 },
+      { "name": "Huron Valley Stamping", "domain": "huronvalleystamping.example", "industry": "fabricated metal products", "size": "51-200", "employee_count": 95, "hq": "Ann Arbor, Michigan", "country": "United States", "description": "Metal stamping and assembly for automotive suppliers in southeast Michigan.", "founded": 1992 },
+      { "name": "Cuyahoga Wire and Cable", "domain": "cuyahogawire.example", "industry": "manufacturing", "size": "201-500", "employee_count": 260, "hq": "Cleveland, Ohio", "country": "United States", "description": "Industrial wire and cable for construction and energy customers, made in two Ohio plants.", "founded": 1968 }
+    ],
+    "examples": [
+      { "name": "Maumee Metal Works", "industry": "fabricated metal products", "size": "51-200", "hq": "Toledo, Ohio", "why": "Contract fabrication and powder coating with 140 people in Toledo, in your home city and your size range." },
+      { "name": "Keystone Plastics Molding", "industry": "plastics manufacturing", "size": "201-500", "hq": "Erie, Pennsylvania", "why": "Injection molding on three shifts, so PPE and training have to reach every shift." },
+      { "name": "Lakeside Packaging Co", "industry": "packaging and containers manufacturing", "size": "51-200", "hq": "Grand Rapids, Michigan", "why": "A packaging plant with 180 people in Michigan, one of the four plant types you name." },
+      { "name": "Huron Valley Stamping", "industry": "fabricated metal products", "size": "51-200", "hq": "Ann Arbor, Michigan", "why": "Stamping and assembly for automotive suppliers, with 95 people on the floor." }
+    ]
+  }
+}

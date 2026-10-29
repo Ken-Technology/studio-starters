@@ -1,0 +1,153 @@
+{
+  "account": {
+    "name": "Fernhill Software",
+    "domain": "fernhill.example",
+    "industry": "software development",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Fernhill Software makes scheduling and dispatch software for home services companies. About 90 people, most of them in Raleigh. Its security page lists single sign-on, encryption at rest and in transit, and a 99.9% uptime commitment. It sells to multi-location operators that send a security questionnaire before they buy.",
+      "why_now": "Posted a job for a security engineer two weeks ago, the first security role on its careers page.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Maren",
+    "last_name": "Holt",
+    "title": "VP of Engineering"
+  },
+  "sender": {
+    "name": "Jonas Reinholt",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Keelstone",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "topic": "SOC 2",
+    "checklist": [
+      {
+        "label": "A named owner for security and the audit",
+        "detail": "One person is accountable for SOC 2 end to end, with time set aside for it. Not a side task for whoever is free.",
+        "first_step": "Name the owner this week and put the audit on their goals, even if a security hire takes it over later."
+      },
+      {
+        "label": "Single sign-on across the tools that hold customer data",
+        "detail": "Every tool with customer data is behind your identity provider, so leaving the company means losing access everywhere at once.",
+        "first_step": "List the tools that hold customer data and mark the ones people still log into with a password."
+      },
+      {
+        "label": "Encryption at rest and in transit, written down",
+        "detail": "Data is encrypted in the database, in backups and on the wire, and a one page document says how and where.",
+        "first_step": "Check the backups. They are the place encryption is most often missing."
+      },
+      {
+        "label": "Access reviews every quarter",
+        "detail": "Someone checks who has access to production and customer data every quarter and removes what is no longer needed.",
+        "first_step": "Export the user list from your identity provider and your cloud console, and review it with each team lead once."
+      },
+      {
+        "label": "Written policies people have read",
+        "detail": "Security, access, incident response and vendor policies exist, are dated, and every employee has acknowledged them.",
+        "first_step": "Start with the five policies auditors ask for first and have everyone acknowledge them in your HR tool."
+      },
+      {
+        "label": "The same onboarding steps for every new hire",
+        "detail": "New employees go through the same steps every time: background check, policy sign-off, device setup and access requests.",
+        "first_step": "Write the onboarding checklist as it happens today, then add the steps that are missing."
+      },
+      {
+        "label": "Laptops managed centrally",
+        "detail": "Every laptop has disk encryption, screen lock and updates enforced by a device management tool, not by asking nicely.",
+        "first_step": "Count the laptops that are not enrolled anywhere. That number is your first project."
+      },
+      {
+        "label": "A vendor list with a risk rating",
+        "detail": "Every service that touches customer data is listed, with an owner, what it holds and the last time it was reviewed.",
+        "first_step": "Pull the list of subscriptions from your finance tool, then mark which vendors can see customer data."
+      },
+      {
+        "label": "An incident response plan that has been tested",
+        "detail": "A written plan says who does what in the first hour, and the team has walked through it at least once.",
+        "first_step": "Run a one hour tabletop on a leaked API key and write down what was unclear."
+      },
+      {
+        "label": "Uptime and monitoring commitments you can show",
+        "detail": "Monitoring, alerting and an uptime commitment exist, and you can show the history when a customer asks.",
+        "first_step": "Put a status page in front of the monitoring you already have, so the history builds from today."
+      }
+    ],
+    "items": [
+      {
+        "label": "A named owner for security and the audit",
+        "detail": "One person is accountable for SOC 2 end to end, with time set aside for it. Not a side task for whoever is free.",
+        "first_step": "Name the owner this week and put the audit on their goals, even if a security hire takes it over later.",
+        "done": false,
+        "note": "Seen: the security engineer role you posted two weeks ago is the natural owner, once it is filled."
+      },
+      {
+        "label": "Single sign-on across the tools that hold customer data",
+        "detail": "Every tool with customer data is behind your identity provider, so leaving the company means losing access everywhere at once.",
+        "first_step": "List the tools that hold customer data and mark the ones people still log into with a password.",
+        "done": true,
+        "note": "Seen: your security page lists single sign-on."
+      },
+      {
+        "label": "Encryption at rest and in transit, written down",
+        "detail": "Data is encrypted in the database, in backups and on the wire, and a one page document says how and where.",
+        "first_step": "Check the backups. They are the place encryption is most often missing.",
+        "done": true,
+        "note": "Seen: your security page says data is encrypted at rest and in transit."
+      },
+      {
+        "label": "Access reviews every quarter",
+        "detail": "Someone checks who has access to production and customer data every quarter and removes what is no longer needed.",
+        "first_step": "Export the user list from your identity provider and your cloud console, and review it with each team lead once.",
+        "done": false
+      },
+      {
+        "label": "Written policies people have read",
+        "detail": "Security, access, incident response and vendor policies exist, are dated, and every employee has acknowledged them.",
+        "first_step": "Start with the five policies auditors ask for first and have everyone acknowledge them in your HR tool.",
+        "done": false
+      },
+      {
+        "label": "The same onboarding steps for every new hire",
+        "detail": "New employees go through the same steps every time: background check, policy sign-off, device setup and access requests.",
+        "first_step": "Write the onboarding checklist as it happens today, then add the steps that are missing.",
+        "done": false
+      },
+      {
+        "label": "Laptops managed centrally",
+        "detail": "Every laptop has disk encryption, screen lock and updates enforced by a device management tool, not by asking nicely.",
+        "first_step": "Count the laptops that are not enrolled anywhere. That number is your first project.",
+        "done": false
+      },
+      {
+        "label": "A vendor list with a risk rating",
+        "detail": "Every service that touches customer data is listed, with an owner, what it holds and the last time it was reviewed.",
+        "first_step": "Pull the list of subscriptions from your finance tool, then mark which vendors can see customer data.",
+        "done": false
+      },
+      {
+        "label": "An incident response plan that has been tested",
+        "detail": "A written plan says who does what in the first hour, and the team has walked through it at least once.",
+        "first_step": "Run a one hour tabletop on a leaked API key and write down what was unclear.",
+        "done": false
+      },
+      {
+        "label": "Uptime and monitoring commitments you can show",
+        "detail": "Monitoring, alerting and an uptime commitment exist, and you can show the history when a customer asks.",
+        "first_step": "Put a status page in front of the monitoring you already have, so the history builds from today.",
+        "done": true,
+        "note": "Seen: your security page commits to 99.9% uptime."
+      }
+    ],
+    "headline": "Where Fernhill stands on SOC 2 before the first audit",
+    "intro": "Your buyers already send security questionnaires, and the security engineer you are hiring will inherit whatever is in place on day one. This list is the ten things an auditor looks at first. We ticked three from your security page. Tick the rest as they stand today.",
+    "closing": "If you want a second pair of eyes on the gaps, book 20 minutes and we will go through them in the order above, starting with who owns the audit."
+  }
+}

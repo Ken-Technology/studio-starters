@@ -1,0 +1,43 @@
+{
+  "account": {
+    "name": "Oakhill Dental Partners",
+    "domain": "oakhilldental.example",
+    "industry": "medical practices",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Oakhill Dental Partners is a dental support organization with 23 practices across North Carolina and Virginia. Each practice runs its own scheduling and billing setup, and the site says the group is standardizing operations after acquiring six practices in 2025.",
+      "why_now": "Named a new VP of Operations in September."
+    }
+  },
+  "person": { "first_name": "Marcus", "last_name": "Oyelaran", "title": "VP of Operations" },
+  "sender": { "name": "Hannah Weiss", "title": "Partnerships Lead", "signature_html": null },
+  "brand": {
+    "name": "Clearwater Practice Systems",
+    "logo_url": null,
+    "colors": { "primary": "#1b2a41", "secondary": "#b8862b" },
+    "fonts": { "heading": "Lora", "body": "Source Sans 3" }
+  },
+  "data": {
+    "dossier": "Oakhill Dental Partners is a dental support organization with 23 practices across North Carolina and Virginia. Each practice runs its own scheduling and billing setup, and the site says the group is standardizing operations after acquiring six practices in 2025.",
+    "offer": "Clearwater Practice Systems is practice management software for dental groups: scheduling, billing, insurance claims and reporting across every location.",
+    "title": "14 checks before you move 23 practices to one system",
+    "intro": "For the operations and revenue cycle leads at Oakhill Dental Partners who will run the move to a single practice management system. It covers patient records, insurance, the people at each practice and the order to move them in.",
+    "checks": [
+      { "title": "Count the active patient records at each practice before you start", "why": "The number you migrate is the number you reconcile, and every practice counts differently." },
+      { "title": "List which clinical systems stay, including imaging and charting", "why": "A move that breaks the imaging link stops the clinic, not just the front desk." },
+      { "title": "Confirm the new system holds every insurance plan each practice bills", "why": "A plan that does not map cleanly becomes a pile of rejected claims in the first month." },
+      { "title": "Decide on one fee schedule and one procedure code list for the group", "why": "Importing 23 versions of the same list means 23 ways to bill the same filling." },
+      { "title": "Pick the first two practices to move and write down why they go first", "why": "The first move sets the playbook, and a practice with a steady team teaches more than a struggling one." },
+      { "title": "Close out open claims older than 90 days before each migration", "why": "Old claims that move with the data are the ones nobody follows up on afterwards." },
+      { "title": "Agree how the recall and hygiene schedule carries over", "why": "A lost recall list is six months of missed appointments that nobody notices at once." },
+      { "title": "Name a lead at every practice who signs off on their migrated data", "why": "Without a local owner, errors are found by patients at the front desk." },
+      { "title": "Test online booking and reminders with a live appointment before go-live", "why": "Reminders that stop for a week fill the schedule with no-shows." },
+      { "title": "Set the reports the group needs on day one, by practice and in total", "why": "If the reports are built later, the first quarter on the new system has no baseline." },
+      { "title": "Plan each cutover for a short week and a light schedule", "why": "A switch on the busiest Monday of the month costs the practice its best day." },
+      { "title": "Train front desk and billing staff on cases from their own practice", "why": "Generic training does not cover the plan quirks each office deals with daily." },
+      { "title": "Keep read access to each old system until its last claim is paid", "why": "Payments and appeals reference charts and claims that only exist in the old system." },
+      { "title": "Hold a 30 day review with each practice after its move", "why": "Problems that are small at week one are habits by month three." }
+    ],
+    "closing": "If you want a second pair of eyes on the order of practices or the claims cutoff, reply to my email and I will share what I have seen go wrong at that step."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "account": {
+    "name": "Kestrel Freight Lines",
+    "domain": "kestrelfreight.example",
+    "industry": "transportation, logistics, supply chain and storage",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Kestrel Freight Lines is a regional truckload and LTL carrier running about 180 trucks out of three terminals in Ohio and Indiana. Dispatch and billing run on a system the company installed in 2016, and the site says drivers still call in status updates. It added a brokerage arm last year.",
+      "why_now": "Posted a job for an operations systems lead in October."
+    }
+  },
+  "person": { "first_name": "Priya", "last_name": "Natarajan", "title": "Director of Operations" },
+  "sender": { "name": "Elena Marsh", "title": "Account Executive", "signature_html": null },
+  "brand": { "name": "Loadline", "logo_url": null, "colors": null, "fonts": null },
+  "data": {
+    "dossier": "Kestrel Freight Lines is a regional truckload and LTL carrier running about 180 trucks out of three terminals in Ohio and Indiana. Dispatch and billing run on a system the company installed in 2016, and the site says drivers still call in status updates. It added a brokerage arm last year.",
+    "offer": "Loadline is a transportation management system for regional carriers: dispatch, a driver app, billing and customer tracking in one place.",
+    "title": "12 checks before you switch freight software",
+    "intro": "For the operations and dispatch leads at Kestrel Freight Lines who will own the move off the 2016 system. It covers the data you keep, the connections you need, the people who sign off, and the first weeks after the switch.",
+    "checks": [
+      { "title": "Export a full year of loads, rates and invoices from the current system", "why": "Once the old contract ends, the history behind every rate dispute and audit goes with it." },
+      { "title": "List every spreadsheet dispatch uses alongside the system", "why": "Each one is a step the new setup has to cover, or it comes back within a month." },
+      { "title": "Write down how a load moves from order to invoice today, step by step", "why": "A vendor can only match a process you can describe, and the gaps show up here first." },
+      { "title": "Ask the top ten customers how they want status updates", "why": "Tracking links, EDI and emailed updates are set up differently, and changing later means a second rollout." },
+      { "title": "Confirm which customers and brokers need EDI or API connections", "why": "A missing connection on day one means loads keyed in by hand on both sides." },
+      { "title": "Check the ELD and fuel card providers have a supported connection", "why": "Without it, hours of service and fuel data have to be entered again for every driver." },
+      { "title": "Define a clean customer and lane record before the import", "why": "Duplicate customers and lanes imported as they are stay messy in the new system for years." },
+      { "title": "Name one owner each for dispatch, billing and driver setup", "why": "When nobody owns a piece, it is the piece that is still half done at go-live." },
+      { "title": "Run two weeks of live loads in the new system alongside the old one", "why": "Parallel running is the only way to find a billing gap before a customer does." },
+      { "title": "Train drivers on the new app before the switch, not after", "why": "A driver who meets the app for the first time at a loading dock calls dispatch instead." },
+      { "title": "Agree the cutover date with billing, not just dispatch", "why": "A switch mid-cycle leaves invoices split across two systems at month end." },
+      { "title": "Keep read access to the old system for at least six months", "why": "Audits, claims and rate questions keep coming after the switch, and they reference old loads." }
+    ],
+    "closing": "If any of these is still open at Kestrel, reply to my email with the one you are least sure about and I will send what I know on it."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "description": "An ROI worksheet with live sliders. Ken fills in team size, hours, hourly cost and tool spend per account, then shows savings, payback and a 3-year chart.",
+  "category": "deal",
+  "tags": [
+    "roi",
+    "calculator",
+    "business case",
+    "payback"
+  ],
+  "featured": true,
+  "needs": [
+    "knowledge"
+  ],
+  "version": "1.0.0",
+  "updatedAt": "2026-10-29",
+  "samples": [
+    {
+      "id": "brightwave-logistics",
+      "label": "Brightwave Logistics"
+    },
+    {
+      "id": "cedar-valley-dental",
+      "label": "Cedar Valley Dental Group"
+    },
+    {
+      "id": "tallis-shared",
+      "label": "Tallis Staffing, shared link (no person)"
+    },
+    {
+      "id": "oakfield-no-offer",
+      "label": "Oakfield Insurance Brokers, no offer in Knowledge"
+    }
+  ]
+}

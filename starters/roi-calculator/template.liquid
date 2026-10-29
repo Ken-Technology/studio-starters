@@ -1,0 +1,461 @@
+{%- comment -%}
+Brand: only brand.colors.primary and .secondary, brand.fonts.heading and .body, brand.name and brand.logo_url, each with a default.
+The first screen is computed here in Liquid so the page reads right with JavaScript off. The Alpine CSP build then takes over: the
+same maths runs as x-effect lines on the x-data object (the CSP build cannot define getters in a literal), so every number,
+bar and the payback marker follows the sliders.
+{%- endcomment -%}
+{%- assign accent = brand.colors.primary | default: '#2a4bd7' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#0e1530' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+{%- assign head_q = font_head | replace: ' ', '+' -%}
+{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign brand_name = brand.name | default: '' -%}
+{%- assign work = data.work_name | default: 'work' -%}
+{%- assign sender_first = sender.name | default: '' | split: ' ' | first -%}
+
+{%- comment %} Inputs, and the assumptions that come from the offer in Knowledge {%- endcomment -%}
+{%- assign team = data.team_size | default: 0 -%}
+{%- assign hours = data.hours_per_week | default: 0 -%}
+{%- assign rate = data.hourly_cost | default: 0 -%}
+{%- assign tools = data.tool_spend | default: 0 -%}
+{%- assign seat = data.offer.seat_price | default: 0 -%}
+{%- assign setup = data.offer.setup_fee | default: 0 -%}
+{%- assign share = data.offer.recovered_share | default: 40 -%}
+{%- assign tshare = data.offer.tool_replaced_share | default: 50 -%}
+{%- assign ramp = data.offer.ramp_months | default: 6 | at_least: 1 | at_most: 9 -%}
+{%- assign weeks = 48 -%}
+{%- assign has_price = false -%}
+{%- if seat > 0 -%}{%- assign has_price = true -%}{%- endif -%}
+
+{%- comment %} Slider ranges {%- endcomment -%}
+{%- assign team_max = team | times: 4 | at_least: 100 -%}
+{%- assign hours_max = hours | times: 3 | at_least: 30 -%}
+{%- assign rate_max = rate | times: 3 | at_least: 120 -%}
+{%- assign tools_max = tools | times: 4 | at_least: 10000 -%}
+{%- assign team_max_span = team_max | minus: 1 -%}
+{%- assign hours_max_span = hours_max | minus: 1 -%}
+{%- assign rate_max_span = rate_max | minus: 10 -%}
+{%- assign team_pct = team | minus: 1 | times: 100.0 | divided_by: team_max_span | round: 1 -%}
+{%- assign hours_pct = hours | minus: 1 | times: 100.0 | divided_by: hours_max_span | round: 1 -%}
+{%- assign rate_pct = rate | minus: 10 | times: 100.0 | divided_by: rate_max_span | round: 1 -%}
+{%- assign tools_pct = tools | times: 100.0 | divided_by: tools_max | round: 1 -%}
+
+{%- comment %} The model {%- endcomment -%}
+{%- assign manual = team | times: hours | times: weeks | times: rate -%}
+{%- assign labor = manual | times: share | divided_by: 100.0 -%}
+{%- assign tool_save = tools | times: 12 | times: tshare | divided_by: 100.0 -%}
+{%- assign platform = team | times: seat | times: 12 -%}
+{%- assign gross = labor | plus: tool_save -%}
+{%- assign net = gross | minus: platform -%}
+{%- assign hours_back = team | times: hours | times: weeks | times: share | divided_by: 100.0 -%}
+{%- assign g = gross | divided_by: 12.0 -%}
+{%- assign c = platform | divided_by: 12.0 -%}
+{%- assign ramp_f = ramp | times: 1.0 -%}
+{%- assign cum = 0 | minus: setup -%}
+{%- assign gross_total = 0 -%}
+{%- assign pb = 1 -%}
+{%- assign qlist = '' -%}
+{%- for m in (1..36) -%}
+  {%- if m <= ramp -%}{%- assign f = m | divided_by: ramp_f -%}{%- else -%}{%- assign f = 1 -%}{%- endif -%}
+  {%- assign inc = g | times: f -%}
+  {%- assign gross_total = gross_total | plus: inc -%}
+  {%- assign cum = cum | plus: inc | minus: c -%}
+  {%- if cum < 0 -%}{%- assign pb = pb | plus: 1 -%}{%- endif -%}
+  {%- assign mm = m | modulo: 3 -%}
+  {%- if mm == 0 -%}{%- assign qlist = qlist | append: cum | append: '|' -%}{%- endif -%}
+{%- endfor -%}
+{%- assign three = cum -%}
+{%- assign cost_total = c | times: 36 | plus: setup -%}
+{%- assign mult = 0 -%}
+{%- if cost_total > 0 -%}{%- assign mult = gross_total | divided_by: cost_total -%}{%- endif -%}
+{%- assign mult10 = mult | times: 10 | round -%}
+{%- assign mult_w = mult10 | divided_by: 10.0 | floor -%}
+{%- assign mult_f = mult10 | modulo: 10 -%}
+{%- if pb > 36 -%}{%- assign pb_text = 'Over 3 years' -%}{%- elsif pb == 1 -%}{%- assign pb_text = '1 month' -%}{%- else -%}{%- assign pb_text = pb | append: ' months' -%}{%- endif -%}
+
+{%- comment %} Thousands separators: one pass over every figure the page prints. m = dollars, n = a plain count {%- endcomment -%}
+{%- capture raw_list -%}
+m{{ manual | round }}|m{{ labor | round }}|m{{ tool_save | round }}|m{{ platform | round }}|m{{ net | round }}|m{{ three | round }}|n{{ hours_back | round }}|m{{ seat }}|m{{ setup }}
+{%- endcapture -%}
+{%- assign raw_items = raw_list | split: '|' -%}
+{%- assign fm_out = '' -%}
+{%- for r in raw_items -%}
+  {%- assign kind = r | slice: 0, 1 -%}
+  {%- assign num = r | slice: 1, 24 -%}
+  {%- assign neg = '' -%}
+  {%- if num contains '-' -%}{%- assign neg = '-' -%}{%- assign num = num | remove: '-' -%}{%- endif -%}
+  {%- assign len = num | size -%}
+  {%- assign head = len | modulo: 3 -%}
+  {%- if head == 0 -%}{%- assign head = 3 -%}{%- endif -%}
+  {%- assign out = num | slice: 0, head -%}
+  {%- for p in (1..4) -%}
+    {%- assign pos = p | times: 3 | plus: head | minus: 3 -%}
+    {%- if pos < len -%}{%- assign grp = num | slice: pos, 3 -%}{%- assign out = out | append: ',' | append: grp -%}{%- endif -%}
+  {%- endfor -%}
+  {%- if kind == 'm' -%}{%- assign out = '$' | append: out -%}{%- endif -%}
+  {%- assign fm_out = fm_out | append: neg | append: out | append: '|' -%}
+{%- endfor -%}
+{%- assign fm = fm_out | split: '|' -%}
+
+{%- comment %} Chart geometry, viewBox 600 x 230 {%- endcomment -%}
+{%- assign qs = qlist | split: '|' -%}
+{%- assign v3 = qs[0] | plus: 0 -%}
+{%- assign v6 = qs[1] | plus: 0 -%}
+{%- assign v9 = qs[2] | plus: 0 -%}
+{%- assign v36 = qs[11] | plus: 0 -%}
+{%- assign hi = v3 | at_least: v36 | at_least: 1 -%}
+{%- assign lo = v3 | at_most: v6 | at_most: v9 | at_most: v36 | at_most: 0 -%}
+{%- assign span = hi | minus: lo -%}
+{%- assign k = 154.0 | divided_by: span -%}
+{%- assign base = hi | times: k | plus: 34 -%}
+{%- assign step = 584 | divided_by: 12.0 -%}
+{%- assign step3 = step | divided_by: 3.0 -%}
+{%- assign gap = step | times: 0.22 -%}
+{%- assign bw = step | minus: gap -%}
+{%- assign pb_x = step3 | times: pb | plus: 8 -%}
+
+{%- capture xdata -%}
+{ team: {{ team }}, hours: {{ hours }}, rate: {{ rate }}, tools: {{ tools }}, seat: {{ seat }}, setup: {{ setup }}, share: {{ share }}, toolShare: {{ tshare }}, ramp: {{ ramp }}, weeks: {{ weeks }}, manual: 0, labor: 0, toolSave: 0, platform: 0, gross: 0, net: 0, hoursBack: 0
+{%- if has_price -%}
+, g: 0, c: 0, pb: 0, three: 0, mult: 0, hi1: 0, hi: 0, lo1: 0, lo2: 0, lo3: 0, lo: 0, k: 0, base: 0
+{%- for m in (1..36) -%}, z{{ m }}: 0{%- endfor -%}
+{%- endif -%}
+ }
+{%- endcapture -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>What manual {{ work | escape }} costs {{ account.name | escape }} each year</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600;700&display=swap">
+<style>
+:root{
+  --p:{{ accent }};
+  --s:{{ accent2 }};
+  --fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;
+  --fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;
+  --ink:var(--s);
+  --text:color-mix(in srgb,var(--s) 84%,#fff);
+  --mute:color-mix(in srgb,var(--s) 54%,#fff);
+  --line:color-mix(in srgb,var(--s) 13%,#fff);
+  --hair:color-mix(in srgb,var(--s) 8%,#fff);
+  --wash:color-mix(in srgb,var(--p) 6%,#fff);
+  --p-deep:color-mix(in srgb,var(--p) 80%,#000);
+  --on-dark:color-mix(in srgb,#fff 72%,var(--s));
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--text);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--fh);color:var(--ink);margin:0;line-height:1.1;letter-spacing:-.015em;font-weight:600}
+p{margin:0}
+a{color:var(--p)}
+button,input{font:inherit}
+:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid var(--hair)}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fh);font-weight:600;color:var(--ink);font-size:1rem;min-width:0}
+.logo{height:26px;width:auto;max-width:8rem;display:block;flex:none}
+.mark{width:26px;height:26px;border-radius:7px;background:var(--p);color:#fff;display:grid;place-items:center;font-size:.85rem;font-weight:700;flex:none}
+.for{font-size:.85rem;color:var(--mute);text-align:right}
+
+.wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem 4rem}
+.intro{padding:2rem 0 1.6rem;max-width:40rem}
+.intro h1{font-size:2.1rem;margin-bottom:.9rem;text-wrap:balance}
+.intro .lede{font-size:1.05rem;color:var(--text);max-width:36rem}
+.intro .lede b{font-weight:600;color:var(--ink)}
+
+.grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"hero" "inputs" "detail";gap:1.5rem}
+
+/* Hero result: on a phone it sticks to the top while sliders move. */
+.hero{grid-area:hero;background:var(--s);color:#fff;border-radius:14px;padding:1.1rem 1.25rem 1.05rem;position:sticky;top:.5rem;z-index:5;box-shadow:0 10px 30px color-mix(in srgb,var(--s) 25%,transparent)}
+.hero .label{font-size:.85rem;color:var(--on-dark)}
+.hero .big{font-family:var(--fh);font-weight:600;font-size:2.4rem;line-height:1;letter-spacing:-.025em;margin:.2rem 0 .6rem;color:#fff}
+.hero .row{display:flex;gap:1.4rem;flex-wrap:wrap}
+.hero .row div{display:grid;gap:.05rem}
+.hero .row small{font-size:.78rem;color:var(--on-dark)}
+.hero .row span{font-family:var(--fh);font-size:1.15rem;font-weight:600;line-height:1.2}
+
+.inputs{grid-area:inputs}
+.inputs h2,.detail h2{font-size:1.15rem;padding-bottom:.6rem;border-bottom:1px solid var(--line);margin-bottom:.4rem}
+.field{padding:1rem 0 .9rem;border-bottom:1px solid var(--hair)}
+.field:last-child{border-bottom:0}
+.fhead{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;margin-bottom:.2rem}
+.fhead label{font-weight:600;color:var(--ink)}
+.tag{flex:none;font-size:.74rem;font-weight:600;color:var(--p-deep);background:color-mix(in srgb,var(--p) 12%,#fff);border-radius:999px;padding:.15rem .55rem}
+.tag[data-state=edited]{color:var(--mute);background:var(--hair)}
+.frow{display:grid;grid-template-columns:minmax(0,1fr) 8.6rem;gap:1rem;align-items:center}
+.range{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin:0;cursor:pointer}
+.range::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:linear-gradient(to right,var(--p) var(--pct),var(--line) var(--pct))}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--p);margin-top:-9.5px;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+.range::-moz-range-track{height:3px;border-radius:2px;background:var(--line)}
+.range::-moz-range-progress{height:3px;border-radius:2px;background:var(--p)}
+.range::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--p);box-shadow:0 1px 3px rgba(0,0,0,.18)}
+.numwrap{display:flex;align-items:center;min-height:44px;border:1px solid var(--line);border-radius:8px;padding:0 .6rem 0 0;background:#fff}
+.numwrap:focus-within{border-color:var(--p);box-shadow:0 0 0 3px color-mix(in srgb,var(--p) 18%,transparent)}
+.numwrap input{width:100%;min-width:0;border:0;background:none;padding:.65rem .25rem .65rem .7rem;color:var(--ink);font-family:var(--fh);font-weight:600;font-size:1.05rem;text-align:right;-moz-appearance:textfield}
+.numwrap input::-webkit-outer-spin-button,.numwrap input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.numwrap input:focus{outline:none}
+.numwrap span{font-size:.8rem;color:var(--mute);white-space:nowrap}
+.fnote{font-size:.84rem;color:var(--mute);margin-top:.1rem;max-width:34rem}
+
+.detail{grid-area:detail;display:grid;gap:1.6rem;align-content:start}
+.chart{margin:0;border:1px solid var(--line);border-radius:14px;padding:1rem 1rem .8rem;background:#fff}
+.chart figcaption{display:grid;gap:.15rem;margin-bottom:.8rem}
+.chart figcaption b{font-family:var(--fh);font-weight:600;color:var(--ink);font-size:1rem}
+.chart figcaption span{font-size:.82rem;color:var(--mute)}
+.chart svg{display:block;width:100%;height:auto}
+.chart .pos{fill:var(--p)}
+.chart .neg{fill:color-mix(in srgb,var(--s) 28%,#fff)}
+.chart .base{stroke:var(--ink);stroke-width:1.5}
+.chart .gl{stroke:var(--hair);stroke-width:1}
+.chart text{font-family:var(--fb);fill:var(--mute);font-size:19px}
+.chart text.v{fill:var(--ink);font-weight:600;font-family:var(--fh)}
+.chart .pb{stroke:var(--ink);stroke-dasharray:4 5;stroke-width:1.5}
+.chart text.pbl{fill:var(--ink);font-weight:600}
+@media (max-width:759px){.chart text{font-size:25px}}
+
+.ledger{width:100%;border-collapse:collapse}
+.ledger th,.ledger td{padding:.65rem 0;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top;font-weight:400}
+.ledger td{text-align:right;white-space:nowrap;font-family:var(--fh);font-weight:600;color:var(--ink);padding-left:1rem}
+.ledger th small{display:block;color:var(--mute);font-size:.82rem;font-weight:400}
+.ledger tr.sum th,.ledger tr.sum td{border-bottom:0;border-top:2px solid var(--ink);padding-top:.8rem;font-weight:600;color:var(--ink);font-size:1.05rem}
+.ledger td.minus{color:var(--mute)}
+.ledger sup{font-size:.7em;color:var(--p-deep);margin-left:.15rem}
+
+.cta{margin-top:3rem;border-radius:16px;background:var(--wash);padding:1.6rem 1.4rem;display:grid;gap:1rem}
+.cta h2{font-size:1.5rem;text-wrap:balance}
+.cta p{max-width:36rem}
+.cta .who{display:flex;align-items:center;gap:.8rem;font-size:.9rem;color:var(--mute)}
+.cta .who b{display:block;color:var(--ink);font-weight:600}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--s);color:#fff;display:grid;place-items:center;font-family:var(--fh);font-weight:600;flex:none}
+.cta .ken-cta{display:inline-flex!important;align-items:center;justify-content:center;min-height:48px;padding:.9rem 1.5rem!important;border-radius:10px!important;background:color-mix(in srgb,var(--p) 86%,#000)!important;font-weight:600!important;width:fit-content}
+.cta .ken-cta:hover{background:var(--p-deep)!important}
+
+.notes{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.84rem;color:var(--mute);max-width:44rem}
+.notes h2{font-size:.9rem;margin-bottom:.5rem;color:var(--mute);font-weight:600}
+.notes ol{margin:0;padding-left:1.2rem;display:grid;gap:.3rem}
+.notes li::marker{color:var(--p-deep)}
+
+@media (min-width:760px){
+  .top{padding:1.1rem 2rem}
+  .wrap{padding:0 2rem 5rem}
+  .intro{padding:3.2rem 0 2.4rem}
+  .intro h1{font-size:2.9rem;max-width:18ch}
+  .grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"inputs hero" "inputs detail";grid-template-rows:auto 1fr;column-gap:3rem;row-gap:1.6rem;align-items:start}
+  .hero{position:static;padding:1.6rem 1.8rem 1.5rem;box-shadow:none}
+  .hero .big{font-size:3.6rem;margin:.3rem 0 1rem}
+  .hero .row{gap:2.2rem}
+  .hero .row span{font-size:1.35rem}
+  .inputs{position:sticky;top:1.5rem}
+  .field{padding:1.15rem 0 1.05rem}
+  .cta{grid-template-columns:minmax(0,1fr) auto;align-items:center;padding:2rem 2.2rem;margin-top:4rem}
+  .cta .who{grid-column:1}
+  .cta .ken-cta{grid-column:2;grid-row:1/4;justify-self:end}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero .big{transition:opacity .15s}
+}
+@media print{.hero{position:static;box-shadow:none}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    {%- if brand.logo_url and brand.logo_url != '' %}<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand_name | default: 'Logo' | escape }}">
+    {%- elsif brand_name != '' %}<span class="mark" aria-hidden="true">{{ brand_name | slice: 0, 1 | upcase | escape }}</span><span>{{ brand_name | escape }}</span>{% endif -%}
+  </div>
+  <p class="for">{% if person.first_name and person.first_name != '' %}Prepared for {{ person.first_name | escape }}{% if person.last_name and person.last_name != '' %} {{ person.last_name | escape }}{% endif %}<br>{% else %}Prepared for<br>{% endif %}{{ account.name | escape }}</p>
+</header>
+
+<main class="wrap">
+  <section class="intro" data-section="intro">
+    <h1>What manual {{ work | escape }} costs {{ account.name | escape }} each year</h1>
+    <p class="lede">We prefilled the four inputs from what we know about {{ account.name | escape }}: {{ account.size_band | replace: '-', ' to ' | escape }} people in {{ account.industry | downcase | escape }}. <b>They are estimates.</b> Move the sliders to match your team and every number on this page updates.</p>
+  </section>
+
+  <div class="grid" x-data="{{ xdata | escape }}">
+    <div hidden aria-hidden="true">
+      <i x-effect="manual = team * hours * weeks * rate"></i>
+      <i x-effect="labor = manual * share / 100"></i>
+      <i x-effect="toolSave = tools * 12 * toolShare / 100"></i>
+      <i x-effect="platform = team * seat * 12"></i>
+      <i x-effect="gross = labor + toolSave"></i>
+      <i x-effect="net = gross - platform"></i>
+      <i x-effect="hoursBack = team * hours * weeks * share / 100"></i>
+      {%- if has_price %}
+      <i x-effect="g = gross / 12"></i>
+      <i x-effect="c = platform / 12"></i>
+      {%- for m in (1..36) %}
+      {%- assign m1 = m | plus: 1 %}
+      <i x-effect="z{{ m }} = g * ({{ m }} &lt;= ramp ? {{ m }} * {{ m1 }} / (2 * ramp) : (ramp + 1) / 2 + {{ m }} - ramp) - c * {{ m }} - setup"></i>
+      {%- endfor %}
+      <i x-effect="pb = 1 + (z1 &lt; 0) + (z2 &lt; 0) + (z3 &lt; 0) + (z4 &lt; 0) + (z5 &lt; 0) + (z6 &lt; 0) + (z7 &lt; 0) + (z8 &lt; 0) + (z9 &lt; 0) + (z10 &lt; 0) + (z11 &lt; 0) + (z12 &lt; 0) + (z13 &lt; 0) + (z14 &lt; 0) + (z15 &lt; 0) + (z16 &lt; 0) + (z17 &lt; 0) + (z18 &lt; 0) + (z19 &lt; 0) + (z20 &lt; 0) + (z21 &lt; 0) + (z22 &lt; 0) + (z23 &lt; 0) + (z24 &lt; 0) + (z25 &lt; 0) + (z26 &lt; 0) + (z27 &lt; 0) + (z28 &lt; 0) + (z29 &lt; 0) + (z30 &lt; 0) + (z31 &lt; 0) + (z32 &lt; 0) + (z33 &lt; 0) + (z34 &lt; 0) + (z35 &lt; 0) + (z36 &lt; 0)"></i>
+      <i x-effect="three = z36"></i>
+      <i x-effect="mult = g * ((ramp + 1) / 2 + 36 - ramp) / (setup + c * 36)"></i>
+      <i x-effect="hi1 = z3 &gt; z36 ? z3 : z36"></i>
+      <i x-effect="hi = hi1 &gt; 1 ? hi1 : 1"></i>
+      <i x-effect="lo1 = z3 &lt; z6 ? z3 : z6"></i>
+      <i x-effect="lo2 = lo1 &lt; z9 ? lo1 : z9"></i>
+      <i x-effect="lo3 = lo2 &lt; z36 ? lo2 : z36"></i>
+      <i x-effect="lo = lo3 &lt; 0 ? lo3 : 0"></i>
+      <i x-effect="k = 154 / (hi - lo)"></i>
+      <i x-effect="base = 34 + hi * k"></i>
+      {%- endif %}
+    </div>
+
+    <section class="hero" data-section="result" aria-live="polite">
+      <p class="label">Annual savings for {{ account.name | escape }}, after rollout</p>
+      <p class="big" x-text="(net &lt; 0 ? '-$' : '$') + (net &lt; 0 ? -net : net).toLocaleString('en-US', {maximumFractionDigits: 0})">{{ fm[4] }}</p>
+      <div class="row">
+        {%- if has_price %}
+        <div><small>Payback</small><span x-text="pb &gt; 36 ? 'Over 3 years' : pb == 1 ? '1 month' : pb + ' months'">{{ pb_text }}</span></div>
+        <div><small>3-year net return</small><span x-text="(three &lt; 0 ? '-$' : '$') + (three &lt; 0 ? -three : three).toLocaleString('en-US', {maximumFractionDigits: 0})">{{ fm[5] }}</span></div>
+        <div><small>Return on cost</small><span x-text="mult.toFixed(1) + 'x'">{{ mult_w }}.{{ mult_f }}x</span></div>
+        {%- else %}
+        <div><small>Hours back a year</small><span x-text="hoursBack.toLocaleString('en-US', {maximumFractionDigits: 0})">{{ fm[6] }}</span></div>
+        <div><small>Tool spend that goes away</small><span x-text="'$' + toolSave.toLocaleString('en-US', {maximumFractionDigits: 0})">{{ fm[2] }}</span></div>
+        {%- endif %}
+      </div>
+    </section>
+
+    <section class="inputs" data-section="inputs">
+      <h2>Your inputs</h2>
+
+      <div class="field">
+        <div class="fhead"><label for="team">People doing manual {{ work | escape }}</label><span class="tag" data-state="estimate" x-bind:data-state="team == {{ team }} ? 'estimate' : 'edited'" x-text="team == {{ team }} ? 'Estimate' : 'Yours'">Estimate</span></div>
+        <div class="frow">
+          <input class="range" type="range" min="1" max="{{ team_max }}" step="1" value="{{ team }}" style="--pct:{{ team_pct }}%" x-model.number="team" x-bind:style="'--pct:' + ((team - 1) * 100 / {{ team_max_span }}) + '%'" aria-label="People doing manual {{ work | escape }}, slider">
+          <div class="numwrap"><input type="number" id="team" min="1" max="2000" step="1" value="{{ team }}" x-model.number="team"><span>people</span></div>
+        </div>
+        <p class="fnote">{{ data.reasons.team | escape }}</p>
+      </div>
+
+      <div class="field">
+        <div class="fhead"><label for="hours">Hours a week each spends on it</label><span class="tag" data-state="estimate" x-bind:data-state="hours == {{ hours }} ? 'estimate' : 'edited'" x-text="hours == {{ hours }} ? 'Estimate' : 'Yours'">Estimate</span></div>
+        <div class="frow">
+          <input class="range" type="range" min="1" max="{{ hours_max }}" step="0.5" value="{{ hours }}" style="--pct:{{ hours_pct }}%" x-model.number="hours" x-bind:style="'--pct:' + ((hours - 1) * 100 / {{ hours_max_span }}) + '%'" aria-label="Hours a week spent on manual {{ work | escape }}, slider">
+          <div class="numwrap"><input type="number" id="hours" min="0" max="60" step="0.5" value="{{ hours }}" x-model.number="hours"><span>hours</span></div>
+        </div>
+        <p class="fnote">{{ data.reasons.hours | escape }}</p>
+      </div>
+
+      <div class="field">
+        <div class="fhead"><label for="rate">Loaded hourly cost per person</label><span class="tag" data-state="estimate" x-bind:data-state="rate == {{ rate }} ? 'estimate' : 'edited'" x-text="rate == {{ rate }} ? 'Estimate' : 'Yours'">Estimate</span></div>
+        <div class="frow">
+          <input class="range" type="range" min="10" max="{{ rate_max }}" step="1" value="{{ rate }}" style="--pct:{{ rate_pct }}%" x-model.number="rate" x-bind:style="'--pct:' + ((rate - 10) * 100 / {{ rate_max_span }}) + '%'" aria-label="Loaded hourly cost, slider">
+          <div class="numwrap"><input type="number" id="rate" min="1" max="1000" step="1" value="{{ rate }}" x-model.number="rate"><span>$ an hour</span></div>
+        </div>
+        <p class="fnote">{{ data.reasons.rate | escape }}</p>
+      </div>
+
+      <div class="field">
+        <div class="fhead"><label for="tools">Current tool spend a month</label><span class="tag" data-state="estimate" x-bind:data-state="tools == {{ tools }} ? 'estimate' : 'edited'" x-text="tools == {{ tools }} ? 'Estimate' : 'Yours'">Estimate</span></div>
+        <div class="frow">
+          <input class="range" type="range" min="0" max="{{ tools_max }}" step="100" value="{{ tools }}" style="--pct:{{ tools_pct }}%" x-model.number="tools" x-bind:style="'--pct:' + (tools * 100 / {{ tools_max }}) + '%'" aria-label="Current tool spend a month, slider">
+          <div class="numwrap"><input type="number" id="tools" min="0" max="200000" step="50" value="{{ tools }}" x-model.number="tools"><span>$ a month</span></div>
+        </div>
+        <p class="fnote">{{ data.reasons.tools | escape }}</p>
+      </div>
+    </section>
+
+    <div class="detail">
+      {%- if has_price %}
+      <figure class="chart" data-section="chart">
+        <figcaption><b>Cumulative return, quarter by quarter</b><span>Net of the platform cost{% if setup > 0 %} and setup fee{% endif %}. Grey bars are below zero, before payback.</span></figcaption>
+        <svg viewBox="0 0 600 230" role="img" aria-label="Cumulative return over three years, by quarter">
+          <line class="gl" x1="8" x2="592" y1="34" y2="34"/>
+          {%- for i in (1..12) %}
+          {%- assign idx = i | minus: 1 %}
+          {%- assign m = i | times: 3 %}
+          {%- assign v = qs[idx] | plus: 0 %}
+          {%- assign absv = v %}
+          {%- if v < 0 %}{%- assign absv = 0 | minus: v %}{%- endif %}
+          {%- assign hk = absv | times: k %}
+          {%- assign bh = hk | plus: 1 %}
+          {%- assign half_gap = gap | divided_by: 2.0 %}
+          {%- assign bx = idx | times: step | plus: 8 | plus: half_gap %}
+          {%- if v < 0 %}{%- assign cls = 'neg' %}{%- assign by = base %}{%- assign cy = base %}{%- else %}{%- assign cls = 'pos' %}{%- assign by = base | minus: bh %}{%- assign cy = base | minus: 3 %}{%- endif %}
+          {%- assign ch = 0 %}{%- if hk > 3 %}{%- assign ch = 3 %}{%- endif %}
+          <rect class="{{ cls }}" x="{{ bx | round: 1 }}" y="{{ by | round: 1 }}" width="{{ bw | round: 1 }}" height="{{ bh | round: 1 }}" rx="3" x-bind:y="z{{ m }} &lt; 0 ? base : base - (z{{ m }} * k + 1)" x-bind:height="(z{{ m }} &lt; 0 ? -z{{ m }} : z{{ m }}) * k + 1" x-bind:class="z{{ m }} &lt; 0 ? 'neg' : 'pos'"/>
+          <rect class="{{ cls }}" x="{{ bx | round: 1 }}" y="{{ cy | round: 1 }}" width="{{ bw | round: 1 }}" height="{{ ch }}" x-bind:y="z{{ m }} &lt; 0 ? base : base - 3" x-bind:height="(z{{ m }} &lt; 0 ? -z{{ m }} : z{{ m }}) * k &gt; 3 ? 3 : 0" x-bind:class="z{{ m }} &lt; 0 ? 'neg' : 'pos'"/>
+          {%- if i == 1 or i == 4 or i == 8 or i == 12 %}
+          {%- if v < 0 %}{%- assign ly = base | minus: 8 %}{%- else %}{%- assign ly = by | minus: 8 %}{%- endif %}
+          {%- if absv >= 1000000 %}
+            {%- assign tenths = absv | divided_by: 100000.0 | round %}
+            {%- assign whole = tenths | divided_by: 10.0 | floor %}
+            {%- assign frac = tenths | modulo: 10 %}
+            {%- assign short = whole | append: '.' | append: frac | append: 'M' %}
+          {%- elsif absv >= 1000 %}
+            {%- assign short = absv | divided_by: 1000.0 | round | append: 'k' %}
+          {%- else %}
+            {%- assign short = absv | round %}
+          {%- endif %}
+          {%- assign tx = bw | divided_by: 2.0 | plus: bx %}{%- assign lanchor = 'middle' %}
+          {%- if i == 1 %}{%- assign tx = 8 %}{%- assign lanchor = 'start' %}{%- elsif i == 12 %}{%- assign tx = 592 %}{%- assign lanchor = 'end' %}{%- endif %}
+          <text class="v" x="{{ tx | round: 1 }}" y="{{ ly | round: 1 }}" text-anchor="{{ lanchor }}" x-bind:y="(z{{ m }} &lt; 0 ? base : base - (z{{ m }} * k + 1)) - 8" x-text="(z{{ m }} &lt; 0 ? '-$' : '$') + ((z{{ m }} &lt; 0 ? -z{{ m }} : z{{ m }}) &gt;= 1000000 ? ((z{{ m }} &lt; 0 ? -z{{ m }} : z{{ m }}) / 1000000).toFixed(1) + 'M' : (z{{ m }} &lt; 0 ? -z{{ m }} : z{{ m }}) &gt;= 1000 ? ((z{{ m }} &lt; 0 ? -z{{ m }} : z{{ m }}) / 1000).toFixed(0) + 'k' : (z{{ m }} &lt; 0 ? -z{{ m }} : z{{ m }}).toFixed(0))">{% if v < 0 %}-{% endif %}${{ short }}</text>
+          {%- endif %}
+          {%- endfor %}
+          <line class="base" x1="8" x2="592" y1="{{ base | round: 1 }}" y2="{{ base | round: 1 }}" x-bind:y1="base" x-bind:y2="base"/>
+          {%- for yr in (0..2) %}
+          {%- assign cx = yr | times: 4 | plus: 2 | times: step | plus: 8 %}
+          <text x="{{ cx | round: 1 }}" y="216" text-anchor="middle">Year {{ yr | plus: 1 }}</text>
+          {%- if yr > 0 %}{%- assign tick = yr | times: 4 | times: step | plus: 8 %}
+          <line class="gl" x1="{{ tick | round: 1 }}" x2="{{ tick | round: 1 }}" y1="192" y2="202"/>
+          {%- endif %}
+          {%- endfor %}
+          {%- assign pb_side = 'start' %}{%- assign pb_tx = pb_x | plus: 8 %}
+          {%- if pb > 22 %}{%- assign pb_side = 'end' %}{%- assign pb_tx = pb_x | minus: 8 %}{%- endif %}
+          <line class="pb" x1="{{ pb_x | round: 1 }}" x2="{{ pb_x | round: 1 }}" y1="28" y2="{{ base | round: 1 }}"{% if pb > 36 %} style="display:none"{% endif %} x-show="pb &lt; 37" x-bind:x1="8 + pb * {{ step3 }}" x-bind:x2="8 + pb * {{ step3 }}" x-bind:y2="base"/>
+          <text class="pbl" x="{{ pb_tx | round: 1 }}" y="36" text-anchor="{{ pb_side }}"{% if pb > 36 %} style="display:none"{% endif %} x-show="pb &lt; 37" x-bind:x="pb &gt; 22 ? 8 + pb * {{ step3 }} - 8 : 8 + pb * {{ step3 }} + 8" x-bind:text-anchor="pb &gt; 22 ? 'end' : 'start'" x-text="'Payback, month ' + pb">Payback, month {{ pb }}</text>
+        </svg>
+      </figure>
+      {%- endif %}
+
+      <div data-section="ledger">
+        <h2>Where the number comes from</h2>
+        <table class="ledger">
+          <tbody>
+            <tr><th>Manual {{ work | escape }} today<small><span x-text="team">{{ team }}</span> <span x-text="team == 1 ? 'person' : 'people'">{% if team == 1 %}person{% else %}people{% endif %}</span>, <span x-text="hours">{{ hours }}</span> hours a week, {{ weeks }} weeks<sup>1</sup></small></th><td x-text="'$' + manual.toLocaleString('en-US', {maximumFractionDigits: 0})">{{ fm[0] }}</td></tr>
+            <tr><th>Hours the platform takes back<small>{{ share }}% of that time<sup>2</sup></small></th><td x-text="'$' + labor.toLocaleString('en-US', {maximumFractionDigits: 0})">{{ fm[1] }}</td></tr>
+            <tr><th>Tool spend that goes away<small>{{ tshare }}% of today's spend<sup>3</sup></small></th><td x-text="'$' + toolSave.toLocaleString('en-US', {maximumFractionDigits: 0})">{{ fm[2] }}</td></tr>
+            {%- if has_price %}
+            <tr><th>Platform cost<small><span x-text="team">{{ team }}</span> <span x-text="team == 1 ? 'person' : 'people'">{% if team == 1 %}person{% else %}people{% endif %}</span> at {{ fm[7] }} a month<sup>4</sup></small></th><td class="minus" x-text="'-$' + platform.toLocaleString('en-US', {maximumFractionDigits: 0})">-{{ fm[3] }}</td></tr>
+            {%- endif %}
+            <tr class="sum"><th>Annual savings{% unless has_price %}<sup>4</sup>{% endunless %}</th><td x-text="(net &lt; 0 ? '-$' : '$') + (net &lt; 0 ? -net : net).toLocaleString('en-US', {maximumFractionDigits: 0})">{{ fm[4] }}</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <section class="cta" data-section="cta">
+    <h2>Walk through the numbers with {{ sender_first | default: 'us' | escape }}</h2>
+    <p>Thirty minutes. We go through the four inputs together, swap in your real figures, and look at which assumption moves the result most for a team like yours.</p>
+    {%- if sender.name and sender.name != '' %}
+    <div class="who"><span class="avatar" aria-hidden="true">{{ sender.name | slice: 0, 1 | upcase | escape }}</span><span><b>{{ sender.name | escape }}</b>{% if sender.title and sender.title != '' %}{{ sender.title | escape }}{% if brand_name != '' %}, {{ brand_name | escape }}{% endif %}{% elsif brand_name != '' %}{{ brand_name | escape }}{% endif %}</span></div>
+    {%- endif %}
+    {% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking' %}
+  </section>
+
+  <footer class="notes" data-section="assumptions">
+    <h2>Assumptions</h2>
+    <ol>
+      <li>{{ weeks }} working weeks a year.</li>
+      <li>{% if brand_name != '' %}{{ brand_name | escape }}{% else %}The platform{% endif %} takes back {{ share }}% of the hours spent on manual {{ work | escape }}. This is an assumption, not a measured result, and it moves the answer more than any other number on this page.</li>
+      <li>{{ tshare }}% of the current tool spend is replaced. The rest stays.</li>
+      {%- if has_price %}
+      <li>{{ fm[7] }} per person a month{% if setup > 0 %}, plus a one-time setup fee of {{ fm[8] }}{% endif %}. This is list pricing. Nothing on this page is a quote.</li>
+      <li>Savings ramp up evenly over the first {{ ramp }} {% if ramp == 1 %}month{% else %}months{% endif %}. The chart and the payback figure include that ramp. Payback is the first month the running total is above zero.</li>
+      {%- else %}
+      <li>The cost of the platform is not included. Savings are before it.</li>
+      {%- endif %}
+    </ol>
+  </footer>
+</main>
+</body>
+</html>

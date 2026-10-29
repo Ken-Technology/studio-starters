@@ -1,0 +1,85 @@
+{
+  "account": {
+    "name": "Marlow Fastening",
+    "domain": "marlowfastening.example",
+    "industry": "wholesale",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Marlow Fastening is a distributor of industrial fasteners and fittings for machine builders and maintenance teams in the Midwest, with a warehouse in Dayton and same-day pick-up.",
+      "why_now": "Posted a role for a digital marketing manager in October.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Dana",
+    "last_name": "Okafor",
+    "title": "Head of Marketing"
+  },
+  "sender": {
+    "name": "Jonas Lindqvist",
+    "title": "Creative Director",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Fieldset Studio",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "summary": "Your homepage opens with Marlow's name and quality fasteners since 1987. The sketch opens with who you serve and the same-day pick-up in Dayton, which today sits in the third paragraph.",
+    "today": {
+      "headline": "Quality fasteners and fittings since 1987",
+      "sub": "Marlow Fastening is a family-owned distributor serving customers across the Midwest with a wide selection of industrial products and dependable service.",
+      "cta": "Contact us",
+      "section_name": "Our services",
+      "section_heading": "Our services",
+      "section_body": "We offer a comprehensive range of services to meet your needs, including kitting, vendor-managed inventory, and custom sourcing. Our experienced team is committed to providing exceptional service."
+    },
+    "sketch": {
+      "headline": "Fasteners for machine builders, picked up same day in Dayton",
+      "sub": "Marlow stocks industrial fasteners and fittings for machine builders and maintenance teams across the Midwest, and has since 1987.",
+      "cta": "Check stock",
+      "proof": "Family owned since 1987, with same-day pick-up at the Dayton warehouse",
+      "image": "The pick-up counter at the Dayton warehouse, with a kitted order ready",
+      "section_heading": "Three ways Marlow keeps your line running",
+      "section_intro": "Beyond the catalogue, Marlow does the work that keeps parts on the shelf before you need them.",
+      "points": [
+        {
+          "title": "Kitting",
+          "text": "Every fastener for one assembly in one bag, so the build starts without a parts hunt."
+        },
+        {
+          "title": "Vendor-managed inventory",
+          "text": "Marlow keeps your bins stocked, so maintenance never waits on a missing bolt."
+        },
+        {
+          "title": "Custom sourcing",
+          "text": "The part that is not in the catalogue, found and quoted by the same team that stocks the rest."
+        }
+      ]
+    },
+    "notes": [
+      {
+        "on": "headline",
+        "note": "Says who it is for and the one thing a buyer can check, the same-day pick-up. Today the buyer reads three paragraphs to learn either."
+      },
+      {
+        "on": "cta",
+        "note": "A stock check is what a machine builder wants to do next. Contact us asks them to start a conversation first."
+      },
+      {
+        "on": "proof",
+        "note": "The 1987 line moves out of the headline and under the button, where it backs the promise instead of being the promise."
+      },
+      {
+        "on": "image",
+        "note": "A picture of the counter shows the pick-up promise. A photo of bolts on a white background would not."
+      },
+      {
+        "on": "points",
+        "note": "The three services you already list get a line each on what the buyer gets, so a maintenance lead can pick the one they need."
+      }
+    ]
+  }
+}

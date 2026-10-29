@@ -34,7 +34,7 @@ p{margin:0;text-wrap:pretty}
 a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:.07em}
 a:focus-visible,summary:focus-visible{outline:3px solid currentColor;outline-offset:4px}
 /* every field picks black or white text from its own colour, so any brand colour stays readable */
-.on{color:#000;color:rgb(from var(--f) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255));background:var(--f)}
+.on{color:#000;color:rgb(from var(--f) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255));background:var(--f)}
 .btn{--f:var(--p);display:inline-flex;align-items:center;min-height:52px;padding:.85rem 1.4rem;font:700 var(--step-body)/1.1 var(--fb);text-decoration:none;border-radius:999px}
 .btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .wrap{padding:0 var(--m)}
@@ -135,7 +135,7 @@ a.tab:focus-visible{outline:none;text-decoration:underline;text-decoration-thick
 .book .lead{max-width:30ch}
 .book .from{margin-top:1.5rem;font-weight:700}
 .cal{--f:var(--paper);padding:.75rem;border-radius:14px;min-width:0;color:#000}
-.cal .ken-cta{background:var(--p)!important;border-radius:999px!important;color:#fff!important;color:rgb(from var(--p) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255))!important}
+.cal .ken-cta{background:var(--p)!important;border-radius:999px!important;color:#fff!important;color:rgb(from var(--p) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))!important}
 
 footer{--f:var(--hero);padding:2rem var(--m) 2.5rem;font-size:var(--step-small)}
 footer .brand{font-size:var(--step-lead);margin-bottom:.75rem}

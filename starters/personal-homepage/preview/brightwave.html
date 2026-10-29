@@ -6,13 +6,14 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="Northbeam for Brightwave Logistics: what we noticed, three places we would help, a customer story, how a rollout would go and a time to talk.">
 <title>Northbeam for Brightwave Logistics</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Besley:wght@700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap">
 <style>
 :root{
   --p:#000000;
   --hero:#000000;
-  --fh:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;
-  --fb:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;
+  --fh:'Besley',ui-sans-serif,system-ui,sans-serif;
+  --fb:'Libre Franklin',ui-sans-serif,system-ui,sans-serif;
   --ink:#000;
   --paper:#fff;
   --manila:#efd38d;
@@ -172,6 +173,12 @@ footer p{max-width:60ch}
   .qs summary i::after{transition:transform .2s}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Besley is a wide Clarendon: its own tracking, and a step smaller so headlines keep their two lines */
+h1,h2,h3{letter-spacing:-.015em}
+.hero h1{font-size:clamp(2.5rem,.9rem + 6vw,5.75rem);letter-spacing:-.02em;line-height:1}
+.hero h1.mid{font-size:clamp(1.75rem,.55rem + 4.9vw,5rem)}
+.hero h1.long{font-size:clamp(1.5rem,.45rem + 3.6vw,3.9rem)}
+.fig .big{font-size:clamp(3rem,1.4rem + 5.4vw,6.5rem);letter-spacing:-.03em}
 </style>
 </head>
 <body>

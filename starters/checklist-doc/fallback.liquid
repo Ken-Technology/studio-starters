@@ -1,10 +1,9 @@
-{%- assign accent = brand.colors.primary | default: '#bfb21a' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#181715' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Bricolage Grotesque' -%}
-{%- assign font_body = brand.fonts.body | default: font_head -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
-{%- if brand.fonts.heading -%}{%- assign head_w = 'wght@400;700' -%}{%- else -%}{%- assign head_w = 'wght@400;500;600' -%}{%- endif -%}
+{%- assign accent = brand.colors.primary | default: '#def915' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#0a0a0a' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Stack Sans Headline' -%}
+{%- assign body_default = 'Stack Sans Text' -%}
+{%- if brand.fonts.heading -%}{%- assign body_default = font_head -%}{%- endif -%}
+{%- assign font_body = brand.fonts.body | default: body_default -%}
 {%- assign short_name = account.name | split: ' - ' | first | split: ' | ' | first | strip | default: account.name -%}
 <!doctype html>
 <html lang="en">
@@ -13,17 +12,28 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A checklist for {{ short_name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:{{ head_w }}&amp;display=swap">
-{%- if body_q != head_q %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600&amp;display=swap">
+{%- if font_head == 'Stack Sans Headline' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@300;500;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Stack Sans Text' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@400;500&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@600&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-html,body{margin:0;background:#e8e8e3}
-.ck{--p:{{ accent }};--s:{{ accent2 }};--bg:#e8e8e3;--ink:#181715;--mute:#55544e;--onp:#181715;--onp:oklch(from var(--p) clamp(0.2, (0.6 - l) * 100, 0.97) min(c, 0.03) h);--ons:#e8e8e3;--ons:oklch(from var(--s) clamp(0.2, (0.6 - l) * 100, 0.93) min(c, 0.02) h);--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--m:clamp(1.25rem,3vw,3rem);min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.5;-webkit-font-smoothing:antialiased}
+html,body{margin:0;background:#ff87ab}
+.ck{--p:{{ accent }};--s:{{ accent2 }};--bg:#ff87ab;--ink:#0a0a0a;--mute:#6b1f3a;--hw:600;--tw:500;{% if font_head == 'Stack Sans Headline' %}--hw:300;--tw:300;{% endif %}--onp:#0a0a0a;--onp:oklch(from var(--p) clamp(0.2, (0.6 - l) * 100, 0.97) min(c, 0.03) h);--ons:#ff87ab;--ons:oklch(from var(--s) clamp(0.2, (0.6 - l) * 100, 0.93) min(c, 0.02) h);--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--m:clamp(1.25rem,3vw,3rem);min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.5;-webkit-font-smoothing:antialiased}
 .ck p{margin:0}
-.ck h1,.ck h2{font-family:var(--fh);font-weight:600;margin:0;text-wrap:balance}
+.ck h1,.ck h2{font-family:var(--fh);font-weight:var(--hw);margin:0;text-wrap:balance}
 .wrap{max-width:86rem;margin:0 auto;padding:0 var(--m)}
 .ck-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:1.25rem;padding-bottom:1.25rem;font-size:.875rem}
 .ck-logo{height:26px;width:auto;display:block}

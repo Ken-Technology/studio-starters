@@ -1,10 +1,8 @@
 {%- assign bname = brand.name | default: 'Northbeam' -%}
 {%- assign primary = brand.colors.primary | default: '#000000' -%}
 {%- assign secondary = brand.colors.secondary | default: '#000000' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Bricolage Grotesque' -%}
-{%- assign font_body = brand.fonts.body | default: 'Bricolage Grotesque' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Besley' -%}
+{%- assign font_body = brand.fonts.body | default: 'Libre Franklin' -%}
 {%- assign sender_first = sender.name | default: 'our team' | split: ' ' | first -%}
 {%- assign has_brand_colour = false -%}
 {%- if brand.colors.primary and brand.colors.primary != '' -%}{%- assign has_brand_colour = true -%}{%- endif -%}
@@ -15,20 +13,26 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ bname | escape }} for {{ account.name | escape }}</title>
-{%- if font_head == 'Bricolage Grotesque' %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&display=swap">
+{%- if font_head == 'Besley' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Besley:wght@700;800&display=swap">
 {%- else %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q | escape }}:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
 {%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q | escape }}:wght@400;700&display=swap">
+{%- if font_body == 'Libre Franklin' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{--p:{{ primary | escape }};--hero:{{ secondary | escape }};--fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--manila:{% if has_brand_colour %}color-mix(in srgb,var(--p) 16%,#fff){% else %}#efd38d{% endif %};--m:clamp(1.25rem,3.4vw,3rem)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--hero);font:400 clamp(1.0625rem,1rem + .25vw,1.1875rem)/1.5 var(--fb);-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
-h1{font-family:var(--fh);font-weight:700;margin:0;line-height:.98;letter-spacing:-.04em;text-wrap:balance;font-size:clamp(2.25rem,1rem + 5vw,5rem);max-width:15ch}
+h1{font-family:var(--fh);font-weight:700;margin:0;line-height:.98;letter-spacing:{% if font_head == 'Besley' %}-.02em{% else %}-.04em{% endif %};text-wrap:balance;font-size:clamp(2.25rem,1rem + 5vw,5rem);max-width:15ch}
 p{margin:0}
 a:focus-visible{outline:3px solid currentColor;outline-offset:4px}
 .on{color:#000;color:rgb(from var(--f) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255));background:var(--f)}

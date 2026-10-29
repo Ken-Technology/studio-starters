@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>The recording of Growing volume, not headcount</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;700&display=swap">
 <style>
 :root{
   --brand-primary:#bfb21a;
   --brand-secondary:#181715;
-  --brand-heading-font:'Hanken Grotesk';
-  --brand-body-font:'Hanken Grotesk';
+  --brand-heading-font:'Unbounded';
+  --brand-body-font:'Onest';
   --p:var(--brand-primary);
   --s:var(--brand-secondary);
   --fh:var(--brand-heading-font),'Helvetica Neue',Arial,sans-serif;
@@ -191,6 +192,15 @@ footer b{font-weight:700}
   .takes-band h2,.takes-band h2.long{max-width:22ch}
   .sheet,.proof>.dl:first-child{margin-top:0}
   .tx{margin-top:0}
+}
+/* Unbounded is wide: its own size steps, and looser tracking than a narrow brand face needs */
+h1,h2,h3{font-weight:600}
+.top h1{font-size:clamp(2rem,9.4vw,7.4rem);line-height:1;letter-spacing:-.02em}
+h2{font-size:clamp(1.75rem,1rem + 3vw,3.7rem);line-height:1.02;letter-spacing:-.02em}
+h2.long{font-size:clamp(1.3rem,.66rem + 2.5vw,3.5rem)}
+h3,.mark{letter-spacing:-.015em}
+@media (min-width:960px){
+  .top h1{font-size:clamp(3.6rem,9.2vw,10.5rem)}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}

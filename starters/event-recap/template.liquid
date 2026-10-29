@@ -1,7 +1,7 @@
 {%- assign brand_p = brand.colors.primary | default: '#bfb21a' -%}
 {%- assign brand_s = brand.colors.secondary | default: '#181715' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Hanken Grotesk' -%}
-{%- assign font_body = brand.fonts.body | default: 'Hanken Grotesk' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Unbounded' -%}
+{%- assign font_body = brand.fonts.body | default: 'Onest' -%}
 {%- assign bname = brand.name | default: 'Northbeam' -%}
 {%- assign first = person.first_name | default: '' -%}
 {%- assign vu = data.video_url | default: '' | split: '#' | first | default: '' -%}
@@ -65,9 +65,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>The recording of {{ data.event_title | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;500;700&display=swap">
+{%- if font_head == 'Unbounded' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;700&display=swap">
+{%- if font_body == 'Onest' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{
@@ -255,6 +266,17 @@ footer b{font-weight:700}
   .sheet,.proof>.dl:first-child{margin-top:0}
   .tx{margin-top:0}
 }
+{%- if font_head == 'Unbounded' %}
+/* Unbounded is wide: its own size steps, and looser tracking than a narrow brand face needs */
+h1,h2,h3{font-weight:600}
+.top h1{font-size:clamp(2rem,9.4vw,7.4rem);line-height:1;letter-spacing:-.02em}
+h2{font-size:clamp(1.75rem,1rem + 3vw,3.7rem);line-height:1.02;letter-spacing:-.02em}
+h2.long{font-size:clamp(1.3rem,.66rem + 2.5vw,3.5rem)}
+h3,.mark{letter-spacing:-.015em}
+@media (min-width:960px){
+  .top h1{font-size:clamp(3.6rem,9.2vw,10.5rem)}
+}
+{%- endif %}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .tl .run{animation:none}

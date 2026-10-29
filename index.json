@@ -81,6 +81,49 @@
       "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
       "showcases": ["prompt", "person", "roles", "ken/cta"],
       "version": "1.0.0"
+    },
+    {
+      "slug": "congrats",
+      "name": "Congratulations note",
+      "type": "other",
+      "format": "page",
+      "showcases": [
+        "bind",
+        "prompt",
+        "grade",
+        "ken/cta"
+      ],
+      "description": "A short note congratulating an account on a new role, a funding round or a launch, with one idea for the next 90 days. Ken picks the occasion from their news.",
+      "category": "prospecting",
+      "tags": [
+        "congratulations",
+        "signals",
+        "new role",
+        "funding",
+        "launch"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "larkspur",
+          "label": "Larkspur Health"
+        },
+        {
+          "id": "ironvale",
+          "label": "Ironvale Materials"
+        },
+        {
+          "id": "quillbridge-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "copperfield",
+          "label": "Copperfield Dental Group"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,81 @@
+{
+  "kenStudio": "1",
+  "name": "Congratulations note",
+  "type": "other",
+  "format": "page",
+  "slug": "congratulations",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "signals": { "type": "array", "maxItems": 10, "items": { "type": "object" } },
+      "why_now": { "type": "string", "maxLength": 1000 },
+      "occasion": {
+        "type": "object",
+        "properties": {
+          "what": { "type": "string", "minLength": 10, "maxLength": 140 },
+          "kind": { "type": "string", "enum": ["role", "funding", "launch", "milestone"] },
+          "date": { "type": "string", "maxLength": 10 },
+          "source_url": { "type": "string", "format": "uri" }
+        },
+        "required": ["what", "kind"]
+      },
+      "headline": { "type": "string", "minLength": 10, "maxLength": 80 },
+      "note": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 3,
+        "items": { "type": "string", "minLength": 20, "maxLength": 360 }
+      },
+      "idea_title": { "type": "string", "minLength": 10, "maxLength": 90 },
+      "idea": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 2,
+        "items": { "type": "string", "minLength": 20, "maxLength": 420 }
+      },
+      "ask": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 200,
+        "fallback": "If it would help to talk it through, I have 15 minutes whenever suits you. No slides."
+      },
+      "ps": { "type": "string", "maxLength": 160 }
+    },
+    "required": ["occasion", "headline", "note", "idea_title", "idea"]
+  },
+  "recipe": [
+    { "id": "signals", "kind": "bind", "from": "account.signals", "to": "data.signals" },
+    { "id": "why_now", "kind": "bind", "from": "account.dossier.why_now", "to": "data.why_now" },
+    {
+      "id": "write",
+      "kind": "prompt",
+      "model": "cheap",
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "person.first_name", "person.title", "sender.name", "sender.title", "brand.name", "data.signals", "data.why_now"],
+      "to": ["data.occasion", "data.headline", "data.note", "data.idea_title", "data.idea", "data.ask", "data.ps"],
+      "prompt": "You are writing a short congratulations note to someone at {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it; the sender's title is {{ sender.title | default: 'not given' }}. \"I\" is the sender, \"you\" is the reader, and \"we\" is {{ brand.name | default: 'our company' }}. The reader: first name {{ person.first_name | default: 'none, this link is shared with the company' }}, title {{ person.title | default: 'unknown' }}. The page shows a headline, the occasion with its date and source, the note, one idea for the next 90 days, and a closing ask. The page adds the greeting and the signature itself, so never write them.\n\nInputs: data.signals is recent news on {{ account.name }}, newest first, each {type, title, date, source_url}. data.why_now is our research note on why now is a good time to write to them. What we know about {{ account.name }}: account.industry, account.size_band and account.dossier.summary. Nothing else.\n\nStep 1, pick the occasion. Go through data.signals from the newest and take the first one worth congratulating: a new role or a promotion, funding raised, a product, site or office opened or launched, an award, or a milestone the company announced itself. Skip job posts, people leaving, routine updates and anything negative. When the reader has a title, prefer a signal about the reader or their team. If no signal qualifies, use data.why_now when it names something to congratulate. If neither does, return {} and nothing else.\n\nStep 2, return JSON with these keys:\n- occasion: {what, kind, date, source_url}. what is one sentence of at most 140 characters that states what happened as a fact and names the thing: the role, the round, the product, the site. kind is \"role\", \"funding\", \"launch\" or \"milestone\". date and source_url are copied exactly from the signal; leave both keys out when the occasion came from data.why_now.\n- headline: at most 80 characters, sentence case. Start with \"Congratulations on\" and name the specific thing. End with a comma and the reader's first name when there is one, like \"Congratulations on the VP of Operations role, Dana\". With no first name, end after the thing.\n- note: 1 to 3 paragraphs as a list of strings, each at most 360 characters, 2 to 5 sentences in all. Say what happened and one specific reason it matters for a company like theirs, from the signal and the dossier only. No praise beyond the facts, nothing about our product, no question.\n- idea_title: at most 90 characters, the idea as one thing to do, like \"Pick one site and measure it before the budget cycle\".\n- idea: 1 or 2 paragraphs as a list of strings, each at most 420 characters, 3 to 6 sentences in all. One practical idea for the reader's next 90 days that follows from the occasion: something they can start this month without us, specific to their situation from the inputs, with what it gets them within 90 days. You may say what we have seen work at companies like theirs in general terms. Never name a customer, a number, a tool or a result that the inputs do not contain, and never pitch our product.\n- ask: 1 or 2 sentences, 20 to 200 characters. A soft offer to talk the idea through, which they can accept by replying or by booking the time below. No deadline, no meeting demand.\n- ps: optional. Only when a second signal in data.signals is worth one line, write \"PS: \" and one short sentence on it, at most 160 characters in all. Otherwise an empty string.\n\nVoice: one person writing to a peer they respect. Plain words, short sentences a person would say out loud, warm but not gushing. Sentence case everywhere.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses, phone numbers or prices. No hype words (thrilled, excited, huge, massive, game changer, unlock, leverage, seamless, journey, rockstar, crushing it) and never \"well deserved\". Never open with \"I noticed\", \"I saw\" or \"I came across\". Never \"real\" as emphasis. No sign-off and no name at the end."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "on": ["data.headline", "data.note", "data.idea_title", "data.idea", "data.ask", "data.ps"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["well deserved", "well-deserved", "thrilled", "excited", "huge", "massive", "rockstar", "crushing it", "killing it", "game changer", "game-changer", "unlock", "leverage", "seamless", "journey", "demo", "I noticed", "I saw", "I came across", "caught my attention", "hope this finds you"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true,
+        "no_signoff": true
+      },
+      "rubric": "Grade the note the way its reader does: headline, note, idea title, idea, ask, PS. 10 is a note from a peer who clearly read the news and had one useful thought.\nScore these, 0 to 10 each:\n- specific: the headline and the note name the exact thing that happened (the role, the round, the product, the site) and one reason it matters for this company. A note that could go to another company unchanged scores 3 or lower.\n- plain: short sentences a person would say out loud, warm without gushing. Praise words with no fact behind them (impressive, amazing, incredible, well deserved) cost points.\n- useful: the idea is one concrete thing the reader can start this month and see pay off within 90 days, and it follows from the occasion. A generic tip, a list of several ideas, or a pitch for our product scores 4 or lower.\n- soft_ask: the ask is an offer, easy to say yes to by replying or booking, with no deadline and no pressure.\nAnswer yes or no:\n- would_read: would a busy person in this role read the whole note?\n- weird_word: is there a phrase a person would not say out loud (jargon, marketing adjectives, stacked nouns)? Quote it.\nAutomatic fail: an exclamation mark, an em dash or an en dash, an email address, a phone number, a price, a sign-off or a name at the end, a greeting at the start, more than one idea, a customer, number, tool or result that the inputs below do not contain, or anything negative about the company.\nThe occasion the writer picked: {{ data.occasion | json }}\nThe news the writer had, newest first: {{ data.signals | json }}\nOur research note: {{ data.why_now | default: 'none' }}\nWhat we know about {{ account.name }}: {{ account.dossier.summary | default: 'nothing beyond the industry' }}\nPass when the overall score is 7.5 or higher, no 0 to 10 check is 6 or lower, would_read is yes and weird_word is no. On a fail, name the check and quote the phrase to change. The fix never supplies replacement sentences, names, numbers or facts."
+    }
+  ],
+  "sections": [
+    { "id": "occasion", "label": "Congratulations" },
+    { "id": "note", "label": "The note" },
+    { "id": "idea", "label": "One idea for the next 90 days" },
+    { "id": "next", "label": "Talk it through" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 15 minutes" }
+}

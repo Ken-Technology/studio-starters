@@ -325,3 +325,61 @@ test('a bind from account.signals passes', () => {
   assert.equal(bad.status, 1, bad.out);
   assert.match(bad.out, /recipe\[0\] \(signals\): bind from must start with account\./);
 });
+
+// --- defaults.<slot> (ken-backend DEV-5800) --------------------------------------------------
+
+const recipe = (change) => (bundle) => editJson(path.join(bundle, 'studio.json'), (m) => change(m.recipe));
+
+test('defaults.<slot> passes in prompt text, inputs and bind.from when the slot has a fallback', () => {
+  const { status, out } = checkLibrary(recipe((r) => {
+    r.splice(1, 0, { id: 'seed', kind: 'bind', from: 'defaults.headline', to: 'data.headline' });
+    r[3].prompt = 'Rewrite "{{ defaults.headline }}" for {{ account.name }}.';
+    r[3].inputs.push('defaults.headline');
+  }));
+  assert.equal(status, 0, out);
+});
+
+const DEFAULTS_INVALID = [
+  ['an input of a slot with no fallback', (r) => r[2].inputs.push('defaults.market'), /recipe\[2\] \(headline\): input "defaults\.market" reads slot "market", which has no fallback/],
+  ['an input of a slot that does not exist', (r) => r[2].inputs.push('defaults.event_title'), /recipe\[2\] \(headline\): input "defaults\.event_title" reads slot "event_title", which is not a declared slot/],
+  ['an input of defaults alone', (r) => r[2].inputs.push('defaults'), /recipe\[2\] \(headline\): input "defaults" must be defaults\.<slot>/],
+  ['a bind from a slot that does not exist', (r) => { r[0].from = 'defaults.agenda'; }, /recipe\[0\] \(signals\): bind from "defaults\.agenda" reads slot "agenda", which is not a declared slot/],
+  ['prompt text reading a slot with no fallback', (r) => { r[2].prompt = 'Count {{ defaults.signals | size }} signals.'; }, /recipe\[2\] \(headline\): prompt "defaults\.signals" reads slot "signals", which has no fallback/],
+  ['tool args reading a slot that does not exist', (r) => { r[1].args.segments[0].label = '{{ defaults.segment }}'; }, /recipe\[1\] \(market\): args "defaults\.segment" reads slot "segment", which is not a declared slot/],
+];
+
+for (const [name, change, message] of DEFAULTS_INVALID) {
+  test(`defaults.<slot> fails for ${name}`, () => {
+    const { status, out } = checkLibrary(recipe(change));
+    assert.equal(status, 1, out);
+    assert.match(out, message);
+  });
+}
+
+test('recipe text reading a slot no earlier step writes fails and points at defaults', () => {
+  const text = checkLibrary(recipe((r) => { r[1].args.segments[0].label = '{{ data.headline }}'; }));
+  assert.equal(text.status, 1, text.out);
+  assert.match(text.out, /recipe\[1\] \(market\): args reads data\.headline, which no earlier step writes, so the step sees nothing; read the slot's fallback as \{\{ defaults\.headline \}\}/);
+  const input = checkLibrary(recipe((r) => r.unshift({ id: 'angle', kind: 'prompt', prompt: 'Pick an angle.', inputs: ['data.headline'], to: 'data.market' })));
+  assert.equal(input.status, 1, input.out);
+  assert.match(input.out, /recipe\[0\] \(angle\): input "data\.headline" is not filled by an earlier step; read the slot's fallback as "defaults\.headline"/);
+});
+
+test('recipe text reading a slot an earlier step writes passes', () => {
+  const { status, out } = checkLibrary(recipe((r) => { r[2].prompt = 'Write a headline from {{ data.signals | json }}.'; }));
+  assert.equal(status, 0, out);
+});
+
+test('a Knowledge path other than knowledge.stable or knowledge.scoped warns', () => {
+  const bad = checkLibrary(recipe((r) => r[2].inputs.push('knowledge.offer')));
+  assert.equal(bad.status, 0, bad.out);
+  assert.match(bad.out, /warning studio\.json: recipe\[2\] \(headline\): "knowledge\.offer" is not Knowledge; it holds only knowledge\.stable and knowledge\.scoped/);
+  const ok = checkLibrary(recipe((r) => r[2].inputs.push('knowledge.stable', 'knowledge.scoped')));
+  assert.equal(ok.status, 0, ok.out);
+  assert.doesNotMatch(ok.out, /is not Knowledge/);
+});
+
+test('a slot may carry a description', () => {
+  const { status, out } = checkLibrary((bundle) => editJson(path.join(bundle, 'studio.json'), (m) => { m.slots.properties.headline.description = 'One line, sentence case.'; }));
+  assert.equal(status, 0, out);
+});

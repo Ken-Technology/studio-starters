@@ -190,6 +190,15 @@ const INVALID = [
   ['an exclamation mark in a sample label', (l) => { l.samples[1].label = 'Globex, shared link!'; }, /library\.json: samples\[1\]: label has an em or en dash or an exclamation mark/],
   ['a listed sample with no file', (l) => { l.samples.push({ id: 'umbrella', label: 'Umbrella' }); }, /library\.json: samples\[3\]: samples\/umbrella\.json does not exist/],
   ['an unknown field', (l) => { l.status = 'draft'; }, /library\.json: unknown field "status"/],
+  ['no featured', (l) => delete l.featured, /library\.json: featured must be true or false/],
+  ['no updatedAt', (l) => delete l.updatedAt, /library\.json: updatedAt must be a real date as YYYY-MM-DD/],
+  ['a tag that is not a string', (l) => { l.tags = [5]; }, /library\.json: tags must be a list of 0 to 6 strings/],
+  ['needs as a string', (l) => { l.needs = 'dataset'; }, /library\.json: needs must be a list of distinct values/],
+  ['a need listed twice', (l) => { l.needs = ['dataset', 'dataset']; }, /library\.json: needs must be a list of distinct values/],
+  ['samples as an object', (l) => { l.samples = { acme: 'Acme' }; }, /library\.json: samples must list at least 3 samples as \{id, label\}/],
+  ['a sample that is not an object', (l) => { l.samples[0] = 'acme'; }, /library\.json: samples\[0\]: id must match/],
+  ['an unknown field in a sample', (l) => { l.samples[0].note = 'first'; }, /library\.json: samples\[0\]: unknown field "note"/],
+  ['a branded sample first', (l) => { l.samples = [l.samples[1], l.samples[0], l.samples[2]]; }, /library\.json: samples\[0\]: the cover comes from the first sample, so list a sample in the default brand first/],
 ];
 for (const [name, change, message] of INVALID) {
   test(`library.json with ${name} fails`, () => {
@@ -233,6 +242,16 @@ test('a missing sample preview fails', () => {
   const { status, out } = checkLibrary((bundle) => fs.rmSync(path.join(bundle, 'preview', 'acme.html')));
   assert.equal(status, 1, out);
   assert.match(out, /preview\/acme\.html: missing; run npm run render -- demo-library/);
+});
+
+test('a preview that is a file, not a folder, fails with messages', () => {
+  const { status, out } = checkLibrary((bundle) => {
+    fs.rmSync(path.join(bundle, 'preview'), { recursive: true });
+    fs.writeFileSync(path.join(bundle, 'preview'), 'not a folder');
+  });
+  assert.equal(status, 1, out);
+  assert.match(out, /preview\/cover\.png: missing/);
+  assert.doesNotMatch(out, /\n\s+at /);
 });
 
 test('any other file in preview/ fails', () => {

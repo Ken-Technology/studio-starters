@@ -382,11 +382,15 @@ function checkLibrary(slug, dir, { err }) {
     const file = path.join(samplesDir, `${s.id}.json`);
     if (!fs.existsSync(file)) bad(`${where}: samples/${s.id}.json does not exist`);
     else {
+      let sample = null;
       try {
-        if (JSON.parse(fs.readFileSync(file, 'utf8'))?.person === null) personNull = true;
+        sample = JSON.parse(fs.readFileSync(file, 'utf8'));
       } catch {
         // checkBundle reports the invalid JSON.
       }
+      if (sample?.person === null) personNull = true;
+      // The cover is the first sample's first screen, and the Library shows it in the template's default brand.
+      if (i === 0 && (sample?.brand?.colors || sample?.brand?.fonts)) bad(`${where}: the cover comes from the first sample, so list a sample in the default brand first (brand.colors and brand.fonts null)`);
     }
   }
   // Non-JSON files next to the samples (a dataset CSV) are data, not samples.
@@ -397,7 +401,8 @@ function checkLibrary(slug, dir, { err }) {
 
   const preview = path.join(dir, 'preview');
   const cover = path.join(preview, 'cover.png');
-  if (!fs.existsSync(cover)) err('preview/cover.png', `missing; run npm run render -- ${slug}`);
+  const isFile = (f) => fs.statSync(f, { throwIfNoEntry: false })?.isFile() ?? false;
+  if (!isFile(cover)) err('preview/cover.png', `missing; run npm run render -- ${slug}`);
   else {
     const size = pngSize(cover);
     const bytes = fs.statSync(cover).size;
@@ -405,8 +410,8 @@ function checkLibrary(slug, dir, { err }) {
     else if (size.width !== COVER.width || size.height !== COVER.height) err('preview/cover.png', `${size.width}x${size.height}, must be ${COVER.width}x${COVER.height}`);
     if (bytes > COVER.bytes) err('preview/cover.png', `${Math.ceil(bytes / 1024)} KB, over ${COVER.bytes / 1024} KB`);
   }
-  for (const id of listed) if (!fs.existsSync(path.join(preview, `${id}.html`))) err(`preview/${id}.html`, `missing; run npm run render -- ${slug}`);
-  for (const name of fs.existsSync(preview) ? fs.readdirSync(preview) : []) {
+  for (const id of listed) if (!isFile(path.join(preview, `${id}.html`))) err(`preview/${id}.html`, `missing; run npm run render -- ${slug}`);
+  for (const name of fs.statSync(preview, { throwIfNoEntry: false })?.isDirectory() ? fs.readdirSync(preview) : []) {
     if (name !== 'cover.png' && !(name.endsWith('.html') && listed.has(name.slice(0, -5)))) {
       err(`preview/${name}`, 'unexpected file; preview/ holds cover.png and one <sampleId>.html per listed sample');
     }

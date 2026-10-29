@@ -50,6 +50,7 @@ function engine(templates, outputEscape) {
   });
 }
 
+// The edge also escapes {% echo %} and {% cycle %}. They are left out here because check.mjs rejects both tags.
 // `{% render 'ken/chart', ... %}` resolves to a one-tag partial whose tag reads the render arguments and the Ken globals.
 const pageEngine = engine(Object.fromEntries(Object.keys(KIT).map((name) => [`ken/${name}`, `{% ken_kit "${name}" %}`])), escapeOutput);
 pageEngine.registerTag('ken_kit', {

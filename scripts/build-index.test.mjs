@@ -88,6 +88,7 @@ test('showcases are the step kinds, then the tool names, then the kit snippets r
   const template = [
     "{% render 'ken/form', id: 'rsvp' %}",
     "{% comment %}{% render 'ken/booking' %}{% endcomment %}",
+    "{%- raw -%}{% render 'ken/cta' %}{%- endraw -%}",
     '{%- render "ken/chart", data: data.x %}',
     "{% render 'ken/form', id: 'again' %}",
   ].join('\n');
@@ -100,6 +101,13 @@ test('a folder without library.json keeps its entry byte for byte, and an entry 
     const kept = '{ "slug": "old-starter",   "name": "Old {brace} \\"quoted\\" [x]",\n  "showcases": ["a",   "b"], "version": "1.0.0" }';
     const gone = '{\n      "slug": "gone-starter"\n    }';
     assert.equal(buildIndex(dir, indexOf(gone, kept)), indexOf(kept));
+  });
+});
+
+test('an entry that is not an object stops the build instead of reformatting the kept entries', () => {
+  inRepo((dir) => {
+    writeOld(dir, 'old-starter');
+    assert.throws(() => buildIndex(dir, indexOf('{ "slug": "old-starter" }', 'null')), /every "starters" entry must be an object/);
   });
 });
 
@@ -140,5 +148,11 @@ test('--check exits 0 when index.json is fresh and 1 naming the stale entries', 
     res = run('--check');
     assert.equal(res.status, 1, res.stdout);
     assert.match(res.stdout, /"demo-library" differs; "gone" is listed with no folder\. Run npm run build-index/);
+
+    fs.writeFileSync(path.join(bundle, 'library.json'), '{"description": ');
+    res = run();
+    assert.equal(res.status, 1, res.stdout + res.stderr);
+    assert.match(res.stderr, /^cannot build index\.json: .*library\.json: not valid JSON/);
+    assert.doesNotMatch(res.stderr, /\n\s+at /);
   });
 });

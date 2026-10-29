@@ -26,7 +26,7 @@ function readJson(file) {
 // Each in order of first appearance, no duplicates.
 export function showcases(manifest, template) {
   const recipe = Array.isArray(manifest.recipe) ? manifest.recipe : [];
-  const live = template.replace(/\{%-?\s*comment\s*-?%\}[\s\S]*?\{%-?\s*endcomment\s*-?%\}/g, '');
+  const live = template.replace(/\{%-?\s*(comment|raw)\s*-?%\}[\s\S]*?\{%-?\s*end\1\s*-?%\}/g, '');
   const kit = [...live.matchAll(/\{%-?\s*render\s+['"]([^'"]+)['"]/g)].map((m) => m[1]).filter((k) => KIT.includes(k));
   const all = [
     ...recipe.map((step) => step?.kind),
@@ -84,13 +84,12 @@ const indent = (json) => json.replace(/\n/g, '\n    ');
 export function buildIndex(rootDir, currentIndex) {
   const current = JSON.parse(currentIndex);
   const raw = entrySpans(currentIndex);
+  const starters = current.starters ?? [];
+  if (raw.length !== starters.length) throw new Error('index.json: every "starters" entry must be an object, so it can be kept byte for byte');
   const startersDir = path.join(rootDir, 'starters');
   const folders = fs.readdirSync(startersDir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name);
   const library = folders.filter((f) => fs.existsSync(path.join(startersDir, f, 'library.json'))).sort();
-  const kept = (current.starters ?? [])
-    .map((entry, i) => ({ slug: entry?.slug, text: raw.length === current.starters.length ? raw[i] : indent(JSON.stringify(entry, null, 2)) }))
-    .filter((entry) => folders.includes(entry.slug) && !library.includes(entry.slug))
-    .map((entry) => entry.text);
+  const kept = raw.filter((_, i) => folders.includes(starters[i].slug) && !library.includes(starters[i].slug));
   const made = library.map((slug) => indent(JSON.stringify(libraryEntry(rootDir, slug), null, 2)));
   const items = [...kept, ...made];
   return `{\n  "kenStudio": "1",\n  "starters": ${items.length ? `[\n    ${items.join(',\n    ')}\n  ]` : '[]'}\n}\n`;
@@ -123,7 +122,13 @@ if (process.argv[1] && fs.realpathSync(process.argv[1]) === fileURLToPath(import
   const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
   const file = path.join(root, 'index.json');
   const current = fs.readFileSync(file, 'utf8');
-  const next = buildIndex(root, current);
+  let next;
+  try {
+    next = buildIndex(root, current);
+  } catch (e) {
+    console.error(`cannot build index.json: ${e.message}`);
+    process.exit(1);
+  }
   if (process.argv.includes('--check')) {
     if (next === current) {
       console.log('index.json is up to date');

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Plinth next to Workday, DocuSign and Teams at Alder Ridge</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f3f3ef;color:#15171b;font-family:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.tf{--a:#4f35d1;--a2:#15171b;--ink:#15171b;--text:#34373d;--mute:#6a6e76;--line:#dcdbd4;--panel:#fff;--mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.tf h1,.tf h2,.tf h3{font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-.02em;margin:0;text-wrap:balance}
+p{margin:0 0 1rem}
+.tf a{color:var(--a)}
+.tf-mono{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0}
+.tf-wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
+.tf-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.tf-logo{height:24px;width:auto;display:block}
+.tf-brand{font-weight:700;font-size:1rem;letter-spacing:-.01em}
+.tf-top .tf-mono{text-align:right;max-width:60%}
+.tf-hero{padding:2rem 0 2.25rem;display:grid;gap:1.75rem}
+.tf-kicker{display:flex;align-items:center;gap:.6rem;color:var(--a);text-wrap:balance}
+.tf-kicker::before{content:'';flex:none;width:8px;height:8px;background:var(--a2)}
+.tf h1{font-size:2.15rem;line-height:1.06;margin:.9rem 0 1rem}
+.tf-intro{font-size:1.1rem;line-height:1.5;color:var(--text);max-width:34rem;margin-bottom:1.1rem}
+.tf-by{font-size:.92rem;color:var(--mute);margin:0}
+.tf-by b{color:var(--ink);font-weight:600}
+.tf-stack{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem .9rem;align-self:start}
+.tf-stack .tf-mono{margin-bottom:.4rem}
+.tf-stack-body{position:relative}
+.tf-stack-body::before{content:'';position:absolute;left:5px;top:.9rem;bottom:1rem;width:2px;background:var(--line)}
+.tf-stack ol{list-style:none;margin:0;padding:0}
+.tf-stack li,.tf-stack-us{position:relative;display:grid;grid-template-columns:12px 1fr auto;gap:.75rem;align-items:center;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.tf-stack li b{font-weight:600}
+.tf-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--a);background:var(--a);justify-self:center}
+.is-gap .tf-dot{background:var(--panel);border-color:#b4b8c0}
+.no-catalog .tf-dot{background:var(--ink);border-color:var(--ink)}
+.tf-stack .tf-cat{font-family:var(--mono);font-size:.72rem;color:var(--mute);text-align:right}
+.tf-stack-us{border-bottom:0;padding:.75rem 0 .2rem;font-weight:600}
+.tf-us-mark{width:12px;height:12px;border-radius:3px;background:var(--ink);justify-self:center}
+.tf-stack-us .tf-cat{color:var(--a)}
+.tf-sec{padding:2.5rem 0 0}
+.tf-head{display:grid;grid-template-columns:2.5rem 1fr;gap:.5rem;align-items:baseline;padding-top:1rem;border-top:1px solid var(--ink);margin-bottom:.9rem}
+.tf-num{font-family:var(--mono);font-size:.82rem;font-weight:500;color:var(--a)}
+.tf h2{font-size:1.5rem;line-height:1.15}
+.tf-lede{color:var(--text);max-width:40rem;margin:0 0 1.4rem}
+.tf-tools{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.tf-tool{padding:1rem 0;border-bottom:1px solid var(--line);display:grid;gap:.45rem}
+.tf-tool-name{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.tf-tool h3{font-size:1.1rem;line-height:1.25}
+.tf-tag{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);border:1px solid var(--line);border-radius:4px;padding:.15rem .4rem;line-height:1.3}
+.tf-tool .tf-cat{font-family:var(--mono);font-size:.74rem;color:var(--mute)}
+.tf-clue{margin:0;color:var(--text);font-size:.97rem}
+.tf-src{margin:.1rem 0 0}
+.tf-status{display:flex;align-items:center;gap:.5rem;color:var(--a);margin-top:.2rem}
+.tf-status::before{content:'';flex:none;width:1.4rem;height:2px;background:var(--a)}
+.is-gap .tf-status{color:var(--mute)}
+.is-gap .tf-status::before{background:repeating-linear-gradient(90deg,#b4b8c0 0 4px,transparent 4px 7px)}
+.tf-empty{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.1rem 1rem}
+.tf-empty p:last-child{margin:0}
+.tf-matches{display:grid;gap:1rem}
+.tf-match{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.1rem 1rem}
+.tf-wire{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem}
+.tf-node{font-family:var(--mono);font-size:.8rem;font-weight:500;letter-spacing:.02em;border:1px solid var(--ink);border-radius:6px;padding:.45rem .7rem;line-height:1.2}
+.tf-node--us{border-color:var(--a);color:var(--a)}
+.tf-wire-line{flex:1;height:2px;background:var(--a);position:relative;min-width:1.5rem}
+.tf-wire-line::after{content:'';position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--panel);border:2px solid var(--a)}
+.tf-conn{margin:0 0 .5rem}
+.tf-conn span{color:var(--ink)}
+.tf-sum{font-size:1.04rem;line-height:1.5;color:var(--ink);margin-bottom:.9rem}
+.tf-dl{margin:0;display:grid;gap:.4rem}
+.tf-dl div{display:grid;grid-template-columns:6rem 1fr;gap:.6rem;font-size:.92rem;align-items:start}
+.tf-dl dt{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:.2rem}
+.tf-dl dd{margin:0;color:var(--text);overflow-wrap:anywhere}
+.tf-change{margin:1rem 0 0;padding-top:.9rem;border-top:1px dashed var(--line)}
+.tf-change .tf-mono{color:var(--a);margin-bottom:.3rem}
+.tf-change p{margin:0;font-size:.97rem}
+.tf-steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.tf-step{display:grid;grid-template-columns:2.25rem 1fr;gap:.6rem;padding:.85rem 0;border-bottom:1px solid var(--line);align-items:baseline}
+.tf-step-n{font-family:var(--mono);font-size:.8rem;font-weight:500;color:var(--a)}
+.tf-step b{display:block;font-weight:600;margin-bottom:.1rem}
+.tf-step span{color:var(--text);font-size:.95rem}
+.tf-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0;padding:0;list-style:none}
+.tf-chip{display:inline-flex;align-items:baseline;gap:.5rem;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:.45rem .85rem;font-size:.9rem;font-weight:500;line-height:1.3}
+.tf-chip small{font-family:var(--mono);font-size:.66rem;color:var(--mute);letter-spacing:.02em}
+.tf-gaps{margin:1.25rem 0 0;padding:.9rem 1rem;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--ink);border-radius:8px;font-size:.95rem;color:var(--text)}
+.tf-gaps b{color:var(--ink)}
+.tf-next{padding:2.5rem 0 0}
+.tf-box{background:#fff;background:color-mix(in srgb,var(--a) 6%,#fff);border:1px solid var(--line);border-color:color-mix(in srgb,var(--a) 28%,var(--line));border-radius:12px;padding:1.4rem 1.2rem 1.2rem}
+.tf-box h2{margin-bottom:.6rem}
+.tf-box p{color:var(--text)}
+.tf-cta{margin:1.1rem 0 1.3rem}
+.tf-cta .ken-cta{background:var(--a)!important;display:inline-flex!important;align-items:center;min-height:48px;font-family:inherit}
+.tf-sign{font-size:.95rem;margin:0}
+.tf-sign b{font-weight:600}
+.tf-sign span{display:block;color:var(--mute)}
+.tf-foot{font-size:.8rem;color:var(--mute);padding:1.75rem 0 2.5rem;max-width:46rem;margin:0}
+.is-empty{display:none}
+@media (min-width:760px){
+body{font-size:17px}
+.tf-wrap{padding:0 2.5rem}
+.tf-top{padding:1.2rem 0}
+.tf-hero{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:3.5rem;padding:3.5rem 0 2.5rem;align-items:start}
+.tf h1{font-size:3.2rem;margin:1.1rem 0 1.2rem}
+.tf-intro{font-size:1.2rem}
+.tf-stack{padding:1.2rem 1.4rem 1.1rem}
+.tf-sec{padding:3.5rem 0 0}
+.tf-head{grid-template-columns:3.5rem 1fr;margin-bottom:1rem}
+.tf h2{font-size:2rem}
+.tf-lede{margin-left:3.5rem}
+.tf-tool{grid-template-columns:14rem minmax(0,1fr) 12rem;gap:1.5rem;align-items:start;padding:1.1rem 0}
+.tf-tool-name{display:grid;gap:.3rem;align-items:start;justify-items:start}
+.tf-tool .tf-cat{display:block}
+.tf-status{margin-top:.3rem;justify-content:flex-start}
+.tf-match{padding:1.4rem 1.6rem 1.3rem;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:1.25rem 2.5rem}
+.tf-match .tf-wire{grid-column:1 / -1}
+.tf-match .tf-dl{padding-top:.2rem}
+.tf-match .tf-change{grid-column:1 / -1;margin-top:.2rem}
+.tf-steps{display:grid;grid-template-columns:1fr 1fr;column-gap:2.5rem}
+.tf-step{grid-template-columns:2.5rem 1fr}
+.tf-box{padding:2.2rem 2.4rem 2rem;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:2rem;align-items:start}
+.tf-box h2{font-size:1.7rem}
+.tf-box-side{padding-top:.3rem}
+.tf-cta{margin:0 0 1.2rem}
+}
+@media (min-width:1100px){.tf h1{font-size:3.5rem}}
+</style>
+</head>
+<body>
+<main class="tf">
+<div class="tf-wrap">
+<header class="tf-top"><span class="tf-brand">Plinth</span><p class="tf-mono">Integration fit for Alder Ridge Health</p>
+</header>
+<section data-section="hero" class="tf-hero">
+<div>
+<p class="tf-mono tf-kicker">Prepared for Elin Sorensen, Director of Supply Chain, Alder Ridge Health</p>
+<h1>Plinth next to Workday, DocuSign and Teams at Alder Ridge</h1>
+<p class="tf-intro">I read your site and careers page to guess which tools your supply chain team already runs. Each one below is a guess, so tell me where I am wrong. Four of the five connect to Plinth today.</p>
+<p class="tf-by">By <b>Ines Kowalski</b> at Plinth</p>
+</div>
+<aside class="tf-stack" aria-label="Your stack, as we guess it">
+<p class="tf-mono">Your stack, as we guess it</p>
+<div class="tf-stack-body">
+<ol>
+<li><span class="tf-dot"></span><b>Workday</b><span class="tf-cat">HR and finance</span></li>
+<li><span class="tf-dot"></span><b>DocuSign</b><span class="tf-cat">E-signature</span></li>
+<li><span class="tf-dot"></span><b>Microsoft Teams</b><span class="tf-cat">Messaging</span></li>
+<li><span class="tf-dot"></span><b>Okta</b><span class="tf-cat">Identity and SSO</span></li>
+<li class="is-gap"><span class="tf-dot"></span><b>Epic</b><span class="tf-cat">Electronic health records</span></li>
+</ol>
+<div class="tf-stack-us"><span class="tf-us-mark"></span><span>Plinth</span><span class="tf-cat">Connects to 4 of 5</span></div>
+</div>
+</aside>
+</section>
+<section data-section="tools" class="tf-sec">
+<div class="tf-head"><span class="tf-num">01</span><h2>What we think you run</h2></div>
+<p class="tf-lede">Guessed from alderridgehealth.example and its careers page. Nothing here came from your systems, so a wrong guess costs you one reply.</p>
+<ul class="tf-tools">
+<li class="tf-tool">
+<div class="tf-tool-name"><h3>Workday</h3><span class="tf-cat">HR and finance</span><span class="tf-tag">Guess</span></div>
+<div><p class="tf-clue">The contracts analyst posting requires experience with Workday Supply Chain Management and Workday Procurement.</p><p class="tf-mono tf-src">Seen on the careers page</p></div>
+<p class="tf-mono tf-status">Connects, see below</p>
+</li>
+<li class="tf-tool">
+<div class="tf-tool-name"><h3>DocuSign</h3><span class="tf-cat">E-signature</span><span class="tf-tag">Guess</span></div>
+<div><p class="tf-clue">The vendor page says Alder Ridge signs every vendor agreement electronically through DocuSign.</p><p class="tf-mono tf-src">Seen on the website</p></div>
+<p class="tf-mono tf-status">Connects, see below</p>
+</li>
+<li class="tf-tool">
+<div class="tf-tool-name"><h3>Microsoft Teams</h3><span class="tf-cat">Messaging</span><span class="tf-tag">Guess</span></div>
+<div><p class="tf-clue">The careers page says most teams run their day in Microsoft Teams.</p><p class="tf-mono tf-src">Seen on the careers page</p></div>
+<p class="tf-mono tf-status">Connects, see below</p>
+</li>
+<li class="tf-tool">
+<div class="tf-tool-name"><h3>Okta</h3><span class="tf-cat">Identity and SSO</span><span class="tf-tag">Guess</span></div>
+<div><p class="tf-clue">An identity engineer posting covers Okta administration, SAML and SCIM provisioning for staff.</p><p class="tf-mono tf-src">Seen on the careers page</p></div>
+<p class="tf-mono tf-status">Connects, see below</p>
+</li>
+<li class="tf-tool is-gap">
+<div class="tf-tool-name"><h3>Epic</h3><span class="tf-cat">Electronic health records</span><span class="tf-tag">Guess</span></div>
+<div><p class="tf-clue">The patient page says records live in Epic MyChart.</p><p class="tf-mono tf-src">Seen on the website</p></div>
+<p class="tf-mono tf-status">Not in our list yet</p>
+</li>
+</ul>
+</section>
+<section data-section="integrations" class="tf-sec">
+<div class="tf-head"><span class="tf-num">02</span><h2>How Plinth plugs in</h2></div>
+<p class="tf-lede">One block per tool we connect to today. What moves, how it is set up, and what changes for the people who use it.</p>
+<div class="tf-matches">
+<article class="tf-match">
+<div class="tf-wire"><span class="tf-node">Workday</span><span class="tf-wire-line"></span><span class="tf-node tf-node--us">Plinth</span></div>
+<div>
+<p class="tf-mono tf-conn"><span>Native, one-way</span> &middot; HR and finance</p>
+<p class="tf-sum">Plinth reads cost centers, departments and manager relationships from Workday, so approval chains follow your org chart and every contract lands on the right cost center.</p>
+</div>
+<dl class="tf-dl">
+<div><dt>What moves</dt><dd>Workers, cost centers and supervisory orgs, Workday to Plinth, nightly</dd></div>
+<div><dt>Setup</dt><dd>Half a day with a Workday admin, through an integration system user</dd></div>
+<div><dt>Docs</dt><dd><a href="https://docs.plinth.example/workday" target="_blank" rel="noopener noreferrer">docs.plinth.example/workday</a></dd></div>
+</dl>
+<div class="tf-change"><p class="tf-mono">What changes for your team</p><p>Approval chains follow the org chart you already keep in Workday. A contract on a cost center reaches the right manager, and nobody maintains a second list of approvers.</p></div>
+</article>
+<article class="tf-match">
+<div class="tf-wire"><span class="tf-node">DocuSign</span><span class="tf-wire-line"></span><span class="tf-node tf-node--us">Plinth</span></div>
+<div>
+<p class="tf-mono tf-conn"><span>Native, two-way</span> &middot; E-signature</p>
+<p class="tf-sum">A contract leaves Plinth for signature in DocuSign and comes back signed, filed against the vendor, with the signed PDF and the audit trail.</p>
+</div>
+<dl class="tf-dl">
+<div><dt>What moves</dt><dd>Envelopes, signer status and signed PDFs, both ways, as they happen</dd></div>
+<div><dt>Setup</dt><dd>About 15 minutes with a DocuSign admin</dd></div>
+<div><dt>Docs</dt><dd><a href="https://docs.plinth.example/docusign" target="_blank" rel="noopener noreferrer">docs.plinth.example/docusign</a></dd></div>
+</dl>
+<div class="tf-change"><p class="tf-mono">What changes for your team</p><p>Vendor agreements keep going out through DocuSign. What changes is where they come back: filed against the vendor in Plinth with the audit trail, not in one person&#39;s inbox.</p></div>
+</article>
+<article class="tf-match">
+<div class="tf-wire"><span class="tf-node">Microsoft Teams</span><span class="tf-wire-line"></span><span class="tf-node tf-node--us">Plinth</span></div>
+<div>
+<p class="tf-mono tf-conn"><span>Native</span> &middot; Messaging</p>
+<p class="tf-sum">Approvals and renewal reminders arrive as Teams messages with the contract summary, and approvers act on them without opening Plinth.</p>
+</div>
+<dl class="tf-dl">
+<div><dt>What moves</dt><dd>Approval requests and renewal reminders, both ways, as they happen</dd></div>
+<div><dt>Setup</dt><dd>About 20 minutes; a Teams admin approves the Plinth app</dd></div>
+<div><dt>Docs</dt><dd><a href="https://docs.plinth.example/teams" target="_blank" rel="noopener noreferrer">docs.plinth.example/teams</a></dd></div>
+</dl>
+<div class="tf-change"><p class="tf-mono">What changes for your team</p><p>Approvals and renewal reminders arrive in Teams with the contract summary attached. A department director can approve from the message between meetings.</p></div>
+</article>
+<article class="tf-match">
+<div class="tf-wire"><span class="tf-node">Okta</span><span class="tf-wire-line"></span><span class="tf-node tf-node--us">Plinth</span></div>
+<div>
+<p class="tf-mono tf-conn"><span>Native</span> &middot; Identity and SSO</p>
+<p class="tf-sum">People sign in to Plinth with Okta. SCIM creates and removes accounts as people join and leave, and Okta groups map to Plinth roles.</p>
+</div>
+<dl class="tf-dl">
+<div><dt>What moves</dt><dd>Users and groups, Okta to Plinth, as they change</dd></div>
+<div><dt>Setup</dt><dd>About 30 minutes with an Okta admin, SAML and SCIM</dd></div>
+<div><dt>Docs</dt><dd><a href="https://docs.plinth.example/okta" target="_blank" rel="noopener noreferrer">docs.plinth.example/okta</a></dd></div>
+</dl>
+<div class="tf-change"><p class="tf-mono">What changes for your team</p><p>Everyone signs in through Okta, and SCIM removes access the day someone leaves. IT adds Plinth as an Okta app and is done.</p></div>
+</article>
+</div>
+</section>
+<section data-section="setup" class="tf-sec">
+<div class="tf-head"><span class="tf-num">03</span><h2>Setting it up</h2></div>
+<p class="tf-lede">What each connection takes, from our own setup notes. Nothing here needs code on your side.</p>
+<ol class="tf-steps">
+<li class="tf-step"><span class="tf-step-n">01</span><div><b>Workday</b><span>Half a day with a Workday admin, through an integration system user</span></div></li>
+<li class="tf-step"><span class="tf-step-n">02</span><div><b>DocuSign</b><span>About 15 minutes with a DocuSign admin</span></div></li>
+<li class="tf-step"><span class="tf-step-n">03</span><div><b>Microsoft Teams</b><span>About 20 minutes; a Teams admin approves the Plinth app</span></div></li>
+<li class="tf-step"><span class="tf-step-n">04</span><div><b>Okta</b><span>About 30 minutes with an Okta admin, SAML and SCIM</span></div></li>
+</ol>
+</section>
+<section data-section="catalog" class="tf-sec">
+<div class="tf-head"><span class="tf-num">04</span><h2>Also in our list</h2></div>
+<p class="tf-lede">The other 17 tools Plinth connects to, in case one of them is already yours.</p>
+<ul class="tf-chips">
+<li class="tf-chip">Zapier<small>Automation</small></li>
+<li class="tf-chip">Salesforce<small>CRM</small></li>
+<li class="tf-chip">HubSpot<small>CRM</small></li>
+<li class="tf-chip">Ironclad<small>Contract management</small></li>
+<li class="tf-chip">Snowflake<small>Data warehouse</small></li>
+<li class="tf-chip">Adobe Acrobat Sign<small>E-signature</small></li>
+<li class="tf-chip">NetSuite<small>ERP and accounting</small></li>
+<li class="tf-chip">QuickBooks Online<small>ERP and accounting</small></li>
+<li class="tf-chip">Sage Intacct<small>ERP and accounting</small></li>
+<li class="tf-chip">Xero<small>ERP and accounting</small></li>
+<li class="tf-chip">Microsoft Entra ID<small>Identity and SSO</small></li>
+<li class="tf-chip">Google Workspace<small>Identity and SSO</small></li>
+<li class="tf-chip">Slack<small>Messaging</small></li>
+<li class="tf-chip">Coupa<small>Procurement</small></li>
+<li class="tf-chip">Jira<small>Project tracking</small></li>
+<li class="tf-chip">Ramp<small>Spend management</small></li>
+<li class="tf-chip">Brex<small>Spend management</small></li>
+</ul>
+<p class="tf-gaps"><b>Not in our list yet:</b> Epic. Ask and we will find out what the route is, and say plainly if there is none.</p>
+</section>
+<section data-section="next" class="tf-next">
+<div class="tf-box">
+<div>
+<h2>Did we get your stack right?</h2>
+<p>If I guessed a tool wrong, or missed one, reply and I will redo this page. Twenty minutes with your supply chain and IT leads is enough to agree on which tool to connect first.</p>
+</div>
+<div class="tf-box-side">
+<div class="tf-cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#111827;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+<p class="tf-sign"><b>Ines Kowalski</b><span>Plinth</span></p>
+</div>
+</div>
+<p class="tf-foot">How this page was made: the tools above were guessed from alderridgehealth.example and its careers page. Nothing came from Alder Ridge Health's systems. Integration details come from Plinth's own integration list.</p>
+</section>
+</div>
+</main>
+</body>
+</html>

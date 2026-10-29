@@ -81,6 +81,52 @@
       "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
       "showcases": ["prompt", "person", "roles", "ken/cta"],
       "version": "1.0.0"
+    },
+    {
+      "slug": "tech-fit",
+      "name": "Fits your stack",
+      "type": "landing_page",
+      "format": "page",
+      "showcases": [
+        "dataset",
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "Shows how your product fits the tools an account likely runs, guessed by Ken from their site and careers page and matched to your integration list.",
+      "category": "prospecting",
+      "tags": [
+        "integrations",
+        "tech stack",
+        "technical fit",
+        "prospecting"
+      ],
+      "featured": false,
+      "needs": [
+        "dataset"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "alder-ridge",
+          "label": "Alder Ridge Health"
+        },
+        {
+          "id": "marlow-freight",
+          "label": "Marlow Freight Systems"
+        },
+        {
+          "id": "oakhaven-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "pennant-partial",
+          "label": "Pennant Robotics, partial fill"
+        }
+      ]
     }
   ]
 }

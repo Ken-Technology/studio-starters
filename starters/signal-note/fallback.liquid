@@ -1,12 +1,12 @@
-{%- assign accent = brand.colors.primary | default: '#2a4bd7' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#0e1530' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
-{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign accent = brand.colors.primary | default: '#c42f3c' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#3d4750' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Zilla Slab' -%}
+{%- assign font_body = brand.fonts.body | default: 'Zilla Slab' -%}
 {%- assign brand_name = brand.name | default: '' -%}
 {%- assign sender_name = sender.name | default: 'The team' -%}
 {%- assign sender_first = sender_name | split: ' ' | first -%}
+{%- assign has_brand_colour = false -%}
+{%- if brand.colors.primary and brand.colors.primary != '' -%}{%- assign has_brand_colour = true -%}{%- endif -%}
 {%- if person.first_name and person.first_name != '' -%}{%- assign greeting = person.first_name | append: ',' -%}{%- else -%}{%- assign greeting = 'Hello,' -%}{%- endif -%}
 <!doctype html>
 <html lang="en">
@@ -15,58 +15,43 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Nothing new at {{ account.name | escape }} this month</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q | escape }}:wght@400;500;600;700&display=swap">
+{%- if font_head == 'Zilla Slab' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q | escape }}:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;700&display=swap">
 {%- endif %}
 <style>
-:root{
-  --p:{{ accent | escape }};
-  --s:{{ accent2 | escape }};
-  --fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,sans-serif;
-  --fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;
-  --ink:color-mix(in srgb,var(--s) 82%,#000);
-  --text:color-mix(in srgb,var(--s) 86%,#fff);
-  --mute:color-mix(in srgb,var(--s) 52%,#fff);
-  --line:color-mix(in srgb,var(--s) 14%,#fff);
-  --paper:color-mix(in srgb,var(--p) 3%,#fff);
-  --p-deep:color-mix(in srgb,var(--p) 78%,#000);
-  --p-btn:color-mix(in srgb,var(--p) 88%,#000);
-}
+:root{--p:{{ accent | escape }};--s:{{ accent2 | escape }};--fh:'{{ font_head | escape }}',ui-serif,Georgia,serif;--fb:'{{ font_body | escape }}',ui-serif,Georgia,serif;--pad:#fbeb98;--ink:#1e2532;--desk:{% if has_brand_colour %}color-mix(in srgb,var(--s) 85%,#000){% else %}var(--s){% endif %};--m:clamp(.5rem,3vw,3rem);--px:clamp(1rem,4vw,3.5rem);--mw:clamp(1.25rem,1rem + 7vw,7.5rem);--gap:clamp(1rem,2.5vw,2.25rem)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--text);font:17px/1.62 var(--fb);-webkit-font-smoothing:antialiased}
-h1{font-family:var(--fh);color:var(--ink);margin:0 0 1rem;font-weight:600;letter-spacing:-.015em;line-height:1.12;font-size:2.2rem;max-width:16ch;text-wrap:balance;overflow-wrap:break-word}
-p{margin:0 0 1rem}
-.mast{max-width:58rem;margin:0 auto;padding:1.1rem 1.25rem;border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fh);font-weight:600;color:var(--ink);font-size:1rem;margin:0}
-.logo{width:26px;height:26px;display:block;flex:none}
-.mark{border-radius:7px;background:var(--p);color:#fff;font:700 .85rem/26px var(--fh);text-align:center}
-img.logo{width:auto;max-width:9rem;object-fit:contain}
-.sheet{max-width:58rem;margin:0 auto;padding:2.2rem 1.25rem 5rem}
-.sheet>section{max-width:36rem}
-.cta{margin-top:1.6rem;padding:1.4rem 1.3rem;border:1px solid var(--line);border-radius:14px;background:#fff}
-.cta p:last-child{margin:0}
-.cta .ken-cta{display:inline-flex!important;align-items:center;justify-content:center;min-height:44px;background:var(--p-btn)!important;color:#fff!important;font-weight:500!important;font-size:.98rem;padding:.8rem 1.3rem!important;border-radius:10px!important;text-decoration:none}
-.alt{font-size:.92rem;color:var(--mute)}
-@media (min-width:760px){
-  .mast{padding:1.3rem 2rem}
-  .sheet{padding:3.4rem 2rem 6rem}
-  h1{font-size:3rem}
-}
+body{margin:0;min-height:100svh;font:400 clamp(1.0625rem,1rem + .3vw,1.25rem)/1.55 var(--fb);-webkit-font-smoothing:antialiased;overflow-wrap:break-word;background:var(--desk);color:#fff;color:rgb(from var(--desk) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))}
+h1{font-family:var(--fh);font-weight:700;margin:0;letter-spacing:-.01em;line-height:1;text-wrap:balance;font-size:clamp(1.75rem,.6rem + 4.2vw,5rem);max-width:22ch}
+p{margin:0;text-wrap:pretty}
+a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.mast{max-width:76rem;margin:0 auto;padding:1.1rem 1.25rem 1.25rem;font:700 clamp(1.125rem,1rem + .5vw,1.375rem)/1 var(--fh)}
+.mast img{display:block;height:28px;width:auto;max-width:9rem;object-fit:contain}
+.pad{position:relative;max-width:76rem;margin:0 max(var(--m),calc((100% - 76rem) / 2)) 3rem;background:var(--pad);color:var(--ink);border-top:clamp(.875rem,1.5vw,1.25rem) solid var(--ink);padding:clamp(2.25rem,5vw,4.5rem) var(--px) clamp(3rem,6vw,5rem) calc(var(--px) + var(--mw) + var(--gap))}
+.pad::before{content:"";position:absolute;top:0;bottom:0;left:calc(var(--px) + var(--mw) + var(--gap) / 2 - 4px);border-left:7px double var(--p)}
+.pad section{max-width:38rem}
+.pad section p{margin-top:.75rem}
+.pad h1+p{margin-top:2rem}
+.cta{margin-top:2.5rem}
+.cta .ken-cta{display:inline-flex!important;align-items:center;min-height:50px;background:var(--p)!important;color:#fff!important;color:rgb(from var(--p) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))!important;font:700 1rem/1.1 var(--fb)!important;padding:.85rem 1.4rem!important;border-radius:3px!important;text-decoration:none}
+@media (max-width:759px){:root{--mw:0rem;--gap:1.5rem;--px:.875rem}.pad::before{border-left-width:5px}}
 </style>
 </head>
 <body>
 <header class="mast">
-  <p class="brand">
-    {%- if brand.logo_url and brand.logo_url != '' -%}
-    <img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand_name | default: 'Logo' | escape }}" height="26">
-    {%- elsif brand_name != '' -%}
-    <span class="logo mark" aria-hidden="true">{{ brand_name | slice: 0, 1 | upcase | escape }}</span><span>{{ brand_name | escape }}</span>
-    {%- endif -%}
-  </p>
+  {%- if brand.logo_url and brand.logo_url != '' -%}
+  <img src="{{ brand.logo_url | escape }}" alt="{{ brand_name | default: 'Logo' | escape }}" height="28">
+  {%- elsif brand_name != '' -%}
+  {{ brand_name | escape }}
+  {%- endif -%}
 </header>
-<main class="sheet">
+<main class="pad">
   <section data-section="head">
     <h1>Nothing new at {{ account.name | escape }} this month</h1>
     <p>{{ greeting | escape }}</p>

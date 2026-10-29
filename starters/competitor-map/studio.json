@@ -1,0 +1,216 @@
+{
+  "kenStudio": "1",
+  "name": "Competitive map",
+  "type": "report",
+  "format": "page",
+  "slug": "competitive-map",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "market": {
+        "type": "array",
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string", "maxLength": 28 },
+            "value": { "type": "integer" }
+          },
+          "required": ["label", "value"]
+        }
+      },
+      "candidates": { "type": "array", "maxItems": 12, "items": { "type": "object" } },
+      "site_account": { "type": "object" },
+      "site_1": { "type": "object" },
+      "site_2": { "type": "object" },
+      "site_3": { "type": "object" },
+      "site_4": { "type": "object" },
+      "site_5": { "type": "object" },
+      "site_6": { "type": "object" },
+      "headline": {
+        "type": "string",
+        "minLength": 20,
+        "maxLength": 90,
+        "fallback": "Where {{ account.name }} stands among the companies that sell the same thing"
+      },
+      "intro": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 320,
+        "fallback": "Each company is placed from what its own website says about who it sells to and what it sells, with the names from Ken Search. A position is a reading of how a company sells, not a measurement."
+      },
+      "axes": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "minLength": 3, "maxLength": 28 },
+              "low": { "type": "string", "minLength": 2, "maxLength": 22 },
+              "high": { "type": "string", "minLength": 2, "maxLength": 22 }
+            },
+            "required": ["name", "low", "high"]
+          },
+          "y": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "minLength": 3, "maxLength": 28 },
+              "low": { "type": "string", "minLength": 2, "maxLength": 22 },
+              "high": { "type": "string", "minLength": 2, "maxLength": 22 }
+            },
+            "required": ["name", "low", "high"]
+          }
+        },
+        "required": ["x", "y"]
+      },
+      "competitors": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string", "minLength": 2, "maxLength": 60 },
+            "domain": { "type": "string", "maxLength": 80 },
+            "x": { "type": "integer" },
+            "y": { "type": "integer" },
+            "line": { "type": "string", "minLength": 20, "maxLength": 160 }
+          },
+          "required": ["name", "x", "y", "line"]
+        }
+      },
+      "account_position": {
+        "type": "object",
+        "properties": {
+          "x": { "type": "integer" },
+          "y": { "type": "integer" },
+          "line": { "type": "string", "minLength": 20, "maxLength": 160 }
+        },
+        "required": ["x", "y", "line"]
+      },
+      "open_space": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "minLength": 10, "maxLength": 70 },
+          "x": { "type": "integer" },
+          "y": { "type": "integer" },
+          "why": { "type": "string", "minLength": 60, "maxLength": 420 }
+        },
+        "required": ["title", "x", "y", "why"]
+      }
+    },
+    "required": ["headline", "intro", "axes", "competitors", "account_position", "open_space"]
+  },
+  "recipe": [
+    {
+      "id": "market",
+      "kind": "tool",
+      "tool": "ken_search.count",
+      "args": {
+        "kind": "companies",
+        "segments": [
+          { "label": "Same industry", "filters": { "industries": ["{{ account.industry }}"] } },
+          { "label": "Growing headcount", "filters": { "industries": ["{{ account.industry }}"], "headcountGrew": true } }
+        ]
+      },
+      "to": "data.market"
+    },
+    {
+      "id": "candidates",
+      "kind": "tool",
+      "tool": "ken_search.companies",
+      "args": { "mode": "lookalikes", "company": "account", "limit": 8 },
+      "to": "data.candidates"
+    },
+    {
+      "id": "site_account",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}", "maxChars": 5000, "mode": "markdown" },
+      "to": "data.site_account"
+    },
+    {
+      "id": "site_1",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "requires": ["data.candidates"],
+      "args": { "url": "https://{{ data.candidates[0].domain }}", "maxChars": 3000, "mode": "markdown" },
+      "to": "data.site_1"
+    },
+    {
+      "id": "site_2",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "requires": ["data.candidates"],
+      "args": { "url": "https://{{ data.candidates[1].domain }}", "maxChars": 3000, "mode": "markdown" },
+      "to": "data.site_2"
+    },
+    {
+      "id": "site_3",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "requires": ["data.candidates"],
+      "args": { "url": "https://{{ data.candidates[2].domain }}", "maxChars": 3000, "mode": "markdown" },
+      "to": "data.site_3"
+    },
+    {
+      "id": "site_4",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "requires": ["data.candidates"],
+      "args": { "url": "https://{{ data.candidates[3].domain }}", "maxChars": 3000, "mode": "markdown" },
+      "to": "data.site_4"
+    },
+    {
+      "id": "site_5",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "requires": ["data.candidates"],
+      "args": { "url": "https://{{ data.candidates[4].domain }}", "maxChars": 3000, "mode": "markdown" },
+      "to": "data.site_5"
+    },
+    {
+      "id": "site_6",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "requires": ["data.candidates"],
+      "args": { "url": "https://{{ data.candidates[5].domain }}", "maxChars": 3000, "mode": "markdown" },
+      "to": "data.site_6"
+    },
+    {
+      "id": "place",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.candidates"],
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "sender.name", "brand.name", "data.candidates", "data.site_account", "data.site_1", "data.site_2", "data.site_3", "data.site_4", "data.site_5", "data.site_6"],
+      "to": ["data.headline", "data.intro", "data.axes", "data.competitors", "data.account_position", "data.open_space"],
+      "prompt": "You are drawing a competitive map for {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it to someone at {{ account.name }}. The page puts {{ account.name }} and the companies that sell the same thing on one 2x2 map, gives one line on how each company positions itself, and names the open space on the map that {{ account.name }} could own.\n\nInputs: data.candidates are the companies Ken Search lists as most similar to {{ account.name }}, each with name, domain, industry, size, employee_count, hq, country, description and founded (some fields are missing). data.site_1 to data.site_6 are the homepages of the first six candidates in that order, each {url, title, description, markdown}, empty when the page could not be read. data.site_account is the homepage of {{ account.name }}. What else we know about {{ account.name }}: industry {{ account.industry | default: 'unknown' }}, size {{ account.size_band | default: 'unknown' }}, and this summary: {{ account.dossier.summary | default: 'none' }}. Use nothing else.\n\nIf data.candidates holds fewer than 2 companies, return {} and nothing else.\n\nStep 1, choose the axes. Pick the two dimensions on which these companies differ most in how they sell, judged from their homepages and descriptions. Examples: who they sell to (small teams to large enterprises), what they sell (one tool to a full platform), how they deliver (software only to software with services), how they price (per seat to per outcome). The two axes must be different dimensions, never one restated. Each axis is {name, low, high}: name at most 28 characters, low and high at most 22 characters each, naming the two ends in plain words. x runs left to right from low to high, y runs bottom to top from low to high.\n\nStep 2, place the companies. competitors is 3 to 6 items, the candidates with the clearest positioning first, each {name, domain, x, y, line}. Copy name and domain from the candidate. x and y are integers from 8 to 92: where the company sits on each axis, judged from what its homepage and description say about who it sells to and how. Keep every company at least 12 points away from every other company on at least one axis, so the markers do not overlap, and spread the companies across the whole map rather than clustering them. line is one sentence of 20 to 160 characters on how the company positions itself, in plain words, from its homepage or description only, like \"Sells a trial management suite to sponsors of any size, and leads with speed of study setup\". Leave out a candidate whose homepage and description are both empty.\n\nStep 3, place {{ account.name }}. account_position is {x, y, line} on the same scale and under the same rules, from data.site_account and the summary.\n\nStep 4, find the open space. open_space is {title, x, y, why}. x and y are integers from 14 to 86 marking the centre of the area on the map with no company within 15 points, where the buyers {{ account.name }} already sells to would want a vendor to be. title is 10 to 70 characters naming that position in plain words, like \"Mid-size sponsors who want the whole suite\". why is 2 to 4 sentences, 60 to 420 characters, on why nobody sits there yet and what {{ account.name }} already has that fits it, from the inputs only. If the map has no empty area, pick the least crowded edge {{ account.name }} could move toward and say so plainly in why.\n\nStep 5, write the page text. headline: at most 90 characters, sentence case, saying what the map shows for {{ account.name }}, with no number in it. intro: 1 or 2 sentences, 40 to 320 characters, on what the map is and how it was made (each company's own homepage, names from Ken Search), in plain words. Put no numbers in the intro; the page prints the market count next to it.\n\nReturn JSON with the keys headline, intro, axes, competitors, account_position and open_space.\n\nFacts: use only the inputs. Never invent companies, customers, numbers, funding, news or quotes. Never guess what a company does beyond what its homepage and description say. Never place a company from its name alone.\n\nVoice: one person explaining a map to a peer. Plain, specific, calm. Short sentences a person would say out loud. Sentence case for every label and title.\n\nRules for every string: no em dashes or en dashes. No exclamation marks. No email addresses, phone numbers or prices. No hype words (unlock, leverage, seamless, robust, cutting edge, game changer, revolutionize, supercharge, best in class, industry leading). Never \"real\" as emphasis. Labels stay inside their character limits; write them short instead of cutting them."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "requires": ["data.competitors"],
+      "on": ["data.headline", "data.intro", "data.competitors", "data.account_position", "data.open_space"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["unlock", "leverage", "seamless", "robust", "cutting edge", "cutting-edge", "game changer", "game-changer", "revolutionize", "supercharge", "best in class", "best-in-class", "industry leading", "industry-leading", "synergy", "elevate", "delve"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true,
+        "no_signoff": true,
+        "skip": ["name", "domain"]
+      },
+      "rubric": "Grade the map text the way the buyer at {{ account.name }} reads it: the headline, the intro, one line per competitor, the line on {{ account.name }}, then the open space. 10 is a map a sceptical buyer trusts because every line could only be about that company.\nScore these, 0 to 10 each:\n- grounded: every claim about a company is in its homepage text or its Ken Search description below, and nothing about {{ account.name }} goes beyond its homepage text and the summary. A line that could be about any company in the industry scores low.\n- specific: each competitor line names who the company sells to and how it sells, in plain words a person would say out loud, not marketing phrases copied from the homepage.\n- readable: short sentences, no jargon, no stacked nouns; the headline and intro say what the map is in one pass.\n- open_space: the title names a position on the two axes, and why explains from the inputs both why nobody sits there and what {{ account.name }} already has that fits.\nAnswer yes or no:\n- invented: does any line state a customer, number, result, funding round or product that the inputs below do not support? Quote it.\n- weird_word: is there a phrase a person would not say out loud (jargon, marketing adjectives, stacked nouns)? Quote it.\nAutomatic fail: an em dash or en dash, an exclamation mark, a price, an email address or phone number, a placeholder, or a claim about a company that its homepage text and description below do not support.\nInputs the writer had. Ken Search candidates: {{ data.candidates | json }}\nHomepage of {{ account.name }} ({{ data.site_account.url | default: 'not read' }}): {{ data.site_account.title }}. {{ data.site_account.description }} {{ data.site_account.markdown | truncate: 1500 }}\nHomepage 1 ({{ data.site_1.url | default: 'not read' }}): {{ data.site_1.title }}. {{ data.site_1.description }} {{ data.site_1.markdown | truncate: 1200 }}\nHomepage 2 ({{ data.site_2.url | default: 'not read' }}): {{ data.site_2.title }}. {{ data.site_2.description }} {{ data.site_2.markdown | truncate: 1200 }}\nHomepage 3 ({{ data.site_3.url | default: 'not read' }}): {{ data.site_3.title }}. {{ data.site_3.description }} {{ data.site_3.markdown | truncate: 1200 }}\nHomepage 4 ({{ data.site_4.url | default: 'not read' }}): {{ data.site_4.title }}. {{ data.site_4.description }} {{ data.site_4.markdown | truncate: 1200 }}\nHomepage 5 ({{ data.site_5.url | default: 'not read' }}): {{ data.site_5.title }}. {{ data.site_5.description }} {{ data.site_5.markdown | truncate: 1200 }}\nHomepage 6 ({{ data.site_6.url | default: 'not read' }}): {{ data.site_6.title }}. {{ data.site_6.description }} {{ data.site_6.markdown | truncate: 1200 }}\nSummary of {{ account.name }}: {{ account.dossier.summary | default: 'none' }}\nPass when the overall score is 7.5 or higher, no 0 to 10 check is 6 or lower, and invented and weird_word are both no. On a fail, name the check and quote the phrase to change. The fix never supplies replacement sentences, names, numbers or positions."
+    }
+  ],
+  "sections": [
+    { "id": "hero", "label": "Hero" },
+    { "id": "map", "label": "The map" },
+    { "id": "positions", "label": "How each one positions" },
+    { "id": "open_space", "label": "The open space" },
+    { "id": "cta", "label": "Book a call" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

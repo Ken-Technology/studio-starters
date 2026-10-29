@@ -1,0 +1,219 @@
+{
+  "account": {
+    "name": "Corbel Building Supply",
+    "domain": "corbelsupply.example",
+    "industry": "wholesale building materials",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Corbel Building Supply is a regional distributor of lumber, roofing and siding to contractors across the Pacific Northwest, with 14 branches and a contractor credit program.",
+      "why_now": "Opened its fourteenth branch in Bend in August.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Marcus Oyelaran",
+    "title": "Regional Sales Director",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Halloran & Vance",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1f2a44",
+      "secondary": "#c8a24a"
+    },
+    "fonts": {
+      "heading": "Newsreader",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "market": [
+      { "label": "Same industry", "value": 9840 },
+      { "label": "Growing headcount", "value": 1260 }
+    ],
+    "candidates": [
+      {
+        "name": "Cascade Lumber Partners",
+        "domain": "cascadelumber.example",
+        "industry": "wholesale building materials",
+        "size": "201-500",
+        "employee_count": 240,
+        "hq": "Tacoma, Washington",
+        "country": "United States",
+        "description": "Lumber and panel distributor for framing contractors in Washington and Oregon.",
+        "founded": 1978
+      },
+      {
+        "name": "Meridian Building Products",
+        "domain": "meridianbp.example",
+        "industry": "wholesale building materials",
+        "size": "1001-5000",
+        "employee_count": 3400,
+        "hq": "Dallas, Texas",
+        "country": "United States",
+        "description": "National distributor of roofing, siding and windows with more than 300 branches.",
+        "founded": 1962
+      },
+      {
+        "name": "Ironbark Supply",
+        "domain": "ironbarksupply.example",
+        "industry": "wholesale building materials",
+        "size": "51-200",
+        "employee_count": 85,
+        "hq": "Boise, Idaho",
+        "country": "United States",
+        "description": "Roofing distributor serving residential roofers in Idaho and Montana.",
+        "founded": 2001
+      },
+      {
+        "name": "Summit Pro Yards",
+        "domain": "summitproyards.example",
+        "industry": "wholesale building materials",
+        "size": "201-500",
+        "employee_count": 290,
+        "hq": "Spokane, Washington",
+        "country": "United States",
+        "description": "Pro lumber yards for custom builders, with design and estimating services.",
+        "founded": 1985
+      },
+      {
+        "name": "Northwind Exteriors Supply",
+        "domain": "northwindexteriors.example",
+        "industry": "wholesale building materials",
+        "size": "51-200",
+        "employee_count": 120,
+        "hq": "Portland, Oregon",
+        "country": "United States",
+        "description": "Siding, windows and doors for remodelers, with online ordering and jobsite delivery.",
+        "founded": 2010
+      },
+      {
+        "name": "Granger & Holt",
+        "domain": "grangerholt.example",
+        "industry": "wholesale building materials",
+        "size": "501-1000",
+        "employee_count": 760,
+        "hq": "Sacramento, California",
+        "country": "United States",
+        "description": "Building materials distributor to production home builders across the West, with installed services.",
+        "founded": 1955
+      },
+      {
+        "name": "Trestle Direct",
+        "domain": "trestledirect.example",
+        "industry": "wholesale building materials",
+        "size": "11-50",
+        "employee_count": 32,
+        "hq": "Seattle, Washington",
+        "country": "United States",
+        "description": "Online marketplace where contractors order framing materials for next-day delivery.",
+        "founded": 2019
+      }
+    ],
+    "site_account": {
+      "url": "https://corbelsupply.example",
+      "title": "Corbel Building Supply: lumber, roofing and siding for Northwest contractors",
+      "description": "Fourteen branches from Bellingham to Bend. Contractor credit, jobsite delivery and yards that open at six.",
+      "markdown": "# The contractor's yard, fourteen times over\n\nCorbel stocks framing lumber, roofing and siding at fourteen branches across Washington and Oregon.\n\n## Contractor credit\n\nOpen an account and pay on 30-day terms. Most contractors are approved within two days.\n\n## Delivered to the job\n\nOrder by three, delivered to the jobsite the next morning."
+    },
+    "site_1": {
+      "url": "https://cascadelumber.example",
+      "title": "Cascade Lumber Partners: lumber and panels for framers",
+      "description": "Framing lumber, panels and engineered wood for contractors in Washington and Oregon. Deep stock, fast delivery.",
+      "markdown": "# Lumber and panels, in stock\n\nCascade Lumber Partners supplies framing contractors across Washington and Oregon from four yards.\n\n## Stock you can count on\n\nDimensional lumber, panels and engineered wood, on the ground, every day.\n\n## Delivery that keeps crews moving\n\nBoom trucks and flatbeds, scheduled around your framing crew."
+    },
+    "site_2": {
+      "url": "https://meridianbp.example",
+      "title": "Meridian Building Products: roofing, siding and windows nationwide",
+      "description": "More than 300 branches across the country. Roofing, siding, windows and tools at competitive prices.",
+      "markdown": "# Everything exterior, everywhere\n\nMeridian Building Products distributes roofing, siding and windows from more than 300 branches nationwide.\n\n## Breadth and price\n\nThe widest exterior catalog in the country, with national pricing programs for contractors of every size.\n\n## Find your branch\n\nSearch by city to find the Meridian branch closest to your next job."
+    },
+    "site_3": {
+      "url": "https://ironbarksupply.example",
+      "title": "Ironbark Supply: roofing for roofers",
+      "description": "Roofing distributor for residential roofers in Idaho and Montana. Three yards, pickup and delivery.",
+      "markdown": "# Roofing, and only roofing\n\nIronbark Supply serves residential roofers in Idaho and Montana from three yards in Boise, Twin Falls and Missoula.\n\n## Pickup or rooftop delivery\n\nPick up at the yard or have shingles loaded onto the roof.\n\n## Run by roofers\n\nOur counter staff have worked on roofs. They know what you need."
+    },
+    "site_4": {
+      "url": "https://summitproyards.example",
+      "title": "Summit Pro Yards: lumber yards for custom builders",
+      "description": "Lumber, trusses and millwork for custom builders, with design and estimating services at every yard.",
+      "markdown": "# More than a lumber yard\n\nSummit Pro Yards serves custom home builders across eastern Washington with lumber, trusses and millwork.\n\n## Design and estimating included\n\nOur estimators take your plans and return a full material list and quote.\n\n## Built around the builder\n\nA dedicated account manager at every yard."
+    },
+    "site_5": {
+      "url": "https://northwindexteriors.example",
+      "title": "Northwind Exteriors Supply: siding, windows and doors for remodelers",
+      "description": "Order siding, windows and doors online and have them delivered to the jobsite. Built for remodelers in the Portland area.",
+      "markdown": "# Exteriors, ordered online\n\nNorthwind Exteriors Supply sells siding, windows and doors to remodelers around Portland.\n\n## Order online, delivered to the job\n\nSee stock and prices online, order from the jobsite and get delivery within two days.\n\n## Pay as you go\n\nCard or invoice on each order. No account to open."
+    },
+    "site_6": {
+      "url": "https://grangerholt.example",
+      "title": "Granger & Holt: building materials for production builders",
+      "description": "Supplying production home builders across the West since 1955. Volume contracts, installed services and jobsite logistics.",
+      "markdown": "# The supplier behind the West's biggest builders\n\nGranger & Holt supplies production home builders across California, Nevada and Arizona.\n\n## Volume contracts\n\nAnnual agreements with fixed pricing and guaranteed stock for your communities.\n\n## Installed services\n\nWe supply and install framing packages, roofing and insulation with our own crews."
+    },
+    "headline": "Where Corbel stands among the six distributors it sells against",
+    "intro": "Ken Search listed the six distributors closest to Corbel. Each one is placed from what its own website says about who it serves and what it adds beyond the product. A position is a reading of how each one sells, not a market share figure.",
+    "axes": {
+      "x": { "name": "Customer they serve", "low": "Small contractors", "high": "Production builders" },
+      "y": { "name": "What they add", "low": "Product only", "high": "Services and credit" }
+    },
+    "competitors": [
+      {
+        "name": "Cascade Lumber Partners",
+        "domain": "cascadelumber.example",
+        "x": 30,
+        "y": 28,
+        "line": "Sells lumber and panels to framing contractors in two states from four yards, and competes on stock and delivery."
+      },
+      {
+        "name": "Meridian Building Products",
+        "domain": "meridianbp.example",
+        "x": 70,
+        "y": 42,
+        "line": "Sells roofing, siding and windows nationally through more than 300 branches, and leads with breadth of catalog and price."
+      },
+      {
+        "name": "Ironbark Supply",
+        "domain": "ironbarksupply.example",
+        "x": 16,
+        "y": 18,
+        "line": "Sells roofing only, to residential roofers in Idaho and Montana, with pickup or rooftop delivery from three yards."
+      },
+      {
+        "name": "Summit Pro Yards",
+        "domain": "summitproyards.example",
+        "x": 52,
+        "y": 78,
+        "line": "Sells lumber, trusses and millwork to custom builders, with design and estimating bundled into every yard."
+      },
+      {
+        "name": "Northwind Exteriors Supply",
+        "domain": "northwindexteriors.example",
+        "x": 24,
+        "y": 50,
+        "line": "Sells exteriors to remodelers around Portland with online ordering and two-day jobsite delivery, and no account to open."
+      },
+      {
+        "name": "Granger & Holt",
+        "domain": "grangerholt.example",
+        "x": 88,
+        "y": 60,
+        "line": "Sells to production home builders across the West on annual volume contracts, with installation by its own crews."
+      }
+    ],
+    "account_position": {
+      "x": 46,
+      "y": 62,
+      "line": "Sells lumber, roofing and siding to contractors from fourteen branches, with 30-day contractor credit and next-morning delivery as the hook."
+    },
+    "open_space": {
+      "title": "Mid-size contractors who want credit and estimating from one yard",
+      "x": 72,
+      "y": 84,
+      "why": "Summit bundles estimating for custom builders and Granger serves production builders on contracts. Nobody serves the contractors between those two with credit, estimating and delivery from one branch network. Corbel already has the credit program and fourteen branches, so estimating is the missing piece."
+    }
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "account": {
+    "name": "Marrow Analytics",
+    "domain": "marrowanalytics.example",
+    "industry": "software development",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Marrow Analytics sells clinical trial data software to mid-size biotech sponsors. About 120 people, based in Boston. Its product pulls site data into one dashboard and flags enrollment problems early.",
+      "why_now": "Hired a VP of Marketing in September.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Dana",
+    "last_name": "Whitlock",
+    "title": "VP of Marketing"
+  },
+  "sender": {
+    "name": "Priya Natarajan",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Fieldstone",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "market": [
+      {
+        "label": "Same industry",
+        "value": 212480
+      },
+      {
+        "label": "Growing headcount",
+        "value": 38210
+      }
+    ],
+    "candidates": [
+      {
+        "name": "Trialdeck",
+        "domain": "trialdeck.example",
+        "industry": "software development",
+        "size": "51-200",
+        "employee_count": 140,
+        "hq": "Raleigh, North Carolina",
+        "country": "United States",
+        "description": "Clinical trial management software for sponsors and CROs. Study setup, site tracking and monitoring in one suite.",
+        "founded": 2015
+      },
+      {
+        "name": "Cohort Health Systems",
+        "domain": "cohorthealth.example",
+        "industry": "software development",
+        "size": "501-1000",
+        "employee_count": 820,
+        "hq": "Princeton, New Jersey",
+        "country": "United States",
+        "description": "Enterprise electronic data capture and trial management suite for global pharmaceutical companies.",
+        "founded": 2004
+      },
+      {
+        "name": "Sitewise",
+        "domain": "sitewise.example",
+        "industry": "software development",
+        "size": "11-50",
+        "employee_count": 38,
+        "hq": "Denver, Colorado",
+        "country": "United States",
+        "description": "Scheduling and source document software for clinical research sites.",
+        "founded": 2019
+      },
+      {
+        "name": "Verity Clinical",
+        "domain": "verityclinical.example",
+        "industry": "software development",
+        "size": "201-500",
+        "employee_count": 310,
+        "hq": "Cambridge, United Kingdom",
+        "country": "United Kingdom",
+        "description": "Clinical data management services and software for sponsors running late-phase trials.",
+        "founded": 2009
+      },
+      {
+        "name": "Pulsepoint Labs",
+        "domain": "pulsepointlabs.example",
+        "industry": "software development",
+        "size": "51-200",
+        "employee_count": 90,
+        "hq": "Chicago, Illinois",
+        "country": "United States",
+        "description": "Patient recruitment analytics for trial sponsors. See which sites enroll and which fall behind.",
+        "founded": 2017
+      },
+      {
+        "name": "Helix Oversight",
+        "domain": "helixoversight.example",
+        "industry": "software development",
+        "size": "201-500",
+        "employee_count": 260,
+        "hq": "Basel",
+        "country": "Switzerland",
+        "description": "Risk-based monitoring platform for large sponsors, built around regulatory inspection readiness.",
+        "founded": 2012
+      },
+      {
+        "name": "Ledgerline",
+        "domain": "ledgerline.example",
+        "industry": "software development",
+        "size": "51-200",
+        "employee_count": 75,
+        "hq": "Austin, Texas",
+        "country": "United States",
+        "description": "Clinical trial budgeting and site payments for sponsors and sites.",
+        "founded": 2016
+      },
+      {
+        "name": "Northstar EDC",
+        "domain": "northstaredc.example",
+        "industry": "software development",
+        "size": "11-50",
+        "employee_count": 30,
+        "hq": "Toronto, Ontario",
+        "country": "Canada",
+        "description": "Electronic data capture for small sponsors and academic trials.",
+        "founded": 2018
+      }
+    ],
+    "site_account": {
+      "url": "https://marrowanalytics.example",
+      "title": "Marrow Analytics: see every site in one place",
+      "description": "Trial data software for mid-size biotech sponsors. One dashboard for every site, with enrollment problems flagged before they cost you a quarter.",
+      "markdown": "# See every site in one place\n\nMarrow pulls data from your EDC, CTMS and site portals into one dashboard. Enrollment, deviations and query backlogs per site, updated daily.\n\n## Built for sponsors with 50 to 200 people\n\nNo services team required. Connect your systems in a week and give your clinical operations lead a single screen.\n\n## Catch enrollment problems early\n\nMarrow flags sites that fall behind their enrollment curve and shows you why, so you can act before the study slips."
+    },
+    "site_1": {
+      "url": "https://trialdeck.example",
+      "title": "Trialdeck: clinical trial management for sponsors and CROs",
+      "description": "Set up a study in days, not months. Site tracking, monitoring visits and documents in one suite.",
+      "markdown": "# Run every study from one suite\n\nTrialdeck is clinical trial management software for sponsors and CROs of every size. Study setup, site activation, monitoring visits and the trial master file, in one place.\n\n## Set up a study in days\n\nTemplates for protocols, sites and visit schedules get a new study running fast.\n\n## From first-in-human to phase 3\n\nTeams of five and teams of five hundred run on Trialdeck."
+    },
+    "site_2": {
+      "url": "https://cohorthealth.example",
+      "title": "Cohort Health Systems: the enterprise clinical data suite",
+      "description": "EDC, CTMS and eTMF for global pharmaceutical companies. Validated, audited and deployed across more than forty countries.",
+      "markdown": "# The clinical data suite for global pharma\n\nCohort Health Systems delivers electronic data capture, trial management and the trial master file as one validated platform for large sponsors.\n\n## Enterprise deployment\n\nDedicated implementation teams, multi-year agreements and 24-hour support in every region.\n\n## Talk to our team\n\nRequest a consultation with an enterprise specialist."
+    },
+    "site_3": {
+      "url": "https://sitewise.example",
+      "title": "Sitewise: scheduling and source documents for research sites",
+      "description": "One tool for the site coordinator. Visit scheduling, source documents and stipends, priced per site. Sign up today.",
+      "markdown": "# Built for the site coordinator\n\nSitewise replaces the binder and the spreadsheet. Schedule visits, capture source documents and track stipends in one tool.\n\n## Priced per site\n\nOne flat price per research site. Sign up online and start today.\n\n## Loved by coordinators\n\nNo training needed. Most sites are live in an afternoon."
+    },
+    "site_4": {
+      "url": "https://verityclinical.example",
+      "title": "Verity Clinical: data management services for late-phase trials",
+      "description": "Our data managers run your database build, cleaning and lock, on our own platform. For sponsors who want the work done, not just the tool.",
+      "markdown": "# Data management, done for you\n\nVerity Clinical runs database build, data cleaning and database lock for sponsors in late-phase trials. Our platform is how we deliver it.\n\n## Services first\n\nA named data manager on every study. Our software is included, never sold alone.\n\n## Trusted by large sponsors\n\nWe work with global pharmaceutical companies on phase 3 and post-marketing studies."
+    },
+    "site_5": {
+      "url": "https://pulsepointlabs.example",
+      "title": "Pulsepoint Labs: enroll faster",
+      "description": "Patient recruitment analytics for mid-size sponsors. See which sites enroll, which fall behind, and where to send the next patient.",
+      "markdown": "# Enroll faster\n\nPulsepoint Labs shows sponsors which sites enroll and which fall behind, with the reasons, so you can move patients and budget to where they work.\n\n## One tool, one job\n\nPulsepoint does recruitment analytics and nothing else. It plugs into the EDC and CTMS you already run.\n\n## For mid-size sponsors\n\nBuilt for clinical operations teams at sponsors with ten to forty active studies."
+    },
+    "site_6": {
+      "url": "https://helixoversight.example",
+      "title": "Helix Oversight: risk-based monitoring for large sponsors",
+      "description": "Central monitoring and inspection readiness for sponsors running global programs. Built with regulators in mind.",
+      "markdown": "# Monitoring built for inspection day\n\nHelix Oversight gives large sponsors central monitoring, key risk indicators and an audit trail that stands up to a regulator.\n\n## Risk-based by design\n\nFocus monitoring visits on the sites that need them.\n\n## For global programs\n\nUsed by sponsors running programs across Europe, the Americas and Asia."
+    },
+    "headline": "Where Marrow sits among six trial data software vendors, and the gap none of them fills",
+    "intro": "Ken Search picked the six companies closest to Marrow. Each one is placed from what its own homepage says about who it sells to and what it sells. A position is a reading of how a company sells, not a measurement.",
+    "axes": {
+      "x": {
+        "name": "Who they sell to",
+        "low": "Small sponsors",
+        "high": "Large pharma"
+      },
+      "y": {
+        "name": "What they sell",
+        "low": "One tool",
+        "high": "Full suite"
+      }
+    },
+    "competitors": [
+      {
+        "name": "Trialdeck",
+        "domain": "trialdeck.example",
+        "x": 42,
+        "y": 66,
+        "line": "Sells a trial management suite to sponsors and CROs of any size, and leads with speed of study setup."
+      },
+      {
+        "name": "Cohort Health Systems",
+        "domain": "cohorthealth.example",
+        "x": 90,
+        "y": 92,
+        "line": "Sells an enterprise EDC and trial management suite to global pharma, on multi-year agreements with dedicated implementation teams."
+      },
+      {
+        "name": "Sitewise",
+        "domain": "sitewise.example",
+        "x": 14,
+        "y": 22,
+        "line": "Sells one scheduling and source document tool to research sites, priced per site, with online signup."
+      },
+      {
+        "name": "Verity Clinical",
+        "domain": "verityclinical.example",
+        "x": 72,
+        "y": 50,
+        "line": "Sells data management as a service to large sponsors in late-phase trials, with its software as the delivery vehicle, never sold alone."
+      },
+      {
+        "name": "Pulsepoint Labs",
+        "domain": "pulsepointlabs.example",
+        "x": 36,
+        "y": 30,
+        "line": "Sells one patient recruitment analytics tool to mid-size sponsors, and leads with enrolling faster."
+      },
+      {
+        "name": "Helix Oversight",
+        "domain": "helixoversight.example",
+        "x": 82,
+        "y": 34,
+        "line": "Sells a risk-based monitoring tool to large sponsors with global programs, and leads with inspection readiness."
+      }
+    ],
+    "account_position": {
+      "x": 40,
+      "y": 48,
+      "line": "Sells a site data dashboard to sponsors with 50 to 200 people, and leads with catching enrollment problems early without a services team."
+    },
+    "open_space": {
+      "title": "Mid-size sponsors who want the whole suite",
+      "x": 56,
+      "y": 76,
+      "why": "Trialdeck sells its suite to everyone and Cohort sells its suite to global pharma only. Nobody sells a full suite built for sponsors with 50 to 200 people, which is where Marrow already has its dashboard customers. Marrow already holds the site data layer those sponsors would start from."
+    }
+  }
+}

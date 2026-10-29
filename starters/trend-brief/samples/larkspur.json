@@ -1,0 +1,86 @@
+{
+  "account": {
+    "name": "Larkspur Dental Partners",
+    "domain": "larkspurdental.example",
+    "industry": "hospitals and health care",
+    "size_band": "501-1000",
+    "dossier": {
+      "summary": "Larkspur Dental Partners is a dental support organization with 46 practices across Ohio and Kentucky and about 700 staff. It runs billing, scheduling and hiring for the practices it owns.",
+      "why_now": "Added six practices in the last twelve months and is hiring a VP of Revenue Cycle.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Elena",
+    "last_name": "Marsh",
+    "title": "Chief Operating Officer"
+  },
+  "sender": {
+    "name": "Daniel Okafor",
+    "title": "Partner",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Marlowe & Vance",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1b2a41",
+      "secondary": "#b08d57"
+    },
+    "fonts": {
+      "heading": "Libre Baskerville",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "segments": [
+      { "label": "All health care companies", "filters": { "industries": ["hospitals and health care"] } },
+      { "label": "Headcount grew 10% or more", "filters": { "industries": ["hospitals and health care"], "headcountGrew": true, "minHeadcountGrowthPct": 10 } },
+      { "label": "Cut headcount 10% or more", "filters": { "industries": ["hospitals and health care"], "headcountDeclined": true, "minHeadcountDeclinePct": 10 } },
+      { "label": "Raised money, 6 months", "filters": { "industries": ["hospitals and health care"], "raisedFundingRecently": true, "raisedFundingWithinDays": 180 } }
+    ],
+    "plan": [
+      {
+        "title": "Who is growing in health care",
+        "counted": "Hospitals and health care companies that grew headcount by at least 10 percent",
+        "why": "Larkspur added six practices in a year, so the other fast growers are its competition for practices and for staff."
+      },
+      {
+        "title": "Who is cutting staff",
+        "counted": "Hospitals and health care companies that cut headcount by at least 10 percent",
+        "why": "Operators cutting staff are the most likely sellers of practices, which is how Larkspur grows."
+      },
+      {
+        "title": "Who has fresh money",
+        "counted": "Hospitals and health care companies that announced funding in the last six months",
+        "why": "Funded groups set the price Larkspur bids against for its next practice."
+      }
+    ],
+    "counts": [
+      { "label": "All health care companies", "value": 112600 },
+      { "label": "Headcount grew 10% or more", "value": 9840 },
+      { "label": "Cut headcount 10% or more", "value": 4120 },
+      { "label": "Raised money, 6 months", "value": 2710 }
+    ],
+    "headline": "Three things moving in health care this quarter",
+    "dek": "Ken Search lists 112,600 hospitals and health care companies. Three of its signals describe the market Larkspur buys practices in, and what a 46-practice group should make of each one.",
+    "trends": [
+      {
+        "title": "Growth is concentrated in a small group of operators",
+        "what": "9,840 of the 112,600 health care companies in Ken Search grew headcount by at least 10 percent, about 9 percent of the industry. The other 91 percent did not grow at that pace. So the growth in this market sits with fewer than one company in ten, and those are the ones adding sites and staff.",
+        "means": "Larkspur is in that 9 percent after adding six practices in a year. The groups in this count are the ones bidding against you for the next practice, and for the office managers and hygienists who run it. It is worth knowing which of them operate in Ohio and Kentucky before the next seller takes offers."
+      },
+      {
+        "title": "A sizable group is cutting staff",
+        "what": "4,120 health care companies cut headcount by at least 10 percent, about 4 percent of the industry. That is close to half the size of the group that grew. A cut of that size usually means an operator is deciding which sites to keep, and that is when practices and small groups come up for sale.",
+        "means": "For a group that has bought six practices in twelve months, this count is a sourcing list. Some of the 4,120 own dental practices they would rather sell than restaff. Your new VP of Revenue Cycle will also inherit whatever billing backlog comes with each one, so a plan for the first 90 days after close matters as much as the price."
+      },
+      {
+        "title": "Fresh capital is backing a small number of groups",
+        "what": "2,710 of the 112,600 health care companies announced funding in the last six months, about 2 percent of the industry. Funded operators can move faster on acquisitions than groups paying from cash flow. A count this small still names the buyers most likely to outbid on a practice.",
+        "means": "The dossier does not say how Larkspur funds its acquisitions, but the 2,710 funded groups are the competition that can pay more per practice this year. Deciding early which deals you will walk away from on price keeps the pipeline honest, and keeps the integration team from drowning."
+      }
+    ],
+    "so_what": "Start with the cuts. 4,120 operators trimming staff is the count most likely to put practices on the market in Ohio and Kentucky this year, and Larkspur has shown it can close six in twelve months. Watch the funded group next, since it sets the price you will be bidding against."
+  }
+}

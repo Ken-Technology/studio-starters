@@ -905,6 +905,47 @@
       ]
     },
     {
+      "slug": "trend-brief",
+      "name": "Trend brief",
+      "type": "report",
+      "format": "doc",
+      "showcases": [
+        "prompt",
+        "tool",
+        "grade",
+        "ken_search.count",
+        "ken/cta",
+        "doc"
+      ],
+      "description": "A short brief on three trends in the account's industry, each backed by a Ken Search company count, with what each one means for them. Prints to PDF.",
+      "category": "content",
+      "tags": [
+        "trends",
+        "market",
+        "ken search",
+        "brief",
+        "pdf"
+      ],
+      "featured": false,
+      "needs": [],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "granite-peak",
+          "label": "Granite Peak Builders"
+        },
+        {
+          "id": "larkspur",
+          "label": "Larkspur Dental Partners"
+        },
+        {
+          "id": "pinecone-shared",
+          "label": "Pinecone Robotics, shared link (no person)"
+        }
+      ]
+    },
+    {
       "slug": "value-review",
       "name": "Quarterly value review",
       "type": "report",

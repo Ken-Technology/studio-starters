@@ -14,7 +14,7 @@
   "brand": {
     "name": "Ken",
     "logo_url": null,
-    "colors": { "primary": "#12355b", "secondary": "#d99a00" },
+    "colors": { "primary": "#12355b", "accent": "#d99a00", "secondary": "#d99a00" },
     "fonts": { "heading": "Young Serif", "body": "Figtree" }
   },
   "data": {

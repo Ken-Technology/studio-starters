@@ -21,6 +21,7 @@
     "logo_url": null,
     "colors": {
       "primary": "#1d4d4f",
+      "accent": "#c26a12",
       "secondary": "#c26a12"
     },
     "fonts": {

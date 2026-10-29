@@ -93,15 +93,41 @@ Ken supplies these at render time. Recipes never fill them.
 | `account` | `name`, `domain`, `industry`, `size_band`, `dossier.summary`, `dossier.why_now`, `dossier.angle` |
 | `person` | `first_name`, `last_name`, `title`. **Null on the shared link**, so always write `{{ person.first_name \| default: 'there' }}`. On a recruiting page also `current_title`, `current_company`, `location`, `skills`, `experience_summary` and `linkedin_url`, set while the page fills too |
 | `sender` | `name`, `title`, `signature_html` |
-| `brand` | `name`, `logo_url`, `colors.primary`, `colors.secondary`, `fonts.heading`, `fonts.body` |
+| `brand` | `name`, `logo_url`, `icon_url`, `colors.primary`, `colors.accent`, `colors.secondary`, `fonts.heading`, `fonts.body`. See Brand kit |
 | `link` | `booking_url`, `refresh_url`, `page_url` |
 | `asset_url` | Base URL for `assets/` |
 | `role` | Recruiting pages only: `title`, `company`, `location`, `remote_policy` (`onsite`, `hybrid` or `remote`), `pay_range` (like "$150k-$180k a year", empty when the role has no pay), `description`, `highlights` (the must-haves), `job_url`, `booking_url` |
 | `roles` | Recruiting pages only: the campaign's roles shaped like `role`, the primary role first, at most 4 |
 
-`brand.colors`, `brand.fonts` and `sender.title` are empty today, so every starter sets a default for them.
+`brand.colors`, `brand.fonts` and `sender.title` can be empty, so every starter sets a default for them.
 
 A recruiting page (type `recruiting`, behind the workspace's `recruiting` flag) belongs to one candidate on a recruiting campaign, not to an account, so `account` is empty there. Its samples set `"account": null` and carry `role` and `roles`.
+
+### Brand kit
+
+Starters read the workspace's brand kit from `brand.*` and keep today's look as the default, so a workspace with no brand kit renders exactly as before. Every variable can be null, so each use needs `| default:`:
+
+| Variable | Value |
+|---|---|
+| `brand.name` | Brand name |
+| `brand.logo_url` | Wide logo, else the icon |
+| `brand.icon_url` | Square icon |
+| `brand.colors.primary` | Main accent |
+| `brand.colors.accent` | Second accent |
+| `brand.colors.secondary` | Same value as `accent` |
+| `brand.fonts.heading` | Google Fonts family name |
+| `brand.fonts.body` | Google Fonts family name |
+
+Put one `assign` per brand color and font at the top of the template, with the starter's own value as the default, and use the variable everywhere after it:
+
+```liquid
+{%- assign accent = brand.colors.primary | default: '#2b3a67' -%}
+{%- assign accent2 = brand.colors.accent | default: '#e0a100' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Fraunces' -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+```
+
+Load the fonts with `{{ font_head | replace: ' ', '+' }}` in the Google Fonts `<link>`. Neutral colors (text, borders, backgrounds) stay hard-coded. Show a logo only where the starter already has one, guarded by `{%- if brand.logo_url %}`.
 
 ### Kit snippets
 

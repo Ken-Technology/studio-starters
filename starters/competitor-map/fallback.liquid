@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#f9b233' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Overpass' -%}
 {%- assign font_body = brand.fonts.body | default: 'Overpass' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,14 +9,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A competitive map for {{ account.name | escape }}</title>
-{%- if font_head == 'Overpass' or font_body == 'Overpass' %}
+{%- if font_head == 'Overpass' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
 {%- endif %}
-{%- if font_head != 'Overpass' %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;700&display=swap">
+{%- if font_body != font_head %}
+{%- if font_body == 'Overpass' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
 {%- endif %}
-{%- if font_body != 'Overpass' and font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;700&display=swap">
 {%- endif %}
 <style>
 *{box-sizing:border-box}

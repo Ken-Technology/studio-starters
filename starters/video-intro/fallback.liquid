@@ -2,8 +2,6 @@
 {%- assign stage = brand.colors.secondary | default: '#161c1a' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Archivo' -%}
 {%- assign font_body = brand.fonts.body | default: 'Archivo' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign first_name = person.first_name | default: '' -%}
 {%- assign sender_name = sender.name | default: 'Your contact' -%}
 {%- capture booking_title -%}Pick a time with {{ sender_name }}{%- endcapture -%}
@@ -14,8 +12,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A short page for {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600&display=swap">
+{%- if font_head == 'Archivo' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Archivo' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}

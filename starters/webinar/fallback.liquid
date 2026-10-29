@@ -2,11 +2,7 @@
 {%- assign ink = brand.colors.secondary | default: '#2a1110' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Chivo' -%}
 {%- assign font_body = brand.fonts.body | default: 'Chivo' -%}
-{%- assign head_w = '400;700;900' -%}
-{%- if brand.fonts.heading -%}{%- assign head_w = '400;700' -%}{%- endif -%}
 {%- assign brand_name = brand.name | default: '' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,9 +10,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A live session for {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@{{ head_w }}&display=swap">
+{%- if font_head == 'Chivo' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;700&display=swap">
+{%- if font_body == 'Chivo' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{--p:{{ accent | escape }};--s:{{ ink | escape }};--fh:'{{ font_head | escape }}','Arial Black',Arial,sans-serif;--fb:'{{ font_body | escape }}',Arial,sans-serif;--bone:#e2dccf;--ink:var(--s);--on-p:#fff;--off-p:#2a1110;--m:clamp(1rem,3.2vw,2.5rem)}

@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#0e1726' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Anton' -%}
 {%- assign font_body = brand.fonts.body | default: 'Host Grotesk' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign our_name = brand.name | default: 'Us' -%}
 {%- comment -%} Is a brand color light? Brightness is (299 r + 587 g + 114 b) / 1000 of a hex color; 110 or more takes dark text. {%- endcomment -%}
 {%- assign hx = '0123456789abcdef' -%}
@@ -82,8 +80,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ data.title | escape }}{% if brand.name %}, from {{ brand.name | escape }}{% endif %}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}{% if brand.fonts.heading %}:wght@400;700{% endif %}&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600&display=swap">
+{%- if font_head == 'Anton' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Host Grotesk' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 :root{
   --bg:#d4e4ee;

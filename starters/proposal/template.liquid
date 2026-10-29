@@ -1,10 +1,6 @@
 {%- comment -%}Brand: validate the two colours, then read how light each one is so text on them stays readable.{%- endcomment -%}
 {%- assign font_head = brand.fonts.heading | default: 'Imbue' -%}
 {%- assign font_body = brand.fonts.body | default: 'Albert Sans' -%}
-{%- assign head_q = ':wght@400;700' -%}
-{%- if font_head == 'Imbue' -%}{%- assign head_q = ':opsz,wght@10..100,500..700' -%}{%- endif -%}
-{%- assign body_q = ':wght@400;700' -%}
-{%- if font_body == 'Albert Sans' -%}{%- assign body_q = ':wght@400;600' -%}{%- endif -%}
 {%- assign c1 = brand.colors.primary | default: '#f7941d' | strip | downcase -%}
 {%- assign c2 = brand.colors.secondary | default: '#1f2b4d' | strip | downcase -%}
 {%- assign hexd = '0123456789abcdef' | split: '' -%}
@@ -102,9 +98,19 @@
 <meta name="description" content="{{ data.sub | default: 'A proposal and 30-day pilot plan' | escape }}">
 <title>Proposal and pilot plan for {{ acct | escape }}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}{{ head_q }}&amp;display=swap">
+{%- if font_head == 'Imbue' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,500..700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}{{ body_q }}&amp;display=swap">
+{%- if font_body == 'Albert Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{

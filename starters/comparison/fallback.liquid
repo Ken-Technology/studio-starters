@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#121316' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Alfa Slab One' -%}
 {%- assign font_body = brand.fonts.body | default: 'Golos Text' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign us = brand.name | default: 'Us' -%}
 <!doctype html>
 <html lang="en">
@@ -15,12 +13,16 @@
 {%- if font_head == 'Alfa Slab One' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap">
 {%- else %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
 {%- endif %}
+{%- if font_body != font_head %}
 {%- if font_body == 'Golos Text' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;800&display=swap">
-{%- elsif font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 *{box-sizing:border-box}

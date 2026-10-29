@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#16181d' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Saira' -%}
 {%- assign font_body = brand.fonts.body | default: 'Saira' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign ranked = data.entries | sort: 'employee_count' | reverse -%}
 {%- assign total = ranked.size | plus: 1 -%}
 {%- assign you_rank = data.account_rank | default: total -%}
@@ -23,14 +21,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ data.title | escape }}</title>
-{%- if font_head == 'Saira' or font_body == 'Saira' %}
+{%- if font_head == 'Saira' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@62.5..100,400..800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
 {%- endif %}
-{%- if font_head != 'Saira' %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;700&display=swap">
+{%- if font_body != font_head %}
+{%- if font_body == 'Saira' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@62.5..100,400..800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
 {%- endif %}
-{%- if font_body != 'Saira' and font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;700&display=swap">
 {%- endif %}
 <style>
 *{box-sizing:border-box}

@@ -10,10 +10,6 @@ bar and the payback marker follows the sliders.
 {%- assign accent2 = brand.colors.secondary | default: '#111111' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Libre Franklin' -%}
 {%- assign font_body = brand.fonts.body | default: 'Libre Franklin' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
-{%- if font_head == 'Libre Franklin' -%}{%- assign head_w = '400;600;800' -%}{%- else -%}{%- assign head_w = '400;700' -%}{%- endif -%}
-{%- if font_body == 'Libre Franklin' -%}{%- assign body_w = '400;600;800' -%}{%- else -%}{%- assign body_w = '400;700' -%}{%- endif -%}
 {%- assign brand_name = brand.name | default: '' -%}
 {%- assign work = data.work_name | default: 'work' -%}
 {%- assign sender_first = sender.name | default: '' | split: ' ' | first -%}
@@ -140,9 +136,19 @@ m{{ manual | round }}|m{{ labor | round }}|m{{ tool_save | round }}|m{{ platform
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>What manual {{ work | escape }} costs {{ account.name | escape }} each year</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q | escape }}:wght@{{ head_w }}&display=swap">
-{%- if body_q != head_q %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q | escape }}:wght@{{ body_w }}&display=swap">
+{%- if font_head == 'Libre Franklin' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Libre Franklin' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{

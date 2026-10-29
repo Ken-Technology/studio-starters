@@ -8,10 +8,6 @@ reads. brand.fonts.heading and .body replace Hanken Grotesk.
 {%- assign font_head = brand.fonts.heading | default: 'Hanken Grotesk' -%}
 {%- assign font_body = brand.fonts.body | default: 'Hanken Grotesk' -%}
 {%- assign brand_name = brand.name | default: '' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
-{%- if font_head == 'Hanken Grotesk' -%}{%- assign head_w = '400;500' -%}{%- else -%}{%- assign head_w = '400;700' -%}{%- endif -%}
-{%- if font_body == 'Hanken Grotesk' -%}{%- assign body_w = '400;500' -%}{%- else -%}{%- assign body_w = '400;700' -%}{%- endif -%}
 {%- assign peer = data.peers | first -%}
 {%- assign has_peers = false -%}
 {%- if peer.score_1 and peer.score_2 and peer.score_3 and peer.score_4 -%}{%- assign has_peers = true -%}{%- endif -%}
@@ -28,9 +24,19 @@ reads. brand.fonts.heading and .body replace Hanken Grotesk.
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ data.headline | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q | escape }}:wght@{{ head_w }}&display=swap">
-{%- if body_q != head_q %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q | escape }}:wght@{{ body_w }}&display=swap">
+{%- if font_head == 'Hanken Grotesk' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Hanken Grotesk' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js"></script>
 <style>

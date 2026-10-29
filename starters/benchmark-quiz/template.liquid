@@ -7,10 +7,6 @@ the colour itself (CSS relative colour). brand.fonts.heading and .body replace E
 {%- assign accent2 = brand.colors.secondary | default: '#1a1a1a' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Epilogue' -%}
 {%- assign font_body = brand.fonts.body | default: 'Epilogue' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
-{%- if font_head == 'Epilogue' -%}{%- assign head_w = '400;500;900' -%}{%- else -%}{%- assign head_w = '400;700' -%}{%- endif -%}
-{%- if font_body == 'Epilogue' -%}{%- assign body_w = '400;500;900' -%}{%- else -%}{%- assign body_w = '400;700' -%}{%- endif -%}
 {%- assign brand_name = brand.name | default: 'our team' -%}
 {%- assign sender_name = sender.name | default: 'our team' -%}
 {%- assign sender_first = sender_name | split: ' ' | first -%}
@@ -43,9 +39,19 @@ the colour itself (CSS relative colour). brand.fonts.heading and .body replace E
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>How does {{ account.name | escape }} compare?</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q | escape }}:wght@{{ head_w }}&display=swap">
-{%- if body_q != head_q %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q | escape }}:wght@{{ body_w }}&display=swap">
+{%- if font_head == 'Epilogue' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;900&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Epilogue' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;900&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js"></script>
 <style>

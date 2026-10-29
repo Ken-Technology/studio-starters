@@ -2,10 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#2b2622' | escape -%}
 {%- assign font_head = brand.fonts.heading | default: 'Red Hat Display' | escape -%}
 {%- assign font_body = brand.fonts.body | default: 'Red Hat Text' | escape -%}
-{%- assign head_q = font_head | url_encode -%}
-{%- assign body_q = font_body | url_encode -%}
-{%- assign head_w = '400;700' -%}{%- if font_head == 'Red Hat Display' -%}{%- assign head_w = '900' -%}{%- endif -%}
-{%- assign body_w = '400;700' -%}{%- if font_body == 'Red Hat Text' -%}{%- assign body_w = '400;500' -%}{%- endif -%}
 {%- assign acct = account.name | default: 'your company' -%}
 {%- assign logo = brand.logo_url | default: '' -%}
 <!doctype html>
@@ -15,8 +11,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ acct | escape }} market report</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@{{ head_w }}&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@{{ body_w }}&amp;display=swap">
+{%- if font_head == 'Red Hat Display' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@900&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Red Hat Text' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 :root{--p:{{ accent }};--s:{{ accent2 }};--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--ink:color-mix(in srgb,var(--s) 70%,#1d1916)}
 *{box-sizing:border-box}

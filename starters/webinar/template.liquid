@@ -2,12 +2,7 @@
 {%- assign ink = brand.colors.secondary | default: '#2a1110' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Chivo' -%}
 {%- assign font_body = brand.fonts.body | default: 'Chivo' -%}
-{%- assign head_w = '400;700;900' -%}
-{%- if brand.fonts.heading -%}{%- assign head_w = '400;700' -%}{%- endif -%}
-{%- assign body_w = '400;700' -%}
 {%- assign brand_name = brand.name | default: '' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign first = person.first_name | default: '' -%}
 {%- assign local = data.local_zone | default: '' | strip | downcase -%}
 {%- assign has_local = false -%}
@@ -33,9 +28,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ data.title | escape }}: a live session for {% if person.first_name %}{{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}{% else %}{{ account.name | escape }}{% endif %}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@{{ head_w }}&display=swap">
+{%- if font_head == 'Chivo' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@{{ body_w }}&display=swap">
+{%- if font_body == 'Chivo' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{

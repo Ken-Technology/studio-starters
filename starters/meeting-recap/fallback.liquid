@@ -1,8 +1,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#0e1726' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Anton' -%}
 {%- assign font_body = brand.fonts.body | default: 'Host Grotesk' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,8 +8,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Recap of our call with {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}{% if brand.fonts.heading %}:wght@400;700{% endif %}&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600&display=swap">
+{%- if font_head == 'Anton' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Host Grotesk' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 :root{--bg:#d4e4ee;--ink:#0e1726;--muted:#3a4a5e;--fh:'{{ font_head }}',Impact,'Arial Narrow',sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--m:clamp(1rem,2.4vw,2rem){% if brand.fonts.heading %};--hw:700;--hc:none{% else %};--hw:400;--hc:uppercase{% endif %}}
 *{box-sizing:border-box}

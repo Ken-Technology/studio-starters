@@ -2,12 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#050f16' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Bebas Neue' -%}
 {%- assign font_body = brand.fonts.body | default: 'EB Garamond' -%}
-{%- assign head_q = font_head | url_encode -%}
-{%- assign body_q = font_body | url_encode -%}
-{%- assign head_w = 'wght@400' -%}
-{%- if brand.fonts.heading -%}{%- assign head_w = 'wght@400;700' -%}{%- endif -%}
-{%- assign body_w = 'ital,wght@0,400;0,500;1,400' -%}
-{%- if brand.fonts.body -%}{%- assign body_w = 'wght@400;700' -%}{%- endif -%}
 {%- assign caps = true -%}
 {%- if brand.fonts.heading -%}{%- assign caps = false -%}{%- endif -%}
 {%- assign first = person.first_name | default: '' -%}
@@ -18,9 +12,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A workshop seat for {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:{{ head_w }}&display=swap">
+{%- if font_head == 'Bebas Neue' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:{{ body_w }}&display=swap">
+{%- if font_body == 'EB Garamond' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{--p:{{ accent | escape }};--s:{{ accent2 | escape }};--fh:'{{ font_head | escape }}','Arial Narrow',Arial,sans-serif;--fb:'{{ font_body | escape }}',Georgia,serif;--paper:#ffffff;--ink:var(--s);--on-p:#050f16;--k:{% if caps %}1{% else %}.7{% endif %};--m:clamp(1rem,3vw,2.25rem);--pad:clamp(1.5rem,4vw,3rem)}

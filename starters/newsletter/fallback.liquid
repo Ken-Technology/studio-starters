@@ -2,9 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#0c0a08' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Work Sans' -%}
 {%- assign font_body = brand.fonts.body | default: font_head -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
-{%- if brand.fonts.heading -%}{%- assign head_w = 'wght@400;700' -%}{%- else -%}{%- assign head_w = 'wght@400;500' -%}{%- endif -%}
 {%- assign sender_name = sender.name | default: 'Our team' -%}
 <!doctype html>
 <html lang="en">
@@ -13,9 +10,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A monthly brief for {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:{{ head_w }}&amp;display=swap">
-{%- if body_q != head_q %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500&amp;display=swap">
+{%- if font_head == 'Work Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@500&display=swap">
 {%- endif %}
 <style>
 *{box-sizing:border-box}

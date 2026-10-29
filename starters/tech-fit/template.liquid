@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#161a17' -%}
 {%- assign font_head = brand.fonts.heading | default: 'STIX Two Text' -%}
 {%- assign font_body = brand.fonts.body | default: 'STIX Two Text' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign us = brand.name | default: 'our product' -%}
 {%- assign tool_count = data.tools | size -%}
 {%- assign match_count = data.matches | size -%}
@@ -21,14 +19,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ data.headline | escape }}</title>
-{%- if font_head == 'STIX Two Text' or font_body == 'STIX Two Text' %}
+{%- if font_head == 'STIX Two Text' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
 {%- endif %}
-{%- if font_head != 'STIX Two Text' %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;700&display=swap">
+{%- if font_body != font_head %}
+{%- if font_body == 'STIX Two Text' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
 {%- endif %}
-{%- if font_body != 'STIX Two Text' and font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;700&display=swap">
 {%- endif %}
 <style>
 *{box-sizing:border-box}

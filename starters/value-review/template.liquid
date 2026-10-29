@@ -2,10 +2,6 @@
 {%- assign bname = brand.name | default: '' | strip -%}
 {%- assign font_head = brand.fonts.heading | default: 'League Spartan' -%}
 {%- assign font_body = brand.fonts.body | default: 'Figtree' -%}
-{%- assign head_wq = '400;700' -%}
-{%- if font_head == 'League Spartan' -%}{%- assign head_wq = '700' -%}{%- endif -%}
-{%- assign body_wq = '400;700' -%}
-{%- if font_body == 'Figtree' -%}{%- assign body_wq = '400;600' -%}{%- endif -%}
 {%- assign c1 = brand.colors.primary | default: '#06525c' | strip | downcase -%}
 {%- assign c2 = brand.colors.secondary | default: '#06525c' | strip | downcase -%}
 {%- assign hexd = '0123456789abcdef' | split: '' -%}
@@ -256,8 +252,20 @@
 <meta name="description" content="A quarterly value review for {{ account.name | escape }}: usage against last quarter, adoption by team, wins, the plan for next quarter and the renewal timeline.">
 <title>{% if cq %}{{ cq.label | escape }} value review{% else %}Quarterly value review{% endif %} for {{ account.name | escape }}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@{{ head_wq }}&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@{{ body_wq }}&amp;display=swap">
+{%- if font_head == 'League Spartan' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Figtree' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 :root{
   --brand-primary:{{ primary }};

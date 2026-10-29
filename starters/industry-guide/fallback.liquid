@@ -2,10 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#d4a017' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Rokkitt' -%}
 {%- assign font_body = brand.fonts.body | default: 'Spectral' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
-{%- if brand.fonts.heading -%}{%- assign head_w = 'wght@400;700' -%}{%- else -%}{%- assign head_w = 'wght@700;800' -%}{%- endif -%}
-{%- if brand.fonts.body -%}{%- assign body_w = 'wght@400;700' -%}{%- else -%}{%- assign body_w = 'wght@400;600' -%}{%- endif -%}
 {%- assign first = person.first_name | default: 'there' -%}
 {%- assign short_name = account.name | split: ' - ' | first | split: ' | ' | first | strip | default: account.name -%}
 {%- assign industry = account.industry | default: 'your industry' -%}
@@ -17,9 +13,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Five moves for {{ short_name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:{{ head_w }}&display=swap">
+{%- if font_head == 'Rokkitt' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@700;800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:{{ body_w }}&display=swap">
+{%- if font_body == 'Spectral' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 *{box-sizing:border-box}

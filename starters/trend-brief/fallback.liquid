@@ -3,9 +3,6 @@
 {%- if brand.colors.secondary -%}{%- assign ground_mix = '22%' -%}{%- else -%}{%- assign ground_mix = '100%' -%}{%- endif -%}
 {%- assign font_head = brand.fonts.heading | default: 'Brygada 1918' -%}
 {%- assign font_body = brand.fonts.body | default: font_head -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
-{%- if brand.fonts.heading -%}{%- assign head_w = 'wght@400;700' -%}{%- else -%}{%- assign head_w = 'wght@400;600;700' -%}{%- endif -%}
 {%- assign short_name = account.name | split: ' - ' | first | split: ' | ' | first | strip | default: account.name -%}
 {%- assign industry = account.industry | default: 'your industry' -%}
 <!doctype html>
@@ -15,9 +12,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A trend brief for {{ short_name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:{{ head_w }}&amp;display=swap">
-{%- if body_q != head_q %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;700&amp;display=swap">
+{%- if font_head == 'Brygada 1918' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;600;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
 {%- endif %}
 <style>
 *{box-sizing:border-box}

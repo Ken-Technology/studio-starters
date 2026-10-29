@@ -2,8 +2,6 @@
 {%- assign c_secondary = brand.colors.secondary | default: '#1f2b4d' | escape -%}
 {%- assign font_head = brand.fonts.heading | default: 'Imbue' | escape -%}
 {%- assign font_body = brand.fonts.body | default: 'Albert Sans' | escape -%}
-{%- assign head_q = ':wght@400;700' -%}
-{%- if font_head == 'Imbue' -%}{%- assign head_q = ':opsz,wght@10..100,500..700' -%}{%- endif -%}
 {%- assign company = brand.name | default: 'our company' -%}
 {%- assign acct = account.name | default: 'your company' -%}
 {%- assign person_name = person.first_name | append: ' ' | append: person.last_name | strip -%}
@@ -14,9 +12,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Proposal and pilot plan for {{ acct | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}{{ head_q }}&amp;display=swap">
+{%- if font_head == 'Imbue' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,500..700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;600&amp;display=swap">
+{%- if font_body == 'Albert Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{--p:{{ c_primary }};--ink:color-mix(in srgb,{{ c_secondary }} 45%,#141b30);--fh:'{{ font_head }}',Georgia,serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif}

@@ -3,13 +3,8 @@
 {%- assign accent2 = brand.colors.secondary | default: '#2b2622' | strip | downcase | escape -%}
 {%- assign font_head = brand.fonts.heading | default: 'Red Hat Display' | escape -%}
 {%- assign font_body = brand.fonts.body | default: 'Red Hat Text' | escape -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign head_w = '700' -%}
-{%- assign head_wq = '400;700' -%}
-{%- if font_head == 'Red Hat Display' -%}{%- assign head_w = '900' -%}{%- assign head_wq = '900' -%}{%- endif -%}
-{%- assign body_wq = '400;700' -%}
-{%- if font_body == 'Red Hat Text' -%}{%- assign body_wq = '400;500' -%}{%- endif -%}
+{%- if font_head == 'Red Hat Display' -%}{%- assign head_w = '900' -%}{%- endif -%}
 {%- assign hexd = '0123456789abcdef' | split: '' -%}
 {%- assign cols = accent | append: '|' | append: accent2 | split: '|' -%}
 {%- assign lumc = '' -%}
@@ -114,8 +109,20 @@
 <meta name="robots" content="noindex">
 <title>{{ data.headline | default: market_label | escape }}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@{{ head_wq }}&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@{{ body_wq }}&display=swap">
+{%- if font_head == 'Red Hat Display' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@900&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Red Hat Text' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 :root{
   --p:{{ accent }};

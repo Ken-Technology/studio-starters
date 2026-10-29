@@ -1,0 +1,162 @@
+{
+  "account": {
+    "name": "Kestrel Solar",
+    "domain": "kestrel-solar.example",
+    "industry": "solar electric power generation",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Kestrel Solar installs rooftop solar for homeowners in Arizona and Nevada. Its site lists two open sales roles.",
+      "why_now": "Opened a second sales office in Las Vegas.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Dana",
+    "last_name": "Okafor",
+    "title": "Sales Director"
+  },
+  "sender": {
+    "name": "Reese Martin",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Sundial",
+    "logo_url": null,
+    "colors": {
+      "primary": "#6d28d9",
+      "secondary": "#1e1b3a"
+    },
+    "fonts": {
+      "heading": "Manrope",
+      "body": "Inter"
+    }
+  },
+  "data": {
+    "scope": {
+      "market": "US residential solar installers",
+      "size": "10 to 200 staff"
+    },
+    "total": [
+      {
+        "label": "All companies",
+        "value": 3300
+      }
+    ],
+    "segments": [
+      {
+        "label": "Residential installers",
+        "value": 1840
+      },
+      {
+        "label": "Commercial, industrial",
+        "value": 720
+      },
+      {
+        "label": "Solar plus storage",
+        "value": 410
+      },
+      {
+        "label": "Roofing and solar",
+        "value": 330
+      }
+    ],
+    "regions": [
+      {
+        "label": "South",
+        "value": 1260
+      },
+      {
+        "label": "West",
+        "value": 1190
+      },
+      {
+        "label": "Northeast",
+        "value": 540
+      },
+      {
+        "label": "Midwest",
+        "value": 310
+      }
+    ],
+    "signals": [
+      {
+        "label": "Hiring in sales",
+        "value": 612
+      },
+      {
+        "label": "Raised in 12 months",
+        "value": 74
+      },
+      {
+        "label": "Hiring and raised",
+        "value": 39
+      }
+    ],
+    "hiring": [
+      {
+        "label": "Residential installers",
+        "value": 420
+      },
+      {
+        "label": "Commercial, industrial",
+        "value": 96
+      },
+      {
+        "label": "Solar plus storage",
+        "value": 62
+      },
+      {
+        "label": "Roofing and solar",
+        "value": 34
+      }
+    ],
+    "headline": "The residential solar installer market, in numbers",
+    "stand": "What 3,300 US residential solar installers with 10 to 200 staff look like right now, and what that means for Kestrel Solar.",
+    "brief": [
+      {
+        "figure": "3,300",
+        "text": "companies fit the profile. Residential installers are the largest segment at 1,840."
+      },
+      {
+        "figure": "1,260",
+        "text": "companies are in the South, the largest region. The West has 1,190."
+      },
+      {
+        "figure": "612",
+        "text": "companies are hiring in sales, and 74 raised money in the last twelve months."
+      },
+      {
+        "figure": "420",
+        "text": "of the residential installers are hiring, the most of any segment."
+      }
+    ],
+    "narrative": {
+      "segments": "The profile is a US company with 10 to 200 staff that installs solar for homes or small businesses. Ken Search finds 3,300 of them. Residential installers are the biggest group, and that is where Kestrel works.",
+      "segments_after": "Commercial, industrial is the second largest segment at 720 companies. Roofing and solar is the smallest at 330.",
+      "regions": "The South holds 1,260 of the 3,300 companies and the West holds 1,190, so two regions cover most of the market. The Midwest has the fewest at 310.",
+      "regions_after": "Kestrel sells in the West, the second largest region, where 1,190 installers compete for the same homeowners.",
+      "buyers": "",
+      "buyers_after": "",
+      "signals": "A company that is hiring salespeople or has new money is about to spend on how it finds homeowners. Ken Search tracks hiring from job posts and funding from announcements.",
+      "signals_after": "Residential installers have 420 companies hiring, the most of any segment. 74 companies raised money in the last twelve months, and 39 of them are also hiring.",
+      "peers": "",
+      "peers_after": ""
+    },
+    "plays": [
+      {
+        "title": "Write to the 612 companies hiring in sales",
+        "body": "A company hiring salespeople is about to need more leads for them. 612 companies are hiring now, and 420 of them are residential installers. Write to the sales lead about what the new reps will work from."
+      },
+      {
+        "title": "Focus on residential installers first",
+        "body": "Residential installers are 1,840 of the 3,300 companies and the largest hiring group at 420. The pitch is the same for most of them, so one message can be tuned for the whole segment."
+      },
+      {
+        "title": "Reach the 39 that are funded and hiring",
+        "body": "74 companies raised money in the last twelve months and 39 of them are hiring. A funded installer tends to add crews and vendors fast, so a message now arrives early."
+      }
+    ],
+    "method": "The counts come from Ken Search at the time this page was filled. Companies: headquartered in the United States, 10 to 200 employees, in a solar or renewable energy installation industry. Hiring means a sales hiring surge in the last three months. Raised means a funding round in the last 365 days. Counts of buyers and of size bands were not available for this report."
+  }
+}

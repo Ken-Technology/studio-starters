@@ -1,0 +1,261 @@
+{
+  "account": {
+    "name": "Meridian Dental Partners",
+    "domain": "meridian-dental.example",
+    "industry": "hospitals and health care",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Meridian Dental Partners runs a group of dental practices in London. Its site lists nine clinics and a careers page with open practice manager roles.",
+      "why_now": "Added two clinics this year and is hiring practice managers.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Tom Alvarez",
+    "title": "Partnerships Lead",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Halcyon",
+    "logo_url": null,
+    "colors": {
+      "primary": "#12372a",
+      "secondary": "#1f2a24"
+    },
+    "fonts": {
+      "heading": "Fraunces",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "scope": {
+      "market": "UK dental and oral care companies",
+      "size": "11 to 1,000 staff",
+      "small_band": "11 to 200 staff",
+      "large_band": "201 to 1,000 staff",
+      "account_band": "51 to 200"
+    },
+    "total": [
+      {
+        "label": "All companies",
+        "value": 2850
+      }
+    ],
+    "segments": [
+      {
+        "label": "Dental practice groups",
+        "value": 1420
+      },
+      {
+        "label": "Orthodontics",
+        "value": 610
+      },
+      {
+        "label": "Oral surgery, implants",
+        "value": 380
+      },
+      {
+        "label": "Dental labs",
+        "value": 290
+      },
+      {
+        "label": "Multi-site clinics",
+        "value": 150
+      }
+    ],
+    "regions": [
+      {
+        "label": "London",
+        "value": 640
+      },
+      {
+        "label": "South East",
+        "value": 590
+      },
+      {
+        "label": "Midlands",
+        "value": 560
+      },
+      {
+        "label": "North West",
+        "value": 480
+      },
+      {
+        "label": "East and South West",
+        "value": 310
+      },
+      {
+        "label": "Scotland and Wales",
+        "value": 270
+      }
+    ],
+    "roles_small": [
+      {
+        "label": "Practice manager",
+        "value": 2310
+      },
+      {
+        "label": "Clinical director",
+        "value": 780
+      },
+      {
+        "label": "Operations director",
+        "value": 360
+      },
+      {
+        "label": "Finance director",
+        "value": 290
+      }
+    ],
+    "roles_large": [
+      {
+        "label": "Practice manager",
+        "value": 640
+      },
+      {
+        "label": "Clinical director",
+        "value": 410
+      },
+      {
+        "label": "Operations director",
+        "value": 520
+      },
+      {
+        "label": "Finance director",
+        "value": 340
+      }
+    ],
+    "signals": [
+      {
+        "label": "Hiring in operations",
+        "value": 540
+      },
+      {
+        "label": "Raised in 12 months",
+        "value": 38
+      },
+      {
+        "label": "Hiring and raised",
+        "value": 27
+      }
+    ],
+    "hiring": [
+      {
+        "label": "Dental practice groups",
+        "value": 310
+      },
+      {
+        "label": "Orthodontics",
+        "value": 95
+      },
+      {
+        "label": "Oral surgery, implants",
+        "value": 62
+      },
+      {
+        "label": "Dental labs",
+        "value": 28
+      },
+      {
+        "label": "Multi-site clinics",
+        "value": 45
+      }
+    ],
+    "bands": [
+      {
+        "label": "11 to 50",
+        "value": 311
+      },
+      {
+        "label": "51 to 200",
+        "value": 188
+      },
+      {
+        "label": "201 to 500",
+        "value": 96
+      },
+      {
+        "label": "501 to 1,000",
+        "value": 31
+      },
+      {
+        "label": "1,001 and up",
+        "value": 14
+      }
+    ],
+    "band_hiring": [
+      {
+        "label": "11 to 50",
+        "value": 68
+      },
+      {
+        "label": "51 to 200",
+        "value": 51
+      },
+      {
+        "label": "201 to 500",
+        "value": 33
+      },
+      {
+        "label": "501 to 1,000",
+        "value": 14
+      },
+      {
+        "label": "1,001 and up",
+        "value": 9
+      }
+    ],
+    "headline": "Dental groups in the UK, in numbers",
+    "stand": "What 2,850 UK dental and oral care companies look like right now, who runs them, and where Meridian Dental Partners sits among its London peers.",
+    "brief": [
+      {
+        "figure": "2,850",
+        "text": "companies make up the UK dental market in this report. Dental practice groups are the largest segment, at 1,420."
+      },
+      {
+        "figure": "640",
+        "text": "of them are in London, the largest region. The South East is next at 590."
+      },
+      {
+        "figure": "5,650",
+        "text": "people hold the four roles that run a practice or a group. Practice manager is the largest by far, at 2,950."
+      },
+      {
+        "figure": "540",
+        "text": "companies are hiring in operations, and 38 raised money in the last twelve months."
+      },
+      {
+        "figure": "188",
+        "text": "London companies sit in Meridian's size band, and 51 of them are hiring."
+      }
+    ],
+    "narrative": {
+      "segments": "The market here is every UK company in dental and oral care, from single practices that have grown into groups to labs and specialist clinics. Ken Search finds 2,850. Dental practice groups are the biggest segment, which is where Meridian sits.",
+      "segments_after": "Orthodontics is the second largest segment at 610 companies. Multi-site clinics are the smallest at 150, but 45 of them are hiring.",
+      "regions": "London holds 640 of the 2,850 companies, the most of any region. The South East has 590 and the Midlands 560, so the market is spread across the south and centre of the country.",
+      "regions_after": "Meridian is based in London, the largest region, so it has the most peers close by. Scotland and Wales is the smallest, with 270 companies.",
+      "buyers": "Four titles run the business side of a dental group. Across the 2,850 companies, 5,650 people hold one of them. Most practice managers work at the smaller companies.",
+      "buyers_after": "Practice manager is the largest group by a wide margin. Operations director and finance director are the two roles with more people at the larger companies.",
+      "signals": "A group that is hiring or has new money is a group that is changing how its clinics run. Ken Search tracks hiring from job posts and funding from announcements.",
+      "signals_after": "Dental practice groups have 310 companies hiring, the most of any segment. 38 companies raised money in the last twelve months, and 27 of them are also hiring.",
+      "peers": "Meridian is in the 51 to 200 band. The peer group is every dental and oral care company in London, split by headcount, with the number in each band that are hiring.",
+      "peers_after": "Meridian's band holds 188 London companies and 51 of them are hiring. The smallest band is the biggest, with 311 companies, and 68 of those are hiring."
+    },
+    "plays": [
+      {
+        "title": "Talk to the 540 groups that are hiring",
+        "body": "A group hiring for operations is rebuilding how its clinics are run. 540 companies are hiring now, and 310 of them are dental practice groups. Write to the operations lead about the first month of a new hire."
+      },
+      {
+        "title": "Reach practice managers first",
+        "body": "There are 2,950 practice managers in the market, 2,310 of them at companies with 11 to 200 staff. They run the day to day and feel the pain first, so write about their week, not about the group."
+      },
+      {
+        "title": "Look at the 27 that are funded and hiring",
+        "body": "38 companies raised money in the last twelve months and 27 of them are hiring. New money often means new clinics, so a message now lands before their systems are chosen."
+      }
+    ],
+    "method": "The counts come from Ken Search at the time this page was filled. Companies: headquartered in the United Kingdom, 11 to 1,000 employees, in a dental, oral care or related health care industry. People: a current title in one of four practice and group management roles at those companies. Hiring means an operations hiring surge in the last three months. Raised means a funding round in the last 365 days. The peer group is the same industries in London, split by headcount."
+  }
+}

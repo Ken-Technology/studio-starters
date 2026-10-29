@@ -6,8 +6,10 @@
 //
 // It covers the rules a static scan can prove. Ken's validator runs the full set (Liquid parse,
 // filled-data rules, Web Risk) when a bundle is pushed; this script catches the common mistakes first.
+// A Library template (a folder with library.json) also gets its library.json, preview/ and index.json entry checked.
 import fs from 'node:fs';
 import path from 'node:path';
+import { LIBRARY_FIELDS, buildIndex, staleEntries } from './build-index.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const STARTERS = path.join(ROOT, 'starters');
@@ -18,7 +20,11 @@ const SLOT_TYPES = ['string', 'number', 'integer', 'boolean', 'array', 'object']
 const SLOT_KEYWORDS = new Set(['type', 'properties', 'required', 'items', 'minLength', 'maxLength', 'minItems', 'maxItems', 'enum', 'format', 'fallback']);
 const KEN_ROOTS = ['account', 'person', 'sender', 'brand', 'link', 'asset_url', 'data', 'role', 'roles'];
 const BIND_FROM = ['account.', 'person.', 'role.', 'knowledge.'];
-const TOOLS = ['ken_search.people', 'ken_search.companies', 'enrich.email', 'scrape.page', 'ken.copy', 'chart.data'];
+const TOOLS = ['ken_search.people', 'ken_search.companies', 'ken_search.count', 'enrich.email', 'scrape.page', 'ken.copy', 'chart.data'];
+const CATEGORIES = ['prospecting', 'deal', 'events', 'customers', 'interactive', 'content', 'partners', 'recruiting'];
+const NEEDS = ['dataset', 'webhook', 'knowledge', 'video'];
+const COVER = { width: 1280, height: 800, bytes: 400 * 1024 };
+const PNG_SIGNATURE = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
 // `requires` (ken-backend recipe-requires) is on every kind but bind: the step does not run while a listed slot is empty.
 const STEP_FIELDS = {
   bind: { required: ['from', 'to'], optional: [] },
@@ -324,13 +330,115 @@ function sectionIds(text) {
   return [...text.matchAll(/data-section\s*=\s*["']([^"']+)["']/g)].map((m) => m[1]);
 }
 
+// --- Library template ------------------------------------------------------------------------
+
+const isDate = (v) => {
+  if (typeof v !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(v)) return false;
+  const d = new Date(`${v}T00:00:00Z`);
+  return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === v;
+};
+const shouts = (s) => DASHES.test(s) || s.includes('!');
+
+// Width and height from a PNG's IHDR chunk, or null when the file is not a PNG.
+function pngSize(file) {
+  const head = fs.readFileSync(file).subarray(0, 24);
+  if (head.length < 24 || !head.subarray(0, 8).equals(PNG_SIGNATURE) || head.toString('latin1', 12, 16) !== 'IHDR') return null;
+  return { width: head.readUInt32BE(16), height: head.readUInt32BE(20) };
+}
+
+// library.json, the listed samples and preview/ (README "The library").
+function checkLibrary(slug, dir, { err }) {
+  const lib = readJson(path.join(dir, 'library.json'), err, 'library.json');
+  if (!lib || typeof lib !== 'object' || Array.isArray(lib)) {
+    if (lib) err('library.json', 'must be an object');
+    return;
+  }
+  const bad = (msg) => err('library.json', msg);
+  for (const k of Object.keys(lib)) if (!LIBRARY_FIELDS.includes(k)) bad(`unknown field "${k}"`);
+  if (typeof lib.description !== 'string' || !lib.description.trim()) bad('description must be a non-empty string');
+  else if (shouts(lib.description)) bad('description has an em or en dash or an exclamation mark');
+  if (!CATEGORIES.includes(lib.category)) bad(`category must be one of ${CATEGORIES.join(', ')}`);
+  if (!Array.isArray(lib.tags) || lib.tags.length > 6 || lib.tags.some((t) => typeof t !== 'string' || !t.trim() || t.length > 32)) bad('tags must be a list of 0 to 6 strings of at most 32 characters');
+  if (typeof lib.featured !== 'boolean') bad('featured must be true or false');
+  if (!Array.isArray(lib.needs) || lib.needs.some((n) => !NEEDS.includes(n)) || new Set(lib.needs).size !== lib.needs.length) bad(`needs must be a list of distinct values from ${NEEDS.join(', ')}; empty means ready to use`);
+  if (typeof lib.version !== 'string' || !/^\d+\.\d+\.\d+$/.test(lib.version)) bad('version must be semver like 1.0.0');
+  if (!isDate(lib.updatedAt)) bad('updatedAt must be a real date as YYYY-MM-DD');
+  if (!Array.isArray(lib.samples) || lib.samples.length < 3) bad('samples must list at least 3 samples as {id, label}');
+
+  const samplesDir = path.join(dir, 'samples');
+  const listed = new Set();
+  let personNull = false;
+  for (const [i, s] of (Array.isArray(lib.samples) ? lib.samples : []).entries()) {
+    const where = `samples[${i}]`;
+    if (!s || typeof s.id !== 'string' || !/^[a-z0-9-]+$/.test(s.id)) {
+      bad(`${where}: id must match ^[a-z0-9-]+$`);
+      continue;
+    }
+    if (listed.has(s.id)) bad(`${where}: duplicate id "${s.id}"`);
+    listed.add(s.id);
+    for (const k of Object.keys(s)) if (!['id', 'label'].includes(k)) bad(`${where}: unknown field "${k}"`);
+    if (typeof s.label !== 'string' || !s.label.trim()) bad(`${where}: label is required`);
+    else if (shouts(s.label)) bad(`${where}: label has an em or en dash or an exclamation mark`);
+    const file = path.join(samplesDir, `${s.id}.json`);
+    if (!fs.existsSync(file)) bad(`${where}: samples/${s.id}.json does not exist`);
+    else {
+      let sample = null;
+      try {
+        sample = JSON.parse(fs.readFileSync(file, 'utf8'));
+      } catch {
+        // checkBundle reports the invalid JSON.
+      }
+      if (sample?.person === null) personNull = true;
+      // The cover is the first sample's first screen, and the Library shows it in the template's default brand.
+      if (i === 0 && (sample?.brand?.colors || sample?.brand?.fonts)) bad(`${where}: the cover comes from the first sample, so list a sample in the default brand first (brand.colors and brand.fonts null)`);
+    }
+  }
+  // Non-JSON files next to the samples (a dataset CSV) are data, not samples.
+  for (const f of fs.existsSync(samplesDir) ? fs.readdirSync(samplesDir) : []) {
+    if (f.endsWith('.json') && !listed.has(f.slice(0, -5))) err(`samples/${f}`, 'not listed in library.json samples; list it or delete it');
+  }
+  if (listed.size && !personNull) bad('no listed sample has "person": null; add one for the shared link');
+
+  const preview = path.join(dir, 'preview');
+  const cover = path.join(preview, 'cover.png');
+  // A try, not throwIfNoEntry: Node 20 still throws ENOTDIR when preview is a file.
+  const stat = (f) => {
+    try {
+      return fs.statSync(f);
+    } catch {
+      return null;
+    }
+  };
+  const isFile = (f) => stat(f)?.isFile() ?? false;
+  if (!isFile(cover)) err('preview/cover.png', `missing; run npm run render -- ${slug}`);
+  else {
+    const size = pngSize(cover);
+    const bytes = fs.statSync(cover).size;
+    if (!size) err('preview/cover.png', 'not a PNG');
+    else if (size.width !== COVER.width || size.height !== COVER.height) err('preview/cover.png', `${size.width}x${size.height}, must be ${COVER.width}x${COVER.height}`);
+    if (bytes > COVER.bytes) err('preview/cover.png', `${Math.ceil(bytes / 1024)} KB, over ${COVER.bytes / 1024} KB`);
+  }
+  for (const id of listed) if (!isFile(path.join(preview, `${id}.html`))) err(`preview/${id}.html`, `missing; run npm run render -- ${slug}`);
+  for (const name of stat(preview)?.isDirectory() ? fs.readdirSync(preview) : []) {
+    if (name !== 'cover.png' && !(name.endsWith('.html') && listed.has(name.slice(0, -5)))) {
+      err(`preview/${name}`, 'unexpected file; preview/ holds cover.png and one <sampleId>.html per listed sample');
+    }
+  }
+}
+
 // --- bundle ----------------------------------------------------------------------------------
 
 function checkBundle(slug, indexEntry) {
   const dir = path.join(STARTERS, slug);
   const c = bundleChecker(slug);
   const { err, warn } = c;
-  for (const name of fs.readdirSync(dir)) if (!BUNDLE_FILES.has(name)) err(name, 'unexpected file; a bundle holds studio.json, template.liquid, fallback.liquid, README.md, assets/ and samples/');
+  // A Library template also holds library.json and preview/. Neither is part of the bundle a workspace forks.
+  const isLibrary = fs.existsSync(path.join(dir, 'library.json'));
+  for (const name of fs.readdirSync(dir)) {
+    if (isLibrary && (name === 'library.json' || name === 'preview')) continue;
+    if (!BUNDLE_FILES.has(name)) err(name, 'unexpected file; a bundle holds studio.json, template.liquid, fallback.liquid, README.md, assets/ and samples/');
+  }
+  if (isLibrary) checkLibrary(slug, dir, c);
 
   const manifestPath = path.join(dir, 'studio.json');
   if (!fs.existsSync(manifestPath)) {
@@ -489,6 +597,7 @@ function checkBundle(slug, indexEntry) {
   let total = 0;
   for (const file of walkFiles(dir)) {
     const rel = path.relative(dir, file);
+    if (isLibrary && rel.startsWith(`preview${path.sep}`)) continue;
     const bytes = fs.statSync(file).size;
     total += bytes;
     if (rel.startsWith(`assets${path.sep}`)) {
@@ -546,7 +655,8 @@ function checkBundle(slug, indexEntry) {
 // --- main ------------------------------------------------------------------------------------
 
 const only = process.argv.slice(2);
-const index = JSON.parse(fs.readFileSync(path.join(ROOT, 'index.json'), 'utf8'));
+const indexText = fs.readFileSync(path.join(ROOT, 'index.json'), 'utf8');
+const index = JSON.parse(indexText);
 const folders = fs.readdirSync(STARTERS, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name).sort();
 const listed = (index.starters ?? []).map((s) => s.slug);
 const top = [];
@@ -554,7 +664,16 @@ if (index.kenStudio !== '1') top.push('index.json: kenStudio must be "1"');
 for (const s of listed) if (!folders.includes(s)) top.push(`index.json: lists "${s}" but starters/${s} does not exist`);
 for (const f of folders) if (!listed.includes(f)) top.push(`index.json: starters/${f} is not listed`);
 if (new Set(listed).size !== listed.length) top.push('index.json: duplicate slugs');
-if (DASHES.test(fs.readFileSync(path.join(ROOT, 'index.json'), 'utf8'))) top.push('index.json: em or en dash; use a period or a comma');
+if (DASHES.test(indexText)) top.push('index.json: em or en dash; use a period or a comma');
+// A Library template's entry is generated, so once there is one, index.json must be exactly what build-index.mjs writes.
+if (folders.some((f) => fs.existsSync(path.join(STARTERS, f, 'library.json')))) {
+  try {
+    const fresh = buildIndex(ROOT, indexText);
+    if (fresh !== indexText) top.push(`index.json: stale (${staleEntries(indexText, fresh).join('; ')}); run npm run build-index`);
+  } catch (e) {
+    top.push(`index.json: build-index.mjs cannot build it: ${e.message}`);
+  }
+}
 for (const t of top) console.log(`ERROR ${t}`);
 errors += top.length;
 

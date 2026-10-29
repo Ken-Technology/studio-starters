@@ -7,8 +7,8 @@
   "slots": {
     "type": "object",
     "properties": {
-      "conference_name": { "type": "string", "minLength": 3, "maxLength": 80, "fallback": "Supply Chain Forward 2026" },
-      "dates_text": { "type": "string", "minLength": 3, "maxLength": 60, "fallback": "March 10 to 12, 2026" },
+      "conference_name": { "type": "string", "minLength": 3, "maxLength": 80, "fallback": "Supply Chain Forward" },
+      "dates_text": { "type": "string", "minLength": 3, "maxLength": 60, "fallback": "March 10 to 12" },
       "venue": { "type": "string", "maxLength": 120, "fallback": "Lakeside Convention Center" },
       "city": { "type": "string", "maxLength": 60, "fallback": "Chicago" },
       "hall": { "type": "string", "maxLength": 24, "fallback": "Hall B" },

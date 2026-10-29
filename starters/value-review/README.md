@@ -38,6 +38,7 @@ Rules that keep the page right:
 - Tiles show only the numbers you filled in: leave `tasks_done` empty and the tasks tile is gone.
 - The wins come from the `team` rows with the most `hours_saved`, and the plan from `milestone` rows dated after the one marked `review`, so write those details in plain words you are happy to show the customer.
 - No email addresses or phone numbers anywhere in the CSV. Ken rejects filled pages that contain them.
+- Write number columns as plain digits with a dot for decimals, like `1840` or `3.1`. Ken reads a cell such as `1,840`, `$40` or `45%` as no number and leaves it out, so its tile hides.
 - No em dashes or en dashes. Quote any cell that contains a comma.
 
 ## Samples

@@ -15,7 +15,7 @@
         "maxLength": 240,
         "fallback": "How operations teams at mid-size logistics and manufacturing companies take on more freight with the same people. Two talks, then your questions."
       },
-      "date_text": { "type": "string", "minLength": 3, "maxLength": 60, "fallback": "Thursday, November 12, 2026" },
+      "date_text": { "type": "string", "minLength": 3, "maxLength": 60, "fallback": "Thursday, November 12" },
       "where_text": { "type": "string", "minLength": 3, "maxLength": 120, "fallback": "Online. The link comes by email once you register." },
       "zones": {
         "type": "array",
@@ -40,7 +40,7 @@
         "type": "string",
         "format": "uri",
         "maxLength": 600,
-        "fallback": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Growing+volume,+not+headcount+(live+session)&dates=20261112T170000Z/20261112T174500Z"
+        "fallback": ""
       },
       "recording_note": {
         "type": "string",

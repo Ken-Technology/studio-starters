@@ -35,7 +35,7 @@ Upload it to the template as a dataset named `peers` (or rename it and change `"
 
 Rules that keep the page right:
 
-- Write plain numbers with a dot for decimals: `2.6`, not `2,6`. Scores run from 1 to 4, the same scale as the answers.
+- Write plain numbers with a dot for decimals and no thousands separators: `2.6`, not `2,6`, and `1200`, not `1,200`. Ken drops a row whose number it cannot read. Scores run from 1 to 4, the same scale as the answers.
 - The score columns follow the order of the `dimensions` slot. If you rename or reorder the areas, reorder the columns to match.
 - Use only figures you collected. The page shows them as given and never fills a gap.
 - Quote any value that contains a comma, as `samples/peers.csv` does.

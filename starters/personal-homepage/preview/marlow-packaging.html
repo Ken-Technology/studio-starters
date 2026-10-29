@@ -6,253 +6,259 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="Forgeline for Marlow Packaging: what we noticed, three places we would help, a customer story, how a rollout would go and a time to talk.">
 <title>Forgeline for Marlow Packaging</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap">
 <style>
 :root{
   --p:#d9441c;
-  --s:#1c1c1c;
+  --hero:#1c1c1c;
   --fh:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;
   --fb:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
-  --ink:var(--s);
-  --mute:color-mix(in srgb,var(--s) 62%,#fff);
-  --faint:color-mix(in srgb,var(--s) 45%,#fff);
-  --line:color-mix(in srgb,var(--s) 13%,#fff);
-  --paper:color-mix(in srgb,var(--p) 5%,#fff);
-  --tint:color-mix(in srgb,var(--p) 10%,#fff);
-  --tint-line:color-mix(in srgb,var(--p) 30%,#fff);
-  --p-deep:color-mix(in srgb,var(--p) 72%,var(--s));
-  --on-dark:color-mix(in srgb,#fff 88%,var(--s));
-  --on-dark-mute:color-mix(in srgb,#fff 62%,var(--s));
-  --p-light:color-mix(in srgb,var(--p) 70%,#fff);
+  --ink:#000;
+  --paper:#fff;
+  --manila:color-mix(in srgb,var(--p) 16%,#fff);
+  --mint:color-mix(in srgb,var(--p) 34%,#fff);
+  --deep:color-mix(in srgb,var(--p) 82%,#000);
+  --orange:color-mix(in srgb,var(--p) 55%,#fff);
+  --step-small:clamp(.875rem,.85rem + .1vw,.9375rem);
+  --step-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --step-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --step-head:clamp(2.125rem,1.3rem + 3.2vw,4rem);
+  --m:clamp(1.25rem,3.4vw,3rem);
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:#fff;color:var(--ink);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;overflow-wrap:break-word}
-a{color:var(--p-deep)}
-h1,h2,h3{font-family:var(--fh);margin:0;line-height:1.1;letter-spacing:-.015em;font-weight:600;text-wrap:balance}
-h2{font-size:1.75rem;max-width:22ch}
-p{margin:0 0 .9rem}
-.wrap{max-width:72rem;margin:0 auto;padding:0 1.1rem}
-.btn{display:inline-block;background:var(--p);color:#fff;text-decoration:none;font-weight:500;padding:.8rem 1.25rem;border-radius:4px;font-size:.98rem;line-height:1.55}
-.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
-.btn:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+body{margin:0;background:var(--hero);color:var(--ink);font:400 var(--step-body)/1.5 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;overflow-wrap:break-word;font-optical-sizing:auto}
+h1,h2,h3{font-family:var(--fh);font-weight:700;margin:0;line-height:1;letter-spacing:-.03em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:.07em}
+a:focus-visible,summary:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+/* every field picks black or white text from its own colour, so any brand colour stays readable */
+.on{color:#000;color:rgb(from var(--f) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255));background:var(--f)}
+.btn{--f:var(--p);display:inline-flex;align-items:center;min-height:52px;padding:.85rem 1.4rem;font:700 var(--step-body)/1.1 var(--fb);text-decoration:none;border-radius:999px}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{padding:0 var(--m)}
 
-/* nav */
-.nav{display:flex;align-items:center;gap:.75rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:.55rem;font-weight:600;font-family:var(--fh);font-size:1.02rem;min-width:0}
-.brand b{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.logo{width:28px;height:28px;display:block;flex:none;object-fit:contain}
-img.logo{width:auto;max-width:7.5rem}
-.for{font-size:.82rem;color:var(--p-deep);background:var(--tint);padding:.3rem .65rem;border-radius:999px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.nav-cta{margin-left:auto;display:none}
-.nav-cta a{display:inline-block;background:var(--p);color:#fff;text-decoration:none;font-weight:500;padding:.55rem .9rem;border-radius:4px;font-size:.88rem;white-space:nowrap}
-.nav-cta a:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+/* the first screen: the account's file */
+.hero{--f:var(--hero);position:relative;overflow:hidden;padding-top:1.25rem}
+.top{display:flex;align-items:center;gap:1rem;min-height:2.75rem}
+.brand{font:700 1.125rem/1 var(--fh);letter-spacing:-.01em;display:flex;align-items:center;min-width:0}
+.brand img{display:block;height:28px;width:auto;max-width:9rem;object-fit:contain}
+.top .navcta{margin-left:auto;font-size:var(--step-small);white-space:nowrap}
+.top .navcta a{color:inherit}
+.head{padding:clamp(2.5rem,7vh,4.5rem) 0 clamp(2rem,5vh,3rem)}
+/* the headline is filled per account, 20 to 90 characters, so its size follows its length to stay on two lines */
+.hero h1{font-size:clamp(2.75rem,1rem + 6.6vw,6.25rem);max-width:15ch;letter-spacing:-.04em;line-height:.98}
+.hero h1.mid{font-size:clamp(1.9rem,.6rem + 5.4vw,5.5rem);max-width:21ch}
+.hero h1.long{font-size:clamp(1.625rem,.5rem + 4vw,4.25rem);max-width:25ch}
+.sub{font-size:var(--step-lead);line-height:1.35;max-width:40ch;margin-top:1.5rem}
+.made{font-size:var(--step-small);margin-top:1rem;opacity:.8}
+.stack{position:relative}
+.folder{position:relative;margin-top:-1.25rem}
+.c-mint{--f:var(--mint)}.c-deep{--f:var(--deep)}.c-orange{--f:var(--orange)}.c-paper{--f:var(--paper)}.c-manila{--f:var(--manila)}
+.x1{--x:4%}.x2{--x:30%}.x3{--x:56%}.x4{--x:16%}
+.folder:first-child{margin-top:0}
+.tab{display:inline-flex;align-items:center;gap:.6rem;min-height:2.75rem;padding:.6rem 1.6rem .55rem;margin-left:var(--x,0);font:700 var(--step-small)/1.1 var(--fb);text-decoration:none;clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 100%,0 100%);border-radius:0}
+a.tab:hover{text-decoration:underline}
+a.tab:focus-visible{outline:none;text-decoration:underline;text-decoration-thickness:3px}
+.sheet{height:1.75rem}
+.front .tab{font-size:var(--step-body);padding:.7rem 2rem .65rem}
+.front .sheet{height:auto;padding:clamp(1.5rem,3vw,2.5rem) var(--m) clamp(2.5rem,5vw,4rem);margin:0 calc(var(--m) * -1)}
+.front .sheet{display:grid;gap:2rem}
+.front h2{font-size:var(--step-lead);letter-spacing:-.015em;line-height:1.15}
+.noticed{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;gap:1.25rem}
+.noticed b{display:block;font-weight:700;font-size:var(--step-body);line-height:1.35}
+.noticed span{display:block;font-size:var(--step-small);margin-top:.25rem}
+.front .note{font-size:var(--step-small);margin-top:1.5rem}
+.acts{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem;align-self:start}
+.acts .alt{font-weight:700}
 
-/* hero */
-.hero{padding:2.6rem 0 2.8rem;display:grid;gap:2rem}
-.hero .made{font-size:.9rem;color:var(--mute);margin-bottom:1.1rem}
-.hero h1{font-size:2.5rem;max-width:16ch}
-.hero .sub{font-size:1.1rem;max-width:34rem;color:var(--mute);margin:1.1rem 0 1.5rem}
-.hero .acts{display:flex;flex-wrap:wrap;gap:.6rem}
-.signals{background:var(--paper);border:1px solid var(--tint-line);border-radius:8px;padding:1.3rem 1.3rem 1rem;align-self:start}
-.signals h3{font-size:1.02rem;margin-bottom:.9rem}
-.signals ol{list-style:none;margin:0;padding:0;counter-reset:sig}
-.signals li{position:relative;padding:.75rem 0 .75rem 1.9rem;border-top:1px solid var(--tint-line)}
-.signals li::before{counter-increment:sig;content:counter(sig);position:absolute;left:0;top:.85rem;width:1.25rem;height:1.25rem;border-radius:50%;background:var(--p);color:#fff;font-size:.72rem;font-weight:600;display:grid;place-items:center;font-family:var(--fh)}
-.signals b{display:block;font-weight:500;line-height:1.35}
-.signals span{display:block;font-size:.8rem;color:var(--mute);margin-top:.2rem}
-.signals span a{color:var(--mute)}
-.signals .src{font-size:.78rem;color:var(--faint);margin:.8rem 0 0}
+/* chapters */
+.ch{padding:clamp(4rem,10vw,8rem) var(--m)}
+.ch h2{font-size:var(--step-head);max-width:16ch}
+.ch h2 + .lead{margin-top:1.25rem}
+.lead{font-size:var(--step-lead);line-height:1.35;max-width:40ch;margin-top:1.5rem}
 
-/* use cases */
-.uses{padding:3rem 0 2.5rem;border-top:1px solid var(--line)}
-.uses h2{margin-bottom:.6rem}
-.uses .lead{color:var(--mute);max-width:40rem;margin-bottom:2rem}
-.ugrid{display:grid;gap:0}
-.use{padding:1.4rem 0;border-top:1px solid var(--line)}
-.use h3{font-size:1.3rem;margin-bottom:1rem;max-width:18ch}
-.use dl{margin:0;display:grid;gap:.75rem}
-.use dt{font-size:.78rem;color:var(--p-deep);font-weight:500}
-.use dd{margin:.15rem 0 0;color:var(--mute);font-size:.95rem}
-.use dd.after{color:var(--ink)}
+/* use cases: a comparison set as text */
+.uses{--f:var(--mint)}
+.cmp{width:100%;border-collapse:collapse;margin-top:clamp(2.5rem,5vw,4rem);text-align:left}
+.cmp th,.cmp td{vertical-align:top;padding:1.5rem 1.25rem 1.6rem}
+.cmp thead th{font-size:var(--step-body);padding-top:0;padding-bottom:1rem}
+.cmp tbody th{font:700 var(--step-lead)/1.15 var(--fh);letter-spacing:-.015em;padding-left:0;width:30%}
+.cmp tbody tr{border-top:2px solid currentColor}
+.cmp td.after{--f:var(--paper);font-weight:700}
+.cmp thead .after{--f:var(--paper)}
 
-/* proof */
-.proof{background:var(--s);color:var(--on-dark);padding:3rem 0 3.2rem}
-.proof .wrap{display:grid;gap:2rem}
-.proof .tag{display:inline-block;font-size:.8rem;color:var(--on-dark-mute);border:1px solid color-mix(in srgb,#fff 25%,var(--s));padding:.3rem .65rem;border-radius:999px;margin-bottom:1.2rem}
-.proof h2{color:#fff;max-width:20ch}
-.proof .who{color:var(--on-dark-mute);margin:.6rem 0 1.6rem;max-width:30rem}
-.proof blockquote{margin:0;font-family:var(--fh);font-size:1.35rem;line-height:1.35;font-weight:500;color:#fff;max-width:26ch}
-.proof cite{display:block;font-style:normal;font-family:var(--fb);font-size:.9rem;color:var(--on-dark-mute);margin-top:1rem}
-.proof figure{margin:0;background:color-mix(in srgb,#fff 6%,var(--s));border:1px solid color-mix(in srgb,#fff 12%,var(--s));border-radius:8px;padding:1.2rem 1.2rem 1rem;align-self:end}
-.proof figcaption{font-size:.9rem;color:#fff;margin-bottom:.9rem}
-.proof figcaption span{display:block;font-size:.8rem;color:var(--on-dark-mute);margin-top:.15rem}
-.bars{display:flex;align-items:stretch;gap:.4rem;height:11.5rem;margin:0;padding:0;list-style:none;border-bottom:1px solid color-mix(in srgb,#fff 22%,var(--s))}
-.bars li{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:.3rem}
-.bars .v{font-size:.75rem;color:var(--on-dark-mute);line-height:1}
-.bars .on .v{color:#fff;font-weight:600;font-size:.82rem}
-.bars .fill{display:block;width:100%;height:calc((100% - 1.6rem) * var(--h) / 100);min-height:3px;background:var(--p-light);border-radius:3px 3px 0 0}
-.bars .on .fill{background:color-mix(in srgb,var(--p-light) 75%,#fff)}
-.ticks{display:flex;gap:.4rem;margin:.45rem 0 0;padding:0;list-style:none}
-.ticks li{flex:1 1 0;min-width:0;text-align:center;font-size:.72rem;color:var(--on-dark-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.proof .note{font-size:.78rem;color:var(--on-dark-mute);margin:.9rem 0 0}
+/* customer story: the bars stand on the field's edge */
+.proof{--f:var(--deep);padding-bottom:0;overflow:hidden}
+.proof .cols{display:grid;gap:2.5rem}
+.proof .who{margin-top:1.5rem;max-width:44ch}
+.proof blockquote{margin:2rem 0 0;font:700 var(--step-lead)/1.3 var(--fh);letter-spacing:-.01em;max-width:30ch}
+.proof cite{display:block;font:400 var(--step-small)/1.4 var(--fb);margin-top:.75rem}
+.fig .big{display:block;font:700 clamp(4rem,2rem + 7vw,8.5rem)/.9 var(--fh);letter-spacing:-.05em;white-space:nowrap}
+.fig .what{display:block;font-size:var(--step-lead);line-height:1.25;margin-top:1rem;max-width:24ch;font-weight:700}
+.fig .what span{display:block;font-weight:400;font-size:var(--step-body);margin-top:.35rem}
+.bars{list-style:none;margin:clamp(3rem,6vw,5rem) 0 0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px;align-items:end;height:clamp(13rem,32vh,22rem)}
+.bars li{--f:var(--mint);height:calc(var(--h) * 1%);min-height:2.5rem;display:flex;flex-direction:column;justify-content:space-between;padding:.6rem .7rem .5rem;font-size:var(--step-small)}
+.bars li.end{--f:var(--paper)}
+.bars .v{font:700 var(--step-lead)/1 var(--fh)}
+.bars li:not(.end) .v{font-size:var(--step-small);font-family:var(--fb)}
 
-/* rollout */
-.roll{padding:3rem 0 2.5rem}
-.roll h2{margin-bottom:.6rem}
-.roll .lead{color:var(--mute);max-width:40rem;margin-bottom:2rem}
-.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative;counter-reset:st}
-.steps li{position:relative;padding:0 0 1.6rem 2.4rem}
-.steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:0;width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid var(--p);color:var(--p-deep);background:#fff;font-family:var(--fh);font-weight:600;font-size:.85rem;display:grid;place-items:center;z-index:1}
-.steps li::after{content:'';position:absolute;left:.8rem;top:1.7rem;bottom:0;width:2px;background:var(--line)}
-.steps li:last-child::after{display:none}
-.steps .when{font-size:.8rem;color:var(--p-deep);font-weight:500;display:block}
-.steps h3{font-size:1.15rem;margin:.1rem 0 .4rem}
-.steps p{color:var(--mute);font-size:.95rem;max-width:30rem;margin:0}
+/* rollout: the stages as one bar */
+.roll{--f:var(--orange)}
+.stages{list-style:none;margin:clamp(2.5rem,5vw,4rem) 0 0;padding:0;display:grid;gap:6px}
+.stages li{display:grid;gap:1rem}
+.seg{min-height:clamp(6rem,16vh,10rem);padding:1.25rem;font:700 var(--step-lead)/1.15 var(--fh);letter-spacing:-.01em}
+.stages li:nth-child(1) .seg{--f:var(--ink)}
+.stages li:nth-child(2) .seg{--f:var(--paper)}
+.stages li:nth-child(3) .seg{--f:var(--manila)}
+.stages h3{font-size:var(--step-body);letter-spacing:0;line-height:1.3}
+.stages p{margin-top:.35rem;max-width:34ch}
 
-/* faq */
-.faq{padding:2.5rem 0 3rem;border-top:1px solid var(--line)}
-.faq h2{margin-bottom:1.2rem}
-.faq details{border-top:1px solid var(--line)}
-.faq details:last-child{border-bottom:1px solid var(--line)}
-.faq summary{cursor:pointer;list-style:none;padding:.95rem 2rem .95rem 0;font-weight:500;position:relative;font-size:1.02rem;min-height:44px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:'';position:absolute;right:.3rem;top:1.25rem;width:.55rem;height:.55rem;border:solid var(--p-deep);border-width:0 1.5px 1.5px 0;transform:rotate(45deg);transition:transform .15s}
-.faq details[open] summary::after{transform:rotate(225deg);top:1.45rem}
-.faq details p{color:var(--mute);max-width:40rem;margin:0 0 1rem;font-size:.97rem}
+/* questions: filled tiles */
+.faq{--f:var(--paper)}
+.faq .cols{display:grid;gap:2rem}
+.qs{display:grid;gap:8px}
+.qs details{--f:color-mix(in srgb,var(--ink) 6%,var(--paper));border-radius:14px}
+.qs details[open]{--f:var(--p)}
+.qs summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;min-height:4.5rem;padding:1.1rem 1.5rem;font-weight:700;font-size:var(--step-body);border-radius:14px}
+.qs summary::-webkit-details-marker{display:none}
+.qs summary i{position:relative;flex:none;width:16px;height:16px}
+.qs summary i::before,.qs summary i::after{content:"";position:absolute;left:0;top:6.5px;width:16px;height:3px;background:currentColor}
+.qs summary i::after{transform:rotate(90deg)}
+.qs details[open] summary i::after{transform:none}
+.qs details p{padding:0 1.5rem 1.5rem;max-width:52ch}
 
-/* booking */
-.booking{padding:3rem 0 3.5rem;background:var(--paper);border-top:1px solid var(--line)}
-.booking .wrap{display:grid;gap:1.6rem}
-.booking h2{margin-bottom:.6rem}
-.booking .lead{color:var(--mute);max-width:28rem}
-.cal{background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem;color:var(--mute);min-width:0}
+/* booking: the file comes back */
+.book{--f:var(--manila)}
+.book .cols{display:grid;gap:2.5rem}
+.book .lead{max-width:30ch}
+.book .from{margin-top:1.5rem;font-weight:700}
+.cal{--f:var(--paper);padding:.75rem;border-radius:14px;min-width:0;color:#000}
+.cal .ken-cta{background:var(--p)!important;border-radius:999px!important;color:#fff!important;color:rgb(from var(--p) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255))!important}
 
-footer{padding:1.5rem 0 2.5rem;font-size:.82rem;color:var(--mute);border-top:1px solid var(--line)}
-footer .brand{margin-bottom:.5rem;font-size:.95rem;color:var(--ink)}
-footer .logo{width:22px;height:22px}
-footer img.logo{width:auto;max-width:6rem}
+footer{--f:var(--hero);padding:2rem var(--m) 2.5rem;font-size:var(--step-small)}
+footer .brand{font-size:var(--step-lead);margin-bottom:.75rem}
+footer p{max-width:60ch}
 
-@media (min-width:720px){
-  .nav-cta{display:block}
-  .hero{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:3rem;padding:4rem 0 4.5rem;align-items:center}
-  .hero h1{font-size:3.4rem}
-  .ugrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 2.5rem}
-  .use{padding:1.6rem 0 .5rem;border-top:2px solid var(--ink)}
-  .proof .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3rem;align-items:end}
-  .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}
-  .steps li{padding:2.6rem 0 0 0}
-  .steps li::before{top:0;left:0}
-  .steps li::after{left:2.2rem;right:-2rem;top:.8rem;bottom:auto;height:2px;width:auto}
-  .booking .wrap{grid-template-columns:minmax(0,1fr) 26rem;gap:4rem;align-items:start}
+@media (min-width:760px){
+  .front .sheet{grid-template-columns:minmax(0,7fr) minmax(0,4fr);column-gap:4rem;align-items:start}
+  .acts{justify-content:flex-start;padding-top:.25rem}
+  .noticed{grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1.5rem 2rem}
+  .proof .cols{grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:4rem}
+  .fig{padding-top:.5rem}
+  .stages{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stages li{align-content:start}
+  .faq .cols{grid-template-columns:minmax(0,4fr) minmax(0,8fr);column-gap:4rem;align-items:start}
+  .faq .cols>div:first-child{position:sticky;top:2rem}
+  .book .cols{grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:4rem;align-items:end}
 }
-@media (min-width:1000px){
-  .wrap{padding:0 2rem}
-  .hero h1{font-size:4rem}
-  .uses,.roll{padding-top:4rem}
-  .proof{padding:4rem 0}
+@media (max-width:759px){
+  .cmp,.cmp tbody,.cmp tr,.cmp th,.cmp td{display:block;width:auto}
+  .cmp thead{display:none}
+  .cmp tbody th{padding:1.5rem 0 .75rem;width:auto}
+  .cmp td{padding:.9rem 1rem 1rem}
+  .cmp td::before{content:attr(data-col);display:block;font-weight:700;margin-bottom:.25rem}
+  .cmp td.today{padding-left:0;padding-right:0}
+  .bars{grid-auto-flow:row;grid-auto-rows:auto;height:auto;margin:2.5rem 0 0;gap:6px;padding-bottom:clamp(4rem,10vw,8rem)}
+  .bars li{height:auto;min-height:2.25rem;width:calc(var(--h) * 1%);min-width:5.5rem;flex-direction:row;align-items:center;padding:.35rem .7rem}
+  .bars .v,.bars li:not(.end) .v{font:700 var(--step-small)/1 var(--fb)}
+  .seg{min-height:4.5rem}
+  .proof .fig{margin-top:3rem}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.faq summary::after{transition:none}}
+@media (prefers-reduced-motion:no-preference){
+  .stack .folder{animation:file .7s cubic-bezier(.2,.7,.2,1) both}
+  .stack .folder:nth-child(2){animation-delay:80ms}.stack .folder:nth-child(3){animation-delay:160ms}.stack .folder:nth-child(4){animation-delay:240ms}.stack .folder:nth-child(5){animation-delay:320ms}
+  @keyframes file{from{transform:translateY(3rem)}to{transform:none}}
+  .qs summary i::after{transition:transform .2s}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<nav class="nav">
-  <div class="brand"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--p)"/><text x="16" y="21.5" text-anchor="middle" style="font-family:var(--fh);font-weight:700;font-size:16px" fill="#fff">F</text></svg><b>Forgeline</b>
+<section class="hero on" data-section="hero">
+  <div class="wrap">
+    <header class="top">
+      <span class="brand">Forgeline</span>
+      <span class="navcta"><a class="ken-cta" data-ken-cta="nav-booking" href="#">Book time with Dev</a></span>
+    </header>
+    <div class="head">
+      <h1 class="long">Keep both lines running on the days that matter.</h1>
+      <p class="sub">Forgeline gives Marlow&#39;s plant one schedule of planned maintenance per machine, so the work gets done between runs instead of during them.</p>
+      <p class="made">A page for Ines Duarte, Plant Manager at Marlow Packaging, from Dev Patel at Forgeline.</p>
+    </div>
   </div>
-  <span class="for">for Marlow Packaging</span>
-  <span class="nav-cta"><a class="ken-cta" data-ken-cta="nav-booking" href="#">Book time with Dev</a></span>
-</nav>
-
-<section class="hero" data-section="hero">
-  <div>
-    <p class="made">A page for Ines Duarte, Plant Manager at Marlow Packaging</p>
-    <h1>Keep both lines running on the days that matter.</h1>
-    <p class="sub">Forgeline gives Marlow&#39;s plant one schedule of planned maintenance per machine, so the work gets done between runs instead of during them.</p>
-    <div class="acts"><a class="btn" href="#rollout">See the rollout at Marlow Packaging</a><a class="btn ghost" href="#book">Book 20 minutes</a></div>
-  </div>
-  <aside class="signals">
-    <h3>What we noticed at Marlow Packaging</h3>
-    <ol>
-      <li><b>Two die-cutting lines in one plant.</b><span><a href="https://marlowpackaging.example/plant" target="_blank" rel="noopener noreferrer">marlowpackaging.example/plant</a></span></li>
-      <li><b>An opening for a maintenance technician.</b><span><a href="https://marlowpackaging.example/careers" target="_blank" rel="noopener noreferrer">marlowpackaging.example/careers</a></span></li>
-      <li><b>Short runs and long runs, both listed as services.</b><span><a href="https://marlowpackaging.example/services" target="_blank" rel="noopener noreferrer">marlowpackaging.example/services</a></span></li>
-    </ol>
-    <p class="src">From Marlow Packaging's site and public notices. Tell Dev if any of this is off.</p>
-  </aside>
+  <nav class="stack wrap" aria-label="Chapters of this page">
+    <div class="folder c-mint x1"><a class="tab on" href="#uses">Three things we would do</a><div class="sheet on"></div></div>
+    <div class="folder c-orange x3"><a class="tab on" href="#rollout">The rollout</a><div class="sheet on"></div></div>
+    <div class="folder c-paper x4"><a class="tab on" href="#questions">Questions</a><div class="sheet on"></div></div>
+    <div class="folder front c-manila">
+      <span class="tab on">Marlow Packaging</span>
+      <div class="sheet on">
+        <div>
+          <h2>What we noticed at Marlow Packaging</h2>
+          <ol class="noticed">
+            <li><b>Two die-cutting lines in one plant.</b><span><a href="https://marlowpackaging.example/plant" target="_blank" rel="noopener noreferrer">marlowpackaging.example/plant</a></span></li>
+            <li><b>An opening for a maintenance technician.</b><span><a href="https://marlowpackaging.example/careers" target="_blank" rel="noopener noreferrer">marlowpackaging.example/careers</a></span></li>
+            <li><b>Short runs and long runs, both listed as services.</b><span><a href="https://marlowpackaging.example/services" target="_blank" rel="noopener noreferrer">marlowpackaging.example/services</a></span></li>
+          </ol>
+          <p class="note">From Marlow Packaging's site and public notices. Tell Dev if any of this is off.</p>
+        </div>
+        <div class="acts"><a class="btn on" href="#book">Book 20 minutes</a><a class="alt" href="#rollout">See the rollout at Marlow Packaging</a></div>
+      </div>
+    </div>
+  </nav>
 </section>
-</div>
 
-<section class="uses" data-section="uses">
-<div class="wrap">
-  <h2>Three things Forgeline would do for Marlow Packaging</h2>
+<section class="ch uses on" id="uses" data-section="uses">
+  <h2>Three things we would do</h2>
   <p class="lead">Picked for a plant manager with two die-cutting lines and an open maintenance role, from the plant page and the careers page.</p>
-  <div class="ugrid">
-    <article class="use">
-      <h3>Plan service between runs</h3>
-      <dl>
-        <div><dt>Today at Marlow Packaging</dt><dd>With short and long runs on two lines, the gaps for maintenance are small and move around.</dd></div>
-        <div><dt>With Forgeline</dt><dd class="after">Planned work sits on one schedule per machine, so it lands in the gaps between runs and not in the middle of one.</dd></div>
-      </dl>
-    </article>
-    <article class="use">
-      <h3>Turn operator notes into work orders</h3>
-      <dl>
-        <div><dt>Today at Marlow Packaging</dt><dd>A line operator who hears a new noise has to find the right person to tell.</dd></div>
-        <div><dt>With Forgeline</dt><dd class="after">The operator writes one line on a phone and it becomes a work order for the right machine.</dd></div>
-      </dl>
-    </article>
-    <article class="use">
-      <h3>Help a new technician start fast</h3>
-      <dl>
-        <div><dt>Today at Marlow Packaging</dt><dd>Marlow is hiring a maintenance technician, who will learn two lines from what others remember.</dd></div>
-        <div><dt>With Forgeline</dt><dd class="after">Each machine keeps its history and its next service, so a new technician sees what was done and what is due.</dd></div>
-      </dl>
-    </article>
-  </div>
-</div>
+  <table class="cmp">
+    <thead><tr><td></td><th scope="col">Today at Marlow Packaging</th><th scope="col" class="after on">With Forgeline</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Plan service between runs</th><td class="today" data-col="Today at Marlow Packaging">With short and long runs on two lines, the gaps for maintenance are small and move around.</td><td class="after on" data-col="With Forgeline">Planned work sits on one schedule per machine, so it lands in the gaps between runs and not in the middle of one.</td></tr>
+      <tr><th scope="row">Turn operator notes into work orders</th><td class="today" data-col="Today at Marlow Packaging">A line operator who hears a new noise has to find the right person to tell.</td><td class="after on" data-col="With Forgeline">The operator writes one line on a phone and it becomes a work order for the right machine.</td></tr>
+      <tr><th scope="row">Help a new technician start fast</th><td class="today" data-col="Today at Marlow Packaging">Marlow is hiring a maintenance technician, who will learn two lines from what others remember.</td><td class="after on" data-col="With Forgeline">Each machine keeps its history and its next service, so a new technician sees what was done and what is due.</td></tr>
+    </tbody>
+  </table>
 </section>
 
-<section class="roll" id="rollout" data-section="rollout">
-<div class="wrap">
-  <h2>How a rollout would go at Marlow Packaging</h2>
+<section class="ch roll on" id="rollout" data-section="rollout">
+  <h2>The rollout</h2>
   <p class="lead">Start with one die-cutting line, then add the second once the schedule has run through a few weeks of production.</p>
-  <ol class="steps">
-    <li><span class="when">Weeks 1 and 2</span><h3>Set up line one</h3><p>We load the line&#39;s machines and their service history, and agree the first month of planned work with your team.</p></li>
-    <li><span class="when">Weeks 3 to 4</span><h3>Run it on the floor</h3><p>Operators write notes on their phones and the technician works from the schedule. We check in each week.</p></li>
-    <li><span class="when">Weeks 5 and 6</span><h3>Add the second line</h3><p>The second die-cutting line goes on the same schedule, and you see both lines in one view.</p></li>
+  <ol class="stages">
+    <li><span class="seg on">Weeks 1 and 2</span><div><h3>Set up line one</h3><p>We load the line&#39;s machines and their service history, and agree the first month of planned work with your team.</p></div></li>
+    <li><span class="seg on">Weeks 3 to 4</span><div><h3>Run it on the floor</h3><p>Operators write notes on their phones and the technician works from the schedule. We check in each week.</p></div></li>
+    <li><span class="seg on">Weeks 5 and 6</span><div><h3>Add the second line</h3><p>The second die-cutting line goes on the same schedule, and you see both lines in one view.</p></div></li>
   </ol>
-</div>
 </section>
 
-<section class="faq" data-section="faq">
-<div class="wrap">
-  <h2>Questions people ask before a first call</h2>
-  <details><summary>Do we have to drop our spreadsheets?</summary><p>No. Forgeline works alongside them, and you can move over one machine at a time.</p></details>
-  <details><summary>Who needs training?</summary><p>Operators need ten minutes to write a note. The maintenance technician needs a short walkthrough of the schedule.</p></details>
-  <details><summary>How long until the first line is live?</summary><p>About two weeks to set up one line, and the full rollout takes about six weeks.</p></details>
-  <details><summary>What does it cost?</summary><p>We share pricing on the call, so you see it next to the plan for two lines.</p></details>
-</div>
-</section>
-
-<section class="booking" id="book" data-section="booking">
-<div class="wrap">
-  <div>
-    <h2>Pick a time with Dev</h2>
-    <p class="lead">Twenty minutes on video. Bring whoever else should see this, and we will go through the rollout for Marlow Packaging together.</p>
-    <p class="lead">Dev Patel, Solutions Engineer at Forgeline.</p>
+<section class="ch faq on" id="questions" data-section="faq">
+  <div class="cols">
+    <div><h2>Questions</h2><p class="lead">What people ask before a first call with Dev.</p></div>
+    <div class="qs">
+      <details class="on" name="faq"><summary class="on">Do we have to drop our spreadsheets?<i aria-hidden="true"></i></summary><p>No. Forgeline works alongside them, and you can move over one machine at a time.</p></details>
+      <details class="on" name="faq"><summary class="on">Who needs training?<i aria-hidden="true"></i></summary><p>Operators need ten minutes to write a note. The maintenance technician needs a short walkthrough of the schedule.</p></details>
+      <details class="on" name="faq"><summary class="on">How long until the first line is live?<i aria-hidden="true"></i></summary><p>About two weeks to set up one line, and the full rollout takes about six weeks.</p></details>
+      <details class="on" name="faq"><summary class="on">What does it cost?<i aria-hidden="true"></i></summary><p>We share pricing on the call, so you see it next to the plan for two lines.</p></details>
+    </div>
   </div>
-  <div class="cal"><div class="ken-booking" data-ken-booking="preview" style="box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;width:100%;height:560px;padding:24px;border:1px dashed currentColor;border-radius:8px;text-align:center"><strong>Book 20 minutes</strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 216" width="288" role="img" aria-label="Calendar" style="max-width:100%;height:auto"><rect x="0.5" y="0.5" width="287" height="215" rx="10" fill="#fff" stroke="#d1d5db"/><rect x="14" y="16" width="112" height="14" rx="4" fill="#d9441c"/><rect x="236" y="16" width="38" height="14" rx="4" fill="#e5e7eb"/><rect x="14" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="58" width="31" height="24" rx="4" fill="#d9441c"/><rect x="88" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="162" y="58" width="31" height="24" rx="4" fill="#d9441c"/><rect x="199" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="88" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="88" width="31" height="24" rx="4" fill="#d9441c"/><rect x="162" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="199" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="88" y="118" width="31" height="24" rx="4" fill="#d9441c"/><rect x="125" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="162" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="199" y="118" width="31" height="24" rx="4" fill="#d9441c"/><rect x="236" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="148" width="31" height="24" rx="4" fill="#d9441c"/><rect x="88" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="162" y="148" width="31" height="24" rx="4" fill="#d9441c"/><rect x="199" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="88" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="178" width="31" height="24" rx="4" fill="#d9441c"/><rect x="162" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="199" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/></svg><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#d9441c;color:#fff;text-decoration:none;font-weight:600">Book a time</a><span style="font-size:13px;opacity:.7">Preview: the live page shows the booking calendar here.</span></div></div>
-</div>
 </section>
 
-<footer>
-<div class="wrap">
-  <div class="brand"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--p)"/><text x="16" y="21.5" text-anchor="middle" style="font-family:var(--fh);font-weight:700;font-size:16px" fill="#fff">F</text></svg><b>Forgeline</b>
+<section class="ch book on" id="book" data-section="booking">
+  <div class="cols">
+    <div>
+      <h2>Pick a time with Dev</h2>
+      <p class="lead">Twenty minutes on video. Bring whoever else should see this, and we will go through the rollout for Marlow Packaging together.</p>
+      <p class="from">Dev Patel, Solutions Engineer at Forgeline</p>
+    </div>
+    <div class="cal on"><div class="ken-booking" data-ken-booking="preview" style="box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;width:100%;height:560px;padding:24px;border:1px dashed currentColor;border-radius:8px;text-align:center"><strong>Book 20 minutes</strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 216" width="288" role="img" aria-label="Calendar" style="max-width:100%;height:auto"><rect x="0.5" y="0.5" width="287" height="215" rx="10" fill="#fff" stroke="#d1d5db"/><rect x="14" y="16" width="112" height="14" rx="4" fill="#d9441c"/><rect x="236" y="16" width="38" height="14" rx="4" fill="#e5e7eb"/><rect x="14" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="58" width="31" height="24" rx="4" fill="#d9441c"/><rect x="88" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="162" y="58" width="31" height="24" rx="4" fill="#d9441c"/><rect x="199" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="88" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="88" width="31" height="24" rx="4" fill="#d9441c"/><rect x="162" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="199" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="88" y="118" width="31" height="24" rx="4" fill="#d9441c"/><rect x="125" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="162" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="199" y="118" width="31" height="24" rx="4" fill="#d9441c"/><rect x="236" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="148" width="31" height="24" rx="4" fill="#d9441c"/><rect x="88" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="162" y="148" width="31" height="24" rx="4" fill="#d9441c"/><rect x="199" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="88" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="178" width="31" height="24" rx="4" fill="#d9441c"/><rect x="162" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="199" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/></svg><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#d9441c;color:#fff;text-decoration:none;font-weight:600">Book a time</a><span style="font-size:13px;opacity:.7">Preview: the live page shows the booking calendar here.</span></div></div>
   </div>
-  This page was made for Ines at Marlow Packaging by Dev Patel. It is a private link. Nothing on it is public.
-</div>
+</section>
+
+<footer class="on">
+  <p class="brand">Forgeline</p>
+  <p>This page was made for Ines at Marlow Packaging by Dev Patel. It is a private link. Nothing on it is public.</p>
 </footer>
 </body>
 </html>

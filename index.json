@@ -105,7 +105,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -134,8 +134,8 @@
         "grade",
         "ken_search.count",
         "ken_search.companies",
-        "ken/chart",
-        "ken/cta"
+        "ken/cta",
+        "ken/chart"
       ],
       "description": "A ranked list of companies in the account's market that are adding people, with the account placed on it and a note on how the list was made.",
       "category": "prospecting",
@@ -148,7 +148,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -192,7 +192,7 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -231,7 +231,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -273,7 +273,7 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.0",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -318,7 +318,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -361,7 +361,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.2",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -404,7 +404,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -448,7 +448,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -491,7 +491,7 @@
       "needs": [
         "video"
       ],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -534,7 +534,7 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -578,7 +578,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -619,7 +619,7 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.3",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -664,7 +664,7 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.2",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -709,7 +709,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -752,7 +752,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -800,7 +800,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.0",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -846,7 +846,7 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -885,7 +885,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -926,7 +926,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -970,7 +970,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.2",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1009,7 +1009,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.2",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1056,7 +1056,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1101,7 +1101,7 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1144,7 +1144,7 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1186,7 +1186,7 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.0",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1231,7 +1231,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.2",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1273,7 +1273,7 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.2",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1318,7 +1318,7 @@
       "needs": [
         "video"
       ],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1360,7 +1360,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.2",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1403,7 +1403,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {

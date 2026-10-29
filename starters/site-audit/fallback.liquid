@@ -1,10 +1,11 @@
-{%- assign primary = brand.colors.primary | default: '#2a4bd7' -%}
-{%- assign secondary = brand.colors.secondary | default: '#0e1530' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
-{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+{%- assign primary = brand.colors.primary | default: '#ff4fa3' -%}
+{%- assign secondary = brand.colors.secondary | default: '#000000' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Schibsted Grotesk' -%}
+{%- assign font_body = brand.fonts.body | default: 'Schibsted Grotesk' -%}
 {%- assign brand_name = brand.name | default: 'Northbeam' -%}
 {%- assign first = person.first_name | default: 'there' -%}
 {%- assign site = account.domain | default: account.name -%}
+{%- assign site_size = site | size -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,66 +13,71 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Website audit for {{ site | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;700;900&display=swap">
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;700&display=swap">
 {%- endif %}
 <style>
-:root{--p:{{ primary | escape }};--s:{{ secondary | escape }};--fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--ink:var(--s);--mute:color-mix(in srgb,var(--s) 64%,#fff);--rule:color-mix(in srgb,var(--s) 14%,#fff);--tint:color-mix(in srgb,var(--p) 7%,#fff);--tint2:color-mix(in srgb,var(--p) 18%,#fff)}
+:root{--p:{{ primary | escape }};--s:{{ secondary | escape }};--fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--ink:#000;--mute:#4d4d4d;--step-small:clamp(.875rem,.85rem + .1vw,.9375rem);--step-lead:clamp(1.25rem,1.05rem + .8vw,1.75rem);--m:clamp(1.25rem,3.4vw,3rem)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#fff;color:var(--ink);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased;border-top:6px solid var(--p);padding-bottom:4rem;overflow-wrap:break-word}
-.page{max-width:66rem;margin:0 auto;padding:0 1.25rem}
-h1{font-family:var(--fh);font-weight:600;line-height:1.1;letter-spacing:-.015em;margin:0;text-wrap:balance}
-p{margin:0 0 1rem}
-.brandline{display:flex;align-items:center;gap:.6rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.9rem}
-.logo{width:28px;height:28px;display:block;flex:none}
-img.logo{width:auto;max-width:9rem;object-fit:contain}
-.bname{font-weight:600}
-.meta{margin-left:auto;color:var(--mute);text-align:right}
-.hero{padding:2.25rem 0 0}
-.for{color:var(--mute);font-size:.95rem;margin:0 0 .8rem}
-.hero h1{font-size:clamp(1.85rem,6vw,3.5rem);max-width:21ch;margin-bottom:1.25rem}
-.lead{max-width:40rem;font-size:1.05rem}
-.pending{margin-top:2.25rem;border-top:2px solid var(--ink);padding-top:1.5rem;display:grid;gap:1.5rem}
-.six{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
-.six li{display:flex;align-items:center;min-height:44px;padding:.5rem .8rem;background:var(--tint);border-left:3px solid var(--tint2);font-weight:500;font-size:.95rem}
-.next{margin-top:2.25rem;display:grid;gap:1rem}
-.next p{max-width:38rem;margin:0}
-.next .cta{justify-self:start}
-.next .ken-cta{display:inline-flex!important;align-items:center;justify-content:center;min-height:48px;background:var(--p)!important;color:#fff!important;text-decoration:none;font:600 1rem/1.2 var(--fb);padding:.95rem 1.4rem!important;border-radius:3px!important}
-.sign{font-size:.95rem}
-.sign b{display:block;font-weight:600}
-.sign span{color:var(--mute)}
+body{margin:0;background:#fff;color:var(--ink);font:400 clamp(1.0625rem,1rem + .25vw,1.1875rem)/1.5 var(--fb);-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+h1{font-family:var(--fh);font-weight:900;margin:0;letter-spacing:-.045em;line-height:.95;text-wrap:balance;font-size:clamp(2.5rem,1rem + 4.6vw,5rem)}
+h1 .site{display:block;white-space:nowrap}
+h1.mid{font-size:clamp(2rem,.8rem + 3.8vw,4.5rem)}
+h1.long{font-size:clamp(1.5rem,.6rem + 3.2vw,3.75rem)}
+p{margin:0;text-wrap:pretty}
+a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.on{background:var(--f);color:#000;color:rgb(from var(--f) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255))}
+.top{display:flex;align-items:center;min-height:2.75rem;padding:1.25rem var(--m) 0}
+.top .bname{font:700 1.125rem/1 var(--fh);letter-spacing:-.01em}
+.top img{display:block;height:28px;width:auto;max-width:9rem;object-fit:contain}
+.hero{padding:clamp(2rem,6vh,4rem) var(--m) clamp(2.5rem,5vw,4rem)}
+.lead{max-width:44ch;margin-top:1.5rem}
+/* the score band waits: six bars with nothing in them yet */
+.score{--f:var(--p);padding:clamp(2rem,4vw,3rem) var(--m) 0;display:grid;gap:2rem}
+.score .what{font:700 var(--step-lead)/1.25 var(--fh);letter-spacing:-.015em;max-width:24ch}
+.score p{max-width:40ch;margin-top:1rem}
+.six{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;align-items:start}
+.six li{font-weight:700;font-size:var(--step-small);line-height:1.25;padding-bottom:1.25rem}
+.six li::before{content:"";display:block;height:clamp(5rem,14vh,8rem);margin-bottom:.6rem;background:color-mix(in srgb,currentColor 14%,transparent)}
+.next{padding:clamp(3rem,6vw,5rem) var(--m) clamp(3rem,6vw,4.5rem);display:grid;gap:1.25rem;justify-items:start}
+.next p{max-width:44ch}
+.sign b{display:block;font-weight:700}
+.next .ken-cta{display:inline-flex!important;align-items:center;min-height:52px;background:var(--s)!important;color:#fff!important;color:rgb(from var(--s) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255) clamp(0,(125 - (r * .299 + g * .587 + b * .114)) * 999,255))!important;font:700 1rem/1.1 var(--fb)!important;padding:.9rem 1.5rem!important;border-radius:4px!important;text-decoration:none}
 @media (min-width:760px){
-  .page{padding:0 2.5rem}
-  .brandline{padding:1.25rem 0}
-  .hero{padding-top:3.5rem}
-  .pending{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:3.5rem;margin-top:3rem;padding-top:2rem}
-  .six{grid-template-columns:1fr 1fr 1fr}
+  .score{grid-template-columns:minmax(0,calc(42% - 2rem)) minmax(0,1fr);column-gap:2rem;align-items:end}
+  .score .copy{padding-bottom:1.75rem}
 }
+@media (max-width:759px){
+  .six{grid-template-columns:repeat(2,minmax(0,1fr));padding-bottom:1rem}
+  .six li::before{height:2.5rem}
+}
+@media print{.score{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
 </head>
 <body>
-<main class="page">
+<main>
 
-<header class="hero" data-section="hero">
-  <div class="brandline">
+<section data-section="hero">
+  <header class="top">
     {%- if brand.logo_url %}
-    <img class="logo" src="{{ brand.logo_url | escape }}" alt="">
+    <img src="{{ brand.logo_url | escape }}" alt="{{ brand_name | escape }}">
     {%- else %}
-    <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--p)"/><text x="16" y="21.5" text-anchor="middle" font-family="var(--fh)" font-weight="700" font-size="16" fill="#fff">{{ brand_name | slice: 0 | upcase | escape }}</text></svg>
-    {%- endif %}
     <span class="bname">{{ brand_name | escape }}</span>
-    <span class="meta">Website audit<br>{{ site | escape }}</span>
+    {%- endif %}
+  </header>
+  <div class="hero">
+    <h1{% if site_size > 19 %} class="long"{% elsif site_size > 14 %} class="mid"{% endif %}>Website audit for <span class="site">{{ site | escape }}</span></h1>
+    <p class="lead">Hi {{ first | escape }}. I am still reading {{ site | escape }} the way a first-time visitor would. When I am done, this page will have the score, the lines I would change and the three fixes to make first.</p>
   </div>
-  <p class="for">For {% if person %}{{ person.first_name | escape }}, at {% else %}the team at {% endif %}{{ account.name | escape }}</p>
-  <h1>Website audit for {{ site | escape }}</h1>
-  <p class="lead">Hi {{ first | escape }}. I am still reading {{ site | escape }} the way a first-time visitor would. When I am done, this page will have the score, the lines I would change and the three fixes to make first.</p>
-</header>
+</section>
 
-<section class="pending" data-section="score">
-  <p>This link stays the same, so check back later today. Here is what I am scoring.</p>
+<section class="score on" data-section="score">
+  <div class="copy">
+    <p class="what">Not scored yet</p>
+    <p>For {% if person %}{{ person.first_name | escape }}, at {% else %}the team at {% endif %}{{ account.name | escape }}. This link stays the same, so check back later today. These are the six things I am scoring.</p>
+  </div>
   <ul class="six">
     <li>Message clarity</li>
     <li>Proof</li>
@@ -84,7 +90,7 @@ img.logo{width:auto;max-width:9rem;object-fit:contain}
 
 <section class="next" data-section="next">
   <p>If you would rather hear it in person, book 20 minutes and I will go through what I have so far.</p>
-  <p class="sign"><b>{{ sender.name | default: brand_name | escape }}</b><span>{{ brand_name | escape }}</span></p>
+  <p class="sign"><b>{{ sender.name | default: brand_name | escape }}</b>{{ brand_name | escape }}</p>
   <div class="cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
 </section>
 

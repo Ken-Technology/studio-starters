@@ -1,0 +1,73 @@
+{
+  "account": {
+    "name": "Meridian Facility Group",
+    "domain": "meridianfg.example",
+    "industry": "facilities services",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Meridian Facility Group provides mechanical, electrical and janitorial maintenance for office campuses and hospitals in the Carolinas. Its site promises 24-hour response for contract clients and lists about 180 technicians.",
+      "why_now": "Won a multi-site hospital maintenance contract in September, according to a news post on its site.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Priya Natarajan",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Wrenfield",
+    "logo_url": null,
+    "colors": {
+      "primary": "#e8590c",
+      "secondary": "#161616"
+    },
+    "fonts": {
+      "heading": "Outfit",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "peers": [
+      { "industry": "facilities services", "question": "dispatch", "n_1": 5, "n_2": 13, "n_3": 15, "n_4": 8, "source": "Wrenfield field operations survey, 2026" },
+      { "industry": "facilities services", "question": "jobs", "n_1": 7, "n_2": 16, "n_3": 13, "n_4": 5, "source": "Wrenfield field operations survey, 2026" },
+      { "industry": "facilities services", "question": "invoice", "n_1": 4, "n_2": 14, "n_3": 15, "n_4": 8, "source": "Wrenfield field operations survey, 2026" },
+      { "industry": "facilities services", "question": "fix", "n_1": 3, "n_2": 11, "n_3": 19, "n_4": 8, "source": "Wrenfield field operations survey, 2026" },
+      { "industry": "facilities services", "question": "updates", "n_1": 9, "n_2": 14, "n_3": 12, "n_4": 6, "source": "Wrenfield field operations survey, 2026" }
+    ],
+    "intro": "Meridian's new multi-site hospital contract comes with a 24-hour response promise, and these five questions are the ones that decide whether about 180 technicians can keep it.",
+    "lines": [
+      {
+        "key": "dispatch",
+        "ahead": "Live dispatch across sites usually shows up as faster response on contract calls, and the lead holds when every site runs the same board.",
+        "level": "Most facilities services firms set the day in advance, and the next step is usually a board that moves work between sites during the day.",
+        "behind": "Closing this gap usually starts with one schedule every site and every technician can see, before any automatic routing."
+      },
+      {
+        "key": "jobs",
+        "ahead": "More jobs per technician on a campus usually means tight walking routes and stocked carts, and it holds when the morning starts on time.",
+        "level": "Most facilities services firms land in the middle on jobs per day, and the next step usually comes from grouping work by building.",
+        "behind": "Closing this gap usually means looking at travel between sites and trips to the store room, since those hours never show on a ticket."
+      },
+      {
+        "key": "invoice",
+        "ahead": "Invoicing within a day usually means the technician closes the work order on site, and keeping it there is what keeps billing disputes rare.",
+        "level": "Most facilities services firms bill within the week, and the next step is usually closing the work order before the technician leaves the floor.",
+        "behind": "Closing this gap usually means moving the close-out from the office to the site, so the invoice leaves while the client still remembers the visit."
+      },
+      {
+        "key": "fix",
+        "ahead": "A high first-visit completion rate usually comes from asset history and stocked parts, and it holds while dispatch matches the trade to the call.",
+        "level": "Most facilities services firms complete most jobs on the first visit, and the next step is usually better asset notes before the technician arrives.",
+        "behind": "Closing this gap usually starts with what a technician knows before arriving: the asset history, the last visit and the parts it usually needs."
+      },
+      {
+        "key": "updates",
+        "ahead": "Live arrival updates usually mean fewer calls from site managers, and the lead holds as long as the schedule behind them stays accurate.",
+        "level": "Most facilities services firms message the site contact by hand, and the next step is usually an automatic text tied to the schedule.",
+        "behind": "Closing this gap usually starts with an automatic message to the site contact on the morning of the visit, which also cuts calls into the desk."
+      }
+    ]
+  }
+}

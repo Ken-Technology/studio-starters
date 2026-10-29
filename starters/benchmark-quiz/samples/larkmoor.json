@@ -1,0 +1,39 @@
+{
+  "account": {
+    "name": "Larkmoor Utility Partners",
+    "domain": "larkmoorup.example",
+    "industry": "utilities",
+    "size_band": "501-1000",
+    "dossier": {
+      "summary": "Larkmoor Utility Partners maintains water and gas distribution networks for municipal utilities in the Midwest, with crews based in eleven service yards. Its site says it closes about 90,000 work orders a year.",
+      "why_now": "Posted four field supervisor roles in October.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Marcus",
+    "last_name": "Oyelaran",
+    "title": "VP Field Services"
+  },
+  "sender": {
+    "name": "Priya Natarajan",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Wrenfield",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1f2d4d",
+      "secondary": "#2a2520"
+    },
+    "fonts": {
+      "heading": "Newsreader",
+      "body": "Public Sans"
+    }
+  },
+  "data": {
+    "peers": [],
+    "intro": "Larkmoor closes about 90,000 work orders a year from eleven yards, so a small change in how each one is dispatched, finished and invoiced adds up quickly."
+  }
+}

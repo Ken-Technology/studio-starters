@@ -1,0 +1,73 @@
+{
+  "account": {
+    "name": "Northgate Credit Union",
+    "domain": "northgatecu.example",
+    "industry": "financial services",
+    "size_band": "501-1000",
+    "dossier": {
+      "summary": "Northgate Credit Union serves members across the upper Midwest from 22 branches. Its lending book has shifted toward small business loans since it opened a business lending team in 2023.",
+      "why_now": "Announced a new chief lending officer in August.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Marcus",
+    "last_name": "Odhiambo",
+    "title": "Chief Lending Officer"
+  },
+  "sender": {
+    "name": "Imogen Hale",
+    "title": null,
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Hollis & Vane",
+    "logo_url": null,
+    "colors": { "primary": "#1b2f46", "secondary": "#b8925a" },
+    "fonts": { "heading": "Libre Baskerville", "body": "Source Sans 3" }
+  },
+  "data": {
+    "show_name": "Second Opinion",
+    "show_format": "written",
+    "show_tagline": "Written interviews with the people who make lending decisions at credit unions and community banks.",
+    "audience": "Executives at credit unions and community banks, and the boards they report to. Most read it the week it comes out and forward it to one colleague.",
+    "episode_length": "about an hour",
+    "recording": "By email. We send the questions in one batch, you answer at your pace in your own words, and we edit only for length.",
+    "published_on": "our site and the monthly letter to subscribers",
+    "turnaround": "about four weeks after your answers come in",
+    "host_about": "Imogen Hale writes every interview and sends the questions in one batch, so nothing lands in your inbox piecemeal.",
+    "recent_episodes": [
+      { "title": "Underwriting a small business loan in four days", "guest": "Chief Credit Officer at a community bank in Wisconsin" },
+      { "title": "What a board should ask about the indirect auto book", "guest": "Chief Executive of a credit union in Michigan" }
+    ],
+    "site": {
+      "url": "https://northgatecu.example",
+      "title": "Northgate Credit Union | Banking for members across the upper Midwest",
+      "description": "A member-owned credit union with 22 branches in Minnesota, Wisconsin and Iowa. Personal banking, mortgages and small business lending.",
+      "markdown": "# Banking that stays in your town\n\nNorthgate is owned by its members and run from 22 branches across Minnesota, Wisconsin and Iowa.\n\n## Small business lending\n\nNorthgate opened a small business lending team in 2023. It writes loans for owner-operated businesses in every county we serve, and the decision is made by a lender who has visited the business.\n\n## Mortgages and personal banking\n\nFixed and adjustable mortgages, home equity lines, auto loans and everyday accounts.\n\n## Leadership\n\nMarcus Odhiambo joined Northgate as chief lending officer in August, after twelve years in commercial lending at a regional bank.\n\n## Branches\n\nFind a branch near you. Every branch has a lender on site."
+    },
+    "writing": {
+      "url": "https://northgatecu.example/blog",
+      "title": "Northgate news",
+      "description": "News and notes from Northgate Credit Union.",
+      "markdown": "# Northgate news\n\n## A note from our new chief lending officer\n\nBy Marcus Odhiambo\n\nI joined Northgate in August after twelve years in commercial lending at a regional bank. My first job is to listen. I am visiting all 22 branches before the end of the year and sitting with the lending teams, because the people who meet members every day know where the book should grow and where it should not.\n\n## Fall member meeting\n\nThe annual member meeting is on the second Tuesday of November at the main branch."
+    },
+    "invite_line": "You joined Northgate as chief lending officer in August and set out to visit all 22 branches before the end of the year. Our readers would like to know what you heard on the way, and what it changed in the lending book.",
+    "episode_title": "Listening to 22 branches before changing the lending book",
+    "angle": "The piece would follow the branch visits: what the lending teams told you, where small business lending has grown fastest since the program opened in 2023, and which parts of a regional bank's commercial lending playbook carry over to a credit union and which do not. We would end on the lending book itself: how you decide what to grow next, and how you explain that to a board. No product talk from our side and no company history. Your answers run as written, edited only for length.",
+    "questions": [
+      {
+        "question": "What did the lending teams tell you in the branch visits that you did not expect?",
+        "why": "From your note on joining Northgate, which set out to visit all 22 branches by the end of the year."
+      },
+      {
+        "question": "Which parts of a regional bank's commercial lending playbook carried over to Northgate, and which have you dropped?",
+        "why": "You spent twelve years in commercial lending at a regional bank before joining."
+      },
+      {
+        "question": "How do you explain to the board where the lending book should grow next, and what you are saying no to?",
+        "why": "Northgate's business lending team has written loans for owner-operated businesses since 2023."
+      }
+    ]
+  }
+}

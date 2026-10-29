@@ -1,0 +1,251 @@
+{%- assign accent = brand.colors.primary | default: '#a8203f' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#1b1c25' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Big Shoulders Display' -%}
+{%- assign font_body = brand.fonts.body | default: 'Instrument Sans' -%}
+{%- assign first = person.first_name | default: '' -%}
+{%- assign is_written = false -%}
+{%- if data.show_format == 'written' -%}{%- assign is_written = true -%}{%- endif -%}
+{%- assign is_audio = false -%}
+{%- if data.show_format == 'audio' -%}{%- assign is_audio = true -%}{%- endif -%}
+{%- assign has_eps = false -%}
+{%- if data.recent_episodes.size > 0 -%}{%- assign has_eps = true -%}{%- endif -%}
+{%- assign guest_name = account.name -%}
+{%- if person.first_name -%}{%- capture guest_name -%}{{ person.first_name }}{% if person.last_name %} {{ person.last_name }}{% endif %}{%- endcapture -%}{%- endif -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Be our guest on {{ data.show_name | escape }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;700{% if font_body != font_head %}&family={{ font_body | url_encode }}:wght@400;700{% endif %}&display=swap">
+<style>
+:root{--p:{{ accent | escape }};--s:{{ accent2 | escape }};--fh:'{{ font_head | escape }}','Archivo Narrow','Arial Narrow',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--paper:#f5f5f1;--ink:#1b1b1f;--mute:color-mix(in srgb,var(--ink) 60%,var(--paper));--rule:color-mix(in srgb,var(--ink) 14%,var(--paper));--rule-soft:color-mix(in srgb,var(--ink) 8%,var(--paper));--ground:color-mix(in srgb,var(--s) 28%,#121216);--glow:color-mix(in srgb,var(--p) 52%,#fff);--on-dark:#f6f5f2;--on-dark-mute:color-mix(in srgb,#f6f5f2 62%,var(--ground));--tint:color-mix(in srgb,var(--p) 7%,var(--paper))}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.pi{max-width:66rem;margin:0 auto;padding:0 1.25rem 3rem}
+.pi h1,.pi h2,.pi h3{font-family:var(--fh);font-weight:700;line-height:1.02;letter-spacing:0;margin:0;text-wrap:balance}
+.pi p{margin:0 0 .9rem}
+.pi a{color:var(--p)}
+.pi a:focus-visible,.pi .ken-cta:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+.pi-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.pi-logo{height:24px;width:auto;display:block}
+.pi-brand{font-weight:700;font-size:.95rem;margin:0;white-space:nowrap}
+.pi-show{font-size:.9rem;color:var(--mute);margin:0;text-align:right}
+.pi-show b{color:var(--ink);font-weight:700}
+.pi-hero{display:grid;gap:1.6rem;padding:1.25rem 0 2.2rem}
+.pi-art{position:relative;aspect-ratio:1/1;background:var(--ground);color:var(--on-dark);padding:1.3rem 1.3rem 1.2rem;display:flex;flex-direction:column;justify-content:space-between;border-radius:4px}
+.pi-art-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.pi-art-show{font-family:var(--fh);font-weight:700;font-size:1.25rem;line-height:1;color:var(--glow);margin:0;letter-spacing:.01em}
+.pi-art-kind{font-size:.82rem;color:var(--on-dark-mute);margin:0;white-space:nowrap}
+.pi-wave{display:block;width:100%;height:auto;color:var(--glow);margin:.6rem 0}
+.pi-lines{display:grid;gap:.6rem;margin:.6rem 0}
+.pi-lines span{display:block;height:4px;background:var(--glow);border-radius:2px}
+.pi-lines span:nth-child(2){width:74%}
+.pi-lines span:nth-child(3){width:88%}
+.pi-lines span:nth-child(4){width:52%;margin-bottom:.5rem}
+.pi-lines span:nth-child(5){width:94%}
+.pi-lines span:nth-child(6){width:66%}
+.pi-art-with{font-size:.85rem;color:var(--on-dark-mute);margin:0 0 .25rem}
+.pi-art-name{font-family:var(--fh);font-weight:700;font-size:2.8rem;line-height:.95;margin:0 0 .5rem;overflow-wrap:anywhere;text-wrap:balance}
+.pi-art-sub{font-size:.92rem;line-height:1.35;color:var(--on-dark-mute);margin:0}
+.pi-art-sub b{color:var(--on-dark);font-weight:400}
+.pi-for{font-size:.92rem;color:var(--mute);margin:0 0 .8rem}
+.pi-for b{color:var(--ink);font-weight:700}
+.pi h1{font-size:2.7rem;margin:0 0 1.1rem}
+.pi-letter p{max-width:34rem}
+.pi-letter .pi-lead{font-size:1.1rem;line-height:1.5}
+.pi-act{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.2rem;margin:1.3rem 0 1.4rem}
+.pi .ken-cta{line-height:1.25!important;border-radius:4px!important;font-size:1rem}
+.pi-or{font-size:.92rem;color:var(--mute);margin:0}
+.pi-sig{font-size:.95rem;margin:0}
+.pi-sig b{display:block;font-family:var(--fh);font-weight:700;font-size:1.35rem;line-height:1.1;letter-spacing:.005em}
+.pi-sig span{color:var(--mute)}
+.pi-sec{display:grid;gap:.6rem;padding:1.9rem 0;border-top:1px solid var(--rule)}
+.pi-lbl{font-size:.86rem;font-weight:700;color:var(--mute);margin:0;line-height:1.3;padding-top:.25rem}
+.pi h2{font-size:2.05rem;margin:0 0 .8rem}
+.pi h3{font-family:var(--fb);font-weight:700;font-size:1rem;margin:1.6rem 0 .5rem}
+.pi-text{max-width:35rem}
+.pi-text p{font-size:1.05rem}
+.pi-qs{list-style:none;margin:.4rem 0 0;padding:0;max-width:40rem}
+.pi-qs li{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:.25rem .5rem;padding:1rem 0;border-top:1px solid var(--rule-soft)}
+.pi-qs li:first-child{border-top:0;padding-top:.3rem}
+.pi-qn{font-family:var(--fh);font-weight:700;font-size:2.1rem;line-height:.9;color:var(--p);padding-top:.1rem}
+.pi-q{font-family:var(--fh);font-weight:700;font-size:1.45rem;line-height:1.1;margin:0 0 .35rem!important;text-wrap:balance}
+.pi-qw{font-size:.95rem;color:var(--mute);margin:0!important}
+.pi-after{font-size:.95rem;color:var(--mute);margin:1rem 0 0!important;max-width:40rem}
+.pi-steps{list-style:none;margin:0;padding:0;counter-reset:step}
+.pi-steps li{position:relative;padding:.9rem 0 .9rem 2.5rem;border-top:1px solid var(--rule-soft);counter-increment:step}
+.pi-steps li:first-child{border-top:0;padding-top:.2rem}
+.pi-steps li::before{content:counter(step);position:absolute;left:0;top:.85rem;font-family:var(--fh);font-weight:700;font-size:1.6rem;line-height:1;color:var(--p)}
+.pi-steps li:first-child::before{top:.15rem}
+.pi-steps b{display:block;font-weight:700;margin:0 0 .15rem}
+.pi-steps p{margin:0;color:var(--mute);font-size:.97rem}
+.pi-tag{font-family:var(--fh);font-weight:700;font-size:1.6rem;line-height:1.08;margin:0 0 1.1rem!important;max-width:30ch;text-wrap:balance}
+.pi-facts{margin:0;display:grid;gap:0}
+.pi-facts div{display:grid;gap:.15rem;padding:.8rem 0;border-top:1px solid var(--rule-soft)}
+.pi-facts div:first-child{border-top:0;padding-top:0}
+.pi-facts dt{font-size:.86rem;font-weight:700;color:var(--mute)}
+.pi-facts dd{margin:0}
+.pi-eps{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-soft)}
+.pi-eps li{display:grid;gap:.1rem;padding:.7rem 0;border-bottom:1px solid var(--rule-soft)}
+.pi-eps b{font-family:var(--fh);font-weight:700;font-size:1.25rem;line-height:1.1}
+.pi-eps span{font-size:.92rem;color:var(--mute)}
+.pi-book{background:var(--tint);border-top:1px solid var(--rule);margin:0 -1.25rem;padding:2rem 1.25rem 2.2rem}
+.pi-book-in{max-width:66rem;margin:0 auto;display:grid;gap:.6rem}
+.pi-book h2{margin-bottom:.6rem}
+.pi-book p{max-width:34rem}
+.pi-book .pi-act{margin:.6rem 0 1.2rem}
+.pi-decline{font-size:.95rem;color:var(--mute)}
+.pi-foot{font-size:.84rem;color:var(--mute);padding:1.4rem 0 0;display:grid;gap:.2rem}
+.pi-foot b{color:var(--ink);font-weight:700}
+@media (min-width:760px){
+body{font-size:18px}
+.pi{padding:0 2rem 4rem}
+.pi-top{padding:1.2rem 0}
+.pi-hero{grid-template-columns:minmax(0,25rem) minmax(0,1fr);gap:3.2rem;align-items:start;padding:2.6rem 0 3rem}
+.pi-art{padding:1.7rem 1.7rem 1.6rem;border-radius:6px}
+.pi-art-show{font-size:1.45rem}
+.pi-art-name{font-size:3.6rem}
+.pi-letter{padding-top:.4rem}
+.pi h1{font-size:4rem;margin-bottom:1.3rem}
+.pi-sec{grid-template-columns:11rem minmax(0,1fr);gap:2.5rem;padding:2.6rem 0}
+.pi-lbl{font-size:.92rem;padding-top:.5rem}
+.pi h2{font-size:2.6rem}
+.pi-q{font-size:1.75rem}
+.pi-qn{font-size:2.6rem}
+.pi-qs li{grid-template-columns:3rem minmax(0,1fr);padding:1.2rem 0}
+.pi-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.6rem}
+.pi-steps li,.pi-steps li:first-child{border-top:2px solid var(--ink);padding:1rem 0 0 0}
+.pi-steps li::before,.pi-steps li:first-child::before{position:static;display:block;font-size:2rem;margin:0 0 .5rem}
+.pi-tag{font-size:1.9rem}
+.pi-show-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.4rem;align-items:start}
+.pi .pi-eps-h{margin-top:0}
+.pi-book{margin:0 -2rem;padding:2.8rem 2rem 3rem}
+.pi-book-in{grid-template-columns:11rem minmax(0,1fr);gap:2.5rem}
+.pi-foot{grid-template-columns:1fr auto;align-items:end;padding-top:1.6rem}
+}
+@media print{.pi-book{background:#fff}.ken-cta{display:none}}
+</style>
+</head>
+<body>
+<main class="pi">
+<header class="pi-top">
+{%- if brand.logo_url %}<img class="pi-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="pi-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="pi-show"><b>{{ data.show_name | escape }}</b>{% if is_written %}, a written interview series{% elsif is_audio %}, a podcast{% else %}, a video podcast{% endif %}</p>
+</header>
+
+<section data-section="invite" class="pi-hero">
+<div class="pi-art">
+<div class="pi-art-top">
+<p class="pi-art-show">{{ data.show_name | escape }}</p>
+<p class="pi-art-kind">{% if is_written %}In writing{% elsif is_audio %}Audio, {{ data.episode_length | escape }}{% else %}Video, {{ data.episode_length | escape }}{% endif %}</p>
+</div>
+{%- if is_written %}
+<div class="pi-lines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+{%- else %}
+<svg class="pi-wave" viewBox="0 0 320 64" preserveAspectRatio="none" aria-hidden="true" fill="currentColor"><rect x="0" y="26" width="4" height="12" rx="2"/><rect x="8" y="18" width="4" height="28" rx="2"/><rect x="16" y="22" width="4" height="20" rx="2"/><rect x="24" y="8" width="4" height="48" rx="2"/><rect x="32" y="14" width="4" height="36" rx="2"/><rect x="40" y="24" width="4" height="16" rx="2"/><rect x="48" y="4" width="4" height="56" rx="2"/><rect x="56" y="12" width="4" height="40" rx="2"/><rect x="64" y="20" width="4" height="24" rx="2"/><rect x="72" y="28" width="4" height="8" rx="2"/><rect x="80" y="16" width="4" height="32" rx="2"/><rect x="88" y="6" width="4" height="52" rx="2"/><rect x="96" y="22" width="4" height="20" rx="2"/><rect x="104" y="10" width="4" height="44" rx="2"/><rect x="112" y="26" width="4" height="12" rx="2"/><rect x="120" y="18" width="4" height="28" rx="2"/><rect x="128" y="2" width="4" height="60" rx="2"/><rect x="136" y="14" width="4" height="36" rx="2"/><rect x="144" y="24" width="4" height="16" rx="2"/><rect x="152" y="8" width="4" height="48" rx="2"/><rect x="160" y="20" width="4" height="24" rx="2"/><rect x="168" y="28" width="4" height="8" rx="2"/><rect x="176" y="12" width="4" height="40" rx="2"/><rect x="184" y="4" width="4" height="56" rx="2"/><rect x="192" y="18" width="4" height="28" rx="2"/><rect x="200" y="24" width="4" height="16" rx="2"/><rect x="208" y="10" width="4" height="44" rx="2"/><rect x="216" y="16" width="4" height="32" rx="2"/><rect x="224" y="26" width="4" height="12" rx="2"/><rect x="232" y="6" width="4" height="52" rx="2"/><rect x="240" y="20" width="4" height="24" rx="2"/><rect x="248" y="14" width="4" height="36" rx="2"/><rect x="256" y="24" width="4" height="16" rx="2"/><rect x="264" y="8" width="4" height="48" rx="2"/><rect x="272" y="18" width="4" height="28" rx="2"/><rect x="280" y="26" width="4" height="12" rx="2"/><rect x="288" y="12" width="4" height="40" rx="2"/><rect x="296" y="22" width="4" height="20" rx="2"/><rect x="304" y="16" width="4" height="32" rx="2"/><rect x="312" y="28" width="4" height="8" rx="2"/></svg>
+{%- endif %}
+<div>
+<p class="pi-art-with">{% if is_written %}An interview with{% else %}An episode with{% endif %}{% unless person.first_name %} the team at{% endunless %}</p>
+<p class="pi-art-name">{{ guest_name | escape }}</p>
+<p class="pi-art-sub">{% if person.first_name %}{% if person.title %}<b>{{ person.title | escape }}</b>, {% endif %}{{ account.name | escape }}{% elsif account.industry %}<b>{{ account.industry | capitalize | escape }}</b>{% if account.size_band %}, {{ account.size_band | escape }} people{% endif %}{% else %}<b>Whoever you would put forward</b>{% endif %}</p>
+</div>
+</div>
+<div class="pi-letter">
+<p class="pi-for">{% if person.first_name %}An invitation for <b>{{ guest_name | escape }}</b>{% if person.title %}, {{ person.title | escape }}{% endif %} at {{ account.name | escape }}{% else %}An invitation for <b>{{ account.name | escape }}</b>{% endif %}</p>
+<h1>Be our guest{% if first != '' %}, {{ first | escape }}{% endif %}.</h1>
+<p class="pi-lead">{{ data.invite_line | escape }}</p>
+<p>{% if is_written %}It is a written interview. We send the questions, you answer them at your pace, and it takes {{ data.episode_length | escape }} of your time in all.{% elsif is_audio %}It is {{ data.episode_length | escape }} of conversation, recorded remotely, with no prep beyond this page.{% else %}It is {{ data.episode_length | escape }} on a video call, recorded remotely, with no prep beyond this page.{% endif %} The angle I have in mind and three of the questions are below. If they are off, say so and I will reshape them.</p>
+<div class="pi-act">
+{% render 'ken/cta', label: 'Pick a time', kind: 'booking', id: 'book-top', color: accent %}
+<p class="pi-or">or reply to my email with a week that works</p>
+</div>
+<p class="pi-sig"><b>{{ sender.name | default: 'The host' | escape }}</b><span>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}{% elsif brand.name %}{{ brand.name | escape }}{% endif %}{% if sender.title or brand.name %}. {% endif %}Host of {{ data.show_name | escape }}</span></p>
+</div>
+</section>
+
+<section data-section="angle" class="pi-sec">
+<p class="pi-lbl">The angle</p>
+<div>
+<h2>{{ data.episode_title | escape }}</h2>
+<div class="pi-text"><p>{{ data.angle | escape | newline_to_br | strip_newlines | raw }}</p></div>
+<h3>Three questions we would start with</h3>
+<ol class="pi-qs">
+{%- for q in data.questions %}
+<li><span class="pi-qn" aria-hidden="true">{{ forloop.index }}</span><div><p class="pi-q">{{ q.question | escape }}</p>{% if q.why and q.why != '' %}<p class="pi-qw">{{ q.why | escape }}</p>{% endif %}</div></li>
+{%- endfor %}
+</ol>
+<p class="pi-after">{% if is_written %}You get the full set of questions once you say yes, and you can strike any of them.{% else %}You get the full list a week before we record, and you can strike any of them.{% endif %}</p>
+</div>
+</section>
+
+<section data-section="takes" class="pi-sec">
+<p class="pi-lbl">What it takes</p>
+<ol class="pi-steps">
+{%- if is_written %}
+<li><b>Say yes</b><p>Reply to my email, or book a short call below if you would rather talk the angle through first.</p></li>
+<li><b>Answer in writing</b><p>{{ data.recording | escape }} Count on {{ data.episode_length | escape }}.</p></li>
+<li><b>Approve the edit</b><p>You read the finished piece before anyone else does and can change anything in it.</p></li>
+<li><b>It goes out</b><p>On {{ data.published_on | escape }}, {{ data.turnaround | escape }}. We send you the piece and a short version to share.</p></li>
+{%- else %}
+<li><b>Pick a time</b><p>{{ data.episode_length | escape }}, at a slot that suits you. Pick one below or reply with a week that works.</p></li>
+<li><b>We record</b><p>{{ data.recording | escape }}</p></li>
+<li><b>Approve the cut</b><p>You {% if is_audio %}hear{% else %}see{% endif %} the edit before anyone else does and can strike anything you want out.</p></li>
+<li><b>It goes out</b><p>On {{ data.published_on | escape }}, {{ data.turnaround | escape }}. We send you the episode and short clips to share.</p></li>
+{%- endif %}
+</ol>
+</section>
+
+<section data-section="show" class="pi-sec">
+<p class="pi-lbl">The show</p>
+<div>
+<p class="pi-tag">{{ data.show_tagline | escape }}</p>
+<div class="pi-show-grid">
+<dl class="pi-facts">
+<div><dt>Who {% if is_written %}reads it{% else %}listens{% endif %}</dt><dd>{{ data.audience | escape }}</dd></div>
+<div><dt>Format</dt><dd>{% if is_written %}A written interview, {{ data.episode_length | escape }}{% elsif is_audio %}Audio, {{ data.episode_length | escape }} an episode{% else %}Video and audio, {{ data.episode_length | escape }} an episode{% endif %}</dd></div>
+<div><dt>Where it goes out</dt><dd>{{ data.published_on | escape }}</dd></div>
+<div><dt>Hosted by</dt><dd>{{ data.host_about | escape }}</dd></div>
+</dl>
+{%- if has_eps %}
+<div>
+<h3 class="pi-eps-h">Recent {% if is_written %}interviews{% else %}episodes{% endif %}</h3>
+<ul class="pi-eps">
+{%- for ep in data.recent_episodes %}
+<li><b>{{ ep.title | escape }}</b>{% if ep.guest and ep.guest != '' %}<span>{{ ep.guest | escape }}</span>{% endif %}</li>
+{%- endfor %}
+</ul>
+</div>
+{%- endif %}
+</div>
+</div>
+</section>
+
+<section data-section="book" class="pi-book">
+<div class="pi-book-in">
+<p class="pi-lbl">{% if is_written %}Say yes{% else %}Book it{% endif %}</p>
+<div>
+{%- if is_written %}
+<h2>Say yes and I will send the questions</h2>
+<p>Reply to my email with a yes and the full set of questions comes the same day. If you would like to talk the angle through first, book a short call and we will shape it together.</p>
+<div class="pi-act">{% render 'ken/cta', label: 'Book a short call', kind: 'booking', id: 'book', color: accent %}</div>
+{%- else %}
+<h2>Pick a time to record</h2>
+<p>Choose a slot that suits you and I will send the link and the full question list a week ahead. If nothing fits, reply to my email with a week that works and I will find a time.</p>
+<div class="pi-act">{% render 'ken/cta', label: 'Pick a recording time', kind: 'booking', id: 'book', color: accent %}</div>
+{%- endif %}
+<p class="pi-decline">Not the right moment? Reply and say when would be, and I will come back then.</p>
+<p class="pi-sig"><b>{{ sender.name | default: 'The host' | escape }}</b><span>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}{% elsif brand.name %}{{ brand.name | escape }}{% endif %}</span></p>
+</div>
+</div>
+</section>
+
+<footer class="pi-foot">
+<span>Made for <b>{{ account.name | escape }}</b> by {{ sender.name | default: 'the host' | escape }}{% if brand.name %} at {{ brand.name | escape }}{% endif %}.</span>
+<span>A private link. Nothing goes out until you approve it.</span>
+</footer>
+</main>
+</body>
+</html>

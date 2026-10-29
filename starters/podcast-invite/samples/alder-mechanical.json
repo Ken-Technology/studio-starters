@@ -1,0 +1,74 @@
+{
+  "account": {
+    "name": "Alder Mechanical",
+    "domain": "alder-mechanical.example",
+    "industry": "construction",
+    "size_band": "201-500",
+    "dossier": {
+      "summary": "Alder Mechanical is a commercial HVAC and plumbing contractor with about 340 people across three branches in the Pacific Northwest. It runs a 24-hour service desk for commercial clients and a growing retrofit business.",
+      "why_now": "Opened a third branch in Spokane in September.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Teresa",
+    "last_name": "Quinlan",
+    "title": "VP of Operations"
+  },
+  "sender": {
+    "name": "Noah Castellanos",
+    "title": "Head of Customer Marketing",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Fieldnote",
+    "logo_url": null,
+    "colors": null,
+    "fonts": null
+  },
+  "data": {
+    "show_name": "Dispatch",
+    "show_format": "video",
+    "show_tagline": "Conversations with the people who run field service, about how the work actually gets scheduled, staffed and done.",
+    "audience": "Operations and service leaders at trades contractors, most of them running crews across several branches.",
+    "episode_length": "40 minutes",
+    "recording": "Remote, over a video call. You need a quiet room and a laptop; we send the link and handle the rest.",
+    "published_on": "YouTube, Apple Podcasts and Spotify",
+    "turnaround": "about three weeks after we record",
+    "host_about": "Noah Castellanos hosts every episode and does the prep, so the conversation starts where your work is, not at the beginning.",
+    "recent_episodes": [
+      { "title": "Why we stopped paying technicians by the ticket", "guest": "Director of Service at a plumbing contractor in Colorado" },
+      { "title": "The dispatcher who runs the whole night shift", "guest": "Service Manager at a mechanical contractor in Texas" },
+      { "title": "Opening a second branch without losing the first", "guest": "VP of Operations at an electrical contractor in Ohio" }
+    ],
+    "site": {
+      "url": "https://alder-mechanical.example",
+      "title": "Alder Mechanical | Commercial HVAC, plumbing and 24-hour service",
+      "description": "Commercial mechanical contractor serving Washington, Oregon and Idaho. Service, retrofit and new construction, with a 24-hour service desk staffed by our own dispatchers.",
+      "markdown": "# Commercial mechanical, done by people who answer the phone\n\nAlder Mechanical installs and services HVAC, plumbing and controls for commercial buildings across Washington, Oregon and Idaho.\n\n## Service, around the clock\n\nOur service desk is staffed by Alder dispatchers 24 hours a day. When a rooftop unit fails at 2 am, a technician who knows the building is on the way, not an answering service.\n\n## Retrofit and controls\n\nWe replace aging equipment in occupied buildings without shutting the building down, and we tune the controls so the new equipment runs the way the design intended.\n\n## Three branches\n\nSeattle, Portland and, since September, Spokane. Every branch runs its own crews and shares one service desk.\n\n## Careers\n\nWe train apprentices in-house and run a four-year program with the local union."
+    },
+    "writing": {
+      "url": "https://alder-mechanical.example/blog",
+      "title": "Notes from the desk | Alder Mechanical",
+      "description": "Writing from the people who run Alder's service desk and crews.",
+      "markdown": "# Notes from the desk\n\n## What broke in the first month of running our own service desk\n\nBy Teresa Quinlan, VP of Operations\n\nFor eight years an answering service took our after-hours calls. Last spring we brought the desk in-house and staffed it with our own dispatchers around the clock. Here is what broke in the first month: the handoff between the night dispatcher and the morning crews, the parts van that nobody restocked, and a call queue nobody could see. Here is what we changed, and why I would do it again.\n\n## How we schedule technicians across three branches\n\nBy the dispatch team\n\nEvery branch wanted its own board. We kept one, and here is how the morning huddle works now."
+    },
+    "invite_line": "You brought Alder's 24-hour service desk in-house after eight years with an answering service, and wrote up what broke in the first month. That is exactly the kind of decision our listeners want to hear worked through.",
+    "episode_title": "Bringing a 24-hour service desk in-house at Alder Mechanical",
+    "angle": "We would spend most of the time on the service desk: why you ended the answering service, how you staffed dispatchers around the clock, and what the first month taught you about the night-to-morning handoff and the parts van nobody restocked. Then the third branch: how Spokane shares one desk and one board with Seattle and Portland, and what you would set up differently if you opened a fourth. No product talk from our side and no company history, just the decisions and what they cost.",
+    "questions": [
+      {
+        "question": "What made you end eight years with the answering service, and what was the first week like?",
+        "why": "From your post on bringing the service desk in-house."
+      },
+      {
+        "question": "How do three branches with their own crews share one service desk without fighting over the board?",
+        "why": "Your site says every branch runs its own crews and shares one desk, and the dispatch team wrote about keeping one board."
+      },
+      {
+        "question": "If you opened a fourth branch next year, what would you set up on day one that Spokane did not have?",
+        "why": "The Spokane branch opened in September."
+      }
+    ]
+  }
+}

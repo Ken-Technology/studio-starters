@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Be our guest on Second Opinion</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;700&display=swap">
+<style>
+:root{--p:#1b2f46;--s:#b8925a;--fh:'Libre Baskerville','Archivo Narrow','Arial Narrow',ui-sans-serif,system-ui,sans-serif;--fb:'Source Sans 3',ui-sans-serif,system-ui,sans-serif;--paper:#f5f5f1;--ink:#1b1b1f;--mute:color-mix(in srgb,var(--ink) 60%,var(--paper));--rule:color-mix(in srgb,var(--ink) 14%,var(--paper));--rule-soft:color-mix(in srgb,var(--ink) 8%,var(--paper));--ground:color-mix(in srgb,var(--s) 28%,#121216);--glow:color-mix(in srgb,var(--p) 52%,#fff);--on-dark:#f6f5f2;--on-dark-mute:color-mix(in srgb,#f6f5f2 62%,var(--ground));--tint:color-mix(in srgb,var(--p) 7%,var(--paper))}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.pi{max-width:66rem;margin:0 auto;padding:0 1.25rem 3rem}
+.pi h1,.pi h2,.pi h3{font-family:var(--fh);font-weight:700;line-height:1.02;letter-spacing:0;margin:0;text-wrap:balance}
+.pi p{margin:0 0 .9rem}
+.pi a{color:var(--p)}
+.pi a:focus-visible,.pi .ken-cta:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+.pi-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+.pi-logo{height:24px;width:auto;display:block}
+.pi-brand{font-weight:700;font-size:.95rem;margin:0;white-space:nowrap}
+.pi-show{font-size:.9rem;color:var(--mute);margin:0;text-align:right}
+.pi-show b{color:var(--ink);font-weight:700}
+.pi-hero{display:grid;gap:1.6rem;padding:1.25rem 0 2.2rem}
+.pi-art{position:relative;aspect-ratio:1/1;background:var(--ground);color:var(--on-dark);padding:1.3rem 1.3rem 1.2rem;display:flex;flex-direction:column;justify-content:space-between;border-radius:4px}
+.pi-art-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.pi-art-show{font-family:var(--fh);font-weight:700;font-size:1.25rem;line-height:1;color:var(--glow);margin:0;letter-spacing:.01em}
+.pi-art-kind{font-size:.82rem;color:var(--on-dark-mute);margin:0;white-space:nowrap}
+.pi-wave{display:block;width:100%;height:auto;color:var(--glow);margin:.6rem 0}
+.pi-lines{display:grid;gap:.6rem;margin:.6rem 0}
+.pi-lines span{display:block;height:4px;background:var(--glow);border-radius:2px}
+.pi-lines span:nth-child(2){width:74%}
+.pi-lines span:nth-child(3){width:88%}
+.pi-lines span:nth-child(4){width:52%;margin-bottom:.5rem}
+.pi-lines span:nth-child(5){width:94%}
+.pi-lines span:nth-child(6){width:66%}
+.pi-art-with{font-size:.85rem;color:var(--on-dark-mute);margin:0 0 .25rem}
+.pi-art-name{font-family:var(--fh);font-weight:700;font-size:2.8rem;line-height:.95;margin:0 0 .5rem;overflow-wrap:anywhere;text-wrap:balance}
+.pi-art-sub{font-size:.92rem;line-height:1.35;color:var(--on-dark-mute);margin:0}
+.pi-art-sub b{color:var(--on-dark);font-weight:400}
+.pi-for{font-size:.92rem;color:var(--mute);margin:0 0 .8rem}
+.pi-for b{color:var(--ink);font-weight:700}
+.pi h1{font-size:2.7rem;margin:0 0 1.1rem}
+.pi-letter p{max-width:34rem}
+.pi-letter .pi-lead{font-size:1.1rem;line-height:1.5}
+.pi-act{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.2rem;margin:1.3rem 0 1.4rem}
+.pi .ken-cta{line-height:1.25!important;border-radius:4px!important;font-size:1rem}
+.pi-or{font-size:.92rem;color:var(--mute);margin:0}
+.pi-sig{font-size:.95rem;margin:0}
+.pi-sig b{display:block;font-family:var(--fh);font-weight:700;font-size:1.35rem;line-height:1.1;letter-spacing:.005em}
+.pi-sig span{color:var(--mute)}
+.pi-sec{display:grid;gap:.6rem;padding:1.9rem 0;border-top:1px solid var(--rule)}
+.pi-lbl{font-size:.86rem;font-weight:700;color:var(--mute);margin:0;line-height:1.3;padding-top:.25rem}
+.pi h2{font-size:2.05rem;margin:0 0 .8rem}
+.pi h3{font-family:var(--fb);font-weight:700;font-size:1rem;margin:1.6rem 0 .5rem}
+.pi-text{max-width:35rem}
+.pi-text p{font-size:1.05rem}
+.pi-qs{list-style:none;margin:.4rem 0 0;padding:0;max-width:40rem}
+.pi-qs li{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:.25rem .5rem;padding:1rem 0;border-top:1px solid var(--rule-soft)}
+.pi-qs li:first-child{border-top:0;padding-top:.3rem}
+.pi-qn{font-family:var(--fh);font-weight:700;font-size:2.1rem;line-height:.9;color:var(--p);padding-top:.1rem}
+.pi-q{font-family:var(--fh);font-weight:700;font-size:1.45rem;line-height:1.1;margin:0 0 .35rem!important;text-wrap:balance}
+.pi-qw{font-size:.95rem;color:var(--mute);margin:0!important}
+.pi-after{font-size:.95rem;color:var(--mute);margin:1rem 0 0!important;max-width:40rem}
+.pi-steps{list-style:none;margin:0;padding:0;counter-reset:step}
+.pi-steps li{position:relative;padding:.9rem 0 .9rem 2.5rem;border-top:1px solid var(--rule-soft);counter-increment:step}
+.pi-steps li:first-child{border-top:0;padding-top:.2rem}
+.pi-steps li::before{content:counter(step);position:absolute;left:0;top:.85rem;font-family:var(--fh);font-weight:700;font-size:1.6rem;line-height:1;color:var(--p)}
+.pi-steps li:first-child::before{top:.15rem}
+.pi-steps b{display:block;font-weight:700;margin:0 0 .15rem}
+.pi-steps p{margin:0;color:var(--mute);font-size:.97rem}
+.pi-tag{font-family:var(--fh);font-weight:700;font-size:1.6rem;line-height:1.08;margin:0 0 1.1rem!important;max-width:30ch;text-wrap:balance}
+.pi-facts{margin:0;display:grid;gap:0}
+.pi-facts div{display:grid;gap:.15rem;padding:.8rem 0;border-top:1px solid var(--rule-soft)}
+.pi-facts div:first-child{border-top:0;padding-top:0}
+.pi-facts dt{font-size:.86rem;font-weight:700;color:var(--mute)}
+.pi-facts dd{margin:0}
+.pi-eps{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-soft)}
+.pi-eps li{display:grid;gap:.1rem;padding:.7rem 0;border-bottom:1px solid var(--rule-soft)}
+.pi-eps b{font-family:var(--fh);font-weight:700;font-size:1.25rem;line-height:1.1}
+.pi-eps span{font-size:.92rem;color:var(--mute)}
+.pi-book{background:var(--tint);border-top:1px solid var(--rule);margin:0 -1.25rem;padding:2rem 1.25rem 2.2rem}
+.pi-book-in{max-width:66rem;margin:0 auto;display:grid;gap:.6rem}
+.pi-book h2{margin-bottom:.6rem}
+.pi-book p{max-width:34rem}
+.pi-book .pi-act{margin:.6rem 0 1.2rem}
+.pi-decline{font-size:.95rem;color:var(--mute)}
+.pi-foot{font-size:.84rem;color:var(--mute);padding:1.4rem 0 0;display:grid;gap:.2rem}
+.pi-foot b{color:var(--ink);font-weight:700}
+@media (min-width:760px){
+body{font-size:18px}
+.pi{padding:0 2rem 4rem}
+.pi-top{padding:1.2rem 0}
+.pi-hero{grid-template-columns:minmax(0,25rem) minmax(0,1fr);gap:3.2rem;align-items:start;padding:2.6rem 0 3rem}
+.pi-art{padding:1.7rem 1.7rem 1.6rem;border-radius:6px}
+.pi-art-show{font-size:1.45rem}
+.pi-art-name{font-size:3.6rem}
+.pi-letter{padding-top:.4rem}
+.pi h1{font-size:4rem;margin-bottom:1.3rem}
+.pi-sec{grid-template-columns:11rem minmax(0,1fr);gap:2.5rem;padding:2.6rem 0}
+.pi-lbl{font-size:.92rem;padding-top:.5rem}
+.pi h2{font-size:2.6rem}
+.pi-q{font-size:1.75rem}
+.pi-qn{font-size:2.6rem}
+.pi-qs li{grid-template-columns:3rem minmax(0,1fr);padding:1.2rem 0}
+.pi-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.6rem}
+.pi-steps li,.pi-steps li:first-child{border-top:2px solid var(--ink);padding:1rem 0 0 0}
+.pi-steps li::before,.pi-steps li:first-child::before{position:static;display:block;font-size:2rem;margin:0 0 .5rem}
+.pi-tag{font-size:1.9rem}
+.pi-show-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.4rem;align-items:start}
+.pi .pi-eps-h{margin-top:0}
+.pi-book{margin:0 -2rem;padding:2.8rem 2rem 3rem}
+.pi-book-in{grid-template-columns:11rem minmax(0,1fr);gap:2.5rem}
+.pi-foot{grid-template-columns:1fr auto;align-items:end;padding-top:1.6rem}
+}
+@media print{.pi-book{background:#fff}.ken-cta{display:none}}
+</style>
+</head>
+<body>
+<main class="pi">
+<header class="pi-top"><p class="pi-brand">Hollis &amp; Vane</p><p class="pi-show"><b>Second Opinion</b>, a written interview series</p>
+</header>
+
+<section data-section="invite" class="pi-hero">
+<div class="pi-art">
+<div class="pi-art-top">
+<p class="pi-art-show">Second Opinion</p>
+<p class="pi-art-kind">In writing</p>
+</div>
+<div class="pi-lines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<div>
+<p class="pi-art-with">An interview with</p>
+<p class="pi-art-name">Marcus Odhiambo</p>
+<p class="pi-art-sub"><b>Chief Lending Officer</b>, Northgate Credit Union</p>
+</div>
+</div>
+<div class="pi-letter">
+<p class="pi-for">An invitation for <b>Marcus Odhiambo</b>, Chief Lending Officer at Northgate Credit Union</p>
+<h1>Be our guest, Marcus.</h1>
+<p class="pi-lead">You joined Northgate as chief lending officer in August and set out to visit all 22 branches before the end of the year. Our readers would like to know what you heard on the way, and what it changed in the lending book.</p>
+<p>It is a written interview. We send the questions, you answer them at your pace, and it takes about an hour of your time in all. The angle I have in mind and three of the questions are below. If they are off, say so and I will reshape them.</p>
+<div class="pi-act">
+<a class="ken-cta" data-ken-cta="book-top" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1b2f46;color:#fff;text-decoration:none;font-weight:600">Pick a time</a>
+<p class="pi-or">or reply to my email with a week that works</p>
+</div>
+<p class="pi-sig"><b>Imogen Hale</b><span>Hollis &amp; Vane. Host of Second Opinion</span></p>
+</div>
+</section>
+
+<section data-section="angle" class="pi-sec">
+<p class="pi-lbl">The angle</p>
+<div>
+<h2>Listening to 22 branches before changing the lending book</h2>
+<div class="pi-text"><p>The piece would follow the branch visits: what the lending teams told you, where small business lending has grown fastest since the program opened in 2023, and which parts of a regional bank&#39;s commercial lending playbook carry over to a credit union and which do not. We would end on the lending book itself: how you decide what to grow next, and how you explain that to a board. No product talk from our side and no company history. Your answers run as written, edited only for length.</p></div>
+<h3>Three questions we would start with</h3>
+<ol class="pi-qs">
+<li><span class="pi-qn" aria-hidden="true">1</span><div><p class="pi-q">What did the lending teams tell you in the branch visits that you did not expect?</p><p class="pi-qw">From your note on joining Northgate, which set out to visit all 22 branches by the end of the year.</p></div></li>
+<li><span class="pi-qn" aria-hidden="true">2</span><div><p class="pi-q">Which parts of a regional bank&#39;s commercial lending playbook carried over to Northgate, and which have you dropped?</p><p class="pi-qw">You spent twelve years in commercial lending at a regional bank before joining.</p></div></li>
+<li><span class="pi-qn" aria-hidden="true">3</span><div><p class="pi-q">How do you explain to the board where the lending book should grow next, and what you are saying no to?</p><p class="pi-qw">Northgate&#39;s business lending team has written loans for owner-operated businesses since 2023.</p></div></li>
+</ol>
+<p class="pi-after">You get the full set of questions once you say yes, and you can strike any of them.</p>
+</div>
+</section>
+
+<section data-section="takes" class="pi-sec">
+<p class="pi-lbl">What it takes</p>
+<ol class="pi-steps">
+<li><b>Say yes</b><p>Reply to my email, or book a short call below if you would rather talk the angle through first.</p></li>
+<li><b>Answer in writing</b><p>By email. We send the questions in one batch, you answer at your pace in your own words, and we edit only for length. Count on about an hour.</p></li>
+<li><b>Approve the edit</b><p>You read the finished piece before anyone else does and can change anything in it.</p></li>
+<li><b>It goes out</b><p>On our site and the monthly letter to subscribers, about four weeks after your answers come in. We send you the piece and a short version to share.</p></li>
+</ol>
+</section>
+
+<section data-section="show" class="pi-sec">
+<p class="pi-lbl">The show</p>
+<div>
+<p class="pi-tag">Written interviews with the people who make lending decisions at credit unions and community banks.</p>
+<div class="pi-show-grid">
+<dl class="pi-facts">
+<div><dt>Who reads it</dt><dd>Executives at credit unions and community banks, and the boards they report to. Most read it the week it comes out and forward it to one colleague.</dd></div>
+<div><dt>Format</dt><dd>A written interview, about an hour</dd></div>
+<div><dt>Where it goes out</dt><dd>our site and the monthly letter to subscribers</dd></div>
+<div><dt>Hosted by</dt><dd>Imogen Hale writes every interview and sends the questions in one batch, so nothing lands in your inbox piecemeal.</dd></div>
+</dl>
+<div>
+<h3 class="pi-eps-h">Recent interviews</h3>
+<ul class="pi-eps">
+<li><b>Underwriting a small business loan in four days</b><span>Chief Credit Officer at a community bank in Wisconsin</span></li>
+<li><b>What a board should ask about the indirect auto book</b><span>Chief Executive of a credit union in Michigan</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section data-section="book" class="pi-book">
+<div class="pi-book-in">
+<p class="pi-lbl">Say yes</p>
+<div>
+<h2>Say yes and I will send the questions</h2>
+<p>Reply to my email with a yes and the full set of questions comes the same day. If you would like to talk the angle through first, book a short call and we will shape it together.</p>
+<div class="pi-act"><a class="ken-cta" data-ken-cta="book" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1b2f46;color:#fff;text-decoration:none;font-weight:600">Book a short call</a></div>
+<p class="pi-decline">Not the right moment? Reply and say when would be, and I will come back then.</p>
+<p class="pi-sig"><b>Imogen Hale</b><span>Hollis &amp; Vane</span></p>
+</div>
+</div>
+</section>
+
+<footer class="pi-foot">
+<span>Made for <b>Northgate Credit Union</b> by Imogen Hale at Hollis &amp; Vane.</span>
+<span>A private link. Nothing goes out until you approve it.</span>
+</footer>
+</main>
+</body>
+</html>

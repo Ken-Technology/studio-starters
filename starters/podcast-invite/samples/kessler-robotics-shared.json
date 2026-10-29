@@ -1,0 +1,65 @@
+{
+  "account": {
+    "name": "Kessler Robotics",
+    "domain": "kesslerrobotics.example",
+    "industry": "automation machinery manufacturing",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": "Kessler Robotics builds mobile picking robots for grocery warehouses and runs a fleet of about 400 units across customer sites, with a 60-person engineering team.",
+      "why_now": "Posted three openings for fleet software engineers this month.",
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Dev Raghunathan",
+    "title": "Co-founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Stackwell",
+    "logo_url": null,
+    "colors": { "primary": "#ff4f1f", "secondary": "#14213d" },
+    "fonts": { "heading": "Outfit", "body": "Plus Jakarta Sans" }
+  },
+  "data": {
+    "show_name": "Build Hours",
+    "show_format": "audio",
+    "show_tagline": "Engineering leaders on the systems they run and the calls they got wrong.",
+    "audience": "Heads of engineering and platform leads at hardware and robotics companies, mostly teams of 20 to 200 engineers shipping software to machines in the field.",
+    "episode_length": "45 minutes",
+    "recording": "Remote, audio only. A quiet room and a headset is all it takes; we send the link and record both sides.",
+    "published_on": "Apple Podcasts, Spotify and our site",
+    "turnaround": "about two weeks after we record",
+    "host_about": "Dev Raghunathan hosts the show and reads up before every episode, so the first question is about your fleet, not your founding story.",
+    "site": {
+      "url": "https://kesslerrobotics.example",
+      "title": "Kessler Robotics | Mobile picking robots for grocery warehouses",
+      "description": "Picking robots that work inside existing grocery warehouses, alongside people, with no new racking.",
+      "markdown": "# Picking robots that work in your warehouse, not a new one\n\nKessler robots pick grocery orders inside existing warehouses, alongside people, with no new racking.\n\n## The fleet\n\nAbout 400 Kessler units run across customer sites today. Every robot reports to our fleet service, which schedules work, watches battery and health, and ships software updates to the fleet in waves.\n\n## Updates without downtime\n\nWe update robots during their charging windows, a few at a time, so a warehouse never stops picking for a software release.\n\n## Careers\n\nWe are hiring fleet software engineers in Rotterdam and Pittsburgh."
+    },
+    "writing": {
+      "url": "https://kesslerrobotics.example/blog",
+      "title": "Engineering at Kessler",
+      "description": "Notes from the teams that build and run the Kessler fleet.",
+      "markdown": "# Engineering at Kessler\n\n## Rolling back a fleet update at 4 am\n\nBy the fleet team\n\nIn March a release changed how robots reserved aisles, and two sites saw pickers waiting on robots. This is how the fleet service noticed, how the rollback ran one site at a time, and the two checks we added before a wave can start.\n\n## Why every robot carries its own map\n\nBy the autonomy team\n\nA shared map sounds simpler. Here is why we stopped."
+    },
+    "invite_line": "Your team ships software to about 400 robots running inside other companies' warehouses, and rolled back a fleet update site by site in March. Most of our listeners are about to have that problem, and few have solved it.",
+    "episode_title": "Shipping software to 400 robots in other people's warehouses",
+    "angle": "We would dig into the fleet service: how updates go out in waves during charging windows, what the service watches to decide a wave is safe, and the March rollback, from the first sign that pickers were waiting on robots to the two checks you added afterwards. Then hiring: what you look for in a fleet software engineer now that the team is growing. No founding story and no product talk from our side, just the system and the calls behind it.",
+    "questions": [
+      {
+        "question": "What did the fleet service see first in March, and how long before someone decided to roll back?",
+        "why": "From the engineering post on rolling back a fleet update site by site."
+      },
+      {
+        "question": "How do you decide an update wave is safe to continue when every warehouse runs differently?",
+        "why": "Your site describes updates shipped in waves during charging windows, with battery and health watched per robot."
+      },
+      {
+        "question": "What do you look for in a fleet software engineer that you did not look for two years ago?",
+        "why": "Kessler posted three openings for fleet software engineers this month."
+      }
+    ]
+  }
+}

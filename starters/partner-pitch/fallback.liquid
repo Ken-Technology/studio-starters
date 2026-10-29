@@ -1,7 +1,7 @@
-{%- assign accent = brand.colors.primary | default: '#0b5563' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#c7792b' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Source Serif 4' -%}
-{%- assign font_body = brand.fonts.body | default: 'Public Sans' -%}
+{%- assign accent = brand.colors.primary | default: '#2c3620' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#b7c8be' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Jost' -%}
+{%- assign font_body = brand.fonts.body | default: 'Spectral' -%}
 {%- assign head_q = font_head | replace: ' ', '+' -%}
 {%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign has_brand = false -%}
@@ -14,39 +14,42 @@
 <meta name="robots" content="noindex">
 <title>A partnership idea for {{ account.name | escape }}</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600&display=swap">
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f5f3ee;color:#1b1e22;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-.pp{--p:{{ accent }};--s:{{ accent2 }};--ink:#1b1e22;--mute:#636a73;--line:#d9d5cc;--card:#fffdfa;--p-deep:color-mix(in srgb,var(--p) 75%,#111)}
-.pp h1,.pp h2{font-family:'{{ font_head }}',Georgia,'Times New Roman',serif;font-weight:500;letter-spacing:-.012em;text-wrap:balance;margin:0}
-.pp p{margin:0 0 1rem}
-.pp-wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
-.pp-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--ink)}
-.pp-logo{height:26px;width:auto;display:block}
-.pp-brand{font-weight:700;font-size:.95rem;margin:0!important}
-.pp-tag{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;text-align:right}
-.pp-kicker{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p-deep);margin:0 0 .9rem!important}
-.pp-kicker::before{content:'';display:inline-block;width:1.4rem;height:3px;background:var(--s);vertical-align:.25em;margin-right:.6rem}
-.pp-open{padding:2.5rem 0 1.6rem}
-.pp h1{font-size:2.2rem;line-height:1.08;margin:0 0 1.1rem;max-width:22ch}
-.pp-lede{font-size:1.12rem;line-height:1.55;max-width:38rem;color:#33383e}
-.pp-first{padding:.4rem 0 3.5rem}
-.pp-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p);border-radius:4px;padding:1.5rem 1.15rem 1.3rem}
-.pp-card h2{font-size:1.65rem;line-height:1.15;margin:0 0 .6rem}
-.pp-btn{margin:1.4rem 0 1.5rem}
-.ken-cta{font-family:inherit;font-size:1rem;line-height:1.25;min-height:44px}
-.pp-sign{margin:0!important;font-weight:600;border-top:1px solid var(--line);padding-top:1.1rem}
-.pp-sign span{display:block;font-weight:400;color:var(--mute);font-size:.9rem}
-@media (min-width:760px){
-body{font-size:18px}
-.pp-wrap{padding:0 2rem}
-.pp-open{padding:4rem 0 2.2rem}
-.pp h1{font-size:3.4rem}
-.pp-card{display:grid;grid-template-columns:1fr 15rem;gap:3rem;padding:2.4rem 2.4rem 2rem;align-items:end}
-.pp-card h2{font-size:2.1rem}
-.pp-sign{border-top:0;padding:0;text-align:right}
+body{margin:0;background:#a6b3bc;color:#1c1c1c;font-family:'{{ font_body }}',Georgia,'Times New Roman',serif;font-size:1.125rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+.pp{--ink:#1c1c1c;--muted:#38424a;--them:#d6c4b8;--paper:#e6e8e3;--p:{{ accent }};--s:{{ accent2 }};--p-ink:#e3e2da;--p-ink:oklch(from var(--p) clamp(0.2,(0.62 - l) * 1000,0.91) 0.008 100);--m:clamp(1.25rem,3vw,2.5rem);--head:'{{ font_head }}','Futura','Century Gothic',ui-sans-serif,system-ui,sans-serif}
+.pp h1,.pp h2{font-family:var(--head);font-weight:500;letter-spacing:-.03em;margin:0;text-wrap:balance}
+.pp p{margin:0;text-wrap:pretty}
+.pp-wrap{max-width:84rem;margin:0 auto;padding:0 var(--m)}
+.pp-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0}
+.pp-logo{height:28px;width:auto;display:block}
+.pp-brand{font-family:var(--head);font-weight:600;font-size:1.125rem}
+.pp-for{font-family:var(--head);font-size:.9375rem;text-align:right}
+.pp-open{padding:1.5rem 0 4.5rem}
+.pp h1{font-size:clamp(2.25rem,1rem + 4.6vw,4.5rem);line-height:.98;letter-spacing:-.035em;max-width:16ch}
+.pp-motif{display:block;width:100%;max-width:26rem;height:auto;margin:2rem 0 0}
+.pp-c1{fill:var(--them)}
+.pp-c2{fill:var(--s)}
+.pp-lens{fill:var(--p)}
+.pp-lede{margin:1.5rem 0 0!important;max-width:38rem}
+.pp-first{background:var(--p);color:var(--p-ink);padding:5rem 0 4rem}
+.pp-first h2{font-size:clamp(2rem,1.2rem + 2.6vw,3.5rem);line-height:1.02;max-width:16ch}
+.pp-close{display:grid;gap:2.5rem}
+.pp-close-main p{margin:1.5rem 0 0!important;max-width:34rem}
+.pp-card{background:var(--paper);color:var(--ink);padding:2rem 1.5rem;align-self:end}
+.pp .ken-cta{display:inline-flex!important;align-items:center;min-height:52px;padding:.85rem 1.75rem!important;border-radius:999px!important;background:var(--p)!important;color:var(--p-ink)!important;font-family:var(--head);font-size:1.125rem;font-weight:500!important;text-decoration:none}
+.pp .ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.pp-sign{margin:1.75rem 0 0!important;font-family:var(--head);font-weight:500}
+.pp-sign span{display:block;font-family:'{{ font_body }}',Georgia,serif;font-weight:400;color:var(--muted)}
+@media (min-width:1000px){
+.pp-open{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;align-items:center;padding:2rem 0 6rem}
+.pp-open>*{grid-column:1/7}
+.pp-open>.pp-motif{grid-column:7/13;grid-row:1/span 3;max-width:none}
+.pp-close{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;align-items:end}
+.pp-close-main{grid-column:1/8}
+.pp-card{grid-column:8/13;padding:2.5rem 2.25rem}
 }
 </style>
 </head>
@@ -55,26 +58,27 @@ body{font-size:18px}
 <div class="pp-wrap">
 <header class="pp-top">
 {%- if brand.logo_url %}<img class="pp-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif has_brand %}<p class="pp-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
-<p class="pp-tag">Partnership proposal</p>
+<p class="pp-for">A partnership proposal for {{ account.name | escape }}</p>
 </header>
 <section data-section="open" class="pp-open">
-<p class="pp-kicker">For {{ account.name | escape }}</p>
 <h1>A partnership idea for {{ account.name | escape }}</h1>
 <p class="pp-lede">Hi {{ person.first_name | default: 'there' | escape }}, I am putting together where {% if has_brand %}{{ brand.name | escape }}'s customers{% else %}our customers{% endif %} and {{ account.name | escape }}'s meet, and a joint offer worth a first conversation.</p>
 <p class="pp-lede">The page is not ready yet. This link stays the same, so check back later today.</p>
+<svg class="pp-motif" viewBox="0 0 1000 700" aria-hidden="true" focusable="false"><circle class="pp-c1" cx="330" cy="350" r="320"/><circle class="pp-c2" cx="670" cy="350" r="320"/><path class="pp-lens" d="M500 78.9A320 320 0 0 0 500 621.1A320 320 0 0 0 500 78.9Z"/></svg>
 </section>
+</div>
 <section data-section="first_step" class="pp-first">
-<div class="pp-card">
-<div class="pp-card-main">
-<p class="pp-kicker">The first step</p>
+<div class="pp-wrap pp-close">
+<div class="pp-close-main">
 <h2>Rather talk it through now?</h2>
 <p>Thirty minutes is enough to put our customer lists side by side and see whether a joint offer is worth a month of trying. No contract, no budget, no engineering work.</p>
-<div class="pp-btn">{% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking', color: accent %}</div>
 </div>
+<div class="pp-card">
+<div>{% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking', color: accent %}</div>
 <p class="pp-sign">{{ sender.name | default: 'Our team' | escape }}<span>{% if sender.title %}{{ sender.title | escape }}{% if has_brand %}, {{ brand.name | escape }}{% endif %}{% elsif has_brand %}{{ brand.name | escape }}{% else %}Partnerships{% endif %}</span></p>
 </div>
-</section>
 </div>
+</section>
 </main>
 </body>
 </html>

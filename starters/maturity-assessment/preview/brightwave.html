@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>How mature are Brightwave&#39;s operations?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js"></script>
+<style>
+:root{
+  --p:#2a4bd7;
+  --s:#0e1530;
+  --fh:'Inter Tight',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --fb:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --ink:color-mix(in srgb,var(--s) 70%,#000);
+  --text:color-mix(in srgb,var(--ink) 84%,#fff);
+  --mute:color-mix(in srgb,var(--ink) 58%,#fff);
+  --line:color-mix(in srgb,var(--ink) 14%,#fff);
+  --hair:color-mix(in srgb,var(--ink) 8%,#fff);
+  --stage:color-mix(in srgb,var(--p) 6%,#fff);
+  --tint:color-mix(in srgb,var(--p) 10%,#fff);
+  --p-deep:color-mix(in srgb,var(--p) 80%,#000);
+  --peer:color-mix(in srgb,var(--ink) 62%,#fff);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--stage);color:var(--text);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;min-height:100vh}
+h1,h2,h3{font-family:var(--fh);color:var(--ink);margin:0;line-height:1.12;letter-spacing:-.015em;font-weight:600;text-wrap:balance}
+p{margin:0}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+[tabindex="-1"]:focus{outline:none}
+[x-cloak]{display:none!important}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fh);font-weight:600;color:var(--ink);min-width:0}
+.logo{height:26px;width:auto;max-width:120px;display:block;flex:none}
+.mark{width:26px;height:26px;border-radius:7px;background:var(--p);color:#fff;display:grid;place-items:center;font:700 14px/1 var(--fh);flex:none}
+.for{font-size:.85rem;color:var(--mute);text-align:right}
+
+.wrap{max-width:46rem;margin:0 auto;padding:.5rem 1rem 5rem}
+
+/* The deck: a white card with two faint cards behind it, one per unanswered group */
+.deck{position:relative;margin-top:.75rem}
+.deck::before,.deck::after{content:'';position:absolute;left:10px;right:10px;top:-8px;height:24px;border-radius:18px 18px 0 0;background:#fff;border:1px solid var(--line);z-index:0;opacity:.7}
+.deck::after{left:20px;right:20px;top:-15px;opacity:.4}
+.deck.last::before,.deck.last::after,.deck.none::before,.deck.none::after{display:none}
+.card{position:relative;z-index:1;background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.4rem 1.25rem 1.6rem;box-shadow:0 14px 40px color-mix(in srgb,var(--ink) 10%,transparent)}
+
+/* progress */
+.prog{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-bottom:1.2rem}
+.prog i{height:4px;border-radius:2px;background:var(--line)}
+.prog i.done{background:var(--p)}
+.prog i.now{background:color-mix(in srgb,var(--p) 45%,#fff)}
+.meta{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;font-size:.85rem;color:var(--mute);margin-bottom:.9rem}
+.meta b{font-weight:600;color:var(--p-deep)}
+
+/* start */
+.start h1{font-size:2rem;margin:.2rem 0 .9rem}
+.start .lede{font-size:1.05rem;max-width:34rem}
+.start .lede b{font-weight:600;color:var(--ink)}
+.dims{list-style:none;margin:1.4rem 0;padding:0;display:grid;grid-template-columns:1fr;gap:.6rem}
+.dims li{display:flex;gap:.6rem;align-items:flex-start;font-size:.92rem;padding:.7rem .8rem;border:1px solid var(--hair);border-radius:12px;background:var(--stage)}
+.dims svg{width:18px;height:18px;flex:none;margin-top:.15rem;color:var(--p)}
+.dims b{display:block;color:var(--ink);font-weight:600}
+.dims span{color:var(--mute);font-size:.84rem}
+.aside{font-size:.92rem;color:var(--mute);max-width:34rem;margin-bottom:1.4rem}
+.startrow{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.4rem}
+.startrow .ken-cta{color:var(--mute)!important;font-size:.9rem;min-height:44px;display:inline-flex;align-items:center;text-underline-offset:3px}
+.nojs{margin:0 0 1rem;padding:.7rem .9rem;border-radius:10px;background:var(--tint);font-size:.92rem;color:var(--ink)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;background:var(--p);color:#fff;text-decoration:none;font-weight:600;padding:.9rem 1.5rem;border-radius:10px;border:0;width:fit-content}
+.btn:hover{background:var(--p-deep)}
+.ghost{background:none;border:0;color:var(--mute);padding:.5rem 0;min-height:44px;font-size:.9rem;text-decoration:underline;text-underline-offset:3px}
+.ghost:hover{color:var(--ink)}
+
+/* question */
+.q h2{font-size:1.5rem;margin-bottom:1.2rem;max-width:30ch}
+.opts{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.opt{display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.8rem;align-items:start;width:100%;min-height:44px;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:.85rem .9rem;color:var(--text);transition:border-color .12s,background .12s}
+.opt:hover{border-color:color-mix(in srgb,var(--p) 55%,var(--line))}
+.opt .n{width:2rem;height:2rem;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-family:var(--fh);font-weight:600;color:var(--mute);font-size:.95rem}
+.opt b{display:block;font-weight:600;color:var(--ink)}
+.opt span{display:block;font-size:.88rem;color:var(--mute);margin-top:.1rem}
+.opt .n{margin-top:0}
+.opt[aria-pressed=true]{border-color:var(--p);background:var(--tint)}
+.opt[aria-pressed=true] .n{background:var(--p);border-color:var(--p);color:#fff}
+.scale{display:flex;justify-content:space-between;gap:1rem;font-size:.78rem;color:var(--mute);margin:.5rem .2rem 0}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--hair)}
+.qnav .meta{margin:0}
+
+/* result */
+.res .stage-line{font-size:.9rem;color:var(--mute);margin-bottom:.3rem}
+.res h1{font-size:2rem;margin-bottom:.4rem}
+.res h1 em{font-style:normal;color:var(--p)}
+.res .score{font-size:1.05rem;color:var(--text);margin-bottom:1.4rem}
+.res .score b{font-family:var(--fh);font-weight:600;color:var(--ink)}
+.ladder{list-style:none;margin:0 0 1.8rem;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder li{position:relative;padding-top:.6rem;font-size:.8rem;color:var(--mute)}
+.ladder li::before{content:'';display:block;height:6px;border-radius:3px;background:var(--line);margin-bottom:.45rem}
+.ladder li.done::before{background:color-mix(in srgb,var(--p) 40%,#fff)}
+.ladder li.now::before{background:var(--p)}
+.ladder li.now{color:var(--ink);font-weight:600}
+.ladder li.peer::after{content:'Peers';position:absolute;top:-.55rem;left:50%;transform:translateX(-50%);font-size:.7rem;font-weight:400;color:var(--mute);background:#fff;padding:0 .25rem}
+
+.radar-wrap{display:grid;gap:1.2rem;margin:0 0 1.6rem}
+.radar{width:100%;max-width:400px;height:auto;display:block;margin:0 auto}
+.radar .ring{fill:none;stroke:var(--hair);stroke-width:1}
+.radar .ring.outer{stroke:var(--line)}
+.radar .axis{stroke:var(--hair);stroke-width:1}
+.radar .peer{fill:none;stroke:var(--peer);stroke-width:2;stroke-dasharray:5 5;stroke-linejoin:round}
+.radar .me{fill:color-mix(in srgb,var(--p) 22%,transparent);stroke:var(--p);stroke-width:2.5;stroke-linejoin:round}
+.radar .dot{fill:#fff;stroke:var(--p);stroke-width:2.5}
+.radar text{font-family:var(--fb);font-size:13px;fill:var(--mute)}
+.radar text.lab{fill:var(--ink);font-weight:600;font-size:14px}
+.legend{display:flex;gap:.3rem 1.2rem;flex-wrap:wrap;font-size:.85rem;color:var(--mute);justify-content:center}
+.legend i{display:inline-block;width:22px;height:0;border-top:3px solid var(--p);vertical-align:middle;margin-right:.4rem}
+.legend i.pr{border-top:2px dashed var(--peer)}
+
+.dtab{width:100%;border-collapse:collapse;font-size:.95rem}
+.dtab th{text-align:left;font-weight:400;color:var(--mute);font-size:.8rem;padding:0 0 .5rem;border-bottom:1px solid var(--line)}
+.dtab th.r,.dtab td.r{text-align:right;white-space:nowrap}
+.dtab td{padding:.65rem 0;border-bottom:1px solid var(--hair);color:var(--ink)}
+.dtab td.r{font-family:var(--fh);font-weight:600}
+.dtab td.pr{color:var(--mute);font-family:var(--fh);font-weight:500}
+.dtab .delta{font-family:var(--fb);font-size:.78rem;font-weight:600;color:var(--p-deep);margin-left:.35rem}
+.dtab .delta.neg{color:var(--mute)}
+
+.steps{margin:1.8rem 0 0;padding-top:1.4rem;border-top:1px solid var(--line)}
+.steps h2{font-size:1.25rem;margin-bottom:.9rem}
+.steps ol{list-style:none;margin:0;padding:0;display:grid;gap:.9rem}
+.steps li{display:grid;grid-template-columns:2.1rem minmax(0,1fr);gap:.8rem}
+.steps .num{width:2.1rem;height:2.1rem;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:var(--fh);font-weight:600;font-size:.95rem}
+.steps b{display:block;color:var(--ink);font-weight:600}
+.steps b small{display:block;font-weight:400;color:var(--mute);font-size:.8rem;margin-top:.1rem}
+.steps p{font-size:.93rem;margin-top:.25rem}
+
+.cta{margin-top:1.8rem;background:var(--stage);border-radius:14px;padding:1.3rem 1.25rem;display:grid;gap:.9rem}
+.cta h2{font-size:1.25rem}
+.cta p{font-size:.95rem;max-width:34rem}
+.cta .who{display:flex;align-items:center;gap:.7rem;font-size:.88rem;color:var(--mute)}
+.cta .who b{display:block;color:var(--ink);font-weight:600}
+.avatar{width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:var(--fh);font-weight:600;flex:none}
+.cta .ken-cta{display:inline-flex!important;align-items:center;justify-content:center;min-height:48px;padding:.9rem 1.5rem!important;border-radius:10px!important;background:var(--p)!important;color:#fff!important;font-weight:600!important;width:fit-content}
+.cta .ken-cta:hover{background:var(--p-deep)!important}
+.foot{font-size:.8rem;color:var(--mute);margin-top:1.4rem;max-width:36rem}
+
+@media (min-width:760px){
+  .top{padding:1.2rem 2rem}
+  .wrap{padding:1.5rem 1.5rem 6rem}
+  .wrap.wide{max-width:58rem}
+  .card{padding:2.2rem 2.4rem 2.4rem}
+  .start h1{font-size:2.6rem}
+  .q h2{font-size:1.9rem}
+  .opts{grid-template-columns:1fr 1fr}
+  .dims{grid-template-columns:1fr 1fr}
+  .res h1{font-size:2.6rem}
+  .radar-wrap{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:2.4rem}
+  .radar{max-width:420px}
+  .legend{justify-content:flex-start;margin-top:.6rem}
+  .cta{grid-template-columns:minmax(0,1fr) auto;align-items:center;padding:1.6rem 1.8rem}
+  .cta .ken-cta{grid-column:2;grid-row:1/4}
+}
+@media (prefers-reduced-motion:reduce){.opt{transition:none}}
+</style>
+</head>
+<body>
+<div class="app" x-data="{ q: -1, a: [0, 0, 0, 0, 0, 0, 0, 0], s: [0, 0, 0, 0], o: 0, st: 0, na: 0, p: [2.6, 2.1, 1.9, 2.8], po: 0, pst: 0, ah: 0 }">
+<i hidden x-effect="s[0] = (a[0] + a[1]) / 2"></i>
+<i hidden x-effect="s[1] = (a[2] + a[3]) / 2"></i>
+<i hidden x-effect="s[2] = (a[4] + a[5]) / 2"></i>
+<i hidden x-effect="s[3] = (a[6] + a[7]) / 2"></i>
+<i hidden x-effect="o = (s[0] + s[1] + s[2] + s[3]) / 4"></i>
+<i hidden x-effect="st = (o >= 1.75) + (o >= 2.5) + (o >= 3.25)"></i>
+<i hidden x-effect="na = (a[0] > 0) + (a[1] > 0) + (a[2] > 0) + (a[3] > 0) + (a[4] > 0) + (a[5] > 0) + (a[6] > 0) + (a[7] > 0)"></i>
+<i hidden x-effect="po = (p[0] + p[1] + p[2] + p[3]) / 4 + 0.001"></i>
+<i hidden x-effect="pst = (po >= 1.75) + (po >= 2.5) + (po >= 3.25)"></i>
+<i hidden x-effect="ah = (s[0] > p[0]) + (s[1] > p[1]) + (s[2] > p[2]) + (s[3] > p[3])"></i>
+
+<header class="top" x-effect="(q > -2) && $el.scrollIntoView()">
+  <div class="brand"><span class="mark" aria-hidden="true">N</span><span>Northbeam</span></div>
+  <p class="for">For Leo Marsh<br>Brightwave Logistics</p>
+</header>
+
+<main class="wrap" :class="q === 8 ? 'wide' : ''">
+  <div class="deck none" :class="(q < 0 || q > 7) ? 'none' : q === 7 ? 'last' : ''">
+  <div class="card">
+
+    <!-- Start -->
+    <section class="start" data-section="start" x-show="q < 0">
+      <h1>How mature are Brightwave&#39;s operations?</h1>
+      <p class="lede">Eight questions across four areas, about three minutes. At the end you see where Brightwave Logistics stands next to <b>64 logistics companies between 200 and 1,000 people</b>, and the three moves that usually come next.</p>
+      <ul class="dims">
+        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 5h14M3 10h10M3 15h7"/></svg><div><b>Process</b><span>How the work is written down and improved</span></div>
+        </li>
+        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 16V9M8 16V4M13 16v-5M18 16V7"/></svg><div><b>Data</b><span>Where the numbers live and who trusts them</span></div>
+        </li>
+        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="14" cy="14" r="2.5"/><path d="M8.5 6H14v5.5M11.5 14H6V8.5"/></svg><div><b>Automation</b><span>How much repeat work software does</span></div>
+        </li>
+        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="7" cy="7" r="3"/><path d="M1.5 17a5.5 5.5 0 0111 0M13 4.5a3 3 0 010 5.5M15 12.5a5 5 0 013.5 4.5"/></svg><div><b>Team</b><span>How fast people ramp and who owns change</span></div>
+        </li>
+      </ul>
+      <p class="aside">Leo, logistics teams your size run on a lot of know-how that sits in a few heads. Three minutes shows which parts are already written down and which are not. Pick the closest option. Honesty matters more than precision, and nothing here is scored against you.</p>
+      <noscript><p class="nojs">The questions need JavaScript. Turn it on and reload, or book a time and we will go through them together.</p></noscript>
+      <div class="startrow">
+        <button class="btn" type="button" x-cloak @click="q = 0">Start the assessment</button>
+        <a class="ken-cta" data-ken-cta="start-booking" href="#">Prefer to talk it through? Book 30 minutes</a>
+      </div>
+    </section>
+
+    <!-- Questions -->
+    <section data-section="questions" x-cloak x-show="q >= 0 && q < 8">
+      <div class="prog" aria-hidden="true"><i :class="q > 0 ? 'done' : q === 0 ? 'now' : ''"></i><i :class="q > 1 ? 'done' : q === 1 ? 'now' : ''"></i><i :class="q > 2 ? 'done' : q === 2 ? 'now' : ''"></i><i :class="q > 3 ? 'done' : q === 3 ? 'now' : ''"></i><i :class="q > 4 ? 'done' : q === 4 ? 'now' : ''"></i><i :class="q > 5 ? 'done' : q === 5 ? 'now' : ''"></i><i :class="q > 6 ? 'done' : q === 6 ? 'now' : ''"></i><i :class="q > 7 ? 'done' : q === 7 ? 'now' : ''"></i>
+      </div>
+      <div class="q" x-cloak x-show="q === 0">
+        <div class="meta"><span>Question <b>1</b> of 8</span><span>Process</span></div>
+        <h2 tabindex="-1" x-effect="(q === 0) && $el.focus({ preventScroll: true })">How are the core processes written down?</h2>
+        <ul class="opts">
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[0] === 1" @click="(a[0] = 1) && (q = 1)"><span class="n">1</span><span><b>In people&#39;s heads</b><span>The experienced people know; everyone else asks them</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[0] === 2" @click="(a[0] = 2) && (q = 1)"><span class="n">2</span><span><b>Partly written</b><span>Some documents exist, often out of date</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[0] === 3" @click="(a[0] = 3) && (q = 1)"><span class="n">3</span><span><b>Documented and reviewed</b><span>Written down and checked about once a year</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[0] === 4" @click="(a[0] = 4) && (q = 1)"><span class="n">4</span><span><b>Documented and measured</b><span>Written down, measured, and improved each quarter</span></span></button></li>
+        </ul>
+      </div>
+      <div class="q" x-cloak x-show="q === 1">
+        <div class="meta"><span>Question <b>2</b> of 8</span><span>Process</span></div>
+        <h2 tabindex="-1" x-effect="(q === 1) && $el.focus({ preventScroll: true })">When something goes wrong, how does the fix reach the rest of the team?</h2>
+        <ul class="opts">
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[1] === 1" @click="(a[1] = 1) && (q = 2)"><span class="n">1</span><span><b>Word of mouth</b><span>Whoever was there tells whoever asks</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[1] === 2" @click="(a[1] = 2) && (q = 2)"><span class="n">2</span><span><b>A message in chat</b><span>It is announced once and scrolls away</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[1] === 3" @click="(a[1] = 3) && (q = 2)"><span class="n">3</span><span><b>A change to the process</b><span>The written process is updated</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[1] === 4" @click="(a[1] = 4) && (q = 2)"><span class="n">4</span><span><b>A change to the system</b><span>The process and the tool that enforces it both change</span></span></button></li>
+        </ul>
+      </div>
+      <div class="q" x-cloak x-show="q === 2">
+        <div class="meta"><span>Question <b>3</b> of 8</span><span>Data</span></div>
+        <h2 tabindex="-1" x-effect="(q === 2) && $el.focus({ preventScroll: true })">Where does the team look for the numbers that matter?</h2>
+        <ul class="opts">
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[2] === 1" @click="(a[2] = 1) && (q = 3)"><span class="n">1</span><span><b>Several spreadsheets</b><span>Each slightly different, none quite trusted</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[2] === 2" @click="(a[2] = 2) && (q = 3)"><span class="n">2</span><span><b>One spreadsheet</b><span>Someone maintains it by hand each week</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[2] === 3" @click="(a[2] = 3) && (q = 3)"><span class="n">3</span><span><b>A daily dashboard</b><span>Updated every day from the main systems</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[2] === 4" @click="(a[2] = 4) && (q = 3)"><span class="n">4</span><span><b>Live dashboards</b><span>Everyone reads the same numbers and trusts them</span></span></button></li>
+        </ul>
+      </div>
+      <div class="q" x-cloak x-show="q === 3">
+        <div class="meta"><span>Question <b>4</b> of 8</span><span>Data</span></div>
+        <h2 tabindex="-1" x-effect="(q === 3) && $el.focus({ preventScroll: true })">How long does a new question about last month take to answer, such as cost per order by region?</h2>
+        <ul class="opts">
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[3] === 1" @click="(a[3] = 1) && (q = 4)"><span class="n">1</span><span><b>Days</b><span>Someone pulls exports and stitches them together</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[3] === 2" @click="(a[3] = 2) && (q = 4)"><span class="n">2</span><span><b>About a day</b><span>A known person builds it on request</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[3] === 3" @click="(a[3] = 3) && (q = 4)"><span class="n">3</span><span><b>About an hour</b><span>The data is there, the view needs building</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[3] === 4" @click="(a[3] = 4) && (q = 4)"><span class="n">4</span><span><b>Minutes</b><span>Managers answer it themselves</span></span></button></li>
+        </ul>
+      </div>
+      <div class="q" x-cloak x-show="q === 4">
+        <div class="meta"><span>Question <b>5</b> of 8</span><span>Automation</span></div>
+        <h2 tabindex="-1" x-effect="(q === 4) && $el.focus({ preventScroll: true })">How much of the repetitive work is done by software rather than people?</h2>
+        <ul class="opts">
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[4] === 1" @click="(a[4] = 1) && (q = 5)"><span class="n">1</span><span><b>Almost none</b><span>People rekey data between tools</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[4] === 2" @click="(a[4] = 2) && (q = 5)"><span class="n">2</span><span><b>A few scripts and templates</b><span>They help, and they break when someone leaves</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[4] === 3" @click="(a[4] = 3) && (q = 5)"><span class="n">3</span><span><b>Most handoffs run on rules</b><span>People handle the exceptions and the rules</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[4] === 4" @click="(a[4] = 4) && (q = 5)"><span class="n">4</span><span><b>Only exceptions are manual</b><span>Everything routine happens without a person</span></span></button></li>
+        </ul>
+      </div>
+      <div class="q" x-cloak x-show="q === 5">
+        <div class="meta"><span>Question <b>6</b> of 8</span><span>Automation</span></div>
+        <h2 tabindex="-1" x-effect="(q === 5) && $el.focus({ preventScroll: true })">How are the tools your team uses connected to each other?</h2>
+        <ul class="opts">
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[5] === 1" @click="(a[5] = 1) && (q = 6)"><span class="n">1</span><span><b>They are not</b><span>Copy and paste between them</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[5] === 2" @click="(a[5] = 2) && (q = 6)"><span class="n">2</span><span><b>A few one-way exports</b><span>Nightly files, mostly</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[5] === 3" @click="(a[5] = 3) && (q = 6)"><span class="n">3</span><span><b>Key systems sync both ways</b><span>The main records match across tools</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[5] === 4" @click="(a[5] = 4) && (q = 6)"><span class="n">4</span><span><b>One connected stack</b><span>Every change flows through with an audit trail</span></span></button></li>
+        </ul>
+      </div>
+      <div class="q" x-cloak x-show="q === 6">
+        <div class="meta"><span>Question <b>7</b> of 8</span><span>Team</span></div>
+        <h2 tabindex="-1" x-effect="(q === 6) && $el.focus({ preventScroll: true })">How long does a new hire take to work without supervision?</h2>
+        <ul class="opts">
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[6] === 1" @click="(a[6] = 1) && (q = 7)"><span class="n">1</span><span><b>More than three months</b><span>They learn by sitting next to someone</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[6] === 2" @click="(a[6] = 2) && (q = 7)"><span class="n">2</span><span><b>Two to three months</b><span>There is a checklist and a buddy</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[6] === 3" @click="(a[6] = 3) && (q = 7)"><span class="n">3</span><span><b>Four to eight weeks</b><span>A structured ramp with a few written modules</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[6] === 4" @click="(a[6] = 4) && (q = 7)"><span class="n">4</span><span><b>Under a month</b><span>A written ramp, practice cases and a sign-off</span></span></button></li>
+        </ul>
+      </div>
+      <div class="q" x-cloak x-show="q === 7">
+        <div class="meta"><span>Question <b>8</b> of 8</span><span>Team</span></div>
+        <h2 tabindex="-1" x-effect="(q === 7) && $el.focus({ preventScroll: true })">Who owns operational improvement on your team?</h2>
+        <ul class="opts">
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[7] === 1" @click="(a[7] = 1) && (q = 8)"><span class="n">1</span><span><b>No one in particular</b><span>It happens when there is time, which is rarely</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[7] === 2" @click="(a[7] = 2) && (q = 8)"><span class="n">2</span><span><b>Managers, on top of their day job</b><span>Improvements compete with the daily fires</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[7] === 3" @click="(a[7] = 3) && (q = 8)"><span class="n">3</span><span><b>A named owner with a backlog</b><span>Someone is accountable and keeps a list</span></span></button></li>
+          <li><button class="opt" type="button" aria-pressed="false" :aria-pressed="a[7] === 4" @click="(a[7] = 4) && (q = 8)"><span class="n">4</span><span><b>A team with a budget and targets</b><span>Improvement is a function, not a favor</span></span></button></li>
+        </ul>
+      </div>
+      <div class="scale" aria-hidden="true"><span>1, where most teams start</span><span>4, as good as it gets</span></div>
+      <div class="qnav"><button class="ghost" type="button" :style="q === 0 ? 'visibility:hidden' : ''" @click="q = q - 1">Back</button><span class="meta"><span x-text="na + ' answered'"></span></span></div>
+    </section>
+
+    <!-- Result -->
+    <div x-cloak x-show="q === 8">
+    <section class="res" data-section="result">
+      <p class="stage-line">Brightwave Logistics, answered by Leo Marsh</p>
+      <h1>Brightwave Logistics is at the <em><span x-cloak x-show="st === 0">Starting</span><span x-cloak x-show="st === 1">Building</span><span x-cloak x-show="st === 2">Scaling</span><span x-cloak x-show="st === 3">Leading</span></em> stage</h1>
+      <p class="score"><b x-text="o.toFixed(1)"></b> of 4 overall. Peers average <b x-text="po.toFixed(1)"></b>, which puts Brightwave Logistics <span x-cloak x-show="ah === 4">ahead in all four areas</span><span x-cloak x-show="ah === 3">ahead in three of the four areas</span><span x-cloak x-show="ah === 2">ahead in two of the four areas</span><span x-cloak x-show="ah === 1">ahead in one of the four areas</span><span x-cloak x-show="ah === 0">level with or behind peers in every area</span>.</p>
+      <ol class="ladder">
+        <li :class="{ done: st > 0, now: st === 0, peer: pst === 0 }">Starting</li>
+        <li :class="{ done: st > 1, now: st === 1, peer: pst === 1 }">Building</li>
+        <li :class="{ done: st > 2, now: st === 2, peer: pst === 2 }">Scaling</li>
+        <li :class="{ done: st > 3, now: st === 3, peer: pst === 3 }">Leading</li>
+      </ol>
+
+      <div class="radar-wrap">
+        <div>
+          <svg class="radar" viewBox="0 0 360 290" role="img" aria-label="Radar chart of the four area scores, from 0 to 4">
+            <polygon class="ring" points="180,129 201,150 180,171 159,150"/>
+            <polygon class="ring" points="180,108 222,150 180,192 138,150"/>
+            <polygon class="ring" points="180,87 243,150 180,213 117,150"/>
+            <polygon class="ring outer" points="180,66 264,150 180,234 96,150"/>
+            <line class="axis" x1="180" y1="66" x2="180" y2="234"/>
+            <line class="axis" x1="96" y1="150" x2="264" y2="150"/>
+            <polygon class="peer" :points="'180,' + (150 - 21 * p[0]) + ' ' + (180 + 21 * p[1]) + ',150 180,' + (150 + 21 * p[2]) + ' ' + (180 - 21 * p[3]) + ',150'"/>
+            <polygon class="me" :points="'180,' + (150 - 21 * s[0]) + ' ' + (180 + 21 * s[1]) + ',150 180,' + (150 + 21 * s[2]) + ' ' + (180 - 21 * s[3]) + ',150'"/>
+            <circle class="dot" r="4.5" cx="180" :cy="150 - 21 * s[0]"/>
+            <circle class="dot" r="4.5" :cx="180 + 21 * s[1]" cy="150"/>
+            <circle class="dot" r="4.5" cx="180" :cy="150 + 21 * s[2]"/>
+            <circle class="dot" r="4.5" :cx="180 - 21 * s[3]" cy="150"/>
+            <text class="lab" x="180" y="40" text-anchor="middle">Process</text>
+            <text x="180" y="56" text-anchor="middle" x-text="s[0].toFixed(1) + ' of 4'"></text>
+            <text class="lab" x="274" y="148" text-anchor="start">Data</text>
+            <text x="274" y="164" text-anchor="start" x-text="s[1].toFixed(1) + ' of 4'"></text>
+            <text class="lab" x="180" y="254" text-anchor="middle">Automation</text>
+            <text x="180" y="270" text-anchor="middle" x-text="s[2].toFixed(1) + ' of 4'"></text>
+            <text class="lab" x="86" y="148" text-anchor="end">Team</text>
+            <text x="86" y="164" text-anchor="end" x-text="s[3].toFixed(1) + ' of 4'"></text>
+          </svg>
+          <div class="legend"><span><i></i>Brightwave Logistics</span><span><i class="pr"></i>Peers, 64 companies</span></div>
+        </div>
+        <table class="dtab">
+          <thead><tr><th>Area</th><th class="r">Score</th><th class="r">Peers</th></tr></thead>
+          <tbody>
+            <tr><td>Process</td><td class="r"><span x-text="s[0].toFixed(1)"></span><span class="delta" :class="s[0] < p[0] ? 'neg' : ''" x-text="(s[0] >= p[0] ? '+' : '') + (s[0] - p[0]).toFixed(1)"></span></td><td class="r pr" x-text="p[0].toFixed(1)"></td></tr>
+            <tr><td>Data</td><td class="r"><span x-text="s[1].toFixed(1)"></span><span class="delta" :class="s[1] < p[1] ? 'neg' : ''" x-text="(s[1] >= p[1] ? '+' : '') + (s[1] - p[1]).toFixed(1)"></span></td><td class="r pr" x-text="p[1].toFixed(1)"></td></tr>
+            <tr><td>Automation</td><td class="r"><span x-text="s[2].toFixed(1)"></span><span class="delta" :class="s[2] < p[2] ? 'neg' : ''" x-text="(s[2] >= p[2] ? '+' : '') + (s[2] - p[2]).toFixed(1)"></span></td><td class="r pr" x-text="p[2].toFixed(1)"></td></tr>
+            <tr><td>Team</td><td class="r"><span x-text="s[3].toFixed(1)"></span><span class="delta" :class="s[3] < p[3] ? 'neg' : ''" x-text="(s[3] >= p[3] ? '+' : '') + (s[3] - p[3]).toFixed(1)"></span></td><td class="r pr" x-text="p[3].toFixed(1)"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="steps" data-section="steps">
+      <h2>Three moves that usually come next</h2>
+      <ol>
+        <li x-cloak x-data="{ r: 0 }" x-effect="r = (s[1] &lt; s[0]) + (s[2] &lt; s[0]) + (s[3] &lt; s[0])" x-show="r < 3" :style="'order:' + r">
+          <span class="num" aria-hidden="true" x-text="r + 1"></span>
+          <div><b>Write down the ten decisions a coordinator makes most<small>Process, <span x-text="s[0].toFixed(1)"></span> of 4</small></b><p>Ten decisions, one page each. New coordinators ramp faster, and you see which steps a system could take over.</p></div>
+        </li>
+        <li x-cloak x-data="{ r: 0 }" x-effect="r = (s[0] &lt;= s[1]) + (s[2] &lt; s[1]) + (s[3] &lt; s[1])" x-show="r < 3" :style="'order:' + r">
+          <span class="num" aria-hidden="true" x-text="r + 1"></span>
+          <div><b>Agree on five Monday numbers and one view that holds them<small>Data, <span x-text="s[1].toFixed(1)"></span> of 4</small></b><p>Choose the five figures every operations manager reads on Monday, such as cost per load and on-time rate. Build one view for them and retire the spreadsheets that fed the old ones.</p></div>
+        </li>
+        <li x-cloak x-data="{ r: 0 }" x-effect="r = (s[0] &lt;= s[2]) + (s[1] &lt;= s[2]) + (s[3] &lt; s[2])" x-show="r < 3" :style="'order:' + r">
+          <span class="num" aria-hidden="true" x-text="r + 1"></span>
+          <div><b>Put the three most repeated handoffs on rules<small>Automation, <span x-text="s[2].toFixed(1)"></span> of 4</small></b><p>Pick the three handoffs coordinators repeat most each day, such as load confirmation to carrier update, and let software do them before you add people. At your size this is usually where the first month of time comes back.</p></div>
+        </li>
+        <li x-cloak x-data="{ r: 0 }" x-effect="r = (s[0] &lt;= s[3]) + (s[1] &lt;= s[3]) + (s[2] &lt;= s[3])" x-show="r < 3" :style="'order:' + r">
+          <span class="num" aria-hidden="true" x-text="r + 1"></span>
+          <div><b>Name one owner for improvement, with two hours a week<small>Team, <span x-text="s[3].toFixed(1)"></span> of 4</small></b><p>One person, a backlog, and a slot every week. It is the cheapest change on this page and it makes the other moves stick.</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="cta" data-section="book">
+      <h2>Walk through the results with Maya</h2>
+      <p>Thirty minutes. We go through where Brightwave Logistics scored lowest and what the first move would take.</p>
+      <div class="who"><span class="avatar" aria-hidden="true">M</span><span><b>Maya Chen</b>Account Executive, Northbeam</span></div>
+      <a class="ken-cta" data-ken-cta="result-booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#111827;color:#fff;text-decoration:none;font-weight:600">Book 30 minutes</a>
+    </section>
+    <p class="foot">Peer figures come from 64 assessments by logistics companies between 200 and 1,000 people. Collected by Northbeam in 2026. Scores are self-reported.</p>
+    <p class="foot"><button class="ghost" type="button" @click="q = 0">Change my answers</button></p>
+    </div>
+
+  </div>
+  </div>
+</main>
+</div>
+</body>
+</html>

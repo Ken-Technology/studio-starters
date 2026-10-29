@@ -1,0 +1,36 @@
+{
+  "account": {
+    "name": "Quillmark Publishing",
+    "domain": "quillmarkpublishing.example",
+    "industry": "book and periodical publishing",
+    "size_band": "51-200",
+    "dossier": {
+      "summary": null,
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Tobias",
+    "last_name": "Wren",
+    "title": "Managing Editor"
+  },
+  "sender": {
+    "name": "Maya Chen",
+    "title": "Account Executive",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Larkspur Works",
+    "logo_url": null,
+    "colors": {
+      "primary": "#0f766e",
+      "secondary": "#1f2a24"
+    },
+    "fonts": {
+      "heading": "Poppins",
+      "body": "Lato"
+    }
+  },
+  "data": {}
+}

@@ -1,0 +1,232 @@
+{
+  "account": {
+    "name": "Pemberton Family Law",
+    "domain": "pembertonfamilylaw.example",
+    "industry": "law practice",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Pemberton Family Law is a six-attorney family law firm with two offices. A paralegal team handles intake and engagement letters for every new matter.",
+      "why_now": null,
+      "angle": null
+    }
+  },
+  "person": null,
+  "sender": {
+    "name": "Ines Carvalho",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Marlowe",
+    "logo_url": null,
+    "colors": {
+      "primary": "#1e3a2f",
+      "secondary": "#b08d57"
+    },
+    "fonts": {
+      "heading": "Source Serif 4",
+      "body": "Source Sans 3"
+    }
+  },
+  "data": {
+    "catalog": [
+      {
+        "competitor": "Shared drives and email",
+        "clues": "No intake or signature tool named on the site; a New clients page that sends a PDF form by email; a printed or scanned engagement letter; firms with fewer than ten attorneys",
+        "criterion": "Client intake",
+        "us": "A link the prospective client fills in on their phone. Answers land in the matter, and the paralegal sees what is missing.",
+        "them": "A PDF form sent by email, filled in by hand and scanned back. Someone retypes it.",
+        "better_fit": "us",
+        "note": "The first hour on every new matter."
+      },
+      {
+        "competitor": "Shared drives and email",
+        "criterion": "Engagement letters",
+        "us": "Built from your letter templates with the matter details filled in. One click to send.",
+        "them": "A Word template copied from the last matter, with the find and replace risk that comes with it.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Shared drives and email",
+        "criterion": "Signatures",
+        "us": "Signed on a phone, with the signed copy filed to the matter.",
+        "them": "Printed, signed, then scanned or dropped off. Clients who are far away mail it.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Shared drives and email",
+        "criterion": "Conflict checks",
+        "us": "A name search across every matter and contact, logged with who ran it and when.",
+        "them": "A search in the shared drive and a question around the office.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Shared drives and email",
+        "criterion": "Where the file lives",
+        "us": "In Marlowe, with the drive you already use mirrored so nothing moves.",
+        "them": "In the shared drive everyone knows, in whatever folder structure each attorney prefers.",
+        "better_fit": "either",
+        "note": "If your drive is tidy, this row is a wash."
+      },
+      {
+        "competitor": "Shared drives and email",
+        "criterion": "Getting set up",
+        "us": "We load your templates and open matters in the first week. Training is one hour per person.",
+        "them": "Nothing to set up. Everyone already knows email and the drive.",
+        "better_fit": "them",
+        "note": "Worth saying plainly."
+      },
+      {
+        "competitor": "Casefolio",
+        "clues": "Casefolio named on the site or in job postings; firms with a case management system already; ten or more attorneys",
+        "criterion": "Client intake",
+        "us": "A link the prospective client fills in on their phone. Answers land in the matter, and the paralegal sees what is missing.",
+        "them": "An intake form inside the client portal. Clients need a portal login first.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Casefolio",
+        "criterion": "Engagement letters",
+        "us": "Built from your letter templates with the matter details filled in. One click to send.",
+        "them": "Document assembly with a template language. Powerful once someone has built the templates.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Casefolio",
+        "criterion": "Signatures",
+        "us": "Signed on a phone, with the signed copy filed to the matter.",
+        "them": "Signatures through a connected e-signature tool on a separate plan.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Casefolio",
+        "criterion": "Conflict checks",
+        "us": "A name search across every matter and contact, logged with who ran it and when.",
+        "them": "Conflict search across matters, contacts and related parties, with a printed report.",
+        "better_fit": "them"
+      },
+      {
+        "competitor": "Casefolio",
+        "criterion": "Where the file lives",
+        "us": "In Marlowe, with the drive you already use mirrored so nothing moves.",
+        "them": "In Casefolio's own document store, with full matter management around it.",
+        "better_fit": "them",
+        "note": "If you want one system for everything, Casefolio is that system."
+      },
+      {
+        "competitor": "Casefolio",
+        "criterion": "Getting set up",
+        "us": "We load your templates and open matters in the first week. Training is one hour per person.",
+        "them": "A migration project with their team over two to three months.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Intakely",
+        "clues": "Intakely named on the site; a chat-style intake on the home page; personal injury and family law firms",
+        "criterion": "Client intake",
+        "us": "A link the prospective client fills in on their phone. Answers land in the matter, and the paralegal sees what is missing.",
+        "them": "A chat-style intake on your website, with screening questions and scheduling.",
+        "better_fit": "them",
+        "note": "Intakely's intake is the best of the three."
+      },
+      {
+        "competitor": "Intakely",
+        "criterion": "Engagement letters",
+        "us": "Built from your letter templates with the matter details filled in. One click to send.",
+        "them": "Not covered. Letters are written elsewhere.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Intakely",
+        "criterion": "Signatures",
+        "us": "Signed on a phone, with the signed copy filed to the matter.",
+        "them": "Signatures on the intake agreement only.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Intakely",
+        "criterion": "Conflict checks",
+        "us": "A name search across every matter and contact, logged with who ran it and when.",
+        "them": "Not covered.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Intakely",
+        "criterion": "Where the file lives",
+        "us": "In Marlowe, with the drive you already use mirrored so nothing moves.",
+        "them": "Intake records only. The matter file lives somewhere else.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Intakely",
+        "criterion": "Getting set up",
+        "us": "We load your templates and open matters in the first week. Training is one hour per person.",
+        "them": "A script on your site and an afternoon of setup.",
+        "better_fit": "either"
+      }
+    ],
+    "site": {
+      "url": "https://pembertonfamilylaw.example",
+      "title": "Pemberton Family Law",
+      "description": "Divorce, custody and adoption counsel from two offices.",
+      "markdown": "# Pemberton Family Law\n\nDivorce, custody, support and adoption counsel. Six attorneys, two offices, one standard: you always know where your matter stands.\n\n## New clients\n\nEmail our office and we will send you our intake questionnaire as a PDF. Print it, fill it in and bring it to your first meeting, or scan it and send it back.\n\n## Your engagement letter\n\nAfter the first meeting we send an engagement letter. Please print, sign and return it by mail, by scan, or in person at either office.\n\n## Offices\n\nDowntown and Riverside, weekdays 8 to 5."
+    },
+    "current_tool": "Shared drives and email",
+    "evidence": [
+      "The New clients page says the intake questionnaire comes by email as a PDF, to print and fill in or scan back.",
+      "The engagement letter page asks clients to print, sign and return the letter by mail, scan or in person."
+    ],
+    "rows": [
+      {
+        "competitor": "Shared drives and email",
+        "clues": "No intake or signature tool named on the site; a New clients page that sends a PDF form by email; a printed or scanned engagement letter; firms with fewer than ten attorneys",
+        "criterion": "Client intake",
+        "us": "A link the prospective client fills in on their phone. Answers land in the matter, and the paralegal sees what is missing.",
+        "them": "A PDF form sent by email, filled in by hand and scanned back. Someone retypes it.",
+        "better_fit": "us",
+        "note": "The first hour on every new matter."
+      },
+      {
+        "competitor": "Shared drives and email",
+        "criterion": "Engagement letters",
+        "us": "Built from your letter templates with the matter details filled in. One click to send.",
+        "them": "A Word template copied from the last matter, with the find and replace risk that comes with it.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Shared drives and email",
+        "criterion": "Signatures",
+        "us": "Signed on a phone, with the signed copy filed to the matter.",
+        "them": "Printed, signed, then scanned or dropped off. Clients who are far away mail it.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Shared drives and email",
+        "criterion": "Conflict checks",
+        "us": "A name search across every matter and contact, logged with who ran it and when.",
+        "them": "A search in the shared drive and a question around the office.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Shared drives and email",
+        "criterion": "Where the file lives",
+        "us": "In Marlowe, with the drive you already use mirrored so nothing moves.",
+        "them": "In the shared drive everyone knows, in whatever folder structure each attorney prefers.",
+        "better_fit": "either",
+        "note": "If your drive is tidy, this row is a wash."
+      },
+      {
+        "competitor": "Shared drives and email",
+        "criterion": "Getting set up",
+        "us": "We load your templates and open matters in the first week. Training is one hour per person.",
+        "them": "Nothing to set up. Everyone already knows email and the drive.",
+        "better_fit": "them",
+        "note": "Worth saying plainly."
+      }
+    ],
+    "headline": "Marlowe next to the shared drive, for Pemberton Family Law",
+    "intro": "Your site names no intake tool. The New clients page sends a PDF by email and the engagement letter comes back on paper, so this page compares Marlowe with what that suggests you use today: shared drives and email. The drive is the better fit on one of the six rows, Marlowe on four, and one is a wash.",
+    "them_fit": "Keep shared drives and email if your drive is tidy and nobody wants to learn a new tool. There is nothing to set up, and everyone already knows how it works.",
+    "us_fit": "Marlowe is the better fit if the first hour on each new matter, the intake form, the engagement letter, the signature and the conflict check, is paralegal time you would rather have back across both offices."
+  }
+}

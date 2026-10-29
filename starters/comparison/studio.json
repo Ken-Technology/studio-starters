@@ -1,0 +1,134 @@
+{
+  "kenStudio": "1",
+  "name": "Us vs what you use today",
+  "type": "landing_page",
+  "format": "page",
+  "slug": "side-by-side",
+  "slots": {
+    "type": "object",
+    "properties": {
+      "catalog": {
+        "type": "array",
+        "maxItems": 100,
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor": { "type": "string", "maxLength": 40 },
+            "clues": { "type": "string", "maxLength": 240 },
+            "criterion": { "type": "string", "maxLength": 48 },
+            "us": { "type": "string", "maxLength": 240 },
+            "them": { "type": "string", "maxLength": 240 },
+            "better_fit": { "type": "string", "maxLength": 12 },
+            "note": { "type": "string", "maxLength": 160 }
+          },
+          "required": ["competitor", "criterion", "us", "them", "better_fit"]
+        }
+      },
+      "site": { "type": "object" },
+      "current_tool": { "type": "string", "maxLength": 40 },
+      "evidence": {
+        "type": "array",
+        "maxItems": 3,
+        "items": { "type": "string", "maxLength": 160 }
+      },
+      "rows": {
+        "type": "array",
+        "maxItems": 12,
+        "items": {
+          "type": "object",
+          "properties": {
+            "competitor": { "type": "string", "maxLength": 40 },
+            "clues": { "type": "string", "maxLength": 240 },
+            "criterion": { "type": "string", "maxLength": 48 },
+            "us": { "type": "string", "maxLength": 240 },
+            "them": { "type": "string", "maxLength": 240 },
+            "better_fit": { "type": "string", "maxLength": 12 },
+            "note": { "type": "string", "maxLength": 160 }
+          },
+          "required": ["competitor", "criterion", "us", "them", "better_fit"]
+        }
+      },
+      "headline": {
+        "type": "string",
+        "minLength": 12,
+        "maxLength": 90,
+        "fallback": "{{ brand.name | default: 'Us' }} next to what {{ account.name }} uses today"
+      },
+      "intro": {
+        "type": "string",
+        "minLength": 40,
+        "maxLength": 400,
+        "fallback": "A plain look at how we line up against the tool {{ account.name }} runs on today, row by row, including the rows where your current tool is the better fit."
+      },
+      "them_fit": { "type": "string", "maxLength": 280 },
+      "us_fit": { "type": "string", "maxLength": 280 }
+    },
+    "required": ["headline", "intro"]
+  },
+  "recipe": [
+    {
+      "id": "catalog",
+      "kind": "dataset",
+      "dataset": "comparison",
+      "limit": 100,
+      "to": "data.catalog"
+    },
+    {
+      "id": "site",
+      "kind": "tool",
+      "tool": "scrape.page",
+      "args": { "url": "https://{{ account.domain }}", "maxChars": 12000, "mode": "markdown" },
+      "to": "data.site"
+    },
+    {
+      "id": "pick",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.catalog"],
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "brand.name", "data.catalog", "data.site"],
+      "to": ["data.current_tool", "data.evidence"],
+      "prompt": "You are working out which tool {{ account.name }} ({{ account.domain }}) most likely uses today for the job {{ brand.name | default: 'our product' }} does, so that a page can put the two side by side.\n\nInputs: data.catalog is our comparison sheet. Its competitor column lists the tools we compare against, and its clues column says what on a company's site or in its industry points to each tool. data.site is {{ account.name }}'s website as text. What we know about {{ account.name }}: industry {{ account.industry | default: 'unknown' }}, size {{ account.size_band | default: 'unknown' }}, and our notes: {{ account.dossier.summary | default: 'none' }}. Nothing else.\n\nReturn JSON with two keys:\n- current_tool: one value from the competitor column of data.catalog, copied exactly as written there. A tool the site names wins: on a careers page, an integrations or partners page, a booking or signup widget, a footer credit. When the site names none of them, pick the tool whose clues fit the industry and the notes best. Always pick one.\n- evidence: 0 to 3 strings, each at most 160 characters, each one fact from data.site that points to current_tool. Say where on the site it appears and what it says, like \"The careers page asks dispatchers for two years of Routeboard experience\". Quote or closely paraphrase the site. Never infer, and never cite the industry or our notes as evidence. Leave the list empty when nothing on the site points to the tool.\n\nRules: plain words, short sentences, sentence case. No em dashes or en dashes, no exclamation marks, no email addresses or phone numbers."
+    },
+    {
+      "id": "rows",
+      "kind": "dataset",
+      "dataset": "comparison",
+      "requires": ["data.current_tool"],
+      "where": [{ "column": "competitor", "op": "eq", "value": "data.current_tool" }],
+      "limit": 12,
+      "to": "data.rows"
+    },
+    {
+      "id": "write",
+      "kind": "prompt",
+      "model": "cheap",
+      "requires": ["data.rows"],
+      "inputs": ["account.name", "account.domain", "account.industry", "account.size_band", "account.dossier.summary", "account.dossier.why_now", "brand.name", "sender.name", "data.current_tool", "data.evidence", "data.rows", "data.site"],
+      "to": ["data.headline", "data.intro", "data.them_fit", "data.us_fit"],
+      "prompt": "You are writing the words on a comparison page for {{ account.name }} ({{ account.domain }}). {{ sender.name | default: 'The sender' }} at {{ brand.name | default: 'our company' }} sends it. The page puts {{ brand.name | default: 'our product' }} next to {{ data.current_tool }}, the tool we think {{ account.name }} uses today, one row per criterion. \"We\" and \"us\" mean {{ brand.name | default: 'our company' }}.\n\nInputs: data.rows are the rows of our comparison sheet for {{ data.current_tool }}. Each row has criterion, us (how we handle it), them (how {{ data.current_tool }} handles it), better_fit (us, them or either: our own verdict on that row) and note (when the row matters). data.evidence is what on {{ account.name }}'s site points to {{ data.current_tool }}; an empty list means the tool is our best guess. data.site is their website as text. What we know about {{ account.name }}: industry {{ account.industry | default: 'unknown' }}, size {{ account.size_band | default: 'unknown' }}, our notes {{ account.dossier.summary | default: 'none' }}, and a recent reason to write: {{ account.dossier.why_now | default: 'none' }}. Nothing else.\n\nReturn JSON with these keys:\n- headline: at most 80 characters, sentence case, naming both tools and {{ account.name }} when it fits, like \"Tidewell next to Routeboard, for Cobble Hill\". No colon, no question, no claim.\n- intro: 2 or 3 sentences, 60 to 400 characters. First say which tool we think they use and why, in one clause: what the site names when data.evidence has items, or \"our best guess\" when it is empty. Then say the page shows the rows where {{ data.current_tool }} is the better fit as well as the rows where we are, with the count of each from better_fit. When data.site or our notes hold a fact about {{ account.name }} that one row touches, tie one sentence to it.\n- them_fit: 1 or 2 sentences, at most 280 characters, on when {{ data.current_tool }} is the better choice, built only from the rows where better_fit is them. Name those criteria in plain words. Return an empty string when no row has better_fit them.\n- us_fit: 1 or 2 sentences, at most 280 characters, on when we are the better choice, built only from the rows where better_fit is us, tied to what {{ account.name }} does when the inputs say it. Return an empty string when no row has better_fit us.\n\nFacts: use only what the rows and the inputs say. Never add a feature, number, customer, price, award or claim that is not in the rows. Never say what {{ account.name }} does with {{ data.current_tool }} today beyond what data.evidence says. Give {{ data.current_tool }} its due and never mock it: the page is honest about both sides.\n\nVoice: one person writing to a peer. Plain, specific, short sentences a person would say out loud. No hype words (unlock, leverage, seamless, robust, powerful, elevate, transform, game changer, best in class). Never \"real\" as emphasis.\n\nRules for every string: sentence case. No em dashes or en dashes, no exclamation marks, no email addresses or phone numbers."
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "requires": ["data.rows"],
+      "on": ["data.headline", "data.intro", "data.them_fit", "data.us_fit", "data.evidence"],
+      "retries": 1,
+      "pass_score": 7.5,
+      "checks": {
+        "banned": ["unlock", "leverage", "seamless", "robust", "powerful", "elevate", "transform", "game changer", "best in class", "industry leading", "cutting edge", "blows away", "crushes", "demo"],
+        "no_placeholders": true,
+        "no_dashes": true,
+        "no_prices": true,
+        "no_real_emphasis": true
+      },
+      "rubric": "Grade the words on a comparison page the way its reader at {{ account.name }} reads them: the headline, the intro, the two fit lines and the evidence lines. 10 is copy a buyer would trust from a vendor comparing itself with the tool the buyer already uses.\nScore these, 0 to 10 each:\n- honest: the intro says {{ data.current_tool }} is our read or our guess, not a fact, and matches the evidence (it says the site names the tool only when the evidence list has items). The fit line for {{ data.current_tool }} names only strengths from rows where better_fit is them; the fit line for us names only strengths from rows where better_fit is us. A strength that is not in the rows fails this check.\n- grounded: every fact about {{ account.name }} comes from the site text or the notes below, and every evidence line points to something the site text says, with where it appears.\n- plain: short sentences a person would say out loud. No marketing adjectives, no stacked nouns, nothing that talks {{ data.current_tool }} down.\n- useful: the intro tells the reader why the page is worth a minute, and each fit line would help them decide.\nAutomatic fail: an em dash or en dash, an exclamation mark, a price, an email address or phone number, a feature or claim about {{ data.current_tool }} or about us that the rows below do not hold, or a fact about {{ account.name }} that the site text and notes below do not hold.\nRows, the only source for claims about either tool: {{ data.rows | json }}\nEvidence the writer had: {{ data.evidence | json }}\nSite text ({{ data.site.url | default: 'no site' }}): {{ data.site.title }} {{ data.site.description }} {{ data.site.markdown | truncate: 6000 }}\nNotes: {{ account.dossier.summary | default: 'none' }} {{ account.dossier.why_now | default: '' }}\nPass when the overall score is 7.5 or higher and no check is 6 or lower. On a fail, name the check and quote the phrase to change. The fix never supplies replacement facts, numbers or claims."
+    }
+  ],
+  "sections": [
+    { "id": "hero", "label": "Hero and our guess" },
+    { "id": "comparison", "label": "Side by side" },
+    { "id": "fit", "label": "Where each one fits" },
+    { "id": "cta", "label": "Book a call" }
+  ],
+  "cta": { "primary": "booking", "label": "Book 20 minutes" }
+}

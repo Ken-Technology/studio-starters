@@ -1,0 +1,265 @@
+{
+  "account": {
+    "name": "Juniper & Oak",
+    "domain": "juniperandoak.example",
+    "industry": "retail",
+    "size_band": "11-50",
+    "dossier": {
+      "summary": "Juniper & Oak makes soy candles and sells them through its own online shop and about 40 stockists. A team of 20 runs a weekly newsletter and seasonal drops.",
+      "why_now": "Launched a monthly subscription box in September.",
+      "angle": null
+    }
+  },
+  "person": {
+    "first_name": "Priya",
+    "last_name": "Raman",
+    "title": "Head of Ecommerce"
+  },
+  "sender": {
+    "name": "Theo Lindqvist",
+    "title": "Founder",
+    "signature_html": null
+  },
+  "brand": {
+    "name": "Pollen",
+    "logo_url": null,
+    "colors": {
+      "primary": "#f2541b",
+      "secondary": "#1c1c1c"
+    },
+    "fonts": {
+      "heading": "Outfit",
+      "body": "DM Sans"
+    }
+  },
+  "data": {
+    "catalog": [
+      {
+        "competitor": "Mailhaven",
+        "clues": "A newsletter signup that posts to a Mailhaven form; an Email by Mailhaven credit in the footer; shops with more than 10,000 subscribers",
+        "criterion": "Flows",
+        "us": "Welcome, browse, cart, post-purchase and winback flows that start from your shop's events. Branch on what someone bought.",
+        "them": "The same five flows plus a visual builder with split tests inside a flow.",
+        "better_fit": "them",
+        "note": "Mailhaven's builder is more capable if you run many variants."
+      },
+      {
+        "competitor": "Mailhaven",
+        "criterion": "Segments",
+        "us": "Segments from orders, products and site visits, updated as orders come in.",
+        "them": "Segments from orders and profile fields, rebuilt every few hours.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Mailhaven",
+        "criterion": "Editor and templates",
+        "us": "A block editor with your brand set once. Product blocks pull price and image from the shop.",
+        "them": "A drag and drop editor with a large template library and custom HTML.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Mailhaven",
+        "criterion": "SMS",
+        "us": "Not yet. Email only.",
+        "them": "SMS in the same flows as email, with its own consent handling.",
+        "better_fit": "them",
+        "note": "If SMS is on your list for this year, this row decides it."
+      },
+      {
+        "competitor": "Mailhaven",
+        "criterion": "Deliverability",
+        "us": "A dedicated sending domain set up with you, inbox placement checks before each drop, and a warmup plan.",
+        "them": "Shared sending pools by default. A dedicated domain on the higher plans.",
+        "better_fit": "us",
+        "note": "Ask what share of your last drop landed in Promotions."
+      },
+      {
+        "competitor": "Mailhaven",
+        "criterion": "Shop integration",
+        "us": "Built for the shop platforms DTC brands use. Orders, products and subscriptions sync in minutes.",
+        "them": "Connects to the common shop platforms. Subscription data needs a connector.",
+        "better_fit": "us",
+        "note": "Your subscription box makes this one matter."
+      },
+      {
+        "competitor": "Mailhaven",
+        "criterion": "Getting set up",
+        "us": "We move your list and flows in the first week and keep the old sender running until the first drop lands.",
+        "them": "Already set up.",
+        "better_fit": "them"
+      },
+      {
+        "competitor": "Sendloop",
+        "clues": "A Sendloop signup form or tracking script on the site; shops under 10,000 subscribers; agencies that build on Sendloop",
+        "criterion": "Flows",
+        "us": "Welcome, browse, cart, post-purchase and winback flows that start from your shop's events. Branch on what someone bought.",
+        "them": "Welcome and cart flows. Others are built by hand from triggers.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Sendloop",
+        "criterion": "Segments",
+        "us": "Segments from orders, products and site visits, updated as orders come in.",
+        "them": "Segments from tags and signup source.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Sendloop",
+        "criterion": "Editor and templates",
+        "us": "A block editor with your brand set once. Product blocks pull price and image from the shop.",
+        "them": "A simple editor that is quick to learn.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Sendloop",
+        "criterion": "SMS",
+        "us": "Not yet. Email only.",
+        "them": "Not covered.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Sendloop",
+        "criterion": "Deliverability",
+        "us": "A dedicated sending domain set up with you, inbox placement checks before each drop, and a warmup plan.",
+        "them": "Shared sending pools.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Sendloop",
+        "criterion": "Shop integration",
+        "us": "Built for the shop platforms DTC brands use. Orders, products and subscriptions sync in minutes.",
+        "them": "Orders sync through a third-party connector.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Sendloop",
+        "criterion": "Getting set up",
+        "us": "We move your list and flows in the first week and keep the old sender running until the first drop lands.",
+        "them": "Already set up.",
+        "better_fit": "them"
+      },
+      {
+        "competitor": "Shopmail",
+        "clues": "Email sent from the shop platform's own app; no separate email tool named; shops that started in the last two years",
+        "criterion": "Flows",
+        "us": "Welcome, browse, cart, post-purchase and winback flows that start from your shop's events. Branch on what someone bought.",
+        "them": "Cart and welcome flows built into the shop. Simple, and close to the orders.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Shopmail",
+        "criterion": "Segments",
+        "us": "Segments from orders, products and site visits, updated as orders come in.",
+        "them": "The shop's customer groups.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Shopmail",
+        "criterion": "Editor and templates",
+        "us": "A block editor with your brand set once. Product blocks pull price and image from the shop.",
+        "them": "The shop's own editor with its product blocks.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Shopmail",
+        "criterion": "SMS",
+        "us": "Not yet. Email only.",
+        "them": "SMS through the shop's app.",
+        "better_fit": "them"
+      },
+      {
+        "competitor": "Shopmail",
+        "criterion": "Deliverability",
+        "us": "A dedicated sending domain set up with you, inbox placement checks before each drop, and a warmup plan.",
+        "them": "The shop platform's shared sending.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Shopmail",
+        "criterion": "Shop integration",
+        "us": "Built for the shop platforms DTC brands use. Orders, products and subscriptions sync in minutes.",
+        "them": "It is the shop.",
+        "better_fit": "them",
+        "note": "Nothing to connect."
+      },
+      {
+        "competitor": "Shopmail",
+        "criterion": "Getting set up",
+        "us": "We move your list and flows in the first week and keep the old sender running until the first drop lands.",
+        "them": "Already on.",
+        "better_fit": "them"
+      }
+    ],
+    "site": {
+      "url": "https://juniperandoak.example",
+      "title": "Juniper & Oak",
+      "description": "Hand-poured soy candles, small batches, shipped from our studio.",
+      "markdown": "# Juniper & Oak\n\nHand-poured soy candles in small batches. New scents each season, and from this autumn a monthly box.\n\n## The subscription box\n\nOne new candle a month, chosen by the studio. Pause or skip any time.\n\n## Stockists\n\nFind us in about 40 shops. See the map.\n\n## Newsletter\n\nJoin the list for drops and studio news. [Sign up form, posts to forms.mailhaven.example]\n\nEmail by Mailhaven. Shop by our studio. Candles by hand."
+    },
+    "current_tool": "Mailhaven",
+    "evidence": [
+      "The newsletter signup on the home page posts to a Mailhaven form.",
+      "The footer of every page reads Email by Mailhaven."
+    ],
+    "rows": [
+      {
+        "competitor": "Mailhaven",
+        "clues": "A newsletter signup that posts to a Mailhaven form; an Email by Mailhaven credit in the footer; shops with more than 10,000 subscribers",
+        "criterion": "Flows",
+        "us": "Welcome, browse, cart, post-purchase and winback flows that start from your shop's events. Branch on what someone bought.",
+        "them": "The same five flows plus a visual builder with split tests inside a flow.",
+        "better_fit": "them",
+        "note": "Mailhaven's builder is more capable if you run many variants."
+      },
+      {
+        "competitor": "Mailhaven",
+        "criterion": "Segments",
+        "us": "Segments from orders, products and site visits, updated as orders come in.",
+        "them": "Segments from orders and profile fields, rebuilt every few hours.",
+        "better_fit": "us"
+      },
+      {
+        "competitor": "Mailhaven",
+        "criterion": "Editor and templates",
+        "us": "A block editor with your brand set once. Product blocks pull price and image from the shop.",
+        "them": "A drag and drop editor with a large template library and custom HTML.",
+        "better_fit": "either"
+      },
+      {
+        "competitor": "Mailhaven",
+        "criterion": "SMS",
+        "us": "Not yet. Email only.",
+        "them": "SMS in the same flows as email, with its own consent handling.",
+        "better_fit": "them",
+        "note": "If SMS is on your list for this year, this row decides it."
+      },
+      {
+        "competitor": "Mailhaven",
+        "criterion": "Deliverability",
+        "us": "A dedicated sending domain set up with you, inbox placement checks before each drop, and a warmup plan.",
+        "them": "Shared sending pools by default. A dedicated domain on the higher plans.",
+        "better_fit": "us",
+        "note": "Ask what share of your last drop landed in Promotions."
+      },
+      {
+        "competitor": "Mailhaven",
+        "criterion": "Shop integration",
+        "us": "Built for the shop platforms DTC brands use. Orders, products and subscriptions sync in minutes.",
+        "them": "Connects to the common shop platforms. Subscription data needs a connector.",
+        "better_fit": "us",
+        "note": "Your subscription box makes this one matter."
+      },
+      {
+        "competitor": "Mailhaven",
+        "criterion": "Getting set up",
+        "us": "We move your list and flows in the first week and keep the old sender running until the first drop lands.",
+        "them": "Already set up.",
+        "better_fit": "them"
+      }
+    ],
+    "headline": "Pollen next to Mailhaven, for Juniper & Oak",
+    "intro": "Your site names Mailhaven: the newsletter signup posts to a Mailhaven form and the footer credits it. Here is how Pollen lines up with it on the seven things a small email team touches. Mailhaven is the better fit on three rows, SMS among them, Pollen on three, and one is a wash.",
+    "them_fit": "Stay with Mailhaven if SMS is on your list for this year, or if you run many variants inside a flow and lean on its builder. It is also already set up, which counts for something.",
+    "us_fit": "Pollen is the better fit if the subscription box you launched in September needs its own flows and segments, and if you want a dedicated sending domain with placement checks before each drop."
+  }
+}

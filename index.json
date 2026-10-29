@@ -81,6 +81,52 @@
       "description": "One page per candidate listing the campaign's open roles that fit them, each with a short line on why, a button to book a call and a link to the job.",
       "showcases": ["prompt", "person", "roles", "ken/cta"],
       "version": "1.0.0"
+    },
+    {
+      "slug": "comparison",
+      "name": "Us vs what you use today",
+      "type": "landing_page",
+      "format": "page",
+      "showcases": [
+        "dataset",
+        "tool",
+        "prompt",
+        "grade",
+        "scrape.page",
+        "ken/cta"
+      ],
+      "description": "Puts your product next to the tool an account most likely uses today, row by row from your own comparison CSV, and says where each one is the better fit.",
+      "category": "prospecting",
+      "tags": [
+        "comparison",
+        "competitors",
+        "switching",
+        "side by side"
+      ],
+      "featured": false,
+      "needs": [
+        "dataset"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-29",
+      "samples": [
+        {
+          "id": "cobble-hill",
+          "label": "Cobble Hill Plumbing and Heating"
+        },
+        {
+          "id": "pemberton-shared",
+          "label": "Shared link (no person)"
+        },
+        {
+          "id": "juniper-oak",
+          "label": "Juniper and Oak Candle Co."
+        },
+        {
+          "id": "brookside-partial",
+          "label": "Brookside Electric, partial fill"
+        }
+      ]
     }
   ]
 }

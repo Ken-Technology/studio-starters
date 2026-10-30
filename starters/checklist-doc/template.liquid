@@ -1,4 +1,4 @@
-{%- assign accent = brand.colors.primary | default: '#def915' -%}
+{%- assign accent = brand.colors.primary | default: '#d0e381' -%}
 {%- assign accent2 = brand.colors.secondary | default: '#0a0a0a' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Stack Sans Headline' -%}
 {%- assign body_default = 'Stack Sans Text' -%}
@@ -35,8 +35,8 @@
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-html,body{margin:0;background:#ff87ab}
-.ck{--p:{{ accent }};--s:{{ accent2 }};--bg:#ff87ab;--ink:#0a0a0a;--mute:#6b1f3a;--hw:600;--tw:500;{% if font_head == 'Stack Sans Headline' %}--hw:300;--tw:300;{% endif %}--onp:#0a0a0a;--onp:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--ons:#ff87ab;--ons:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--m:clamp(1.25rem,3vw,3rem);background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.5;-webkit-font-smoothing:antialiased}
+html,body{margin:0;background:#f2a4b8}
+.ck{--p:{{ accent }};--s:{{ accent2 }};--bg:#f2a4b8;--ink:#0a0a0a;--mute:#6b1f3a;--hw:600;--tw:500;{% if font_head == 'Stack Sans Headline' %}--hw:300;--tw:300;{% endif %}--onp:#0a0a0a;--onp:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--ons:#f2a4b8;--ons:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--m:clamp(1.25rem,3vw,3rem);background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.5;-webkit-font-smoothing:antialiased}
 .ck p{margin:0}
 .ck h1,.ck h2{font-family:var(--fh);font-weight:var(--hw);margin:0;text-wrap:balance}
 .wrap{max-width:86rem;margin:0 auto;padding:0 var(--m)}

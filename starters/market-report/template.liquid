@@ -1,5 +1,5 @@
 {%- comment -%}Brand: the two colours and faces take over when a workspace sets them. Read how light each colour is so text on it stays readable.{%- endcomment -%}
-{%- assign accent = brand.colors.primary | default: '#0f7d45' | strip | downcase | escape -%}
+{%- assign accent = brand.colors.primary | default: '#30734a' | strip | downcase | escape -%}
 {%- assign accent2 = brand.colors.secondary | default: '#2b2622' | strip | downcase | escape -%}
 {%- assign font_head = brand.fonts.heading | default: 'Red Hat Display' | escape -%}
 {%- assign font_body = brand.fonts.body | default: 'Red Hat Text' | escape -%}
@@ -41,7 +41,7 @@
 {%- endif -%}
 {%- endfor -%}
 {%- assign lums = lumc | split: '|' -%}
-{%- if lums[0] == 'x' -%}{%- assign accent = '#0f7d45' -%}{%- assign p_lum = 85726 -%}{%- else -%}{%- assign p_lum = lums[0] | plus: 0 -%}{%- endif -%}
+{%- if lums[0] == 'x' -%}{%- assign accent = '#30734a' -%}{%- assign p_lum = 90293 -%}{%- else -%}{%- assign p_lum = lums[0] | plus: 0 -%}{%- endif -%}
 {%- if lums[1] == 'x' -%}{%- assign accent2 = '#2b2622' -%}{%- assign s_lum = 40000 -%}{%- else -%}{%- assign s_lum = lums[1] | plus: 0 -%}{%- endif -%}
 {%- comment -%}Text on the accent: white on a dark accent, the ink on a light one. Accent marks on the ground darken when the accent is pale.{%- endcomment -%}
 {%- if p_lum < 110000 -%}

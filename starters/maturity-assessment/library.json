@@ -5,7 +5,7 @@
   "featured": true,
   "needs": ["dataset"],
   "version": "1.1.0",
-  "updatedAt": "2026-10-29",
+  "updatedAt": "2026-10-30",
   "samples": [
     { "id": "brightwave", "label": "Brightwave Logistics, filled for one person" },
     { "id": "marlowe-dental", "label": "Marlowe Dental Partners, dark brand with a serif" },

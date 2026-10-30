@@ -5,7 +5,7 @@
   "featured": true,
   "needs": ["knowledge"],
   "version": "1.1.0",
-  "updatedAt": "2026-10-29",
+  "updatedAt": "2026-10-30",
   "samples": [
     { "id": "brightwave", "label": "Brightwave Logistics" },
     { "id": "tidewater", "label": "Tidewater Health Partners" },

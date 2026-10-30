@@ -1,12 +1,8 @@
-{%- assign brand_p = brand.colors.primary | default: '#2a4bd7' -%}
-{%- assign brand_s = brand.colors.secondary | default: '#0e1530' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
-{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
-{%- assign brand_name = brand.name | default: 'Northbeam' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
-{%- if font_head == 'Inter Tight' -%}{%- assign head_w = '500;600;700' -%}{%- else -%}{%- assign head_w = '400;700' -%}{%- endif -%}
-{%- if font_body == 'Inter' -%}{%- assign body_w = '400;500;600' -%}{%- else -%}{%- assign body_w = '400;700' -%}{%- endif -%}
+{%- assign brand_p = brand.colors.primary | default: '#e8dd90' -%}
+{%- assign brand_s = brand.colors.secondary | default: '#0d2a1c' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Hanken Grotesk' -%}
+{%- assign font_body = brand.fonts.body | default: 'Hanken Grotesk' -%}
+{%- assign brand_name = brand.name | default: '' -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,56 +10,66 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>An operations check for {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q | escape }}:wght@{{ head_w }}&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q | escape }}:wght@{{ body_w }}&display=swap">
+{%- if font_head == 'Hanken Grotesk' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Hanken Grotesk' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
-:root{--p:{{ brand_p | escape }};--s:{{ brand_s | escape }};--fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;--ink:color-mix(in srgb,var(--s) 70%,#000);--text:color-mix(in srgb,var(--ink) 84%,#fff);--mute:color-mix(in srgb,var(--ink) 58%,#fff);--line:color-mix(in srgb,var(--ink) 14%,#fff);--stage:color-mix(in srgb,var(--p) 6%,#fff);--p-deep:color-mix(in srgb,var(--p) 80%,#000)}
+:root{--p:{{ brand_p | escape }};--s:{{ brand_s | escape }};--on-p:#0d2a1c;--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--on-s:#f7f7f7;--on-s:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--fh:'{{ font_head | escape }}','Helvetica Neue',Arial,sans-serif;--fb:'{{ font_body | escape }}','Helvetica Neue',Arial,sans-serif;--bg:#f7f7f7;--ink:#0d2a1c;--muted:#4f5d55;--m:clamp(1.125rem,3.4vw,2.75rem)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--stage);color:var(--text);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased;min-height:100vh}
-h1,h2{font-family:var(--fh);color:var(--ink);margin:0;line-height:1.12;letter-spacing:-.015em;font-weight:600;text-wrap:balance}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.5 var(--fb);-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--fh);margin:0;font-weight:500;line-height:.98;letter-spacing:-.04em;text-wrap:balance}
 p{margin:0}
-.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem}
-.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fh);font-weight:600;color:var(--ink);min-width:0}
-.logo{height:26px;width:auto;max-width:120px;display:block;flex:none}
-.mark{width:26px;height:26px;border-radius:7px;background:var(--p);color:#fff;display:grid;place-items:center;font:700 14px/1 var(--fh);flex:none}
-.for{font-size:.85rem;color:var(--mute);text-align:right}
-.wrap{max-width:46rem;margin:0 auto;padding:.75rem 1rem 5rem}
-.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.4rem 1.25rem 1.6rem;box-shadow:0 14px 40px color-mix(in srgb,var(--ink) 10%,transparent)}
-.card h1{font-size:2rem;margin:.2rem 0 .9rem}
-.card p+p{margin-top:.8rem}
-.lede{font-size:1.05rem;max-width:34rem}
-.book{margin-top:1.4rem;background:var(--stage);border-radius:14px;padding:1.3rem 1.25rem;display:grid;gap:.9rem}
-.book h2{font-size:1.25rem}
-.book p{font-size:.95rem;max-width:34rem}
-.book .ken-cta{display:inline-flex!important;align-items:center;justify-content:center;min-height:48px;padding:.9rem 1.5rem!important;border-radius:10px!important;background:var(--p)!important;color:#fff!important;font-weight:600!important;width:fit-content}
-.book .ken-cta:hover{background:var(--p-deep)!important}
-.who{font-size:.88rem;color:var(--mute)}
-.who b{display:block;color:var(--ink);font-weight:600}
-@media (min-width:760px){.top{padding:1.2rem 2rem}.wrap{padding:1.5rem 1.5rem 6rem}.card{padding:2.2rem 2.4rem 2.4rem}.card h1{font-size:2.6rem}.book{grid-template-columns:minmax(0,1fr) auto;align-items:center;padding:1.6rem 1.8rem}.book .ken-cta{grid-column:2;grid-row:1/4}}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:1.25rem var(--m) 0}
+.brand{font-family:var(--fh);font-weight:500;font-size:1.125rem;letter-spacing:-.02em;min-width:0}
+.logo{height:28px;width:auto;max-width:9rem;display:block}
+.for{font-size:.875rem;color:var(--muted);text-align:right}
+.intro{padding:clamp(2.5rem,7vw,5rem) var(--m) clamp(2.5rem,6vw,4rem);display:grid;gap:1rem}
+.intro h1{font-size:clamp(2.125rem,1.2rem + 4.4vw,5.5rem);max-width:16ch;margin-bottom:.5rem}
+.intro p{max-width:46ch;font-size:clamp(1.1875rem,1.05rem + .5vw,1.5rem);line-height:1.4}
+.stair{display:flex;align-items:flex-end;height:clamp(4rem,9vw,7rem);padding:0 var(--m)}
+.stair i{flex:1;background:var(--p)}
+.stair i:nth-child(1){height:25%}.stair i:nth-child(2){height:50%}.stair i:nth-child(3){height:75%}.stair i:nth-child(4){height:100%}
+.cta{background:var(--s);color:var(--on-s);padding:clamp(3rem,8vw,6rem) var(--m);display:grid;gap:1.25rem;justify-items:start}
+.cta h2{font-size:clamp(1.875rem,1.2rem + 2.6vw,3.5rem)}
+.cta p{font-size:clamp(1.0625rem,1rem + .3vw,1.25rem);line-height:1.45;max-width:44ch}
+.who b{display:block;font-weight:500}
+.cta .ken-cta{display:inline-flex!important;align-items:center;justify-content:center;min-height:56px;padding:1rem 1.75rem!important;border-radius:0!important;background:var(--p)!important;color:var(--on-p)!important;font-family:var(--fh);font-weight:500!important;font-size:1.375rem;letter-spacing:-.02em;text-decoration:none}
+.cta .ken-cta:focus-visible{outline:3px solid var(--on-s);outline-offset:4px}
 </style>
 </head>
 <body>
 <header class="top">
-  <div class="brand">{% if brand.logo_url %}<img class="logo" src="{{ brand.logo_url | escape }}" alt="">{% else %}<span class="mark" aria-hidden="true">{{ brand_name | slice: 0, 1 | upcase | escape }}</span>{% endif %}<span>{{ brand_name | escape }}</span></div>
-  <p class="for">{% if person.first_name %}For {{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}<br>{{ account.name | escape }}{% else %}Prepared for<br>{{ account.name | escape }}{% endif %}</p>
+  <div class="brand">{% if brand.logo_url %}<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand_name | default: 'Logo' | escape }}">{% elsif brand_name != '' %}<span>{{ brand_name | escape }}</span>{% endif %}</div>
+  <p class="for">{% if person.first_name %}For {{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}, {{ account.name | escape }}{% else %}Prepared for {{ account.name | escape }}{% endif %}</p>
 </header>
-<main class="wrap">
-  <div class="card">
-    <section data-section="start">
-      <h1>How mature are {{ account.name | escape }}'s operations?</h1>
-      <p class="lede">Hi {{ person.first_name | default: 'there' | escape }}, the self-assessment for {{ account.name | escape }} is not ready on this page yet. It is eight questions across process, data, automation and team, scored from 1 to 4.</p>
-      <p class="lede">We can go through the same questions together on a short call.</p>
-    </section>
-    <section class="book" data-section="book">
-      <h2>Walk through it together</h2>
-      <p>Thirty minutes. You answer the eight questions out loud, and we talk about where {{ account.name | escape }} scored lowest and what the first move would take.</p>
-      {%- if sender.name %}
-      <p class="who"><b>{{ sender.name | escape }}</b>{% if sender.title %}{{ sender.title | escape }}, {% endif %}{{ brand_name | escape }}</p>
-      {%- endif %}
-      {% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking', id: 'fallback-booking' %}
-    </section>
-  </div>
+<main>
+  <section class="intro" data-section="start">
+    <h1>How mature are {{ account.name | escape }}'s operations?</h1>
+    <p>Hi {{ person.first_name | default: 'there' | escape }}, the self-assessment for {{ account.name | escape }} is not ready on this page yet. It is eight questions across process, data, automation and team, scored from 1 to 4.</p>
+    <p>We can go through the same questions together on a short call.</p>
+  </section>
+  <div class="stair" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <section class="cta" data-section="book">
+    <h2>Walk through it together</h2>
+    <p>Thirty minutes. You answer the eight questions out loud, and we talk about where {{ account.name | escape }} scored lowest and what the first move would take.</p>
+    {%- if sender.name %}
+    <p class="who"><b>{{ sender.name | escape }}</b>{% if sender.title %}{{ sender.title | escape }}{% if brand_name != '' %}, {% endif %}{% endif %}{{ brand_name | escape }}</p>
+    {%- endif %}
+    {% render 'ken/cta', label: 'Book 30 minutes', kind: 'booking', id: 'fallback-booking' %}
+  </section>
 </main>
 </body>
 </html>

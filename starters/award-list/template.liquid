@@ -1,9 +1,7 @@
-{%- assign accent = brand.colors.primary | default: '#b42318' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#1c2b3a' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
-{%- assign font_body = brand.fonts.body | default: 'IBM Plex Sans' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign accent = brand.colors.primary | default: '#dcbe75' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#16181d' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Saira' -%}
+{%- assign font_body = brand.fonts.body | default: 'Saira' -%}
 {%- assign ranked = data.entries | sort: 'employee_count' | reverse -%}
 {%- assign total = ranked.size | plus: 1 -%}
 {%- assign you_rank = data.account_rank | default: total -%}
@@ -23,125 +21,181 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ data.title | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+{%- if font_head == 'Saira' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@62.5..100,400..800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Saira' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@62.5..100,400..800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f5f2ec;color:#1b1a17;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.al{--a:{{ accent }};--a2:{{ accent2 }};--ink:#1b1a17;--soft:#3f3c36;--mute:#6b675f;--line:#d9d4c9;--card:#fcfbf8}
-.al h1,.al h2,.al-big,.al-rank,.al-place{font-family:'{{ font_head }}',Georgia,serif;font-weight:500;letter-spacing:-.012em}
-.al h1{text-wrap:pretty}
-.al h2{text-wrap:balance}
-.al p{margin:0 0 1rem}
-.al a{color:inherit}
-.al-wrap{max-width:66rem;margin:0 auto;padding:0 1.25rem}
-.al-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
-.al-logo{height:24px;width:auto;display:block}
-.al-brand{font-weight:700;font-size:.95rem;margin:0!important}
-.al-type{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;white-space:nowrap}
-.al-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--a);margin:0 0 .7rem!important}
-.al-cover{padding:2.2rem 0 1.8rem}
-.al h1{font-size:2.5rem;line-height:1.02;margin:0 0 1rem}
-.al-intro{font-size:1.08rem;line-height:1.5;color:var(--soft);max-width:36rem}
-.al-stamp{margin:1.4rem 0 0;padding:1.1rem 0 1rem;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:1.2rem;align-items:center}
-.al-big{font-size:5rem;line-height:.85;color:var(--a);margin:0!important;font-variant-numeric:lining-nums tabular-nums;grid-column:1;grid-row:1 / 3}
-.al-no{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;align-self:end;grid-column:2;grid-row:1}
-.al-who{margin:0!important;font-weight:600;font-size:1.02rem;line-height:1.25;align-self:start;grid-column:2;grid-row:2}
-.al-who small{display:block;font-weight:400;color:var(--mute);font-size:.86rem;margin-top:.1rem}
-.al-facts{margin:1.4rem 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.2rem}
+body{margin:0;background:#efefec;color:#16181d;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.al{--a:{{ accent }};--a2:{{ accent2 }};--wd:{% if font_head == 'Saira' %}75%{% else %}normal{% endif %};--paper:#efefec;--tone:#e4e4df;--ink:#16181d;--soft:#4a4d55;--bib:#fff;
+--on-a:#16181d;--on-a:color(from var(--a) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--on-a2:#efefec;--on-a2:color(from var(--a2) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--m:clamp(1.125rem,3.2vw,2.5rem);overflow-x:clip}
+.al h1,.al h2,.al-no,.al-fig,.al-plate{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-stretch:var(--wd);letter-spacing:-.01em}
+.al p{margin:0}
+.al a{color:inherit;text-decoration-thickness:.07em;text-underline-offset:.18em}
+.al a:focus-visible,.al .ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.al ::selection{background:var(--a);color:var(--on-a)}
+.al-wrap{padding:0 var(--m);max-width:90rem;margin:0 auto}
+.al-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
+.al-logo{height:26px;width:auto;display:block}
+.al-brand{font-weight:700;font-size:1rem}
+.al-type{font-size:.875rem;color:var(--soft);white-space:nowrap}
+.al-cover{display:grid;gap:0;padding:0 0 2.5rem}
+.al-cover-text{display:contents}
+.al-cover h1{order:-2}
+.al-kit{position:relative;order:-1;margin:0 calc(var(--m) * -1) 1.6rem;height:20rem;background:var(--a);overflow:hidden}
+.al-sash{position:absolute;left:-20%;top:42%;width:160%;height:5.5rem;background:var(--a2);transform:rotate(-24deg)}
+.al-bib{position:absolute;left:50%;top:52%;width:min(17.5rem,76%);background:var(--bib);color:var(--ink);transform:translate(-50%,-50%) rotate(-3deg);text-align:center}
+.al-hole{position:absolute;width:11px;height:11px;border-radius:50%;background:var(--a)}
+.al-hole.h1{left:9px;top:9px}.al-hole.h2{right:9px;top:9px}.al-hole.h3{left:9px;bottom:9px}.al-hole.h4{right:9px;bottom:9px}
+.al-bib-name{background:var(--a2);color:var(--on-a2);font-weight:600;font-size:.875rem;line-height:1.2;padding:.75rem 1.9rem .7rem;overflow-wrap:anywhere}
+.al-no{font-weight:800;font-size:9.5rem;line-height:.82;padding:.95rem 0 .55rem;font-variant-numeric:lining-nums tabular-nums;letter-spacing:-.03em}
+.al-bib-of{font-size:.875rem;font-weight:500;padding:0 1.6rem 1.45rem}
+.al h1{font-size:1.85rem;line-height:1.04;font-weight:700;text-wrap:balance;margin:.4rem 0 1.4rem}
+.al-intro{font-size:1rem;line-height:1.5;max-width:38rem}
+.al-for{margin:1.25rem 0 0!important;font-size:1rem;color:var(--soft)}
+.al-go{margin:1.4rem 0 0}
+.al-for b{color:var(--ink);font-weight:600}
+.al-facts{margin:2.1rem 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 1.25rem}
 .al-facts div{margin:0}
-.al-facts dt{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 .15rem}
-.al-facts dd{margin:0;font-weight:600;font-size:.98rem;line-height:1.3}
-.al-facts dd small{display:block;font-weight:400;color:var(--mute);font-size:.82rem}
-.al-you{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2rem 0 1.4rem}
-.al-place{font-size:2.1rem;line-height:1;margin:0 0 1rem!important;font-variant-numeric:lining-nums tabular-nums}
-.al-place span{font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:.95rem;color:var(--mute);letter-spacing:0;margin-left:.4rem;font-weight:400}
-.al h2{font-size:1.55rem;line-height:1.15;margin:0 0 .8rem}
-.al-why{font-size:1.04rem;color:var(--soft)}
-.al-signals{list-style:none;margin:0 0 1rem;padding:0;border-top:1px solid var(--line)}
-.al-signals li{display:grid;grid-template-columns:5.6rem 1fr;gap:.8rem;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.4}
-.al-signals time{color:var(--mute);font-size:.82rem;padding-top:.15rem;font-variant-numeric:tabular-nums;white-space:nowrap}
-.al-basis{font-size:.85rem;color:var(--mute);margin:0!important}
-.al-list{padding:2.2rem 0 1rem}
-.al-list-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.3rem 1rem;margin:0 0 .7rem}
+.al-facts dt{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-stretch:var(--wd);font-weight:700;font-size:1.75rem;line-height:1.05;margin:0 0 .2rem;font-variant-numeric:tabular-nums}
+.al-facts dd{margin:0;font-size:.875rem;line-height:1.35;color:var(--soft)}
+.al-you{background:var(--a2);color:var(--on-a2);padding:3.5rem 0 3.6rem}
+.al-you .al-wrap{display:grid;gap:2rem}
+.al-you time,.al-you .al-signals time,.al-you .al-basis{opacity:1}
+.al-tag{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:center;order:2}
+.al-plate{position:relative;display:inline-grid;place-items:center;background:var(--bib);color:var(--ink);font-weight:800;font-variant-numeric:lining-nums tabular-nums;line-height:1}
+.al-plate::before,.al-plate::after{content:"";position:absolute;top:5px;width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.28}
+.al-plate::before{left:5px}.al-plate::after{right:5px}
+.al-tag .al-plate{width:6.5rem;height:5rem;font-size:3.6rem;transform:rotate(-3deg)}
+.al-tag p{font-size:1rem;line-height:1.3}
+.al h2{font-size:1.85rem;line-height:1.02;font-weight:700;text-wrap:balance;margin:0 0 1rem}
+.al-why{font-size:1.25rem;line-height:1.45;max-width:40rem}
+.al-signals{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:.85rem}
+.al-signals li{display:grid;gap:.1rem;font-size:1rem;line-height:1.4}
+.al-signals time{font-size:.875rem;opacity:.82;font-variant-numeric:tabular-nums}
+.al-basis{font-size:.875rem;margin:1.6rem 0 0!important;opacity:.85;max-width:40rem}
+.al-list{padding:3.6rem 0 1rem}
+.al-list-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.3rem 1.5rem;margin:0 0 1.4rem}
 .al-list-head h2{margin:0}
-.al-list-head p{margin:0;font-size:.85rem;color:var(--mute)}
+.al-list-head p{font-size:1rem;color:var(--soft)}
 .al-cols{display:none}
-.al-rows{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
-.al-row{display:grid;grid-template-columns:3rem 1fr;grid-template-areas:"rank name" "rank line" "rank meta";column-gap:.8rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
-.al-rank{grid-area:rank;font-size:1.85rem;line-height:1;color:var(--mute);font-variant-numeric:lining-nums tabular-nums;padding-top:.1rem}
-.al-name{grid-area:name;font-weight:600;font-size:1.02rem;line-height:1.3}
-.al-dom{display:block;font-weight:400;font-size:.8rem;color:var(--mute);text-decoration:none;word-break:break-all}
-.al-line{grid-area:line;font-size:.95rem;color:var(--soft);line-height:1.45;margin:.2rem 0 .35rem}
-.al-meta{grid-area:meta;font-size:.84rem;color:var(--mute);display:flex;flex-wrap:wrap;gap:.2rem .9rem}
-.al-people{font-variant-numeric:tabular-nums;white-space:nowrap}
+.al-rows{list-style:none;margin:0 calc(var(--m) * -1);padding:0}
+.al-row{display:grid;grid-template-columns:3.2rem 1fr;grid-template-areas:"rank name" "rank line" "rank meta";column-gap:.95rem;padding:1rem var(--m)}
+.al-row:nth-child(odd){background:var(--tone)}
+.al-row .al-plate{grid-area:rank;width:3.2rem;height:2.6rem;font-size:1.75rem;align-self:start}
+.al-name{grid-area:name;font-weight:600;font-size:1rem;line-height:1.3}
+.al-dom{display:block;font-weight:400;font-size:.875rem;color:var(--soft);word-break:break-all}
+.al-line{grid-area:line;font-size:1rem;line-height:1.45;margin:.25rem 0 .4rem}
+.al-meta{grid-area:meta;font-size:.875rem;color:var(--soft);display:flex;flex-wrap:wrap;gap:.15rem 1rem}
+.al-people{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink);font-weight:600}
 .al-hq small{font-size:inherit;color:inherit}
-.al-hq small::before{content:"\00b7";margin:0 .4rem}
-.al-row.is-you{background:var(--card);box-shadow:inset 3px 0 0 var(--a);margin:0 -1.25rem;padding-left:1.25rem;padding-right:1.25rem}
-.al-row.is-you .al-rank{color:var(--a)}
-.al-tag{display:inline-block;vertical-align:.12em;margin-left:.45rem;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--a);padding:.18rem .45rem;border-radius:3px}
-.al-method{padding:2.4rem 0 1rem;border-top:1px solid var(--line)}
-.al-steps{margin:0 0 1.2rem;padding:0;list-style:none;counter-reset:step}
-.al-steps li{position:relative;padding:.6rem 0 .6rem 2.3rem;border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.45}
-.al-steps li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:.62rem;width:1.5rem;height:1.5rem;border:1px solid var(--ink);border-radius:50%;font-size:.72rem;font-weight:600;display:grid;place-items:center;font-variant-numeric:lining-nums}
-.al-steps b{display:block;font-weight:600}
-.al-note{font-size:.9rem;color:var(--soft);border-left:3px solid var(--a2);padding:.1rem 0 .1rem .9rem;margin:1.2rem 0 0!important}
-.al-chart{margin:1.8rem 0 0}
-.al-bars{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
-.al-bars li{display:grid;grid-template-columns:1fr auto;grid-template-areas:"label value" "bar bar";column-gap:1rem;padding:.6rem 0 .7rem;border-bottom:1px solid var(--line);font-size:.92rem;align-items:baseline}
-.al-bar-label{grid-area:label;color:var(--soft)}
-.al-bar-value{grid-area:value;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
-.al-bar{grid-area:bar;display:block;height:.55rem;background:#e9e4da;margin-top:.4rem;border-radius:2px;overflow:hidden}
-.al-bar i{display:block;height:100%;background:var(--a);border-radius:2px}
+.al-hq small::before{content:", "}
+.al-row.is-you{background:var(--a);color:var(--on-a)}
+.al-row.is-you .al-dom,.al-row.is-you .al-meta,.al-row.is-you .al-people{color:inherit}
+.al-row.is-you .al-plate{background:var(--a2);color:var(--on-a2)}
+.al-you-mark{font-weight:600}
+.al-method{padding:3.6rem 0 2rem}
+.al-method .al-wrap{display:grid;gap:2.4rem}
+.al-steps{margin:0;padding:0;list-style:none;counter-reset:step;display:grid;gap:1.15rem}
+.al-steps li{display:grid;grid-template-columns:2.6rem 1fr;column-gap:.95rem;font-size:1rem;line-height:1.45;counter-increment:step}
+.al-steps li::before{content:counter(step);grid-row:1 / 3;width:2.6rem;height:2.1rem;display:grid;place-items:center;background:var(--ink);color:var(--paper);font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-stretch:var(--wd);font-weight:800;font-size:1.25rem;line-height:1}
+.al-steps b{display:block;font-weight:600;font-size:1rem}
+.al-note{font-size:1.25rem;line-height:1.45;margin:2rem 0 0!important;max-width:36rem}
+.al-pool h3{font-size:1rem;font-weight:600;margin:0 0 1rem}
+.al-bars{list-style:none;margin:0;padding:0;display:grid;gap:.8rem}
+.al-bars li{display:grid;grid-template-columns:1fr auto;grid-template-areas:"label value" "bar bar";column-gap:1rem;font-size:.875rem;align-items:baseline}
+.al-bar-label{grid-area:label}
+.al-fig{grid-area:value;font-weight:700;font-size:1.25rem;font-variant-numeric:tabular-nums;text-align:right}
+.al-bar{grid-area:bar;display:block;height:.9rem;background:var(--tone);margin-top:.3rem}
+.al-bar i{display:block;height:100%;background:var(--ink)}
+.al-bars li:last-child .al-bar i{background:var(--a)}
 .ken-chart{display:none;margin:0}
 .ken-chart svg{display:block}
-.ken-chart figcaption{font-size:.8rem;color:var(--mute);margin-top:.5rem}
-.al-chart-note{font-size:.8rem;color:var(--mute);margin:.6rem 0 0!important}
-.al-cta{padding:1.8rem 0 3.2rem}
-.al-box{border:1px solid var(--ink);background:var(--card);padding:1.5rem 1.3rem 1.3rem}
-.al-box h2{margin:0 0 .6rem}
-.al-box p{color:var(--soft)}
-.al-btn{margin:1.2rem 0 1.3rem}
-.al-btn .ken-cta{min-height:44px;line-height:20px}
-.al-sign{font-size:.95rem;margin:0!important;font-weight:600;color:var(--ink)!important}
-.al-sign span{display:block;color:var(--mute);font-weight:400}
-.al-foot{font-size:.78rem;color:var(--mute);padding:1rem 0 2rem;border-top:1px solid var(--line);margin:0!important}
+.ken-chart figcaption{font-size:.875rem;color:var(--soft);margin-top:.5rem}
+.al-chart-note{font-size:.875rem;color:var(--soft);margin:.9rem 0 0!important}
+.al-cta{background:var(--a);color:var(--on-a);padding:3.6rem 0 3.4rem;margin-top:2rem}
+.al-cta .al-wrap{display:grid;gap:1.6rem}
+.al-cta h2{margin:0}
+.al-cta p{font-size:1rem;max-width:36rem}
+.al-btn .ken-cta,.al-go .ken-cta{display:inline-flex!important;align-items:center;min-height:52px;padding:.85rem 1.6rem!important;border-radius:0!important;background:var(--a2)!important;color:var(--on-a2)!important;font-family:inherit;font-size:1rem;font-weight:600!important;text-decoration:none}
+.al-btn .ken-cta:hover,.al-go .ken-cta:hover{background:var(--ink)!important;color:var(--paper)!important}
+.al-sign{font-size:1rem;font-weight:600}
+.al-sign span{display:block;font-weight:400}
+.al-foot{font-size:.875rem;color:var(--soft);padding:1.4rem 0 2.2rem;max-width:44rem}
+@media (prefers-reduced-motion:no-preference){
+.al-bib{animation:al-pin .95s cubic-bezier(.2,.7,.2,1) both}
+.al-cover h1,.al-intro{animation:al-rise .7s .15s cubic-bezier(.2,.7,.2,1) both}
+@keyframes al-pin{from{transform:translate(-50%,-62%) rotate(-11deg)}}
+@keyframes al-rise{from{opacity:0;transform:translateY(14px)}}
+}
 @media (min-width:760px){
-body{font-size:17px}
-.al-wrap{padding:0 2.5rem}
-.al-cover{display:grid;grid-template-columns:1fr 17rem;column-gap:3rem;padding:3.6rem 0 2.8rem;align-items:start}
-.al h1{font-size:3.9rem;text-wrap:balance}
-.al-stamp{margin:.4rem 0 0;padding:0 0 0 2.5rem;border:0;border-left:1px solid var(--line);display:block}
-.al-big{font-size:9.5rem;line-height:.8;margin:.3rem 0 .9rem!important}
-.al-facts{grid-template-columns:repeat(4,1fr);grid-column:1 / -1;border-top:2px solid var(--ink);padding-top:1rem;margin-top:1.6rem}
-.al-you{padding:2.6rem 0 2rem}
-.al-you .al-wrap{display:grid;grid-template-columns:15rem 1fr;column-gap:3rem}
-.al-place{font-size:2.6rem}
-.al h2{font-size:1.9rem}
-.al-list{padding:3rem 0 1.5rem}
-.al-cols{display:grid;grid-template-columns:4rem 1fr 8.5rem 12rem;column-gap:1.2rem;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding:0 0 .5rem}
-.al-cols span:nth-child(3){text-align:right}
-.al-row{grid-template-columns:4rem 1fr 8.5rem 12rem;grid-template-areas:"rank name people hq" "rank line people hq";column-gap:1.2rem;padding:1rem 0;align-items:start}
-.al-rank{font-size:2.1rem}
-.al-name{font-size:1.08rem}
-.al-line{font-size:.95rem;margin:.25rem 0 0}
+body{font-size:18px}
+.al-kit{height:26rem}
+.al-sash{height:7rem}
+.al-bib{width:min(21rem,60%)}
+.al-no{font-size:13rem}
+.al h1{font-size:2.6rem}
+.al-intro{font-size:1.25rem}
+.al-facts{grid-template-columns:repeat(4,minmax(0,1fr))}
+.al-you{padding:5.5rem 0}
+.al-you .al-wrap{grid-template-columns:minmax(0,4fr) minmax(0,7fr);column-gap:4rem;align-items:start}
+.al-tag{grid-template-columns:1fr;gap:1.3rem;order:0}
+.al-tag .al-plate{width:12rem;height:9rem;font-size:7rem}
+.al h2{font-size:clamp(2.4rem,1.3rem + 2vw,3.4rem)}
+.al-why{font-size:1.25rem}
+.al-signals{grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1.5rem}
+.al-list{padding:5.5rem 0 1.5rem}
+.al-cols{display:grid;grid-template-columns:4rem minmax(0,1fr) 12rem 9rem;column-gap:1.4rem;font-size:.875rem;color:var(--soft);padding:0 0 .6rem}
+.al-cols span:nth-child(4){text-align:right}
+.al-rows{margin:0 -1rem}
+.al-row{grid-template-columns:4rem minmax(0,1fr) 12rem 9rem;grid-template-areas:"rank name hq people" "rank line hq people";column-gap:1.4rem;padding:1rem 1rem 1.05rem;align-items:start}
+.al-cols{padding-left:1rem;padding-right:1rem}
+.al-row .al-plate{width:3.6rem;height:2.9rem;font-size:1.75rem}
+.al-line{margin:.2rem 0 0}
 .al-meta{display:contents}
-.al-people{grid-area:people;text-align:right;font-size:.98rem;color:var(--ink);font-weight:500;padding-top:.2rem}
-.al-hq{grid-area:hq;font-size:.92rem;color:var(--soft);padding-top:.25rem}
-.al-hq small{display:block;color:var(--mute);font-size:.8rem}
+.al-people{grid-area:people;text-align:right;font-size:1rem;padding-top:.1rem}
+.al-hq{grid-area:hq;font-size:1rem;padding-top:.15rem}
+.al-hq small{display:block}
 .al-hq small::before{content:none}
-.al-row.is-you{margin:0 -1rem;padding-left:1rem;padding-right:1rem}
-.al-method{padding:3rem 0 1.5rem}
-.al-method .al-wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:3.5rem;align-items:start}
-.al-method.is-text .al-wrap{grid-template-columns:1fr}
-.al-method.is-text .al-text{max-width:42rem}
-.al-chart{margin:2.9rem 0 0}
+.al-method{padding:5.5rem 0 4rem}
+.al-method .al-wrap{grid-template-columns:minmax(0,1fr);row-gap:3.5rem}
+.al-text{max-width:46rem}
+.al-pool{max-width:62rem}
+.ken-chart svg{max-width:none!important;width:100%}
+.al-method.is-text .al-wrap{grid-template-columns:minmax(0,1fr)}
 .al-bars{display:none}
 .ken-chart{display:block}
-.al-cta{padding:2.4rem 0 4rem}
-.al-box{padding:2.2rem 2.4rem 1.9rem;max-width:44rem}
+.al-cta{padding:5rem 0 4.6rem}
+.al-cta .al-wrap{grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:4rem;align-items:end}
 }
+@media (min-width:1000px){
+.al-cover{grid-template-columns:minmax(0,13fr) minmax(0,10fr);column-gap:3.5rem;padding:0;min-height:calc(100svh - 4rem);align-items:start}
+.al-cover-text{display:block;padding:3.2rem 0 2.5rem;align-self:center}
+.al-kit{order:0;grid-row:1 / 3;grid-column:2;height:auto;min-height:36rem;margin:0 calc(var(--m) * -1) 0 0;align-self:stretch}
+.al-sash{height:8rem;top:46%}
+.al-bib{width:min(23rem,80%);top:50%}
+.al-bib-name{font-size:1rem;padding:.95rem 2.4rem .9rem}
+.al-no{font-size:15rem;padding:1.3rem 0 .75rem}
+.al-bib-of{font-size:1rem;padding:0 2rem 1.9rem}
+.al h1{font-size:clamp(2.6rem,.5rem + 3.2vw,4rem);margin-top:0}
+.al-facts{grid-column:1;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.3rem 2rem;align-self:end;margin:0;padding:0 0 2.6rem;max-width:34rem}
+.al-facts dt{font-size:1.75rem}
+}
+@media (min-width:1300px){.al-no{font-size:17rem}}
 </style>
 </head>
 <body>
@@ -153,32 +207,37 @@ body{font-size:17px}
 </header>
 <section data-section="cover" class="al-cover">
 <div class="al-cover-text">
-<p class="al-label">{% if person.first_name %}For {{ person.first_name | escape }} at {{ account.name | escape }}{% else %}Made for {{ account.name | escape }}{% endif %}</p>
 <h1>{{ data.title | escape }}</h1>
 <p class="al-intro">{{ data.intro | escape }}</p>
+<p class="al-for">{% if person.first_name %}Made for <b>{{ person.first_name | escape }}</b> at <b>{{ account.name | escape }}</b>{% else %}Made for <b>{{ account.name | escape }}</b>{% endif %}</p>
+<div class="al-go">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking', id: 'cover', color: accent2 %}</div>
 </div>
-<div class="al-stamp">
-<p class="al-no">No.</p>
-<p class="al-big">{{ you_rank }}</p>
-<p class="al-who">{{ account.name | escape }}<small>of {{ total }} companies on this list</small></p>
+<div class="al-kit">
+<span class="al-sash" aria-hidden="true"></span>
+<div class="al-bib">
+<span class="al-hole h1" aria-hidden="true"></span><span class="al-hole h2" aria-hidden="true"></span><span class="al-hole h3" aria-hidden="true"></span><span class="al-hole h4" aria-hidden="true"></span>
+<p class="al-bib-name">{{ account.name | escape }}</p>
+<p class="al-no" aria-label="Number {{ you_rank }}">{{ you_rank }}</p>
+<p class="al-bib-of">of {{ total }} companies on this list</p>
+</div>
 </div>
 <dl class="al-facts">
-<div><dt>Companies</dt><dd>{{ total }}<small>{{ account.name | escape }} included</small></dd></div>
-<div><dt>Ranked by</dt><dd>Headcount<small>largest first</small></dd></div>
+<div><dt>{{ total }} companies</dt><dd>{{ account.name | escape }} included</dd></div>
+<div><dt>By headcount</dt><dd>largest first</dd></div>
 {%- if has_counts %}
-<div><dt>Pool</dt><dd>{%- assign n = pool.value -%}{%- if n >= 1000 -%}{%- assign k = n | divided_by: 1000 | floor -%}{%- assign rem = n | modulo: 1000 -%}{{ k }},{% if rem < 10 %}00{% elsif rem < 100 %}0{% endif %}{{ rem }}{%- else -%}{{ n }}{%- endif -%}<small>met both signals</small></dd></div>
+<div><dt>{%- assign n = pool.value -%}{%- if n >= 1000 -%}{%- assign k = n | divided_by: 1000 | floor -%}{%- assign rem = n | modulo: 1000 -%}{{ k }},{% if rem < 10 %}00{% elsif rem < 100 %}0{% endif %}{{ rem }}{%- else -%}{{ n }}{%- endif -%}</dt><dd>in the pool met both signals</dd></div>
 {%- else %}
-<div><dt>Source</dt><dd>Company data<small>profiles and hiring</small></dd></div>
+<div><dt>Company data</dt><dd>profiles and hiring</dd></div>
 {%- endif %}
-<div><dt>Made by</dt><dd>{{ sender.name | default: 'Our team' | escape }}<small>{% if brand.name %}{{ brand.name | escape }}{% else %}own list, not an award{% endif %}</small></dd></div>
+<div><dt>{{ sender.name | default: 'Our team' | escape }}</dt><dd>{% if brand.name %}made it at {{ brand.name | escape }}{% else %}our own list, not an award{% endif %}</dd></div>
 </dl>
 </section>
 </div>
 <section data-section="you" class="al-you">
 <div class="al-wrap">
-<div>
-<p class="al-label">Your place</p>
-<p class="al-place">No. {{ you_rank }}<span>of {{ total }}</span></p>
+<div class="al-tag">
+<span class="al-plate" aria-hidden="true">{{ you_rank }}</span>
+<p>{{ account.name | escape }} is no. {{ you_rank }} of {{ total }}</p>
 </div>
 <div>
 <h2>Why {{ account.name | escape }} is on it</h2>
@@ -200,13 +259,13 @@ body{font-size:17px}
 <h2>The list</h2>
 <p>{{ total }} companies, {{ account.name | escape }} at no. {{ you_rank }}</p>
 </div>
-<div class="al-cols"><span>No.</span><span>Company</span><span>People</span><span>Headquarters</span></div>
+<div class="al-cols" aria-hidden="true"><span>Place</span><span>Company</span><span>Headquarters</span><span>People</span></div>
 <ol class="al-rows">
 {%- for i in (1..total) %}
 {%- if i == you_rank %}
 <li class="al-row is-you">
-<span class="al-rank">{% if i < 10 %}0{% endif %}{{ i }}</span>
-<span class="al-name">{{ account.name | escape }}<span class="al-tag">You</span>{% if account.domain and account.domain != '' %}<a class="al-dom" href="https://{{ account.domain | escape }}" rel="noopener">{{ account.domain | escape }}</a>{% endif %}</span>
+<span class="al-plate">{{ i }}</span>
+<span class="al-name">{{ account.name | escape }} <span class="al-you-mark">(you)</span>{% if account.domain and account.domain != '' %}<a class="al-dom" href="https://{{ account.domain | escape }}" rel="noopener">{{ account.domain | escape }}</a>{% endif %}</span>
 <span class="al-line">{{ data.account_line | escape }}</span>
 <span class="al-meta"><span class="al-people">{% if has_band %}{{ band | escape }} people{% else %}headcount not held{% endif %}</span><span class="al-hq">{% if has_band %}Placed by size band{% else %}Placed last{% endif %}<small>not an exact count</small></span></span>
 </li>
@@ -214,7 +273,7 @@ body{font-size:17px}
 {%- assign idx = i | minus: 1 -%}{%- if i > you_rank -%}{%- assign idx = idx | minus: 1 -%}{%- endif -%}
 {%- assign e = ranked[idx] %}
 <li class="al-row">
-<span class="al-rank">{% if i < 10 %}0{% endif %}{{ i }}</span>
+<span class="al-plate">{{ i }}</span>
 <span class="al-name">{{ e.name | escape }}{% if e.domain and e.domain != '' %}<a class="al-dom" href="https://{{ e.domain | escape }}" rel="noopener">{{ e.domain | escape }}</a>{% endif %}</span>
 <span class="al-line">{{ e.line | escape }}</span>
 <span class="al-meta"><span class="al-people">{%- assign n = e.employee_count -%}{%- if n >= 1000 -%}{%- assign k = n | divided_by: 1000 | floor -%}{%- assign rem = n | modulo: 1000 -%}{{ k }},{% if rem < 10 %}00{% elsif rem < 100 %}0{% endif %}{{ rem }}{%- else -%}{{ n }}{%- endif %} people</span><span class="al-hq">{% if e.hq and e.hq != '' %}{{ e.hq | escape }}{% else %}HQ not listed{% endif %}{% if e.founded %}<small>since {{ e.founded }}</small>{% endif %}</span></span>
@@ -227,7 +286,6 @@ body{font-size:17px}
 <section data-section="method" class="al-method{% unless has_counts %} is-text{% endunless %}">
 <div class="al-wrap">
 <div class="al-text">
-<p class="al-label">Method</p>
 <h2>How the list was made</h2>
 <ol class="al-steps">
 <li><b>Same industry as {{ account.name | escape }}</b>{% if account.industry and account.industry != '' %}Companies whose profile lists {{ account.industry | escape }}.{% else %}Companies in the same industry as {{ account.name | escape }}.{% endif %}</li>
@@ -240,29 +298,33 @@ body{font-size:17px}
 </div>
 {%- if has_counts %}
 {%- assign top = data.counts | first %}
-<div class="al-chart">
-<p class="al-label">The pool</p>
+<div class="al-pool">
+<h3>The pool, from the whole industry down</h3>
 <ul class="al-bars">
 {%- for c in data.counts %}
 {%- assign pct = 100 -%}{%- if top.value > 0 -%}{%- assign pct = c.value | times: 100 | divided_by: top.value | at_most: 100 | at_least: 1 | round -%}{%- endif %}
-<li><span class="al-bar-label">{{ c.label | escape }}</span><span class="al-bar-value">{%- assign n = c.value -%}{%- if n >= 1000 -%}{%- assign k = n | divided_by: 1000 | floor -%}{%- assign rem = n | modulo: 1000 -%}{{ k }},{% if rem < 10 %}00{% elsif rem < 100 %}0{% endif %}{{ rem }}{%- else -%}{{ n }}{%- endif -%}</span><span class="al-bar"><i style="width:{{ pct }}%"></i></span></li>
+<li><span class="al-bar-label">{{ c.label | escape }}</span><span class="al-fig">{%- assign n = c.value -%}{%- if n >= 1000 -%}{%- assign k = n | divided_by: 1000 | floor -%}{%- assign rem = n | modulo: 1000 -%}{{ k }},{% if rem < 10 %}00{% elsif rem < 100 %}0{% endif %}{{ rem }}{%- else -%}{{ n }}{%- endif -%}</span><span class="al-bar"><i style="width:{{ pct }}%"></i></span></li>
 {%- endfor %}
 </ul>
-{% render 'ken/chart', type: 'funnel', data: data.counts, title: 'From the whole industry to the pool for this list', color: accent %}
+{% render 'ken/chart', type: 'funnel', data: data.counts, title: 'From the whole industry to the pool for this list', color: accent2 %}
 <p class="al-chart-note">Company counts on the day this page was built.</p>
 </div>
 {%- endif %}
 </div>
 </section>
-<div class="al-wrap">
 <section data-section="cta" class="al-cta">
-<div class="al-box">
+<div class="al-wrap">
+<div>
 <h2>Want the list with the people behind it?</h2>
 <p>I can send it as a sheet with the hiring signal behind each company, or walk you through it in 20 minutes and show you where {{ account.name | escape }} sits once we add your exact headcount.</p>
-<div class="al-btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking', color: accent %}</div>
+</div>
+<div>
+<div class="al-btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking', color: accent2 %}</div>
 <p class="al-sign">{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
 </div>
+</div>
 </section>
+<div class="al-wrap">
 <p class="al-foot">Made for {{ account.name | escape }} by {{ sender.name | default: 'our team' | escape }}{% if brand.name %} at {{ brand.name | escape }}{% endif %}. A private link, built from company profiles and hiring data.</p>
 </div>
 </main>

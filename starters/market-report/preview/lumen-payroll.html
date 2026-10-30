@@ -5,264 +5,346 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>The HR and payroll software market, in numbers</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap">
 <style>
 :root{
   --p:#e4572e;
   --s:#1c1c1c;
   --fh:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;
   --fb:'DM Sans',ui-sans-serif,system-ui,sans-serif;
+  --hw:700;
+  --bg:#ebe5e3;
+  --surface:#e1dad7;
   --ink:var(--s);
-  --mute:color-mix(in srgb,var(--s) 62%,#fff);
-  --rule:color-mix(in srgb,var(--s) 14%,#fff);
-  --hair:color-mix(in srgb,var(--s) 9%,#fff);
-  --c1:var(--p);
-  --c2:color-mix(in srgb,var(--p) 78%,#fff);
-  --c3:color-mix(in srgb,var(--p) 60%,#fff);
-  --c4:color-mix(in srgb,var(--p) 44%,#fff);
-  --c5:color-mix(in srgb,var(--p) 30%,#fff);
-  --c6:color-mix(in srgb,var(--p) 18%,#fff);
+  --mute:color-mix(in srgb,var(--ink) 80%,var(--bg));
+  --on-p:#1d1916;
+  --mark:color-mix(in srgb,var(--p) 40%,#1d1916);
+  --c1:var(--ink);
+  --c2:color-mix(in srgb,var(--ink) 80%,var(--bg));
+  --c3:color-mix(in srgb,var(--ink) 62%,var(--bg));
+  --c4:color-mix(in srgb,var(--ink) 46%,var(--bg));
+  --c5:color-mix(in srgb,var(--ink) 32%,var(--bg));
+  --c6:color-mix(in srgb,var(--ink) 20%,var(--bg));
+  --m:clamp(1.25rem,3vw,2.5rem);
+  --t-small:.875rem;
+  --t-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --t-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --t-sub:clamp(1.5rem,1rem + 1.6vw,2.25rem);
+  --t-head:clamp(2.25rem,1.3rem + 3vw,3.75rem);
+  --t-fig:clamp(4rem,2rem + 7vw,8rem);
 }
+/* text on a brand field: white under luminance .18, black above, so it passes AA for any colour */
+/* the ink is the secondary kept dark, so its text and the greys mixed from it hold on the stone ground */
+@supports (color:oklch(from red l c h)){:root{--ink:oklch(from var(--s) min(l,.33) min(c,.12) h)}}
+@supports (color:color(from red xyz-d65 x y z)){:root{--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased;padding-bottom:5.5rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.doc{max-width:58rem;margin:0 auto;padding:0 1.25rem}
-h1,h2,h3{font-family:var(--fh);font-weight:600;line-height:1.1;letter-spacing:-.015em;margin:0}
-p{margin:0 0 1rem}
-a{color:var(--p)}
-a:focus-visible{outline:2px solid var(--p);outline-offset:3px}
-.tn{font-variant-numeric:tabular-nums}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--t-body)/1.5 var(--fb);-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+h1,h2,h3{font-family:var(--fh);font-weight:var(--hw);margin:0;letter-spacing:-.03em;line-height:.95;text-wrap:balance}
+p{margin:0}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:.07em}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+::selection{background:var(--ink);color:var(--bg)}
+.tn{font-variant-numeric:tabular-nums lining-nums}
+.wrap{padding-inline:var(--m);max-width:96rem;margin-inline:auto}
+.n{font-variant-numeric:tabular-nums;color:var(--mute);margin-right:.35em}
 
-.brandline{display:flex;align-items:center;gap:.6rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.9rem}
-.logo{width:28px;height:28px;display:block;flex:none;border-radius:8px;background:var(--p);color:#fff;font:700 15px/28px var(--fh);text-align:center}
-.logo-img{height:28px;width:auto;max-width:9rem;display:block;flex:none}
-.bname{font-weight:600}
-.meta{margin-left:auto;color:var(--mute);text-align:right;line-height:1.45}
-
-.cover{padding-bottom:2.5rem}
-.cover-grid{display:grid;gap:2rem;margin-top:2.5rem}
-.cover h1{font-size:clamp(2.7rem,9vw,4.4rem);line-height:.98;letter-spacing:-.03em;max-width:13ch;margin:0 0 1.25rem;text-wrap:balance;overflow-wrap:break-word}
-.stand{font-size:1.15rem;line-height:1.5;color:var(--mute);max-width:32rem}
-.waffle{max-width:230px}
-.waffle svg{width:100%;height:auto;display:block}
-.waffle p{font-size:.78rem;color:var(--mute);margin:.6rem 0 0;line-height:1.45}
-.plate{display:grid;gap:1rem;border-top:3px solid var(--p);padding-top:1.25rem;margin-top:2.5rem;font-size:.92rem;line-height:1.45}
-.plate small{display:block;color:var(--mute);font-size:.78rem;margin-bottom:.2rem}
-.plate b{font-weight:600}
-.toc{list-style:none;margin:2.5rem 0 0;padding:0;max-width:30rem;counter-reset:t}
-.toc li{counter-increment:t;display:flex;gap:.9rem;align-items:baseline;padding:.45rem 0;border-top:1px solid var(--hair);font-size:.95rem}
-.toc li::before{content:counter(t);font:600 .9rem/1 var(--fh);color:var(--p);min-width:1.1rem}
-
-.sec{padding:2.5rem 0 .5rem;border-top:1px solid var(--rule);display:grid;gap:.2rem 3rem}
-.sec .n{font:700 1.6rem/1 var(--fh);letter-spacing:-.03em;color:var(--p)}
-.sec h2{font-size:1.9rem;margin:.1rem 0 1rem;text-wrap:balance}
-.body{max-width:44rem}
-.body p{font-size:1.02rem}
-.brief{list-style:none;margin:0;padding:0}
-.brief li{padding:.9rem 0;border-top:1px solid var(--hair);font-size:1.02rem}
-.brief li:first-child{border-top:0;padding-top:0}
-.brief b{font-family:var(--fh);font-weight:600;font-size:1.35rem;letter-spacing:-.01em;margin-right:.4rem;white-space:nowrap}
-
-figure{margin:1.75rem 0 2rem;display:grid;gap:.8rem}
-figure svg{width:100%;height:auto;display:block;overflow:visible}
-figure .fig{max-width:30rem}
-figcaption{font-size:.82rem;line-height:1.5;color:var(--mute)}
-figcaption b{color:var(--ink);font-weight:600}
-.lab{font:500 12px var(--fb);fill:var(--ink)}
-.val{font:600 12px var(--fb);fill:var(--ink);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
-.mut{font:500 10px var(--fb);fill:var(--mute)}
-.bar{fill:var(--p)}
-.bar2{fill:var(--c4)}
-.bar3{fill:var(--c5)}
-.ref{stroke:var(--mute);stroke-width:1;stroke-dasharray:3 3}
+.cover{min-height:100svh;display:flex;flex-direction:column;padding-bottom:3rem}
+.top{display:flex;align-items:center;gap:1rem;justify-content:space-between;padding-block:1.25rem;font-size:var(--t-small)}
+.brand{display:flex;align-items:center;gap:.55rem;font-weight:500}
+.logo-img{height:26px;width:auto;max-width:9rem;display:block}
+.mono{width:26px;height:26px;display:grid;place-items:center;background:var(--ink);color:var(--bg);font:var(--hw) .85rem/1 var(--fh)}
+.for{text-align:right;color:var(--mute);max-width:24rem}
+.hero{flex:1;display:grid;gap:2rem;align-content:center;padding-block:1.5rem 0}
+.cover h1{font-size:clamp(1.625rem,.7rem + 3.4vw,3.75rem);line-height:1;max-width:22ch}
+.count{display:grid;gap:1.75rem;align-items:end}
+.num{container-type:inline-size}
+.big{display:block;overflow:hidden;font:var(--hw) min(24rem,31cqi)/.82 var(--fh);letter-spacing:-.055em;padding-bottom:.04em;margin-left:-.04em}
+.big span{display:block}
+.what{font-size:var(--t-lead);line-height:1.3;max-width:30ch;margin-top:.75rem}
+.plate{width:min(100%,19rem)}
+.plate svg{display:block;width:100%;height:auto}
+.plate p{font-size:var(--t-small);line-height:1.45;color:var(--mute);margin-top:.7rem;max-width:34ch}
 .c1{fill:var(--c1)}.c2{fill:var(--c2)}.c3{fill:var(--c3)}.c4{fill:var(--c4)}.c5{fill:var(--c5)}.c6{fill:var(--c6)}
-.legend{list-style:none;margin:.6rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;font-size:.82rem}
-.legend li{display:flex;align-items:center;gap:.4rem}
-.legend i{width:11px;height:11px;border-radius:2px;display:inline-block;flex:none}
-.legend i.c1{background:var(--c1)}.legend i.c2{background:var(--c2)}.legend i.c3{background:var(--c3)}.legend i.c4{background:var(--c4)}.legend i.c5{background:var(--c5)}.legend i.c6{background:var(--c6)}
-.legend b{font-weight:600}
-.legend .tn{color:var(--mute)}
-.legend.top{margin:0 0 .7rem}
-.region .legend li{flex-basis:calc(50% - .55rem)}
+.foot{display:grid;gap:1rem;padding-top:2.5rem}
+.stand{font-size:var(--t-lead);line-height:1.35;max-width:36ch}
+.byline{max-width:44ch}
+.byline b{color:var(--ink);font-weight:500}
 
-.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin:1.5rem 0 1rem}
-.tile{border-top:2px solid var(--ink);padding-top:.7rem}
-.tile b{display:block;font:600 1.8rem/1 var(--fh);letter-spacing:-.03em;margin-bottom:.35rem}
-.tile span{display:block;font-size:.85rem;line-height:1.35;color:var(--mute)}
+.toc{list-style:none;margin:0;padding:3.5rem 0 0;display:grid;gap:.15rem;counter-reset:t}
+.toc li{counter-increment:t;font:500 var(--t-lead)/1.35 var(--fb);break-inside:avoid}
+.toc li::before{content:counter(t) " ";color:var(--mute);font-variant-numeric:tabular-nums}
 
-.plays{list-style:none;margin:0;padding:0;counter-reset:pl;display:grid;gap:1.5rem}
-.plays li{counter-increment:pl;padding-top:1rem;border-top:2px solid var(--ink)}
-.plays li::before{content:"Play " counter(pl);display:block;font:600 .85rem/1 var(--fb);color:var(--p);margin-bottom:.6rem}
-.plays h3{font-size:1.3rem;margin-bottom:.5rem}
-.plays p{margin:0;font-size:.98rem}
+.sec{padding-block:clamp(4.5rem,3rem + 8vw,10rem) 0}
+.sec h2{font-size:var(--t-head);max-width:18ch}
+.sec .lede{font-size:var(--t-lead);line-height:1.38;max-width:34ch;margin-top:1.5rem}
+.sec .after{max-width:60ch;margin-top:2rem}
+.split{display:grid;gap:2.5rem}
 
-.next{display:grid;gap:1rem;max-width:none}
-.cta-wrap{justify-self:start}
-.ken-cta{min-height:44px;line-height:20px;border-radius:3px!important;background:var(--p)!important}
-.sign{margin:0;font-size:.95rem}
-.sign b{display:block;font-weight:600}
+.ledger{list-style:none;margin:0;padding:0;display:grid;gap:1.75rem}
+.ledger li{display:grid;gap:.4rem}
+.ledger b{font:var(--hw) var(--t-fig)/.86 var(--fh);letter-spacing:-.045em;font-variant-numeric:tabular-nums lining-nums}
+.ledger span{max-width:40ch}
+
+.bars{list-style:none;margin:0;padding:0;display:grid;gap:.9rem}
+.bars li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.3rem 1rem;align-items:baseline}
+.bars .l{font-weight:500}
+.bars .v{font-variant-numeric:tabular-nums;font-weight:500;grid-row:1;grid-column:2;text-align:right}
+.bars .t{grid-column:1/-1;height:1.1rem;background:var(--surface)}
+.bars .f{display:block;height:100%;background:var(--ink)}
+.bars .f2{display:block;height:100%;background:var(--c4)}
+.bars .duo{display:flex;gap:3px}
+.bars .mk{position:relative}
+.bars .mk i{position:absolute;top:-.35rem;bottom:-.35rem;width:4px;margin-left:-2px;background:var(--mark)}
+.bars li.mine .l,.bars li.mine .v{font-weight:700}
+.bars li.mine .f{background:var(--mark)}
+figure{margin:0;display:grid;gap:1rem}
+figcaption{font-size:var(--t-small);line-height:1.5;color:var(--mute);max-width:52ch}
+figcaption b{color:var(--ink);font-weight:500}
+.key{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;font-size:var(--t-small);margin:0 0 .4rem;padding:0;list-style:none}
+.key li{display:flex;align-items:center;gap:.45rem}
+.key i{width:.9rem;height:.9rem;display:inline-block;background:var(--ink)}
+.key i.k2{background:var(--c4)}
+.key i.k3{background:var(--mark)}
+
+.field{background:var(--ink);color:var(--bg);margin-top:clamp(4.5rem,3rem + 8vw,10rem);padding-block:clamp(4rem,3rem + 5vw,8rem)}
+.field.sec{padding-top:clamp(4rem,3rem + 5vw,8rem)}
+.field .n{color:color-mix(in srgb,var(--bg) 70%,var(--ink))}
+.field figcaption{color:color-mix(in srgb,var(--bg) 78%,var(--ink))}
+.field figcaption b{color:var(--bg)}
+.stack{display:flex;gap:4px;height:clamp(5rem,3rem + 6vw,9rem);margin-top:3rem}
+.stack span{display:block;min-width:4px}
+.r1{background:var(--bg)}.r2{background:color-mix(in srgb,var(--bg) 78%,var(--ink))}.r3{background:color-mix(in srgb,var(--bg) 58%,var(--ink))}.r4{background:color-mix(in srgb,var(--bg) 42%,var(--ink))}.r5{background:color-mix(in srgb,var(--bg) 30%,var(--ink))}.r6{background:color-mix(in srgb,var(--bg) 20%,var(--ink))}
+.regs{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem 1.5rem}
+.regs li{display:grid;gap:.15rem}
+.regs i{width:1.4rem;height:.5rem;display:block;margin-bottom:.35rem}
+.regs b{font:var(--hw) var(--t-lead)/1 var(--fh);letter-spacing:-.02em}
+.regs span{font-variant-numeric:tabular-nums;color:color-mix(in srgb,var(--bg) 82%,var(--ink))}
+
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin:3rem 0}
+.pair div{display:grid;gap:.6rem;align-content:start}
+.pair b{font:var(--hw) var(--t-fig)/.85 var(--fh);letter-spacing:-.05em;font-variant-numeric:tabular-nums lining-nums}
+.pair div+div b{color:var(--c3)}
+.pair span{max-width:24ch}
+
+.sigs{list-style:none;margin:2.5rem 0 3rem;padding:0;display:grid;gap:1.75rem}
+.sigs li{display:grid;gap:.4rem}
+.sigs b{font:var(--hw) var(--t-fig)/.86 var(--fh);letter-spacing:-.045em;font-variant-numeric:tabular-nums lining-nums}
+.sigs span{max-width:28ch}
+
+.plays-f{background:var(--p);color:var(--on-p);margin-top:clamp(4.5rem,3rem + 8vw,10rem);padding-block:clamp(4rem,3rem + 5vw,8rem)}
+.plays-f .n{color:inherit}
+.plays{list-style:none;margin:3rem 0 0;padding:0;display:grid;gap:2.75rem}
+.plays li{display:grid;gap:.8rem}
+.plays h3{font-size:var(--t-sub);line-height:1.05;max-width:24ch}
+.plays p{max-width:58ch}
+
+.close{padding-block:clamp(4.5rem,3rem + 8vw,10rem) 4rem;display:grid;gap:2rem}
+.close .ask{font:var(--hw) var(--t-sub)/1.12 var(--fh);letter-spacing:-.02em;max-width:26ch}
+.close .src{max-width:52ch}
+.act{display:flex;flex-wrap:wrap;gap:1.25rem 2rem;align-items:center}
+.ken-cta{display:inline-block!important;min-height:52px;padding:15px 26px!important;border-radius:0!important;background:var(--p)!important;color:var(--on-p)!important;font:600 var(--t-body)/1.3 var(--fb)!important;text-decoration:none!important}
+.ken-cta:hover{background:var(--ink)!important;color:var(--bg)!important}
+.sign b{display:block;font-weight:500}
 .sign span{color:var(--mute)}
-.method{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.8rem;line-height:1.55;color:var(--mute);max-width:46rem}
-.method b{color:var(--ink);font-weight:600}
+.method{font-size:var(--t-small);line-height:1.55;color:var(--mute);max-width:60ch;background:var(--surface);padding:1.25rem 1.4rem}
+.method b{color:var(--ink);font-weight:500}
+
+@keyframes up{from{transform:translateY(105%)}to{transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .big span{animation:up .9s cubic-bezier(.16,.84,.24,1) both}
+  .cover h1{animation:up .9s cubic-bezier(.16,.84,.24,1) .11s both}
+  .h1m{overflow:hidden;padding-bottom:.08em}
+}
 
 @media (min-width:760px){
-  .doc{padding:0 2.5rem}
-  .cover{padding-bottom:3.5rem}
-  .cover-grid{grid-template-columns:minmax(0,1fr) 15rem;gap:3rem;align-items:end;margin-top:4rem}
-  .waffle{max-width:15rem;justify-self:end}
-  .plate{grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;margin-top:3.5rem}
-  .sec{grid-template-columns:5.5rem minmax(0,1fr);padding:3.5rem 0 1rem}
-  .sec .n{font-size:2.6rem;padding-top:.35rem}
-  .sec h2{font-size:2.2rem;margin-bottom:1.25rem}
-  .tile b{font-size:2.1rem}
-  figure{grid-template-columns:minmax(0,1fr) 11rem;gap:1.5rem;align-items:end}
-  figure .fig{max-width:32rem}
-  .region .legend li{flex-basis:auto}
-  .plays{grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem}
-  .next{grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:1rem 3rem}
-  .next p{max-width:34rem}
-  .next .sign{grid-column:1}
-  .next .cta-wrap{grid-column:2;grid-row:1/3;align-self:center}
+  .hero{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;row-gap:2.5rem}
+  .h1m{grid-column:1/-1}
+  .count{grid-column:1/-1;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem}
+  .count .num{grid-column:1/9}
+  .count .plate{grid-column:9/-1;justify-self:end;width:100%;max-width:23rem}
+  .foot{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;align-items:end;padding-top:3rem}
+  .foot .stand{grid-column:1/7}
+  .foot .byline{grid-column:8/-1}
+  .toc{display:block;columns:2;column-gap:1.5rem}
+  .split{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem}
+  .split>.hd{grid-column:1/6}
+  .peers>.split>.hd{grid-column:1/-1}
+  .peers>.split>.bd{grid-column:6/-1}
+  .peers .hd h2{max-width:none}
+  .split>.bd{grid-column:7/-1}
+  .split.wide>.hd{grid-column:1/6}
+  .split.wide>.bd{grid-column:6/-1}
+  .brief>.hd,.brief>.bd{grid-column:1/-1}
+  .ledger li{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;align-items:baseline}
+  .ledger b{grid-column:1/6}
+  .ledger span{grid-column:6/-1}
+  .ledger b{text-align:right}
+  .bars li{grid-template-columns:minmax(0,15rem) minmax(0,1fr) 4.5rem;gap:1rem}
+  .bars .t{grid-column:2;grid-row:1;align-self:center}
+  .bars .v{grid-column:3}
+  .regs{grid-template-columns:repeat(var(--nr,5),minmax(0,1fr))}
+  .sigs{grid-template-columns:repeat(var(--ns,3),minmax(0,1fr));gap:1.5rem}
+  .close{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;row-gap:2.5rem}
+  .close .ask{grid-column:1/8}
+  .close .src{grid-column:1/7}
+  .close .act{grid-column:8/-1;grid-row:1/3;align-self:end;flex-direction:column;align-items:flex-start}
+  .close .method{grid-column:1/-1}
+}
+@media (min-width:1000px){
+  .h1m{grid-column:1/10}
+  .plays li{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;align-items:baseline}
+  .plays h3{grid-column:1/7}
+  .plays p{grid-column:7/-1}
 }
 @media print{
-  @page{margin:16mm}
-  body{padding:0}
-  .doc{max-width:none;padding:0}
-  .sec{break-before:page;border-top:0;padding-top:.5rem}
-  .method{break-inside:avoid;margin-top:1rem}
-  .cover{break-before:auto;padding-bottom:0}
-  .cover-grid{margin-top:1.5rem}
-  .cover h1{font-size:3.4rem}
-  .plate{margin-top:1.75rem}
-  .toc{margin-top:1.25rem}
-  .toc li{padding:.3rem 0}
-  .sec.last{break-before:auto;border-top:1px solid var(--rule);margin-top:.75rem;padding-top:1.5rem}
-  figure,.tile,.plays li{break-inside:avoid}
-  .cta-wrap{display:none}
+  @page{margin:15mm}
+  html,body{background:#fff}
+  .cover{min-height:auto}
+  .hero{padding-top:2rem}
+  .big{font-size:9rem}
+  .sec{break-before:page;padding-top:0}
+  .field,.plays-f{background:#fff;color:var(--ink);margin-top:0;padding-block:0}
+  .field .r1{background:var(--ink)}
+  .field figcaption,.field .regs span{color:var(--mute)}
+  .field figcaption b{color:var(--ink)}
+  .field .n{color:var(--mute)}
+  .close{break-before:auto;padding-top:2.5rem}
+  .act{display:none}
+  figure,.ledger li,.plays li,.pair,.sigs li{break-inside:avoid}
+  .big span,.cover h1{animation:none}
 }
 </style>
 </head>
 <body>
-<main class="doc">
-<section class="cover" data-section="cover">
-<div class="brandline"><span class="logo" aria-hidden="true">F</span><span class="bname">Forgeline</span>
-<span class="meta">Market report<br>US HR and payroll software companies</span>
-</div>
-<div class="cover-grid">
-<div>
+<main>
+<section class="cover wrap" data-section="cover">
+<header class="top">
+<div class="brand"><span class="mono" aria-hidden="true">F</span><span>Forgeline</span></div>
+<p class="for">Market report for Lumen Payroll</p>
+</header>
+<div class="hero">
+<div class="h1m">
 <h1>The HR and payroll software market, in numbers</h1>
-<p class="stand">What 2,710 US HR and payroll software companies with 50 to 500 staff look like right now, and where Lumen Payroll sits among them.</p>
-</div><div class="waffle">
-<svg viewBox="0 0 198 198" role="img" aria-label="US HR and payroll software companies: companies as 100 squares, shaded by segment">
-<rect x="0" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="20" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="40" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="60" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="80" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="100" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="120" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="140" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="160" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="180" y="0" width="18" height="18" rx="2" class="c1"/>
-<rect x="0" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="20" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="40" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="60" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="80" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="100" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="120" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="140" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="160" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="180" y="20" width="18" height="18" rx="2" class="c1"/>
-<rect x="0" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="20" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="40" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="60" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="80" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="100" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="120" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="140" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="160" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="180" y="40" width="18" height="18" rx="2" class="c1"/>
-<rect x="0" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="20" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="40" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="60" y="60" width="18" height="18" rx="2" class="c1"/>
-<rect x="80" y="60" width="18" height="18" rx="2" class="c2"/>
-<rect x="100" y="60" width="18" height="18" rx="2" class="c2"/>
-<rect x="120" y="60" width="18" height="18" rx="2" class="c2"/>
-<rect x="140" y="60" width="18" height="18" rx="2" class="c2"/>
-<rect x="160" y="60" width="18" height="18" rx="2" class="c2"/>
-<rect x="180" y="60" width="18" height="18" rx="2" class="c2"/>
-<rect x="0" y="80" width="18" height="18" rx="2" class="c2"/>
-<rect x="20" y="80" width="18" height="18" rx="2" class="c2"/>
-<rect x="40" y="80" width="18" height="18" rx="2" class="c2"/>
-<rect x="60" y="80" width="18" height="18" rx="2" class="c2"/>
-<rect x="80" y="80" width="18" height="18" rx="2" class="c2"/>
-<rect x="100" y="80" width="18" height="18" rx="2" class="c2"/>
-<rect x="120" y="80" width="18" height="18" rx="2" class="c2"/>
-<rect x="140" y="80" width="18" height="18" rx="2" class="c2"/>
-<rect x="160" y="80" width="18" height="18" rx="2" class="c2"/>
-<rect x="180" y="80" width="18" height="18" rx="2" class="c2"/>
-<rect x="0" y="100" width="18" height="18" rx="2" class="c2"/>
-<rect x="20" y="100" width="18" height="18" rx="2" class="c2"/>
-<rect x="40" y="100" width="18" height="18" rx="2" class="c2"/>
-<rect x="60" y="100" width="18" height="18" rx="2" class="c2"/>
-<rect x="80" y="100" width="18" height="18" rx="2" class="c2"/>
-<rect x="100" y="100" width="18" height="18" rx="2" class="c2"/>
-<rect x="120" y="100" width="18" height="18" rx="2" class="c2"/>
-<rect x="140" y="100" width="18" height="18" rx="2" class="c3"/>
-<rect x="160" y="100" width="18" height="18" rx="2" class="c3"/>
-<rect x="180" y="100" width="18" height="18" rx="2" class="c3"/>
-<rect x="0" y="120" width="18" height="18" rx="2" class="c3"/>
-<rect x="20" y="120" width="18" height="18" rx="2" class="c3"/>
-<rect x="40" y="120" width="18" height="18" rx="2" class="c3"/>
-<rect x="60" y="120" width="18" height="18" rx="2" class="c3"/>
-<rect x="80" y="120" width="18" height="18" rx="2" class="c3"/>
-<rect x="100" y="120" width="18" height="18" rx="2" class="c3"/>
-<rect x="120" y="120" width="18" height="18" rx="2" class="c3"/>
-<rect x="140" y="120" width="18" height="18" rx="2" class="c3"/>
-<rect x="160" y="120" width="18" height="18" rx="2" class="c3"/>
-<rect x="180" y="120" width="18" height="18" rx="2" class="c3"/>
-<rect x="0" y="140" width="18" height="18" rx="2" class="c3"/>
-<rect x="20" y="140" width="18" height="18" rx="2" class="c3"/>
-<rect x="40" y="140" width="18" height="18" rx="2" class="c3"/>
-<rect x="60" y="140" width="18" height="18" rx="2" class="c3"/>
-<rect x="80" y="140" width="18" height="18" rx="2" class="c3"/>
-<rect x="100" y="140" width="18" height="18" rx="2" class="c3"/>
-<rect x="120" y="140" width="18" height="18" rx="2" class="c4"/>
-<rect x="140" y="140" width="18" height="18" rx="2" class="c4"/>
-<rect x="160" y="140" width="18" height="18" rx="2" class="c4"/>
-<rect x="180" y="140" width="18" height="18" rx="2" class="c4"/>
-<rect x="0" y="160" width="18" height="18" rx="2" class="c4"/>
-<rect x="20" y="160" width="18" height="18" rx="2" class="c4"/>
-<rect x="40" y="160" width="18" height="18" rx="2" class="c4"/>
-<rect x="60" y="160" width="18" height="18" rx="2" class="c4"/>
-<rect x="80" y="160" width="18" height="18" rx="2" class="c4"/>
-<rect x="100" y="160" width="18" height="18" rx="2" class="c4"/>
-<rect x="120" y="160" width="18" height="18" rx="2" class="c4"/>
-<rect x="140" y="160" width="18" height="18" rx="2" class="c4"/>
-<rect x="160" y="160" width="18" height="18" rx="2" class="c4"/>
-<rect x="180" y="160" width="18" height="18" rx="2" class="c4"/>
-<rect x="0" y="180" width="18" height="18" rx="2" class="c5"/>
-<rect x="20" y="180" width="18" height="18" rx="2" class="c5"/>
-<rect x="40" y="180" width="18" height="18" rx="2" class="c5"/>
-<rect x="60" y="180" width="18" height="18" rx="2" class="c5"/>
-<rect x="80" y="180" width="18" height="18" rx="2" class="c5"/>
-<rect x="100" y="180" width="18" height="18" rx="2" class="c5"/>
-<rect x="120" y="180" width="18" height="18" rx="2" class="c5"/>
-<rect x="140" y="180" width="18" height="18" rx="2" class="c5"/>
-<rect x="160" y="180" width="18" height="18" rx="2" class="c5"/>
-<rect x="180" y="180" width="18" height="18" rx="2" class="c5"/>
+</div>
+<div class="count">
+<div class="num">
+<p class="big tn" aria-label="2,710 companies"><span>2,710</span></p>
+<p class="what">US HR and payroll software companies, 50 to 500 staff.</p>
+</div><div class="plate">
+<svg viewBox="0 0 200 200" role="img" aria-label="US HR and payroll software companies: companies as 100 squares, shaded by segment">
+<rect x="0" y="0" width="17" height="17" class="c1"/>
+<rect x="20" y="0" width="17" height="17" class="c1"/>
+<rect x="40" y="0" width="17" height="17" class="c1"/>
+<rect x="60" y="0" width="17" height="17" class="c1"/>
+<rect x="80" y="0" width="17" height="17" class="c1"/>
+<rect x="100" y="0" width="17" height="17" class="c1"/>
+<rect x="120" y="0" width="17" height="17" class="c1"/>
+<rect x="140" y="0" width="17" height="17" class="c1"/>
+<rect x="160" y="0" width="17" height="17" class="c1"/>
+<rect x="180" y="0" width="17" height="17" class="c1"/>
+<rect x="0" y="20" width="17" height="17" class="c1"/>
+<rect x="20" y="20" width="17" height="17" class="c1"/>
+<rect x="40" y="20" width="17" height="17" class="c1"/>
+<rect x="60" y="20" width="17" height="17" class="c1"/>
+<rect x="80" y="20" width="17" height="17" class="c1"/>
+<rect x="100" y="20" width="17" height="17" class="c1"/>
+<rect x="120" y="20" width="17" height="17" class="c1"/>
+<rect x="140" y="20" width="17" height="17" class="c1"/>
+<rect x="160" y="20" width="17" height="17" class="c1"/>
+<rect x="180" y="20" width="17" height="17" class="c1"/>
+<rect x="0" y="40" width="17" height="17" class="c1"/>
+<rect x="20" y="40" width="17" height="17" class="c1"/>
+<rect x="40" y="40" width="17" height="17" class="c1"/>
+<rect x="60" y="40" width="17" height="17" class="c1"/>
+<rect x="80" y="40" width="17" height="17" class="c1"/>
+<rect x="100" y="40" width="17" height="17" class="c1"/>
+<rect x="120" y="40" width="17" height="17" class="c1"/>
+<rect x="140" y="40" width="17" height="17" class="c1"/>
+<rect x="160" y="40" width="17" height="17" class="c1"/>
+<rect x="180" y="40" width="17" height="17" class="c1"/>
+<rect x="0" y="60" width="17" height="17" class="c1"/>
+<rect x="20" y="60" width="17" height="17" class="c1"/>
+<rect x="40" y="60" width="17" height="17" class="c1"/>
+<rect x="60" y="60" width="17" height="17" class="c1"/>
+<rect x="80" y="60" width="17" height="17" class="c2"/>
+<rect x="100" y="60" width="17" height="17" class="c2"/>
+<rect x="120" y="60" width="17" height="17" class="c2"/>
+<rect x="140" y="60" width="17" height="17" class="c2"/>
+<rect x="160" y="60" width="17" height="17" class="c2"/>
+<rect x="180" y="60" width="17" height="17" class="c2"/>
+<rect x="0" y="80" width="17" height="17" class="c2"/>
+<rect x="20" y="80" width="17" height="17" class="c2"/>
+<rect x="40" y="80" width="17" height="17" class="c2"/>
+<rect x="60" y="80" width="17" height="17" class="c2"/>
+<rect x="80" y="80" width="17" height="17" class="c2"/>
+<rect x="100" y="80" width="17" height="17" class="c2"/>
+<rect x="120" y="80" width="17" height="17" class="c2"/>
+<rect x="140" y="80" width="17" height="17" class="c2"/>
+<rect x="160" y="80" width="17" height="17" class="c2"/>
+<rect x="180" y="80" width="17" height="17" class="c2"/>
+<rect x="0" y="100" width="17" height="17" class="c2"/>
+<rect x="20" y="100" width="17" height="17" class="c2"/>
+<rect x="40" y="100" width="17" height="17" class="c2"/>
+<rect x="60" y="100" width="17" height="17" class="c2"/>
+<rect x="80" y="100" width="17" height="17" class="c2"/>
+<rect x="100" y="100" width="17" height="17" class="c2"/>
+<rect x="120" y="100" width="17" height="17" class="c2"/>
+<rect x="140" y="100" width="17" height="17" class="c3"/>
+<rect x="160" y="100" width="17" height="17" class="c3"/>
+<rect x="180" y="100" width="17" height="17" class="c3"/>
+<rect x="0" y="120" width="17" height="17" class="c3"/>
+<rect x="20" y="120" width="17" height="17" class="c3"/>
+<rect x="40" y="120" width="17" height="17" class="c3"/>
+<rect x="60" y="120" width="17" height="17" class="c3"/>
+<rect x="80" y="120" width="17" height="17" class="c3"/>
+<rect x="100" y="120" width="17" height="17" class="c3"/>
+<rect x="120" y="120" width="17" height="17" class="c3"/>
+<rect x="140" y="120" width="17" height="17" class="c3"/>
+<rect x="160" y="120" width="17" height="17" class="c3"/>
+<rect x="180" y="120" width="17" height="17" class="c3"/>
+<rect x="0" y="140" width="17" height="17" class="c3"/>
+<rect x="20" y="140" width="17" height="17" class="c3"/>
+<rect x="40" y="140" width="17" height="17" class="c3"/>
+<rect x="60" y="140" width="17" height="17" class="c3"/>
+<rect x="80" y="140" width="17" height="17" class="c3"/>
+<rect x="100" y="140" width="17" height="17" class="c3"/>
+<rect x="120" y="140" width="17" height="17" class="c4"/>
+<rect x="140" y="140" width="17" height="17" class="c4"/>
+<rect x="160" y="140" width="17" height="17" class="c4"/>
+<rect x="180" y="140" width="17" height="17" class="c4"/>
+<rect x="0" y="160" width="17" height="17" class="c4"/>
+<rect x="20" y="160" width="17" height="17" class="c4"/>
+<rect x="40" y="160" width="17" height="17" class="c4"/>
+<rect x="60" y="160" width="17" height="17" class="c4"/>
+<rect x="80" y="160" width="17" height="17" class="c4"/>
+<rect x="100" y="160" width="17" height="17" class="c4"/>
+<rect x="120" y="160" width="17" height="17" class="c4"/>
+<rect x="140" y="160" width="17" height="17" class="c4"/>
+<rect x="160" y="160" width="17" height="17" class="c4"/>
+<rect x="180" y="160" width="17" height="17" class="c4"/>
+<rect x="0" y="180" width="17" height="17" class="c5"/>
+<rect x="20" y="180" width="17" height="17" class="c5"/>
+<rect x="40" y="180" width="17" height="17" class="c5"/>
+<rect x="60" y="180" width="17" height="17" class="c5"/>
+<rect x="80" y="180" width="17" height="17" class="c5"/>
+<rect x="100" y="180" width="17" height="17" class="c5"/>
+<rect x="120" y="180" width="17" height="17" class="c5"/>
+<rect x="140" y="180" width="17" height="17" class="c5"/>
+<rect x="160" y="180" width="17" height="17" class="c5"/>
+<rect x="180" y="180" width="17" height="17" class="c5"/>
 </svg>
-<p>2,710 companies. Each square is one percent of the segments in figure 1, shaded by segment: darkest for HR management software, lightest for Time and attendance.</p>
+<p>Each square is one percent of the segments in figure 1, darkest for HR management software, lightest for Time and attendance.</p>
 </div>
 </div>
-<div class="plate">
-<div><small>Prepared for</small><b>Priya Raman</b><br>Head of Revenue, Lumen Payroll</div>
-<div><small>Written by</small><b>Jordan Ellis</b><br>Account Executive, Forgeline</div>
-<div><small>Data</small><b>Company profiles and hiring data</b><br>2,710 companies, 6,760 people</div>
+</div>
+<div class="foot">
+<p class="stand">What 2,710 US HR and payroll software companies with 50 to 500 staff look like right now, and where Lumen Payroll sits among them.</p>
+<p class="byline">Prepared for <b>Priya Raman</b>, Head of Revenue at Lumen Payroll, by <b>Jordan Ellis</b>, Account Executive at Forgeline. Counted from company profiles and hiring data: 2,710 companies and 6,760 people.</p>
 </div>
 <ol class="toc" aria-label="Contents">
 <li>In brief</li>
@@ -274,205 +356,159 @@ figcaption b{color:var(--ink);font-weight:600}
 <li>Three plays for Lumen Payroll</li>
 </ol>
 </section>
-<section class="sec" data-section="brief">
-<span class="n">1</span>
-<div class="body">
-<h2>In brief</h2>
-<ul class="brief">
-<li><b class="tn">2,710</b>companies fit the profile. HR management software is the largest segment at 910, and payroll software has 640.</li>
-<li><b class="tn">760</b>companies are in the West, the largest region. The South is close behind at 690.</li>
-<li><b class="tn">6,760</b>people hold the four roles that buy for sales and marketing. VP of Sales is the largest group, at 2,700.</li>
-<li><b class="tn">780</b>companies are hiring in sales, and 142 raised money in the last twelve months.</li>
-<li><b class="tn">261</b>companies in the South sit in Lumen&#39;s size band, and 88 of them are hiring.</li>
-</ul>
+<section class="sec wrap split brief" data-section="brief">
+<div class="hd">
+<h2><span class="n">1</span>In brief</h2>
 </div>
+<ul class="ledger bd">
+<li><b>2,710</b><span>companies fit the profile. HR management software is the largest segment at 910, and payroll software has 640.</span></li>
+<li><b>760</b><span>companies are in the West, the largest region. The South is close behind at 690.</span></li>
+<li><b>6,760</b><span>people hold the four roles that buy for sales and marketing. VP of Sales is the largest group, at 2,700.</span></li>
+<li><b>780</b><span>companies are hiring in sales, and 142 raised money in the last twelve months.</span></li>
+<li><b>261</b><span>companies in the South sit in Lumen&#39;s size band, and 88 of them are hiring.</span></li>
+</ul>
 </section>
-
-<section class="sec" data-section="segments">
-<span class="n">2</span>
-<div class="body">
-<h2>Who is in the market</h2>
-<p>The profile is a US software company with 50 to 500 staff that sells into HR, payroll or hiring teams. There are 2,710 of them. HR management is the largest segment, and payroll, where Lumen sits, is the second largest.</p>
-<figure>
-<div class="fig"><svg viewBox="0 0 360 150" role="img" aria-label="Companies by segment, horizontal bars">
-<text x="0" y="16.5" class="lab">HR management software</text>
-<rect x="164" y="4" width="136" height="16" rx="2" class="bar"/>
-<text x="306" y="16.5" class="val">910</text>
-<text x="0" y="46.5" class="lab">Payroll software</text>
-<rect x="164" y="34" width="95.6" height="16" rx="2" class="bar"/>
-<text x="265.6" y="46.5" class="val">640</text>
-<text x="0" y="76.5" class="lab">Recruiting software</text>
-<rect x="164" y="64" width="77.7" height="16" rx="2" class="bar"/>
-<text x="247.7" y="76.5" class="val">520</text>
-<text x="0" y="106.5" class="lab">Benefits admin</text>
-<rect x="164" y="94" width="56.8" height="16" rx="2" class="bar"/>
-<text x="226.8" y="106.5" class="val">380</text>
-<text x="0" y="136.5" class="lab">Time and attendance</text>
-<rect x="164" y="124" width="38.9" height="16" rx="2" class="bar"/>
-<text x="208.9" y="136.5" class="val">260</text>
-</svg></div>
+<section class="sec wrap" data-section="segments">
+<div class="split wide">
+<div class="hd">
+<h2><span class="n">2</span>Who is in the market</h2>
+<p class="lede">The profile is a US software company with 50 to 500 staff that sells into HR, payroll or hiring teams. There are 2,710 of them. HR management is the largest segment, and payroll, where Lumen sits, is the second largest.</p>
+</div>
+<figure class="bd">
+<ul class="bars" role="img" aria-label="Companies by segment, as bars">
+<li><span class="l">HR management software</span><span class="t"><span class="f" style="width:100%"></span></span><span class="v">910</span></li>
+<li><span class="l">Payroll software</span><span class="t"><span class="f" style="width:70.3%"></span></span><span class="v">640</span></li>
+<li><span class="l">Recruiting software</span><span class="t"><span class="f" style="width:57.1%"></span></span><span class="v">520</span></li>
+<li><span class="l">Benefits admin</span><span class="t"><span class="f" style="width:41.8%"></span></span><span class="v">380</span></li>
+<li><span class="l">Time and attendance</span><span class="t"><span class="f" style="width:28.6%"></span></span><span class="v">260</span></li>
+</ul>
 <figcaption><b>Figure 1.</b> Companies by segment, 50 to 500 staff. Segments follow each company's primary industry in its profile. Total 2,710.</figcaption>
+<p class="after">Time and attendance is the smallest segment at 260 companies. Recruiting software has 520, more than benefits administration at 380.</p>
 </figure>
-<p>Time and attendance is the smallest segment at 260 companies. Recruiting software has 520, more than benefits administration at 380.</p>
 </div>
 </section>
-
-<section class="sec region" data-section="regions">
-<span class="n">3</span>
-<div class="body">
-<h2>Where they are</h2>
-<p>The West holds 760 of the 2,710 companies, the most of any region. The South follows with 690 and the Northeast with 610.</p>
-<figure>
-<div class="fig">
-<svg viewBox="0 0 360 28" role="img" aria-label="Share of companies by region, one stacked bar">
-<rect x="0" y="0" width="98.7" height="28" rx="2" class="c1"/>
-<rect x="100.7" y="0" width="89.6" height="28" rx="2" class="c2"/>
-<rect x="192.3" y="0" width="79.2" height="28" rx="2" class="c3"/>
-<rect x="273.6" y="0" width="58.5" height="28" rx="2" class="c4"/>
-<rect x="334" y="0" width="26" height="28" rx="2" class="c5"/>
-</svg>
-<ul class="legend">
-<li><i class="c1"></i><b>West</b><span class="tn">28%, 760</span></li>
-<li><i class="c2"></i><b>South</b><span class="tn">25%, 690</span></li>
-<li><i class="c3"></i><b>Northeast</b><span class="tn">23%, 610</span></li>
-<li><i class="c4"></i><b>Midwest</b><span class="tn">17%, 450</span></li>
-<li><i class="c5"></i><b>Mountain</b><span class="tn">7%, 200</span></li>
-</ul>
+<section class="sec field" data-section="regions">
+<div class="wrap">
+<div class="split">
+<div class="hd">
+<h2><span class="n">3</span>Where they are</h2>
 </div>
+<p class="lede bd">The West holds 760 of the 2,710 companies, the most of any region. The South follows with 690 and the Northeast with 610.</p>
+</div>
+<figure>
+<div class="stack" role="img" aria-label="Share of companies by region, one stacked bar">
+<span class="r1" style="flex:760 1 0"></span>
+<span class="r2" style="flex:690 1 0"></span>
+<span class="r3" style="flex:610 1 0"></span>
+<span class="r4" style="flex:450 1 0"></span>
+<span class="r5" style="flex:200 1 0"></span>
+</div>
+<ul class="regs" style="--nr:5">
+<li><i class="r1"></i><b>West</b><span>28%, 760</span></li>
+<li><i class="r2"></i><b>South</b><span>25%, 690</span></li>
+<li><i class="r3"></i><b>Northeast</b><span>23%, 610</span></li>
+<li><i class="r4"></i><b>Midwest</b><span>17%, 450</span></li>
+<li><i class="r5"></i><b>Mountain</b><span>7%, 200</span></li>
+</ul>
 <figcaption><b>Figure 2.</b> Share of companies by headquarters region, from company profiles.</figcaption>
 </figure>
-<p>Lumen is based in the South, where 690 companies compete for the same small employers. The Mountain region is the smallest with 200.</p>
+<p class="after">Lumen is based in the South, where 690 companies compete for the same small employers. The Mountain region is the smallest with 200.</p>
 </div>
 </section>
-<section class="sec" data-section="buyers">
-<span class="n">4</span>
-<div class="body">
-<h2>Who buys</h2>
-<p>Four titles decide on sales and marketing spend in this market. Across the 2,710 companies, 6,760 people hold one of them. There are more of them at companies with 50 to 200 staff in every role but one.</p>
-<figure>
-<div class="fig">
-<ul class="legend top">
-<li><i class="c1"></i><b>50 to 200 staff</b></li>
-<li><i class="c4"></i><b>201 to 500 staff</b></li>
-</ul>
-<svg viewBox="0 0 360 120" role="img" aria-label="People in each buying role by company size, stacked bars">
-<text x="0" y="16.5" class="lab">VP of Sales</text>
-<rect x="164" y="4" width="99.7" height="16" rx="2" class="bar"/>
-<rect x="265.7" y="4" width="36.3" height="16" rx="2" class="bar2"/>
-<text x="308" y="16.5" class="val">2,700</text>
-<text x="0" y="46.5" class="lab">Head of Marketing</text>
-<rect x="164" y="34" width="77.6" height="16" rx="2" class="bar"/>
-<rect x="243.6" y="34" width="28.2" height="16" rx="2" class="bar2"/>
-<text x="277.8" y="46.5" class="val">2,100</text>
-<text x="0" y="76.5" class="lab">Head of Revenue Ops</text>
-<rect x="164" y="64" width="43.3" height="16" rx="2" class="bar"/>
-<rect x="209.3" y="64" width="20.7" height="16" rx="2" class="bar2"/>
-<text x="236" y="76.5" class="val">1,270</text>
-<text x="0" y="106.5" class="lab">Chief Revenue Officer</text>
-<rect x="164" y="94" width="15.6" height="16" rx="2" class="bar"/>
-<rect x="181.6" y="94" width="19.1" height="16" rx="2" class="bar2"/>
-<text x="206.8" y="106.5" class="val">690</text>
-</svg>
+<section class="sec wrap" data-section="buyers">
+<div class="split">
+<div class="hd">
+<h2><span class="n">4</span>Who buys</h2>
 </div>
+<p class="lede bd">Four titles decide on sales and marketing spend in this market. Across the 2,710 companies, 6,760 people hold one of them. There are more of them at companies with 50 to 200 staff in every role but one.</p>
+</div>
+<div class="pair">
+<div><b>4,690</b><span>people in these roles at companies with 50 to 200 staff</span></div>
+<div><b>2,070</b><span>at companies with 201 to 500 staff</span></div>
+</div>
+<figure>
+<ul class="key">
+<li><i></i>50 to 200 staff</li>
+<li><i class="k2"></i>201 to 500 staff</li>
+</ul>
+<ul class="bars" role="img" aria-label="People in each buying role by company size, stacked bars">
+<li><span class="l">VP of Sales</span><span class="t duo"><span class="f" style="width:73.3%"></span><span class="f2" style="width:26.7%"></span></span><span class="v">2,700</span></li>
+<li><span class="l">Head of Marketing</span><span class="t duo"><span class="f" style="width:57%"></span><span class="f2" style="width:20.7%"></span></span><span class="v">2,100</span></li>
+<li><span class="l">Head of Revenue Ops</span><span class="t duo"><span class="f" style="width:31.9%"></span><span class="f2" style="width:15.2%"></span></span><span class="v">1,270</span></li>
+<li><span class="l">Chief Revenue Officer</span><span class="t duo"><span class="f" style="width:11.5%"></span><span class="f2" style="width:14.1%"></span></span><span class="v">690</span></li>
+</ul>
 <figcaption><b>Figure 3.</b> People in each buying role, by the size of their company. Current titles only. Total 6,760.</figcaption>
 </figure>
-<p>Chief Revenue Officer is the exception, with 380 people at the larger companies and 310 at the smaller ones. At 50 to 200 staff the VP of Sales is the biggest group, with 1,980 people.</p>
-</div>
+<p class="after">Chief Revenue Officer is the exception, with 380 people at the larger companies and 310 at the smaller ones. At 50 to 200 staff the VP of Sales is the biggest group, with 1,980 people.</p>
 </section>
-
-<section class="sec" data-section="signals">
-<span class="n">5</span>
-<div class="body">
-<h2>Who is growing</h2>
-<p>A company that is hiring salespeople or has new money is about to spend on its revenue stack. Hiring comes from job posts and funding from announcements.</p>
-<div class="tiles">
-<div class="tile"><b class="tn">780</b><span>Hiring in sales. 29% of the market.</span></div>
-<div class="tile"><b class="tn">142</b><span>Raised in 12 months. 5% of the market.</span></div>
-<div class="tile"><b class="tn">96</b><span>Hiring and raised. 4% of the market.</span></div>
+<section class="sec wrap" data-section="signals">
+<div class="split">
+<div class="hd">
+<h2><span class="n">5</span>Who is growing</h2>
 </div>
-<figure>
-<div class="fig"><svg viewBox="0 0 360 166" role="img" aria-label="Share of companies hiring, by segment">
-<line x1="271.2" y1="14" x2="271.2" y2="166" class="ref"/>
-<text x="274.2" y="9" class="mut" text-anchor="end">All segments, 29%</text>
-<text x="0" y="32.5" class="lab">Recruiting software</text>
-<rect x="164" y="20" width="136" height="16" rx="2" class="bar"/>
-<text x="306" y="32.5" class="val">37%</text>
-<text x="0" y="62.5" class="lab">HR management software</text>
-<rect x="164" y="50" width="118.9" height="16" rx="2" class="bar"/>
-<text x="288.9" y="62.5" class="val">32%</text>
-<text x="0" y="92.5" class="lab">Time and attendance</text>
-<rect x="164" y="80" width="114.8" height="16" rx="2" class="bar"/>
-<text x="284.8" y="92.5" class="val">31%</text>
-<text x="0" y="122.5" class="lab">Payroll software</text>
-<rect x="164" y="110" width="87.2" height="16" rx="2" class="bar"/>
-<text x="257.2" y="122.5" class="val">23%</text>
-<text x="0" y="152.5" class="lab">Benefits admin</text>
-<rect x="164" y="140" width="68.6" height="16" rx="2" class="bar"/>
-<text x="238.6" y="152.5" class="val">18%</text>
-</svg></div>
-<figcaption><b>Figure 4.</b> Share of companies in each segment that are hiring. The dashed line is the whole market, 29 percent.</figcaption>
+<p class="lede bd">A company that is hiring salespeople or has new money is about to spend on its revenue stack. Hiring comes from job posts and funding from announcements.</p>
+</div>
+<ul class="sigs" style="--ns:3">
+<li><b>780</b><span>Hiring in sales. 29% of the market.</span></li>
+<li><b>142</b><span>Raised in 12 months. 5% of the market.</span></li>
+<li><b>96</b><span>Hiring and raised. 4% of the market.</span></li>
+</ul>
+<figure class="split">
+<div class="hd">
+<ul class="key"><li><i class="k3"></i>All segments, 29%</li></ul>
+<figcaption><b>Figure 4.</b> Share of companies in each segment that are hiring. The marked line is the whole market, 29 percent.</figcaption>
+</div>
+<div class="bd">
+<ul class="bars" role="img" aria-label="Share of companies hiring, by segment">
+<li><span class="l">Recruiting software</span><span class="t mk"><span class="f" style="width:100%"></span><i style="left:78.9%"></i></span><span class="v">37%</span></li>
+<li><span class="l">HR management software</span><span class="t mk"><span class="f" style="width:87.4%"></span><i style="left:78.9%"></i></span><span class="v">32%</span></li>
+<li><span class="l">Time and attendance</span><span class="t mk"><span class="f" style="width:84.4%"></span><i style="left:78.9%"></i></span><span class="v">31%</span></li>
+<li><span class="l">Payroll software</span><span class="t mk"><span class="f" style="width:64.1%"></span><i style="left:78.9%"></i></span><span class="v">23%</span></li>
+<li><span class="l">Benefits admin</span><span class="t mk"><span class="f" style="width:50.4%"></span><i style="left:78.9%"></i></span><span class="v">18%</span></li>
+</ul>
+</div>
 </figure>
-<p>HR management software has 290 companies hiring, the most of any segment. 142 companies raised money in the last twelve months, and 96 of them are also hiring.</p>
-</div>
+<p class="after">HR management software has 290 companies hiring, the most of any segment. 142 companies raised money in the last twelve months, and 96 of them are also hiring.</p>
 </section>
-<section class="sec" data-section="peers">
-<span class="n">6</span>
-<div class="body">
-<h2>Where Lumen Payroll sits</h2>
-<p>Lumen is in the 51 to 200 band. The peer group is every HR and payroll software company in the South, split by headcount, with the number in each band that are hiring.</p>
-<figure>
-<div class="fig">
-<ul class="legend top"><li><i class="c1"></i>Lumen Payroll&#39;s size band</li><li><i class="c5"></i>other size bands</li></ul>
-<svg viewBox="0 0 360 166" role="img" aria-label="Companies in each size band and how many of them are hiring">
-<text x="360" y="9" class="mut" text-anchor="end">Hiring now</text>
-<text x="0" y="32.5" class="lab">11 to 50</text>
-<rect x="124" y="20" width="90.2" height="16" rx="2" class="bar3"/>
-<text x="220.2" y="32.5" class="val">214</text>
-<text x="360" y="32.5" class="val" text-anchor="end">19%</text>
-<text x="0" y="62.5" class="lab" style="font-weight:700">51 to 200</text>
-<rect x="124" y="50" width="110" height="16" rx="2" class="bar"/>
-<text x="240" y="62.5" class="val">261</text>
-<text x="360" y="62.5" class="val" text-anchor="end">34%</text>
-<text x="0" y="92.5" class="lab">201 to 500</text>
-<rect x="124" y="80" width="49.7" height="16" rx="2" class="bar3"/>
-<text x="179.7" y="92.5" class="val">118</text>
-<text x="360" y="92.5" class="val" text-anchor="end">36%</text>
-<text x="0" y="122.5" class="lab">501 to 1,000</text>
-<rect x="124" y="110" width="25.7" height="16" rx="2" class="bar3"/>
-<text x="155.7" y="122.5" class="val">61</text>
-<text x="360" y="122.5" class="val" text-anchor="end">44%</text>
-<text x="0" y="152.5" class="lab">1,001 and up</text>
-<rect x="124" y="140" width="15.2" height="16" rx="2" class="bar3"/>
-<text x="145.2" y="152.5" class="val">36</text>
-<text x="360" y="152.5" class="val" text-anchor="end">53%</text>
-</svg>
+<section class="sec wrap peers" data-section="peers">
+<div class="split">
+<div class="hd">
+<h2><span class="n">6</span>Where Lumen Payroll sits</h2>
+<p class="lede">Lumen is in the 51 to 200 band. The peer group is every HR and payroll software company in the South, split by headcount, with the number in each band that are hiring.</p>
 </div>
+<figure class="bd">
+<ul class="key"><li><i class="k3"></i>Lumen Payroll&#39;s size band</li><li><i></i>Other size bands</li></ul>
+<ul class="bars" role="img" aria-label="Companies in each size band and the share of each band that is hiring">
+<li><span class="l">11 to 50, 19% hiring</span><span class="t"><span class="f" style="width:82%"></span></span><span class="v">214</span></li>
+<li class="mine"><span class="l">51 to 200, 34% hiring</span><span class="t"><span class="f" style="width:100%"></span></span><span class="v">261</span></li>
+<li><span class="l">201 to 500, 36% hiring</span><span class="t"><span class="f" style="width:45.2%"></span></span><span class="v">118</span></li>
+<li><span class="l">501 to 1,000, 44% hiring</span><span class="t"><span class="f" style="width:23.4%"></span></span><span class="v">61</span></li>
+<li><span class="l">1,001 and up, 53% hiring</span><span class="t"><span class="f" style="width:13.8%"></span></span><span class="v">36</span></li>
+</ul>
 <figcaption><b>Figure 5.</b> Companies in Lumen Payroll&#39;s industry and region, by headcount, and the share of each band that is hiring. Lumen Payroll is in the 51 to 200 band. Total 690.</figcaption>
+<p class="after">Lumen&#39;s band is the largest in the South with 261 companies, and 88 of them are hiring. The next band up, 201 to 500, has 118 companies and 42 of them are hiring.</p>
 </figure>
-<p>Lumen&#39;s band is the largest in the South with 261 companies, and 88 of them are hiring. The next band up, 201 to 500, has 118 companies and 42 of them are hiring.</p>
 </div>
 </section>
-
-<section class="sec" data-section="plays">
-<span class="n">7</span>
-<div class="body" style="max-width:none">
-<h2>Three plays for Lumen Payroll</h2>
-<ol class="plays">
+<section class="sec plays-f" data-section="plays">
+<div class="wrap">
+<h2><span class="n">7</span>Three plays</h2>
+<p class="lede">For Lumen Payroll, drawn from the counts in this report.</p>
+<ul class="plays">
 <li><h3>Write to the 780 companies hiring in sales</h3><p>A company hiring salespeople is about to need a way to reach new buyers. 780 companies are hiring now, and 290 of them sell HR management software. Write to the head of sales about ramping new reps.</p></li>
 <li><h3>Go to the VP of Sales at smaller companies</h3><p>There are 1,980 VPs of Sales at companies with 50 to 200 staff, the largest single group in the report. They run the team and own the number, so write about pipeline, not about tools.</p></li>
 <li><h3>Reach the 96 that are funded and hiring</h3><p>142 companies raised money in the last twelve months and 96 of them are hiring. A funded company tends to pick vendors in the first few quarters, so a message now lands early.</p></li>
-</ol>
+</ul>
 </div>
 </section>
-
-<section class="sec last" data-section="next">
-<span class="n" aria-hidden="true"></span>
-<div class="body next">
-<p>The companies and people behind this report come from company profiles and hiring data, filtered to Lumen Payroll&#39;s market. Book 30 minutes and I will go through the list with you.</p>
+<section class="close wrap" data-section="next">
+<p class="ask">Book 30 minutes and I will go through the list with you.</p>
+<p class="src">The companies and people behind this report come from company profiles and hiring data, filtered to Lumen Payroll&#39;s market.</p>
+<div class="act">
+<a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#e4572e;color:#fff;text-decoration:none;font-weight:600">Book 30 minutes</a>
 <p class="sign"><b>Jordan Ellis</b><span>Account Executive, Forgeline</span></p>
-<div class="cta-wrap"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#e4572e;color:#fff;text-decoration:none;font-weight:600">Book 30 minutes</a></div>
-<p class="method" style="grid-column:1/-1"><b>How this was built.</b> The counts come from company profiles and hiring data at the time this page was filled. Companies: headquartered in the United States, 50 to 500 employees, in a software or HR services industry. People: a current title in one of four sales and marketing roles at those companies. Hiring means a sales hiring surge in the last three months. Raised means a funding round in the last 365 days. The peer group is the same industries in the South, split by headcount.</p>
 </div>
+<p class="method"><b>How this was built.</b> The counts come from company profiles and hiring data at the time this page was filled. Companies: headquartered in the United States, 50 to 500 employees, in a software or HR services industry. People: a current title in one of four sales and marketing roles at those companies. Hiring means a sales hiring surge in the last three months. Raised means a funding round in the last 365 days. The peer group is the same industries in the South, split by headcount.</p>
 </section>
 </main>
 </body>

@@ -4,8 +4,8 @@
   "tags": ["podcast", "interview", "guest", "invitation"],
   "featured": false,
   "needs": [],
-  "version": "1.0.1",
-  "updatedAt": "2026-10-29",
+  "version": "1.1.0",
+  "updatedAt": "2026-10-30",
   "samples": [
     { "id": "alder-mechanical", "label": "Alder Mechanical" },
     { "id": "northgate-credit-union", "label": "Northgate Credit Union" },

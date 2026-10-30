@@ -1,9 +1,7 @@
-{%- assign accent = brand.colors.primary | default: '#4f35d1' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#15171b' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Geist' -%}
-{%- assign font_body = brand.fonts.body | default: 'Geist' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign accent = brand.colors.primary | default: '#8daa67' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#161a17' -%}
+{%- assign font_head = brand.fonts.heading | default: 'STIX Two Text' -%}
+{%- assign font_body = brand.fonts.body | default: 'STIX Two Text' -%}
 {%- assign us = brand.name | default: 'our product' -%}
 <!doctype html>
 <html lang="en">
@@ -12,67 +10,105 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>How {{ us | escape }} fits the tools {{ account.name | escape }} runs</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap">
+{%- if font_head == 'STIX Two Text' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'STIX Two Text' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f3f3ef;color:#15171b;font-family:'{{ font_body }}',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.tf{--a:{{ accent }};--a2:{{ accent2 }};--ink:#15171b;--text:#34373d;--mute:#6a6e76;--line:#dcdbd4;--panel:#fff;--mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.tf h1,.tf h2{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-.02em;margin:0;text-wrap:balance}
-p{margin:0 0 1rem}
-.tf-mono{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0}
-.tf-wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
-.tf-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
-.tf-logo{height:24px;width:auto;display:block}
-.tf-brand{font-weight:700;font-size:1rem;letter-spacing:-.01em}
-.tf-top .tf-mono{text-align:right}
-.tf-hero{padding:2rem 0 1.5rem;max-width:40rem}
-.tf-kicker{display:flex;align-items:center;gap:.6rem;color:var(--a)}
-.tf-kicker::before{content:'';flex:none;width:8px;height:8px;background:var(--a2)}
-.tf h1{font-size:2.15rem;line-height:1.06;margin:.9rem 0 1rem}
-.tf-intro{font-size:1.1rem;line-height:1.5;color:var(--text)}
-.tf-stack{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem;max-width:40rem}
-.tf-stack p{margin:0;color:var(--text)}
-.tf-stack .tf-mono{margin-bottom:.4rem}
-.tf-next{padding:2rem 0 3rem;max-width:40rem}
-.tf-box{background:#fff;background:color-mix(in srgb,var(--a) 6%,#fff);border:1px solid var(--line);border-color:color-mix(in srgb,var(--a) 28%,var(--line));border-radius:12px;padding:1.4rem 1.2rem 1.2rem}
-.tf-box h2{font-size:1.5rem;margin-bottom:.6rem}
-.tf-box p{color:var(--text)}
-.tf-cta{margin:1.1rem 0 1.3rem}
-.tf-cta .ken-cta{background:var(--a)!important;display:inline-flex!important;align-items:center;min-height:48px;font-family:inherit}
-.tf-sign{font-size:.95rem;margin:0}
-.tf-sign b{font-weight:600}
-.tf-sign span{display:block;color:var(--mute)}
-@media (min-width:760px){body{font-size:17px}.tf-wrap{padding:0 2.5rem}.tf-top{padding:1.2rem 0}.tf-hero{padding:3.5rem 0 2rem}.tf h1{font-size:3.2rem;margin:1.1rem 0 1.2rem}.tf-intro{font-size:1.2rem}.tf-box{padding:2.2rem 2.4rem 2rem}}
+body{margin:0;background:#f4f5f1;color:#161a17;font-family:'{{ font_body }}',Georgia,'Times New Roman',serif;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.tf{--a:{{ accent }};--a2:{{ accent2 }};--ink:#161a17;--soft:#4a504b;--paper:#f4f5f1;--rule:#c9cec4;
+--on-a:#161a17;--on-a:color(from var(--a) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--on-a2:#f4f5f1;--on-a2:color(from var(--a2) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--m:clamp(1.125rem,3vw,2.5rem);overflow-x:clip}
+.tf h1,.tf h2,.nm{font-family:'{{ font_head }}',Georgia,'Times New Roman',serif;font-weight:600;letter-spacing:-.01em;line-height:1.1;text-wrap:balance;margin:0}
+.tf p{margin:0}
+.tf ol{margin:0;padding:0;list-style:none}
+.tf .ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{padding:0 var(--m);max-width:84rem;margin:0 auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;border-bottom:2px solid var(--ink)}
+.logo{height:26px;width:auto;display:block}
+.brand{font-weight:700;font-size:1rem}
+.tag{font-size:1rem;font-style:italic;color:var(--soft);text-align:right}
+.hero{padding:2rem 0 3rem}
+.hero h1{font-size:2rem;margin-bottom:1.2rem}
+.intro{font-size:1.125rem;max-width:38rem}
+.for{font-size:1rem;color:var(--soft);margin-top:.9rem!important}
+.for b{color:var(--ink);font-weight:600}
+.line{position:relative;display:grid;padding:.4rem 0}
+.tf .line{margin-top:2rem}
+.line::before{content:'';position:absolute;left:calc(1.2rem - 6px);top:0;bottom:0;width:12px;border-radius:6px;background:var(--a)}
+.stop{position:relative;padding:.75rem 0 .75rem 3.4rem;min-height:3.4rem}
+.stop::before{content:'';position:absolute;left:calc(1.2rem - 11px);top:1.05rem;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--ink)}
+.stop.us::before{width:30px;height:30px;left:calc(1.2rem - 15px);top:.85rem;border-radius:7px;background:var(--a2);border-color:var(--a2)}
+.stop.wait::before{background:var(--paper);border:3px dashed var(--soft)}
+.nm{font-size:1.25rem}
+.stop.wait .nm{font-weight:400;font-style:italic;color:var(--soft)}
+.next{background:var(--a);color:var(--on-a);padding:3.4rem 0 3rem}
+.next-in{display:grid;gap:1.4rem}
+.next h2{font-size:2rem}
+.next p{font-size:1.125rem;max-width:36rem}
+.btn{margin:1.4rem 0 1.2rem}
+.btn .ken-cta{display:inline-flex!important;align-items:center;min-height:52px;padding:.85rem 1.6rem!important;border-radius:999px!important;background:var(--a2)!important;color:var(--on-a2)!important;font-family:inherit;font-size:1rem;font-weight:600!important;text-decoration:none}
+.sign{font-size:1rem}
+.sign b{font-weight:600}
+.sign span{display:block}
+@media (min-width:860px){
+body{font-size:19px}
+.hero{padding:3rem 0 4rem}
+.hero h1{font-size:3rem}
+.line{grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);padding:0 30% 0 0}
+.tf .line{margin-top:5rem}
+.line::before{left:0;right:0;top:calc(6rem - 8px);bottom:auto;width:auto;height:16px;border-radius:8px}
+.stop{height:8rem;padding:0}
+.stop::before{left:calc(50% - 16px);top:calc(6rem - 16px);width:32px;height:32px;border-width:5px}
+.stop.us::before{left:calc(50% - 22px);top:calc(6rem - 22px);width:44px;height:44px;border-radius:9px}
+.nm{position:absolute;left:50%;bottom:3.4rem;transform-origin:left bottom;transform:rotate(-38deg);white-space:nowrap;font-size:2rem}
+.next{padding:5rem 0 4rem}
+.next-in{grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:4rem;align-items:end}
+.next h2{font-size:3rem}
+}
 </style>
 </head>
 <body>
 <main class="tf">
-<div class="tf-wrap">
-<header class="tf-top">
-{%- if brand.logo_url %}<img class="tf-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<span class="tf-brand">{{ brand.name | escape }}</span>{% else %}<span></span>{% endif -%}
-<p class="tf-mono">Integration fit for {{ account.name | escape }}</p>
+<div class="wrap">
+<header class="top">
+{%- if brand.logo_url %}<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="tag">Integration fit for {{ account.name | escape }}</p>
 </header>
-<section data-section="hero" class="tf-hero">
-<p class="tf-mono tf-kicker">{% if person.first_name %}Prepared for {{ person.first_name | escape }} {{ person.last_name | escape }}, {{ account.name | escape }}{% else %}Prepared for {{ account.name | escape }}{% endif %}</p>
+<section data-section="hero" class="hero">
 <h1>How {{ us | escape }} fits the tools {{ account.name | escape }} runs</h1>
-<p class="tf-intro">Hi {{ person.first_name | default: 'there' | escape }}. I am reading {{ account.domain | escape }} and its careers page to guess which tools your team already runs, and matching each one to the integrations {{ us | escape }} has today.</p>
+<p class="intro">Hi {{ person.first_name | default: 'there' | escape }}. I am reading {{ account.domain | escape }} and its careers page to guess which tools your team already runs, and matching each one to the integrations {{ us | escape }} has today. The list is not on this page yet. This link stays the same, so check back later today.</p>
+<p class="for">{% if person.first_name %}Prepared for <b>{{ person.first_name | escape }} {{ person.last_name | escape }}</b>, {{ account.name | escape }}{% else %}Prepared for <b>{{ account.name | escape }}</b>{% endif %}</p>
+<ol class="line" aria-label="Your stack, still being worked out">
+<li class="stop us"><span class="nm">{{ us | escape }}</span></li>
+<li class="stop wait"><span class="nm">Your tools</span></li>
+<li class="stop wait"><span class="nm">still being read</span></li>
+</ol>
 </section>
-<aside class="tf-stack">
-<p class="tf-mono">Your stack, as we guess it</p>
-<p>The list is not on this page yet. This link stays the same, so check back later today.</p>
-</aside>
-<section data-section="next" class="tf-next">
-<div class="tf-box">
+</div>
+<section data-section="next" class="next">
+<div class="wrap next-in">
 <h2>Rather tell me your stack?</h2>
+<div>
 <p>Grab 20 minutes and name the two or three systems your team lives in. I will walk you through how {{ us | escape }} plugs into each, and say plainly where it does not yet.</p>
-<div class="tf-cta">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
-<p class="tf-sign"><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+<div class="btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}</div>
+<p class="sign"><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</div>
 </div>
 </section>
-</div>
 </main>
 </body>
 </html>

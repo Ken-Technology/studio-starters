@@ -5,213 +5,247 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Be our guest on Dispatch</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700&family=Instrument+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=TikTok+Sans:wdth,wght@100..150,400..800&display=swap">
 <style>
-:root{--p:#a8203f;--s:#1b1c25;--fh:'Big Shoulders Display','Archivo Narrow','Arial Narrow',ui-sans-serif,system-ui,sans-serif;--fb:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;--paper:#f5f5f1;--ink:#1b1b1f;--mute:color-mix(in srgb,var(--ink) 60%,var(--paper));--rule:color-mix(in srgb,var(--ink) 14%,var(--paper));--rule-soft:color-mix(in srgb,var(--ink) 8%,var(--paper));--ground:color-mix(in srgb,var(--s) 28%,#121216);--glow:color-mix(in srgb,var(--p) 52%,#fff);--on-dark:#f6f5f2;--on-dark-mute:color-mix(in srgb,#f6f5f2 62%,var(--ground));--tint:color-mix(in srgb,var(--p) 7%,var(--paper))}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
-.pi{max-width:66rem;margin:0 auto;padding:0 1.25rem 3rem}
-.pi h1,.pi h2,.pi h3{font-family:var(--fh);font-weight:700;line-height:1.02;letter-spacing:0;margin:0;text-wrap:balance}
-.pi p{margin:0 0 .9rem}
-.pi a{color:var(--p)}
-.pi a:focus-visible,.pi .ken-cta:focus-visible{outline:2px solid var(--p);outline-offset:3px}
-.pi-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
-.pi-logo{height:24px;width:auto;display:block}
-.pi-brand{font-weight:700;font-size:.95rem;margin:0;white-space:nowrap}
-.pi-show{font-size:.9rem;color:var(--mute);margin:0;text-align:right}
-.pi-show b{color:var(--ink);font-weight:700}
-.pi-hero{display:grid;gap:1.6rem;padding:1.25rem 0 2.2rem}
-.pi-art{position:relative;aspect-ratio:1/1;background:var(--ground);color:var(--on-dark);padding:1.3rem 1.3rem 1.2rem;display:flex;flex-direction:column;justify-content:space-between;border-radius:4px}
-.pi-art-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
-.pi-art-show{font-family:var(--fh);font-weight:700;font-size:1.25rem;line-height:1;color:var(--glow);margin:0;letter-spacing:.01em}
-.pi-art-kind{font-size:.82rem;color:var(--on-dark-mute);margin:0;white-space:nowrap}
-.pi-wave{display:block;width:100%;height:auto;color:var(--glow);margin:.6rem 0}
-.pi-lines{display:grid;gap:.6rem;margin:.6rem 0}
-.pi-lines span{display:block;height:4px;background:var(--glow);border-radius:2px}
-.pi-lines span:nth-child(2){width:74%}
-.pi-lines span:nth-child(3){width:88%}
-.pi-lines span:nth-child(4){width:52%;margin-bottom:.5rem}
-.pi-lines span:nth-child(5){width:94%}
-.pi-lines span:nth-child(6){width:66%}
-.pi-art-with{font-size:.85rem;color:var(--on-dark-mute);margin:0 0 .25rem}
-.pi-art-name{font-family:var(--fh);font-weight:700;font-size:2.8rem;line-height:.95;margin:0 0 .5rem;overflow-wrap:anywhere;text-wrap:balance}
-.pi-art-sub{font-size:.92rem;line-height:1.35;color:var(--on-dark-mute);margin:0}
-.pi-art-sub b{color:var(--on-dark);font-weight:400}
-.pi-for{font-size:.92rem;color:var(--mute);margin:0 0 .8rem}
-.pi-for b{color:var(--ink);font-weight:700}
-.pi h1{font-size:2.7rem;margin:0 0 1.1rem}
-.pi-letter p{max-width:34rem}
-.pi-letter .pi-lead{font-size:1.1rem;line-height:1.5}
-.pi-act{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.2rem;margin:1.3rem 0 1.4rem}
-.pi .ken-cta{line-height:1.25!important;border-radius:4px!important;font-size:1rem}
-.pi-or{font-size:.92rem;color:var(--mute);margin:0}
-.pi-sig{font-size:.95rem;margin:0}
-.pi-sig b{display:block;font-family:var(--fh);font-weight:700;font-size:1.35rem;line-height:1.1;letter-spacing:.005em}
-.pi-sig span{color:var(--mute)}
-.pi-sec{display:grid;gap:.6rem;padding:1.9rem 0;border-top:1px solid var(--rule)}
-.pi-lbl{font-size:.86rem;font-weight:700;color:var(--mute);margin:0;line-height:1.3;padding-top:.25rem}
-.pi h2{font-size:2.05rem;margin:0 0 .8rem}
-.pi h3{font-family:var(--fb);font-weight:700;font-size:1rem;margin:1.6rem 0 .5rem}
-.pi-text{max-width:35rem}
-.pi-text p{font-size:1.05rem}
-.pi-qs{list-style:none;margin:.4rem 0 0;padding:0;max-width:40rem}
-.pi-qs li{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:.25rem .5rem;padding:1rem 0;border-top:1px solid var(--rule-soft)}
-.pi-qs li:first-child{border-top:0;padding-top:.3rem}
-.pi-qn{font-family:var(--fh);font-weight:700;font-size:2.1rem;line-height:.9;color:var(--p);padding-top:.1rem}
-.pi-q{font-family:var(--fh);font-weight:700;font-size:1.45rem;line-height:1.1;margin:0 0 .35rem!important;text-wrap:balance}
-.pi-qw{font-size:.95rem;color:var(--mute);margin:0!important}
-.pi-after{font-size:.95rem;color:var(--mute);margin:1rem 0 0!important;max-width:40rem}
-.pi-steps{list-style:none;margin:0;padding:0;counter-reset:step}
-.pi-steps li{position:relative;padding:.9rem 0 .9rem 2.5rem;border-top:1px solid var(--rule-soft);counter-increment:step}
-.pi-steps li:first-child{border-top:0;padding-top:.2rem}
-.pi-steps li::before{content:counter(step);position:absolute;left:0;top:.85rem;font-family:var(--fh);font-weight:700;font-size:1.6rem;line-height:1;color:var(--p)}
-.pi-steps li:first-child::before{top:.15rem}
-.pi-steps b{display:block;font-weight:700;margin:0 0 .15rem}
-.pi-steps p{margin:0;color:var(--mute);font-size:.97rem}
-.pi-tag{font-family:var(--fh);font-weight:700;font-size:1.6rem;line-height:1.08;margin:0 0 1.1rem!important;max-width:30ch;text-wrap:balance}
-.pi-facts{margin:0;display:grid;gap:0}
-.pi-facts div{display:grid;gap:.15rem;padding:.8rem 0;border-top:1px solid var(--rule-soft)}
-.pi-facts div:first-child{border-top:0;padding-top:0}
-.pi-facts dt{font-size:.86rem;font-weight:700;color:var(--mute)}
-.pi-facts dd{margin:0}
-.pi-eps{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-soft)}
-.pi-eps li{display:grid;gap:.1rem;padding:.7rem 0;border-bottom:1px solid var(--rule-soft)}
-.pi-eps b{font-family:var(--fh);font-weight:700;font-size:1.25rem;line-height:1.1}
-.pi-eps span{font-size:.92rem;color:var(--mute)}
-.pi-book{background:var(--tint);border-top:1px solid var(--rule);margin:0 -1.25rem;padding:2rem 1.25rem 2.2rem}
-.pi-book-in{max-width:66rem;margin:0 auto;display:grid;gap:.6rem}
-.pi-book h2{margin-bottom:.6rem}
-.pi-book p{max-width:34rem}
-.pi-book .pi-act{margin:.6rem 0 1.2rem}
-.pi-decline{font-size:.95rem;color:var(--mute)}
-.pi-foot{font-size:.84rem;color:var(--mute);padding:1.4rem 0 0;display:grid;gap:.2rem}
-.pi-foot b{color:var(--ink);font-weight:700}
-@media (min-width:760px){
-body{font-size:18px}
-.pi{padding:0 2rem 4rem}
-.pi-top{padding:1.2rem 0}
-.pi-hero{grid-template-columns:minmax(0,25rem) minmax(0,1fr);gap:3.2rem;align-items:start;padding:2.6rem 0 3rem}
-.pi-art{padding:1.7rem 1.7rem 1.6rem;border-radius:6px}
-.pi-art-show{font-size:1.45rem}
-.pi-art-name{font-size:3.6rem}
-.pi-letter{padding-top:.4rem}
-.pi h1{font-size:4rem;margin-bottom:1.3rem}
-.pi-sec{grid-template-columns:11rem minmax(0,1fr);gap:2.5rem;padding:2.6rem 0}
-.pi-lbl{font-size:.92rem;padding-top:.5rem}
-.pi h2{font-size:2.6rem}
-.pi-q{font-size:1.75rem}
-.pi-qn{font-size:2.6rem}
-.pi-qs li{grid-template-columns:3rem minmax(0,1fr);padding:1.2rem 0}
-.pi-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.6rem}
-.pi-steps li,.pi-steps li:first-child{border-top:2px solid var(--ink);padding:1rem 0 0 0}
-.pi-steps li::before,.pi-steps li:first-child::before{position:static;display:block;font-size:2rem;margin:0 0 .5rem}
-.pi-tag{font-size:1.9rem}
-.pi-show-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.4rem;align-items:start}
-.pi .pi-eps-h{margin-top:0}
-.pi-book{margin:0 -2rem;padding:2.8rem 2rem 3rem}
-.pi-book-in{grid-template-columns:11rem minmax(0,1fr);gap:2.5rem}
-.pi-foot{grid-template-columns:1fr auto;align-items:end;padding-top:1.6rem}
+:root{
+  --p:#f4a98c;
+  --s:#7ab5e4;
+  --fh:'TikTok Sans','Arial Black',ui-sans-serif,system-ui,sans-serif;
+  --fb:'TikTok Sans',ui-sans-serif,system-ui,sans-serif;
+  --wide:150%;
+  /* flat fields at full strength: the poster (primary), the questions (secondary), the show, one black band */
+  --f3:#d4eda7;
+  --black:#161615;
+  --paper:#fbfaf6;
+  --ink:#111;
+  --on-p:#111;
+  --on-s:#111;
+  --step-small:clamp(.875rem,.84rem + .1vw,.9375rem);
+  --step-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --step-lead:clamp(1.25rem,1.05rem + .7vw,1.625rem);
+  --step-head:clamp(1.875rem,1rem + 2.8vw,3.5rem);
+  --step-shout:clamp(2.125rem,.3rem + 7.2vw,7.5rem);
+  --margin:clamp(1rem,2.4vw,2rem);
 }
-@media print{.pi-book{background:#fff}.ken-cta{display:none}}
+@supports (color:oklch(from red l c h)){:root{
+  --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+  --on-s:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--p)}
+body{margin:0;background:var(--p);color:var(--on-p);font:400 var(--step-body)/1.45 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--fh);margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:.08em}
+a:focus-visible,.ken-cta:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+.frame{padding-left:var(--margin);padding-right:var(--margin)}
+.shout{font-family:var(--fh);font-weight:800;font-stretch:var(--wide);text-transform:uppercase;line-height:.92;letter-spacing:-.01em}
+.f-p{background:var(--p);color:var(--on-p)}
+.f-s{background:var(--s);color:var(--on-s)}
+.f-3{background:var(--f3);color:var(--ink)}
+.f-b{background:var(--black);color:#f2f2f2}
+/* the one button: the field's ink as a block, the field's colour as its words */
+.pi .ken-cta{display:inline-flex!important;align-items:center;min-height:3.25rem;padding:.9rem 1.6rem!important;border-radius:0!important;font-family:var(--fb);font-weight:700;font-size:var(--step-body);line-height:1.2;text-decoration:none}
+.f-p .ken-cta{background:var(--on-p)!important;color:var(--p)!important}
+.f-3 .ken-cta{background:var(--ink)!important;color:var(--f3)!important}
+
+/* first screen: the shout on the poster field, the show card stuck on across the seam */
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding-top:1rem;font-size:var(--step-small)}
+.top b{font-weight:700}
+.top .brand{font-family:var(--fh);font-weight:800;font-size:var(--step-body)}
+.top img{height:26px;width:auto;display:block}
+.top .show{text-align:right;max-width:24rem}
+.poster{position:relative;padding-top:2.4rem;padding-bottom:2.2rem}
+.poster h1{font-size:var(--step-shout);position:relative;z-index:1}
+.for{margin-top:1.4rem;font-size:var(--step-body);max-width:34ch}
+.meta .act{margin-top:1.4rem}
+.for b{font-weight:700}
+.card{background:var(--paper);color:var(--ink);padding:1.2rem 1.25rem 1.3rem;margin:2.2rem 0 -4.5rem auto;width:min(88%,22rem);transform:rotate(-4deg);position:relative;z-index:2;display:grid;gap:.8rem}
+.card .title{font-family:var(--fh);font-weight:800;font-stretch:var(--wide);text-transform:uppercase;font-size:var(--step-lead);line-height:1}
+.card .kind{font-size:var(--step-small)}
+.card .name{font-family:var(--fh);font-weight:800;font-size:var(--step-head);line-height:.95;letter-spacing:-.02em;overflow-wrap:anywhere}
+.card .sub{font-size:var(--step-small);margin-top:.4rem}
+.card .sub b{font-weight:700}
+.wave{display:block;width:100%;height:44px;color:var(--p)}
+.lines{display:grid;gap:7px}
+.lines span{display:block;height:6px;background:var(--p)}
+.lines span:nth-child(2){width:74%}
+.lines span:nth-child(3){width:88%}
+.lines span:nth-child(4){width:52%}
+.band{padding-top:7rem;padding-bottom:3rem;display:grid;gap:1.4rem}
+.band .lead{font-size:var(--step-lead);line-height:1.35;max-width:34ch}
+.band .more{max-width:52ch}
+.act{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 1.4rem}
+.or{font-size:var(--step-small)}
+.sig b{display:block;font-family:var(--fh);font-weight:800;font-size:var(--step-lead);line-height:1.1}
+.sig span{font-size:var(--step-small)}
+@keyframes stick{from{transform:translateY(-24px) rotate(2deg)}to{transform:rotate(-4deg)}}
+.card{animation:stick .8s cubic-bezier(.2,.8,.2,1) both}
+
+/* the angle and the three cue cards */
+.angle{padding-top:4.5rem;padding-bottom:5rem;display:grid;gap:1.6rem}
+.angle h2{font-size:var(--step-head);font-weight:800;line-height:1;letter-spacing:-.02em}
+.ep .title{font-family:var(--fh);font-weight:700;font-size:clamp(1.375rem,1rem + 1.2vw,2.125rem);line-height:1.15;margin-top:1rem;max-width:24ch;text-wrap:balance}
+.angle .text{font-size:var(--step-lead);line-height:1.4;max-width:46ch}
+.angle h3{font-size:var(--step-lead);font-weight:800;margin-top:1.6rem}
+.cues{list-style:none;margin:0;padding:0;display:grid;gap:1.1rem;counter-reset:q}
+.cues li{background:var(--paper);color:var(--ink);padding:1.2rem 1.25rem 1.4rem;display:grid;gap:.6rem;counter-increment:q}
+.cues li:nth-child(1){transform:rotate(-1.2deg)}
+.cues li:nth-child(2){transform:rotate(.9deg)}
+.cues li:nth-child(3){transform:rotate(-.6deg)}
+.cues li::before{content:counter(q);font-family:var(--fh);font-weight:800;font-stretch:var(--wide);font-size:var(--step-head);line-height:.9}
+.cues .q{font-family:var(--fh);font-weight:700;font-size:var(--step-lead);line-height:1.2}
+.cues .w{font-size:var(--step-small);line-height:1.45}
+.after{max-width:52ch}
+
+/* what it takes: one verb a line on the black band */
+.takes{padding-top:4.5rem;padding-bottom:4.5rem}
+.takes h2,.about h2,.book h2{font-size:var(--step-head);font-weight:800;line-height:1;letter-spacing:-.02em}
+.steps{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:1.6rem}
+.steps li{display:grid;gap:.4rem}
+.steps b{font-family:var(--fh);font-weight:800;font-stretch:var(--wide);text-transform:uppercase;font-size:clamp(1.75rem,.6rem + 3.6vw,4.25rem);line-height:.95;letter-spacing:-.01em}
+.steps p{max-width:44ch}
+
+/* the show */
+.about{padding-top:4.5rem;padding-bottom:4.5rem;display:grid;gap:2rem}
+.tag{font-size:var(--step-lead);line-height:1.35;max-width:36ch;margin-top:1rem}
+.facts{margin:0;display:grid;gap:1.1rem}
+.facts dt{font-weight:700}
+.facts dd{margin:.15rem 0 0}
+.eps h3{font-size:var(--step-lead);font-weight:800;margin-bottom:.9rem}
+.eps ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.eps li{background:color-mix(in srgb,var(--f3) 70%,#fff);padding:.9rem 1rem;display:grid;gap:.2rem}
+.eps b{font-family:var(--fh);font-weight:700;font-size:var(--step-body);line-height:1.25}
+.eps span{font-size:var(--step-small)}
+
+/* book it, back on the poster field */
+.book{padding-top:4.5rem;padding-bottom:3rem;display:grid;gap:1.2rem}
+.book p{max-width:52ch}
+.decline{font-size:var(--step-small)}
+.foot{padding-top:2rem;padding-bottom:2rem;display:grid;gap:.3rem;font-size:var(--step-small)}
+.foot b{font-weight:700}
+
+@media (min-width:860px){
+  .top{padding-top:1.5rem}
+  .poster{padding-top:4rem;padding-bottom:3rem;min-height:min(80svh,44rem);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:1fr auto;column-gap:2rem}
+  .poster .head{display:contents}
+  .poster h1{grid-column:1 / -1;align-self:center}
+  .poster .meta{grid-column:1;grid-row:2;align-self:start}
+  .card{grid-column:2;grid-row:2;margin:-1rem 0 -12rem;width:auto;max-width:23rem;justify-self:end;padding:1.6rem 1.6rem 1.7rem}
+  .band{padding-top:3rem;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:3rem;align-items:start}
+  .band>*{grid-column:1}
+  .angle{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:3rem;padding-top:7rem;padding-bottom:7rem}
+  .angle .ep{grid-column:1}
+  .angle .text{grid-column:2;grid-row:1}
+  .angle h3,.cues,.after{grid-column:1 / -1}
+  .cues{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem;align-items:start}
+  .takes{padding-top:7rem;padding-bottom:7rem}
+  .steps{gap:1.2rem}
+  .steps li{grid-template-columns:minmax(0,8fr) minmax(0,4fr);align-items:end;gap:2rem}
+  .about{grid-template-columns:minmax(0,6fr) minmax(0,6fr);column-gap:3rem;padding-top:7rem;padding-bottom:7rem}
+  .about .intro{grid-column:1 / -1}
+  .solo .facts{grid-column:1 / -1;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:3rem;row-gap:1.6rem}
+  .book{grid-template-columns:minmax(0,6fr) minmax(0,6fr);column-gap:3rem;padding-top:7rem}
+  .book h2{grid-column:1;grid-row:1 / span 4}
+  .foot{grid-template-columns:1fr auto}
+}
+@media (prefers-reduced-motion:reduce){.card{animation:none}}
+@media print{.card,.cues li{animation:none;transform:none}.ken-cta{display:none!important}}
 </style>
 </head>
 <body>
 <main class="pi">
-<header class="pi-top"><p class="pi-brand">Fieldnote</p><p class="pi-show"><b>Dispatch</b>, a video podcast</p>
-</header>
-
-<section data-section="invite" class="pi-hero">
-<div class="pi-art">
-<div class="pi-art-top">
-<p class="pi-art-show">Dispatch</p>
-<p class="pi-art-kind">Video, 40 minutes</p>
-</div>
-<svg class="pi-wave" viewBox="0 0 320 64" preserveAspectRatio="none" aria-hidden="true" fill="currentColor"><rect x="0" y="26" width="4" height="12" rx="2"/><rect x="8" y="18" width="4" height="28" rx="2"/><rect x="16" y="22" width="4" height="20" rx="2"/><rect x="24" y="8" width="4" height="48" rx="2"/><rect x="32" y="14" width="4" height="36" rx="2"/><rect x="40" y="24" width="4" height="16" rx="2"/><rect x="48" y="4" width="4" height="56" rx="2"/><rect x="56" y="12" width="4" height="40" rx="2"/><rect x="64" y="20" width="4" height="24" rx="2"/><rect x="72" y="28" width="4" height="8" rx="2"/><rect x="80" y="16" width="4" height="32" rx="2"/><rect x="88" y="6" width="4" height="52" rx="2"/><rect x="96" y="22" width="4" height="20" rx="2"/><rect x="104" y="10" width="4" height="44" rx="2"/><rect x="112" y="26" width="4" height="12" rx="2"/><rect x="120" y="18" width="4" height="28" rx="2"/><rect x="128" y="2" width="4" height="60" rx="2"/><rect x="136" y="14" width="4" height="36" rx="2"/><rect x="144" y="24" width="4" height="16" rx="2"/><rect x="152" y="8" width="4" height="48" rx="2"/><rect x="160" y="20" width="4" height="24" rx="2"/><rect x="168" y="28" width="4" height="8" rx="2"/><rect x="176" y="12" width="4" height="40" rx="2"/><rect x="184" y="4" width="4" height="56" rx="2"/><rect x="192" y="18" width="4" height="28" rx="2"/><rect x="200" y="24" width="4" height="16" rx="2"/><rect x="208" y="10" width="4" height="44" rx="2"/><rect x="216" y="16" width="4" height="32" rx="2"/><rect x="224" y="26" width="4" height="12" rx="2"/><rect x="232" y="6" width="4" height="52" rx="2"/><rect x="240" y="20" width="4" height="24" rx="2"/><rect x="248" y="14" width="4" height="36" rx="2"/><rect x="256" y="24" width="4" height="16" rx="2"/><rect x="264" y="8" width="4" height="48" rx="2"/><rect x="272" y="18" width="4" height="28" rx="2"/><rect x="280" y="26" width="4" height="12" rx="2"/><rect x="288" y="12" width="4" height="40" rx="2"/><rect x="296" y="22" width="4" height="20" rx="2"/><rect x="304" y="16" width="4" height="32" rx="2"/><rect x="312" y="28" width="4" height="8" rx="2"/></svg>
-<div>
-<p class="pi-art-with">An episode with</p>
-<p class="pi-art-name">Teresa Quinlan</p>
-<p class="pi-art-sub"><b>VP of Operations</b>, Alder Mechanical</p>
-</div>
-</div>
-<div class="pi-letter">
-<p class="pi-for">An invitation for <b>Teresa Quinlan</b>, VP of Operations at Alder Mechanical</p>
-<h1>Be our guest, Teresa.</h1>
-<p class="pi-lead">You brought Alder&#39;s 24-hour service desk in-house after eight years with an answering service, and wrote up what broke in the first month. That is exactly the kind of decision our listeners want to hear worked through.</p>
-<p>It is 40 minutes on a video call, recorded remotely, with no prep beyond this page. The angle I have in mind and three of the questions are below. If they are off, say so and I will reshape them.</p>
-<div class="pi-act">
-<a class="ken-cta" data-ken-cta="book-top" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#a8203f;color:#fff;text-decoration:none;font-weight:600">Pick a time</a>
-<p class="pi-or">or reply to my email with a week that works</p>
-</div>
-<p class="pi-sig"><b>Noah Castellanos</b><span>Head of Customer Marketing, Fieldnote. Host of Dispatch</span></p>
-</div>
+<section data-section="invite">
+  <div class="f-p frame">
+    <header class="top"><p class="brand">Fieldnote</p>
+      <p class="show"><b>Dispatch</b>, a video podcast</p>
+    </header>
+    <div class="poster">
+      <div class="head">
+        <h1 class="shout">Be our guest, Teresa.</h1>
+        <div class="meta">
+          <p class="for">An invitation for <b>Teresa Quinlan</b>, VP of Operations at Alder Mechanical</p>
+          <div class="act">
+            <a class="ken-cta" data-ken-cta="book-top" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#f4a98c;color:#fff;text-decoration:none;font-weight:600">Pick a time</a>
+            <p class="or">or reply to my email with a week that works</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <p class="title">Dispatch</p>
+        <svg class="wave" viewBox="0 0 160 44" preserveAspectRatio="none" aria-hidden="true" fill="currentColor"><rect x="0" y="17" width="5" height="10"/><rect x="9" y="11" width="5" height="22"/><rect x="18" y="4" width="5" height="36"/><rect x="27" y="14" width="5" height="16"/><rect x="36" y="0" width="5" height="44"/><rect x="45" y="9" width="5" height="26"/><rect x="54" y="19" width="5" height="6"/><rect x="63" y="6" width="5" height="32"/><rect x="72" y="13" width="5" height="18"/><rect x="81" y="2" width="5" height="40"/><rect x="90" y="16" width="5" height="12"/><rect x="99" y="8" width="5" height="28"/><rect x="108" y="18" width="5" height="8"/><rect x="117" y="5" width="5" height="34"/><rect x="126" y="12" width="5" height="20"/><rect x="135" y="3" width="5" height="38"/><rect x="144" y="15" width="5" height="14"/><rect x="153" y="10" width="5" height="24"/></svg>
+        <div>
+          <p class="name">Teresa Quinlan</p>
+          <p class="sub"><b>VP of Operations</b>, Alder Mechanical</p>
+        </div>
+        <p class="kind">An episode. Video, 40 minutes</p>
+      </div>
+    </div>
+  </div>
+  <div class="f-3 frame band">
+    <p class="lead">You brought Alder&#39;s 24-hour service desk in-house after eight years with an answering service, and wrote up what broke in the first month. That is exactly the kind of decision our listeners want to hear worked through.</p>
+    <p class="more">It is 40 minutes on a video call, recorded remotely, with no prep beyond this page. The angle I have in mind and three of the questions are below. If they are off, say so and I will reshape them.</p>
+    <p class="sig"><b>Noah Castellanos</b><span>Head of Customer Marketing, Fieldnote. Host of Dispatch</span></p>
+  </div>
 </section>
 
-<section data-section="angle" class="pi-sec">
-<p class="pi-lbl">The angle</p>
-<div>
-<h2>Bringing a 24-hour service desk in-house at Alder Mechanical</h2>
-<div class="pi-text"><p>We would spend most of the time on the service desk: why you ended the answering service, how you staffed dispatchers around the clock, and what the first month taught you about the night-to-morning handoff and the parts van nobody restocked. Then the third branch: how Spokane shares one desk and one board with Seattle and Portland, and what you would set up differently if you opened a fourth. No product talk from our side and no company history, just the decisions and what they cost.</p></div>
-<h3>Three questions we would start with</h3>
-<ol class="pi-qs">
-<li><span class="pi-qn" aria-hidden="true">1</span><div><p class="pi-q">What made you end eight years with the answering service, and what was the first week like?</p><p class="pi-qw">From your post on bringing the service desk in-house.</p></div></li>
-<li><span class="pi-qn" aria-hidden="true">2</span><div><p class="pi-q">How do three branches with their own crews share one service desk without fighting over the board?</p><p class="pi-qw">Your site says every branch runs its own crews and shares one desk, and the dispatch team wrote about keeping one board.</p></div></li>
-<li><span class="pi-qn" aria-hidden="true">3</span><div><p class="pi-q">If you opened a fourth branch next year, what would you set up on day one that Spokane did not have?</p><p class="pi-qw">The Spokane branch opened in September.</p></div></li>
-</ol>
-<p class="pi-after">You get the full list a week before we record, and you can strike any of them.</p>
-</div>
+<section data-section="angle" class="f-s frame angle">
+  <div class="ep">
+    <h2>The angle</h2>
+    <p class="title">Bringing a 24-hour service desk in-house at Alder Mechanical</p>
+  </div>
+  <p class="text">We would spend most of the time on the service desk: why you ended the answering service, how you staffed dispatchers around the clock, and what the first month taught you about the night-to-morning handoff and the parts van nobody restocked. Then the third branch: how Spokane shares one desk and one board with Seattle and Portland, and what you would set up differently if you opened a fourth. No product talk from our side and no company history, just the decisions and what they cost.</p>
+  <h3>Three questions we would start with</h3>
+  <ol class="cues">
+    <li><p class="q">What made you end eight years with the answering service, and what was the first week like?</p><p class="w">From your post on bringing the service desk in-house.</p></li>
+    <li><p class="q">How do three branches with their own crews share one service desk without fighting over the board?</p><p class="w">Your site says every branch runs its own crews and shares one desk, and the dispatch team wrote about keeping one board.</p></li>
+    <li><p class="q">If you opened a fourth branch next year, what would you set up on day one that Spokane did not have?</p><p class="w">The Spokane branch opened in September.</p></li>
+  </ol>
+  <p class="after">You get the full list a week before we record, and you can strike any of them.</p>
 </section>
 
-<section data-section="takes" class="pi-sec">
-<p class="pi-lbl">What it takes</p>
-<ol class="pi-steps">
-<li><b>Pick a time</b><p>40 minutes, at a slot that suits you. Pick one below or reply with a week that works.</p></li>
-<li><b>We record</b><p>Remote, over a video call. You need a quiet room and a laptop; we send the link and handle the rest.</p></li>
-<li><b>Approve the cut</b><p>You see the edit before anyone else does and can strike anything you want out.</p></li>
-<li><b>It goes out</b><p>On YouTube, Apple Podcasts and Spotify, about three weeks after we record. We send you the episode and short clips to share.</p></li>
-</ol>
+<section data-section="takes" class="f-b frame takes">
+  <h2>What it takes</h2>
+  <ol class="steps">
+    <li><b>Pick a time</b><p>40 minutes, at a slot that suits you. Pick one below or reply with a week that works.</p></li>
+    <li><b>We record</b><p>Remote, over a video call. You need a quiet room and a laptop; we send the link and handle the rest.</p></li>
+    <li><b>Approve the cut</b><p>You see the edit before anyone else does and can strike anything you want out.</p></li>
+    <li><b>It goes out</b><p>On YouTube, Apple Podcasts and Spotify, about three weeks after we record. We send you the episode and short clips to share.</p></li>
+  </ol>
 </section>
 
-<section data-section="show" class="pi-sec">
-<p class="pi-lbl">The show</p>
-<div>
-<p class="pi-tag">Conversations with the people who run field service, about how the work actually gets scheduled, staffed and done.</p>
-<div class="pi-show-grid">
-<dl class="pi-facts">
-<div><dt>Who listens</dt><dd>Operations and service leaders at trades contractors, most of them running crews across several branches.</dd></div>
-<div><dt>Format</dt><dd>Video and audio, 40 minutes an episode</dd></div>
-<div><dt>Where it goes out</dt><dd>YouTube, Apple Podcasts and Spotify</dd></div>
-<div><dt>Hosted by</dt><dd>Noah Castellanos hosts every episode and does the prep, so the conversation starts where your work is, not at the beginning.</dd></div>
-</dl>
-<div>
-<h3 class="pi-eps-h">Recent episodes</h3>
-<ul class="pi-eps">
-<li><b>Why we stopped paying technicians by the ticket</b><span>Director of Service at a plumbing contractor in Colorado</span></li>
-<li><b>The dispatcher who runs the whole night shift</b><span>Service Manager at a mechanical contractor in Texas</span></li>
-<li><b>Opening a second branch without losing the first</b><span>VP of Operations at an electrical contractor in Ohio</span></li>
-</ul>
-</div>
-</div>
-</div>
+<section data-section="show" class="f-3 frame about">
+  <div class="intro">
+    <h2>About Dispatch</h2>
+    <p class="tag">Conversations with the people who run field service, about how the work actually gets scheduled, staffed and done.</p>
+  </div>
+  <dl class="facts">
+    <div><dt>Who listens</dt><dd>Operations and service leaders at trades contractors, most of them running crews across several branches.</dd></div>
+    <div><dt>Format</dt><dd>Video and audio, 40 minutes an episode</dd></div>
+    <div><dt>Where it goes out</dt><dd>YouTube, Apple Podcasts and Spotify</dd></div>
+    <div><dt>Hosted by</dt><dd>Noah Castellanos hosts every episode and does the prep, so the conversation starts where your work is, not at the beginning.</dd></div>
+  </dl>
+  <div class="eps">
+    <h3>Recent episodes</h3>
+    <ul>
+      <li><b>Why we stopped paying technicians by the ticket</b><span>Director of Service at a plumbing contractor in Colorado</span></li>
+      <li><b>The dispatcher who runs the whole night shift</b><span>Service Manager at a mechanical contractor in Texas</span></li>
+      <li><b>Opening a second branch without losing the first</b><span>VP of Operations at an electrical contractor in Ohio</span></li>
+    </ul>
+  </div>
 </section>
 
-<section data-section="book" class="pi-book">
-<div class="pi-book-in">
-<p class="pi-lbl">Book it</p>
-<div>
-<h2>Pick a time to record</h2>
-<p>Choose a slot that suits you and I will send the link and the full question list a week ahead. If nothing fits, reply to my email with a week that works and I will find a time.</p>
-<div class="pi-act"><a class="ken-cta" data-ken-cta="book" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#a8203f;color:#fff;text-decoration:none;font-weight:600">Pick a recording time</a></div>
-<p class="pi-decline">Not the right moment? Reply and say when would be, and I will come back then.</p>
-<p class="pi-sig"><b>Noah Castellanos</b><span>Head of Customer Marketing, Fieldnote</span></p>
-</div>
-</div>
+<section data-section="book" class="f-p frame book">
+  <h2>Pick a time to record</h2>
+  <p>Choose a slot that suits you and I will send the link and the full question list a week ahead. If nothing fits, reply to my email with a week that works and I will find a time.</p>
+  <div class="act"><a class="ken-cta" data-ken-cta="book" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#f4a98c;color:#fff;text-decoration:none;font-weight:600">Pick a recording time</a></div>
+  <p class="decline">Not the right moment? Reply and say when would be, and I will come back then.</p>
+  <p class="sig"><b>Noah Castellanos</b><span>Head of Customer Marketing, Fieldnote</span></p>
 </section>
-
-<footer class="pi-foot">
-<span>Made for <b>Alder Mechanical</b> by Noah Castellanos at Fieldnote.</span>
-<span>A private link. Nothing goes out until you approve it.</span>
-</footer>
 </main>
+<footer class="f-p frame foot">
+  <span>Made for <b>Alder Mechanical</b> by Noah Castellanos at Fieldnote.</span>
+  <span>A private link. Nothing goes out until you approve it.</span>
+</footer>
 </body>
 </html>

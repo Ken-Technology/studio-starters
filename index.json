@@ -105,8 +105,8 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "marlow",
@@ -134,8 +134,8 @@
         "grade",
         "ken_search.count",
         "ken_search.companies",
-        "ken/chart",
-        "ken/cta"
+        "ken/cta",
+        "ken/chart"
       ],
       "description": "A ranked list of companies in the account's market that are adding people, with the account placed on it and a note on how the list was made.",
       "category": "prospecting",
@@ -148,8 +148,8 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "tollgate",
@@ -192,8 +192,8 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "alder-ridge",
@@ -231,8 +231,8 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "kestrel-freight",
@@ -273,8 +273,8 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.0",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "cobble-hill",
@@ -318,8 +318,8 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "marrow",
@@ -361,7 +361,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.2",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -404,8 +404,8 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "larkspur",
@@ -448,8 +448,8 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "brightwave",
@@ -491,8 +491,8 @@
       "needs": [
         "video"
       ],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "brightwave",
@@ -534,7 +534,7 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -578,8 +578,8 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.0",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "juniper-dental",
@@ -619,8 +619,8 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.3",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "brightwave",
@@ -664,8 +664,8 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.2",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "brightwave",
@@ -709,8 +709,8 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "marlowe-finch",
@@ -752,7 +752,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -800,7 +800,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.0",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -846,8 +846,8 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "brightwave",
@@ -885,8 +885,8 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "alder-mechanical",
@@ -926,8 +926,8 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "brightwave",
@@ -970,8 +970,8 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.2",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "fernhill",
@@ -1009,7 +1009,7 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.2",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1056,8 +1056,8 @@
       "needs": [
         "knowledge"
       ],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "harrowgate",
@@ -1101,8 +1101,8 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "brightwave",
@@ -1144,8 +1144,8 @@
       ],
       "featured": true,
       "needs": [],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "brightwave",
@@ -1186,8 +1186,8 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.0",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "alder-ridge",
@@ -1231,7 +1231,7 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.2",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1273,7 +1273,7 @@
       "needs": [
         "dataset"
       ],
-      "version": "1.0.2",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1318,7 +1318,7 @@
       "needs": [
         "video"
       ],
-      "version": "1.0.1",
+      "version": "1.1.0",
       "updatedAt": "2026-10-29",
       "samples": [
         {
@@ -1360,8 +1360,8 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.2",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "brightwave",
@@ -1403,8 +1403,8 @@
       ],
       "featured": false,
       "needs": [],
-      "version": "1.0.1",
-      "updatedAt": "2026-10-29",
+      "version": "1.1.0",
+      "updatedAt": "2026-10-30",
       "samples": [
         {
           "id": "bramblewood",

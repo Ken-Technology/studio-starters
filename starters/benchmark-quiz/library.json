@@ -4,8 +4,8 @@
   "tags": ["benchmark", "quiz", "peers", "self-assessment"],
   "featured": false,
   "needs": ["dataset"],
-  "version": "1.0.1",
-  "updatedAt": "2026-10-29",
+  "version": "1.1.0",
+  "updatedAt": "2026-10-30",
   "samples": [
     { "id": "alder-ridge", "label": "Alder Ridge Mechanical" },
     { "id": "meridian-shared", "label": "Shared link (no person)" },

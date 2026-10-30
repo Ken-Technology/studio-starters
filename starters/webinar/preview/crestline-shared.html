@@ -5,217 +5,318 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Pipeline reviews in 20 minutes: a live session for Crestline Outdoor Co.</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap">
 <style>
 :root{
   --p:#ff5a1f;
   --s:#141414;
-  --fh:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;
-  --fb:'DM Sans',ui-sans-serif,system-ui,sans-serif;
-  --paper:#fff;
-  --on-p:#fff;
+  --fh:'Space Grotesk','Arial Black',Arial,sans-serif;
+  --fb:'DM Sans',Arial,sans-serif;
+  --bone:#e2dccf;
   --ink:var(--s);
-  --mute:color-mix(in srgb,var(--ink) 60%,#fff);
-  --rule:color-mix(in srgb,var(--ink) 13%,#fff);
-  --panel:color-mix(in srgb,var(--p) 7%,#fff);
-  --tint:color-mix(in srgb,var(--p) 14%,#fff);
-  --accent:color-mix(in srgb,var(--p) 86%,var(--ink));
+  --mustard:color-mix(in oklab,var(--p) 30%,var(--bone));
+  --slate:color-mix(in oklab,var(--p) 45%,var(--s));
+  --on-p:#fff;--off-p:#2a1110;--on-s:var(--bone);--on-mustard:var(--ink);--on-slate:#fff;
+  --m:clamp(1rem,3.2vw,2.5rem);
+  --step-small:clamp(.8125rem,.79rem + .1vw,.875rem);
+  --step-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --step-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --step-head:clamp(2.5rem,1.2rem + 5vw,5.5rem);
 }
 @supports (color:oklch(from red l c h)){
   :root{
-    --on-p:oklch(from var(--p) clamp(0,(0.66 - l) * 1000,1) 0 0);
-    --ink:oklch(from var(--s) min(l,0.34) c h);
+    --ink:oklch(from var(--s) min(l,.3) c h);
+    --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+    --off-p:color(from var(--p) xyz-d65 clamp(0,(y - .18) * 1000000,.9505) clamp(0,(y - .18) * 1000000,1) clamp(0,(y - .18) * 1000000,1.089));
+    --on-mustard:color(from var(--mustard) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+    --on-slate:color(from var(--slate) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
   }
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
-h1,h2,h3{font-family:var(--fh);font-weight:600;line-height:1.1;letter-spacing:-.018em;margin:0;text-wrap:balance}
-h2{font-size:1.5rem;margin-bottom:1.1rem}
-p{margin:0 0 .85rem}
-a{color:var(--accent)}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+body{margin:0;background:var(--bone);color:var(--ink);font-family:var(--fb);font-size:var(--step-body);line-height:1.45;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--fh);margin:0;text-wrap:balance;hyphens:none}
+h2{font-weight:900;font-size:var(--step-head);line-height:.9;letter-spacing:-.04em;max-width:16ch}
+p{margin:0}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:.08em}
+:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+::selection{background:var(--ink);color:var(--bone)}
+.field{padding:clamp(4.5rem,9vw,8.5rem) var(--m);position:relative}
 
-/* program panel */
-.side{background:var(--panel);border-bottom:1px solid var(--rule)}
-.panel{padding:1.5rem 1.35rem 2rem}
-.mark{display:flex;align-items:center;gap:.55rem;font-weight:600;font-size:.95rem;min-height:24px}
-.mark .logo{height:24px;width:auto;max-width:9rem;display:block}
-.mark .sq{width:24px;height:24px;border-radius:6px;background:var(--p);color:var(--on-p);display:grid;place-items:center;font-family:var(--fh);font-weight:700;font-size:.8rem;line-height:1}
-.live{display:flex;align-items:center;gap:.5rem;margin:2.2rem 0 .8rem;color:var(--accent);font-weight:500;font-size:.95rem}
-.live i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--p);box-shadow:0 0 0 4px var(--tint)}
-.panel h1{font-size:2.4rem;max-width:14ch}
-.panel .sub{margin:1rem 0 0;max-width:34ch;color:var(--mute);font-size:1.02rem}
-.date{margin:1.8rem 0 .7rem;font-family:var(--fh);font-weight:600;font-size:1.28rem;letter-spacing:-.01em}
-.date small{display:block;font-family:var(--fb);font-weight:400;font-size:.92rem;color:var(--mute);letter-spacing:0;margin-top:.1rem}
-.zones{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);background:#fff}
-.zones div{padding:.8rem .9rem;border-top:1px solid var(--rule);min-width:0}
-.zones div:nth-child(-n+2){border-top:0}
-.zones div:nth-child(even){border-left:1px solid var(--rule)}
-.zones div:last-child:nth-child(odd){grid-column:1/-1}
-.zones b{display:block;font-family:var(--fh);font-weight:600;font-size:1.22rem;letter-spacing:-.01em;line-height:1.1}
-.zones span{display:block;font-size:.84rem;color:var(--mute);margin-top:.2rem}
-.zones .you{background:var(--p);color:var(--on-p)}
-.zones .you span{color:color-mix(in srgb,var(--on-p) 82%,var(--p))}
-.actions{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.4rem;margin-top:1.4rem}
-.btn{display:inline-flex;align-items:center;min-height:48px;background:var(--p);color:var(--on-p);text-decoration:none;font-weight:600;font-size:1rem;padding:0 1.6rem;border-radius:6px}
-.cal{display:inline-flex;align-items:center;min-height:44px;gap:.45rem;font-size:.95rem;text-decoration:none}
-.cal span{border-bottom:1px solid color-mix(in srgb,var(--accent) 40%,transparent)}
-.cal svg{width:16px;height:16px;flex:none}
-.rec{margin:1.2rem 0 0;font-size:.9rem;color:var(--mute);max-width:36ch}
+/* the studio clock: the opening chapter */
+.program{background:var(--p);color:var(--on-p);overflow:hidden;padding-top:1.4rem;min-height:100svh;display:flex;flex-direction:column}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:2.5rem;position:relative;z-index:1}
+.mark{display:flex;align-items:center;gap:.6rem;font-family:var(--fh);font-weight:900;font-size:var(--step-lead);letter-spacing:-.02em}
+.mark img{height:28px;width:auto;max-width:10rem;display:block}
+.series{font-weight:700;font-size:var(--step-small);text-align:right}
+.stage{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center;padding:2.2rem 0 1rem;max-width:40rem}
+.program h1{font-weight:900;letter-spacing:-.045em;line-height:.92;font-size:clamp(2.25rem,10vw,5rem);max-width:15ch}
+.program h1.mid{font-size:clamp(1.9rem,7.6vw,4rem);max-width:20ch}
+.program h1.long{font-size:clamp(1.75rem,6.6vw,3.4rem);max-width:24ch}
+.sub{margin-top:1.4rem;font-size:var(--step-body);line-height:1.45;max-width:36ch}
+.when{margin-top:2rem;font-family:var(--fh);font-weight:900;font-size:var(--step-lead);letter-spacing:-.02em;line-height:1.1}
+.where{margin-top:.35rem;max-width:40ch}
+.zones{list-style:none;margin:1.3rem 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;max-width:34rem}
+.zones li{padding:.75rem .9rem .8rem;background:color-mix(in srgb,var(--off-p) 20%,var(--p));min-width:0}
+.zones b{display:block;white-space:nowrap;font-family:var(--fh);font-weight:900;font-size:var(--step-lead);letter-spacing:-.03em;line-height:1}
+.zones span{display:block;margin-top:.3rem;font-size:var(--step-small);line-height:1.3}
+.zones li.you{background:var(--ink);color:var(--bone)}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.6rem;margin-top:1.6rem}
+.btn{display:inline-flex;align-items:center;min-height:52px;padding:0 1.7rem;background:var(--ink);color:var(--bone);font-family:var(--fh);font-weight:900;font-size:var(--step-body);letter-spacing:-.01em;text-decoration:none;transition:transform .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.cal{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:underline}
+.rec{margin-top:1.2rem;font-size:var(--step-small);line-height:1.45;max-width:40ch}
+.clock{position:absolute;z-index:0;width:132vw;max-width:none;left:50%;top:auto;bottom:-62vw;transform:translateX(-50%);pointer-events:none}
+.clock .face{fill:var(--ink)}
+.clock .dot{fill:color-mix(in srgb,var(--bone) 34%,var(--ink))}
+.clock .lit{fill:var(--bone)}
+.clock .hr{fill:var(--p)}
+.clock .hand{fill:var(--bone)}
+.clock .pin{fill:var(--p)}
+.sweep{transform-origin:100px 100px;animation:sweep 1.5s cubic-bezier(.2,.7,.2,1) .2s both}
+@keyframes sweep{from{transform:rotate(-150deg)}to{transform:rotate(0)}}
+.program .after{height:72vw}
 
-/* content */
-.content{padding:1.8rem 1.35rem 3rem;max-width:44rem}
-section{padding:1.6rem 0;border-top:1px solid var(--rule)}
-section:first-child{border-top:0;padding-top:0}
-.hello p{font-size:1.08rem;line-height:1.6;max-width:36rem}
-.hello .sal{font-family:var(--fh);font-size:1.3rem;font-weight:600;margin-bottom:.5rem}
-.hello .sig{color:var(--mute);font-size:.95rem;margin-top:.9rem}
-.hello .sig b{color:var(--ink);font-weight:600}
+/* note from the host */
+.hello{background:var(--bone);color:var(--ink)}
+.hello h2{font-size:var(--step-head)}
+.hello .note{margin-top:1.6rem;font-size:var(--step-lead);line-height:1.35;letter-spacing:-.01em;max-width:38ch}
+.hello .sig{margin-top:1.8rem;font-size:var(--step-body)}
+.hello .sig b{font-weight:700}
 
-.speakers{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
-.speakers li{display:grid;grid-template-columns:3rem minmax(0,1fr);gap:.95rem;align-items:start}
-.av{width:3rem;height:3rem;border-radius:50%;display:grid;place-items:center;font-family:var(--fh);font-weight:600;font-size:.98rem;letter-spacing:.02em}
-.av.a{background:var(--p);color:var(--on-p)}
-.av.b{background:var(--tint);color:var(--accent)}
-.av.c{background:var(--ink);color:#fff}
-.speakers b{display:block;font-weight:600}
-.speakers .r{display:block;color:var(--mute);font-size:.93rem}
-.speakers em{display:block;font-style:normal;font-size:.93rem;margin-top:.25rem;color:var(--ink)}
+/* lower thirds */
+.speakers{background:var(--ink);color:var(--on-s)}
+.thirds{list-style:none;margin:3rem 0 0;padding:0;display:grid;gap:2.6rem}
+.thirds li{min-width:0}
+.strap{display:inline-block;max-width:100%}
+.strap b{display:block;width:fit-content;max-width:100%;padding:.55rem .85rem .5rem;background:var(--p);color:var(--on-p);font-family:var(--fh);font-weight:900;font-size:var(--step-lead);letter-spacing:-.03em;line-height:1}
+.strap span{display:block;width:fit-content;max-width:100%;margin-left:1rem;padding:.45rem .85rem .5rem;background:var(--bone);color:var(--ink);font-family:var(--fh);font-weight:700;font-size:var(--step-small);line-height:1.3}
+.thirds p{margin-top:1rem;max-width:34ch}
 
-.agenda-zone{margin:-.5rem 0 1.2rem;font-size:.9rem;color:var(--mute)}
-.agenda{list-style:none;margin:0;padding:0}
-.agenda li{display:grid;grid-template-columns:4.1rem 1.1rem minmax(0,1fr);column-gap:.6rem;padding:0 0 1.3rem}
-.agenda li:last-child{padding-bottom:0}
-.agenda .t{font-weight:600;font-size:.95rem;line-height:1.3}
-.agenda .t small{display:block;font-weight:400;color:var(--mute);font-size:.8rem}
-.agenda .dot{position:relative}
-.agenda .dot::before{content:'';position:absolute;top:.38rem;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--p);box-shadow:0 0 0 3px #fff}
-.agenda .dot::after{content:'';position:absolute;top:.6rem;bottom:-1.4rem;left:50%;width:1px;background:var(--rule)}
-.agenda li:last-child .dot::after{display:none}
-.agenda li:last-child .dot::before{background:var(--ink)}
-.agenda h3{font-size:1.02rem;font-weight:600;letter-spacing:-.01em;line-height:1.3}
-.agenda p{margin:.25rem 0 0;color:var(--mute);font-size:.93rem}
-.agenda .who{display:inline-flex;align-items:center;gap:.4rem;margin-top:.4rem;font-size:.84rem;color:var(--mute)}
-.agenda .who i{display:inline-grid;place-items:center;width:1.35rem;height:1.35rem;border-radius:50%;font-style:normal;font-size:.62rem;font-weight:700;font-family:var(--fh)}
-.agenda .who i.a{background:var(--p);color:var(--on-p)}
-.agenda .who i.b{background:var(--tint);color:var(--accent)}
-.agenda .who i.c{background:var(--ink);color:#fff}
+/* the rundown */
+.agenda{background:var(--mustard);color:var(--on-mustard)}
+.agenda .tz{margin-top:1rem;font-weight:700}
+.rundown{list-style:none;margin:2.8rem 0 0;padding:0}
+.rundown li{display:grid;grid-template-columns:minmax(0,1fr);gap:.4rem;padding:1.4rem 0}
+.rundown .t{font-family:var(--fh);font-weight:900;font-size:clamp(2rem,1.4rem + 2.2vw,3.25rem);letter-spacing:-.04em;line-height:.95}
+.rundown .t small{display:block;font-weight:700;font-size:var(--step-small);letter-spacing:0;margin-top:.45rem}
+.rundown h3{font-weight:900;font-size:var(--step-lead);letter-spacing:-.02em;line-height:1.1}
+.rundown p{margin-top:.45rem;max-width:52ch}
+.rundown .who{margin-top:.6rem;font-weight:700}
+.rundown li:nth-child(odd){background:color-mix(in srgb,var(--on-mustard) 7%,var(--mustard));margin:0 calc(var(--m) * -1);padding-left:var(--m);padding-right:var(--m)}
 
-.takes{list-style:none;margin:0;padding:0;display:grid;gap:.9rem}
-.takes li{position:relative;padding-left:1.5rem;max-width:36rem}
-.takes li::before{content:'';position:absolute;left:0;top:.62rem;width:.75rem;height:2px;background:var(--p)}
-.takes b{font-weight:600}
-.for{margin:-.4rem 0 1.1rem;color:var(--mute);font-size:.95rem}
+/* takeaways */
+.takeaways{background:var(--slate);color:var(--on-slate)}
+.takeaways .for{margin-top:1.2rem;font-size:var(--step-lead);line-height:1.3;max-width:34ch}
+.takes{list-style:none;margin:3rem 0 0;padding:0;display:grid;gap:2rem}
+.takes li{max-width:40ch}
+.takes b{display:block;font-family:var(--fh);font-weight:900;font-size:var(--step-lead);letter-spacing:-.02em;line-height:1.1;margin-bottom:.45rem}
 
-.register{scroll-margin-top:1rem}
-.ken-form{display:grid;gap:.9rem;margin-top:.4rem;max-width:34rem}
-.ken-form-field{display:grid;gap:.3rem;font-size:.9rem;color:var(--mute);min-width:0}
-.ken-form input{font:inherit;font-size:1rem;width:100%;min-height:48px;padding:.72rem .8rem;border:1px solid color-mix(in srgb,var(--ink) 28%,#fff);border-radius:6px;background:#fff;color:var(--ink)}
-.ken-form-submit{font:inherit!important;font-weight:600!important;font-size:1rem!important;min-height:48px;background:var(--p)!important;color:var(--on-p)!important;border-radius:6px!important;padding:.95rem 1.6rem!important;justify-self:start}
-.fine{font-size:.86rem;color:var(--mute);margin:.2rem 0 0;max-width:30rem}
-footer{padding:1.2rem 0 0;border-top:1px solid var(--rule);font-size:.86rem;color:var(--mute)}
-footer b{color:var(--ink);font-weight:500}
+/* register: the closing chapter */
+.register{background:var(--p);color:var(--on-p);scroll-margin-top:0}
+.register .lede{margin-top:1.2rem;max-width:40ch}
+.ken-form{display:grid;gap:6px;margin-top:2.4rem}
+.ken-form-field{display:grid;gap:.4rem;min-width:0;font-weight:700;font-size:var(--step-small);padding:.8rem .9rem .9rem;background:color-mix(in srgb,var(--off-p) 20%,var(--p))}
+.ken-form-field:focus-within{background:color-mix(in srgb,var(--off-p) 36%,var(--p))}
+.ken-form input,.ken-form textarea{font:inherit;font-weight:400;font-size:var(--step-body);width:100%;min-height:44px;padding:.4rem 0;border:0;border-bottom:3px solid currentColor;border-radius:0;background:transparent;color:inherit}
+.ken-form input:focus-visible{outline:none;border-bottom-color:var(--ink)}
+.ken-form-submit{font-family:var(--fh)!important;font-weight:900!important;font-size:var(--step-body)!important;min-height:64px;background:var(--ink)!important;color:var(--bone)!important;border-radius:0!important;padding:1rem 1.6rem!important}
+.ken-form-preview{opacity:1!important}
+.fine{margin-top:1.4rem;font-size:var(--step-small);line-height:1.45;max-width:46ch}
+.foot{margin-top:clamp(4rem,8vw,7rem);font-size:var(--step-small);line-height:1.45}
+.foot b{font-weight:700}
 
-@media (min-width:520px){
-  .ken-form{grid-template-columns:1fr 1fr}
+@media (min-width:600px){
+  .zones{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .ken-form{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .thirds{grid-template-columns:repeat(2,minmax(0,1fr));gap:2.6rem 1.5rem}
+  .rundown li{grid-template-columns:minmax(0,3fr) minmax(0,9fr);column-gap:1.5rem;align-items:baseline}
   .ken-form>:not(.ken-form-field){grid-column:1/-1}
 }
-@media (min-width:860px){
-  body{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);min-height:100vh}
-  .side{border-bottom:0;border-right:1px solid var(--rule)}
-  .panel{position:sticky;top:0;min-height:100vh;padding:2.2rem 2.8rem 2.6rem;display:flex;flex-direction:column}
-  .panel h1{font-size:3rem}
-  .content{padding:3.2rem 3.4rem 4rem;max-width:48rem}
-  section{padding:2.2rem 0}
-  .speakers{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem}
-  .speakers li{grid-template-columns:1fr;gap:.7rem;align-content:start}
-  .speakers .r{min-height:2.8em}
-  .agenda li{grid-template-columns:5.2rem 1.1rem minmax(0,1fr)}
+@media (min-width:900px){
+  .program{padding-top:1.8rem}
+  .stage{max-width:56%;padding:3rem 0 2.4rem}
+  .program h1{font-size:clamp(3.25rem,6vw,6.5rem)}
+  .program h1.mid{font-size:clamp(2.75rem,4.6vw,5rem)}
+  .program h1.long{font-size:clamp(2.4rem,3.6vw,4rem)}
+  .zones{grid-template-columns:repeat(auto-fit,minmax(7.5rem,1fr))}
+  .clock{width:min(118vh,64vw);left:auto;right:calc(min(118vh,64vw) * -.2);top:50%;bottom:auto;transform:translateY(-46%)}
+  .program .after{display:none}
+  .hello{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;align-items:start}
+  .hello h2{grid-column:1/5}
+  .hello .body{grid-column:5/13}
+  .hello .note{margin-top:0}
+  .thirds{grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:3rem 2rem;margin-top:4rem}
+  .rundown{margin-top:3.6rem}
+  .rundown li{padding:1.8rem 0}
+  .rundown li:nth-child(odd){padding-left:var(--m);padding-right:var(--m)}
+  .takeaways{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;align-items:start}
+  .takeaways .head{grid-column:1/6}
+  .takes{grid-column:6/13;margin-top:0;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.6rem 2rem}
+  .register{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;align-items:start}
+  .register .head{grid-column:1/6}
+  .register .form{grid-column:6/13}
+  .register .ken-form{margin-top:0}
+  .register .foot{grid-column:1/-1}
 }
-@media (min-width:1180px){
-  .panel{padding:2.8rem 3.6rem 3rem}
-  .content{padding:3.6rem 4.2rem 4.5rem}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .sweep{animation:none}
+  .btn{transition:none}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="side"><aside class="panel" data-section="program">
-  <div class="mark"><span class="sq" aria-hidden="true">P</span><span>Pulsegrid</span></div>
-  <p class="live"><i aria-hidden="true"></i>Live session, 45 minutes</p>
-  <h1>Pipeline reviews in 20 minutes</h1>
-  <p class="sub">How sales managers at consumer brands and wholesalers cut the weekly pipeline review to 20 minutes with the same deals on the table. Two short talks, then your questions.</p>
-  <p class="date">Thursday, January 14, 2027<small>Online. The link comes by email once you register.</small></p>
-  <div class="zones" role="list" aria-label="Start time by time zone">
-    <div class="you" role="listitem"><b>12:00 pm</b><span>Chicago, your time</span></div>
-    <div role="listitem"><b>10:00 am</b><span>Los Angeles</span></div>
-    <div role="listitem"><b>1:00 pm</b><span>New York</span></div>
-    <div role="listitem"><b>6:00 pm</b><span>London</span></div>
+<header class="program field" data-section="program">
+  <div class="bar">
+    <div class="mark">Pulsegrid</div>
+    <p class="series">Live session, 45 minutes</p>
   </div>
-  <div class="actions">
-    <a class="btn" href="#register">Save my seat</a>
-    <a class="cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Pipeline+reviews+in+20+minutes+(live+session)&amp;dates=20270114T180000Z/20270114T184500Z">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="12" rx="1.5"/><path d="M1.5 6.5h13M5 1v3M11 1v3"/></svg>
-      <span>Add to calendar</span>
-    </a>
+  <div class="stage">
+    <h1 class="short">Pipeline reviews in 20 minutes</h1>
+    <p class="sub">How sales managers at consumer brands and wholesalers cut the weekly pipeline review to 20 minutes with the same deals on the table. Two short talks, then your questions.</p>
+    <p class="when">Thursday, January 14, 2027</p>
+    <p class="where">Online. The link comes by email once you register.</p>
+    <ul class="zones" aria-label="Start time by city">
+      <li class="you"><b>12:00 pm</b><span>Chicago, your time</span></li>
+      <li><b>10:00 am</b><span>Los Angeles</span></li>
+      <li><b>1:00 pm</b><span>New York</span></li>
+      <li><b>6:00 pm</b><span>London</span></li>
+    </ul>
+    <div class="actions">
+      <a class="btn" href="#register">Save my seat</a>
+      <a class="cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Pipeline+reviews+in+20+minutes+(live+session)&amp;dates=20270114T180000Z/20270114T184500Z">Add to calendar</a>
+    </div>
+    <p class="rec">Cannot make it live? Register anyway. Everyone who registers gets the recording and the slides the next morning.</p>
   </div>
-  <p class="rec">Cannot make it live? Register anyway. Everyone who registers gets the recording and the slides the next morning.</p>
-</aside></div>
+  <svg class="clock" viewBox="0 0 200 200" aria-hidden="true">
+    <circle class="face" cx="100" cy="100" r="99"/>
+    <circle class="hr" cx="100" cy="12" r="3.4" transform="rotate(0 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(6 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(12 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(18 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(24 100 100)"/>
+    <circle class="hr" cx="100" cy="12" r="3.4" transform="rotate(30 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(36 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(42 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(48 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(54 100 100)"/>
+    <circle class="hr" cx="100" cy="12" r="3.4" transform="rotate(60 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(66 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(72 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(78 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(84 100 100)"/>
+    <circle class="hr" cx="100" cy="12" r="3.4" transform="rotate(90 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(96 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(102 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(108 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(114 100 100)"/>
+    <circle class="hr" cx="100" cy="12" r="3.4" transform="rotate(120 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(126 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(132 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(138 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(144 100 100)"/>
+    <circle class="hr" cx="100" cy="12" r="3.4" transform="rotate(150 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(156 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(162 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(168 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(174 100 100)"/>
+    <circle class="hr" cx="100" cy="12" r="3.4" transform="rotate(180 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(186 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(192 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(198 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(204 100 100)"/>
+    <circle class="hr" cx="100" cy="12" r="3.4" transform="rotate(210 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(216 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(222 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(228 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(234 100 100)"/>
+    <circle class="hr" cx="100" cy="12" r="3.4" transform="rotate(240 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(246 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(252 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(258 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(264 100 100)"/>
+    <circle class="hr" cx="100" cy="12" r="3.4" transform="rotate(270 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(276 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(282 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(288 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(294 100 100)"/>
+    <circle class="hr" cx="100" cy="12" r="3.4" transform="rotate(300 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(306 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(312 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(318 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(324 100 100)"/>
+    <circle class="hr" cx="100" cy="12" r="3.4" transform="rotate(330 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(336 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(342 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(348 100 100)"/>
+    <circle class="dot" cx="100" cy="12" r="1.5" transform="rotate(354 100 100)"/>
+    <g class="sweep">
+      <rect class="hand" x="96" y="46" width="8" height="58" transform="rotate(0 100 100)"/>
+      <rect class="hand" x="97.5" y="24" width="5" height="80" transform="rotate(0 100 100)"/>
+    </g>
+    <circle class="pin" cx="100" cy="100" r="6"/>
+  </svg>
+  <div class="after" aria-hidden="true"></div>
+</header>
 
-<main class="content">
-  <section class="hello" data-section="hello">
-    <p class="sal">Hello,</p>
-    <p>This session was planned with sales teams like Crestline&#39;s in mind: a Monday review that now has to cover a second region added this quarter. The second talk is about what to cut when a region joins.</p>
-    <p class="sig"><b>Theo Brandt</b>, Account Executive, Pulsegrid</p>
+<main>
+  <section class="hello field" data-section="hello">
+    <h2>Hello,</h2>
+    <div class="body">
+      <p class="note">This session was planned with sales teams like Crestline&#39;s in mind: a Monday review that now has to cover a second region added this quarter. The second talk is about what to cut when a region joins.</p>
+      <p class="sig"><b>Theo Brandt</b>, Account Executive, Pulsegrid</p>
+    </div>
   </section>
 
-  <section data-section="speakers">
+  <section class="speakers field" data-section="speakers">
     <h2>Who is speaking</h2>
-    <ul class="speakers">
-      <li><span class="av a" aria-hidden="true">IC</span><div><b>Ines Carvalho</b><span class="r">Sales Operations Lead, Tamarack Outfitters</span><em>Moved a 20-rep team from a 90-minute Monday review to 20 minutes.</em></div></li>
-      <li><span class="av b" aria-hidden="true">RA</span><div><b>Ravi Anand</b><span class="r">Head of Customer Success, Pulsegrid</span><em>Has sat in on pipeline reviews at 30 consumer brands.</em></div></li>
-      <li><span class="av c" aria-hidden="true">TB</span><div><b>Theo Brandt</b><span class="r">Account Executive, Pulsegrid</span><em>Hosts, keeps the clock and reads out your questions.</em></div></li>
+    <ul class="thirds">
+      <li><p class="strap"><b>Ines Carvalho</b><span>Sales Operations Lead, Tamarack Outfitters</span></p><p>Moved a 20-rep team from a 90-minute Monday review to 20 minutes.</p></li>
+      <li><p class="strap"><b>Ravi Anand</b><span>Head of Customer Success, Pulsegrid</span></p><p>Has sat in on pipeline reviews at 30 consumer brands.</p></li>
+      <li><p class="strap"><b>Theo Brandt</b><span>Account Executive, Pulsegrid</span></p><p>Hosts, keeps the clock and reads out your questions.</p></li>
     </ul>
   </section>
 
-  <section data-section="agenda">
+  <section class="agenda field" data-section="agenda">
     <h2>The agenda</h2>
-    <p class="agenda-zone">Times in Los Angeles.</p>
-    <ol class="agenda">
-      <li><div class="t">10:00<small>5 min</small></div><div class="dot" aria-hidden="true"></div><div><h3>Who is on the call</h3><p>A quick round of the teams in the room, by size and number of regions.</p>
-        <span class="who">
-        <i class="c" aria-hidden="true">TB</i>Theo Brandt</span></div></li>
-      <li><div class="t">10:05<small>15 min</small></div><div class="dot" aria-hidden="true"></div><div><h3>What a 20-minute review leaves out</h3><p>The agenda Tamarack runs every Monday, and the three questions that sort a deal into move, hold or drop.</p>
-        <span class="who">
-        <i class="a" aria-hidden="true">IC</i>Ines Carvalho</span></div></li>
-      <li><div class="t">10:20<small>15 min</small></div><div class="dot" aria-hidden="true"></div><div><h3>Adding a region without doubling the meeting</h3><p>What 30 pipeline reviews show about the week a second region joins, and what to cut first.</p>
-        <span class="who">
-        <i class="b" aria-hidden="true">RA</i>Ravi Anand</span></div></li>
-      <li><div class="t">10:35<small>10 min</small></div><div class="dot" aria-hidden="true"></div><div><h3>Your questions</h3><p>Send them in with your registration or ask live. Questions about your own review are welcome.</p>
-        <span class="who">All three</span></div></li>
-      <li><div class="t">10:45</div><div class="dot" aria-hidden="true"></div><div><h3>Close</h3><p>The recording and the slides are in your inbox the next morning.</p></div></li>
+    <p class="tz">Times in Los Angeles.</p>
+    <ol class="rundown">
+      <li><p class="t">10:00<small>5 minutes</small></p><div><h3>Who is on the call</h3><p>A quick round of the teams in the room, by size and number of regions.</p><p class="who">Theo Brandt</p></div></li>
+      <li><p class="t">10:05<small>15 minutes</small></p><div><h3>What a 20-minute review leaves out</h3><p>The agenda Tamarack runs every Monday, and the three questions that sort a deal into move, hold or drop.</p><p class="who">Ines Carvalho</p></div></li>
+      <li><p class="t">10:20<small>15 minutes</small></p><div><h3>Adding a region without doubling the meeting</h3><p>What 30 pipeline reviews show about the week a second region joins, and what to cut first.</p><p class="who">Ravi Anand</p></div></li>
+      <li><p class="t">10:35<small>10 minutes</small></p><div><h3>Your questions</h3><p>Send them in with your registration or ask live. Questions about your own review are welcome.</p><p class="who">All three</p></div></li>
+      <li><p class="t">10:45</p><div><h3>Close</h3><p>The recording and the slides are in your inbox the next morning.</p></div></li>
     </ol>
   </section>
 
-  <section data-section="takeaways">
-    <h2>What you will take away</h2>
-    <p class="for">Written for the team at Crestline Outdoor Co.</p>
+  <section class="takeaways field" data-section="takeaways">
+    <div class="head">
+      <h2>What you take away</h2>
+      <p class="for">Written for the team at Crestline Outdoor Co..</p>
+    </div>
     <ul class="takes">
-      <li><b>A 20-minute review agenda</b> that Crestline&#39;s 14 reps can start on the next Monday.</li>
-      <li><b>Three questions for every deal</b> that sort it into move, hold or drop, so the second region does not double the meeting.</li>
-      <li><b>What to cut first</b> when a region joins and the weekly review starts to run long.</li>
+      <li><b>A 20-minute review agenda</b>that Crestline&#39;s 14 reps can start on the next Monday.</li>
+      <li><b>Three questions for every deal</b>that sort it into move, hold or drop, so the second region does not double the meeting.</li>
+      <li><b>What to cut first</b>when a region joins and the weekly review starts to run long.</li>
     </ul>
   </section>
 
-  <section class="register" id="register" data-section="register">
-    <h2>Save your seat</h2>
-    <form class="ken-form" data-ken-form="register" data-ken-preview><input type="hidden" name="_ken_form" value="register"><label class="ken-form-field"><span>Name</span><input type="text" name="name" maxlength="500" required disabled></label><label class="ken-form-field"><span>Email</span><input type="email" name="email" maxlength="500" required disabled></label><label class="ken-form-field"><span>Company</span><input type="text" name="company" maxlength="500" disabled></label><label class="ken-form-field"><span>Title</span><input type="text" name="title" maxlength="500" disabled></label><button type="submit" class="ken-form-submit" disabled style="padding:12px 20px;border:0;border-radius:8px;background:#ff5a1f;color:#fff;font-weight:600;cursor:not-allowed">Save my seat</button><p class="ken-form-preview" role="note" style="margin:8px 0 0;font-size:13px;opacity:.7">Preview: not saved</p></form>
-    <p class="fine">Register once. The recording and the slides come by email the day after, whether or not you join live.</p>
+  <section class="register field" id="register" data-section="register">
+    <div class="head">
+      <h2>Save your seat</h2>
+      <p class="lede">Thursday, January 14, 2027, 12:00 pm in Chicago.</p>
+    </div>
+    <div class="form">
+      <form class="ken-form" data-ken-form="register" data-ken-preview><input type="hidden" name="_ken_form" value="register"><label class="ken-form-field"><span>Name</span><input type="text" name="name" maxlength="500" required disabled></label><label class="ken-form-field"><span>Email</span><input type="email" name="email" maxlength="500" required disabled></label><label class="ken-form-field"><span>Company</span><input type="text" name="company" maxlength="500" disabled></label><label class="ken-form-field"><span>Title</span><input type="text" name="title" maxlength="500" disabled></label><button type="submit" class="ken-form-submit" disabled style="padding:12px 20px;border:0;border-radius:8px;background:#ff5a1f;color:#fff;font-weight:600;cursor:not-allowed">Save my seat</button><p class="ken-form-preview" role="note" style="margin:8px 0 0;font-size:13px;opacity:.7">Preview: not saved</p></form>
+      <p class="fine">Register once. The recording and the slides come by email the day after, whether or not you join live.</p>
+    </div>
+    <footer class="foot">A live session from <b>Pulsegrid</b>, made for the team at Crestline Outdoor Co..</footer>
   </section>
-
-  <footer>A live session from <b>Pulsegrid</b>, made for the team at Crestline Outdoor Co.</footer>
 </main>
 </body>
 </html>

@@ -4,8 +4,8 @@
   "tags": ["industry", "playbook", "guide", "pdf", "content"],
   "featured": false,
   "needs": [],
-  "version": "1.0.0",
-  "updatedAt": "2026-10-29",
+  "version": "1.1.0",
+  "updatedAt": "2026-10-30",
   "samples": [
     { "id": "juniper-dental", "label": "Juniper Dental Group" },
     { "id": "orwell-build", "label": "Orwell Build, shared link (no person)" },

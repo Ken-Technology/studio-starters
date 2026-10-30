@@ -5,144 +5,247 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>See you at Fleet and Yard Expo 2026</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap">
 <style>
+:root{
+  --p:#1e5e3a;
+  --s:#d9c7a3;
+  --fh:'Familjen Grotesk','Arial Narrow',ui-sans-serif,system-ui,sans-serif;
+  --fb:'Karla',ui-sans-serif,system-ui,sans-serif;
+  /* the show floor: stone ground, charcoal print, one sign colour */
+  --bg:#eeecea;
+  --surface:#e4e1dd;
+  --ink:#333231;
+  --muted:#5f5b58;
+  --on-p:#fff;
+  --on-s:var(--ink);
+  --step-small:clamp(.875rem,.84rem + .1vw,.9375rem);
+  --step-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --step-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --step-head:clamp(2.5rem,1.2rem + 5vw,5.5rem);
+  --margin:clamp(1rem,2.4vw,2rem);
+}
+@supports (color:oklch(from red l c h)){:root{
+  --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+  --on-s:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+}}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:#f4f5f3;color:#16181d;font-family:'Karla',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
-.cm{--p:#1e5e3a;--s:#d9c7a3;--ink:#16181d;--mute:#5d646d;--faint:#8b929a;--line:#dcdfe2;--card:#fff}
-.cm h1,.cm h2,.cm h3,.cm .sign,.cm .talk-title{font-family:'Familjen Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-.015em;line-height:1.1;margin:0}
-.cm p{margin:0 0 .8rem}
-.cm a{color:var(--p)}
-.cm a:focus-visible,.cm .btn:focus-visible{outline:3px solid var(--p);outline-offset:3px}
-.wrap{max-width:72rem;margin:0 auto;padding:0 1.1rem}
-.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
-.logo{height:26px;width:auto;display:block}
-.brand{font-family:'Familjen Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:1rem;color:var(--ink);text-decoration:none}
-.top-show{font-size:.85rem;color:var(--mute);text-align:right;min-width:0}
-.top-show b{display:block;font-weight:500;color:var(--ink)}
-.hero{display:grid;gap:1.6rem;padding:2rem 0 2.2rem}
-.for{font-size:.95rem;color:var(--mute);margin:0 0 .7rem}
-.for b{font-weight:500;color:var(--ink)}
-.cm h1{font-size:2.35rem;text-wrap:balance;max-width:16ch}
-.dek{font-size:1.08rem;color:var(--mute);max-width:36rem;margin:1rem 0 1.4rem}
-.dek b{font-weight:500;color:var(--ink)}
-.go{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem 1.1rem}
-.cm a.btn{display:inline-block;background:var(--p);color:#fff;text-decoration:none;font-weight:600;padding:.8rem 1.25rem;border-radius:7px;line-height:1.3;min-height:44px}
-.go span{font-size:.9rem;color:var(--mute);max-width:20rem}
-.sign{position:relative;background:var(--p);color:#fff;border-radius:8px;padding:1.3rem 1.3rem 1.2rem;overflow:hidden;align-self:start;box-shadow:0 1px 0 rgba(0,0,0,.05)}
-.sign::before{content:"";position:absolute;left:0;top:0;right:0;height:6px;background:var(--s)}
-.sign-hall{font-size:.95rem;font-weight:500;opacity:.9;margin:.3rem 0 0}
-.sign-num{font-size:5.6rem;line-height:.95;letter-spacing:-.04em;margin:.1rem 0 .3rem;word-break:break-word}
-.sign-num.is-long{font-size:3.4rem;letter-spacing:-.03em}
-.sign-brand{font-size:1.05rem;font-weight:700;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.3)}
-.sign-dates{font-size:.9rem;opacity:.85;font-family:'Karla',ui-sans-serif,system-ui,sans-serif;font-weight:400;letter-spacing:0}
-.note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--p);padding:1.2rem 1.2rem 1.1rem;margin:0 0 2.4rem}
-.note p{font-size:1.06rem;max-width:44rem}
-.note .hi{margin-bottom:.5rem}
-.sig{margin-top:1rem;font-size:.95rem}
-.sig b{display:block;font-weight:600}
-.sig span{color:var(--mute);font-size:.88rem}
-.cols{display:grid;gap:2.4rem;padding:0 0 3.5rem}
-.main{min-width:0}
-.block{margin:0 0 2.6rem}
-.block h2{font-size:1.35rem;padding-bottom:.6rem;border-bottom:2px solid var(--ink);margin-bottom:1rem}
-.lede{color:var(--mute);max-width:40rem}
-.hrs{list-style:none;margin:0;padding:0}
-.hrs li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.1rem .9rem;padding:.75rem 0;border-bottom:1px solid var(--line)}
-.hrs b{font-weight:600}
-.hrs .h{color:var(--ink);text-align:right;white-space:nowrap}
-.hrs small{grid-column:1 / -1;color:var(--mute);font-size:.9rem}
-.talk{background:var(--card);border:1px solid var(--line);padding:1.1rem 1.2rem;border-radius:8px}
-.talk-title{font-size:1.25rem;margin:0 0 .6rem}
-.meta{display:flex;flex-wrap:wrap;gap:.3rem 1.2rem;margin:0;padding:0;list-style:none;color:var(--mute);font-size:.95rem}
-.meta b{font-weight:500;color:var(--ink)}
-.day{margin:1.6rem 0 .3rem;font-size:1.02rem;color:var(--ink);font-weight:700}
-.day:first-of-type{margin-top:.4rem}
-.ev{list-style:none;margin:0;padding:0}
-.ev li{display:grid;grid-template-columns:4.6rem minmax(0,1fr);gap:.15rem .9rem;padding:.8rem 0;border-top:1px solid var(--line)}
-.ev .t{color:var(--ink);font-weight:500;font-size:.95rem;padding-top:.1rem}
-.ev b{font-weight:600;display:block}
-.ev .w{color:var(--mute);font-size:.92rem}
-.ev .n{margin:.25rem 0 0;font-size:.95rem}
-.ev .h{color:var(--faint);font-size:.84rem;margin-top:.2rem}
-.meet{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1.3rem 1.2rem 1.2rem;align-self:start}
-.meet h2{font-size:1.35rem;margin:0 0 .5rem}
-.meet .lede{margin-bottom:1.1rem}
-.meet .ken-booking{color:var(--mute)}
-.meet .after{font-size:.9rem;color:var(--mute);margin:1rem 0 0}
-.foot{font-size:.82rem;color:var(--mute);padding:1.2rem 0 2.4rem;border-top:1px solid var(--line)}
-.foot b{font-weight:500;color:var(--ink)}
-@media (min-width:700px){
-body{font-size:17px}
-.wrap{padding:0 2rem}
-.hero{grid-template-columns:minmax(0,1fr) 19rem;gap:3rem;align-items:center;padding:3.4rem 0 3rem}
-.cm h1{font-size:3.5rem}
-.sign{padding:1.6rem 1.6rem 1.4rem}
-.sign-num{font-size:7rem}
-.sign-num.is-long{font-size:4.2rem}
-.note{padding:1.5rem 1.7rem 1.4rem}
-.hrs li{grid-template-columns:minmax(9rem,max-content) minmax(9rem,max-content) minmax(0,1fr);gap:.1rem 1.4rem}
-.hrs small{grid-column:auto;font-size:.95rem}
-.hrs .h{text-align:left}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--step-body)/1.5 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--fh);font-weight:700;margin:0;line-height:.92;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:.07em}
+a:focus-visible,.btn:focus-visible,.ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+::selection{background:var(--p);color:var(--on-p)}
+.frame{padding-left:var(--margin);padding-right:var(--margin);max-width:100rem;margin:0 auto}
+.sign{font-family:var(--fh);font-weight:700;text-transform:uppercase;line-height:.82;letter-spacing:-.01em}
+
+/* first screen: the hall's aisle sign hangs on two cables, the hall on its top line and the booth number filling the plate */
+.hero{display:grid;grid-template-areas:"top" "sign" "lead";padding-top:1rem;overflow:hidden}
+.top{grid-area:top;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;font-size:var(--step-small)}
+.top .co{font-family:var(--fh);font-weight:700;font-size:var(--step-lead);line-height:1;letter-spacing:0}
+.top img{height:26px;width:auto;display:block}
+.top .for{text-align:right;color:var(--muted);max-width:28rem}
+.signage{grid-area:sign;--hang:2rem;display:flex;flex-direction:column;justify-content:center;padding-top:var(--hang);margin-top:1.25rem;overflow:hidden}
+.board{position:relative;display:flex;flex-direction:column;gap:.5rem;padding:1rem 1.1rem 1.15rem;background:var(--p);color:var(--on-p)}
+.board::before,.board::after{content:"";position:absolute;bottom:100%;width:4px;height:60rem;background:var(--ink)}
+.board::before{left:16%}
+.board::after{right:16%}
+.hall{position:relative;z-index:1;font-size:clamp(2rem,1rem + 4vw,4.5rem)}
+.num{align-self:flex-end;text-align:right;margin:0 -.03em -.04em 0;white-space:nowrap}
+.num.b3{font-size:46vw}
+.num.b4{font-size:36vw}
+.num.b5{font-size:28vw}
+.num.b7{font-size:15vw}
+.lead-in{grid-area:lead;padding:2.2rem 0 1rem;max-width:44rem;position:relative;z-index:1}
+.top .for b{color:var(--ink);font-weight:500}
+.hero h1{font-size:clamp(2.125rem,.9rem + 3.9vw,4rem);max-width:22ch}
+.hero h1.long{font-size:clamp(1.875rem,.9rem + 2.8vw,3.25rem);max-width:24ch}
+.dek{margin-top:1.3rem;max-width:40ch}
+.go{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.4rem;margin-top:1.6rem}
+.btn{display:inline-flex;align-items:center;min-height:3rem;padding:.75rem 1.4rem;background:var(--p);color:var(--on-p);font-weight:600;text-decoration:none}
+.btn:hover{background:color-mix(in srgb,var(--p) 86%,#000)}
+.go span{color:var(--muted);font-size:var(--step-small);max-width:24rem}
+@keyframes hang{from{transform:translateY(-1.25rem)}to{transform:none}}
+.board{animation:hang .9s cubic-bezier(.2,.7,.2,1) both}
+
+/* the note: heading left, the line right */
+.note{display:grid;gap:1.4rem;padding-top:4.5rem}
+.note h2,.block h2,.where h2{font-size:clamp(1.75rem,1.3rem + 1.6vw,2.5rem);line-height:1}
+.note .line{font-size:var(--step-lead);line-height:1.4;max-width:40ch}
+.note .hi{font-weight:500;margin-bottom:.6rem}
+.sig{margin-top:1.4rem;font-size:var(--step-small);color:var(--muted)}
+.sig b{display:block;color:var(--ink);font-weight:600;font-size:var(--step-body)}
+
+/* booth hours, one poster line a day */
+.block{padding-top:6rem}
+.block .lede{margin-top:.9rem;max-width:44ch}
+.days{list-style:none;margin:2rem 0 0;padding:0}
+.days li{display:grid;gap:.35rem;padding:.9rem 0 1.1rem}
+.days li+li{border-top:6px solid var(--surface)}
+.days .d{font-size:clamp(2.25rem,.6rem + 6.4vw,6.5rem)}
+.days .h{font-size:var(--step-lead);font-weight:500;line-height:1.2}
+.days small{display:block;font-size:var(--step-body);color:var(--muted);font-weight:400;margin-top:.2rem}
+
+/* our session, on a square plate */
+.talk{display:grid;gap:1.6rem;margin-top:2rem}
+.plate{min-height:13rem;gap:2rem;background:var(--p);color:var(--on-p);padding:1.4rem;display:flex;flex-direction:column;justify-content:space-between}
+.plate .when{font-size:clamp(2.25rem,.6rem + 6.4vw,6.5rem)}
+.plate .day{font-size:var(--step-body);font-weight:500;line-height:1.3}
+.talk-title{font-family:var(--fh);font-weight:700;font-size:clamp(1.375rem,1rem + 1.4vw,2.25rem);line-height:1.1;max-width:30ch;text-wrap:balance}
+.meta{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;gap:.4rem}
+.meta b{font-weight:600}
+
+/* side events, by day; the day holds while its events pass */
+.off h2{font-size:clamp(3rem,1rem + 8vw,8rem);line-height:.82;text-transform:uppercase}
+.group{margin-top:2.6rem;display:grid;gap:.9rem}
+.group h3{font-size:var(--step-lead);text-transform:uppercase;line-height:1;align-self:start}
+.ev{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.ev li{background:var(--surface);padding:1.1rem 1.1rem 1.2rem;display:grid;gap:.15rem .8rem;grid-template-columns:5.5rem minmax(0,1fr)}
+.ev .t{font-family:var(--fh);font-weight:700;font-size:var(--step-lead);line-height:1.1;white-space:nowrap}
+.ev b{display:block;font-weight:600;font-size:var(--step-body);line-height:1.3}
+.ev .w{display:block;color:var(--muted)}
+.ev .n{margin-top:.45rem}
+.ev .h{margin-top:.35rem;color:var(--muted);font-size:var(--step-small)}
+
+/* where we are, then a time */
+.where{margin-top:6rem;background:var(--s);color:var(--on-s);padding-top:3.5rem;padding-bottom:4rem;display:grid;gap:2.4rem;max-width:none}
+.rows{list-style:none;margin:0;padding:0}
+.rows li{font-family:var(--fh);font-weight:700;font-size:clamp(2rem,1rem + 3.4vw,4rem);line-height:1;text-transform:uppercase;padding:.25rem 0;overflow-wrap:anywhere}
+.book .lede{margin:.9rem 0 1.4rem;max-width:42ch}
+.book .after{margin-top:1rem;font-size:var(--step-small)}
+.book .ken-booking{color:var(--on-s);border-radius:0!important}
+.book .ken-cta{background:var(--p)!important;color:var(--on-p)!important;border-radius:0!important}
+
+/* the foot: the number once more, inverted */
+.foot{background:var(--ink);color:var(--bg);padding-top:2rem;padding-bottom:2rem;max-width:none;overflow:hidden}
+.foot .sign{font-size:clamp(3rem,1rem + 8vw,8rem);white-space:nowrap}
+.foot p{margin-top:1.2rem;font-size:var(--step-small);max-width:60ch}
+.foot b{font-weight:600}
+
+@media (min-width:760px){
+  .note{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:3rem;padding-top:7rem}
+  .block{padding-top:8rem}
+  .booth-head{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:3rem;align-items:end}
+  .booth-head .lede{margin:0}
+  .days li{grid-template-columns:minmax(0,1fr) minmax(16rem,22rem);align-items:end;gap:2rem}
+  .days .h{text-align:right;padding-bottom:.4rem}
+  .talk{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:3rem;align-items:end}
+  .plate{aspect-ratio:1/1;padding:1.6rem}
+  .meta{grid-template-columns:repeat(3,auto);justify-content:start;gap:.4rem 2.4rem}
+  .group{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:3rem}
+  .group h3{position:sticky;top:1.5rem;padding-top:1rem}
+  .ev li{grid-template-columns:7rem minmax(0,1fr);padding:1.3rem 1.5rem}
+  .where{margin-top:8rem;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:3rem;align-items:start;padding-top:5rem;padding-bottom:5rem}
 }
-@media (min-width:980px){
-.cols{grid-template-columns:minmax(0,1fr) 23rem;gap:4rem}
-.sign{padding:1.8rem 1.8rem 1.6rem}
-.meet{position:sticky;top:1rem}
+@media (min-width:1000px){
+  .hero{padding-top:1.5rem;padding-bottom:1.5rem;min-height:min(100svh,50rem);grid-template-columns:minmax(0,6fr) minmax(0,6fr);grid-template-rows:auto 1fr;grid-template-areas:"top top" "lead sign";column-gap:3rem}
+  .lead-in{align-self:center;padding:2rem 0}
+  .signage{--hang:3rem;margin-top:2rem;align-self:stretch}
+  .board{padding:1.4rem 1.6rem 1.6rem}
+  .num.b3{font-size:min(26vw,25rem)}
+  .num.b4{font-size:min(20vw,19rem)}
+  .num.b5{font-size:min(16vw,15rem)}
+  .num.b7{font-size:min(9.5vw,9rem)}
 }
+@media (min-width:760px) and (max-width:999px){
+  .signage{--hang:3rem}
+  .num.b3{font-size:36vw}
+  .num.b4{font-size:28vw}
+  .num.b5{font-size:22vw}
+  .num.b7{font-size:12vw}
+}
+/* a brand heading face is usually wider than the condensed default: the signage steps down */
+.wide .hero h1{font-size:clamp(1.875rem,.8rem + 2.8vw,3rem)}
+.wide .hero h1.long{font-size:clamp(1.625rem,.8rem + 2.2vw,2.5rem)}
+.wide .days .d,.wide .plate .when{font-size:clamp(1.75rem,.6rem + 4.2vw,4.25rem)}
+.wide .off h2,.wide .foot .sign{font-size:clamp(2.5rem,1rem + 6vw,6rem)}
+.wide .hall{font-size:clamp(1.75rem,1rem + 3vw,3.5rem)}
+.wide .rows li{font-size:clamp(1.625rem,1rem + 2.4vw,3rem)}
+.wide .num.b3{font-size:36vw}
+.wide .num.b4{font-size:28vw}
+.wide .num.b5{font-size:22vw}
+.wide .num.b7{font-size:12vw}
+@media (min-width:1000px){
+  .wide .num.b3{font-size:min(20vw,19rem)}
+  .wide .num.b4{font-size:min(15vw,14rem)}
+  .wide .num.b5{font-size:min(12vw,11.5rem)}
+  .wide .num.b7{font-size:min(7vw,6.75rem)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.board{animation:none}}
+@media print{.board{animation:none}.group h3{position:static}.btn{display:none}}
 </style>
 </head>
-<body>
-<main class="cm">
-<div class="wrap">
-<header class="top"><span class="brand">Fieldstone</span><p class="top-show"><b>Fleet and Yard Expo 2026</b>June 9, 2026</p>
-</header>
-<section data-section="hero" class="hero">
-<div>
-<p class="for">For <b>Sam Delgado</b>, Operations Manager at Norwood Equipment Rental</p>
-<h1>See you at Fleet and Yard Expo 2026</h1>
-<p class="dek">June 9, 2026 at Piedmont Fairgrounds, Greensboro. <b>Fieldstone</b> is at booth 27 in Building 3 on Tuesday, June 9.</p>
-<div class="go"><a class="btn" href="#meet">Pick a time at the show</a><span>20 minutes at the booth, or a coffee nearby. Ravi holds the slot.</span></div>
-</div>
-<aside class="sign" aria-label="Booth 27 in Building 3">
-<p class="sign-hall">Building 3</p>
-<p class="sign-num">27</p>
-<p class="sign-brand">Fieldstone<br><span class="sign-dates">June 9, 2026</span></p>
-</aside>
+<body class="wide">
+<main>
+<section data-section="hero" class="hero frame">
+  <header class="top"><span class="co">Fieldstone</span>
+    <p class="for">For <b>Sam Delgado</b>, Operations Manager at Norwood Equipment Rental</p>
+  </header>
+  <div class="lead-in">
+    <h1>See you at Fleet and Yard Expo 2026</h1>
+    <p class="dek">June 9, 2026 at Piedmont Fairgrounds, Greensboro. Fieldstone is at booth 27 in Building 3 on Tuesday, June 9.</p>
+    <div class="go"><a class="btn" href="#meet">Pick a time at the show</a><span>20 minutes at the booth, or a coffee nearby. Ravi holds the slot.</span></div>
+  </div>
+  <div class="signage" aria-label="Booth 27 in Building 3">
+    <div class="board">
+      <p class="hall sign">Building 3</p>
+      <p class="num sign b3" aria-hidden="true">27</p>
+    </div>
+  </div>
 </section>
-<section data-section="note" class="note"><p class="hi">Sam,</p>
-<p>Four yards serving contractors across two states usually means the machine a crew needs on Monday is sitting at the wrong yard on Friday. Twenty minutes at the stand is enough to see how our dispatch board moves it before the call comes in.</p>
-<p class="sig"><b>Ravi Menon</b><span>Account Executive, Fieldstone</span></p>
+
+<section data-section="note" class="note frame">
+  <h2>A note from Ravi</h2>
+  <div><p class="hi">Sam,</p>
+    <p class="line">Four yards serving contractors across two states usually means the machine a crew needs on Monday is sitting at the wrong yard on Friday. Twenty minutes at the stand is enough to see how our dispatch board moves it before the call comes in.</p>
+    <p class="sig"><b>Ravi Menon</b>Account Executive, Fieldstone</p>
+  </div>
 </section>
-<div class="cols">
-<div class="main">
-<section data-section="booth" class="block">
-<h2>At the booth</h2><p class="lede">Two of us at the stand the whole show, a live board on the big screen, and a quiet corner at the back with chairs and decent coffee.</p>
-<ul class="hrs">
-<li><b>Tuesday, June 9</b><span class="h">8:00 am to 4:00 pm</span><small>Ravi Menon, all day</small></li>
-</ul>
+
+<section data-section="booth" class="block frame">
+  <div class="booth-head">
+    <h2>At the booth</h2><p class="lede">Two of us at the stand the whole show, a live board on the big screen, and a quiet corner at the back with chairs and decent coffee.</p>
+  </div>
+  <ul class="days">
+    <li><span class="d sign">Tuesday, June 9</span><span class="h">8:00 am to 4:00 pm<small>Ravi Menon, all day</small></span></li>
+  </ul>
 </section>
-<section data-section="events" class="block">
-<h2>Worth leaving the hall for</h2>
-<p class="lede">The side events we are going to. Tell Ravi which ones you will be at and we can walk over together.</p>
-<h3 class="day">Tuesday, June 9</h3>
-<ul class="ev">
-<li><span class="t">4:30 pm</span><div><b>Rental operators barbecue</b><span class="w">The north lawn, behind Building 3</span><p class="n">Most of the yards from both states stay for it. Ravi will be at the Fieldstone table.</p><div class="h">Hosted by Carolinas Rental Association</div></div></li>
-</ul>
+
+<section data-section="events" class="block off frame">
+  <h2>Off the floor</h2>
+  <p class="lede">The side events we are going to. Tell Ravi which ones you will be at and we can walk over together.</p>
+  <div class="group">
+  <h3>Tuesday, June 9</h3>
+  <ul class="ev">
+    <li><span class="t">4:30 pm</span><div><b>Rental operators barbecue</b><span class="w">The north lawn, behind Building 3</span><p class="n">Most of the yards from both states stay for it. Ravi will be at the Fieldstone table.</p><p class="h">Hosted by Carolinas Rental Association</p></div></li>
+  </ul></div>
 </section>
-</div>
-<section data-section="meet" id="meet" class="meet">
-<h2>Pick a time</h2>
-<p class="lede">Choose a slot and it goes on both calendars. If none of them fits, come by the booth and ask for Ravi.</p>
-<div class="ken-booking" data-ken-booking="preview" style="box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;width:100%;height:560px;padding:24px;border:1px dashed currentColor;border-radius:8px;text-align:center"><strong>Meet at the show</strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 216" width="288" role="img" aria-label="Calendar" style="max-width:100%;height:auto"><rect x="0.5" y="0.5" width="287" height="215" rx="10" fill="#fff" stroke="#d1d5db"/><rect x="14" y="16" width="112" height="14" rx="4" fill="#1e5e3a"/><rect x="236" y="16" width="38" height="14" rx="4" fill="#e5e7eb"/><rect x="14" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="58" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="88" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="162" y="58" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="199" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="88" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="88" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="162" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="199" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="88" y="118" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="125" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="162" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="199" y="118" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="236" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="148" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="88" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="162" y="148" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="199" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="88" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="178" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="162" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="199" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/></svg><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1e5e3a;color:#fff;text-decoration:none;font-weight:600">Book a time</a><span style="font-size:13px;opacity:.7">Preview: the live page shows the booking calendar here.</span></div>
-<p class="after">Bring a colleague if you like. There is room for three at the back of the stand.</p>
+
+<section data-section="meet" id="meet" class="where frame">
+  <div>
+    <h2>Where to find us</h2>
+    <ul class="rows"><li>Piedmont Fairgrounds</li>
+      <li>Building 3, booth 27</li><li>Greensboro</li>
+      <li>June 9, 2026</li>
+    </ul>
+  </div>
+  <div class="book">
+    <h2>Pick a time</h2>
+    <p class="lede">Choose a slot and it goes on both calendars. If none of them fits, come by the booth and ask for Ravi.</p>
+    <div class="ken-booking" data-ken-booking="preview" style="box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;width:100%;height:560px;padding:24px;border:1px dashed currentColor;border-radius:8px;text-align:center"><strong>Meet at the show</strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 216" width="288" role="img" aria-label="Calendar" style="max-width:100%;height:auto"><rect x="0.5" y="0.5" width="287" height="215" rx="10" fill="#fff" stroke="#d1d5db"/><rect x="14" y="16" width="112" height="14" rx="4" fill="#1e5e3a"/><rect x="236" y="16" width="38" height="14" rx="4" fill="#e5e7eb"/><rect x="14" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="58" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="88" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="162" y="58" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="199" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="58" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="88" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="88" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="162" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="199" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="88" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="88" y="118" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="125" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="162" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="199" y="118" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="236" y="118" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="148" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="88" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="162" y="148" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="199" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="148" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="14" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="51" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="88" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="125" y="178" width="31" height="24" rx="4" fill="#1e5e3a"/><rect x="162" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="199" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/><rect x="236" y="178" width="31" height="24" rx="4" fill="#e5e7eb"/></svg><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1e5e3a;color:#fff;text-decoration:none;font-weight:600">Book a time</a><span style="font-size:13px;opacity:.7">Preview: the live page shows the booking calendar here.</span></div>
+    <p class="after">Bring a colleague if you like. There is room for three at the back of the stand.</p>
+  </div>
 </section>
-</div>
-<p class="foot">This page was made for <b>Sam Delgado at Norwood Equipment Rental</b> by Ravi Menon at Fieldstone. It is a private link.</p>
-</div>
 </main>
+<footer class="foot frame">
+  <p class="sign" aria-hidden="true">Booth 27</p>
+  <p>This page was made for <b>Sam Delgado at Norwood Equipment Rental</b> by Ravi Menon at Fieldstone. It is a private link.</p>
+</footer>
 </body>
 </html>

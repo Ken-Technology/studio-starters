@@ -1,9 +1,7 @@
-{%- assign primary = brand.colors.primary | default: '#2a4bd7' -%}
-{%- assign secondary = brand.colors.secondary | default: '#0e1530' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
-{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign primary = brand.colors.primary | default: '#f4b9cb' -%}
+{%- assign secondary = brand.colors.secondary | default: '#1a2039' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Literata' -%}
+{%- assign font_body = brand.fonts.body | default: 'Literata' -%}
 {%- assign org = brand.name | default: sender.name | default: 'Northbeam' -%}
 <!doctype html>
 <html lang="en">
@@ -12,57 +10,68 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A dinner invitation for {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@500;600&display=swap">
+{%- if font_head == 'Literata' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@500&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600&display=swap">
+{%- if font_body == 'Literata' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@500&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{
   --p:{{ primary | escape }};
   --s:{{ secondary | escape }};
-  --fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,sans-serif;
-  --fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;
-  --stock:color-mix(in srgb,var(--p) 3%,#fffdf8);
-  --ink:color-mix(in srgb,var(--s) 55%,#15120e);
-  --ground:color-mix(in srgb,var(--s) 70%,#0c0a08);
-  --mute:color-mix(in srgb,var(--ink) 62%,var(--stock));
-  --on-p:#fff;
+  --fh:'{{ font_head | escape }}',Georgia,'Times New Roman',serif;
+  --fb:'{{ font_body | escape }}',Georgia,'Times New Roman',serif;
+  --cloth:color-mix(in srgb,var(--s) 80%,#000);
+  --paper:color-mix(in srgb,var(--p) 70%,#fff);
+  --print:color-mix(in srgb,var(--s) 70%,#000);
+  --ital:{% if font_head == 'Literata' %}italic{% else %}normal{% endif %};
 }
 @supports (color:oklch(from red l c h)){:root{
-  --on-p:oklch(from var(--p) clamp(0,(0.7 - l) * 1000,1) 0 0);
-  --ink:oklch(from var(--s) min(l,0.26) min(c,0.04) h);
-  --ground:oklch(from var(--s) min(l,0.2) min(c,0.06) h);
+  --cloth:oklch(from var(--s) min(l,.27) min(c,.09) h);
+  --paper:oklch(from var(--p) max(l,.84) min(c,.12) h);
+  --print:oklch(from var(--s) min(l,.25) min(c,.09) h);
 }}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;min-height:100vh;background:var(--ground);color:var(--ink);font:17px/1.55 var(--fb);-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(120% 80% at 50% 0%,color-mix(in srgb,var(--p) 18%,transparent),transparent 60%);pointer-events:none}
-.card{position:relative;max-width:34rem;margin:1rem auto 3rem;background:var(--stock);box-shadow:5px 5px 0 0 var(--p),0 30px 60px -20px rgba(0,0,0,.55)}
-.face{text-align:center;padding:2.6rem 1.35rem 2.4rem}
-h1{font-family:var(--fh);font-weight:500;font-size:2.2rem;line-height:1.08;letter-spacing:-.015em;margin:0 auto;max-width:15ch;text-wrap:balance}
-p{margin:0 0 .85rem}
-.mark{display:inline-flex;align-items:center;gap:.55rem;font-weight:600;font-size:.95rem;margin:0}
-.mark img{height:24px;width:auto;max-width:9rem;display:block}
-.to{margin:2.2rem 0 .7rem;color:var(--mute);font-size:.98rem}
-.to b{color:var(--ink);font-weight:500}
-.orn{display:block;margin:1.6rem auto;width:88px;height:10px;color:var(--p)}
-.body{max-width:26rem;margin:0 auto .85rem}
-.sig{margin:1.4rem 0 0}
-.sig b{display:block;font-family:var(--fh);font-weight:500;font-size:1.2rem;line-height:1.2}
-.sig small{color:var(--mute);font-size:.92rem}
-@media (min-width:760px){.card{margin:3.5rem auto 4.5rem}.face{padding:3.4rem 3.4rem 3rem}h1{font-size:2.8rem}}
+html,body{background:var(--cloth)}
+body{margin:0;min-height:100vh;color:var(--paper);font:400 1.125rem/1.6 var(--fb);-webkit-font-smoothing:antialiased;padding:1.1rem 1rem 3rem}
+p{margin:0}
+.mark{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fh);font-weight:500;max-width:80rem}
+.mark img{height:26px;width:auto;max-width:9rem;display:block}
+.card{position:relative;max-width:40rem;margin:1.6rem auto 0;background:var(--paper);color:var(--print);padding:3rem 1.5rem 3rem;text-align:center}
+.card::before,.card::after{content:'';position:absolute;top:-12px;width:24px;height:24px;border-radius:50%;background:var(--cloth)}
+.card::before{left:-12px}
+.card::after{right:-12px}
+.name{font-family:var(--fh);font-style:var(--ital);font-size:clamp(2.5rem,1rem + 5vw,4.5rem);line-height:1;letter-spacing:-.03em;text-wrap:balance}
+.dia{display:block;width:10px;height:10px;margin:1.6rem auto;background:currentColor;transform:rotate(45deg)}
+h1{font-family:var(--fh);font-weight:500;font-size:clamp(1.6rem,1rem + 2vw,2.4rem);line-height:1.1;letter-spacing:-.02em;margin:0 auto;max-width:20ch;text-wrap:balance}
+.body{max-width:30rem;margin:1rem auto 0;text-align:left}
+.sig{max-width:30rem;margin:1.4rem auto 1.6rem;text-align:left}
+.sig b{display:block;font-family:var(--fh);font-style:var(--ital);font-weight:500;font-size:1.3rem}
+.sig span{font-size:.95rem}
+.ken-cta{background:var(--print)!important;color:var(--paper)!important;border-radius:0!important}
+.ken-cta:focus-visible{outline:3px solid var(--print);outline-offset:3px}
+@media (min-width:760px){body{padding:1.5rem 2rem 4rem}.card{padding:4rem 3.5rem}}
 </style>
 </head>
 <body>
+<p class="mark">{%- if brand.logo_url %}<img src="{{ brand.logo_url | escape }}" alt="">{% endif %}<span>{{ org | escape }}</span></p>
 <main class="card">
-  <header class="face" data-section="face">
-    <p class="mark">{%- if brand.logo_url %}<img src="{{ brand.logo_url | escape }}" alt="">{% endif %}<span>{{ org | escape }}</span></p>
-    <p class="to">{% if person.first_name %}An invitation for <b>{{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}</b>, {{ account.name | escape }}{% else %}An invitation for <b>{{ account.name | escape }}</b>{% endif %}</p>
+  <header data-section="face">
+    <p class="name">{% if person.first_name %}{{ person.first_name | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %}{% else %}{{ account.name | escape }}{% endif %}</p>
+    <span class="dia" aria-hidden="true"></span>
     <h1>A private dinner, with a seat held for you</h1>
-    <svg class="orn" viewBox="0 0 88 10" aria-hidden="true"><path d="M0 5h34M54 5h34" stroke="currentColor" stroke-width="1"/><circle cx="44" cy="5" r="2.2" fill="currentColor"/></svg>
     <p class="body">{{ person.first_name | default: 'Hello' | escape }}, I am setting a small table for the people I most want in one room, and {{ account.name | escape }} is on the list.</p>
     <p class="body">The date, the venue and the table plan are not on this page yet. Reply to my email and I will send them, with a seat held.</p>
-    <p class="sig"><b>{{ sender.name | default: 'Our team' | escape }}</b><small>{% if sender.title %}{{ sender.title | escape }}, {% endif %}{{ org | escape }}</small></p>
+    <p class="sig"><b>{{ sender.name | default: 'Our team' | escape }}</b><span>{% if sender.title %}{{ sender.title | escape }}, {% endif %}{{ org | escape }}</span></p>
     {% render 'ken/cta', label: 'Check again', href: link.refresh_url %}
   </header>
 </main>

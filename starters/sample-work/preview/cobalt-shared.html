@@ -5,216 +5,271 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A first two weeks of outbound for Cobalt Fleet, planned from your own site</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap">
 <style>
+:root{
+  --p:#1f2d3d;
+  --s:#b8894b;
+  --fh:'Newsreader',ui-sans-serif,system-ui,sans-serif;
+  --fb:'Source Sans 3',ui-sans-serif,system-ui,sans-serif;
+  --kraft:#c8a780;
+  --kraft-2:#e7d6bd;
+  --ink:#000;
+  --brown:#3d2e1c;
+  --small:clamp(.9375rem,.9rem + .15vw,1rem);
+  --body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --lead:clamp(1.25rem,1.05rem + .7vw,1.625rem);
+  --h3:clamp(1.5rem,1.1rem + 1.4vw,2.5rem);
+  --tt:clamp(1.375rem,1.1rem + .75vw,2.125rem);
+  --h2:clamp(2.5rem,1.4rem + 4vw,5rem);
+  --m:clamp(1rem,3.4vw,3rem);
+  --g:clamp(.625rem,1.2vw,1rem);
+}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f5f4f0;color:#17181a;font-family:'Source Sans 3',ui-sans-serif,system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.sw{--a:#1f2d3d;--a2:#b8894b;--ink:#17181a;--text:#2b2a27;--mute:#6b6963;--line:#dbd9d2;--paper:#fff;--bg:#f5f4f0}
-.sw h1,.sw h2,.sw h3,.sw-num{font-family:'Newsreader',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-.02em;text-wrap:balance;margin:0}
-.sw-mono,.sw-eyebrow,.sw-tag,.sw-url,.sw-ticket dt,.sw-top-tag,.sw-foot,.sw-label{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-p{margin:0}
-.sw a{color:inherit;text-decoration:underline;text-decoration-color:var(--a);text-decoration-thickness:1.5px;text-underline-offset:3px}
-.sw-band{height:5px;background:var(--a)}
-.sw-wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
-.sw-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:3.75rem;border-bottom:1px solid var(--line)}
-.sw-logo{display:block;height:28px;width:auto;max-width:11rem}
-.sw-brand{font-weight:700;font-size:1rem;letter-spacing:-.01em}
-.sw-top-tag{font-size:.74rem;color:var(--mute);text-align:right}
-.sw-cover{padding:2.4rem 0 2.2rem}
-.sw-kicker{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;font-weight:600;letter-spacing:.02em;color:var(--text);margin:0 0 1.1rem}
-.sw-kicker i{display:inline-block;width:.6rem;height:.6rem;background:var(--a);flex:none;margin-top:.33rem}
-.sw h1{font-size:2.3rem;line-height:1.04;overflow-wrap:anywhere}
-.sw-intro{font-size:1.12rem;line-height:1.5;color:var(--text);margin:1.2rem 0 0;max-width:38rem}
-.sw-ticket{margin:1.9rem 0 0;border:1.5px solid var(--ink);background:var(--paper)}
-.sw-ticket dl{margin:0;padding:0}
-.sw-ticket div{display:grid;grid-template-columns:6.4rem minmax(0,1fr);gap:.8rem;padding:.75rem .95rem;border-bottom:1px solid var(--line)}
-.sw-ticket div:last-child{border-bottom:0}
-.sw-ticket dt{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:.28rem}
-.sw-ticket dd{margin:0;font-weight:600;font-size:.98rem;line-height:1.35;overflow-wrap:anywhere}
-.sw-ticket small{display:block;font-weight:400;color:var(--mute);font-size:.86rem;margin-top:.15rem}
-.sw-sec{padding:2.3rem 0 2.5rem;border-top:1px solid var(--line)}
-.sw-rail{margin:0 0 1.4rem}
-.sw-eyebrow{display:flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:500;letter-spacing:.1em;color:var(--mute);margin:0 0 .7rem}
-.sw-eyebrow::before{content:"";width:1.4rem;height:2px;background:var(--a)}
-.sw h2{font-size:1.65rem;line-height:1.12}
-.sw-rail-note{font-size:.95rem;line-height:1.5;color:var(--mute);margin:.7rem 0 0;max-width:24rem}
-.sw-src,.sw-full,.sw-items{list-style:none;margin:0;padding:0}
-.sw-src{border-top:2px solid var(--ink)}
-.sw-src li{display:grid;grid-template-columns:3.6rem minmax(0,1fr);gap:.9rem;padding:1rem 0;border-bottom:1px solid var(--line)}
-.sw-tag{font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:.3rem}
-.sw-src b{display:block;font-weight:600;font-size:1rem;line-height:1.35}
-.sw-url{display:block;font-size:.78rem;color:var(--mute);margin-top:.25rem;overflow-wrap:anywhere}
-.sw-src p{font-size:.95rem;line-height:1.5;color:var(--text);margin-top:.45rem}
-.sw-block{background:var(--paper);border:1px solid var(--line);padding:1.25rem 1.15rem 1.35rem;margin:0 0 1.1rem;box-shadow:4px 4px 0 var(--paper),5px 5px 0 var(--line)}
-.sw-block-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin:0 0 .55rem}
-.sw-num{font-size:1.55rem;line-height:1;color:var(--a);font-weight:700;letter-spacing:-.03em}
-.sw-label{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:right}
-.sw h3{font-size:1.3rem;line-height:1.2;margin:0 0 .65rem}
-.sw-block>p{font-size:1rem;line-height:1.55;color:var(--text)}
-.sw-items{margin-top:1rem;border-top:1px solid var(--ink)}
-.sw-items li{padding:.6rem 0;border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.45}
-.sw-items b{display:block;font-weight:600;color:var(--ink)}
-.sw-items span{display:block;color:var(--mute);margin-top:.1rem}
-.sw-rw{display:grid;gap:.7rem;margin-top:1.1rem}
-.sw-rw>div{padding:.85rem 1rem .95rem;border-left:3px solid var(--line);background:var(--bg)}
-.sw-rw .sw-tag{display:block;padding:0;margin:0 0 .4rem}
-.sw-rw p{font-size:.98rem;line-height:1.5;color:var(--mute)}
-.sw-rw-after{border-left-color:var(--a)!important;background:var(--paper)!important;outline:1px solid var(--line)}
-.sw-rw-after p{color:var(--ink);font-weight:500}
-.sw-full{border-top:2px solid var(--ink)}
-.sw-full li{display:grid;grid-template-columns:1.1rem minmax(0,1fr);gap:.8rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
-.sw-ring{display:block;width:.8rem;height:.8rem;border:2.5px solid var(--a2);border-radius:50%;margin-top:.3rem}
-.sw-full b{display:block;font-weight:600;font-size:1rem;line-height:1.35}
-.sw-full p{font-size:.93rem;line-height:1.5;color:var(--mute);margin-top:.2rem}
-.sw-next{background:var(--paper);background:color-mix(in srgb,var(--a2) 12%,#fff);border-top:1px solid var(--line)}
-.sw-next .sw-sec{border-top:0}
-.sw-closing{font-size:1.12rem;line-height:1.5;color:var(--ink);max-width:36rem}
-.sw-cta{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 1.1rem;margin:1.5rem 0 1.6rem}
-.sw-cta .ken-cta{min-height:44px;display:inline-flex!important;align-items:center}
-.sw-or{font-size:.92rem;color:var(--mute)}
-.sw-sign{font-size:.95rem;line-height:1.4}
-.sw-sign b{display:block;font-weight:600}
-.sw-sign span{color:var(--mute)}
-.sw-foot{font-size:.72rem;color:var(--mute);padding:1.6rem 0 2.6rem;line-height:1.6}
-@media (min-width:900px){
-.sw-wrap{padding:0 2.5rem}
-.sw-top{min-height:4.25rem}
-.sw-cover{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:4rem;align-items:start;padding:4rem 0 3.6rem}
-.sw h1{font-size:3.7rem}
-.sw-intro{font-size:1.2rem;margin-top:1.5rem}
-.sw-ticket{margin:.4rem 0 0}
-.sw-ticket div{grid-template-columns:7rem minmax(0,1fr);padding:.9rem 1.1rem}
-.sw-sec{display:grid;grid-template-columns:16rem minmax(0,1fr);gap:4rem;padding:3.4rem 0 3.8rem}
-.sw-rail{margin:0}
-.sw h2{font-size:1.85rem}
-.sw-src li{grid-template-columns:4.5rem minmax(0,1fr);gap:1.2rem;padding:1.15rem 0}
-.sw-block{padding:1.7rem 1.8rem 1.9rem;margin-bottom:1.4rem}
-.sw-num{font-size:1.9rem}
-.sw h3{font-size:1.5rem}
-.sw-block>p{font-size:1.05rem}
-.sw-items li{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:1.2rem}
-.sw-items span{margin:0}
-.sw-rw{grid-template-columns:1fr 1fr;gap:1rem}
-.sw-full{display:grid;grid-template-columns:1fr 1fr;gap:0 2.5rem}
-.sw-full li{align-content:start}
-.sw-closing{font-size:1.2rem}
+body{margin:0;background:var(--kraft);color:var(--ink);font:400 var(--body)/1.5 var(--fb);-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+h1,h2,h3{font-family:var(--fh);font-weight:800;margin:0;line-height:.95;letter-spacing:-.005em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:inherit;text-decoration-thickness:.08em;text-underline-offset:.18em}
+a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+/* a tile or field of a brand colour picks black or white text from that colour */
+.on{background:var(--f);color:#000;color:rgb(from var(--f) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))}
+.wrap{max-width:90rem;margin:0 auto;padding:0 var(--m)}
+.tile{background:#fff;padding:clamp(1.25rem,2.6vw,2.25rem)}
+.tile.dark{--f:var(--s)}
+.tile.on{background:var(--f)}
+
+/* top */
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:2.75rem;padding-top:1.25rem;font-size:var(--small)}
+.top .bname{font:800 1.5rem/1 var(--fh)}
+.top img{display:block;height:28px;width:auto;max-width:11rem;object-fit:contain}
+
+/* cover: the headline, then the intro beside the packing slip */
+.cover{padding:clamp(2rem,6vh,4.5rem) 0 clamp(3rem,6vw,5rem)}
+.cover h1{font-size:clamp(2.5rem,.4rem + 8.6vw,8rem)}
+.cover h1.mid{font-size:clamp(1.75rem,.3rem + 7vw,6.75rem)}
+.cover h1.long{font-size:clamp(1.375rem,.2rem + 5.3vw,5.75rem)}
+.cover h1.xlong{font-size:clamp(1.125rem,.1rem + 4.4vw,4.75rem)}
+/* a brand heading face is wider than the condensed default, so the display sizes step down */
+.wide{--h2:clamp(2rem,1.1rem + 2.6vw,3.5rem);--h3:clamp(1.375rem,1.1rem + .9vw,2rem);--tt:clamp(1.25rem,1.1rem + .4vw,1.5rem)}
+.wide .cover h1{font-size:clamp(2rem,.4rem + 6.6vw,6.25rem)}
+.wide .cover h1.mid{font-size:clamp(1.5rem,.3rem + 5.6vw,5.25rem)}
+.wide .cover h1.long{font-size:clamp(1.25rem,.2rem + 4.8vw,4.5rem)}
+.wide .cover h1.xlong{font-size:clamp(1.125rem,.15rem + 4.5vw,4.25rem)}
+.cover .lower{display:grid;gap:var(--g);margin-top:clamp(2rem,4vw,3rem)}
+.intro{font-size:var(--lead);line-height:1.4;max-width:34ch;padding-bottom:1.5rem}
+.slip{position:relative;overflow:clip}
+.slip .made{font:800 var(--tt)/1 var(--fh);padding-right:6rem;min-height:5rem}
+.slip dl{margin:1.5rem 0 0;display:grid;gap:1rem}
+.slip dl div{display:grid;grid-template-columns:8rem minmax(0,1fr);gap:1rem}
+.slip dt{font-weight:700;font-size:var(--small);padding-top:.1rem}
+.slip dd{margin:0;font-weight:700;line-height:1.35;overflow-wrap:anywhere}
+.slip small{display:block;font-weight:400;font-size:var(--small);margin-top:.15rem;color:var(--brown)}
+/* the stamp, the page's one moment */
+.stamp{--f:var(--p);position:absolute;top:clamp(1rem,2vw,1.75rem);right:clamp(1rem,2vw,1.75rem);width:5.75rem;height:5.75rem;border-radius:50%;display:grid;place-items:center;text-align:center;font:800 1.375rem/.95 var(--fh);transform:rotate(-12deg)}
+
+/* section heads */
+.sec{padding:clamp(3.5rem,8vw,7rem) 0 0}
+.sec-head{display:grid;gap:1rem;margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+.sec-head h2{font-size:var(--h2)}
+.sec-head p{max-width:40ch}
+
+/* sources, laid out as tiles */
+.src{list-style:none;margin:0;padding:0;display:grid;gap:var(--g)}
+.src li{display:flex;flex-direction:column;gap:.5rem}
+.src .t{font:800 var(--tt)/1.05 var(--fh);overflow-wrap:anywhere}
+.src .meta{font-size:var(--small);color:var(--brown);overflow-wrap:anywhere}
+.src .dark .meta{color:inherit}
+.src p{margin-top:.25rem}
+
+/* the work, one tile per part */
+.parts{list-style:none;margin:0;padding:0;display:grid;gap:var(--g)}
+.part{display:grid;gap:.75rem 2rem}
+.part .lbl{font-weight:700;font-size:var(--lead);margin-top:.5rem}
+.part h3{font-size:var(--h3)}
+.part .body{max-width:56ch}
+.items{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;gap:.25rem}
+.items li{background:var(--kraft-2);padding:.85rem 1rem;display:grid;gap:.15rem 1.5rem}
+.items b{font-weight:700}
+.rw{display:grid;gap:.375rem;margin-top:1.5rem}
+.rw p{padding:1rem 1.15rem}
+.rw .before{background:var(--kraft-2);color:var(--brown)}
+.rw .after{--f:var(--s);font-weight:700;font-size:var(--lead);line-height:1.35}
+.rw b{font-weight:700}
+
+/* what the full version holds */
+.box{--f:var(--s)}
+.full{list-style:none;margin:0;padding:0;display:grid;gap:2rem clamp(2rem,3vw,3rem)}
+.full li{display:flex;flex-direction:column;gap:.6rem}
+.full h3{font-size:var(--tt);line-height:1.05}
+
+/* close */
+.next{--f:var(--p);margin-top:clamp(3.5rem,8vw,7rem);padding:clamp(3rem,7vw,6rem) 0}
+.next .inner{display:grid;gap:1.5rem 3rem}
+.next h2{font-size:var(--h2)}
+.closing{font-size:var(--lead);line-height:1.4;max-width:38ch}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.25rem;margin-top:1.75rem}
+.cta .ken-cta{display:inline-flex!important;align-items:center;min-height:52px;background:var(--s)!important;color:#fff!important;color:rgb(from var(--s) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))!important;font:700 var(--body)/1.1 var(--fb)!important;padding:.9rem 1.5rem!important;border-radius:0!important;text-decoration:none}
+.cta .ken-cta:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.sign{margin-top:1.75rem}
+.sign b{display:block;font-weight:700}
+.foot{padding:1.5rem 0 2.5rem;font-size:var(--small);color:var(--brown)}
+
+@media (min-width:760px){
+  .src{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .src li{min-height:clamp(13rem,22vw,17rem)}
+  .items li{grid-template-columns:minmax(0,2fr) minmax(0,3fr)}
+  .rw{grid-template-columns:1fr 1fr}
+  .full{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+@media (min-width:1200px){
+  .full{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (min-width:1000px){
+  .cover .lower{grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:start;column-gap:clamp(2rem,4vw,4rem)}
+  .sec-head{grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:clamp(2rem,4vw,4rem);align-items:end}
+  .src{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .src .site,.src .dark{grid-column:span 2}
+  .part{grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:clamp(2rem,4vw,4rem);align-items:start}
+  .part .head{grid-column:1}
+  .part .text{grid-column:2}
+  .next .inner{grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:clamp(2rem,4vw,4rem)}
+}
+@media (max-width:759px){
+  .tile{margin-inline:calc(-1 * var(--m));padding-inline:var(--m)}
+  .cover h1{text-wrap:pretty}
+  .intro{font-size:var(--body)}
+  .wide .top .bname{font-size:1.125rem}
+}
+@media (max-width:420px){
+  .slip dl div{grid-template-columns:1fr;gap:.15rem}
+}
+@media (prefers-reduced-motion:no-preference){
+  .stamp{animation:stamp .5s cubic-bezier(.3,1.4,.5,1) .5s both}
+  @keyframes stamp{from{transform:rotate(-24deg) scale(1.6)}to{transform:rotate(-12deg)}}
+}
+@media print{.on,.tile{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
 </head>
-<body>
-<main class="sw">
-<div class="sw-band"></div>
-<div class="sw-wrap">
-<header class="sw-top"><span class="sw-brand">Meridian Outbound</span><p class="sw-top-tag">For Cobalt Fleet Software</p>
+<body class="wide">
+<main>
+<div class="wrap">
+<header class="top"><span class="bname">Meridian Outbound</span><p>For Cobalt Fleet Software</p>
 </header>
-<section data-section="cover" class="sw-cover">
-<div class="sw-cover-main">
-<p class="sw-kicker"><i aria-hidden="true"></i>Made for Cobalt Fleet Software, before you asked</p>
-<h1>A first two weeks of outbound for Cobalt Fleet, planned from your own site</h1>
-<p class="sw-intro">Nobody at Cobalt Fleet asked for this. Your site names the fleet size you serve and the three kinds of company that use you, so a first plan was possible without a call. It is one segment, one email and a two-week schedule.</p>
-</div>
-<aside class="sw-ticket" aria-label="About this piece">
-<dl>
-<div><dt>Prepared for</dt><dd>Cobalt Fleet Software<small>Software development</small></dd></div>
-<div><dt>Made by</dt><dd>Ana Lindqvist<small>Founder, Meridian Outbound</small></dd></div>
-<div><dt>The piece</dt><dd>An outbound plan for the first two weeks</dd></div>
-<div><dt>Built from</dt><dd>cobaltfleet.example<small>Your site, recent news and our notes</small></dd></div>
-<div><dt>What it costs</dt><dd>Nothing<small>Keep it either way</small></dd></div>
-</dl>
-</aside>
+
+<section data-section="cover" class="cover">
+  <h1 class="xlong">A first two weeks of outbound for Cobalt Fleet, planned from your own site</h1>
+  <div class="lower">
+    <p class="intro">Nobody at Cobalt Fleet asked for this. Your site names the fleet size you serve and the three kinds of company that use you, so a first plan was possible without a call. It is one segment, one email and a two-week schedule.</p>
+    <aside class="slip tile" aria-label="About this piece">
+      <p class="made">Made for Cobalt Fleet Software, before you asked</p>
+      <p class="stamp on">No charge</p>
+      <dl>
+        <div><dt>Prepared for</dt><dd>Cobalt Fleet Software<small>Software development</small></dd></div>
+        <div><dt>Made by</dt><dd>Ana Lindqvist<small>Founder, Meridian Outbound</small></dd></div>
+        <div><dt>The piece</dt><dd>An outbound plan for the first two weeks</dd></div>
+        <div><dt>Built from</dt><dd>cobaltfleet.example<small>Your site, recent news and our notes</small></dd></div>
+        <div><dt>What it costs</dt><dd>Nothing<small>Keep it either way</small></dd></div>
+      </dl>
+    </aside>
+  </div>
 </section>
-<section data-section="sources" class="sw-sec">
-<div class="sw-rail">
-<p class="sw-eyebrow">01</p>
-<h2>What we looked at</h2>
-<p class="sw-rail-note">Everything on this page comes from these sources and from how we do this work. Nobody at Cobalt Fleet Software was asked anything.</p>
-</div>
-<div class="sw-body">
-<ol class="sw-src">
-<li><span class="sw-tag">Site</span><div><b>Cobalt Fleet: preventive maintenance for fleets of 50 to 500 trucks</b><span class="sw-url">https://cobaltfleet.example</span><p>The headline, the how it works section and the who uses it list, plus the October integration note.</p></div></li>
-<li><span class="sw-tag">News</span><div><b><a href="https://cobaltfleet.example/careers" target="_blank" rel="noopener noreferrer">Two sales development representative roles posted</a></b><span class="sw-url">Oct 20, 2026, hiring</span></div></li>
-<li><span class="sw-tag">News</span><div><b><a href="https://cobaltfleet.example/blog/telematics-integration" target="_blank" rel="noopener noreferrer">New telematics integration announced on the Cobalt blog</a></b><span class="sw-url">Oct 08, 2026, product</span></div></li>
-<li><span class="sw-tag">Notes</span><div><b>Our notes on Cobalt Fleet Software</b><p>Cobalt Fleet Software sells preventive maintenance software to trucking fleets of 50 to 500 trucks. It reads engine fault codes from telematics and books shop time before a truck fails on the road. About 90 people, based in Columbus. Released a new telematics integration in October and posted two sales development roles.</p></div></li>
-</ol>
-</div>
+<section data-section="sources" class="sec">
+  <div class="sec-head">
+    <h2>What we looked at</h2>
+    <p>Everything on this page comes from these sources and from how we do this work. Nobody at Cobalt Fleet Software was asked anything.</p>
+  </div>
+  <ol class="src">
+    <li class="tile site"><p class="t">Cobalt Fleet: preventive maintenance for fleets of 50 to 500 trucks</p><p class="meta">Your site, https://cobaltfleet.example</p><p>The headline, the how it works section and the who uses it list, plus the October integration note.</p></li>
+    <li class="tile"><p class="t"><a href="https://cobaltfleet.example/careers" target="_blank" rel="noopener noreferrer">Two sales development representative roles posted</a></p><p class="meta">News, Oct 20, 2026, hiring</p></li>
+    <li class="tile"><p class="t"><a href="https://cobaltfleet.example/blog/telematics-integration" target="_blank" rel="noopener noreferrer">New telematics integration announced on the Cobalt blog</a></p><p class="meta">News, Oct 08, 2026, product</p></li>
+    <li class="tile dark on"><p class="t">Our notes on Cobalt Fleet Software</p><p>Cobalt Fleet Software sells preventive maintenance software to trucking fleets of 50 to 500 trucks. It reads engine fault codes from telematics and books shop time before a truck fails on the road. About 90 people, based in Columbus. Released a new telematics integration in October and posted two sales development roles.</p></li>
+  </ol>
 </section>
-<section data-section="work" class="sw-sec">
-<div class="sw-rail">
-<p class="sw-eyebrow">02</p>
-<h2>What we made</h2>
-<p class="sw-rail-note">4 parts, in the order to read them. Each one stands on its own, so take what is useful and leave the rest.</p>
-</div>
-<div class="sw-body">
-<article class="sw-block">
-<div class="sw-block-top"><span class="sw-num">01</span><span class="sw-label">The bet</span></div>
-<h3>Go after the shop, not the fleet owner</h3>
-<p>Your site says the shop sees a day plan instead of a pile of alerts. That line is written for the person who runs the shop, so the first segment is maintenance directors, not owners or finance. The ask is small: would they like to see what Cobalt does with one week of their own fault codes. Fleets of 50 to 500 trucks is your own number, so the list stays inside it.</p>
-</article>
-<article class="sw-block">
-<div class="sw-block-top"><span class="sw-num">02</span><span class="sw-label">Who to reach</span></div>
-<h3>Three kinds of company, one role in each</h3>
-<p>All three come from the who uses it line on your site. In each one the list targets the person who owns shop time and downtime, by title.</p>
-<ul class="sw-items">
-<li><b>Director of maintenance at regional truckload carriers</b><span>Fleets of 50 to 500 trucks, the size your site names. Owns the downtime number.</span></li>
-<li><b>VP of operations at food distributors with their own fleet</b><span>Refrigerated routes run on a fixed schedule. A truck down is a route missed.</span></li>
-<li><b>Fleet manager at waste and recycling haulers</b><span>The same preventive maintenance problem, on trucks that run the same route every day.</span></li>
-</ul>
-</article>
-<article class="sw-block">
-<div class="sw-block-top"><span class="sw-num">03</span><span class="sw-label">The first email</span></div>
-<h3>Under 90 words, one fact, one ask</h3>
-<p>The greeting and the name are added per person. The subject line is the first two words of the plan, shop day plan, because it reads like a note from inside their own company.<br /><br />If fault codes still land in an inbox and the shop sorts them on Monday, a truck that could have had a shop date fails on the road instead.<br /><br />Cobalt reads the codes from your telematics and sets a shop date per truck, so the shop gets a day plan instead of a pile of alerts. It is built for fleets of 50 to 500 trucks.<br /><br />Want me to show you what it does with one week of your own codes?</p>
-</article>
-<article class="sw-block">
-<div class="sw-block-top"><span class="sw-num">04</span><span class="sw-label">Days 1 to 14</span></div>
-<h3>The first two weeks</h3>
-<p>The schedule runs the way every first month runs with us, cut to the part before the first follow-up.</p>
-<ul class="sw-items">
-<li><b>Days 1 to 3</b><span>Agree the segment and the ask. Build the list and check every company against the 50 to 500 truck range.</span></li>
-<li><b>Days 4 to 5</b><span>Sending domains set up and warmed apart from cobaltfleet.example, so your main domain stays clean.</span></li>
-<li><b>Days 6 to 10</b><span>The first send goes out under your name. Every reply answered within a working day.</span></li>
-<li><b>Days 11 to 14</b><span>The first follow-up. Friday readout: what was sent, who answered and what they said.</span></li>
-</ul>
-</article>
-</div>
+<section data-section="work" class="sec">
+  <div class="sec-head">
+    <h2>What we made</h2>
+    <p>4 parts, in the order to read them. Each one stands on its own, so take what is useful and leave the rest.</p>
+  </div>
+  <ol class="parts">
+    <li class="part tile">
+      <div class="head">
+        <h3>Go after the shop, not the fleet owner</h3><p class="lbl">The bet</p>
+      </div>
+      <div class="text">
+        <p class="body">Your site says the shop sees a day plan instead of a pile of alerts. That line is written for the person who runs the shop, so the first segment is maintenance directors, not owners or finance. The ask is small: would they like to see what Cobalt does with one week of their own fault codes. Fleets of 50 to 500 trucks is your own number, so the list stays inside it.</p>
+      </div>
+    </li>
+    <li class="part tile">
+      <div class="head">
+        <h3>Three kinds of company, one role in each</h3><p class="lbl">Who to reach</p>
+      </div>
+      <div class="text">
+        <p class="body">All three come from the who uses it line on your site. In each one the list targets the person who owns shop time and downtime, by title.</p>
+        <ul class="items">
+          <li><b>Director of maintenance at regional truckload carriers</b><span>Fleets of 50 to 500 trucks, the size your site names. Owns the downtime number.</span></li>
+          <li><b>VP of operations at food distributors with their own fleet</b><span>Refrigerated routes run on a fixed schedule. A truck down is a route missed.</span></li>
+          <li><b>Fleet manager at waste and recycling haulers</b><span>The same preventive maintenance problem, on trucks that run the same route every day.</span></li>
+        </ul>
+      </div>
+    </li>
+    <li class="part tile">
+      <div class="head">
+        <h3>Under 90 words, one fact, one ask</h3><p class="lbl">The first email</p>
+      </div>
+      <div class="text">
+        <p class="body">The greeting and the name are added per person. The subject line is the first two words of the plan, shop day plan, because it reads like a note from inside their own company.<br /><br />If fault codes still land in an inbox and the shop sorts them on Monday, a truck that could have had a shop date fails on the road instead.<br /><br />Cobalt reads the codes from your telematics and sets a shop date per truck, so the shop gets a day plan instead of a pile of alerts. It is built for fleets of 50 to 500 trucks.<br /><br />Want me to show you what it does with one week of your own codes?</p>
+      </div>
+    </li>
+    <li class="part tile">
+      <div class="head">
+        <h3>The first two weeks</h3><p class="lbl">Days 1 to 14</p>
+      </div>
+      <div class="text">
+        <p class="body">The schedule runs the way every first month runs with us, cut to the part before the first follow-up.</p>
+        <ul class="items">
+          <li><b>Days 1 to 3</b><span>Agree the segment and the ask. Build the list and check every company against the 50 to 500 truck range.</span></li>
+          <li><b>Days 4 to 5</b><span>Sending domains set up and warmed apart from cobaltfleet.example, so your main domain stays clean.</span></li>
+          <li><b>Days 6 to 10</b><span>The first send goes out under your name. Every reply answered within a working day.</span></li>
+          <li><b>Days 11 to 14</b><span>The first follow-up. Friday readout: what was sent, who answered and what they said.</span></li>
+        </ul>
+      </div>
+    </li>
+  </ol>
 </section>
-<section data-section="full" class="sw-sec">
-<div class="sw-rail">
-<p class="sw-eyebrow">03</p>
-<h2>What the full version includes</h2>
-<p class="sw-rail-note">This is the first two weeks of a month. The full month adds the list, the follow-ups and the replies, then a new segment the month after.</p>
-</div>
-<div class="sw-body">
-<ol class="sw-full">
-<li><span class="sw-ring" aria-hidden="true"></span><div><b>The list, built and checked</b><p>Every maintenance director at the carriers in the segment, checked by us before the first send.</p></div></li>
-<li><span class="sw-ring" aria-hidden="true"></span><div><b>Three follow-ups and a LinkedIn note</b><p>Each on a different reason to answer, spaced over three weeks.</p></div></li>
-<li><span class="sw-ring" aria-hidden="true"></span><div><b>Replies answered, meetings booked</b><p>We answer every reply within a working day and put meetings straight on your calendar.</p></div></li>
-<li><span class="sw-ring" aria-hidden="true"></span><div><b>A readout every Friday</b><p>What was sent, who answered and what they said, so you can steer the next segment.</p></div></li>
-<li><span class="sw-ring" aria-hidden="true"></span><div><b>A new segment each month</b><p>Food distributors or waste haulers next, from the same who uses it line on your site.</p></div></li>
-</ol>
-</div>
-</section>
-</div>
-<div class="sw-next">
-<div class="sw-wrap">
-<section data-section="next" class="sw-sec">
-<div class="sw-rail">
-<p class="sw-eyebrow">04</p>
-<h2>If this is useful</h2>
-</div>
-<div class="sw-body">
-<p class="sw-closing">If the segment is right, reply and I will build the list and send the first batch under your name. If it is the wrong segment, tell me who actually buys and I will redo the plan around them.</p>
-<div class="sw-cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1f2d3d;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a><span class="sw-or">or reply to the email this came with</span></div>
-<p class="sw-sign"><b>Ana Lindqvist</b><span>Founder, Meridian Outbound</span></p>
-</div>
+<section data-section="full" class="sec">
+  <div class="sec-head">
+    <h2>What the full version includes</h2>
+    <p>This is the first two weeks of a month. The full month adds the list, the follow-ups and the replies, then a new segment the month after.</p>
+  </div>
+  <div class="box tile on">
+  <ol class="full">
+    <li><h3>The list, built and checked</h3><p>Every maintenance director at the carriers in the segment, checked by us before the first send.</p></li>
+    <li><h3>Three follow-ups and a LinkedIn note</h3><p>Each on a different reason to answer, spaced over three weeks.</p></li>
+    <li><h3>Replies answered, meetings booked</h3><p>We answer every reply within a working day and put meetings straight on your calendar.</p></li>
+    <li><h3>A readout every Friday</h3><p>What was sent, who answered and what they said, so you can steer the next segment.</p></li>
+    <li><h3>A new segment each month</h3><p>Food distributors or waste haulers next, from the same who uses it line on your site.</p></li>
+  </ol>
+  </div>
 </section>
 </div>
-</div>
-<div class="sw-wrap">
-<p class="sw-foot">Made for Cobalt Fleet Software by Ana Lindqvist at Meridian Outbound. This is a private link, not a public page.</p>
+
+<section data-section="next" class="next on">
+  <div class="wrap inner">
+    <h2>If this is useful</h2>
+    <div>
+      <p class="closing">If the segment is right, reply and I will build the list and send the first batch under your name. If it is the wrong segment, tell me who actually buys and I will redo the plan around them.</p>
+      <div class="cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1f2d3d;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a><span>or reply to the email this came with</span></div>
+      <p class="sign"><b>Ana Lindqvist</b>Founder, Meridian Outbound</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <p class="foot">Made for Cobalt Fleet Software by Ana Lindqvist at Meridian Outbound. This is a private link, not a public page.</p>
 </div>
 </main>
 </body>

@@ -1,15 +1,14 @@
-{%- assign accent = brand.colors.primary | default: '#2a4bd7' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#0e1530' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Inter Tight' -%}
-{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign accent = brand.colors.primary | default: '#aaf5cb' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#232323' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Funnel Display' -%}
+{%- assign font_body = brand.fonts.body | default: 'Funnel Sans' -%}
 {%- assign us_name = brand.name | default: '' -%}
 {%- assign us_label = us_name | default: 'Our team' -%}
-{%- comment -%} Is a brand color light? Mix text colors so a pale primary or secondary still reads. Brightness is (299 r + 587 g + 114 b) / 1000 of a hex color. {%- endcomment -%}
+{%- comment -%} Is a brand color light? Brightness is (299 r + 587 g + 114 b) / 1000 of a hex color; 110 or more takes dark text. {%- endcomment -%}
 {%- assign hx = '0123456789abcdef' -%}
 {%- assign pair = accent | append: ',' | append: accent2 | split: ',' -%}
 {%- assign lights = '' -%}
+{%- assign lums = '' -%}
 {%- for c in pair -%}
   {%- assign h = c | remove: '#' | strip | downcase -%}
   {%- assign ch = h | split: '' -%}
@@ -18,6 +17,7 @@
     {%- assign ch = h | split: '' -%}
   {%- endif -%}
   {%- assign light = 'n' -%}
+  {%- assign lum = 0 -%}
   {%- if ch.size == 6 -%}
     {%- assign v0 = hx | split: ch[0] | first | size -%}
     {%- assign v1 = hx | split: ch[1] | first | size -%}
@@ -30,13 +30,17 @@
       {%- assign lg = v2 | times: 16 | plus: v3 | times: 587 -%}
       {%- assign lb = v4 | times: 16 | plus: v5 | times: 114 -%}
       {%- assign lum = lr | plus: lg | plus: lb | divided_by: 1000 -%}
-      {%- if lum >= 150 -%}{%- assign light = 'y' -%}{%- endif -%}
+      {%- if lum >= 110 -%}{%- assign light = 'y' -%}{%- endif -%}
     {%- endif -%}
   {%- endif -%}
   {%- assign lights = lights | append: light -%}
+  {%- assign lums = lums | append: lum | append: ',' -%}
 {%- endfor -%}
 {%- assign p_light = lights | slice: 0, 1 -%}
 {%- assign s_light = lights | slice: 1, 1 -%}
+{%- comment -%} Two fields that are about as bright would melt into one, so the account's field turns pale. {%- endcomment -%}
+{%- assign lv = lums | split: ',' -%}
+{%- assign l_gap = lv[0] | plus: 0 | minus: lv[1] | abs -%}
 
 {%- assign n_facts = data.facts | size -%}
 {%- assign n_agenda = data.agenda.items | size -%}
@@ -50,13 +54,11 @@
 {%- if has_note or n_agenda > 0 or n_plan > 0 -%}{%- assign has_main = true -%}{%- endif -%}
 {%- assign has_people = false -%}
 {%- if n_their > 0 or n_our > 0 -%}{%- assign has_people = true -%}{%- endif -%}
-{%- assign n_docs = 0 -%}
-{%- assign n_recs = 0 -%}
-{%- for r in data.resources -%}
-  {%- if r.kind == 'recording' -%}{%- assign n_recs = n_recs | plus: 1 -%}{%- else -%}{%- assign n_docs = n_docs | plus: 1 -%}{%- endif -%}
-{%- endfor -%}
 {%- assign n_done = 0 -%}
 {%- for s in data.plan -%}{%- if s.done -%}{%- assign n_done = n_done | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- comment -%} The zipper between the two fields is closed as far as the plan has got: 18 percent with nothing done, 82 with everything done. {%- endcomment -%}
+{%- assign closed = 18 -%}
+{%- if n_plan > 0 -%}{%- assign closed = n_done | times: 64 | divided_by: n_plan | plus: 18 -%}{%- endif -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -64,344 +66,311 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Deal room: {{ account.name | escape }}{% if us_name != '' %} and {{ us_name | escape }}{% endif %}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+{%- if font_head == 'Funnel Display' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Funnel Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 :root{
-  --brand-primary:{{ accent }};
-  --brand-secondary:{{ accent2 }};
-  --brand-heading-font:'{{ font_head }}';
-  --brand-body-font:'{{ font_body }}';
-  --p:var(--brand-primary,#2a4bd7);
-  --s:var(--brand-secondary,#0e1530);
-  --fh:var(--brand-heading-font,'Inter Tight'),ui-sans-serif,system-ui,sans-serif;
-  --fb:var(--brand-body-font,'Inter'),ui-sans-serif,system-ui,sans-serif;
-  {%- if s_light == 'y' %}
-  --ink:color-mix(in srgb,var(--s) 30%,#101010);
-  {%- else %}
-  --ink:var(--s);
-  {%- endif %}
-  --mute:color-mix(in srgb,var(--ink) 60%,#fff);
-  --faint:color-mix(in srgb,var(--ink) 42%,#fff);
-  --line:color-mix(in srgb,var(--ink) 13%,#fff);
-  --paper:color-mix(in srgb,var(--ink) 4.5%,#fff);
-  --tint:color-mix(in srgb,var(--p) 9%,#fff);
-  --tint-line:color-mix(in srgb,var(--p) 28%,#fff);
+  --bg:#ffffff;
+  --ink:#232323;
+  --muted:#5c5c5c;
+  --us:{{ accent }};
   {%- if p_light == 'y' %}
-  --p-deep:color-mix(in srgb,var(--p) 35%,var(--ink));
-  --on-p:var(--ink);
+  --on-us:#111111;
   {%- else %}
-  --p-deep:color-mix(in srgb,var(--p) 72%,var(--ink));
-  --on-p:#fff;
+  --on-us:#ffffff;
   {%- endif %}
+  --both:#ececec;
+  {%- if l_gap < 50 %}
+  --them:color-mix(in srgb,{{ accent2 }} 14%,#fff);
+  --on-them:#111111;
+  --both:color-mix(in srgb,{{ accent }} 40%,#fff);
+  {%- elsif s_light == 'y' %}
+  --them:{{ accent2 }};
+  --on-them:#111111;
+  {%- else %}
+  --them:{{ accent2 }};
+  --on-them:#ffffff;
+  {%- endif %}
+  --c:{{ closed }}%;
+  --g:2.5rem;
+  --fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;
+  --fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;
+  --m:clamp(1rem,3vw,2.5rem);
 }
+/* text on a brand field: white under luminance .18, black above, so it passes AA for any colour */
+@supports (color:color(from red xyz-d65 x y z)){:root{--on-us:color(from var(--us) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--on-them:color(from var(--them) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
-a{color:var(--p-deep)}
-h1,h2,h3{font-family:var(--fh);margin:0;line-height:1.15;letter-spacing:-.01em;font-weight:600}
-p{margin:0 0 .8rem}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.125rem/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+p{margin:0}
+a{color:inherit;text-decoration-thickness:.08em;text-underline-offset:.2em}
+a:focus-visible,.ken-cta:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+h1,h2,h3{font-family:var(--fh);font-weight:600;margin:0;letter-spacing:-.015em}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.wrap{max-width:74rem;margin:0 auto;padding:0 1rem}
+.ken-cta{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 1.8rem;font-weight:600;font-size:1.125rem;text-decoration:none;border-radius:0}
 
-/* top bar */
-.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:.55rem;font-weight:600;font-family:var(--fh);font-size:1rem;min-width:0}
-.logo{width:26px;height:26px;display:block;flex:none;border-radius:6.5px;background:var(--p);color:var(--on-p);display:grid;place-items:center;font-size:.8rem;font-weight:700;line-height:1}
-img.logo{width:auto;max-width:9rem;height:26px;border-radius:0;background:none;object-fit:contain}
-.room{font-size:.85rem;color:var(--mute);text-align:right}
-.room b{font-weight:500;color:var(--ink)}
+/* First screen: the account's field and ours, joined by a zipper that is closed as far as the plan has got. */
+.head{display:grid}
+.f{position:relative;padding:2rem var(--m) 2.5rem;display:flex;flex-direction:column;gap:1.5rem}
+.them{background:var(--them);color:var(--on-them)}
+.us{background:var(--us);color:var(--on-us);padding-top:3rem}
+.them::after,.us::before{content:'';position:absolute;background:var(--bg)}
+.them::after{right:0;bottom:0;width:calc(100% - var(--c));height:var(--g);clip-path:polygon(100% 0,100% 100%,0 100%)}
+.us::before{right:0;top:0;width:calc(100% - var(--c));height:var(--g);clip-path:polygon(0 0,100% 0,100% 100%)}
+.zip{position:absolute;left:0;top:-9px;width:var(--c);height:18px;background:repeating-linear-gradient(to right,var(--them) 0 9px,var(--us) 9px 18px);z-index:1} /* taste-skill-ignore: hard stops draw zipper teeth, not a fill */
+.zip::after{content:'';position:absolute;right:-22px;top:50%;width:44px;height:22px;transform:translateY(-50%);background:var(--bg);border:3px solid var(--ink);border-radius:4px}
+.names{font-size:clamp(2.5rem,5.4vw,5.25rem);line-height:.98;text-wrap:balance;overflow-wrap:break-word}
+.name{font-family:var(--fh);font-weight:600;letter-spacing:-.015em}
+.lede{font-size:1.5rem;line-height:1.4;max-width:30em}
+.for{margin-top:auto;padding-top:1rem}
+.logo img{height:32px;width:auto;max-width:11rem;display:block}
+.facts{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem var(--m)}
+.facts dt{font-size:1rem}
+.facts dd{margin:0;font-family:var(--fh);font-weight:600;font-size:1.5rem;line-height:1.2}
+.facts dd.d{font-family:var(--fb);font-weight:400;font-size:1rem;line-height:1.45;margin-top:.2rem}
+.us .ken-cta{background:var(--on-us);color:var(--us)}
+.us .ken-cta:hover{background:var(--them);color:var(--on-them)}
 
-/* header */
-.head{padding:2.2rem 0 1.6rem}
-.head h1{font-size:1.9rem;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .8rem}
-.and{display:inline-flex;width:2.4rem;height:1.7rem;flex:none}
-.and svg{width:100%;height:100%}
-.lede{max-width:40rem;color:var(--mute);margin:.9rem 0 0;font-size:1.02rem}
-.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.5rem;margin:1.5rem 0 0;border-top:1px solid var(--line)}
-.facts div{padding:.7rem 0;border-bottom:1px solid var(--line)}
-.facts div:last-child:nth-child(odd){grid-column:1/-1}
-.facts dt{font-size:.78rem;color:var(--mute)}
-.facts dd{margin:.1rem 0 0;font-weight:500}
-.facts dd small{display:block;font-weight:400;color:var(--mute);font-size:.82rem}
+/* The rest of the room */
+.wrap{padding:0 var(--m)}
+.sec{padding-top:5rem;display:grid;gap:2rem}
+.sec h2{font-size:clamp(2rem,3.4vw,2.5rem);line-height:1.1}
+.sec .meta{font-size:1.125rem;margin-top:.5rem;color:var(--muted)}
+.letter{font-size:1.5rem;line-height:1.45;max-width:32em}
+.sig{margin-top:1.25rem}
+.sig b{display:block;font-weight:600}
+.sig span{color:var(--muted)}
 
-/* layout */
-.cols{display:grid;gap:2.5rem;padding:1rem 0 4rem}
-.main{min-width:0}
-.side{min-width:0}
-.block{margin:0 0 2.6rem}
-.block h2{font-size:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--ink);margin-bottom:1rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-.block h2 small{font-family:var(--fb);font-weight:400;font-size:.82rem;color:var(--mute);text-align:right}
+.agenda{list-style:none;margin:0;padding:0;display:grid;gap:1.75rem}
+.agenda li{display:grid;grid-template-columns:4.5rem minmax(0,1fr);gap:.2rem 1.25rem}
+.agenda .t{font-family:var(--fh);font-weight:600;font-size:1.5rem;line-height:1.2;grid-row:1/4}
+.agenda .ti{font-weight:600;font-size:1.5rem;line-height:1.25;font-family:var(--fh)}
+.agenda .who{color:var(--muted)}
 
-/* note */
-.note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--p);padding:1.2rem 1.3rem;margin-bottom:2.6rem}
-.note p{font-size:1.02rem;max-width:44rem}
-.note .sig{display:flex;align-items:center;gap:.7rem;margin-top:1.1rem}
-.note .sig .av{width:2.2rem;height:2.2rem;border-radius:50%;background:var(--p);color:var(--on-p);display:grid;place-items:center;font-family:var(--fh);font-weight:600;font-size:.85rem;flex:none}
-.note .sig b{display:block;font-weight:600;font-size:.95rem;line-height:1.2}
-.note .sig span{font-size:.84rem;color:var(--mute)}
+/* The plan is the zipper drawn out: every step a tooth on its owner's side, closed up to where we are. */
+.key{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-size:1rem}
+.key span{display:inline-flex;align-items:center;gap:.5rem}
+.key i{width:1rem;height:1rem;display:block}
+.key .k-them i{background:var(--them);outline:1px solid var(--ink)}
+.key .k-us i{background:var(--us);outline:1px solid var(--ink)}
+.key .k-both i{background:var(--both)}
+.plan{list-style:none;margin:0;padding:0;display:grid;gap:.375rem}
+.plan li{padding:1rem 1.25rem 1.1rem;display:grid;gap:.15rem;margin-left:var(--g)}
+.plan li.done{margin-left:0}
+.plan .st-them{background:var(--them);color:var(--on-them)}
+.plan .st-us{background:var(--us);color:var(--on-us)}
+.plan .st-both{background:var(--both)}
+.plan .tt{font-family:var(--fh);font-weight:600;font-size:1.5rem;line-height:1.2}
+.plan .ok{font-weight:600}
+.plan .today{margin:1rem 0;padding:0;display:flex;align-items:center;gap:1rem;font-weight:600}
+.plan .today::before{content:'';width:44px;height:22px;border:3px solid var(--ink);border-radius:4px;flex:none}
 
-/* agenda */
-.agenda{list-style:none;margin:0;padding:0}
-.agenda li{display:grid;grid-template-columns:3.6rem minmax(0,1fr);gap:.6rem 1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
-.agenda .t{color:var(--p-deep);font-weight:500;font-size:.95rem;padding-top:.05rem}
-.agenda b{font-weight:500;display:block}
-.agenda span{display:block;color:var(--mute);font-size:.9rem;margin-top:.1rem}
-.agenda .who{font-size:.82rem;color:var(--faint);margin-top:0;grid-column:2}
+.people{display:grid;gap:.375rem}
+.people > div{padding:1.75rem var(--m) 2rem}
+.people .p-them{background:var(--them);color:var(--on-them)}
+.people .p-us{background:var(--us);color:var(--on-us)}
+.people h3{font-size:1.5rem;line-height:1.2}
+.people ul{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;gap:.9rem}
+.people li b{display:block;font-weight:600}
 
-/* plan */
-.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;font-size:.82rem;color:var(--mute);margin:0 0 1rem}
-.legend i{display:inline-block;width:.6rem;height:.6rem;border-radius:2px;margin-right:.4rem;vertical-align:-.02em}
-.legend .them i{background:var(--ink)}
-.legend .us i{background:var(--p);border-radius:50%}
-.legend .done i{background:var(--p);border:1.5px solid var(--p);border-radius:50%;width:.55rem;height:.55rem}
-.legend .open i{background:#fff;border:1.5px solid var(--faint);border-radius:50%;width:.55rem;height:.55rem}
-.plan{list-style:none;margin:0;padding:0;position:relative}
-.plan::before{content:'';position:absolute;top:.6rem;bottom:.6rem;left:.8rem;width:2px;background:var(--line);transform:translateX(-50%)}
-.plan li{position:relative;display:grid;grid-template-columns:1.6rem minmax(0,1fr);padding:0 0 .9rem}
-.plan .dot{position:absolute;left:.8rem;top:.95rem;width:.8rem;height:.8rem;border-radius:50%;background:#fff;border:2px solid var(--faint);transform:translate(-50%,-50%);z-index:1}
-.plan .done .dot{background:var(--p);border-color:var(--p)}
-.plan .done .dot::after{content:'';position:absolute;left:.18rem;top:.07rem;width:.2rem;height:.36rem;border:solid var(--on-p);border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
-.plan .card{grid-column:2;background:#fff;border:1px solid var(--line);padding:.75rem .95rem;border-radius:4px}
-.plan .d{font-size:.8rem;color:var(--mute)}
-.plan .d em{font-style:normal;color:var(--p-deep);font-weight:500}
-.plan b{display:block;font-weight:500;margin:.1rem 0 .2rem}
-.plan .done b{color:var(--mute)}
-.plan .own{font-size:.84rem;color:var(--mute)}
-.plan .own i{display:inline-block;width:.55rem;height:.55rem;border-radius:2px;margin-right:.4rem;vertical-align:-.01em}
-.plan .them .own i{background:var(--ink)}
-.plan .us .own i{background:var(--p);border-radius:50%}
-.plan .both .own i{background:linear-gradient(90deg,var(--ink) 50%,var(--p) 50%)}
-.plan .today{padding:.3rem 0 1.1rem;grid-template-columns:1.6rem minmax(0,1fr);align-items:center}
-.plan .today .lbl{grid-column:2;font-size:.78rem;color:var(--p-deep);font-weight:500;display:flex;align-items:center;gap:.6rem}
-.plan .today .lbl::after{content:'';flex:1;height:0;border-top:1px dashed var(--tint-line)}
-.plan .today .dot{width:.5rem;height:.5rem;border:0;background:var(--p-deep);top:50%}
+.res{list-style:none;margin:0;padding:0;display:grid;gap:2rem}
+.res li{display:grid;gap:.2rem;max-width:34em}
+.res .tt{font-family:var(--fh);font-weight:600;font-size:1.5rem;line-height:1.2}
+.res .k{color:var(--muted)}
+.res a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;justify-self:start}
 
-/* people */
-.people{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-.people.one{grid-template-columns:minmax(0,1fr)}
-.people>div{min-width:0}
-.people h3{font-size:.86rem;font-weight:500;color:var(--mute);margin:0 0 .5rem;padding-bottom:.4rem;border-bottom:1px solid var(--line)}
-.people ul{list-style:none;margin:0;padding:0}
-.people li{display:flex;gap:.6rem;align-items:center;padding:.45rem 0}
-.people .av{width:1.9rem;height:1.9rem;border-radius:50%;flex:none;display:grid;place-items:center;font-size:.72rem;font-weight:600;font-family:var(--fh)}
-.people .them .av{background:color-mix(in srgb,var(--ink) 10%,#fff);color:var(--ink)}
-.people .us .av{background:var(--tint);color:var(--p-deep)}
-.people b{display:block;font-weight:500;font-size:.93rem;line-height:1.2;overflow-wrap:anywhere}
-.people span{font-size:.8rem;color:var(--mute);display:block}
+.book{margin-top:6rem;background:var(--them);color:var(--on-them);padding:4.5rem var(--m) 2rem;display:grid;gap:1.5rem}
+.book h2{font-size:clamp(2.5rem,6vw,5.25rem);line-height:1}
+.book p{max-width:32em}
+.book .ask{font-size:1.5rem;line-height:1.4}
+.book .ken-cta{background:var(--us);color:var(--on-us)}
+.book .ken-cta:hover{background:var(--bg);color:var(--ink)}
+.foot{margin-top:3rem;font-size:1rem;display:grid;gap:.25rem}
 
-/* resources */
-.res{list-style:none;margin:0;padding:0}
-.res li{display:grid;grid-template-columns:2.2rem minmax(0,1fr) auto;gap:.8rem;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--line)}
-.res svg{width:2.2rem;height:2.2rem;display:block}
-.res b{display:block;font-weight:500;font-size:.95rem;line-height:1.25}
-.res span{font-size:.8rem;color:var(--mute)}
-.res a{font-size:.86rem;font-weight:500;text-decoration:none;white-space:nowrap;border:1px solid var(--tint-line);padding:0 .9rem;border-radius:999px;min-height:44px;display:inline-flex;align-items:center}
-.res a:hover,.res a:focus-visible{background:var(--tint)}
-.rec{margin-top:.9rem;background:var(--ink);color:#fff;border-radius:6px;padding:1rem 1.1rem;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.9rem;align-items:center;text-decoration:none;min-height:44px}
-.rec+.rec{margin-top:.6rem}
-.rec .play{width:2.6rem;height:2.6rem;border-radius:50%;background:var(--p);display:grid;place-items:center}
-.rec .play svg{width:.9rem;height:.9rem;margin-left:.15rem}
-.rec b{display:block;font-weight:500;line-height:1.2}
-.rec div span{display:block;font-size:.8rem;opacity:.75}
-.rec .go{font-size:.86rem;font-weight:500;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:.3rem .8rem}
-a.rec:hover .go,a.rec:focus-visible .go{background:rgba(255,255,255,.14)}
-
-/* booking */
-.book{background:#fff;border:1px solid var(--line);padding:1.2rem 1.3rem}
-.book h2{font-size:1.1rem;margin-bottom:.4rem}
-.book p{font-size:.95rem;color:var(--mute)}
-.book .ken-cta{display:inline-flex!important;align-items:center;min-height:44px;background:var(--p)!important;color:var(--on-p)!important;text-decoration:none!important;font-weight:500!important;padding:0 1.3rem!important;border-radius:4px!important;font-size:.98rem}
-.ken-cta:focus-visible,a:focus-visible{outline:2px solid var(--p);outline-offset:3px}
-.book .alt{font-size:.85rem;margin:.9rem 0 0}
-
-footer{padding:1.5rem 0 5rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--mute)}
-footer p{margin:0 0 .3rem}
-
-.cols.single{max-width:44rem;margin:0}
-
-@media (min-width:700px){
-  .head h1{font-size:2.6rem}
-  .facts{grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);grid-template-columns:none;border-top:0;border-bottom:1px solid var(--line)}
-  .facts div:last-child:nth-child(odd){grid-column:auto}
-  .facts div{border-bottom:0;border-top:1px solid var(--line);padding:.8rem 0}
-  .agenda li{grid-template-columns:4.6rem minmax(0,1fr) 9rem;align-items:start}
-  .agenda .who{margin:0;text-align:right;font-size:.84rem;grid-column:3;grid-row:1}
-  /* two lanes with a spine in the middle */
-  .plan::before{left:50%}
-  .plan li{grid-template-columns:minmax(0,1fr) 3.2rem minmax(0,1fr)}
-  .plan .dot{left:50%}
-  .plan .them .card{grid-column:1}
-  .plan .us .card{grid-column:3}
-  .plan .both .card{grid-column:1/-1;margin:0 3rem;text-align:center;border-color:var(--tint-line);background:var(--tint)}
-  .plan .both .dot{top:0;transform:translate(-50%,-50%) rotate(45deg);border-radius:1px}
-  .plan .today{grid-template-columns:minmax(0,1fr) 3.2rem minmax(0,1fr)}
-  .plan .today .lbl{grid-column:1/-1;justify-content:center}
-  .plan .today .lbl::before{content:'';flex:1;height:0;border-top:1px dashed var(--tint-line)}
-  .plan .today .dot{display:none}
-  .lanes{display:grid;grid-template-columns:minmax(0,1fr) 3.2rem minmax(0,1fr);font-size:.82rem;color:var(--mute);margin:0 0 .8rem}
-  .lanes span:last-child{text-align:right}
+@media (prefers-reduced-motion:no-preference){
+  .zip{animation:zip 1.1s cubic-bezier(.3,.7,.2,1) .2s backwards}
+  @keyframes zip{from{clip-path:inset(0 100% 0 0)}}
 }
-@media (max-width:699px){.lanes{display:none}}
-@media (min-width:1000px){
-  .cols{grid-template-columns:minmax(0,1fr) 21rem;gap:4rem;padding-top:1.5rem}
-  .cols.single{grid-template-columns:minmax(0,1fr)}
-  .side{position:sticky;top:1.25rem;align-self:start}
-  .cols.single .side{position:static}
-  .wrap{padding:0 2rem}
+
+@media (min-width:600px){
+  .people,.res{grid-template-columns:1fr 1fr;column-gap:var(--m)}
+  .people{column-gap:.375rem}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (min-width:900px){
+  :root{--g:4rem}
+  .head{grid-template-columns:1fr 1fr;min-height:100svh}
+  .f{padding:2.25rem var(--m) 2.5rem}
+  .them{padding-right:calc(var(--m) + var(--g))}
+  .us{padding-left:calc(var(--m) + var(--g))}
+  .them::after{width:var(--g);height:calc(100% - var(--c));clip-path:polygon(100% 0,100% 100%,0 100%)}
+  .us::before{left:0;right:auto;top:auto;bottom:0;width:var(--g);height:calc(100% - var(--c));clip-path:polygon(0 0,0 100%,100% 100%)}
+  .zip{left:-9px;top:0;width:18px;height:var(--c);background:repeating-linear-gradient(to bottom,var(--them) 0 9px,var(--us) 9px 18px)} /* taste-skill-ignore: hard stops draw zipper teeth, not a fill */
+  .zip::after{right:auto;left:50%;top:auto;bottom:-22px;width:22px;height:44px;transform:translateX(-50%)}
+  .sec{grid-template-columns:4fr 8fr;column-gap:var(--m);padding-top:7.5rem}
+  .sec > :first-child{grid-row:1/3}
+  .us{justify-content:flex-end}
+  .agenda li{grid-template-columns:5.5rem minmax(0,1fr) 12rem}
+  .agenda .t{grid-row:1/3}
+  .agenda .who{grid-column:3;grid-row:1;text-align:right;padding-top:.3rem}
+  .plan{grid-template-columns:1fr 1fr;column-gap:0}
+  .plan li{margin:0}
+  .plan .st-them{grid-column:1;margin-right:calc(var(--g) / 2)}
+  .plan .st-us{grid-column:2;margin-left:calc(var(--g) / 2)}
+  .plan .st-both{grid-column:1/-1;margin:0 18%;background:linear-gradient(to right,var(--both) calc(50% - var(--g) / 2),transparent calc(50% - var(--g) / 2) calc(50% + var(--g) / 2),var(--both) calc(50% + var(--g) / 2))} /* taste-skill-ignore: hard stops split the step, not a fill */
+  .plan .st-them.done{margin-right:0}
+  .plan .st-us.done{margin-left:0}
+  .plan .st-both.done{background:var(--both)}
+  .plan .today{grid-column:1/-1;justify-content:center;flex-direction:column;gap:.5rem}
+  .plan .today::before{width:22px;height:44px}
+  .people{grid-template-columns:1fr 1fr}
+  .res{grid-template-columns:1fr 1fr;column-gap:var(--m)}
+  .book{margin-top:8rem;padding-top:6rem;grid-template-columns:minmax(0,1fr) auto;column-gap:var(--m);align-items:end}
+  .book h2,.book .foot{grid-column:1/-1}
+  @media (prefers-reduced-motion:no-preference){
+    @keyframes zip{from{clip-path:inset(0 0 100% 0)}}
+  }
+}
+@media print{
+  .head{min-height:0}
+  .zip{animation:none}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header class="top">
-  {%- if brand.logo_url %}
-  <div class="brand"><img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ us_label | escape }}"></div>
-  {%- elsif us_name != '' %}
-  <div class="brand"><span class="logo" aria-hidden="true">{{ us_name | slice: 0, 1 | upcase | escape }}</span><span>{{ us_name | escape }}</span></div>
-  {%- else %}
-  <span></span>
-  {%- endif %}
-  <span class="room">Deal room for <b>{{ account.name | escape }}</b></span>
-</header>
-
+<main>
 <section class="head" data-section="head">
-  <h1><span>{{ account.name | escape }}</span>{% if us_name != '' %}<span class="and" aria-hidden="true"><svg viewBox="0 0 40 28"><circle cx="14" cy="14" r="11" fill="currentColor" fill-opacity=".16" stroke="currentColor" stroke-width="1.5"/><circle cx="26" cy="14" r="11" fill="var(--p)" fill-opacity=".22" stroke="var(--p)" stroke-width="1.5"/></svg></span><span>{{ us_name | escape }}</span>{% endif %}</h1>
-  <p class="lede">{{ data.lede | escape }}</p>
-  {%- if n_facts > 0 %}
-  <dl class="facts">
-    {%- for f in data.facts %}
-    <div><dt>{{ f.label | escape }}</dt><dd>{{ f.value | escape }}{% if f.detail and f.detail != '' %}<small>{{ f.detail | escape }}</small>{% endif %}</dd></div>
-    {%- endfor %}
-  </dl>
-  {%- endif %}
+<div class="f them">
+<h1 class="names">{{ account.name | escape }}{% if us_name != '' %}<span class="sr"> and {{ us_name | escape }}</span>{% endif %}</h1>
+<p class="lede">{{ data.lede | escape }}</p>
+<p class="for">Deal room for {% if person.first_name and person.first_name != '' %}{{ person.first_name | escape }}{% if person.last_name and person.last_name != '' %} {{ person.last_name | escape }}{% endif %}{% if person.title and person.title != '' %}, {{ person.title | escape }}{% endif %}{% else %}the team at {{ account.name | escape }}{% endif %}</p>
+</div>
+<div class="f us">
+<div class="zip" aria-hidden="true"></div>
+<p class="names name" aria-hidden="true">{{ us_label | escape }}</p>
+{%- if brand.logo_url %}
+<p class="logo"><img src="{{ brand.logo_url | escape }}" alt="{{ us_label | escape }}"></p>
+{%- endif %}
+{%- if n_facts > 0 %}
+<dl class="facts">
+{%- for f in data.facts %}
+<div><dt>{{ f.label | escape }}</dt><dd>{{ f.value | escape }}</dd>{% if f.detail and f.detail != '' %}<dd class="d">{{ f.detail | escape }}</dd>{% endif %}</div>
+{%- endfor %}
+</dl>
+{%- endif %}
+<div>{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking', id: 'booking-top', variant: 'link' %}</div>
+</div>
 </section>
 
-<div class="cols{% unless has_main %} single{% endunless %}">
-{%- if has_main %}
-<main class="main">
-
-  {%- if has_note %}
-  <section class="note" data-section="note">
-    <p>{{ data.note | escape | newline_to_br | strip_newlines | raw }}</p>
-    {%- if sender.name and sender.name != '' %}
-    {%- assign sp = sender.name | split: ' ' %}
-    <div class="sig"><span class="av" aria-hidden="true">{{ sp.first | slice: 0, 1 | upcase | escape }}{% if sp.size > 1 %}{{ sp.last | slice: 0, 1 | upcase | escape }}{% endif %}</span><div><b>{{ sender.name | escape }}</b><span>{% if sender.title and sender.title != '' %}{{ sender.title | escape }}{% if us_name != '' %}, {{ us_name | escape }}{% endif %}{% elsif us_name != '' %}{{ us_name | escape }}{% endif %}</span></div></div>
-    {%- endif %}
-  </section>
-  {%- endif %}
-
-  {%- if n_agenda > 0 %}
-  <section class="block" data-section="agenda">
-    <h2>{{ data.agenda.heading | default: 'Agenda for the next meeting' | escape }}{% if data.agenda.meta and data.agenda.meta != '' %} <small>{{ data.agenda.meta | escape }}</small>{% endif %}</h2>
-    <ol class="agenda">
-      {%- for a in data.agenda.items %}
-      <li><span class="t">{{ a.time | escape }}</span><div><b>{{ a.title | escape }}</b>{% if a.detail and a.detail != '' %}<span>{{ a.detail | escape }}</span>{% endif %}</div>{% if a.who and a.who != '' %}<span class="who">{{ a.who | escape }}</span>{% endif %}</li>
-      {%- endfor %}
-    </ol>
-  </section>
-  {%- endif %}
-
-  {%- if n_plan > 0 %}
-  <section class="block" data-section="plan">
-    <h2>Mutual action plan <small>{% if n_done > 0 %}{{ n_done }} of {{ n_plan }} steps done{% else %}{{ n_plan }} steps{% endif %}</small></h2>
-    <div class="legend"><span class="them"><i></i>{{ account.name | escape }} owns</span><span class="us"><i></i>{{ us_label | escape }} owns</span><span class="done"><i></i>Done</span><span class="open"><i></i>Up next</span></div>
-    <div class="lanes"><span>{{ account.name | escape }}</span><span></span><span>{{ us_label | escape }}</span></div>
-    <ol class="plan">
-      {%- assign marked = false %}
-      {%- for s in data.plan %}
-      {%- case s.side %}{% when 'them' %}{% assign side = 'them' %}{% when 'us' %}{% assign side = 'us' %}{% else %}{% assign side = 'both' %}{% endcase %}
-      {%- unless s.done %}
-      {%- if marked == false and n_done > 0 %}
-      <li class="today"><span class="dot"></span><span class="lbl">We are here</span></li>
-      {%- endif %}
-      {%- assign marked = true %}
-      {%- endunless %}
-      <li class="{{ side }}{% if s.done %} done{% endif %}"><span class="dot"></span><div class="card"><span class="d">{% if s.weekday and s.weekday != '' %}{{ s.weekday | escape }} {% endif %}<em>{{ s.date | escape }}</em></span><b><span class="sr">{% if s.done %}Done: {% else %}Up next: {% endif %}</span>{{ s.title | escape }}</b><span class="own"><i></i>{{ s.owner | escape }}</span></div></li>
-      {%- endfor %}
-    </ol>
-  </section>
-  {%- endif %}
-
-</main>
+<div class="wrap">
+{%- if has_note %}
+<section class="sec note" data-section="note">
+<h2>From {{ sender.name | default: 'our team' | escape }}</h2>
+<div>
+<p class="letter">{{ data.note | escape | newline_to_br | strip_newlines | raw }}</p>
+{%- if sender.name and sender.name != '' %}
+<p class="sig"><b>{{ sender.name | escape }}</b><span>{% if sender.title and sender.title != '' %}{{ sender.title | escape }}{% if us_name != '' %}, {{ us_name | escape }}{% endif %}{% elsif us_name != '' %}{{ us_name | escape }}{% endif %}</span></p>
 {%- endif %}
-<aside class="side">
+</div>
+</section>
+{%- endif %}
 
-  {%- if has_people %}
-  <section class="block" data-section="people">
-    <h2>Who is in the room</h2>
-    <div class="people{% unless n_their > 0 and n_our > 0 %} one{% endunless %}">
-      {%- if n_their > 0 %}
-      <div class="them"><h3>{{ account.name | escape }}</h3><ul>
-        {%- for p in data.their_people %}
-        {%- assign pp = p.name | split: ' ' %}
-        <li><span class="av" aria-hidden="true">{{ pp.first | slice: 0, 1 | upcase | escape }}{% if pp.size > 1 %}{{ pp.last | slice: 0, 1 | upcase | escape }}{% endif %}</span><div><b>{{ p.name | escape }}</b>{% if p.title and p.title != '' %}<span>{{ p.title | escape }}</span>{% endif %}</div></li>
-        {%- endfor %}
-      </ul></div>
-      {%- endif %}
-      {%- if n_our > 0 %}
-      <div class="us"><h3>{{ us_label | escape }}</h3><ul>
-        {%- for p in data.our_people %}
-        {%- assign pp = p.name | split: ' ' %}
-        <li><span class="av" aria-hidden="true">{{ pp.first | slice: 0, 1 | upcase | escape }}{% if pp.size > 1 %}{{ pp.last | slice: 0, 1 | upcase | escape }}{% endif %}</span><div><b>{{ p.name | escape }}</b>{% if p.title and p.title != '' %}<span>{{ p.title | escape }}</span>{% endif %}</div></li>
-        {%- endfor %}
-      </ul></div>
-      {%- endif %}
-    </div>
-  </section>
-  {%- endif %}
+{%- if n_agenda > 0 %}
+<section class="sec" data-section="agenda">
+<div><h2>{{ data.agenda.heading | default: 'Agenda for the next meeting' | escape }}</h2>{% if data.agenda.meta and data.agenda.meta != '' %}<p class="meta">{{ data.agenda.meta | escape }}</p>{% endif %}</div>
+<ol class="agenda">
+{%- for a in data.agenda.items %}
+<li><p class="t">{{ a.time | escape }}</p><p class="ti">{{ a.title | escape }}</p>{% if a.detail and a.detail != '' %}<p>{{ a.detail | escape }}</p>{% endif %}{% if a.who and a.who != '' %}<p class="who">{{ a.who | escape }}</p>{% endif %}</li>
+{%- endfor %}
+</ol>
+</section>
+{%- endif %}
 
-  {%- if n_res > 0 %}
-  <section class="block" data-section="resources">
-    <h2>Resources</h2>
-    {%- if n_docs > 0 %}
-    <ul class="res">
-      {%- for r in data.resources %}
-      {%- if r.kind != 'recording' %}
-      <li>
-        {%- case r.kind %}
-        {%- when 'security' %}<svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 4l11 4v9c0 7-5 12-11 15C12 29 7 24 7 17V8z" fill="var(--tint)" stroke="var(--p)" stroke-width="1.5" stroke-linejoin="round"/><path d="M13 18l3.5 3.5L23 15" fill="none" stroke="var(--p)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        {%- when 'pricing' %}<svg viewBox="0 0 36 36" aria-hidden="true"><rect x="5" y="7" width="26" height="22" rx="2" fill="var(--tint)" stroke="var(--p)" stroke-width="1.5"/><path d="M5 14h26M5 21h26M15 7v22" stroke="var(--p)" stroke-width="1.5"/></svg>
-        {%- else %}<svg viewBox="0 0 36 36" aria-hidden="true"><rect x="7" y="4" width="22" height="28" rx="2" fill="var(--tint)" stroke="var(--p)" stroke-width="1.5"/><path d="M12 12h12M12 17h12M12 22h8" stroke="var(--p)" stroke-width="1.5" stroke-linecap="round"/></svg>
-        {%- endcase %}
-        <div><b>{{ r.title | escape }}</b>{% if r.detail and r.detail != '' %}<span>{{ r.detail | escape }}</span>{% endif %}</div>
-        {%- if r.url and r.url != '' %}<a href="{{ r.url | escape }}" target="_blank" rel="noopener noreferrer">Open<span class="sr">: {{ r.title | escape }}</span></a>{% endif %}
-      </li>
-      {%- endif %}
-      {%- endfor %}
-    </ul>
-    {%- endif %}
-    {%- for r in data.resources %}
-    {%- if r.kind == 'recording' %}
-    {%- if r.url and r.url != '' %}<a class="rec" href="{{ r.url | escape }}" target="_blank" rel="noopener noreferrer">{% else %}<div class="rec">{% endif %}
-      <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z" fill="{% if p_light == 'y' %}#101010{% else %}#fff{% endif %}"/></svg></span>
-      <div><b>{{ r.title | escape }}</b>{% if r.detail and r.detail != '' %}<span>{{ r.detail | escape }}</span>{% endif %}</div>
-      {%- if r.url and r.url != '' %}<span class="go">Watch</span>{% endif %}
-    {%- if r.url and r.url != '' %}</a>{% else %}</div>{% endif %}
-    {%- endif %}
-    {%- endfor %}
-  </section>
-  {%- endif %}
+{%- if n_plan > 0 %}
+<section class="sec" data-section="plan">
+<div><h2>Mutual action plan</h2><p class="meta">{% if n_done > 0 %}{{ n_done }} of {{ n_plan }} steps done{% else %}{{ n_plan }} steps{% endif %}</p></div>
+<div>
+<p class="key"><span class="k-them"><i></i>{{ account.name | escape }} owns</span><span class="k-us"><i></i>{{ us_label | escape }} owns</span><span class="k-both"><i></i>Both</span></p>
+<ol class="plan">
+{%- assign marked = false %}
+{%- for s in data.plan %}
+{%- case s.side %}{% when 'them' %}{% assign side = 'them' %}{% when 'us' %}{% assign side = 'us' %}{% else %}{% assign side = 'both' %}{% endcase %}
+{%- unless s.done %}
+{%- if marked == false and n_done > 0 %}
+<li class="today">We are here</li>
+{%- endif %}
+{%- assign marked = true %}
+{%- endunless %}
+<li class="st-{{ side }}{% if s.done %} done{% endif %}"><p>{% if s.weekday and s.weekday != '' %}{{ s.weekday | escape }} {% endif %}{{ s.date | escape }}{% if s.done %}, <span class="ok">done</span>{% endif %}</p><p class="tt"><span class="sr">{% if s.done %}Done: {% else %}Up next: {% endif %}</span>{{ s.title | escape }}</p><p>{{ s.owner | escape }}</p></li>
+{%- endfor %}
+</ol>
+</div>
+</section>
+{%- endif %}
 
-  <section class="book" data-section="booking">
-    <h2>Need to talk sooner?</h2>
-    <p>Twenty minutes with {{ sender.name | default: 'us' | escape }}, at a time that suits you.</p>
-    {% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking' %}
-    {%- if has_main %}
-    <p class="alt">Or reply with changes to the plan and I will update this page.</p>
-    {%- endif %}
-  </section>
+{%- if has_people %}
+<section class="sec" data-section="people">
+<h2>Who is in the room</h2>
+<div class="people">
+{%- if n_their > 0 %}
+<div class="p-them"><h3>{{ account.name | escape }}</h3><ul>
+{%- for p in data.their_people %}
+<li><b>{{ p.name | escape }}</b>{% if p.title and p.title != '' %}{{ p.title | escape }}{% endif %}</li>
+{%- endfor %}
+</ul></div>
+{%- endif %}
+{%- if n_our > 0 %}
+<div class="p-us"><h3>{{ us_label | escape }}</h3><ul>
+{%- for p in data.our_people %}
+<li><b>{{ p.name | escape }}</b>{% if p.title and p.title != '' %}{{ p.title | escape }}{% endif %}</li>
+{%- endfor %}
+</ul></div>
+{%- endif %}
+</div>
+</section>
+{%- endif %}
 
-</aside>
+{%- if n_res > 0 %}
+<section class="sec" data-section="resources">
+<h2>Resources</h2>
+<ul class="res">
+{%- for r in data.resources %}
+{%- case r.kind %}{% when 'security' %}{% assign kl = 'Security' %}{% when 'pricing' %}{% assign kl = 'Pricing' %}{% when 'recording' %}{% assign kl = 'Recording' %}{% else %}{% assign kl = 'Document' %}{% endcase %}
+<li><p class="k">{{ kl }}</p><p class="tt">{{ r.title | escape }}</p>{% if r.detail and r.detail != '' %}<p>{{ r.detail | escape }}</p>{% endif %}{% if r.url and r.url != '' %}<a href="{{ r.url | escape }}" target="_blank" rel="noopener noreferrer">{% if r.kind == 'recording' %}Watch{% else %}Open{% endif %}<span class="sr">: {{ r.title | escape }}</span></a>{% endif %}</li>
+{%- endfor %}
+</ul>
+</section>
+{%- endif %}
 </div>
 
-<footer>
-  <p>This page was made for {% if person.first_name and person.first_name != '' %}{{ person.first_name | escape }}{% if person.last_name and person.last_name != '' %} {{ person.last_name | escape }}{% endif %}{% if person.title and person.title != '' %}, {{ person.title | escape }}, {% else %} {% endif %}at {% endif %}{{ account.name | escape }}{% if sender.name and sender.name != '' %} by {{ sender.name | escape }}{% if us_name != '' %} at {{ us_name | escape }}{% endif %}{% endif %}.</p>
-  {%- if data.as_of and data.as_of != '' %}
-  <p>{{ data.as_of | escape }}.</p>
-  {%- endif %}
+<section class="book" data-section="booking">
+<h2>Need to talk sooner?</h2>
+<div>
+<p class="ask">Twenty minutes with {{ sender.name | default: 'us' | escape }}, at a time that suits you.</p>
+{%- if has_main %}
+<p>Or reply with changes to the plan and I will update this page.</p>
+{%- endif %}
+</div>
+<div>{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking', variant: 'link' %}</div>
+<footer class="foot">
+<p>This page was made for {% if person.first_name and person.first_name != '' %}{{ person.first_name | escape }}{% if person.last_name and person.last_name != '' %} {{ person.last_name | escape }}{% endif %}{% if person.title and person.title != '' %}, {{ person.title | escape }}, {% else %} {% endif %}at {% endif %}{{ account.name | escape }}{% if sender.name and sender.name != '' %} by {{ sender.name | escape }}{% if us_name != '' %} at {{ us_name | escape }}{% endif %}{% endif %}.</p>
+{%- if data.as_of and data.as_of != '' %}
+<p>{{ data.as_of | escape }}.</p>
+{%- endif %}
 </footer>
-</div>
+</section>
+</main>
 </body>
 </html>

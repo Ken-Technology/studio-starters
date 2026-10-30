@@ -5,213 +5,268 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A dock capacity model for Savannah, before and after the 4 new doors</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap">
 <style>
+:root{
+  --p:#3730a3;
+  --s:#c7d2fe;
+  --fh:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;
+  --fb:'Inter',ui-sans-serif,system-ui,sans-serif;
+  --kraft:#c8a780;
+  --kraft-2:#e7d6bd;
+  --ink:#000;
+  --brown:#3d2e1c;
+  --small:clamp(.9375rem,.9rem + .15vw,1rem);
+  --body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --lead:clamp(1.25rem,1.05rem + .7vw,1.625rem);
+  --h3:clamp(1.5rem,1.1rem + 1.4vw,2.5rem);
+  --tt:clamp(1.375rem,1.1rem + .75vw,2.125rem);
+  --h2:clamp(2.5rem,1.4rem + 4vw,5rem);
+  --m:clamp(1rem,3.4vw,3rem);
+  --g:clamp(.625rem,1.2vw,1rem);
+}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f5f4f0;color:#17181a;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.sw{--a:#3730a3;--a2:#c7d2fe;--ink:#17181a;--text:#2b2a27;--mute:#6b6963;--line:#dbd9d2;--paper:#fff;--bg:#f5f4f0}
-.sw h1,.sw h2,.sw h3,.sw-num{font-family:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-.02em;text-wrap:balance;margin:0}
-.sw-mono,.sw-eyebrow,.sw-tag,.sw-url,.sw-ticket dt,.sw-top-tag,.sw-foot,.sw-label{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-p{margin:0}
-.sw a{color:inherit;text-decoration:underline;text-decoration-color:var(--a);text-decoration-thickness:1.5px;text-underline-offset:3px}
-.sw-band{height:5px;background:var(--a)}
-.sw-wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
-.sw-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:3.75rem;border-bottom:1px solid var(--line)}
-.sw-logo{display:block;height:28px;width:auto;max-width:11rem}
-.sw-brand{font-weight:700;font-size:1rem;letter-spacing:-.01em}
-.sw-top-tag{font-size:.74rem;color:var(--mute);text-align:right}
-.sw-cover{padding:2.4rem 0 2.2rem}
-.sw-kicker{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;font-weight:600;letter-spacing:.02em;color:var(--text);margin:0 0 1.1rem}
-.sw-kicker i{display:inline-block;width:.6rem;height:.6rem;background:var(--a);flex:none;margin-top:.33rem}
-.sw h1{font-size:2.3rem;line-height:1.04;overflow-wrap:anywhere}
-.sw-intro{font-size:1.12rem;line-height:1.5;color:var(--text);margin:1.2rem 0 0;max-width:38rem}
-.sw-ticket{margin:1.9rem 0 0;border:1.5px solid var(--ink);background:var(--paper)}
-.sw-ticket dl{margin:0;padding:0}
-.sw-ticket div{display:grid;grid-template-columns:6.4rem minmax(0,1fr);gap:.8rem;padding:.75rem .95rem;border-bottom:1px solid var(--line)}
-.sw-ticket div:last-child{border-bottom:0}
-.sw-ticket dt{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:.28rem}
-.sw-ticket dd{margin:0;font-weight:600;font-size:.98rem;line-height:1.35;overflow-wrap:anywhere}
-.sw-ticket small{display:block;font-weight:400;color:var(--mute);font-size:.86rem;margin-top:.15rem}
-.sw-sec{padding:2.3rem 0 2.5rem;border-top:1px solid var(--line)}
-.sw-rail{margin:0 0 1.4rem}
-.sw-eyebrow{display:flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:500;letter-spacing:.1em;color:var(--mute);margin:0 0 .7rem}
-.sw-eyebrow::before{content:"";width:1.4rem;height:2px;background:var(--a)}
-.sw h2{font-size:1.65rem;line-height:1.12}
-.sw-rail-note{font-size:.95rem;line-height:1.5;color:var(--mute);margin:.7rem 0 0;max-width:24rem}
-.sw-src,.sw-full,.sw-items{list-style:none;margin:0;padding:0}
-.sw-src{border-top:2px solid var(--ink)}
-.sw-src li{display:grid;grid-template-columns:3.6rem minmax(0,1fr);gap:.9rem;padding:1rem 0;border-bottom:1px solid var(--line)}
-.sw-tag{font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:.3rem}
-.sw-src b{display:block;font-weight:600;font-size:1rem;line-height:1.35}
-.sw-url{display:block;font-size:.78rem;color:var(--mute);margin-top:.25rem;overflow-wrap:anywhere}
-.sw-src p{font-size:.95rem;line-height:1.5;color:var(--text);margin-top:.45rem}
-.sw-block{background:var(--paper);border:1px solid var(--line);padding:1.25rem 1.15rem 1.35rem;margin:0 0 1.1rem;box-shadow:4px 4px 0 var(--paper),5px 5px 0 var(--line)}
-.sw-block-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin:0 0 .55rem}
-.sw-num{font-size:1.55rem;line-height:1;color:var(--a);font-weight:700;letter-spacing:-.03em}
-.sw-label{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:right}
-.sw h3{font-size:1.3rem;line-height:1.2;margin:0 0 .65rem}
-.sw-block>p{font-size:1rem;line-height:1.55;color:var(--text)}
-.sw-items{margin-top:1rem;border-top:1px solid var(--ink)}
-.sw-items li{padding:.6rem 0;border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.45}
-.sw-items b{display:block;font-weight:600;color:var(--ink)}
-.sw-items span{display:block;color:var(--mute);margin-top:.1rem}
-.sw-rw{display:grid;gap:.7rem;margin-top:1.1rem}
-.sw-rw>div{padding:.85rem 1rem .95rem;border-left:3px solid var(--line);background:var(--bg)}
-.sw-rw .sw-tag{display:block;padding:0;margin:0 0 .4rem}
-.sw-rw p{font-size:.98rem;line-height:1.5;color:var(--mute)}
-.sw-rw-after{border-left-color:var(--a)!important;background:var(--paper)!important;outline:1px solid var(--line)}
-.sw-rw-after p{color:var(--ink);font-weight:500}
-.sw-full{border-top:2px solid var(--ink)}
-.sw-full li{display:grid;grid-template-columns:1.1rem minmax(0,1fr);gap:.8rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
-.sw-ring{display:block;width:.8rem;height:.8rem;border:2.5px solid var(--a2);border-radius:50%;margin-top:.3rem}
-.sw-full b{display:block;font-weight:600;font-size:1rem;line-height:1.35}
-.sw-full p{font-size:.93rem;line-height:1.5;color:var(--mute);margin-top:.2rem}
-.sw-next{background:var(--paper);background:color-mix(in srgb,var(--a2) 12%,#fff);border-top:1px solid var(--line)}
-.sw-next .sw-sec{border-top:0}
-.sw-closing{font-size:1.12rem;line-height:1.5;color:var(--ink);max-width:36rem}
-.sw-cta{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 1.1rem;margin:1.5rem 0 1.6rem}
-.sw-cta .ken-cta{min-height:44px;display:inline-flex!important;align-items:center}
-.sw-or{font-size:.92rem;color:var(--mute)}
-.sw-sign{font-size:.95rem;line-height:1.4}
-.sw-sign b{display:block;font-weight:600}
-.sw-sign span{color:var(--mute)}
-.sw-foot{font-size:.72rem;color:var(--mute);padding:1.6rem 0 2.6rem;line-height:1.6}
-@media (min-width:900px){
-.sw-wrap{padding:0 2.5rem}
-.sw-top{min-height:4.25rem}
-.sw-cover{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:4rem;align-items:start;padding:4rem 0 3.6rem}
-.sw h1{font-size:3.7rem}
-.sw-intro{font-size:1.2rem;margin-top:1.5rem}
-.sw-ticket{margin:.4rem 0 0}
-.sw-ticket div{grid-template-columns:7rem minmax(0,1fr);padding:.9rem 1.1rem}
-.sw-sec{display:grid;grid-template-columns:16rem minmax(0,1fr);gap:4rem;padding:3.4rem 0 3.8rem}
-.sw-rail{margin:0}
-.sw h2{font-size:1.85rem}
-.sw-src li{grid-template-columns:4.5rem minmax(0,1fr);gap:1.2rem;padding:1.15rem 0}
-.sw-block{padding:1.7rem 1.8rem 1.9rem;margin-bottom:1.4rem}
-.sw-num{font-size:1.9rem}
-.sw h3{font-size:1.5rem}
-.sw-block>p{font-size:1.05rem}
-.sw-items li{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:1.2rem}
-.sw-items span{margin:0}
-.sw-rw{grid-template-columns:1fr 1fr;gap:1rem}
-.sw-full{display:grid;grid-template-columns:1fr 1fr;gap:0 2.5rem}
-.sw-full li{align-content:start}
-.sw-closing{font-size:1.2rem}
+body{margin:0;background:var(--kraft);color:var(--ink);font:400 var(--body)/1.5 var(--fb);-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+h1,h2,h3{font-family:var(--fh);font-weight:800;margin:0;line-height:.95;letter-spacing:-.005em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:inherit;text-decoration-thickness:.08em;text-underline-offset:.18em}
+a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+/* a tile or field of a brand colour picks black or white text from that colour */
+.on{background:var(--f);color:#000;color:rgb(from var(--f) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))}
+.wrap{max-width:90rem;margin:0 auto;padding:0 var(--m)}
+.tile{background:#fff;padding:clamp(1.25rem,2.6vw,2.25rem)}
+.tile.dark{--f:var(--s)}
+.tile.on{background:var(--f)}
+
+/* top */
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:2.75rem;padding-top:1.25rem;font-size:var(--small)}
+.top .bname{font:800 1.5rem/1 var(--fh)}
+.top img{display:block;height:28px;width:auto;max-width:11rem;object-fit:contain}
+
+/* cover: the headline, then the intro beside the packing slip */
+.cover{padding:clamp(2rem,6vh,4.5rem) 0 clamp(3rem,6vw,5rem)}
+.cover h1{font-size:clamp(2.5rem,.4rem + 8.6vw,8rem)}
+.cover h1.mid{font-size:clamp(1.75rem,.3rem + 7vw,6.75rem)}
+.cover h1.long{font-size:clamp(1.375rem,.2rem + 5.3vw,5.75rem)}
+.cover h1.xlong{font-size:clamp(1.125rem,.1rem + 4.4vw,4.75rem)}
+/* a brand heading face is wider than the condensed default, so the display sizes step down */
+.wide{--h2:clamp(2rem,1.1rem + 2.6vw,3.5rem);--h3:clamp(1.375rem,1.1rem + .9vw,2rem);--tt:clamp(1.25rem,1.1rem + .4vw,1.5rem)}
+.wide .cover h1{font-size:clamp(2rem,.4rem + 6.6vw,6.25rem)}
+.wide .cover h1.mid{font-size:clamp(1.5rem,.3rem + 5.6vw,5.25rem)}
+.wide .cover h1.long{font-size:clamp(1.25rem,.2rem + 4.8vw,4.5rem)}
+.wide .cover h1.xlong{font-size:clamp(1.125rem,.15rem + 4.5vw,4.25rem)}
+.cover .lower{display:grid;gap:var(--g);margin-top:clamp(2rem,4vw,3rem)}
+.intro{font-size:var(--lead);line-height:1.4;max-width:34ch;padding-bottom:1.5rem}
+.slip{position:relative;overflow:clip}
+.slip .made{font:800 var(--tt)/1 var(--fh);padding-right:6rem;min-height:5rem}
+.slip dl{margin:1.5rem 0 0;display:grid;gap:1rem}
+.slip dl div{display:grid;grid-template-columns:8rem minmax(0,1fr);gap:1rem}
+.slip dt{font-weight:700;font-size:var(--small);padding-top:.1rem}
+.slip dd{margin:0;font-weight:700;line-height:1.35;overflow-wrap:anywhere}
+.slip small{display:block;font-weight:400;font-size:var(--small);margin-top:.15rem;color:var(--brown)}
+/* the stamp, the page's one moment */
+.stamp{--f:var(--p);position:absolute;top:clamp(1rem,2vw,1.75rem);right:clamp(1rem,2vw,1.75rem);width:5.75rem;height:5.75rem;border-radius:50%;display:grid;place-items:center;text-align:center;font:800 1.375rem/.95 var(--fh);transform:rotate(-12deg)}
+
+/* section heads */
+.sec{padding:clamp(3.5rem,8vw,7rem) 0 0}
+.sec-head{display:grid;gap:1rem;margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+.sec-head h2{font-size:var(--h2)}
+.sec-head p{max-width:40ch}
+
+/* sources, laid out as tiles */
+.src{list-style:none;margin:0;padding:0;display:grid;gap:var(--g)}
+.src li{display:flex;flex-direction:column;gap:.5rem}
+.src .t{font:800 var(--tt)/1.05 var(--fh);overflow-wrap:anywhere}
+.src .meta{font-size:var(--small);color:var(--brown);overflow-wrap:anywhere}
+.src .dark .meta{color:inherit}
+.src p{margin-top:.25rem}
+
+/* the work, one tile per part */
+.parts{list-style:none;margin:0;padding:0;display:grid;gap:var(--g)}
+.part{display:grid;gap:.75rem 2rem}
+.part .lbl{font-weight:700;font-size:var(--lead);margin-top:.5rem}
+.part h3{font-size:var(--h3)}
+.part .body{max-width:56ch}
+.items{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;gap:.25rem}
+.items li{background:var(--kraft-2);padding:.85rem 1rem;display:grid;gap:.15rem 1.5rem}
+.items b{font-weight:700}
+.rw{display:grid;gap:.375rem;margin-top:1.5rem}
+.rw p{padding:1rem 1.15rem}
+.rw .before{background:var(--kraft-2);color:var(--brown)}
+.rw .after{--f:var(--s);font-weight:700;font-size:var(--lead);line-height:1.35}
+.rw b{font-weight:700}
+
+/* what the full version holds */
+.box{--f:var(--s)}
+.full{list-style:none;margin:0;padding:0;display:grid;gap:2rem clamp(2rem,3vw,3rem)}
+.full li{display:flex;flex-direction:column;gap:.6rem}
+.full h3{font-size:var(--tt);line-height:1.05}
+
+/* close */
+.next{--f:var(--p);margin-top:clamp(3.5rem,8vw,7rem);padding:clamp(3rem,7vw,6rem) 0}
+.next .inner{display:grid;gap:1.5rem 3rem}
+.next h2{font-size:var(--h2)}
+.closing{font-size:var(--lead);line-height:1.4;max-width:38ch}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.25rem;margin-top:1.75rem}
+.cta .ken-cta{display:inline-flex!important;align-items:center;min-height:52px;background:var(--s)!important;color:#fff!important;color:rgb(from var(--s) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))!important;font:700 var(--body)/1.1 var(--fb)!important;padding:.9rem 1.5rem!important;border-radius:0!important;text-decoration:none}
+.cta .ken-cta:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.sign{margin-top:1.75rem}
+.sign b{display:block;font-weight:700}
+.foot{padding:1.5rem 0 2.5rem;font-size:var(--small);color:var(--brown)}
+
+@media (min-width:760px){
+  .src{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .src li{min-height:clamp(13rem,22vw,17rem)}
+  .items li{grid-template-columns:minmax(0,2fr) minmax(0,3fr)}
+  .rw{grid-template-columns:1fr 1fr}
+  .full{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+@media (min-width:1200px){
+  .full{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (min-width:1000px){
+  .cover .lower{grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:start;column-gap:clamp(2rem,4vw,4rem)}
+  .sec-head{grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:clamp(2rem,4vw,4rem);align-items:end}
+  .src{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .src .site,.src .dark{grid-column:span 2}
+  .part{grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:clamp(2rem,4vw,4rem);align-items:start}
+  .part .head{grid-column:1}
+  .part .text{grid-column:2}
+  .next .inner{grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:clamp(2rem,4vw,4rem)}
+}
+@media (max-width:759px){
+  .tile{margin-inline:calc(-1 * var(--m));padding-inline:var(--m)}
+  .cover h1{text-wrap:pretty}
+  .intro{font-size:var(--body)}
+  .wide .top .bname{font-size:1.125rem}
+}
+@media (max-width:420px){
+  .slip dl div{grid-template-columns:1fr;gap:.15rem}
+}
+@media (prefers-reduced-motion:no-preference){
+  .stamp{animation:stamp .5s cubic-bezier(.3,1.4,.5,1) .5s both}
+  @keyframes stamp{from{transform:rotate(-24deg) scale(1.6)}to{transform:rotate(-12deg)}}
+}
+@media print{.on,.tile{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
 </head>
-<body>
-<main class="sw">
-<div class="sw-band"></div>
-<div class="sw-wrap">
-<header class="sw-top"><span class="sw-brand">Plainwater</span><p class="sw-top-tag">For Saltmarsh Cold Storage</p>
+<body class="wide">
+<main>
+<div class="wrap">
+<header class="top"><span class="bname">Plainwater</span><p>For Saltmarsh Cold Storage</p>
 </header>
-<section data-section="cover" class="sw-cover">
-<div class="sw-cover-main">
-<p class="sw-kicker"><i aria-hidden="true"></i>Made for Eli at Saltmarsh Cold Storage, before you asked</p>
-<h1>A dock capacity model for Savannah, before and after the 4 new doors</h1>
-<p class="sw-intro">Hi Eli, nobody at Saltmarsh asked for this. Your site gives the door count today and after the expansion, which is enough for a first capacity model. Every number in it comes from your site, and the one I could not find is left for you to fill in.</p>
-</div>
-<aside class="sw-ticket" aria-label="About this piece">
-<dl>
-<div><dt>Prepared for</dt><dd>Eli Brandt<small>Owner, Saltmarsh Cold Storage</small></dd></div>
-<div><dt>Made by</dt><dd>Noor Haddad<small>Principal, Plainwater</small></dd></div>
-<div><dt>The piece</dt><dd>A dock capacity model for one site</dd></div>
-<div><dt>Built from</dt><dd>saltmarshcold.example<small>Your site, recent news and our notes</small></dd></div>
-<div><dt>What it costs</dt><dd>Nothing<small>Keep it either way</small></dd></div>
-</dl>
-</aside>
+
+<section data-section="cover" class="cover">
+  <h1 class="long">A dock capacity model for Savannah, before and after the 4 new doors</h1>
+  <div class="lower">
+    <p class="intro">Hi Eli, nobody at Saltmarsh asked for this. Your site gives the door count today and after the expansion, which is enough for a first capacity model. Every number in it comes from your site, and the one I could not find is left for you to fill in.</p>
+    <aside class="slip tile" aria-label="About this piece">
+      <p class="made">Made for Eli at Saltmarsh Cold Storage, before you asked</p>
+      <p class="stamp on">No charge</p>
+      <dl>
+        <div><dt>Prepared for</dt><dd>Eli Brandt<small>Owner, Saltmarsh Cold Storage</small></dd></div>
+        <div><dt>Made by</dt><dd>Noor Haddad<small>Principal, Plainwater</small></dd></div>
+        <div><dt>The piece</dt><dd>A dock capacity model for one site</dd></div>
+        <div><dt>Built from</dt><dd>saltmarshcold.example<small>Your site, recent news and our notes</small></dd></div>
+        <div><dt>What it costs</dt><dd>Nothing<small>Keep it either way</small></dd></div>
+      </dl>
+    </aside>
+  </div>
 </section>
-<section data-section="sources" class="sw-sec">
-<div class="sw-rail">
-<p class="sw-eyebrow">01</p>
-<h2>What we looked at</h2>
-<p class="sw-rail-note">Everything on this page comes from these sources and from how we do this work. Nobody at Saltmarsh Cold Storage was asked anything.</p>
-</div>
-<div class="sw-body">
-<ol class="sw-src">
-<li><span class="sw-tag">Site</span><div><b>Saltmarsh Cold Storage, Savannah</b><span class="sw-url">https://saltmarshcold.example</span><p>The square footage and door counts on the homepage, the 24-hour receiving line and the expansion note.</p></div></li>
-<li><span class="sw-tag">News</span><div><b><a href="https://saltmarshcold.example/news/expansion" target="_blank" rel="noopener noreferrer">20,000 square foot expansion announced, opening next spring</a></b><span class="sw-url">Sep 30, 2026, news</span></div></li>
-<li><span class="sw-tag">Notes</span><div><b>Our notes on Saltmarsh Cold Storage</b><p>Saltmarsh Cold Storage runs a 60,000 square foot freezer warehouse in Savannah with 8 dock doors and 24-hour receiving. About 35 people. Customers are seafood processors and frozen food distributors moving through the port. Announced a 20,000 square foot expansion with 4 more dock doors, opening next spring.</p></div></li>
-</ol>
-</div>
+<section data-section="sources" class="sec">
+  <div class="sec-head">
+    <h2>What we looked at</h2>
+    <p>Everything on this page comes from these sources and from how we do this work. Nobody at Saltmarsh Cold Storage was asked anything.</p>
+  </div>
+  <ol class="src">
+    <li class="tile site"><p class="t">Saltmarsh Cold Storage, Savannah</p><p class="meta">Your site, https://saltmarshcold.example</p><p>The square footage and door counts on the homepage, the 24-hour receiving line and the expansion note.</p></li>
+    <li class="tile"><p class="t"><a href="https://saltmarshcold.example/news/expansion" target="_blank" rel="noopener noreferrer">20,000 square foot expansion announced, opening next spring</a></p><p class="meta">News, Sep 30, 2026, news</p></li>
+    <li class="tile dark on"><p class="t">Our notes on Saltmarsh Cold Storage</p><p>Saltmarsh Cold Storage runs a 60,000 square foot freezer warehouse in Savannah with 8 dock doors and 24-hour receiving. About 35 people. Customers are seafood processors and frozen food distributors moving through the port. Announced a 20,000 square foot expansion with 4 more dock doors, opening next spring.</p></li>
+  </ol>
 </section>
-<section data-section="work" class="sw-sec">
-<div class="sw-rail">
-<p class="sw-eyebrow">02</p>
-<h2>What we made</h2>
-<p class="sw-rail-note">4 parts, in the order to read them. Each one stands on its own, so take what is useful and leave the rest.</p>
-</div>
-<div class="sw-body">
-<article class="sw-block">
-<div class="sw-block-top"><span class="sw-num">01</span><span class="sw-label">The question</span></div>
-<h3>How many trailers a day the docks can turn</h3>
-<p>The expansion takes you from 8 doors to 12, so the question is what the docks can take before and after, and whether receiving is the limit or the floor is. This model answers the first part from your door count and your hours. The floor question needs your pallet counts, which are not public.</p>
-</article>
-<article class="sw-block">
-<div class="sw-block-top"><span class="sw-num">02</span><span class="sw-label">Inputs</span></div>
-<h3>Three inputs, two from your site</h3>
-<p>Two numbers come from your site. The third, the time a trailer spends at a door, is not public, so the model leaves it to you.</p>
-<ul class="sw-items">
-<li><b>8 dock doors today, 12 after the expansion</b><span>From the homepage and the expansion note.</span></li>
-<li><b>Receiving runs 24 hours a day</b><span>From the homepage.</span></li>
-<li><b>Minutes per trailer at the door</b><span>Not on your site. Put in your average for frozen pallets with a check-in and every line below follows from it.</span></li>
-</ul>
-</article>
-<article class="sw-block">
-<div class="sw-block-top"><span class="sw-num">03</span><span class="sw-label">The method</span></div>
-<h3>Trailers a day, before and after</h3>
-<p>One door turns 1,440 minutes a day divided by your minutes per trailer. Eight doors turn eight times that and twelve turn twelve times that, so the expansion raises dock capacity by half whatever your door time is. If the floor cannot absorb half again as many trailers a day, the new doors will wait on forklifts, not the other way round.</p>
-<ul class="sw-items">
-<li><b>Today: 8 doors times the turns per door</b><span>1,440 minutes a day, divided by your minutes per trailer, times 8.</span></li>
-<li><b>After the expansion: 12 doors times the turns per door</b><span>The same turns per door, times 12.</span></li>
-<li><b>Every minute saved at the door</b><span>Raises the turns of every door at once, so after the expansion it counts 12 times.</span></li>
-</ul>
-</article>
-<article class="sw-block">
-<div class="sw-block-top"><span class="sw-num">04</span><span class="sw-label">What to change first</span></div>
-<h3>Measure the door time before the doors open</h3>
-<p>The one number the model cannot get from your site is the time a trailer spends at a door. Measure it for two weeks on the 8 doors you have: time in, time out, frozen or chilled. With that number, the model tells you whether the 4 new doors need more forklifts, or whether a faster check-in gets you most of the way there.</p>
-</article>
-</div>
+<section data-section="work" class="sec">
+  <div class="sec-head">
+    <h2>What we made</h2>
+    <p>4 parts, in the order to read them. Each one stands on its own, so take what is useful and leave the rest.</p>
+  </div>
+  <ol class="parts">
+    <li class="part tile">
+      <div class="head">
+        <h3>How many trailers a day the docks can turn</h3><p class="lbl">The question</p>
+      </div>
+      <div class="text">
+        <p class="body">The expansion takes you from 8 doors to 12, so the question is what the docks can take before and after, and whether receiving is the limit or the floor is. This model answers the first part from your door count and your hours. The floor question needs your pallet counts, which are not public.</p>
+      </div>
+    </li>
+    <li class="part tile">
+      <div class="head">
+        <h3>Three inputs, two from your site</h3><p class="lbl">Inputs</p>
+      </div>
+      <div class="text">
+        <p class="body">Two numbers come from your site. The third, the time a trailer spends at a door, is not public, so the model leaves it to you.</p>
+        <ul class="items">
+          <li><b>8 dock doors today, 12 after the expansion</b><span>From the homepage and the expansion note.</span></li>
+          <li><b>Receiving runs 24 hours a day</b><span>From the homepage.</span></li>
+          <li><b>Minutes per trailer at the door</b><span>Not on your site. Put in your average for frozen pallets with a check-in and every line below follows from it.</span></li>
+        </ul>
+      </div>
+    </li>
+    <li class="part tile">
+      <div class="head">
+        <h3>Trailers a day, before and after</h3><p class="lbl">The method</p>
+      </div>
+      <div class="text">
+        <p class="body">One door turns 1,440 minutes a day divided by your minutes per trailer. Eight doors turn eight times that and twelve turn twelve times that, so the expansion raises dock capacity by half whatever your door time is. If the floor cannot absorb half again as many trailers a day, the new doors will wait on forklifts, not the other way round.</p>
+        <ul class="items">
+          <li><b>Today: 8 doors times the turns per door</b><span>1,440 minutes a day, divided by your minutes per trailer, times 8.</span></li>
+          <li><b>After the expansion: 12 doors times the turns per door</b><span>The same turns per door, times 12.</span></li>
+          <li><b>Every minute saved at the door</b><span>Raises the turns of every door at once, so after the expansion it counts 12 times.</span></li>
+        </ul>
+      </div>
+    </li>
+    <li class="part tile">
+      <div class="head">
+        <h3>Measure the door time before the doors open</h3><p class="lbl">What to change first</p>
+      </div>
+      <div class="text">
+        <p class="body">The one number the model cannot get from your site is the time a trailer spends at a door. Measure it for two weeks on the 8 doors you have: time in, time out, frozen or chilled. With that number, the model tells you whether the 4 new doors need more forklifts, or whether a faster check-in gets you most of the way there.</p>
+      </div>
+    </li>
+  </ol>
 </section>
-<section data-section="full" class="sw-sec">
-<div class="sw-rail">
-<p class="sw-eyebrow">03</p>
-<h2>What the full version includes</h2>
-<p class="sw-rail-note">This is one tab of the model. The full version adds labor and storage, is built on site, and stays with your team.</p>
-</div>
-<div class="sw-body">
-<ol class="sw-full">
-<li><span class="sw-ring" aria-hidden="true"></span><div><b>A week on site</b><p>Dock, floor and shift counts taken by us in Savannah, so no number in the model is assumed.</p></div></li>
-<li><span class="sw-ring" aria-hidden="true"></span><div><b>Labor hours per pallet by shift</b><p>Which shifts carry the receiving peak, and what the 4 new doors add to each of them.</p></div></li>
-<li><span class="sw-ring" aria-hidden="true"></span><div><b>Storage turns and the expansion payback</b><p>The point where 20,000 more square feet pays for itself, from your own rates.</p></div></li>
-<li><span class="sw-ring" aria-hidden="true"></span><div><b>A spreadsheet your team keeps</b><p>Every assumption on one tab you can change, with a week of walkthroughs so it keeps being used.</p></div></li>
-</ol>
-</div>
-</section>
-</div>
-<div class="sw-next">
-<div class="sw-wrap">
-<section data-section="next" class="sw-sec">
-<div class="sw-rail">
-<p class="sw-eyebrow">04</p>
-<h2>If this is useful</h2>
-</div>
-<div class="sw-body">
-<p class="sw-closing">Reply with your door time and I will run the model with it the same day. If the question itself is wrong, tell me what you need to decide before spring and I will build that instead.</p>
-<div class="sw-cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#3730a3;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a><span class="sw-or">or reply to the email this came with</span></div>
-<p class="sw-sign"><b>Noor Haddad</b><span>Principal, Plainwater</span></p>
-</div>
+<section data-section="full" class="sec">
+  <div class="sec-head">
+    <h2>What the full version includes</h2>
+    <p>This is one tab of the model. The full version adds labor and storage, is built on site, and stays with your team.</p>
+  </div>
+  <div class="box tile on">
+  <ol class="full">
+    <li><h3>A week on site</h3><p>Dock, floor and shift counts taken by us in Savannah, so no number in the model is assumed.</p></li>
+    <li><h3>Labor hours per pallet by shift</h3><p>Which shifts carry the receiving peak, and what the 4 new doors add to each of them.</p></li>
+    <li><h3>Storage turns and the expansion payback</h3><p>The point where 20,000 more square feet pays for itself, from your own rates.</p></li>
+    <li><h3>A spreadsheet your team keeps</h3><p>Every assumption on one tab you can change, with a week of walkthroughs so it keeps being used.</p></li>
+  </ol>
+  </div>
 </section>
 </div>
-</div>
-<div class="sw-wrap">
-<p class="sw-foot">Made for Saltmarsh Cold Storage by Noor Haddad at Plainwater. This is a private link, not a public page.</p>
+
+<section data-section="next" class="next on">
+  <div class="wrap inner">
+    <h2>If this is useful</h2>
+    <div>
+      <p class="closing">Reply with your door time and I will run the model with it the same day. If the question itself is wrong, tell me what you need to decide before spring and I will build that instead.</p>
+      <div class="cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#3730a3;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a><span>or reply to the email this came with</span></div>
+      <p class="sign"><b>Noor Haddad</b>Principal, Plainwater</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <p class="foot">Made for Saltmarsh Cold Storage by Noor Haddad at Plainwater. This is a private link, not a public page.</p>
 </div>
 </main>
 </body>

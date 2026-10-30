@@ -4,8 +4,8 @@
   "tags": ["comparison", "competitors", "switching", "side by side"],
   "featured": false,
   "needs": ["dataset"],
-  "version": "1.0.0",
-  "updatedAt": "2026-10-29",
+  "version": "1.1.0",
+  "updatedAt": "2026-10-30",
   "samples": [
     { "id": "cobble-hill", "label": "Cobble Hill Plumbing and Heating" },
     { "id": "pemberton-shared", "label": "Shared link (no person)" },

@@ -1,9 +1,38 @@
-{%- assign accent = brand.colors.primary | default: '#8a2a3e' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#c9a24a' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Instrument Sans' -%}
-{%- assign font_body = brand.fonts.body | default: 'Newsreader' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign accent = brand.colors.primary | default: '#cb76b8' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#f3d991' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Josefin Sans' -%}
+{%- assign font_body = brand.fonts.body | default: 'Karla' -%}
+{%- comment -%} Is a brand color light? Brightness is (299 r + 587 g + 114 b) / 1000 of a hex color; 110 or more takes dark text. {%- endcomment -%}
+{%- assign hx = '0123456789abcdef' -%}
+{%- assign pair = accent | append: ',' | append: accent2 | split: ',' -%}
+{%- assign lights = '' -%}
+{%- for c in pair -%}
+  {%- assign h = c | remove: '#' | strip | downcase -%}
+  {%- assign ch = h | split: '' -%}
+  {%- if ch.size == 3 -%}
+    {%- assign h = ch[0] | append: ch[0] | append: ch[1] | append: ch[1] | append: ch[2] | append: ch[2] -%}
+    {%- assign ch = h | split: '' -%}
+  {%- endif -%}
+  {%- assign light = 'n' -%}
+  {%- if ch.size == 6 -%}
+    {%- assign v0 = hx | split: ch[0] | first | size -%}
+    {%- assign v1 = hx | split: ch[1] | first | size -%}
+    {%- assign v2 = hx | split: ch[2] | first | size -%}
+    {%- assign v3 = hx | split: ch[3] | first | size -%}
+    {%- assign v4 = hx | split: ch[4] | first | size -%}
+    {%- assign v5 = hx | split: ch[5] | first | size -%}
+    {%- if v0 < 16 and v1 < 16 and v2 < 16 and v3 < 16 and v4 < 16 and v5 < 16 -%}
+      {%- assign lr = v0 | times: 16 | plus: v1 | times: 299 -%}
+      {%- assign lg = v2 | times: 16 | plus: v3 | times: 587 -%}
+      {%- assign lb = v4 | times: 16 | plus: v5 | times: 114 -%}
+      {%- assign lum = lr | plus: lg | plus: lb | divided_by: 1000 -%}
+      {%- if lum >= 110 -%}{%- assign light = 'y' -%}{%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- assign lights = lights | append: light -%}
+{%- endfor -%}
+{%- assign p_light = lights | slice: 0, 1 -%}
+{%- assign s_light = lights | slice: 1, 1 -%}
 {%- assign kind_label = 'Milestone' -%}
 {%- case data.occasion.kind -%}
 {%- when 'role' -%}{%- assign kind_label = 'New role' -%}
@@ -14,6 +43,13 @@
 {%- if data.occasion.date and data.occasion.date != '' -%}{%- assign occ_date = data.occasion.date | date: '%B %-d, %Y' -%}{%- endif -%}
 {%- assign occ_host = '' -%}
 {%- if data.occasion.source_url and data.occasion.source_url != '' -%}{%- assign occ_host = data.occasion.source_url | remove: 'https://' | remove: 'http://' | split: '/' | first | remove: 'www.' -%}{%- endif -%}
+{%- comment -%} The card prints its first word large across the fold when the headline opens with it. {%- endcomment -%}
+{%- assign headline = data.headline | default: '' | strip -%}
+{%- assign opener = headline | slice: 0, 16 -%}
+{%- assign printed = false -%}
+{%- if opener == 'Congratulations ' -%}{%- assign printed = true -%}{%- assign rest = headline | slice: 16, 200 -%}{%- endif -%}
+{%- assign hl_size = 'm' -%}
+{%- if headline.size > 48 -%}{%- assign hl_size = 'l' -%}{%- endif -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,111 +57,189 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ data.headline | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+{%- if font_head == 'Josefin Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Karla' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@500&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
+:root{
+  --p:{{ accent }};
+  --s:{{ accent2 }};
+  --ink:#0a0a0a;
+  --paper:#ffffff;
+  {%- if p_light == 'y' %}
+  --on-p:#0a0a0a;
+  {%- else %}
+  --on-p:#ffffff;
+  {%- endif %}
+  {%- if s_light == 'y' %}
+  --on-s:#0a0a0a;
+  {%- else %}
+  --on-s:#ffffff;
+  {%- endif %}
+  {%- if brand.colors.primary %}
+  --idea:color-mix(in srgb,var(--p) 22%,#fff);
+  --back:color-mix(in srgb,var(--p) 10%,#f2f2f2);
+  {%- else %}
+  --idea:#f7cbeb;
+  --back:#b4f2f3;
+  {%- endif %}
+  --fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;
+  --fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;
+  --m:clamp(1rem,3.2vw,2.5rem);
+}
+/* text on a brand field: white under luminance .18, black above, so it passes AA for any colour */
+@supports (color:color(from red xyz-d65 x y z)){:root{--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--on-s:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#fcfbf8;color:#1f1b17;font-family:'{{ font_body }}',Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-.cg{--a:{{ accent }};--a2:{{ accent2 }};--ink:#1f1b17;--mute:#6f6861;--line:#e6e1d8;--paper:#fcfbf8}
-.cg p{margin:0 0 1.1rem}
-.cg a{color:var(--a);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.16em}
-.cg a:focus-visible{outline:2px solid var(--a);outline-offset:3px;border-radius:2px}
-.cg h1,.cg h2,.cg-top,.cg-what,.cg-meta,.cg-idea-k,.cg-sign{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif}
-.cg-wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem}
-.cg-text{max-width:36rem}
-.cg-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.35rem 1.25rem;padding:1.05rem 0;border-bottom:1px solid var(--line);font-size:.9rem}
-.cg-logo{height:26px;width:auto;display:block}
-.cg-brand{font-weight:600;color:var(--ink);margin:0!important}
-.cg-for{color:var(--mute);margin:0!important}
-.cg-for b{font-weight:500;color:var(--ink)}
-.cg-hero{padding:2.4rem 0 1.4rem}
-.cg h1{font-size:2.1rem;line-height:1.1;font-weight:600;letter-spacing:-.022em;margin:0 0 1.5rem;text-wrap:balance}
-.cg-clip{border-left:3px solid var(--a);padding:.15rem 0 .2rem 1.05rem;max-width:36rem}
-.cg-what{font-size:1.02rem;font-weight:500;line-height:1.45;color:var(--ink);margin:0 0 .35rem!important}
-.cg-meta{font-size:.86rem;color:var(--mute);margin:0!important}
-.cg-note{padding:1.6rem 0 .4rem}
-.cg-hi{font-size:1.45rem;line-height:1.3;font-weight:500;margin:0 0 1rem!important}
-.cg-note p,.cg-ask,.cg-idea p{font-size:1.125rem;line-height:1.6}
-.cg-idea{margin:1.4rem 0 2rem;padding:1.5rem 1.3rem 1rem;border-radius:6px;background:#f2eee8;background:color-mix(in srgb,{{ accent }} 7%,#fcfbf8)}
-.cg-idea-k{font-size:.86rem;font-weight:600;color:var(--a);margin:0 0 .75rem!important}
-.cg h2{font-size:1.45rem;line-height:1.2;font-weight:600;letter-spacing:-.015em;margin:0 0 .8rem;text-wrap:balance}
-.cg-idea p{font-size:1.08rem;margin-bottom:.9rem}
-.cg-next{padding:.2rem 0 3.5rem}
-.cg-btn{margin:1.3rem 0 1.5rem}
-.cg-btn .ken-cta{background:var(--a)!important;border-radius:6px!important;font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-size:1rem;line-height:1.3;min-height:44px}
-.cg-btn .ken-cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.cg-ps{font-size:1.02rem;color:var(--mute)}
-.cg-sign{margin-top:2.2rem;padding-top:1.3rem;border-top:2px solid var(--a2);font-size:.95rem}
-.cg-sign-name{font-weight:600;color:var(--ink);margin:0!important}
-.cg-sign-title{color:var(--mute);margin:0!important}
-@media (min-width:760px){
-body{font-size:18px}
-.cg-wrap{padding:0 2rem}
-.cg-top{padding:1.25rem 0;font-size:.95rem}
-.cg-hero{padding:3.4rem 0 1.8rem}
-.cg h1{font-size:3.4rem;line-height:1.04;margin:0 0 2rem}
-.cg-what{font-size:1.08rem}
-.cg-note{padding:2rem 0 .6rem}
-.cg-hi{font-size:1.6rem}
-.cg-note p,.cg-ask{font-size:1.25rem;line-height:1.55}
-.cg-idea{display:grid;grid-template-columns:11rem 1fr;gap:2rem;margin:1.8rem 0 2.4rem;padding:2.2rem 2.4rem 1.6rem}
-.cg-idea-k{margin:0!important;line-height:1.4}
-.cg h2{font-size:1.8rem}
-.cg-idea p{font-size:1.15rem}
-.cg-next{padding:.4rem 0 5rem}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.55 var(--fb);-webkit-font-smoothing:antialiased}
+p{margin:0}
+a{color:inherit;text-decoration-thickness:.07em;text-underline-offset:.18em}
+a:focus-visible,.ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h1,h2,.word{font-family:var(--fh);margin:0}
+::selection{background:var(--p);color:var(--on-p)}
+
+/* The front of the card: paper above the fold, card stock below it, the word printed across both. */
+.front{position:relative;display:flex;flex-direction:column;min-height:100svh;background:var(--s);color:var(--on-s);overflow:hidden}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:3.75rem;padding:1rem var(--m) 0;background:var(--paper);color:var(--ink)}
+.top .ken-cta{min-height:44px;padding:0 1rem;font-size:1rem;white-space:nowrap}
+.top img{height:28px;width:auto;max-width:10rem;display:block}
+.top b{font-family:var(--fh);font-weight:700;font-size:1.5rem}
+.above{background:var(--paper);color:var(--ink);flex:1 0 auto;display:grid;place-items:center;text-align:center;padding:2.5rem var(--m) 2rem}
+.to{font-size:1.5rem;line-height:1.3;text-wrap:balance}
+.to+.to{margin-top:.35rem}
+.to.n{font-family:var(--fh);font-weight:600;font-size:clamp(2rem,3.2vw,2.5rem);line-height:1.1}
+.fold{position:relative;z-index:1;background:var(--paper);color:var(--ink)}
+.word{font-weight:700;text-transform:uppercase;text-align:center;font-size:min(8.4vw,9rem);line-height:.74;letter-spacing:-.02em;white-space:nowrap;padding:0 var(--m);margin:0}
+.under{flex:1.15 0 auto;padding:1.6rem var(--m) 2.4rem;display:grid;gap:2rem;text-align:center;justify-items:center;align-content:center}
+h1{font-weight:600;line-height:1.08;letter-spacing:-.01em;text-wrap:balance;font-size:clamp(2rem,3.2vw,2.5rem)}
+h1{max-width:24ch}
+h1.whole{font-size:clamp(2.5rem,5vw,4rem);max-width:16ch;line-height:1}
+h1.whole.l{font-size:clamp(2rem,3.2vw,2.5rem);max-width:24ch}
+.clip{max-width:38rem;font-size:1.125rem}
+.clip p+p{margin-top:.35rem;font-size:.9375rem}
+
+/* The inside: a two-page spread. */
+.inside{display:grid;background:var(--paper)}
+.inside .lp{padding:4.5rem var(--m) 0}
+.inside .rp{padding:2.5rem var(--m) 5rem}
+.inside h2{font-weight:600;font-size:clamp(2rem,3.4vw,3.25rem);line-height:1.05;letter-spacing:-.02em;text-wrap:balance}
+.idea h2,.back h2{font-weight:600;font-size:clamp(2.5rem,4.6vw,4rem);line-height:1;letter-spacing:-.02em}
+.inside .rp p{font-size:1.1875rem;line-height:1.55}
+.inside .rp p+p{margin-top:1.1em}
+
+/* The idea gets its own page. */
+.idea{background:var(--idea);color:var(--ink);padding:5rem var(--m) 5.5rem;display:grid;gap:2rem}
+.idea h2{max-width:16ch}
+.idea .t{font-family:var(--fh);font-weight:600;font-size:1.5rem;line-height:1.2;letter-spacing:-.01em;text-wrap:balance;max-width:30ch}
+.idea .b p{font-size:1.125rem;max-width:44em}
+.idea .b p+p{margin-top:1em}
+
+/* The back of the card: the one centred moment. */
+.back{background:var(--back);color:var(--ink);padding:5rem var(--m) 3rem;text-align:center;display:grid;justify-items:center}
+.back h2{margin-bottom:1.3rem}
+.back .ask{font-size:1.5rem;line-height:1.45;max-width:28em;text-wrap:balance}
+.btn{margin:2rem 0 0}
+.ken-cta{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 1.75rem;background:var(--p);color:var(--on-p);font-family:var(--fh);font-weight:700;font-size:1.125rem;text-decoration:none;border-radius:0}
+.ken-cta:hover{background:var(--ink);color:var(--paper)}
+.back .ps{margin-top:2rem;max-width:32em}
+.sign{margin-top:3.5rem;display:grid;gap:.15rem}
+.sign b{font-family:var(--fh);font-weight:700;font-size:1.5rem;line-height:1.2}
+.made{margin-top:4.5rem;font-size:.9375rem;max-width:40em}
+
+/* One moment on load: the printed word rises out of the fold. */
+@media (prefers-reduced-motion:no-preference){
+  .word{animation:rise .9s cubic-bezier(.2,.7,.1,1) backwards}
+  @keyframes rise{from{transform:translateY(.3em);opacity:0}}
 }
-@media (min-width:1040px){
-.cg-wrap{max-width:46rem}
-.cg h1{font-size:3.6rem}
+
+@media (min-width:760px){
+  body{font-size:1.125rem}
+  .under{padding:2rem var(--m) 3rem}
+  .inside{grid-template-columns:5fr 7fr}
+  .inside .lp{padding:6rem var(--m) 6rem}
+  .inside .rp{padding:6rem var(--m) 6rem}
+  .inside .rp p{font-size:1.5rem;line-height:1.5}
+  .idea{grid-template-columns:1fr 1fr;column-gap:var(--m);row-gap:3.5rem;padding:7rem var(--m) 7.5rem;align-items:start}
+  .idea h2{grid-column:1/-1;max-width:none}
+  .back{padding:7rem var(--m) 3.5rem}
+}
+@media print{
+  .front{min-height:0}
+  .word{animation:none}
+  .inside,.idea,.back{break-inside:avoid}
 }
 </style>
 </head>
 <body>
-<main class="cg">
-<div class="cg-wrap">
-<header class="cg-top">
-{%- if brand.logo_url %}<img class="cg-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="cg-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
-<p class="cg-for">For {% if person.first_name %}<b>{{ person.first_name | escape }} {{ person.last_name | escape }}</b>, {{ account.name | escape }}{% else %}the team at <b>{{ account.name | escape }}</b>{% endif %}</p>
+<main>
+<section class="front" data-section="occasion">
+<header class="top">
+{%- if brand.logo_url %}<img src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<b>{{ brand.name | escape }}</b>{% else %}<span></span>{% endif -%}
+{% render 'ken/cta', label: 'Book 15 minutes', kind: 'booking', id: 'booking-top', variant: 'link' %}
 </header>
-<section data-section="occasion" class="cg-hero">
-<h1>{{ data.headline | escape }}</h1>
+<div class="above"><div>{% if person.first_name %}<p class="to n">For {{ person.first_name | escape }} {{ person.last_name | escape }}</p><p class="to">{% if person.title %}{{ person.title | escape }}, {% endif %}{{ account.name | escape }}</p>{% else %}<p class="to n">For the team at {{ account.name | escape }}</p>{% endif %}</div></div>
+{%- if printed %}
+<div class="fold" aria-hidden="true"><p class="word">Congratulations</p></div>
+{%- endif %}
+<div class="under">
+{%- if printed %}
+<h1 class="{{ hl_size }}"><span class="sr">Congratulations </span>{{ rest | escape }}</h1>
+{%- else %}
+<h1 class="whole {{ hl_size }}">{{ data.headline | escape }}</h1>
+{%- endif %}
 {%- if data.occasion.what and data.occasion.what != '' %}
-<div class="cg-clip">
-<p class="cg-what">{{ data.occasion.what | escape }}</p>
+<div class="clip">
+<p>{{ data.occasion.what | escape }}</p>
 {%- if occ_date != '' or occ_host != '' %}
-<p class="cg-meta">{{ kind_label }}{% if occ_date != '' %} announced {{ occ_date | escape }}{% endif %}{% if occ_host != '' %}{% if occ_date != '' %} on{% else %} reported on{% endif %} <a href="{{ data.occasion.source_url | escape }}" target="_blank" rel="noopener noreferrer">{{ occ_host | escape }}</a>{% endif %}</p>
+<p>{{ kind_label }}{% if occ_date != '' %}, announced {{ occ_date | escape }}{% endif %}{% if occ_host != '' %}{% if occ_date != '' %}, on{% else %}, reported on{% endif %} <a href="{{ data.occasion.source_url | escape }}" target="_blank" rel="noopener noreferrer">{{ occ_host | escape }}</a>{% endif %}</p>
 {%- endif %}
 </div>
 {%- endif %}
+</div>
 </section>
-<section data-section="note" class="cg-note cg-text">
-<p class="cg-hi">{% if person.first_name %}{{ person.first_name | escape }},{% else %}To the team at {{ account.name | escape }},{% endif %}</p>
+<section class="inside" data-section="note">
+<div class="lp"><h2>{% if person.first_name %}{{ person.first_name | escape }},{% else %}To the team at {{ account.name | escape }},{% endif %}</h2></div>
+<div class="rp">
 {%- for p in data.note %}
 <p>{{ p | escape }}</p>
 {%- endfor %}
+</div>
 </section>
-<section data-section="idea" class="cg-idea">
-<p class="cg-idea-k">One idea for the next 90 days</p>
-<div>
-<h2>{{ data.idea_title | escape }}</h2>
+<section class="idea" data-section="idea">
+<h2>One idea for the next 90 days</h2>
+<p class="t">{{ data.idea_title | escape }}</p>
+<div class="b">
 {%- for p in data.idea %}
 <p>{{ p | escape }}</p>
 {%- endfor %}
 </div>
 </section>
-<section data-section="next" class="cg-next cg-text">
-<p class="cg-ask">{{ data.ask | escape }}</p>
-<div class="cg-btn">{% render 'ken/cta', label: 'Book 15 minutes', kind: 'booking' %}</div>
+<section class="back" data-section="next">
+<h2>Talk it through</h2>
+<p class="ask">{{ data.ask | escape }}</p>
+<div class="btn">{% render 'ken/cta', label: 'Book 15 minutes', kind: 'booking', variant: 'link' %}</div>
 {%- if data.ps and data.ps != '' %}
-<p class="cg-ps">{{ data.ps | escape }}</p>
+<p class="ps">{{ data.ps | escape }}</p>
 {%- endif %}
-<div class="cg-sign">
-<p class="cg-sign-name">{{ sender.name | default: 'Our team' | escape }}</p>
-<p class="cg-sign-title">{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}{% elsif brand.name %}{{ brand.name | escape }}{% endif %}</p>
+<div class="sign">
+<b>{{ sender.name | default: 'Our team' | escape }}</b>
+<span>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}{% elsif brand.name %}{{ brand.name | escape }}{% endif %}</span>
 </div>
+<p class="made">Written for {% if person.first_name %}{{ person.first_name | escape }} {{ person.last_name | escape }} at {% endif %}{{ account.name | escape }}{% if sender.name %} by {{ sender.name | escape }}{% endif %}{% if brand.name %} at {{ brand.name | escape }}{% endif %}.</p>
 </section>
-</div>
 </main>
 </body>
 </html>

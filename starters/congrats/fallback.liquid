@@ -1,9 +1,7 @@
-{%- assign accent = brand.colors.primary | default: '#8a2a3e' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#c9a24a' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Instrument Sans' -%}
-{%- assign font_body = brand.fonts.body | default: 'Newsreader' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign accent = brand.colors.primary | default: '#cb76b8' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#f3d991' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Josefin Sans' -%}
+{%- assign font_body = brand.fonts.body | default: 'Karla' -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,67 +9,54 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A note for {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+{%- if font_head == 'Josefin Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Karla' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@500&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
+:root{--p:{{ accent }};--s:{{ accent2 }};--ink:#0a0a0a;--paper:#ffffff;--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--m:clamp(1rem,3.2vw,2.5rem)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#fcfbf8;color:#1f1b17;font-family:'{{ font_body }}',Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-.cg{--a:{{ accent }};--a2:{{ accent2 }};--ink:#1f1b17;--mute:#6f6861;--line:#e6e1d8}
-.cg p{margin:0 0 1.1rem}
-.cg a{color:var(--a)}
-.cg h1,.cg-top,.cg-sign{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif}
-.cg-wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem}
-.cg-text{max-width:36rem}
-.cg-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.35rem 1.25rem;padding:1.05rem 0;border-bottom:1px solid var(--line);font-size:.9rem}
-.cg-logo{height:26px;width:auto;display:block}
-.cg-brand{font-weight:600;color:var(--ink);margin:0!important}
-.cg-for{color:var(--mute);margin:0!important}
-.cg-for b{font-weight:500;color:var(--ink)}
-.cg-hero{padding:2.4rem 0 .6rem}
-.cg h1{font-size:2.1rem;line-height:1.1;font-weight:600;letter-spacing:-.022em;margin:0 0 1.5rem;text-wrap:balance}
-.cg-hi{font-size:1.45rem;line-height:1.3;font-weight:500;margin:0 0 1rem!important}
-.cg-hero p,.cg-next p{font-size:1.125rem;line-height:1.6}
-.cg-next{padding:.2rem 0 3.5rem}
-.cg-btn{margin:1.3rem 0 1.5rem}
-.cg-btn .ken-cta{background:var(--a)!important;border-radius:6px!important;font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-size:1rem;line-height:1.3;min-height:44px}
-.cg-sign{margin-top:2.2rem;padding-top:1.3rem;border-top:2px solid var(--a2);font-size:.95rem}
-.cg-sign p{margin:0!important}
-.cg-sign-name{font-weight:600;color:var(--ink)}
-.cg-sign-title{color:var(--mute)}
-@media (min-width:760px){
-body{font-size:18px}
-.cg-wrap{padding:0 2rem}
-.cg-top{padding:1.25rem 0;font-size:.95rem}
-.cg-hero{padding:3.6rem 0 .6rem}
-.cg h1{font-size:3.4rem;line-height:1.04;margin:0 0 2rem}
-.cg-hi{font-size:1.6rem}
-.cg-hero p,.cg-next p{font-size:1.25rem;line-height:1.55}
-.cg-next{padding:.4rem 0 5rem}
-}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.125rem/1.55 var(--fb);-webkit-font-smoothing:antialiased}
+p{margin:0}
+h1,h2{font-family:var(--fh);font-weight:600;margin:0;line-height:1.05;letter-spacing:-.02em}
+.top{display:flex;align-items:center;min-height:3.75rem;padding:1rem var(--m) 0}
+.top img{height:28px;width:auto;max-width:10rem;display:block}
+.top b{font-family:var(--fh);font-weight:700;font-size:1.5rem}
+.front{padding:5rem var(--m) 4rem;text-align:center;display:grid;justify-items:center;gap:1.5rem}
+.front h1{font-size:clamp(2.5rem,5vw,4rem);max-width:16ch;text-wrap:balance}
+.front p{font-size:1.5rem;line-height:1.45;max-width:28em;text-wrap:balance}
+.next{background:color-mix(in srgb,var(--s) 40%,#fff);padding:4rem var(--m) 5rem;text-align:center;display:grid;justify-items:center;gap:1.5rem}
+.next .ken-cta{display:inline-flex!important;align-items:center;min-height:52px;padding:0 1.75rem!important;background:var(--ink)!important;color:var(--paper)!important;border-radius:0!important;font-family:var(--fh);font-weight:700;text-decoration:none}
+.ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.sign b{display:block;font-family:var(--fh);font-weight:700;font-size:1.5rem}
 </style>
 </head>
 <body>
-<main class="cg">
-<div class="cg-wrap">
-<header class="cg-top">
-{%- if brand.logo_url %}<img class="cg-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="cg-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
-<p class="cg-for">For {% if person.first_name %}<b>{{ person.first_name | escape }} {{ person.last_name | escape }}</b>, {{ account.name | escape }}{% else %}the team at <b>{{ account.name | escape }}</b>{% endif %}</p>
+<main>
+<header class="top">
+{%- if brand.logo_url %}<img src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<b>{{ brand.name | escape }}</b>{% endif -%}
 </header>
-<section data-section="occasion" class="cg-hero cg-text">
+<section data-section="occasion" class="front">
 <h1>A note for {{ account.name | escape }}</h1>
-<p class="cg-hi">{% if person.first_name %}{{ person.first_name | escape }},{% else %}To the team at {{ account.name | escape }},{% endif %}</p>
-<p>I am writing you a short note with one idea for the next 90 days at {{ account.name | escape }}. It is not on this page yet. The link stays the same, so check back later today.</p>
+<p>{% if person.first_name %}{{ person.first_name | escape }}, I{% else %}I{% endif %} am writing you a short note with one idea for the next 90 days at {{ account.name | escape }}. It is not on this page yet. The link stays the same, so check back later today.</p>
 </section>
-<section data-section="next" class="cg-next cg-text">
+<section data-section="next" class="next">
 <p>If you would rather hear it now, I have 15 minutes whenever suits you.</p>
-<div class="cg-btn">{% render 'ken/cta', label: 'Book 15 minutes', kind: 'booking' %}</div>
-<div class="cg-sign">
-<p class="cg-sign-name">{{ sender.name | default: 'Our team' | escape }}</p>
-<p class="cg-sign-title">{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}{% elsif brand.name %}{{ brand.name | escape }}{% endif %}</p>
-</div>
+{% render 'ken/cta', label: 'Book 15 minutes', kind: 'booking' %}
+<p class="sign"><b>{{ sender.name | default: 'Our team' | escape }}</b>{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}{% elsif brand.name %}{{ brand.name | escape }}{% endif %}</p>
 </section>
-</div>
 </main>
 </body>
 </html>

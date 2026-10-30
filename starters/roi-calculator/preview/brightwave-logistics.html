@@ -5,152 +5,169 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>What manual dispatch work costs Brightwave Logistics each year</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;800&display=swap">
 <style>
 :root{
-  --p:#2a4bd7;
-  --s:#0e1530;
-  --fh:'Inter Tight',ui-sans-serif,system-ui,sans-serif;
-  --fb:'Inter',ui-sans-serif,system-ui,sans-serif;
-  --ink:var(--s);
-  --text:color-mix(in srgb,var(--s) 84%,#fff);
-  --mute:color-mix(in srgb,var(--s) 54%,#fff);
-  --line:color-mix(in srgb,var(--s) 13%,#fff);
-  --hair:color-mix(in srgb,var(--s) 8%,#fff);
-  --wash:color-mix(in srgb,var(--p) 6%,#fff);
-  --p-deep:color-mix(in srgb,var(--p) 80%,#000);
-  --on-dark:color-mix(in srgb,#fff 72%,var(--s));
+  --p:#256f82;
+  --s:#111111;
+  --on-p:#fff;
+  --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+  --on-s:#fff;
+  --on-s:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+  --fh:'Libre Franklin','Helvetica Neue',Arial,sans-serif;
+  --fb:'Libre Franklin','Helvetica Neue',Arial,sans-serif;
+  --bg:#dedad3;
+  --surface:#d1ccc3;
+  --paper:#f3f3f1;
+  --ink:#0a0a0a;
+  --muted:#57534d;
+  --m:clamp(1.125rem,3.2vw,2.5rem);
+  --small:.875rem;
+  --body:1.0625rem;
+  --lead:clamp(1.1875rem,1.05rem + .5vw,1.4375rem);
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#fff;color:var(--text);font:16px/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
-h1,h2,h3{font-family:var(--fh);color:var(--ink);margin:0;line-height:1.1;letter-spacing:-.015em;font-weight:600}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--body)/1.5 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums lining-nums}
+h1,h2,h3{font-family:var(--fh);margin:0;font-weight:800;letter-spacing:-.025em;line-height:1;text-wrap:balance}
 p{margin:0}
-a{color:var(--p)}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:.07em}
 button,input{font:inherit}
-:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+::selection{background:var(--ink);color:var(--paper)}
 
-.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid var(--hair)}
-.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--fh);font-weight:600;color:var(--ink);font-size:1rem;min-width:0}
-.logo{height:26px;width:auto;max-width:8rem;display:block;flex:none}
-.mark{width:26px;height:26px;border-radius:7px;background:var(--p);color:#fff;display:grid;place-items:center;font-size:.85rem;font-weight:700;flex:none}
-.for{font-size:.85rem;color:var(--mute);text-align:right}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:1.25rem var(--m) 0}
+.brand{display:flex;align-items:center;font-family:var(--fh);font-weight:800;font-size:1.0625rem;letter-spacing:-.01em;min-width:0}
+.logo{height:28px;width:auto;max-width:9rem;display:block}
+.for{font-size:var(--small);color:var(--muted);text-align:right}
 
-.wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem 4rem}
-.intro{padding:2rem 0 1.6rem;max-width:40rem}
-.intro h1{font-size:2.1rem;margin-bottom:.9rem;text-wrap:balance}
-.intro .lede{font-size:1.05rem;color:var(--text);max-width:36rem}
-.intro .lede b{font-weight:600;color:var(--ink)}
+.intro{padding:clamp(2.25rem,6vw,4.5rem) var(--m) clamp(1.75rem,3vw,2.75rem);display:grid;gap:1.1rem}
+.intro h1{font-size:clamp(1.3rem,var(--h1v),5.25rem);letter-spacing:-.035em;line-height:.98}
+.lede{font-size:var(--body);line-height:1.45;max-width:44ch}
 
-.grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"hero" "inputs" "detail";gap:1.5rem}
+/* The worksheet: four faders on the left, the printed tape on the right */
+.work{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"result" "inputs" "ledger";padding:0 var(--m);gap:0}
 
-/* Hero result: on a phone it sticks to the top while sliders move. */
-.hero{grid-area:hero;background:var(--s);color:#fff;border-radius:14px;padding:1.1rem 1.25rem 1.05rem;position:sticky;top:.5rem;z-index:5;box-shadow:0 10px 30px color-mix(in srgb,var(--s) 25%,transparent)}
-.hero .label{font-size:.85rem;color:var(--on-dark)}
-.hero .big{font-family:var(--fh);font-weight:600;font-size:2.4rem;line-height:1;letter-spacing:-.025em;margin:.2rem 0 .6rem;color:#fff}
-.hero .row{display:flex;gap:1.4rem;flex-wrap:wrap}
-.hero .row div{display:grid;gap:.05rem}
-.hero .row small{font-size:.78rem;color:var(--on-dark)}
-.hero .row span{font-family:var(--fh);font-size:1.15rem;font-weight:600;line-height:1.2}
+/* The tape. On a phone its head (the result) sticks to the top while the faders move. */
+.result{grid-area:result;background:var(--ink);color:var(--paper);padding:1rem 1.1rem 1.05rem;position:sticky;top:0;z-index:5;margin:0 calc(var(--m) * -1)}
+.result h2{font-family:var(--fb);font-weight:400;font-size:var(--small);letter-spacing:0;line-height:1.35;color:color-mix(in srgb,var(--paper) 78%,var(--ink))}
+.big{font-family:var(--fh);font-weight:800;font-size:clamp(2.6rem,11vw,3.4rem);line-height:.95;letter-spacing:-.04em;margin:.3rem 0 .7rem}
+.kpis{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:.15rem 1.4rem;margin:0}
+.kpis div{display:grid}
+.kpis dt{font-size:var(--small);color:color-mix(in srgb,var(--paper) 78%,var(--ink))}
+.kpis dd{margin:0;font-family:var(--fh);font-weight:600;font-size:var(--body)}
 
-.inputs{grid-area:inputs}
-.inputs h2,.detail h2{font-size:1.15rem;padding-bottom:.6rem;border-bottom:1px solid var(--line);margin-bottom:.4rem}
-.field{padding:1rem 0 .9rem;border-bottom:1px solid var(--hair)}
-.field:last-child{border-bottom:0}
-.fhead{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;margin-bottom:.2rem}
-.fhead label{font-weight:600;color:var(--ink)}
-.tag{flex:none;font-size:.74rem;font-weight:600;color:var(--p-deep);background:color-mix(in srgb,var(--p) 12%,#fff);border-radius:999px;padding:.15rem .55rem}
-.tag[data-state=edited]{color:var(--mute);background:var(--hair)}
-.frow{display:grid;grid-template-columns:minmax(0,1fr) 8.6rem;gap:1rem;align-items:center}
+.inputs{grid-area:inputs;padding:2rem 0 2.5rem}
+.inputs h2,.ledger h2{font-size:clamp(1.5rem,1.2rem + 1.2vw,2rem);margin-bottom:.4rem}
+.ui{font-family:var(--fb)}
+.field{padding:1.35rem 0 1.25rem}
+.field + .field{border-top:2px solid var(--surface)}
+.fhead{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;margin-bottom:.35rem}
+.fhead label{font-weight:600;font-size:1.0625rem}
+.tag{flex:none;font-size:var(--small);font-weight:600;color:var(--ink);background:var(--paper);padding:.12rem .55rem}
+.tag[data-state=edited]{background:var(--p);color:var(--on-p)}
+.frow{display:grid;grid-template-columns:minmax(0,1fr) 9.6rem;gap:1rem;align-items:center}
 .range{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin:0;cursor:pointer}
-.range::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:linear-gradient(to right,var(--p) var(--pct),var(--line) var(--pct))}
-.range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--p);margin-top:-9.5px;box-shadow:0 1px 3px rgba(0,0,0,.18)}
-.range::-moz-range-track{height:3px;border-radius:2px;background:var(--line)}
-.range::-moz-range-progress{height:3px;border-radius:2px;background:var(--p)}
-.range::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--p);box-shadow:0 1px 3px rgba(0,0,0,.18)}
-.numwrap{display:flex;align-items:center;min-height:44px;border:1px solid var(--line);border-radius:8px;padding:0 .6rem 0 0;background:#fff}
-.numwrap:focus-within{border-color:var(--p);box-shadow:0 0 0 3px color-mix(in srgb,var(--p) 18%,transparent)}
-.numwrap input{width:100%;min-width:0;border:0;background:none;padding:.65rem .25rem .65rem .7rem;color:var(--ink);font-family:var(--fh);font-weight:600;font-size:1.05rem;text-align:right;-moz-appearance:textfield}
+.range::-webkit-slider-runnable-track{height:8px;background:linear-gradient(to right,var(--p) var(--pct),var(--surface) var(--pct))}/* taste-skill-ignore: the slider fill, two flat colours with a hard stop at the value */
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:30px;background:var(--p);border:3px solid var(--ink);margin-top:-11px}
+.range::-moz-range-track{height:8px;background:var(--surface)}
+.range::-moz-range-progress{height:8px;background:var(--p)}
+.range::-moz-range-thumb{width:10px;height:24px;border-radius:0;background:var(--p);border:3px solid var(--ink)}
+.range:active::-webkit-slider-thumb{transform:scaleY(1.12)}
+.numwrap{display:flex;align-items:center;min-height:46px;background:var(--paper);padding:0 .65rem 0 0}
+.numwrap:focus-within{outline:3px solid var(--ink);outline-offset:2px}
+.numwrap input{width:100%;min-width:0;border:0;background:none;padding:.6rem .3rem .6rem .7rem;color:var(--ink);font-family:var(--fh);font-weight:800;font-size:var(--body);letter-spacing:-.02em;text-align:right;-moz-appearance:textfield}
 .numwrap input::-webkit-outer-spin-button,.numwrap input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .numwrap input:focus{outline:none}
-.numwrap span{font-size:.8rem;color:var(--mute);white-space:nowrap}
-.fnote{font-size:.84rem;color:var(--mute);margin-top:.1rem;max-width:34rem}
+.numwrap span{font-size:var(--small);color:var(--muted);white-space:nowrap}
+.fnote{font-size:1rem;line-height:1.45;color:var(--muted);margin-top:.25rem;max-width:52ch}
 
-.detail{grid-area:detail;display:grid;gap:1.6rem;align-content:start}
-.chart{margin:0;border:1px solid var(--line);border-radius:14px;padding:1rem 1rem .8rem;background:#fff}
-.chart figcaption{display:grid;gap:.15rem;margin-bottom:.8rem}
-.chart figcaption b{font-family:var(--fh);font-weight:600;color:var(--ink);font-size:1rem}
-.chart figcaption span{font-size:.82rem;color:var(--mute)}
-.chart svg{display:block;width:100%;height:auto}
-.chart .pos{fill:var(--p)}
-.chart .neg{fill:color-mix(in srgb,var(--s) 28%,#fff)}
-.chart .base{stroke:var(--ink);stroke-width:1.5}
-.chart .gl{stroke:var(--hair);stroke-width:1}
-.chart text{font-family:var(--fb);fill:var(--mute);font-size:19px}
-.chart text.v{fill:var(--ink);font-weight:600;font-family:var(--fh)}
-.chart .pb{stroke:var(--ink);stroke-dasharray:4 5;stroke-width:1.5}
-.chart text.pbl{fill:var(--ink);font-weight:600}
-@media (max-width:759px){.chart text{font-size:25px}}
+.ledger{grid-area:ledger;background:var(--paper);padding:1.6rem 1.25rem .4rem;margin:0 calc(var(--m) * -1)}
+.lines{width:100%;border-collapse:collapse}
+.lines th,.lines td{padding:.7rem 0;text-align:left;vertical-align:top;font-weight:400}
+.lines td{text-align:right;white-space:nowrap;font-family:var(--fh);font-weight:600;font-size:1.0625rem;padding-left:1rem}
+.lines th small{display:block;color:var(--muted);font-size:var(--small)}
+.lines tr.sum th,.lines tr.sum td{border-top:4px solid var(--ink);padding-top:.85rem;font-family:var(--fh);font-weight:800;font-size:var(--lead)}
+.lines sup{font-size:.7em;margin-left:.12rem}
+.ledger{position:relative}
+.ledger::after{content:"";position:absolute;left:0;right:0;top:100%;height:12px;background:var(--paper);clip-path:polygon(0 0,100% 0,100% 0,97.92% 100%,95.83% 0,93.75% 100%,91.67% 0,89.58% 100%,87.5% 0,85.42% 100%,83.33% 0,81.25% 100%,79.17% 0,77.08% 100%,75% 0,72.92% 100%,70.83% 0,68.75% 100%,66.67% 0,64.58% 100%,62.5% 0,60.42% 100%,58.33% 0,56.25% 100%,54.17% 0,52.08% 100%,50% 0,47.92% 100%,45.83% 0,43.75% 100%,41.67% 0,39.58% 100%,37.5% 0,35.42% 100%,33.33% 0,31.25% 100%,29.17% 0,27.08% 100%,25% 0,22.92% 100%,20.83% 0,18.75% 100%,16.67% 0,14.58% 100%,12.5% 0,10.42% 100%,8.33% 0,6.25% 100%,4.17% 0,2.08% 100%,0 0)}
 
-.ledger{width:100%;border-collapse:collapse}
-.ledger th,.ledger td{padding:.65rem 0;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top;font-weight:400}
-.ledger td{text-align:right;white-space:nowrap;font-family:var(--fh);font-weight:600;color:var(--ink);padding-left:1rem}
-.ledger th small{display:block;color:var(--mute);font-size:.82rem;font-weight:400}
-.ledger tr.sum th,.ledger tr.sum td{border-bottom:0;border-top:2px solid var(--ink);padding-top:.8rem;font-weight:600;color:var(--ink);font-size:1.05rem}
-.ledger td.minus{color:var(--mute)}
-.ledger sup{font-size:.7em;color:var(--p-deep);margin-left:.15rem}
+/* The return chart: bars standing on a dark field */
+.chart{margin:clamp(3rem,7vw,6rem) 0 0;background:var(--s);color:var(--on-s);padding:clamp(2.25rem,5vw,4.5rem) var(--m) clamp(1.75rem,3vw,3rem);display:grid;gap:clamp(1.75rem,4vw,3.5rem)}
+.chart figcaption{display:grid;gap:.6rem}
+.chart figcaption p{max-width:44ch}
+.chart h2{font-size:clamp(1.75rem,1.3rem + 2.2vw,3.25rem)}
+.chart figcaption p{font-size:var(--body)}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart .pos{fill:color-mix(in srgb,var(--on-s) 90%,var(--s))}
+.chart .neg{fill:color-mix(in srgb,var(--on-s) 32%,var(--s))}
+.chart .base{stroke:var(--on-s);stroke-width:2}
+.chart text{font-family:var(--fb);fill:var(--on-s);font-size:15px}
+.chart text.v{fill:var(--on-s);font-weight:600;font-family:var(--fh)}
+.chart .pb{stroke:var(--p);stroke-width:4}
+.chart text.pbl{fill:var(--on-s);font-weight:600}
+@media (max-width:859px){.chart text{font-size:24px}}
 
-.cta{margin-top:3rem;border-radius:16px;background:var(--wash);padding:1.6rem 1.4rem;display:grid;gap:1rem}
-.cta h2{font-size:1.5rem;text-wrap:balance}
-.cta p{max-width:36rem}
-.cta .who{display:flex;align-items:center;gap:.8rem;font-size:.9rem;color:var(--mute)}
-.cta .who b{display:block;color:var(--ink);font-weight:600}
-.avatar{width:40px;height:40px;border-radius:50%;background:var(--s);color:#fff;display:grid;place-items:center;font-family:var(--fh);font-weight:600;flex:none}
-.cta .ken-cta{display:inline-flex!important;align-items:center;justify-content:center;min-height:48px;padding:.9rem 1.5rem!important;border-radius:10px!important;background:color-mix(in srgb,var(--p) 86%,#000)!important;font-weight:600!important;width:fit-content}
-.cta .ken-cta:hover{background:var(--p-deep)!important}
+/* The close: a field in the accent */
+.cta{background:var(--p);color:var(--on-p);padding:clamp(3rem,8vw,7rem) var(--m) clamp(2.5rem,6vw,5rem);display:grid;gap:1.4rem;align-content:end}
+.cta h2{font-size:clamp(2rem,1.2rem + 3.6vw,4.25rem);letter-spacing:-.04em;line-height:.94}
+.cta p{font-size:var(--lead);line-height:1.4;max-width:40ch}
+.who{font-size:var(--body);line-height:1.4}
+.who b{display:block;font-weight:600}
+.cta .ken-cta{display:inline-flex!important;align-items:center;justify-content:center;min-height:52px;padding:.95rem 1.6rem!important;border-radius:0!important;background:var(--on-p)!important;color:var(--p)!important;font-family:var(--fh);font-weight:800!important;font-size:1.125rem;letter-spacing:-.01em;text-decoration:none;width:fit-content}
+.cta .ken-cta:hover{background:var(--ink)!important;color:var(--paper)!important}
+.cta .ken-cta:focus-visible{outline:3px solid var(--on-p);outline-offset:4px}
 
-.notes{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.84rem;color:var(--mute);max-width:44rem}
-.notes h2{font-size:.9rem;margin-bottom:.5rem;color:var(--mute);font-weight:600}
-.notes ol{margin:0;padding-left:1.2rem;display:grid;gap:.3rem}
-.notes li::marker{color:var(--p-deep)}
+.notes{padding:clamp(2.5rem,5vw,4rem) var(--m) 4rem;display:grid;gap:.8rem}
+.notes h2{font-size:clamp(1.5rem,1.2rem + 1.2vw,2rem)}
+.notes ol{margin:0;padding-left:1.3rem;display:grid;gap:.5rem;max-width:68ch;line-height:1.5}
 
-@media (min-width:760px){
-  .top{padding:1.1rem 2rem}
-  .wrap{padding:0 2rem 5rem}
-  .intro{padding:3.2rem 0 2.4rem}
-  .intro h1{font-size:2.9rem;max-width:18ch}
-  .grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"inputs hero" "inputs detail";grid-template-rows:auto 1fr;column-gap:3rem;row-gap:1.6rem;align-items:start}
-  .hero{position:static;padding:1.6rem 1.8rem 1.5rem;box-shadow:none}
-  .hero .big{font-size:3.6rem;margin:.3rem 0 1rem}
-  .hero .row{gap:2.2rem}
-  .hero .row span{font-size:1.35rem}
-  .inputs{position:sticky;top:1.5rem}
-  .field{padding:1.15rem 0 1.05rem}
-  .cta{grid-template-columns:minmax(0,1fr) auto;align-items:center;padding:2rem 2.2rem;margin-top:4rem}
-  .cta .who{grid-column:1}
-  .cta .ken-cta{grid-column:2;grid-row:1/4;justify-self:end}
+@media (min-width:860px){
+  .top{padding-top:1.6rem}
+  .intro{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);column-gap:3rem}
+  .intro h1{grid-column:1 / -1}
+  .lede{grid-column:2}
+  .lede{font-size:var(--lead);line-height:1.38}
+  .work{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-areas:"inputs result" "inputs ledger";grid-template-rows:auto 1fr;column-gap:clamp(2rem,5vw,5rem);align-items:start}
+  .result{position:static;margin:0;padding:1.6rem 1.8rem 1.5rem}
+  .big{font-size:clamp(3.5rem,6.4vw,6rem);margin:.4rem 0 1rem}
+  .kpis{gap:.2rem 2.2rem}
+  .kpis dd{font-size:var(--lead)}
+  .inputs{padding:0}
+  .field:first-of-type{padding-top:.8rem}
+  .ledger{margin:0;padding:1.6rem 1.8rem .6rem}
+  .chart figcaption{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);column-gap:4rem;align-items:end}
+  .chart text{font-size:13px}
+  .cta{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);column-gap:4rem;align-items:end}
+  .cta h2{grid-row:1 / span 3}
+  .notes{grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);column-gap:4rem}
 }
+@media (max-width:420px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr));gap:.1rem .8rem}.kpis dd{font-size:1rem}}
+
+/* One moment on load: the tape prints down from the top of its column */
 @media (prefers-reduced-motion:no-preference){
-  .hero .big{transition:opacity .15s}
+  @keyframes print{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+  @media (min-width:860px){.result,.ledger{animation:print .9s cubic-bezier(.2,.7,.2,1) both}.ledger{animation-delay:.25s}}
+  .range::-webkit-slider-thumb{transition:transform .12s}
+  .cta .ken-cta{transition:background-color .15s,color .15s}
 }
-@media print{.hero{position:static;box-shadow:none}}
+@media print{.result{position:static}.chart,.cta{break-inside:avoid}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js" defer></script>
 </head>
-<body>
+<body style="--h1v:4.92vw">
 <header class="top">
-  <div class="brand"><span class="mark" aria-hidden="true">N</span><span>Northbeam</span></div>
-  <p class="for">Prepared for Leo Marsh<br>Brightwave Logistics</p>
+  <div class="brand"><span>Northbeam</span></div>
+  <p class="for">Prepared for Leo Marsh, Brightwave Logistics</p>
 </header>
 
-<main class="wrap">
+<main>
   <section class="intro" data-section="intro">
-    <h1>What manual dispatch work costs Brightwave Logistics each year</h1>
-    <p class="lede">We prefilled the four inputs from what we know about Brightwave Logistics: 201 to 500 people in transportation, logistics, supply chain and storage. <b>They are estimates.</b> Move the sliders to match your team and every number on this page updates.</p>
+    <h1>What manual dispatch work costs Brightwave Logistics a year</h1>
+    <p class="lede">We filled in the four inputs from what we know about Brightwave Logistics: 201 to 500 people in transportation, logistics, supply chain and storage. They are estimates. Move them to match your team and every figure on this page follows, for a year and for three.</p>
   </section>
 
-  <div class="grid" x-data="{ team: 38, hours: 9, rate: 42, tools: 2400, seat: 49, setup: 40000, share: 40, toolShare: 50, ramp: 6, weeks: 48, manual: 0, labor: 0, toolSave: 0, platform: 0, gross: 0, net: 0, hoursBack: 0, g: 0, c: 0, pb: 0, three: 0, mult: 0, hi1: 0, hi: 0, lo1: 0, lo2: 0, lo3: 0, lo: 0, k: 0, base: 0, z1: 0, z2: 0, z3: 0, z4: 0, z5: 0, z6: 0, z7: 0, z8: 0, z9: 0, z10: 0, z11: 0, z12: 0, z13: 0, z14: 0, z15: 0, z16: 0, z17: 0, z18: 0, z19: 0, z20: 0, z21: 0, z22: 0, z23: 0, z24: 0, z25: 0, z26: 0, z27: 0, z28: 0, z29: 0, z30: 0, z31: 0, z32: 0, z33: 0, z34: 0, z35: 0, z36: 0}">
+  <div class="calc" x-data="{ team: 38, hours: 9, rate: 42, tools: 2400, seat: 49, setup: 40000, share: 40, toolShare: 50, ramp: 6, weeks: 48, manual: 0, labor: 0, toolSave: 0, platform: 0, gross: 0, net: 0, hoursBack: 0, g: 0, c: 0, pb: 0, three: 0, mult: 0, hi1: 0, hi: 0, lo1: 0, lo2: 0, lo3: 0, lo: 0, k: 0, base: 0, z1: 0, z2: 0, z3: 0, z4: 0, z5: 0, z6: 0, z7: 0, z8: 0, z9: 0, z10: 0, z11: 0, z12: 0, z13: 0, z14: 0, z15: 0, z16: 0, z17: 0, z18: 0, z19: 0, z20: 0, z21: 0, z22: 0, z23: 0, z24: 0, z25: 0, z26: 0, z27: 0, z28: 0, z29: 0, z30: 0, z31: 0, z32: 0, z33: 0, z34: 0, z35: 0, z36: 0}">
     <div hidden aria-hidden="true">
       <i x-effect="manual = team * hours * weeks * rate"></i>
       <i x-effect="labor = manual * share / 100"></i>
@@ -210,120 +227,104 @@ button,input{font:inherit}
       <i x-effect="base = 34 + hi * k"></i>
     </div>
 
-    <section class="hero" data-section="result" aria-live="polite">
-      <p class="label">Annual savings for Brightwave Logistics, after rollout</p>
-      <p class="big" x-text="(net &lt; 0 ? '-$' : '$') + (net &lt; 0 ? -net : net).toLocaleString('en-US', {maximumFractionDigits: 0})">$267,845</p>
-      <div class="row">
-        <div><small>Payback</small><span x-text="pb &gt; 36 ? 'Over 3 years' : pb == 1 ? '1 month' : pb + ' months'">5 months</span></div>
-        <div><small>3-year net return</small><span x-text="(three &lt; 0 ? '-$' : '$') + (three &lt; 0 ? -three : three).toLocaleString('en-US', {maximumFractionDigits: 0})">$703,078</span></div>
-        <div><small>Return on cost</small><span x-text="mult.toFixed(1) + 'x'">7.6x</span></div>
-      </div>
-    </section>
+    <div class="work">
+      <section class="result" data-section="result" aria-live="polite">
+        <h2>Annual savings for Brightwave Logistics, after rollout</h2>
+        <p class="big" x-text="(net &lt; 0 ? '-$' : '$') + (net &lt; 0 ? -net : net).toLocaleString('en-US', {maximumFractionDigits: 0})">$267,845</p>
+        <dl class="kpis">
+          <div><dt>Payback</dt><dd x-text="pb &gt; 36 ? 'Over 3 years' : pb == 1 ? '1 month' : pb + ' months'">5 months</dd></div>
+          <div><dt>3-year net return</dt><dd x-text="(three &lt; 0 ? '-$' : '$') + (three &lt; 0 ? -three : three).toLocaleString('en-US', {maximumFractionDigits: 0})">$703,078</dd></div>
+          <div><dt>Return on cost</dt><dd x-text="mult.toFixed(1) + 'x'">7.6x</dd></div>
+        </dl>
+      </section>
 
-    <section class="inputs" data-section="inputs">
-      <h2>Your inputs</h2>
+      <section class="inputs ui" data-section="inputs" data-ui>
+        <h2>Your inputs</h2>
 
-      <div class="field">
-        <div class="fhead"><label for="team">People doing manual dispatch work</label><span class="tag" data-state="estimate" x-bind:data-state="team == 38 ? 'estimate' : 'edited'" x-text="team == 38 ? 'Estimate' : 'Yours'">Estimate</span></div>
-        <div class="frow">
-          <input class="range" type="range" min="1" max="152" step="1" value="38" style="--pct:24.5%" x-model.number="team" x-bind:style="'--pct:' + ((team - 1) * 100 / 151) + '%'" aria-label="People doing manual dispatch work, slider">
-          <div class="numwrap"><input type="number" id="team" min="1" max="2000" step="1" value="38" x-model.number="team"><span>people</span></div>
+        <div class="field">
+          <div class="fhead"><label for="team">People doing manual dispatch work</label><span class="tag" data-state="estimate" x-bind:data-state="team == 38 ? 'estimate' : 'edited'" x-text="team == 38 ? 'Estimate' : 'Yours'">Estimate</span></div>
+          <div class="frow">
+            <input class="range" type="range" min="1" max="152" step="1" value="38" style="--pct:24.5%" x-model.number="team" x-bind:style="'--pct:' + ((team - 1) * 100 / 151) + '%'" aria-label="People doing manual dispatch work, slider">
+            <div class="numwrap"><input type="number" id="team" min="1" max="2000" step="1" value="38" x-model.number="team"><span>people</span></div>
+          </div>
+          <p class="fnote">We assumed about 1 in 11 of the 201 to 500 people do dispatch work, a typical share for a freight company this size. Change it to your headcount.</p>
         </div>
-        <p class="fnote">We assumed about 1 in 11 of the 201 to 500 people do dispatch work, a typical share for a freight company this size. Change it to your headcount.</p>
-      </div>
 
-      <div class="field">
-        <div class="fhead"><label for="hours">Hours a week each spends on it</label><span class="tag" data-state="estimate" x-bind:data-state="hours == 9 ? 'estimate' : 'edited'" x-text="hours == 9 ? 'Estimate' : 'Yours'">Estimate</span></div>
-        <div class="frow">
-          <input class="range" type="range" min="1" max="30" step="0.5" value="9" style="--pct:27.6%" x-model.number="hours" x-bind:style="'--pct:' + ((hours - 1) * 100 / 29) + '%'" aria-label="Hours a week spent on manual dispatch work, slider">
-          <div class="numwrap"><input type="number" id="hours" min="0" max="60" step="0.5" value="9" x-model.number="hours"><span>hours</span></div>
+        <div class="field">
+          <div class="fhead"><label for="hours">Hours a week each spends on it</label><span class="tag" data-state="estimate" x-bind:data-state="hours == 9 ? 'estimate' : 'edited'" x-text="hours == 9 ? 'Estimate' : 'Yours'">Estimate</span></div>
+          <div class="frow">
+            <input class="range" type="range" min="1" max="30" step="0.5" value="9" style="--pct:27.6%" x-model.number="hours" x-bind:style="'--pct:' + ((hours - 1) * 100 / 29) + '%'" aria-label="Hours a week spent on manual dispatch work, slider">
+            <div class="numwrap"><input type="number" id="hours" min="0" max="60" step="0.5" value="9" x-model.number="hours"><span>hours</span></div>
+          </div>
+          <p class="fnote">Rekeying loads, chasing carrier updates and building the same reports. We assumed 9 hours a week each.</p>
         </div>
-        <p class="fnote">Rekeying loads, chasing carrier updates and building the same reports. We assumed 9 hours a week each.</p>
-      </div>
 
-      <div class="field">
-        <div class="fhead"><label for="rate">Loaded hourly cost per person</label><span class="tag" data-state="estimate" x-bind:data-state="rate == 42 ? 'estimate' : 'edited'" x-text="rate == 42 ? 'Estimate' : 'Yours'">Estimate</span></div>
-        <div class="frow">
-          <input class="range" type="range" min="10" max="126" step="1" value="42" style="--pct:27.6%" x-model.number="rate" x-bind:style="'--pct:' + ((rate - 10) * 100 / 116) + '%'" aria-label="Loaded hourly cost, slider">
-          <div class="numwrap"><input type="number" id="rate" min="1" max="1000" step="1" value="42" x-model.number="rate"><span>$ an hour</span></div>
+        <div class="field">
+          <div class="fhead"><label for="rate">Loaded hourly cost per person</label><span class="tag" data-state="estimate" x-bind:data-state="rate == 42 ? 'estimate' : 'edited'" x-text="rate == 42 ? 'Estimate' : 'Yours'">Estimate</span></div>
+          <div class="frow">
+            <input class="range" type="range" min="10" max="126" step="1" value="42" style="--pct:27.6%" x-model.number="rate" x-bind:style="'--pct:' + ((rate - 10) * 100 / 116) + '%'" aria-label="Loaded hourly cost, slider">
+            <div class="numwrap"><input type="number" id="rate" min="1" max="1000" step="1" value="42" x-model.number="rate"><span>$ an hour</span></div>
+          </div>
+          <p class="fnote">Pay for a dispatch coordinator plus benefits and overhead, in US dollars. Change it if your blended cost is different.</p>
         </div>
-        <p class="fnote">Pay for a dispatch coordinator plus benefits and overhead, in US dollars. Change it if your blended cost is different.</p>
-      </div>
 
-      <div class="field">
-        <div class="fhead"><label for="tools">Current tool spend a month</label><span class="tag" data-state="estimate" x-bind:data-state="tools == 2400 ? 'estimate' : 'edited'" x-text="tools == 2400 ? 'Estimate' : 'Yours'">Estimate</span></div>
-        <div class="frow">
-          <input class="range" type="range" min="0" max="10000" step="100" value="2400" style="--pct:24%" x-model.number="tools" x-bind:style="'--pct:' + (tools * 100 / 10000) + '%'" aria-label="Current tool spend a month, slider">
-          <div class="numwrap"><input type="number" id="tools" min="0" max="200000" step="50" value="2400" x-model.number="tools"><span>$ a month</span></div>
+        <div class="field">
+          <div class="fhead"><label for="tools">Current tool spend a month</label><span class="tag" data-state="estimate" x-bind:data-state="tools == 2400 ? 'estimate' : 'edited'" x-text="tools == 2400 ? 'Estimate' : 'Yours'">Estimate</span></div>
+          <div class="frow">
+            <input class="range" type="range" min="0" max="10000" step="100" value="2400" style="--pct:24%" x-model.number="tools" x-bind:style="'--pct:' + (tools * 100 / 10000) + '%'" aria-label="Current tool spend a month, slider">
+            <div class="numwrap"><input type="number" id="tools" min="0" max="200000" step="50" value="2400" x-model.number="tools"><span>$ a month</span></div>
+          </div>
+          <p class="fnote">Spreadsheets, a tracking tool and a reporting add-on, as a team this size tends to pay for them. You will know the actual figure.</p>
         </div>
-        <p class="fnote">Spreadsheets, a tracking tool and a reporting add-on, as a team this size tends to pay for them. You will know the actual figure.</p>
-      </div>
-    </section>
+      </section>
 
-    <div class="detail">
-      <figure class="chart" data-section="chart">
-        <figcaption><b>Cumulative return, quarter by quarter</b><span>Net of the platform cost and setup fee. Grey bars are below zero, before payback.</span></figcaption>
-        <svg viewBox="0 0 600 230" role="img" aria-label="Cumulative return over three years, by quarter">
-          <line class="gl" x1="8" x2="592" y1="34" y2="34"/>
-          <rect class="neg" x="13.4" y="183.5" width="38" height="5.5" rx="3" x-bind:y="z3 &lt; 0 ? base : base - (z3 * k + 1)" x-bind:height="(z3 &lt; 0 ? -z3 : z3) * k + 1" x-bind:class="z3 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="neg" x="13.4" y="183.5" width="38" height="3" x-bind:y="z3 &lt; 0 ? base : base - 3" x-bind:height="(z3 &lt; 0 ? -z3 : z3) * k &gt; 3 ? 3 : 0" x-bind:class="z3 &lt; 0 ? 'neg' : 'pos'"/>
-          <text class="v" x="8" y="175.5" text-anchor="start" x-bind:y="(z3 &lt; 0 ? base : base - (z3 * k + 1)) - 8" x-text="(z3 &lt; 0 ? '-$' : '$') + ((z3 &lt; 0 ? -z3 : z3) &gt;= 1000000 ? ((z3 &lt; 0 ? -z3 : z3) / 1000000).toFixed(1) + 'M' : (z3 &lt; 0 ? -z3 : z3) &gt;= 1000 ? ((z3 &lt; 0 ? -z3 : z3) / 1000).toFixed(0) + 'k' : (z3 &lt; 0 ? -z3 : z3).toFixed(0))">-$21k</text>
-          <rect class="pos" x="62" y="175.3" width="38" height="8.1" rx="3" x-bind:y="z6 &lt; 0 ? base : base - (z6 * k + 1)" x-bind:height="(z6 &lt; 0 ? -z6 : z6) * k + 1" x-bind:class="z6 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="62" y="180.5" width="38" height="3" x-bind:y="z6 &lt; 0 ? base : base - 3" x-bind:height="(z6 &lt; 0 ? -z6 : z6) * k &gt; 3 ? 3 : 0" x-bind:class="z6 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="110.7" y="161.1" width="38" height="22.3" rx="3" x-bind:y="z9 &lt; 0 ? base : base - (z9 * k + 1)" x-bind:height="(z9 &lt; 0 ? -z9 : z9) * k + 1" x-bind:class="z9 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="110.7" y="180.5" width="38" height="3" x-bind:y="z9 &lt; 0 ? base : base - 3" x-bind:height="(z9 &lt; 0 ? -z9 : z9) * k &gt; 3 ? 3 : 0" x-bind:class="z9 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="159.4" y="146.9" width="38" height="36.6" rx="3" x-bind:y="z12 &lt; 0 ? base : base - (z12 * k + 1)" x-bind:height="(z12 &lt; 0 ? -z12 : z12) * k + 1" x-bind:class="z12 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="159.4" y="180.5" width="38" height="3" x-bind:y="z12 &lt; 0 ? base : base - 3" x-bind:height="(z12 &lt; 0 ? -z12 : z12) * k &gt; 3 ? 3 : 0" x-bind:class="z12 &lt; 0 ? 'neg' : 'pos'"/>
-          <text class="v" x="178.3" y="138.9" text-anchor="middle" x-bind:y="(z12 &lt; 0 ? base : base - (z12 * k + 1)) - 8" x-text="(z12 &lt; 0 ? '-$' : '$') + ((z12 &lt; 0 ? -z12 : z12) &gt;= 1000000 ? ((z12 &lt; 0 ? -z12 : z12) / 1000000).toFixed(1) + 'M' : (z12 &lt; 0 ? -z12 : z12) &gt;= 1000 ? ((z12 &lt; 0 ? -z12 : z12) / 1000).toFixed(0) + 'k' : (z12 &lt; 0 ? -z12 : z12).toFixed(0))">$167k</text>
-          <rect class="pos" x="208" y="132.6" width="38" height="50.8" rx="3" x-bind:y="z15 &lt; 0 ? base : base - (z15 * k + 1)" x-bind:height="(z15 &lt; 0 ? -z15 : z15) * k + 1" x-bind:class="z15 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="208" y="180.5" width="38" height="3" x-bind:y="z15 &lt; 0 ? base : base - 3" x-bind:height="(z15 &lt; 0 ? -z15 : z15) * k &gt; 3 ? 3 : 0" x-bind:class="z15 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="256.7" y="118.4" width="38" height="65" rx="3" x-bind:y="z18 &lt; 0 ? base : base - (z18 * k + 1)" x-bind:height="(z18 &lt; 0 ? -z18 : z18) * k + 1" x-bind:class="z18 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="256.7" y="180.5" width="38" height="3" x-bind:y="z18 &lt; 0 ? base : base - 3" x-bind:height="(z18 &lt; 0 ? -z18 : z18) * k &gt; 3 ? 3 : 0" x-bind:class="z18 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="305.4" y="104.2" width="38" height="79.3" rx="3" x-bind:y="z21 &lt; 0 ? base : base - (z21 * k + 1)" x-bind:height="(z21 &lt; 0 ? -z21 : z21) * k + 1" x-bind:class="z21 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="305.4" y="180.5" width="38" height="3" x-bind:y="z21 &lt; 0 ? base : base - 3" x-bind:height="(z21 &lt; 0 ? -z21 : z21) * k &gt; 3 ? 3 : 0" x-bind:class="z21 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="354" y="89.9" width="38" height="93.5" rx="3" x-bind:y="z24 &lt; 0 ? base : base - (z24 * k + 1)" x-bind:height="(z24 &lt; 0 ? -z24 : z24) * k + 1" x-bind:class="z24 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="354" y="180.5" width="38" height="3" x-bind:y="z24 &lt; 0 ? base : base - 3" x-bind:height="(z24 &lt; 0 ? -z24 : z24) * k &gt; 3 ? 3 : 0" x-bind:class="z24 &lt; 0 ? 'neg' : 'pos'"/>
-          <text class="v" x="373" y="81.9" text-anchor="middle" x-bind:y="(z24 &lt; 0 ? base : base - (z24 * k + 1)) - 8" x-text="(z24 &lt; 0 ? '-$' : '$') + ((z24 &lt; 0 ? -z24 : z24) &gt;= 1000000 ? ((z24 &lt; 0 ? -z24 : z24) / 1000000).toFixed(1) + 'M' : (z24 &lt; 0 ? -z24 : z24) &gt;= 1000 ? ((z24 &lt; 0 ? -z24 : z24) / 1000).toFixed(0) + 'k' : (z24 &lt; 0 ? -z24 : z24).toFixed(0))">$435k</text>
-          <rect class="pos" x="402.7" y="75.7" width="38" height="107.7" rx="3" x-bind:y="z27 &lt; 0 ? base : base - (z27 * k + 1)" x-bind:height="(z27 &lt; 0 ? -z27 : z27) * k + 1" x-bind:class="z27 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="402.7" y="180.5" width="38" height="3" x-bind:y="z27 &lt; 0 ? base : base - 3" x-bind:height="(z27 &lt; 0 ? -z27 : z27) * k &gt; 3 ? 3 : 0" x-bind:class="z27 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="451.4" y="61.5" width="38" height="122" rx="3" x-bind:y="z30 &lt; 0 ? base : base - (z30 * k + 1)" x-bind:height="(z30 &lt; 0 ? -z30 : z30) * k + 1" x-bind:class="z30 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="451.4" y="180.5" width="38" height="3" x-bind:y="z30 &lt; 0 ? base : base - 3" x-bind:height="(z30 &lt; 0 ? -z30 : z30) * k &gt; 3 ? 3 : 0" x-bind:class="z30 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="500" y="47.2" width="38" height="136.2" rx="3" x-bind:y="z33 &lt; 0 ? base : base - (z33 * k + 1)" x-bind:height="(z33 &lt; 0 ? -z33 : z33) * k + 1" x-bind:class="z33 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="500" y="180.5" width="38" height="3" x-bind:y="z33 &lt; 0 ? base : base - 3" x-bind:height="(z33 &lt; 0 ? -z33 : z33) * k &gt; 3 ? 3 : 0" x-bind:class="z33 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="548.7" y="33" width="38" height="150.5" rx="3" x-bind:y="z36 &lt; 0 ? base : base - (z36 * k + 1)" x-bind:height="(z36 &lt; 0 ? -z36 : z36) * k + 1" x-bind:class="z36 &lt; 0 ? 'neg' : 'pos'"/>
-          <rect class="pos" x="548.7" y="180.5" width="38" height="3" x-bind:y="z36 &lt; 0 ? base : base - 3" x-bind:height="(z36 &lt; 0 ? -z36 : z36) * k &gt; 3 ? 3 : 0" x-bind:class="z36 &lt; 0 ? 'neg' : 'pos'"/>
-          <text class="v" x="592" y="25" text-anchor="end" x-bind:y="(z36 &lt; 0 ? base : base - (z36 * k + 1)) - 8" x-text="(z36 &lt; 0 ? '-$' : '$') + ((z36 &lt; 0 ? -z36 : z36) &gt;= 1000000 ? ((z36 &lt; 0 ? -z36 : z36) / 1000000).toFixed(1) + 'M' : (z36 &lt; 0 ? -z36 : z36) &gt;= 1000 ? ((z36 &lt; 0 ? -z36 : z36) / 1000).toFixed(0) + 'k' : (z36 &lt; 0 ? -z36 : z36).toFixed(0))">$703k</text>
-          <line class="base" x1="8" x2="592" y1="183.5" y2="183.5" x-bind:y1="base" x-bind:y2="base"/>
-          <text x="105.3" y="216" text-anchor="middle">Year 1</text>
-          <text x="300" y="216" text-anchor="middle">Year 2</text>
-          <line class="gl" x1="202.7" x2="202.7" y1="192" y2="202"/>
-          <text x="494.7" y="216" text-anchor="middle">Year 3</text>
-          <line class="gl" x1="397.3" x2="397.3" y1="192" y2="202"/>
-          <line class="pb" x1="89.1" x2="89.1" y1="28" y2="183.5" x-show="pb &lt; 37" x-bind:x1="8 + pb * 16.22222222222222" x-bind:x2="8 + pb * 16.22222222222222" x-bind:y2="base"/>
-          <text class="pbl" x="97.1" y="36" text-anchor="start" x-show="pb &lt; 37" x-bind:x="pb &gt; 22 ? 8 + pb * 16.22222222222222 - 8 : 8 + pb * 16.22222222222222 + 8" x-bind:text-anchor="pb &gt; 22 ? 'end' : 'start'" x-text="'Payback, month ' + pb">Payback, month 5</text>
-        </svg>
-      </figure>
-
-      <div data-section="ledger">
+      <div class="ledger" data-section="ledger">
         <h2>Where the number comes from</h2>
-        <table class="ledger">
+        <table class="lines">
           <tbody>
             <tr><th>Manual dispatch work today<small><span x-text="team">38</span> <span x-text="team == 1 ? 'person' : 'people'">people</span>, <span x-text="hours">9</span> hours a week, 48 weeks<sup>1</sup></small></th><td x-text="'$' + manual.toLocaleString('en-US', {maximumFractionDigits: 0})">$689,472</td></tr>
             <tr><th>Hours the platform takes back<small>40% of that time<sup>2</sup></small></th><td x-text="'$' + labor.toLocaleString('en-US', {maximumFractionDigits: 0})">$275,789</td></tr>
             <tr><th>Tool spend that goes away<small>50% of today's spend<sup>3</sup></small></th><td x-text="'$' + toolSave.toLocaleString('en-US', {maximumFractionDigits: 0})">$14,400</td></tr>
-            <tr><th>Platform cost<small><span x-text="team">38</span> <span x-text="team == 1 ? 'person' : 'people'">people</span> at $49 a month<sup>4</sup></small></th><td class="minus" x-text="'-$' + platform.toLocaleString('en-US', {maximumFractionDigits: 0})">-$22,344</td></tr>
+            <tr><th>Platform cost<small><span x-text="team">38</span> <span x-text="team == 1 ? 'person' : 'people'">people</span> at $49 a month<sup>4</sup></small></th><td x-text="'-$' + platform.toLocaleString('en-US', {maximumFractionDigits: 0})">-$22,344</td></tr>
             <tr class="sum"><th>Annual savings</th><td x-text="(net &lt; 0 ? '-$' : '$') + (net &lt; 0 ? -net : net).toLocaleString('en-US', {maximumFractionDigits: 0})">$267,845</td></tr>
           </tbody>
         </table>
       </div>
     </div>
+    <figure class="chart" data-section="chart">
+      <figcaption><h2>Cumulative return, quarter by quarter</h2><p>Net of the platform cost and the setup fee. The pale bars sit below zero, before payback.</p></figcaption>
+      <svg viewBox="0 0 600 230" role="img" aria-label="Cumulative return over three years, by quarter">
+        <rect class="neg" x="13.4" y="183.5" width="38" height="5.5" x-bind:y="z3 &lt; 0 ? base : base - (z3 * k + 1)" x-bind:height="(z3 &lt; 0 ? -z3 : z3) * k + 1" x-bind:class="z3 &lt; 0 ? 'neg' : 'pos'"/>
+        <text class="v" x="8" y="175.5" text-anchor="start" x-bind:y="(z3 &lt; 0 ? base : base - (z3 * k + 1)) - 8" x-text="(z3 &lt; 0 ? '-$' : '$') + ((z3 &lt; 0 ? -z3 : z3) &gt;= 1000000 ? ((z3 &lt; 0 ? -z3 : z3) / 1000000).toFixed(1) + 'M' : (z3 &lt; 0 ? -z3 : z3) &gt;= 1000 ? ((z3 &lt; 0 ? -z3 : z3) / 1000).toFixed(0) + 'k' : (z3 &lt; 0 ? -z3 : z3).toFixed(0))">-$21k</text>
+        <rect class="pos" x="62" y="175.3" width="38" height="8.1" x-bind:y="z6 &lt; 0 ? base : base - (z6 * k + 1)" x-bind:height="(z6 &lt; 0 ? -z6 : z6) * k + 1" x-bind:class="z6 &lt; 0 ? 'neg' : 'pos'"/>
+        <rect class="pos" x="110.7" y="161.1" width="38" height="22.3" x-bind:y="z9 &lt; 0 ? base : base - (z9 * k + 1)" x-bind:height="(z9 &lt; 0 ? -z9 : z9) * k + 1" x-bind:class="z9 &lt; 0 ? 'neg' : 'pos'"/>
+        <rect class="pos" x="159.4" y="146.9" width="38" height="36.6" x-bind:y="z12 &lt; 0 ? base : base - (z12 * k + 1)" x-bind:height="(z12 &lt; 0 ? -z12 : z12) * k + 1" x-bind:class="z12 &lt; 0 ? 'neg' : 'pos'"/>
+        <text class="v" x="178.3" y="138.9" text-anchor="middle" x-bind:y="(z12 &lt; 0 ? base : base - (z12 * k + 1)) - 8" x-text="(z12 &lt; 0 ? '-$' : '$') + ((z12 &lt; 0 ? -z12 : z12) &gt;= 1000000 ? ((z12 &lt; 0 ? -z12 : z12) / 1000000).toFixed(1) + 'M' : (z12 &lt; 0 ? -z12 : z12) &gt;= 1000 ? ((z12 &lt; 0 ? -z12 : z12) / 1000).toFixed(0) + 'k' : (z12 &lt; 0 ? -z12 : z12).toFixed(0))">$167k</text>
+        <rect class="pos" x="208" y="132.6" width="38" height="50.8" x-bind:y="z15 &lt; 0 ? base : base - (z15 * k + 1)" x-bind:height="(z15 &lt; 0 ? -z15 : z15) * k + 1" x-bind:class="z15 &lt; 0 ? 'neg' : 'pos'"/>
+        <rect class="pos" x="256.7" y="118.4" width="38" height="65" x-bind:y="z18 &lt; 0 ? base : base - (z18 * k + 1)" x-bind:height="(z18 &lt; 0 ? -z18 : z18) * k + 1" x-bind:class="z18 &lt; 0 ? 'neg' : 'pos'"/>
+        <rect class="pos" x="305.4" y="104.2" width="38" height="79.3" x-bind:y="z21 &lt; 0 ? base : base - (z21 * k + 1)" x-bind:height="(z21 &lt; 0 ? -z21 : z21) * k + 1" x-bind:class="z21 &lt; 0 ? 'neg' : 'pos'"/>
+        <rect class="pos" x="354" y="89.9" width="38" height="93.5" x-bind:y="z24 &lt; 0 ? base : base - (z24 * k + 1)" x-bind:height="(z24 &lt; 0 ? -z24 : z24) * k + 1" x-bind:class="z24 &lt; 0 ? 'neg' : 'pos'"/>
+        <text class="v" x="373" y="81.9" text-anchor="middle" x-bind:y="(z24 &lt; 0 ? base : base - (z24 * k + 1)) - 8" x-text="(z24 &lt; 0 ? '-$' : '$') + ((z24 &lt; 0 ? -z24 : z24) &gt;= 1000000 ? ((z24 &lt; 0 ? -z24 : z24) / 1000000).toFixed(1) + 'M' : (z24 &lt; 0 ? -z24 : z24) &gt;= 1000 ? ((z24 &lt; 0 ? -z24 : z24) / 1000).toFixed(0) + 'k' : (z24 &lt; 0 ? -z24 : z24).toFixed(0))">$435k</text>
+        <rect class="pos" x="402.7" y="75.7" width="38" height="107.7" x-bind:y="z27 &lt; 0 ? base : base - (z27 * k + 1)" x-bind:height="(z27 &lt; 0 ? -z27 : z27) * k + 1" x-bind:class="z27 &lt; 0 ? 'neg' : 'pos'"/>
+        <rect class="pos" x="451.4" y="61.5" width="38" height="122" x-bind:y="z30 &lt; 0 ? base : base - (z30 * k + 1)" x-bind:height="(z30 &lt; 0 ? -z30 : z30) * k + 1" x-bind:class="z30 &lt; 0 ? 'neg' : 'pos'"/>
+        <rect class="pos" x="500" y="47.2" width="38" height="136.2" x-bind:y="z33 &lt; 0 ? base : base - (z33 * k + 1)" x-bind:height="(z33 &lt; 0 ? -z33 : z33) * k + 1" x-bind:class="z33 &lt; 0 ? 'neg' : 'pos'"/>
+        <rect class="pos" x="548.7" y="33" width="38" height="150.5" x-bind:y="z36 &lt; 0 ? base : base - (z36 * k + 1)" x-bind:height="(z36 &lt; 0 ? -z36 : z36) * k + 1" x-bind:class="z36 &lt; 0 ? 'neg' : 'pos'"/>
+        <text class="v" x="592" y="25" text-anchor="end" x-bind:y="(z36 &lt; 0 ? base : base - (z36 * k + 1)) - 8" x-text="(z36 &lt; 0 ? '-$' : '$') + ((z36 &lt; 0 ? -z36 : z36) &gt;= 1000000 ? ((z36 &lt; 0 ? -z36 : z36) / 1000000).toFixed(1) + 'M' : (z36 &lt; 0 ? -z36 : z36) &gt;= 1000 ? ((z36 &lt; 0 ? -z36 : z36) / 1000).toFixed(0) + 'k' : (z36 &lt; 0 ? -z36 : z36).toFixed(0))">$703k</text>
+        <line class="base" x1="8" x2="592" y1="183.5" y2="183.5" x-bind:y1="base" x-bind:y2="base"/>
+        <text x="105.3" y="218" text-anchor="middle">Year 1</text>
+        <text x="300" y="218" text-anchor="middle">Year 2</text>
+        <text x="494.7" y="218" text-anchor="middle">Year 3</text>
+        <line class="pb" x1="89.1" x2="89.1" y1="24" y2="183.5" x-show="pb &lt; 37" x-bind:x1="8 + pb * 16.22222222222222" x-bind:x2="8 + pb * 16.22222222222222" x-bind:y2="base"/>
+        <text class="pbl" x="97.1" y="32" text-anchor="start" x-show="pb &lt; 37" x-bind:x="pb &gt; 22 ? 8 + pb * 16.22222222222222 - 8 : 8 + pb * 16.22222222222222 + 8" x-bind:text-anchor="pb &gt; 22 ? 'end' : 'start'" x-text="'Payback, month ' + pb">Payback, month 5</text>
+      </svg>
+    </figure>
   </div>
 
   <section class="cta" data-section="cta">
     <h2>Walk through the numbers with Maya</h2>
-    <p>Thirty minutes. We go through the four inputs together, swap in your real figures, and look at which assumption moves the result most for a team like yours.</p>
-    <div class="who"><span class="avatar" aria-hidden="true">M</span><span><b>Maya Chen</b>Account Executive, Northbeam</span></div>
-    <a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#111827;color:#fff;text-decoration:none;font-weight:600">Book 30 minutes</a>
+    <p>Thirty minutes. We go through the four inputs together, put in your own figures, and find the assumption that moves the result most for a team like yours.</p>
+    <p class="who"><b>Maya Chen</b>Account Executive, Northbeam</p>
+    <div><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#111827;color:#fff;text-decoration:none;font-weight:600">Book 30 minutes</a></div>
   </section>
 
   <footer class="notes" data-section="assumptions">

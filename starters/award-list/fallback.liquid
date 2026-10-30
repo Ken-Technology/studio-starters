@@ -1,9 +1,7 @@
-{%- assign accent = brand.colors.primary | default: '#b42318' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#1c2b3a' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Newsreader' -%}
-{%- assign font_body = brand.fonts.body | default: 'IBM Plex Sans' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign accent = brand.colors.primary | default: '#dcbe75' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#16181d' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Saira' -%}
+{%- assign font_body = brand.fonts.body | default: 'Saira' -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,48 +9,63 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A list of growing companies, with {{ account.name | escape }} on it</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600;700&display=swap">
+{%- if font_head == 'Saira' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@62.5..100,400..800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Saira' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@62.5..100,400..800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f5f2ec;color:#1b1a17;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.al{--a:{{ accent }};--a2:{{ accent2 }};--ink:#1b1a17;--soft:#3f3c36;--mute:#6b675f;--line:#d9d4c9;--card:#fcfbf8}
-.al h1,.al h2,.al-big{font-family:'{{ font_head }}',Georgia,serif;font-weight:500;letter-spacing:-.012em}
-.al h1{text-wrap:pretty}
-.al h2{text-wrap:balance}
-.al p{margin:0 0 1rem}
-.al-wrap{max-width:66rem;margin:0 auto;padding:0 1.25rem}
-.al-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
-.al-logo{height:24px;width:auto;display:block}
-.al-brand{font-weight:700;font-size:.95rem;margin:0!important}
-.al-type{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;white-space:nowrap}
-.al-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--a);margin:0 0 .7rem!important}
-.al-cover{padding:2.2rem 0 1.6rem}
-.al h1{font-size:2.5rem;line-height:1.02;margin:0 0 1rem}
-.al-intro{font-size:1.08rem;line-height:1.5;color:var(--soft);max-width:36rem}
-.al-stamp{margin:1.4rem 0 0;padding:1.1rem 0 1rem;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:1.2rem;align-items:center}
-.al-big{font-size:5rem;line-height:.85;color:var(--line);margin:0!important;grid-column:1;grid-row:1 / 3}
-.al-no{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0!important;align-self:end;grid-column:2;grid-row:1}
-.al-who{margin:0!important;font-weight:600;font-size:1.02rem;line-height:1.25;align-self:start;grid-column:2;grid-row:2}
-.al-who small{display:block;font-weight:400;color:var(--mute);font-size:.86rem;margin-top:.1rem}
-.al-cta{padding:1.6rem 0 3.2rem}
-.al-box{border:1px solid var(--ink);background:var(--card);padding:1.5rem 1.3rem 1.3rem}
-.al h2{font-size:1.55rem;line-height:1.15;margin:0 0 .6rem}
-.al-box p{color:var(--soft)}
-.al-btn{margin:1.2rem 0 1.3rem}
-.al-btn .ken-cta{min-height:44px;line-height:20px}
-.al-sign{font-size:.95rem;margin:0!important;font-weight:600;color:var(--ink)!important}
-.al-sign span{display:block;color:var(--mute);font-weight:400}
-@media (min-width:760px){
-body{font-size:17px}
-.al-wrap{padding:0 2.5rem}
-.al-cover{display:grid;grid-template-columns:1fr 17rem;column-gap:3rem;padding:3.6rem 0 2.4rem;align-items:start}
-.al h1{font-size:3.9rem}
-.al-stamp{margin:.4rem 0 0;padding:0 0 0 2.5rem;border:0;border-left:1px solid var(--line);display:block}
-.al-big{font-size:9.5rem;line-height:.8;margin:.3rem 0 .9rem!important}
-.al h2{font-size:1.9rem}
-.al-box{padding:2.2rem 2.4rem 1.9rem;max-width:44rem}
+body{margin:0;background:#efefec;color:#16181d;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.al{--a:{{ accent }};--a2:{{ accent2 }};--wd:{% if font_head == 'Saira' %}75%{% else %}normal{% endif %};--ink:#16181d;--soft:#4a4d55;--paper:#efefec;
+--on-a:#16181d;--on-a:color(from var(--a) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--on-a2:#efefec;--on-a2:color(from var(--a2) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--m:clamp(1.125rem,3.2vw,2.5rem);overflow-x:clip}
+.al h1,.al h2,.al-no{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-stretch:var(--wd);letter-spacing:-.01em}
+.al p{margin:0}
+.al .ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.al-wrap{padding:0 var(--m);max-width:90rem;margin:0 auto}
+.al-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
+.al-logo{height:26px;width:auto;display:block}
+.al-brand{font-weight:700;font-size:1rem}
+.al-type{font-size:.875rem;color:var(--soft);white-space:nowrap}
+.al-cover{display:grid;padding:0 0 3rem}
+.al-kit{position:relative;order:-1;margin:0 calc(var(--m) * -1) 1.8rem;height:18rem;background:var(--a);overflow:hidden}
+.al-sash{position:absolute;left:-20%;top:42%;width:160%;height:5rem;background:var(--a2);transform:rotate(-24deg)}
+.al-bib{position:absolute;left:50%;top:52%;width:min(15rem,70%);background:#fff;color:var(--ink);transform:translate(-50%,-50%) rotate(-3deg);text-align:center}
+.al-bib-name{background:var(--a2);color:var(--on-a2);font-weight:600;font-size:.875rem;padding:.7rem 1.4rem;overflow-wrap:anywhere}
+.al-no{font-weight:800;font-size:8rem;line-height:.82;padding:.9rem 0 .5rem}
+.al-bib-of{font-size:.875rem;padding:0 1.2rem 1.2rem}
+.al h1{font-size:1.85rem;line-height:1.04;font-weight:700;text-wrap:balance;margin:0 0 1.2rem}
+.al-intro{font-size:1.1rem;max-width:36rem;margin:0 0 1rem!important}
+.al-cta{background:var(--a);color:var(--on-a);padding:3rem 0}
+.al-cta h2{font-size:1.85rem;line-height:1.04;font-weight:700;margin:0 0 .8rem}
+.al-cta p{max-width:34rem}
+.al-btn{margin:1.4rem 0 1.2rem}
+.al-btn .ken-cta{display:inline-flex!important;align-items:center;min-height:52px;padding:.85rem 1.6rem!important;border-radius:0!important;background:var(--a2)!important;color:var(--on-a2)!important;font-family:inherit;font-weight:600!important;text-decoration:none}
+.al-sign{font-weight:600}
+.al-sign span{display:block;font-weight:400}
+@media (min-width:860px){
+body{font-size:18px}
+.al-cover{grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:3.5rem;padding:0;min-height:34rem}
+.al-cover-text{align-self:center;padding:3rem 0}
+.al-kit{order:0;height:auto;margin:0 calc(var(--m) * -1) 0 0}
+.al-sash{height:7rem}
+.al-bib{width:min(19rem,76%)}
+.al-no{font-size:12rem}
+.al h1{font-size:clamp(2.6rem,.9rem + 3.2vw,4rem)}
+.al-cta{padding:4.5rem 0}
+.al-cta h2{font-size:clamp(2.4rem,1.3rem + 2vw,3.4rem)}
 }
 </style>
 </head>
@@ -64,27 +77,29 @@ body{font-size:17px}
 <p class="al-type">Top 25 list</p>
 </header>
 <section data-section="cover" class="al-cover">
-<div>
-<p class="al-label">{% if person.first_name %}For {{ person.first_name | escape }} at {{ account.name | escape }}{% else %}Made for {{ account.name | escape }}{% endif %}</p>
+<div class="al-cover-text">
 <h1>A list of growing companies, with {{ account.name | escape }} on it</h1>
 <p class="al-intro">Hi {{ person.first_name | default: 'there' | escape }}, I am putting together a list of companies in the same market as {{ account.name | escape }} that are adding people right now, with {{ account.name | escape }} placed on it and a note on how the list was made.</p>
 <p class="al-intro">The list is not on this page yet. The link stays the same, so check back later today.</p>
 </div>
-<div class="al-stamp">
-<p class="al-no">No.</p>
-<p class="al-big">?</p>
-<p class="al-who">{{ account.name | escape }}<small>place still being worked out</small></p>
+<div class="al-kit">
+<span class="al-sash" aria-hidden="true"></span>
+<div class="al-bib">
+<p class="al-bib-name">{{ account.name | escape }}</p>
+<p class="al-no" aria-label="Place not set yet">?</p>
+<p class="al-bib-of">place still being worked out</p>
+</div>
 </div>
 </section>
+</div>
 <section data-section="cta" class="al-cta">
-<div class="al-box">
+<div class="al-wrap">
 <h2>Rather see it now?</h2>
 <p>Grab 20 minutes and I will walk you through the list and where {{ account.name | escape }} sits on it.</p>
-<div class="al-btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking', color: accent %}</div>
+<div class="al-btn">{% render 'ken/cta', label: 'Book 20 minutes', kind: 'booking', color: accent2 %}</div>
 <p class="al-sign">{{ sender.name | default: 'Our team' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
 </div>
 </section>
-</div>
 </main>
 </body>
 </html>

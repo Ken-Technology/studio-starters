@@ -4,8 +4,8 @@
   "tags": ["work sample", "first piece", "plan", "rewrite", "knowledge"],
   "featured": false,
   "needs": ["knowledge"],
-  "version": "1.0.1",
-  "updatedAt": "2026-10-29",
+  "version": "1.1.0",
+  "updatedAt": "2026-10-30",
   "samples": [
     { "id": "harrowgate", "label": "Harrowgate Robotics" },
     { "id": "cobalt-shared", "label": "Shared link (no person)" },

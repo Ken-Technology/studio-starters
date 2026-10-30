@@ -1,9 +1,9 @@
-{%- assign accent = brand.colors.primary | default: '#c2410c' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#1b1a17' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Archivo' -%}
-{%- assign font_body = brand.fonts.body | default: 'Instrument Sans' -%}
-{%- assign head_q = font_head | url_encode -%}
-{%- assign body_q = font_body | url_encode -%}
+{%- assign accent = brand.colors.primary | default: '#f3b588' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#050f16' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Bebas Neue' -%}
+{%- assign font_body = brand.fonts.body | default: 'EB Garamond' -%}
+{%- assign caps = true -%}
+{%- if brand.fonts.heading -%}{%- assign caps = false -%}{%- endif -%}
 {%- assign first = person.first_name | default: '' -%}
 {%- assign in_person = true -%}
 {%- if data.format == 'online' -%}{%- assign in_person = false -%}{%- endif -%}
@@ -23,6 +23,17 @@
 {%- if seats_left < 1 -%}{%- assign submit_label = 'Join the waitlist' -%}{%- endif -%}
 {%- assign has_confirm = false -%}
 {%- if data.confirm_note and data.confirm_note != '' -%}{%- assign has_confirm = true -%}{%- endif -%}
+{%- comment -%} The seating plan draws one chair per seat, at most 24, the taken ones first. {%- endcomment -%}
+{%- assign plan_n = seats -%}
+{%- if plan_n > 24 -%}{%- assign plan_n = 24 -%}{%- endif -%}
+{%- assign plan_open = seats_left -%}
+{%- if plan_open > plan_n -%}{%- assign plan_open = plan_n -%}{%- endif -%}
+{%- if plan_open < 0 -%}{%- assign plan_open = 0 -%}{%- endif -%}
+{%- assign plan_taken = plan_n | minus: plan_open -%}
+{%- assign plan_half = plan_n | plus: 1 | divided_by: 2 | floor -%}
+{%- assign title_len = data.title | size -%}
+{%- assign title_size = 'short' -%}
+{%- if title_len > 56 -%}{%- assign title_size = 'long' -%}{%- elsif title_len > 32 -%}{%- assign title_size = 'mid' -%}{%- endif -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -30,194 +41,293 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ data.title | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@500;600;700&display=swap">
+{%- if font_head == 'Bebas Neue' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600&display=swap">
+{%- if font_body == 'EB Garamond' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
-:root{--p:{{ accent | escape }};--s:{{ accent2 | escape }};--paper:#f4f2ec;--card:#fffdfa;--ink:#1b1a17;--text:#3b3934;--mute:#6b675e;--line:#d9d5cb;--soft:#e9e6de;--fh:'{{ font_head | escape }}',ui-sans-serif,system-ui,'Helvetica Neue',Arial,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,'Helvetica Neue',Arial,sans-serif;--mono:ui-monospace,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace}
+:root{
+  --p:{{ accent | escape }};
+  --s:{{ accent2 | escape }};
+  --fh:'{{ font_head | escape }}','Arial Narrow',Arial,sans-serif;
+  --fb:'{{ font_body | escape }}',Georgia,serif;
+  --paper:#ffffff;
+  --table:#ece7df;
+  --ink:var(--s);
+  --on-p:#050f16;--off-p:#ffffff;
+  --m:clamp(1rem,3vw,2.25rem);
+  --step-small:.875rem;
+  --step-body:clamp(1.125rem,1.06rem + .25vw,1.25rem);
+  --step-lead:clamp(1.375rem,1.2rem + .7vw,1.75rem);
+  --k:{% if caps %}1{% else %}.7{% endif %};
+  --kh:{% if caps %}1{% else %}.82{% endif %};
+  --step-sub:calc(2.25rem * var(--k));
+  --step-head:calc(clamp(2.75rem,1.6rem + 4.4vw,5.5rem) * var(--k));
+  --pad:clamp(1.5rem,4vw,3rem);
+  --mark:color-mix(in srgb,var(--p) 55%,var(--paper));
+}
+@supports (color:oklch(from red l c h)){
+  :root{
+    --ink:oklch(from var(--s) min(l,.28) c h);
+    --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+    --off-p:color(from var(--p) xyz-d65 clamp(0,(y - .18) * 1000000,.9505) clamp(0,(y - .18) * 1000000,1) clamp(0,(y - .18) * 1000000,1.089));
+  }
+}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:var(--fh);font-weight:700;letter-spacing:-.02em;line-height:1.08;margin:0;text-wrap:balance}
-p{margin:0 0 .9rem}
+body{margin:0;background:var(--p);color:var(--on-p);font-family:var(--fb);font-size:var(--step-body);line-height:1.45;-webkit-font-smoothing:antialiased;font-variant-numeric:lining-nums}
+h1,h2,h3{font-family:var(--fh);font-weight:400;line-height:.9;letter-spacing:-.01em;margin:0;text-wrap:balance;hyphens:none}
+.caps h1,.caps h2,.caps h3{text-transform:uppercase}
+p{margin:0}
 a{color:inherit}
-.ws{max-width:72rem;margin:0 auto;padding:0 1.1rem 2.5rem}
-.ws-mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase}
-.ws-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
-.ws-logo{height:24px;width:auto;display:block}
-.ws-brand{font-weight:600;font-size:1rem;margin:0}
-.ws-tag{color:var(--mute);margin:0;white-space:nowrap}
-.ws-hero{padding:2.2rem 0 1.6rem;order:1}
-.ws-kicker{color:var(--p);margin:0 0 1rem;font-weight:500}
-.ws-hero h1{font-size:2.55rem}
-.ws-dek{font-size:1.1rem;line-height:1.5;color:var(--text);max-width:38rem;margin:1rem 0 0}
-.ws-cols{display:grid;gap:0}
-.ws-main,.ws-side{display:contents}
-.ws-card{order:2;margin-bottom:.8rem}
-.ws-note{order:3}
-.ws-leave{order:4}
-.ws-agenda{order:5}
-.ws-bring{order:6}
-.ws-host{order:7}
-.ws-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p);border-radius:4px;padding:1.1rem 1.1rem 1.15rem}
-.ws-card dl{margin:0}
-.ws-card dl div{display:grid;grid-template-columns:4rem minmax(0,1fr);gap:.7rem;padding:.7rem 0;border-top:1px solid var(--soft)}
-.ws-card dl div:first-child{border-top:0;padding-top:0}
-.ws-card dt{color:var(--mute);padding-top:.3rem}
-.ws-card dd{margin:0;font-weight:600;line-height:1.4}
-.ws-card dd small{display:block;font-weight:400;color:var(--mute);font-size:.9rem;margin-top:.1rem}
-.ws-seatnum{font-family:var(--fh);font-weight:700;font-size:1.7rem;line-height:1;color:var(--p);letter-spacing:-.03em;margin-right:.15rem;vertical-align:-.05em}
-.ws-btn{display:flex;align-items:center;justify-content:center;min-height:48px;margin-top:1rem;background:var(--p);color:#fff;text-decoration:none;font-weight:600;font-size:1rem;border-radius:8px;padding:.7rem 1.2rem}
-.ws-btn:focus-visible,.ken-form :focus-visible{outline:2px solid var(--p);outline-offset:3px}
-.ws-sec{padding:1.7rem 0 1.5rem;border-top:1px solid var(--line)}
-.ws-sec.ws-note{border-top:0;padding-top:.6rem}
-.ws-label{color:var(--mute);margin:0 0 .7rem}
-.ws-sec h2{font-size:1.55rem;margin:0 0 1rem}
-.ws-note{font-size:1.06rem;color:var(--ink)}
-.ws-note p{max-width:36rem}
-.ws-sig{font-weight:600;margin:1.1rem 0 0}
-.ws-sig span{display:block;font-weight:400;color:var(--mute);font-size:.92rem}
-.ws-leave ol,.ws-agenda ol,.ws-bring ul{list-style:none;margin:0;padding:0}
-.ws-leave li{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:.5rem;padding:1rem 0;border-top:1px solid var(--soft)}
-.ws-leave li:first-child{border-top:0;padding-top:0}
-.ws-leave .n{font-family:var(--fh);font-weight:700;font-size:1.9rem;line-height:1;color:var(--p);letter-spacing:-.04em;padding-top:.1rem}
-.ws-leave h3{font-size:1.15rem;margin:0 0 .35rem}
-.ws-leave p{margin:0;color:var(--text)}
-.ws-agenda li{display:grid;grid-template-columns:4.4rem minmax(0,1fr);gap:.7rem;padding:.8rem .2rem .8rem .8rem;border-top:1px solid var(--soft);border-left:3px solid transparent}
-.ws-agenda li:first-child{border-top:0}
-.ws-agenda li.is-hands-on{border-left-color:var(--p)}
-.ws-agenda .t{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em;color:var(--ink);padding-top:.2rem;line-height:1.4}
-.ws-agenda .t small{display:block;color:var(--mute);font-size:.72rem}
-.ws-agenda b{display:block;font-weight:600;font-size:1.02rem;line-height:1.35}
-.ws-agenda li p{margin:.2rem 0 0;color:var(--mute);font-size:.95rem;max-width:34rem}
-.ws-agenda li.is-break b{font-weight:500;color:var(--mute)}
-.ws-pill{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .45rem .18rem;border-radius:3px;margin-left:.45rem;vertical-align:.15em;line-height:1}
-.ws-pill.hands{background:var(--p);color:#fff}
-.ws-pill.talk{border:1px solid var(--line);color:var(--mute)}
-.ws-bring ul{display:grid;gap:.65rem}
-.ws-bring li{display:grid;grid-template-columns:1.15rem minmax(0,1fr);gap:.75rem;align-items:start;line-height:1.45}
-.ws-bring li::before{content:'';width:1.1rem;height:1.1rem;border:1.5px solid var(--s);border-radius:3px;margin-top:.2rem}
-.ws-who{margin:1.4rem 0 0;padding-top:1.1rem;border-top:1px solid var(--soft);display:grid;gap:.9rem}
-.ws-who .ws-label{margin:0 0 .25rem}
-.ws-who p{margin:0;color:var(--text)}
-.ws-host .name{font-family:var(--fh);font-weight:700;font-size:1.3rem;letter-spacing:-.02em;margin:0}
-.ws-host .role{color:var(--mute);margin:.15rem 0 0}
-.ws-host p.note{margin:.8rem 0 0;color:var(--text);max-width:36rem}
-.ws-seat{margin-top:1.6rem;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1.5rem 1.1rem 1.4rem;scroll-margin-top:1rem}
-.ws-seat h2{font-size:1.6rem;margin:0 0 .8rem}
-.ws-seat .left p{color:var(--text);max-width:30rem}
-.ws-seat .left p.ws-seats{color:var(--p);font-weight:600}
-.ws-seat .right{margin-top:1.2rem}
-.ken-form{display:grid;gap:.9rem}
-.ken-form-field{display:grid;gap:.35rem;font-size:.9rem;font-weight:500}
-.ken-form input,.ken-form textarea,.ken-form select{font:inherit;font-size:1rem;width:100%;min-height:2.85rem;padding:.7rem .85rem;border:1px solid #bfbab0;border-radius:6px;background:#fff;color:var(--ink)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+::selection{background:var(--ink);color:var(--paper)}
+.page{padding:0 var(--m) clamp(3rem,6vw,5rem);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(1.25rem,3vw,2rem)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.2rem 0 .4rem}
+.top img{height:28px;width:auto;max-width:10rem;display:block}
+.top .brand{font-family:var(--fh);font-size:var(--step-lead);line-height:1;margin:0}
+.top .tag{font-style:italic;margin:0}
+.sheet{background:var(--paper);color:var(--ink)}
+
+/* the invitation card and its tear-off stub */
+.ticket{display:grid;grid-template-columns:minmax(0,1fr)}
+.card{padding:var(--pad)}
+.held{font-style:italic;font-size:var(--step-lead);line-height:1.2}
+.card h1{margin-top:1.2rem;font-size:calc(clamp(2.75rem,12vw,9.5rem) * var(--kh));line-height:.86;max-width:16ch}
+.card h1.mid{font-size:calc(clamp(2.25rem,9vw,6.5rem) * var(--kh));max-width:24ch}
+.card h1.long{font-size:calc(clamp(2rem,7.4vw,5rem) * var(--kh));max-width:32ch}
+.caps .card h1{letter-spacing:-.005em}
+.dek{margin-top:1.4rem;font-size:var(--step-lead);line-height:1.3;max-width:34ch}
+.stub{position:relative;padding:var(--pad);border-top:6px dotted var(--p)}
+.stub::before,.stub::after{content:'';position:absolute;top:-17px;width:28px;height:28px;border-radius:50%;background:var(--p)}
+.stub::before{left:-14px}
+.stub::after{right:-14px}
+.plan{display:grid;gap:8px;margin:0 0 1.6rem;max-width:22rem}
+.plan .row{display:grid;grid-template-columns:repeat({{ plan_half | default: 1 }},minmax(0,3.25rem));gap:8px}
+.plan .tbl{max-width:calc({{ plan_half | default: 1 }} * 3.25rem + {{ plan_half | default: 1 }} * 8px - 8px)}
+body:not(.caps) .card h1{line-height:.98}
+.plan .ch{aspect-ratio:1;background:var(--ink)}
+.plan .ch.open{background:var(--p)}
+.plan .top-row .ch{border-radius:50% 50% 0 0}
+.plan .bottom-row .ch{border-radius:0 0 50% 50%}
+.plan .tbl{height:2.6rem;background:var(--table)}
+.plan-key{font-size:var(--step-small);margin:-.9rem 0 1.4rem;font-style:italic}
+.facts{margin:0;display:grid;gap:.9rem}
+.facts dt{font-size:var(--step-small);font-style:italic}
+.facts dd{margin:.1rem 0 0;font-weight:500;line-height:1.3}
+.facts dd small{display:block;font-weight:400;font-size:var(--step-body)}
+.facts .num{font-weight:500}
+.btn{display:flex;align-items:center;justify-content:center;min-height:56px;margin-top:1.6rem;padding:0 1.4rem;background:var(--ink);color:var(--paper);font-family:var(--fh);font-size:var(--step-lead);line-height:1;text-decoration:none;transition:transform .15s ease}
+.caps .btn{text-transform:uppercase}
+.btn:hover{transform:translateY(-2px)}
+
+/* the letter */
+.note{padding:var(--pad)}
+.note h2{font-size:calc(clamp(2.25rem,1.5rem + 2.4vw,3.5rem) * var(--k))}
+.note .why{margin-top:1.2rem;font-size:var(--step-lead);line-height:1.35}
+.note .sig{margin-top:1.6rem;font-style:italic;font-size:var(--step-lead);line-height:1.2}
+.note .sig span{display:block;font-style:normal;font-size:var(--step-body);margin-top:.3rem}
+
+/* what you leave with: stacked sheets */
+.leave h2{font-size:calc(clamp(2rem,1rem + 4.4vw,5.5rem) * var(--k));max-width:30ch;padding:3.5rem var(--pad) clamp(1.25rem,3vw,2rem)}
+.leave ul{list-style:none;margin:0;padding:0}
+.leave li{display:grid;gap:.9rem;padding:var(--pad)}
+.leave li:nth-child(3n+1){background:var(--ink);color:var(--paper)}
+.leave li:nth-child(3n+2){background:var(--paper);color:var(--ink)}
+.leave li:nth-child(3n){background:var(--table);color:var(--ink)}
+.leave h3{font-size:var(--step-sub);max-width:28ch}
+.leave li p{max-width:42ch}
+
+/* the timetable */
+.agenda{padding:var(--pad) 0}
+.agenda h2{font-size:var(--step-head);padding:0 var(--pad)}
+.agenda ol{list-style:none;margin:1.8rem 0 0;padding:0}
+.agenda li{display:grid;grid-template-columns:minmax(0,1fr);gap:.35rem;padding:1.75rem var(--pad)}
+.agenda li.is-hands-on{background:color-mix(in srgb,var(--p) 26%,var(--paper))}
+.agenda .t{font-family:var(--fh);font-size:var(--step-sub);line-height:.95}
+.caps .agenda .t{text-transform:uppercase}
+.agenda .meta{font-size:var(--step-small);font-style:italic;margin-top:.15rem}
+.agenda b{display:block;font-weight:500;font-size:var(--step-lead);line-height:1.2}
+.agenda li .what-note{max-width:46ch}
+.agenda li.is-break b{font-weight:400;font-style:italic}
+
+/* the supply list */
+.bring{background:var(--ink);color:var(--paper);padding:var(--pad)}
+.bring h2{font-size:var(--step-head)}
+.bring ul{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:.9rem}
+.bring li{display:grid;grid-template-columns:1.3rem minmax(0,1fr);gap:.8rem;align-items:start;line-height:1.35}
+.bring li::before{content:'';width:1.15rem;height:1.15rem;margin-top:.2rem;border:3px solid var(--mark)}
+.who{margin-top:2rem;display:grid;gap:1.2rem}
+.who h3{font-size:var(--step-sub);margin-bottom:.3rem}
+
+/* the host */
+.host{padding:var(--pad)}
+.host h2{font-size:var(--step-head)}
+.host .name{margin-top:1.2rem;font-size:var(--step-lead);font-weight:500;line-height:1.2}
+.host .role{font-style:italic;margin-top:.2rem}
+.host .note-text{margin-top:1rem}
+
+/* the clip-out seat coupon */
+.seat{position:relative;background:var(--ink);color:var(--paper);display:grid;grid-template-columns:minmax(0,1fr);scroll-margin-top:1rem}
+.seat .left{padding:var(--pad)}
+.seat .right{position:relative;padding:var(--pad);border-top:6px dotted var(--p)}
+.seat .right::before,.seat .right::after{content:'';position:absolute;top:-17px;width:28px;height:28px;border-radius:50%;background:var(--p)}
+.seat .right::before{left:-14px}
+.seat .right::after{right:-14px}
+.seat h2{font-size:var(--step-head)}
+.seat .count{margin-top:1rem;font-family:var(--fh);font-size:var(--step-sub);line-height:1}
+.caps .seat .count{text-transform:uppercase}
+.seat .left p{max-width:38ch}
+.seat .left p+p{margin-top:.9rem}
+.after{margin-top:1.4rem;font-style:italic}
+.after p+p{margin-top:.5rem}
+.ken-form{display:grid;gap:8px}
+.ken-form-field{display:grid;gap:.35rem;min-width:0;font-size:var(--step-small);font-style:italic;padding:.75rem .9rem .85rem;background:color-mix(in srgb,var(--paper) 10%,var(--ink))}
+.ken-form-field:focus-within{background:color-mix(in srgb,var(--paper) 18%,var(--ink))}
+.ken-form input,.ken-form textarea,.ken-form select{font:inherit;font-style:normal;font-size:var(--step-body);width:100%;min-height:44px;padding:.35rem 0;border:0;border-bottom:3px solid var(--mark);border-radius:0;background:transparent;color:var(--paper)}
 .ken-form textarea{min-height:5.5rem;resize:vertical}
-.ken-form-submit{font-family:inherit!important;font-size:1rem!important;min-height:3rem;width:100%}
-.ken-form-preview{margin:0!important}
-.ws-after{font-size:.9rem;color:var(--mute);margin:1rem 0 0}
-.ws-after p{margin:0 0 .4rem}
-.ws-foot{font-size:.8rem;color:var(--mute);padding:2rem 0 0;margin:0}
-@media (min-width:900px){
-body{font-size:17px}
-.ws{padding:0 2rem 4rem}
-.ws-top{padding:1.2rem 0}
-.ws-hero{padding:3.6rem 0 2.8rem}
-.ws-hero h1{font-size:4.2rem;max-width:17ch}
-.ws-dek{font-size:1.25rem;margin-top:1.3rem}
-.ws-cols{grid-template-columns:minmax(0,1fr) 23rem;gap:4.5rem;align-items:start}
-.ws-main,.ws-side{display:block}
-.ws-side{padding-top:3.6rem}
-.ws-card{padding:1.3rem 1.3rem 1.35rem;margin-bottom:.4rem}
-.ws-side .ws-sec{padding:1.8rem 0 1.6rem}
-.ws-side .ws-sec h2{font-size:1.45rem;margin-bottom:1rem}
-.ws-sec.ws-note{padding-top:.2rem}
-.ws-sec{padding:2.2rem 0 2rem}
-.ws-sec h2{font-size:1.9rem;margin-bottom:1.3rem}
-.ws-leave li{grid-template-columns:3.6rem minmax(0,1fr);padding:1.2rem 0}
-.ws-leave .n{font-size:2.6rem}
-.ws-leave h3{font-size:1.25rem}
-.ws-agenda li{grid-template-columns:6.4rem minmax(0,1fr);padding:.9rem .4rem .9rem 1rem}
-.ws-agenda .t{font-size:.84rem}
-.ws-seat{margin-top:2.5rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:3.5rem;padding:2.6rem 2.6rem 2.4rem}
-.ws-seat .right{margin-top:0}
-.ws-seat h2{font-size:2rem}
+.ken-form input:focus-visible,.ken-form textarea:focus-visible{outline:none;border-bottom-color:var(--paper)}
+.ken-form-submit{font-family:var(--fh)!important;font-weight:400!important;font-size:var(--step-lead)!important;min-height:60px;width:100%;background:var(--p)!important;color:var(--on-p)!important;border-radius:0!important}
+.caps .ken-form-submit{text-transform:uppercase}
+.ken-form-preview{opacity:1!important}
+.foot{font-style:italic;margin:0;padding:.6rem var(--pad) 0}
+
+@media (min-width:600px){
+  .leave li p{max-width:none}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (min-width:900px){
+  .page{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem;row-gap:2rem}
+  .page>*{grid-column:1/-1}
+  .top{grid-row:1}
+  .ticket{grid-row:2}
+  .ticket{grid-template-columns:minmax(0,8fr) minmax(0,4fr)}
+  .stub{border-top:0;border-left:6px dotted var(--p)}
+  .stub::before,.stub::after{left:-17px;right:auto}
+  .stub::before{top:-14px}
+  .stub::after{top:auto;bottom:-14px}
+  .card .btn{display:none}
+  .card{display:flex;flex-direction:column;justify-content:space-between;gap:2rem;min-height:min(80svh,46rem)}
+  .card h1{font-size:calc(clamp(5rem,8.6vw,10rem) * var(--kh));max-width:16ch}
+  .card h1.mid{font-size:calc(clamp(4rem,6.2vw,7rem) * var(--kh))}
+  .card h1.long{font-size:calc(clamp(3.2rem,4.6vw,5.25rem) * var(--kh))}
+  .note{grid-column:1/6;grid-row:3}
+  .host{grid-column:6/9;grid-row:3}
+  .bring{grid-column:9/13;grid-row:3}
+  .leave{grid-row:4}
+  .leave li{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:1.5rem;align-items:start}
+  .leave li p{font-size:var(--step-lead);line-height:1.35}
+  .agenda{grid-row:5}
+  .agenda li{grid-template-columns:minmax(0,2fr) minmax(0,4fr) minmax(0,6fr);column-gap:1.5rem;align-items:baseline}
+  .seat{grid-row:6;grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  .seat .right{border-top:0;border-left:6px dotted var(--p)}
+  .seat .right::before,.seat .right::after{left:-17px;right:auto}
+  .seat .right::before{top:-14px}
+  .seat .right::after{top:auto;bottom:-14px}
+  .foot{grid-row:7}
+}
+@media (prefers-reduced-motion:no-preference){
+  .plan .ch.open{animation:seat .5s ease-out both}
+  .plan .ch.open:nth-child(2n){animation-delay:.08s}
+  @keyframes seat{from{transform:scale(.4)}to{transform:scale(1)}}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn{transition:none}
+}
 </style>
 </head>
-<body>
-<main class="ws">
-<header class="ws-top">
-{%- if brand.logo_url %}<img class="ws-logo" src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="ws-brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
-<p class="ws-tag ws-mono">Workshop &middot; {% if in_person %}In person{% else %}Online{% endif %}</p>
+<body{% if caps %} class="caps"{% endif %}>
+<main class="page">
+<header class="top">
+{%- if brand.logo_url %}<img src="{{ brand.logo_url | escape }}" alt="{{ brand.name | default: 'Logo' | escape }}">{% elsif brand.name %}<p class="brand">{{ brand.name | escape }}</p>{% else %}<span></span>{% endif -%}
+<p class="tag">A workshop, {% if in_person %}in person{% else %}online{% endif %}</p>
 </header>
 
-<div class="ws-cols">
-<div class="ws-main">
-
-<section data-section="invite" class="ws-hero">
-<p class="ws-kicker ws-mono">{% if first != '' %}A seat held for {{ first | escape }} at {{ account.name | escape }}{% else %}A seat held for {{ account.name | escape }}{% endif %}</p>
-<h1>{{ data.title | escape }}</h1>
-<p class="ws-dek">{{ data.tagline | escape }}</p>
-</section>
-
-<section data-section="note" class="ws-sec ws-note">
-<p>{% if first != '' %}Hi {{ first | escape }},{% else %}To the team at {{ account.name | escape }},{% endif %}</p>
-<p>{{ data.why_you | escape | newline_to_br | strip_newlines | raw }}</p>
-<p class="ws-sig">{{ sender.name | default: 'The host' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
-</section>
-
-<section data-section="leave_with" class="ws-sec ws-leave">
-<p class="ws-label ws-mono">What you leave with</p>
-<h2>{% if data.leave_with.size == 3 %}Three things{% else %}What{% endif %} {{ account.name | escape }} would take home</h2>
-<ol>
-{%- for item in data.leave_with %}
-<li><span class="n" aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><div><h3>{{ item.lead | escape }}</h3><p>{{ item.text | escape }}</p></div></li>
-{%- endfor %}
-</ol>
-</section>
-
-<section data-section="agenda" class="ws-sec ws-agenda">
-<p class="ws-label ws-mono">Agenda</p>
-<h2>{% if in_person %}The day, hour by hour{% else %}The session, hour by hour{% endif %}</h2>
-<ol>
-{%- for item in data.agenda %}
-{%- assign kind_class = item.kind | default: 'talk' | replace: '_', '-' %}
-<li class="is-{{ kind_class }}"><span class="t">{{ item.time | escape }}{% if item.length and item.length != '' %}<small>{{ item.length | escape }}</small>{% endif %}</span><div><b>{{ item.title | escape }}{% if item.kind == 'hands_on' %}<span class="ws-pill hands">Hands-on</span>{% elsif item.kind == 'talk' %}<span class="ws-pill talk">Talk</span>{% endif %}</b>{% if item.note and item.note != '' %}<p>{{ item.note | escape }}</p>{% endif %}</div></li>
-{%- endfor %}
-</ol>
-</section>
-
+<div class="ticket">
+<section data-section="invite" class="card sheet">
+<p class="held">{% if first != '' %}A seat held for {{ first | escape }} at {{ account.name | escape }}{% else %}A seat held for {{ account.name | escape }}{% endif %}</p>
+<div>
+<h1 class="{{ title_size }}">{{ data.title | escape }}</h1>
+<p class="dek">{{ data.tagline | escape }}</p>
 </div>
+<a class="btn" href="#seat">{% if seats_left > 0 %}Hold my seat{% else %}Join the waitlist{% endif %}</a>
+</section>
 
-<aside class="ws-side">
-<div class="ws-card" data-section="details">
-<dl>
-<div><dt class="ws-mono">When</dt><dd>{{ data.date_text | escape }}<small>{{ data.time_text | escape }}</small></dd></div>
-<div><dt class="ws-mono">Where</dt><dd>
+<div class="stub sheet" data-section="details">
+{%- if plan_n > 0 %}
+<div class="plan" role="img" aria-label="{% if seats_left > 0 %}{{ plan_open }} of {{ seats }} seats open{% else %}Every seat is taken{% endif %}">
+<div class="row top-row">
+{%- for i in (1..plan_half) %}<span class="ch{% if i > plan_taken %} open{% endif %}"></span>{% endfor -%}
+</div>
+<div class="tbl"></div>
+{%- assign plan_rest = plan_half | plus: 1 %}
+{%- if plan_n >= plan_rest %}
+<div class="row bottom-row">
+{%- for i in (plan_rest..plan_n) %}<span class="ch{% if i > plan_taken %} open{% endif %}"></span>{% endfor -%}
+</div>
+{%- endif %}
+</div>
+{%- endif %}
+<dl class="facts">
+<div><dt>When</dt><dd>{{ data.date_text | escape }}<small>{{ data.time_text | escape }}</small></dd></div>
+<div><dt>Where</dt><dd>
 {%- if in_person -%}
 {% if has_venue %}{{ data.venue | escape }}{% elsif has_city %}{{ data.city | escape }}{% else %}Venue to be confirmed{% endif %}{% if has_venue and has_city %}<small>{{ data.city | escape }}</small>{% endif %}
 {%- else -%}
 Online{% if has_platform %}, on {{ data.platform | escape }}{% endif %}<small>The link comes by email once your seat is confirmed.</small>
 {%- endif -%}
 </dd></div>
-<div><dt class="ws-mono">Seats</dt><dd>
+<div><dt>Seats</dt><dd>
 {%- if seats_left > 0 -%}
-<span class="ws-seatnum">{{ seats_left }}</span>{% if seats > 0 %} of {{ seats }}{% endif %} left
+<span class="num">{{ seats_left }}</span>{% if seats > 0 %} of {{ seats }}{% endif %} left
 {%- else -%}
-<span class="ws-seatnum">Full</span><small>Leave your details and you are first in line if a seat opens.</small>
+<span class="num">Full</span><small>Leave your details and you are first in line if a seat opens.</small>
 {%- endif -%}
 </dd></div>
 {%- if sender.name or brand.name %}
-<div><dt class="ws-mono">Host</dt><dd>{{ sender.name | default: brand.name | escape }}{% if sender.name and brand.name %}<small>{% if sender.title %}{{ sender.title | escape }}, {% endif %}{{ brand.name | escape }}</small>{% elsif sender.title %}<small>{{ sender.title | escape }}</small>{% endif %}</dd></div>
+<div><dt>Host</dt><dd>{{ sender.name | default: brand.name | escape }}{% if sender.name and brand.name %}<small>{% if sender.title %}{{ sender.title | escape }}, {% endif %}{{ brand.name | escape }}</small>{% elsif sender.title %}<small>{{ sender.title | escape }}</small>{% endif %}</dd></div>
 {%- endif %}
 </dl>
-<a class="ws-btn" href="#seat">{% if seats_left > 0 %}Hold my seat{% else %}Join the waitlist{% endif %}</a>
+<a class="btn" href="#seat">{% if seats_left > 0 %}Hold my seat{% else %}Join the waitlist{% endif %}</a>
+</div>
 </div>
 
-<section data-section="bring" class="ws-sec ws-bring">
-<p class="ws-label ws-mono">Bring</p>
+<section data-section="note" class="note sheet">
+<h2>{% if first != '' %}Hi {{ first | escape }},{% else %}To the team at {{ account.name | escape }},{% endif %}</h2>
+<p class="why">{{ data.why_you | escape | newline_to_br | strip_newlines | raw }}</p>
+<p class="sig">{{ sender.name | default: 'The host' | escape }}{% if sender.title %}<span>{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}</span>{% elsif brand.name %}<span>{{ brand.name | escape }}</span>{% endif %}</p>
+</section>
+
+<section data-section="leave_with" class="leave">
+<h2>What {{ account.name | escape }} would take home</h2>
+<ul>
+{%- for item in data.leave_with %}
+<li><h3>{{ item.lead | escape }}</h3><p>{{ item.text | escape }}</p></li>
+{%- endfor %}
+</ul>
+</section>
+
+<section data-section="agenda" class="agenda sheet">
+<h2>{% if in_person %}The day, hour by hour{% else %}The session, hour by hour{% endif %}</h2>
+<ol>
+{%- for item in data.agenda %}
+{%- assign kind_class = item.kind | default: 'talk' | replace: '_', '-' %}
+<li class="is-{{ kind_class }}"><p class="t">{{ item.time | escape }}</p><div><b>{{ item.title | escape }}</b>{% if item.length and item.length != '' or item.kind == 'hands_on' or item.kind == 'talk' %}<p class="meta">{% if item.length and item.length != '' %}{{ item.length | escape }}{% endif %}{% if item.kind == 'hands_on' %}{% if item.length and item.length != '' %}, {% endif %}hands-on{% elsif item.kind == 'talk' %}{% if item.length and item.length != '' %}, {% endif %}talk{% endif %}</p>{% endif %}</div>{% if item.note and item.note != '' %}<p class="what-note">{{ item.note | escape }}</p>{% endif %}</li>
+{%- endfor %}
+</ol>
+</section>
+
+<section data-section="bring" class="bring">
 <h2>What to bring</h2>
 <ul>
 {%- for item in data.bring %}
@@ -225,41 +335,39 @@ Online{% if has_platform %}, on {{ data.platform | escape }}{% endif %}<small>Th
 {%- endfor %}
 </ul>
 {%- if has_audience or seats > 0 %}
-<div class="ws-who">
+<div class="who">
 {%- if has_audience %}
-<div><p class="ws-label ws-mono">Who it's for</p><p>{{ data.audience | escape }}</p></div>
+<div><h3>Who it is for</h3><p>{{ data.audience | escape }}</p></div>
 {%- endif %}
 {%- if seats > 0 %}
-<div><p class="ws-label ws-mono">Group size</p><p>{{ seats }} people{% if in_person %} in one room{% else %} on one call{% endif %}, so everyone's work gets looked at.</p></div>
+<div><h3>Group size</h3><p>{{ seats }} people{% if in_person %} in one room{% else %} on one call{% endif %}, so everyone's work gets looked at.</p></div>
 {%- endif %}
 </div>
 {%- endif %}
 </section>
 
-<section data-section="host" class="ws-sec ws-host">
-<p class="ws-label ws-mono">Host</p>
+<section data-section="host" class="host sheet">
+<h2>Your host</h2>
 <p class="name">{{ sender.name | default: brand.name | default: 'The host' | escape }}</p>
 {%- if sender.title or brand.name %}
 <p class="role">{% if sender.title %}{{ sender.title | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}{% else %}{{ brand.name | escape }}{% endif %}</p>
 {%- endif %}
 {%- if has_host_note %}
-<p class="note">{{ data.host_note | escape | newline_to_br | strip_newlines | raw }}</p>
+<p class="note-text">{{ data.host_note | escape | newline_to_br | strip_newlines | raw }}</p>
 {%- endif %}
 </section>
-</aside>
-</div>
 
-<section data-section="seat" class="ws-seat" id="seat">
+<section data-section="seat" class="seat" id="seat">
 <div class="left">
 <h2>{% if seats_left > 0 %}Hold your seat{% else %}Join the waitlist{% endif %}</h2>
 {%- if seats_left > 0 %}
-<p class="ws-seats">{{ seats_left }} {% if seats_left == 1 %}seat{% else %}seats{% endif %} left{% if seats > 0 %} of {{ seats }}{% endif %}.</p>
+<p class="count">{{ seats_left }} {% if seats_left == 1 %}seat{% else %}seats{% endif %} left{% if seats > 0 %} of {{ seats }}{% endif %}</p>
 <p>Leave your details and the seat is yours. In the note, say what you would like to work on, so {{ sender.name | default: 'the host' | escape }} can prepare for it.</p>
 {%- else %}
-<p class="ws-seats">The room is full.</p>
+<p class="count">The room is full</p>
 <p>Leave your details anyway. If a seat opens, it goes to you first, and you hear about the next date before anyone else.</p>
 {%- endif %}
-<div class="ws-after">
+<div class="after">
 {%- if seats_left > 0 and has_confirm %}
 <p>{{ data.confirm_note | escape }}</p>
 {%- elsif seats_left < 1 %}
@@ -273,7 +381,7 @@ Online{% if has_platform %}, on {{ data.platform | escape }}{% endif %}<small>Th
 </div>
 </section>
 
-<p class="ws-foot">This page was made for {% if first != '' %}{{ first | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %} at {% endif %}{{ account.name | escape }} by {{ sender.name | default: 'the host' | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}.</p>
+<p class="foot">This page was made for {% if first != '' %}{{ first | escape }}{% if person.last_name %} {{ person.last_name | escape }}{% endif %} at {% endif %}{{ account.name | escape }} by {{ sender.name | default: 'the host' | escape }}{% if brand.name %}, {{ brand.name | escape }}{% endif %}.</p>
 </main>
 </body>
 </html>

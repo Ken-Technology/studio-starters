@@ -5,188 +5,218 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Plinth at Pennant Robotics, next to HubSpot and Jira</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap">
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f3f3ef;color:#15171b;font-family:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.tf{--a:#1d5fd1;--a2:#f5b700;--ink:#15171b;--text:#34373d;--mute:#6a6e76;--line:#dcdbd4;--panel:#fff;--mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.tf h1,.tf h2,.tf h3{font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-.02em;margin:0;text-wrap:balance}
-p{margin:0 0 1rem}
-.tf a{color:var(--a)}
-.tf-mono{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0}
-.tf-wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
-.tf-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
-.tf-logo{height:24px;width:auto;display:block}
-.tf-brand{font-weight:700;font-size:1rem;letter-spacing:-.01em}
-.tf-top .tf-mono{text-align:right;max-width:60%}
-.tf-hero{padding:2rem 0 2.25rem;display:grid;gap:1.75rem}
-.tf-kicker{display:flex;align-items:center;gap:.6rem;color:var(--a);text-wrap:balance}
-.tf-kicker::before{content:'';flex:none;width:8px;height:8px;background:var(--a2)}
-.tf h1{font-size:2.15rem;line-height:1.06;margin:.9rem 0 1rem}
-.tf-intro{font-size:1.1rem;line-height:1.5;color:var(--text);max-width:34rem;margin-bottom:1.1rem}
-.tf-by{font-size:.92rem;color:var(--mute);margin:0}
-.tf-by b{color:var(--ink);font-weight:600}
-.tf-stack{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem .9rem;align-self:start}
-.tf-stack .tf-mono{margin-bottom:.4rem}
-.tf-stack-body{position:relative}
-.tf-stack-body::before{content:'';position:absolute;left:5px;top:.9rem;bottom:1rem;width:2px;background:var(--line)}
-.tf-stack ol{list-style:none;margin:0;padding:0}
-.tf-stack li,.tf-stack-us{position:relative;display:grid;grid-template-columns:12px 1fr auto;gap:.75rem;align-items:center;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
-.tf-stack li b{font-weight:600}
-.tf-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--a);background:var(--a);justify-self:center}
-.is-gap .tf-dot{background:var(--panel);border-color:#b4b8c0}
-.no-catalog .tf-dot{background:var(--ink);border-color:var(--ink)}
-.tf-stack .tf-cat{font-family:var(--mono);font-size:.72rem;color:var(--mute);text-align:right}
-.tf-stack-us{border-bottom:0;padding:.75rem 0 .2rem;font-weight:600}
-.tf-us-mark{width:12px;height:12px;border-radius:3px;background:var(--ink);justify-self:center}
-.tf-stack-us .tf-cat{color:var(--a)}
-.tf-sec{padding:2.5rem 0 0}
-.tf-head{display:grid;grid-template-columns:2.5rem 1fr;gap:.5rem;align-items:baseline;padding-top:1rem;border-top:1px solid var(--ink);margin-bottom:.9rem}
-.tf-num{font-family:var(--mono);font-size:.82rem;font-weight:500;color:var(--a)}
-.tf h2{font-size:1.5rem;line-height:1.15}
-.tf-lede{color:var(--text);max-width:40rem;margin:0 0 1.4rem}
-.tf-tools{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.tf-tool{padding:1rem 0;border-bottom:1px solid var(--line);display:grid;gap:.45rem}
-.tf-tool-name{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
-.tf-tool h3{font-size:1.1rem;line-height:1.25}
-.tf-tag{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);border:1px solid var(--line);border-radius:4px;padding:.15rem .4rem;line-height:1.3}
-.tf-tool .tf-cat{font-family:var(--mono);font-size:.74rem;color:var(--mute)}
-.tf-clue{margin:0;color:var(--text);font-size:.97rem}
-.tf-src{margin:.1rem 0 0}
-.tf-status{display:flex;align-items:center;gap:.5rem;color:var(--a);margin-top:.2rem}
-.tf-status::before{content:'';flex:none;width:1.4rem;height:2px;background:var(--a)}
-.is-gap .tf-status{color:var(--mute)}
-.is-gap .tf-status::before{background:repeating-linear-gradient(90deg,#b4b8c0 0 4px,transparent 4px 7px)}
-.tf-empty{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.1rem 1rem}
-.tf-empty p:last-child{margin:0}
-.tf-matches{display:grid;gap:1rem}
-.tf-match{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.1rem 1rem}
-.tf-wire{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem}
-.tf-node{font-family:var(--mono);font-size:.8rem;font-weight:500;letter-spacing:.02em;border:1px solid var(--ink);border-radius:6px;padding:.45rem .7rem;line-height:1.2}
-.tf-node--us{border-color:var(--a);color:var(--a)}
-.tf-wire-line{flex:1;height:2px;background:var(--a);position:relative;min-width:1.5rem}
-.tf-wire-line::after{content:'';position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--panel);border:2px solid var(--a)}
-.tf-conn{margin:0 0 .5rem}
-.tf-conn span{color:var(--ink)}
-.tf-sum{font-size:1.04rem;line-height:1.5;color:var(--ink);margin-bottom:.9rem}
-.tf-dl{margin:0;display:grid;gap:.4rem}
-.tf-dl div{display:grid;grid-template-columns:6rem 1fr;gap:.6rem;font-size:.92rem;align-items:start}
-.tf-dl dt{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:.2rem}
-.tf-dl dd{margin:0;color:var(--text);overflow-wrap:anywhere}
-.tf-change{margin:1rem 0 0;padding-top:.9rem;border-top:1px dashed var(--line)}
-.tf-change .tf-mono{color:var(--a);margin-bottom:.3rem}
-.tf-change p{margin:0;font-size:.97rem}
-.tf-steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.tf-step{display:grid;grid-template-columns:2.25rem 1fr;gap:.6rem;padding:.85rem 0;border-bottom:1px solid var(--line);align-items:baseline}
-.tf-step-n{font-family:var(--mono);font-size:.8rem;font-weight:500;color:var(--a)}
-.tf-step b{display:block;font-weight:600;margin-bottom:.1rem}
-.tf-step span{color:var(--text);font-size:.95rem}
-.tf-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0;padding:0;list-style:none}
-.tf-chip{display:inline-flex;align-items:baseline;gap:.5rem;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:.45rem .85rem;font-size:.9rem;font-weight:500;line-height:1.3}
-.tf-chip small{font-family:var(--mono);font-size:.66rem;color:var(--mute);letter-spacing:.02em}
-.tf-gaps{margin:1.25rem 0 0;padding:.9rem 1rem;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--ink);border-radius:8px;font-size:.95rem;color:var(--text)}
-.tf-gaps b{color:var(--ink)}
-.tf-next{padding:2.5rem 0 0}
-.tf-box{background:#fff;background:color-mix(in srgb,var(--a) 6%,#fff);border:1px solid var(--line);border-color:color-mix(in srgb,var(--a) 28%,var(--line));border-radius:12px;padding:1.4rem 1.2rem 1.2rem}
-.tf-box h2{margin-bottom:.6rem}
-.tf-box p{color:var(--text)}
-.tf-cta{margin:1.1rem 0 1.3rem}
-.tf-cta .ken-cta{background:var(--a)!important;display:inline-flex!important;align-items:center;min-height:48px;font-family:inherit}
-.tf-sign{font-size:.95rem;margin:0}
-.tf-sign b{font-weight:600}
-.tf-sign span{display:block;color:var(--mute)}
-.tf-foot{font-size:.8rem;color:var(--mute);padding:1.75rem 0 2.5rem;max-width:46rem;margin:0}
-.is-empty{display:none}
-@media (min-width:760px){
-body{font-size:17px}
-.tf-wrap{padding:0 2.5rem}
-.tf-top{padding:1.2rem 0}
-.tf-hero{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:3.5rem;padding:3.5rem 0 2.5rem;align-items:start}
-.tf h1{font-size:3.2rem;margin:1.1rem 0 1.2rem}
-.tf-intro{font-size:1.2rem}
-.tf-stack{padding:1.2rem 1.4rem 1.1rem}
-.tf-sec{padding:3.5rem 0 0}
-.tf-head{grid-template-columns:3.5rem 1fr;margin-bottom:1rem}
-.tf h2{font-size:2rem}
-.tf-lede{margin-left:3.5rem}
-.tf-tool{grid-template-columns:14rem minmax(0,1fr) 12rem;gap:1.5rem;align-items:start;padding:1.1rem 0}
-.tf-tool-name{display:grid;gap:.3rem;align-items:start;justify-items:start}
-.tf-tool .tf-cat{display:block}
-.tf-status{margin-top:.3rem;justify-content:flex-start}
-.tf-match{padding:1.4rem 1.6rem 1.3rem;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:1.25rem 2.5rem}
-.tf-match .tf-wire{grid-column:1 / -1}
-.tf-match .tf-dl{padding-top:.2rem}
-.tf-match .tf-change{grid-column:1 / -1;margin-top:.2rem}
-.tf-steps{display:grid;grid-template-columns:1fr 1fr;column-gap:2.5rem}
-.tf-step{grid-template-columns:2.5rem 1fr}
-.tf-box{padding:2.2rem 2.4rem 2rem;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:2rem;align-items:start}
-.tf-box h2{font-size:1.7rem}
-.tf-box-side{padding-top:.3rem}
-.tf-cta{margin:0 0 1.2rem}
+body{margin:0;background:#f4f5f1;color:#161a17;font-family:'STIX Two Text',Georgia,'Times New Roman',serif;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.tf{--a:#1d5fd1;--a2:#f5b700;--ink:#161a17;--soft:#4a504b;--paper:#f4f5f1;--tone:#e4e7df;--rule:#c9cec4;
+--on-a:#161a17;--on-a:color(from var(--a) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--on-a2:#f4f5f1;--on-a2:color(from var(--a2) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--mark:#1d5fd1;--mark:oklch(from var(--a) min(l,0.45) c h);
+--m:clamp(1.125rem,3vw,2.5rem);--ly:2rem;overflow-x:clip}
+.tf h1,.tf h2,.tf h3,.nm,.step-n{font-family:'STIX Two Text',Georgia,'Times New Roman',serif;font-weight:600;letter-spacing:-.01em;line-height:1.1;text-wrap:balance;margin:0}
+.tf p{margin:0}
+.tf ul,.tf ol{margin:0;padding:0;list-style:none}
+.tf a{color:var(--ink);text-decoration-color:var(--a);text-decoration-thickness:2px;text-underline-offset:.2em}
+.tf a:focus-visible,.tf .ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.tf i,.tf em{font-style:italic}
+.wrap{padding:0 var(--m);max-width:84rem;margin:0 auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;border-bottom:2px solid var(--ink)}
+.logo{height:26px;width:auto;display:block}
+.brand{font-weight:700;font-size:1rem}
+.tag{font-size:1rem;font-style:italic;color:var(--soft);text-align:right}
+.hero-head{display:grid;gap:1.2rem;padding:2rem 0 2.4rem}
+.hero h1{font-size:2rem}
+.intro{font-size:1.125rem;max-width:36rem}
+.for{font-size:1rem;color:var(--soft);margin-top:.9rem!important}
+.for b{color:var(--ink);font-weight:600}
+.btn{margin:1.4rem 0 0}
+.btn .ken-cta{display:inline-flex!important;align-items:center;min-height:52px;padding:.85rem 1.6rem!important;border-radius:999px!important;background:var(--a2)!important;color:var(--on-a2)!important;font-family:inherit;font-size:1rem;font-weight:600!important;text-decoration:none}
+.btn .ken-cta:hover{background:var(--a)!important;color:var(--on-a)!important}
+.strip{position:relative;padding:0 0 1.6rem}
+.line{position:relative;display:grid;padding:.4rem 0}
+.line::before{content:'';position:absolute;left:calc(1.2rem - 6px);top:0;bottom:0;width:12px;background:var(--a);border-radius:6px}
+.no-catalog .line::before{background:var(--rule)}
+.stop{position:relative;display:grid;gap:.1rem;padding:.75rem 0 .75rem 3.4rem;min-height:3.4rem}
+.stop::before{content:'';position:absolute;left:calc(1.2rem - 11px);top:1.05rem;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--ink);z-index:1}
+.stop.off{padding-left:5.2rem}
+.stop.off::before{left:3rem;background:var(--paper);border:3px dashed var(--soft)}
+.stop.off::after{content:'';position:absolute;left:1.2rem;top:calc(1.05rem + 10px);width:1.8rem;border-top:3px dashed var(--soft)}
+.stop.us::before{width:30px;height:30px;left:calc(1.2rem - 15px);top:.85rem;border-radius:7px;background:var(--a2);border:4px solid var(--a2)}
+.nm{font-size:1.25rem}
+.stop.off .nm{color:var(--soft);font-weight:400;font-style:italic}
+.ct{font-size:1rem;font-style:italic;color:var(--soft)}
+.key{display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;font-size:1rem;color:var(--soft);margin-top:1rem!important}
+.key b{color:var(--ink);font-weight:600}
+.key span{display:inline-flex;align-items:center;gap:.5rem}
+.key i{display:inline-block;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid var(--ink);font-style:normal}
+.key .k-off i{background:var(--paper);border:2px dashed var(--soft)}
+.sec{padding:4rem 0 0}
+.sec.is-empty{display:none}
+.tf h2{font-size:2rem;margin:0 0 .8rem}
+.lede{font-size:1.125rem;color:var(--soft);max-width:40rem}
+.lede+*{margin-top:1.8rem!important}
+.tools{border-top:2px solid var(--ink)}
+.tool{display:grid;gap:.5rem;padding:1.2rem 0 1.3rem;border-bottom:1px solid var(--rule)} /* taste-skill-ignore: data rows */
+.tool h3{font-size:1.25rem}
+.tool .ct{display:block;margin-top:.2rem}
+.clue{font-size:1.125rem}
+.src{font-size:1rem;font-style:italic;color:var(--soft);margin-top:.3rem!important}
+.status{display:flex;align-items:center;gap:.6rem;font-size:1rem;font-weight:600}
+.status::before{content:'';flex:none;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid var(--ink);box-sizing:border-box}
+.status.on{color:var(--mark)}
+.status.on::before{border-color:var(--ink);background:var(--a)}
+.status.off{color:var(--soft);font-weight:400;font-style:italic}
+.status.off::before{background:transparent;border:2px dashed var(--soft)}
+.empty{background:#fff;padding:1.4rem;font-size:1.125rem;max-width:44rem}
+.match{padding:1.8rem 0 2rem;border-top:2px solid var(--ink);display:grid;gap:1.2rem}
+.wire{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.wire h3{font-size:1.5rem}
+.w-line{flex:1 1 3rem;min-width:3rem;height:10px;border-radius:5px;background:var(--a);position:relative}
+.w-line::before,.w-line::after{content:'';position:absolute;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;background:#fff;border:3px solid var(--ink);box-sizing:border-box}
+.w-line::before{left:-4px}.w-line::after{right:-4px}
+.w-us{font-size:1rem;font-weight:600}
+.conn{font-size:1rem;margin-top:.6rem!important}
+.conn b{font-weight:600}
+.conn span{font-style:italic;color:var(--soft)}
+.sum{font-size:1.125rem}
+.facts{margin:0;display:grid;gap:.6rem}
+.facts div{display:grid;grid-template-columns:7rem minmax(0,1fr);gap:.8rem;font-size:1rem;padding-top:.6rem;border-top:1px solid var(--rule)} /* taste-skill-ignore: data rows */
+.facts dt{font-style:italic;color:var(--soft)}
+.facts dd{margin:0;overflow-wrap:anywhere}
+.change{background:var(--tone);padding:1rem 1.2rem;font-size:1rem}
+.change p+p{margin-top:.3rem!important}
+.change .ch-h{font-weight:600}
+.steps{display:grid;border-top:2px solid var(--ink);padding-top:.4rem}
+.step{display:grid;grid-template-columns:3rem minmax(0,1fr);gap:.8rem;padding:1.1rem 0}
+.step-n{font-size:2rem;line-height:1;color:var(--mark);font-variant-numeric:oldstyle-nums}
+.step b{display:block;font-weight:600;font-size:1.125rem}
+.step span{display:block;font-size:1rem}
+.cat{columns:2 10rem;column-gap:2rem}
+.cat li{break-inside:avoid;padding:.55rem 0 .55rem 1.3rem;position:relative;font-size:1rem;font-weight:600}
+.cat li::before{content:'';position:absolute;left:0;top:1.05rem;width:.75rem;height:5px;border-radius:3px;background:var(--a)}
+.cat small{display:block;font-size:1rem;font-weight:400;font-style:italic;color:var(--soft)}
+.gaps{margin-top:2rem!important;padding:1.1rem 1.3rem;border-left:4px dashed var(--soft);background:#fff;font-size:1rem;max-width:44rem}
+.gaps b{font-weight:600}
+.next{margin-top:4.5rem;background:var(--a);color:var(--on-a);padding:3.4rem 0 2.6rem}
+.next-in{display:grid;gap:1.4rem}
+.next h2{font-size:2rem}
+.next p{font-size:1.125rem;max-width:36rem}
+.next .btn{margin:.4rem 0 1.2rem}
+.next .btn .ken-cta:hover{background:var(--paper)!important;color:var(--ink)!important}
+.sign{font-size:1rem}
+.sign b{font-weight:600}
+.sign span{display:block}
+.foot{font-size:1rem;font-style:italic;max-width:46rem;padding-top:2.4rem}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){
+.line::before{animation:tf-run 1.1s cubic-bezier(.5,0,.2,1) both;transform-origin:top}
+.stop::before{animation:tf-stop .4s .8s ease-out both}
+@keyframes tf-run{from{transform:scaleY(0)}}
+@keyframes tf-stop{from{transform:scale(.4);opacity:0}}
 }
-@media (min-width:1100px){.tf h1{font-size:3.5rem}}
+@media (min-width:860px){
+body{font-size:19px}
+.hero-head{padding:2.6rem 0 3.4rem}
+.hero-head>div{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:3.5rem;align-items:start}
+.intro{grid-row:1 / 3;font-size:1.25rem}
+.for{margin-top:.2rem!important}
+.hero h1{font-size:3rem}
+.strip{--ly:10.5rem;padding:0 0 2.4rem}
+.line{grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);padding:0 5rem 0 0}
+.line::before{left:0;right:0;top:calc(var(--ly) - 8px);bottom:auto;width:auto;height:16px;border-radius:8px;transform-origin:left}
+.stop{display:block;min-height:0;height:calc(var(--ly) + 5rem);padding:0}
+.stop::before{left:calc(50% - 16px);top:calc(var(--ly) - 16px);width:32px;height:32px;border-width:5px}
+.stop.off{padding:0}
+.stop.off::before{left:calc(50% - 16px);top:calc(var(--ly) + 1.9rem);border-width:3px}
+.stop.off::after{left:calc(50% - 1px);top:calc(var(--ly) + 8px);width:0;height:calc(1.9rem - 8px);border-top:0;border-left:3px dashed var(--soft)}
+.stop.us::before{left:calc(50% - 22px);top:calc(var(--ly) - 22px);width:44px;height:44px;border-radius:9px}
+.nm{position:absolute;left:calc(50% - .1rem);bottom:calc(100% - var(--ly) + 1.4rem);transform-origin:left bottom;transform:rotate(-38deg);white-space:nowrap;font-size:2rem}
+.stop.us .nm{font-weight:700}
+.stop .ct{position:absolute;left:.3rem;right:.3rem;top:calc(var(--ly) + 1.7rem);text-align:center;line-height:1.25}
+.stop.off .ct{top:calc(var(--ly) + 4rem)}
+.line:has(.off) .stop{height:calc(var(--ly) + 7rem)}
+.key{margin-top:1.4rem!important}
+.sec{padding-top:5.5rem}
+.tf h2{font-size:3rem}
+.lede{font-size:1.25rem}
+.tool{grid-template-columns:16rem minmax(0,1fr) 13rem;gap:2rem;align-items:start}
+.status{margin-top:.2rem}
+.match{grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:auto 1fr;grid-template-areas:"h r" "c r";column-gap:3.5rem;padding:2.2rem 0 2.6rem}
+.match>div:first-child{grid-area:h}
+.match-r{grid-area:r}
+.change{grid-area:c;align-self:start}
+.match-r{display:grid;gap:1.2rem}
+.steps{grid-template-columns:1fr 1fr;column-gap:3rem}
+.cat{columns:3 12rem}
+.next{margin-top:6rem;padding:5rem 0 3rem}
+.next-in{grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:4rem;align-items:end}
+.next h2{font-size:3rem}
+.foot{grid-column:1 / -1}
+}
+@media (min-width:1100px){
+.hero h1{font-size:3.5rem}
+}
 </style>
 </head>
 <body>
 <main class="tf">
-<div class="tf-wrap">
-<header class="tf-top"><span class="tf-brand">Plinth</span><p class="tf-mono">Integration fit for Pennant Robotics</p>
+<div class="wrap">
+<header class="top"><p class="brand">Plinth</p><p class="tag">Integration fit for Pennant Robotics</p>
 </header>
-<section data-section="hero" class="tf-hero">
-<div>
-<p class="tf-mono tf-kicker">Prepared for Jonah Petrakis, Head of Finance, Pennant Robotics</p>
+<section data-section="hero" class="hero">
+<div class="hero-head">
 <h1>Plinth at Pennant Robotics, next to HubSpot and Jira</h1>
-<p class="tf-intro">I read your site and careers page to guess which tools you already run. Both below are guesses from a page footer and a job post, so tell me what I got wrong.</p>
-<p class="tf-by">By <b>Ines Kowalski</b> at Plinth</p>
+<div>
+<p class="intro">I read your site and careers page to guess which tools you already run. Both below are guesses from a page footer and a job post, so tell me what I got wrong.</p>
+<p class="for">Prepared for <b>Jonah Petrakis</b>, Head of Finance, Pennant Robotics, by Ines Kowalski at Plinth</p>
+<div class="btn"><a class="ken-cta" data-ken-cta="hero" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1d5fd1;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
 </div>
-<aside class="tf-stack no-catalog" aria-label="Your stack, as we guess it">
-<p class="tf-mono">Your stack, as we guess it</p>
-<div class="tf-stack-body">
-<ol>
-<li class="is-gap"><span class="tf-dot"></span><b>HubSpot</b><span class="tf-cat">CRM</span></li>
-<li class="is-gap"><span class="tf-dot"></span><b>Jira</b><span class="tf-cat">Project tracking</span></li>
+</div>
+<div class="strip no-catalog">
+<ol class="line" aria-label="Your stack, as we guess it, on the Plinth line">
+<li class="stop us"><span class="nm">Plinth</span></li>
+<li class="stop unk"><span class="nm">HubSpot</span><span class="ct">CRM</span></li>
+<li class="stop unk"><span class="nm">Jira</span><span class="ct">Project tracking</span></li>
 </ol>
-<div class="tf-stack-us"><span class="tf-us-mark"></span><span>Plinth</span></div>
+<p class="key"><span>Your stack, as we guess it. Not matched to our integration list yet.</span></p>
 </div>
-</aside>
 </section>
-<section data-section="tools" class="tf-sec">
-<div class="tf-head"><span class="tf-num">01</span><h2>What we think you run</h2></div>
-<p class="tf-lede">Guessed from pennantrobotics.example and its careers page. Nothing here came from your systems, so a wrong guess costs you one reply.</p>
-<ul class="tf-tools">
-<li class="tf-tool is-gap">
-<div class="tf-tool-name"><h3>HubSpot</h3><span class="tf-cat">CRM</span><span class="tf-tag">Guess</span></div>
-<div><p class="tf-clue">The contact page says its form is powered by HubSpot.</p><p class="tf-mono tf-src">Seen on the website</p></div>
+<section data-section="tools" class="sec">
+<h2>What we think you run</h2>
+<p class="lede">Guessed from pennantrobotics.example and its careers page. Nothing here came from your systems, so a wrong guess costs you one reply.</p>
+<ul class="tools">
+<li class="tool">
+<div><h3>HubSpot</h3><span class="ct">CRM</span></div>
+<div><p class="clue">The contact page says its form is powered by HubSpot.</p><p class="src">A guess, seen on the website</p></div>
 </li>
-<li class="tf-tool is-gap">
-<div class="tf-tool-name"><h3>Jira</h3><span class="tf-cat">Project tracking</span><span class="tf-tag">Guess</span></div>
-<div><p class="tf-clue">The manufacturing engineer posting says work is tracked in Jira.</p><p class="tf-mono tf-src">Seen on the careers page</p></div>
+<li class="tool">
+<div><h3>Jira</h3><span class="ct">Project tracking</span></div>
+<div><p class="clue">The manufacturing engineer posting says work is tracked in Jira.</p><p class="src">A guess, seen on the careers page</p></div>
 </li>
 </ul>
 </section>
-<section data-section="integrations" class="tf-sec is-empty">
+<section data-section="integrations" class="sec is-empty">
 </section>
-<section data-section="setup" class="tf-sec is-empty">
+<section data-section="setup" class="sec is-empty">
 </section>
-<section data-section="catalog" class="tf-sec is-empty">
+<section data-section="catalog" class="sec is-empty">
 </section>
-<section data-section="next" class="tf-next">
-<div class="tf-box">
+</div>
+<section data-section="next" class="next">
+<div class="wrap next-in">
 <div>
 <h2>Did we get your stack right?</h2>
+</div>
+<div>
 <p>If a guess above is wrong, or we missed a tool, reply and we will redo this page. Twenty minutes with the people who run those tools is enough to agree on which one to connect first.</p>
+<div class="btn"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1d5fd1;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+<p class="sign"><b>Ines Kowalski</b><span>Plinth</span></p>
 </div>
-<div class="tf-box-side">
-<div class="tf-cta"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#1d5fd1;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
-<p class="tf-sign"><b>Ines Kowalski</b><span>Plinth</span></p>
+<p class="foot">How this page was made: the tools above were guessed from pennantrobotics.example and its careers page. Nothing came from Pennant Robotics's systems. Integration details come from Plinth's own integration list.</p>
 </div>
-</div>
-<p class="tf-foot">How this page was made: the tools above were guessed from pennantrobotics.example and its careers page. Nothing came from Pennant Robotics's systems. Integration details come from Plinth's own integration list.</p>
 </section>
-</div>
 </main>
 </body>
 </html>

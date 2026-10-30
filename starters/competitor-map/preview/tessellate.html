@@ -5,167 +5,242 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Where Tessellate sits among six payroll companies, and the gap none of them fills</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap">
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f5f6f3;color:#1c1c1c;font-family:'DM Sans',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.cm{--a:#d91c73;--a2:#ffd166;--ink:#1c1c1c;--text:#2e302f;--mute:#6b706e;--line:#d7dad6;--mid:#c3c8c2;--grid:#e6e9e5;--paper:#f5f6f3;--white:#fff}
-.cm h1,.cm h2,.cm h3{font-family:'Outfit',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-.01em;line-height:1.05;text-wrap:balance;margin:0}
-p{margin:0}
-.cm a:focus-visible{outline:3px solid var(--a);outline-offset:3px}
-.wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
-.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ink)}
+body{margin:0;background:#fff;color:#1d1d1b;font-family:'DM Sans',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.cm{--a:#d91c73;--a2:#ffd166;--ink:#1d1d1b;--soft:#4b4f48;--paper:#fff;--grass:#e2efd5;--wood:#cfe5b8;
+--mark:#d91c73;--mark:oklch(from var(--a) min(l,0.48) c h);
+--on-a:#fff;--on-a:color(from var(--a) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--on-a2:#1d1d1b;--on-a2:color(from var(--a2) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--m:clamp(1.125rem,3vw,2.5rem);overflow-x:clip}
+.cm h1,.cm h2,.cm-fig{font-family:'Outfit',ui-sans-serif,system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;text-wrap:balance;margin:0}
+.cm p{margin:0}
+.cm a{color:inherit;text-decoration-thickness:.07em;text-underline-offset:.18em}
+.cm a:focus-visible,.cm .ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.cm ::selection{background:var(--a2);color:var(--on-a2)}
+.wrap{padding:0 var(--m);max-width:90rem;margin:0 auto}
+.cm-first{background:var(--grass);padding-bottom:3rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
 .logo{height:26px;width:auto;display:block}
-.brand{font-weight:700;font-size:1rem}
-.tag{font-size:.9rem;color:var(--mute)}
-.hero{padding:2.2rem 0 2rem}
-.kicker{font-size:.95rem;font-weight:600;color:var(--a);margin:0 0 .9rem}
-.hero h1{font-size:2.25rem}
-.intro{font-size:1.08rem;line-height:1.5;color:var(--text);margin:1.3rem 0 0;max-width:36rem}
-.facts{list-style:none;margin:1.9rem 0 0;padding:0;border-top:2px solid var(--ink)}
-.facts li{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:.9rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
-.facts b{font-family:'Outfit',ui-sans-serif,system-ui,sans-serif;font-weight:600;font-size:1.7rem;line-height:1;min-width:2.6rem;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-.facts span{font-size:.95rem;line-height:1.35;color:var(--text)}
-.map{padding:2rem 0 1.6rem}
-.map h2,.key h2{font-size:1.55rem;margin:0 0 1rem}
-.plot{display:grid;grid-template-columns:1.4rem 1fr;grid-template-rows:auto auto;gap:.45rem .55rem}
-.plot-y{display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.82rem;font-weight:600;color:var(--ink);line-height:1}
-.plot-area{position:relative;aspect-ratio:1/1;background-color:var(--white);background-image:linear-gradient(to right,var(--grid) 1px,transparent 1px),linear-gradient(to bottom,var(--grid) 1px,transparent 1px);background-size:10% 10%;border:1.5px solid var(--ink)}
-.plot-area::before,.plot-area::after{content:"";position:absolute;background:var(--mid)}
-.plot-area::before{left:50%;top:0;bottom:0;width:1px}
-.plot-area::after{top:50%;left:0;right:0;height:1px}
-.plot-end{position:absolute;left:.45rem;font-size:.72rem;line-height:1.1;font-weight:500;color:var(--mute);max-width:40%}
-.plot-end-top{top:.4rem}
-.plot-end-bottom{bottom:.4rem}
-.plot-x{grid-column:2;display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;font-size:.72rem;font-weight:500;color:var(--mute)}
-.plot-x b{font-size:.82rem;font-weight:600;color:var(--ink);text-align:center}
-.plot-open{position:absolute;width:27%;aspect-ratio:1/1;transform:translate(-50%,-50%);border:2px dashed var(--a);border-radius:50%;background:color-mix(in srgb,var(--a2) 24%,transparent);display:grid;place-items:center;z-index:1}
-.plot-open span{font-size:.68rem;font-weight:600;line-height:1.1;color:var(--a);text-align:center;padding:0 .3rem}
-.pt{position:absolute;width:0;height:0;z-index:2}
-.pt i{position:absolute;left:0;top:0;width:28px;height:28px;transform:translate(-50%,-50%);border-radius:50%;background:var(--white);border:1.5px solid var(--ink);color:var(--ink);font-style:normal;font-size:.8rem;font-weight:600;display:grid;place-items:center}
-.pt span{display:none;position:absolute;left:0;top:16px;transform:translateX(-50%);white-space:nowrap;font-size:.76rem;line-height:1.2;font-weight:600;color:var(--ink);background:rgba(255,255,255,.9);padding:.05rem .3rem;border-radius:3px}
-.pt.is-left span{left:-15px;transform:none}
-.pt.is-right span{left:auto;right:-15px;transform:none}
-.pt.is-low span{top:auto;bottom:16px}
-.pt.you{z-index:3}
-.pt.you i{width:32px;height:32px;border-radius:5px;background:var(--a);border-color:var(--a);color:#fff;font-size:.9rem}
-.pt.you span{display:block;top:19px;color:var(--a)}
-.pt.you.is-low span{top:auto;bottom:19px}
-.plot-note{font-size:.85rem;line-height:1.45;color:var(--mute);margin:1rem 0 0}
-.key{padding:.6rem 0 2.2rem}
-.key ol{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
-.key li{display:grid;grid-template-columns:28px 1fr;gap:.8rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
-.key li i{width:28px;height:28px;margin-top:.1rem;border-radius:50%;background:var(--white);border:1.5px solid var(--ink);color:var(--ink);font-style:normal;font-size:.8rem;font-weight:600;display:grid;place-items:center}
-.key li.you i{border-radius:5px;background:var(--a);border-color:var(--a);color:#fff}
-.key b{font-weight:600}
-.key small{font-size:.82rem;color:var(--mute);margin-left:.45rem;white-space:nowrap}
-.key p{font-size:.95rem;line-height:1.45;color:var(--text);margin:.15rem 0 0}
-.open-space{padding:0 0 2.4rem}
-.box{border:2px dashed var(--a);background:color-mix(in srgb,var(--a2) 16%,var(--paper));padding:1.4rem 1.25rem 1.35rem}
-.lbl{font-size:.9rem;font-weight:600;color:var(--a);margin:0 0 .45rem}
-.box h2{font-size:1.8rem;margin:0 0 .8rem}
-.box-why{font-size:1.02rem;line-height:1.5;color:var(--text)}
-.cta{padding:0 0 3rem}
-.cta-in{border-top:2px solid var(--ink);padding-top:1.5rem}
-.cta h2{font-size:1.65rem;margin:0 0 .7rem}
-.cta p{color:var(--text)}
-.btn{margin:1.2rem 0 1.2rem}
-.sign{font-size:.95rem}
-.sign span{display:block;color:var(--mute)}
-.foot{font-size:.8rem;line-height:1.45;color:var(--mute);border-top:1px solid var(--line);padding:1rem 0 2rem}
+.brand{font-weight:800;font-size:1rem}
+.tag{font-size:.875rem;color:var(--soft)}
+.cm-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto auto}
+.hero{display:grid;grid-column:1;grid-row:1 / 5;grid-template-rows:subgrid}
+.hero h1{grid-row:1}
+.hero-text{display:contents}
+.go{grid-row:3}
+.ht-body{grid-row:4;padding:2.4rem 0 1rem}
+.map{grid-column:1;grid-row:2;padding:1.6rem 0 2rem}
+.hero h1{font-size:1.85rem;margin:.6rem 0 0}
+.intro{font-size:1.125rem;max-width:36rem}
+.for{font-size:1rem;color:var(--soft);margin:1.6rem 0 0!important}
+.for b{color:var(--ink);font-weight:600}
+.facts{list-style:none;margin:1.8rem 0 0;padding:0;display:grid;grid-template-columns:auto 1fr;gap:1rem .9rem;align-items:baseline}
+.facts li{display:contents}
+.facts .cm-fig{font-size:1.85rem;font-variant-numeric:tabular-nums;line-height:1;text-align:right}
+.facts span{font-size:1rem;line-height:1.35}
+.go{margin:0}
+.go .ken-cta,.btn .ken-cta{display:inline-flex!important;align-items:center;min-height:52px;padding:.85rem 1.6rem!important;border-radius:999px!important;background:var(--a)!important;color:var(--on-a)!important;font-family:inherit;font-size:1rem;font-weight:600!important;text-decoration:none}
+.go .ken-cta:hover,.btn .ken-cta:hover{background:var(--ink)!important;color:var(--paper)!important}
+.map-h{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sheet{background:var(--paper);padding:.7rem .7rem 2.6rem 2.1rem;position:relative;transform:rotate(-1.2deg);margin:0 -.2rem}
+.terrain{position:relative;aspect-ratio:1/1;container-type:inline-size;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+.terrain>i{display:block}
+.terrain>i:nth-child(1),.terrain>i:nth-child(4){background:#f6f9f1}
+.terrain>i:nth-child(2),.terrain>i:nth-child(3){background:var(--wood)}
+.land{position:absolute;width:34%;aspect-ratio:1/1;transform:translate(-50%,-50%);background:var(--a2);border-radius:44% 56% 52% 48% / 52% 40% 60% 48%}
+.land span{position:absolute;left:50%;top:22%;transform:translate(-50%,-50%);font-size:.875rem;font-weight:800;line-height:1.1;color:var(--on-a2);text-align:center;white-space:nowrap}
+.marks{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.marks *{fill:none;stroke:var(--mark);stroke-width:.85}
+.marks .course{stroke-width:.7}
+.marks .fx{stroke:var(--on-a2)}
+.pin{position:absolute;width:0;height:0}
+.pin b{position:absolute;left:calc(2.5cqw + 2px);top:calc(-2.5cqw - 1rem);font-size:1rem;font-weight:800;color:var(--mark);line-height:1;white-space:nowrap}
+.pin span{display:none;position:absolute;left:0;top:calc(3.4cqw + 4px);transform:translateX(-50%);font-size:.875rem;font-weight:600;line-height:1.15;white-space:nowrap;color:var(--ink)}
+.pin b,.pin span{background:var(--paper);padding:.12em .3em}
+.pin.is-left span{transform:none;left:-8px}
+.pin.is-right span{transform:none;left:auto;right:-8px}
+.pin.is-low span{top:auto;bottom:calc(3.4cqw + 4px)}
+.pin.you span{display:block;font-weight:800;color:var(--mark);top:calc(3cqw + 6px)}
+.pin.you.is-low span{top:auto;bottom:calc(4.4cqw + 6px)}
+.ax-y{position:absolute;left:0;top:.7rem;bottom:2.6rem;width:2.1rem;display:flex;align-items:center;justify-content:center}
+.ax-y b{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.875rem;font-weight:800;white-space:nowrap}
+.ax-x{position:absolute;left:2.1rem;right:.7rem;bottom:0;height:2.6rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem;font-size:.875rem;color:var(--soft)}
+.ax-x b{color:var(--ink);font-weight:800}
+.end{position:absolute;left:.45rem;font-size:.875rem;line-height:1.15;color:var(--soft);max-width:44%}
+.end.t{top:.4rem}.end.b{bottom:.4rem}
+.map-note{font-size:1rem;line-height:1.45;margin:1.5rem 0 0!important;max-width:34rem}
+.map-wait{font-size:1.125rem;max-width:34rem;background:var(--paper);padding:1.4rem}
+.key{padding:4rem 0 1rem}
+.key h2,.cta h2{font-size:1.85rem;margin:0 0 1.4rem}
+.key table{width:100%;border-collapse:collapse}
+.key th{text-align:left;font-size:.875rem;font-weight:600;color:var(--soft);padding:0 .8rem .6rem 0}
+.key td{vertical-align:top;padding:.95rem .8rem .95rem 0;border-top:2px solid var(--wood)}
+.key td.sym{width:3.2rem}
+.key .ring{display:grid;place-items:center;width:2.2rem;height:2.2rem;border:3px solid var(--mark);border-radius:50%;color:var(--mark);font-weight:800;font-size:1rem}
+.key .tri{display:block;width:2.2rem;height:2rem}
+.key .tri path{fill:none;stroke:var(--mark);stroke-width:3}
+.key b{display:block;font-weight:800;font-size:1.125rem;line-height:1.25}
+.key small{display:block;font-size:.875rem;color:var(--soft)}
+.key .line{font-size:1rem;line-height:1.45;margin-top:.35rem}
+.key tr.you td{background:var(--grass)}
+@media (max-width:759px){
+.key thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.key tr{display:grid;grid-template-columns:3.2rem minmax(0,1fr);border-top:2px solid var(--wood);padding:.95rem 0}
+.key td{border:0;padding:0}
+.key td:last-child{grid-column:2}
+.key tr.you{background:var(--grass);padding-left:.6rem;padding-right:.6rem}
+.key tr.you td{background:none}
+.key tr.you td:first-child{padding-left:0}
+}
+.key tr.you td:first-child{padding-left:.6rem}
+.open-space{background:var(--a2);color:var(--on-a2);padding:4rem 0;margin-top:3rem}
+.open-space .wrap{display:grid;gap:1.6rem}
+.open-space h2{font-size:2rem;line-height:1}
+.fin{display:block;width:3.6rem;height:3.6rem;margin:0 0 1.4rem}
+.fin circle{fill:none;stroke:currentColor;stroke-width:5}
+.why{font-size:1.25rem;line-height:1.45;max-width:36rem}
+.open-wait{font-size:1.125rem;max-width:36rem}
+.cta{background:var(--ink);color:var(--paper);padding:4rem 0 2rem}
+.cta .wrap{display:grid;gap:1.4rem}
+.cta h2{margin:0 0 1rem}
+.cta p{font-size:1.125rem;max-width:34rem}
+.btn{margin:.4rem 0 1.2rem}
+.btn .ken-cta:hover{background:var(--paper)!important;color:var(--ink)!important}
+.sign{font-size:1rem;font-weight:600}
+.sign span{display:block;font-weight:400}
+.foot{font-size:.875rem;line-height:1.45;opacity:.8;padding:2.4rem 0 0;max-width:46rem}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){
+.sheet{animation:cm-lay 1s cubic-bezier(.2,.7,.2,1) both}
+.marks .course{stroke-dasharray:100;animation:cm-route 1.2s .7s cubic-bezier(.4,0,.2,1) both}
+@keyframes cm-lay{from{transform:translateY(24px) rotate(-5deg);opacity:0}}
+@keyframes cm-route{from{stroke-dashoffset:100}}
+}
 @media (min-width:760px){
 body{font-size:18px}
-.wrap{padding:0 2rem}
-.hero{display:grid;grid-template-columns:7fr 4fr;gap:3.5rem;align-items:end;padding:3rem 0 2.4rem}
-.hero h1{font-size:3.15rem}
-.intro{font-size:1.15rem;margin-top:1.5rem}
-.facts{margin:0}
-.facts b{font-size:2rem;min-width:3rem}
-.grid{display:grid;grid-template-columns:7fr 5fr;gap:3.5rem;align-items:start}
-.map{padding:2.4rem 0 2rem}
-.key{padding:2.4rem 0 2rem}
-.map h2,.key h2{font-size:1.75rem}
-.plot{grid-template-columns:1.6rem 1fr}
-.plot-y{font-size:.88rem}
-.plot-end,.plot-x{font-size:.78rem}
-.plot-x b{font-size:.88rem}
-.pt span{display:block}
-.pt.you i{width:36px;height:36px;font-size:1rem}
-.pt.you span{top:21px;font-size:.84rem}
-.pt.you.is-low span{top:auto;bottom:21px}
-.plot-open span{font-size:.78rem}
-.open-space{padding:.6rem 0 3rem}
-.box{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;padding:2.2rem 2.4rem 2.3rem}
-.box h2{font-size:2.5rem;margin:0}
-.box-why{font-size:1.08rem;padding-top:.3rem}
-.cta-in{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;padding-top:2rem}
-.cta h2{font-size:2rem}
-.btn{margin:.4rem 0 1.2rem}
-.foot{padding:1.2rem 0 2.5rem}
+.hero h1{font-size:2rem;max-width:46ch}
+.facts .cm-fig{font-size:2.4rem}
+.sheet{padding:1rem 1rem 3rem 2.6rem}
+.ax-y{width:2.6rem;top:1rem;bottom:3rem}
+.ax-x{left:2.6rem;right:1rem;height:3rem}
+.pin span{display:block}
+.land span{top:76%}
+.key{padding:5.5rem 0 1.5rem}
+.key h2,.cta h2{font-size:clamp(2.4rem,1.3rem + 2vw,3.4rem)}
+.open-space{padding:6rem 0;margin-top:3.5rem}
+.open-space h2{font-size:clamp(2.2rem,.6rem + 2.4vw,3.4rem)}
+.fin{width:5rem;height:5rem}
+.cta{padding:6rem 0 2.4rem}
+.cta .wrap{grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:4rem;align-items:end}
+.foot{grid-column:1 / -1}
+}
+@media (min-width:1000px){
+.cm-first{padding-bottom:0}
+.cm-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:3.5rem;grid-template-rows:auto auto}
+.hero{grid-column:1 / -1;grid-row:1 / 3;grid-template-columns:subgrid;grid-template-rows:subgrid}
+.hero h1{grid-column:1 / -1;grid-row:1;margin:1.2rem 0 2rem;font-size:clamp(2.4rem,.4rem + 3.3vw,3.6rem)}
+.hero-text{display:block;grid-column:1;grid-row:2;padding-bottom:4rem}
+.ht-body{padding:0}
+.go{margin:1.8rem 0 0}
+.map{grid-column:2;grid-row:2;padding:0;margin-bottom:-6rem;position:relative;z-index:1}
+.key{padding-top:9rem}
+.open-space .wrap{grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:4rem;align-items:end}
+.key .wrap{max-width:none}
 }
 </style>
 </head>
 <body>
 <main class="cm">
+<div class="cm-first">
 <div class="wrap">
 <header class="top"><p class="brand">Lumen Growth</p><p class="tag">Competitive map</p>
 </header>
+<div class="cm-grid">
 <section data-section="hero" class="hero">
-<div>
-<p class="kicker">For Jonah at Tessellate Payroll</p>
 <h1>Where Tessellate sits among six payroll companies, and the gap none of them fills</h1>
+<div class="hero-text">
+<div class="ht-body">
 <p class="intro">The six companies are the ones whose profiles are closest to Tessellate. Each one is placed from what its own homepage says about who it sells to and how much it bundles with payroll. The positions are a reading, not a ranking.</p>
-</div>
+
 <ul class="facts">
-<li><b>186,300</b><span>companies in financial services, counted from company profiles</span></li>
-<li><b>24,900</b><span>of them growing headcount right now</span></li>
-<li><b>6</b><span>competitors placed from what their own homepages say</span></li>
+<li><span class="cm-fig">186,300</span><span>companies in financial services, counted from company profiles</span></li>
+<li><span class="cm-fig">24,900</span><span>of them growing headcount right now</span></li>
+<li><span class="cm-fig">6</span><span>competitors placed from what their own homepages say</span></li>
 </ul>
+<p class="for">For <b>Jonah</b> at <b>Tessellate Payroll</b></p>
+</div>
+<div class="go"><a class="ken-cta" data-ken-cta="hero" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#d91c73;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
+</div>
 </section>
-<div class="grid">
 <section data-section="map" class="map">
-<h2>Where each one stands</h2>
-<div class="plot">
-<div class="plot-y"><span>How much they bundle</span></div>
-<div class="plot-area">
-<span class="plot-end plot-end-top">Payroll plus HR</span>
-<span class="plot-end plot-end-bottom">Payroll only</span>
-<div class="plot-open" style="left:52%;top:80%"><span>Open space</span></div>
-<div class="pt" style="left:28%;top:34%"><i>1</i><span>Paymint</span></div>
-<div class="pt" style="left:74%;top:18%"><i>2</i><span>Stackwage</span></div>
-<div class="pt" style="left:12%;top:88%"><i>3</i><span>Crewpay</span></div>
-<div class="pt" style="left:88%;top:8%"><i>4</i><span>Harbor HR</span></div>
-<div class="pt" style="left:40%;top:62%"><i>5</i><span>Quillpay</span></div>
-<div class="pt" style="left:22%;top:54%"><i>6</i><span>Ledgerly Payroll</span></div>
-<div class="pt you" style="left:24%;top:76%"><i>T</i><span>Tessellate Payroll</span></div>
+<h2 class="map-h">Where each one stands</h2>
+<div class="sheet">
+<div class="terrain">
+<i></i><i></i><i></i><i></i>
+<div class="land" style="left:52%;top:80%"><span>Open space</span></div>
+<svg class="marks" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+<path class="course" pathLength="100" d="M24 76L52 80"/>
+<circle class="fx" cx="52" cy="80" r="2.6"/><circle class="fx" cx="52" cy="80" r="4"/>
+<circle cx="28" cy="34" r="3.4"/>
+<circle cx="74" cy="18" r="3.4"/>
+<circle cx="12" cy="88" r="3.4"/>
+<circle cx="88" cy="8" r="3.4"/>
+<circle cx="40" cy="62" r="3.4"/>
+<circle cx="22" cy="54" r="3.4"/>
+<path d="M24 72L28 78.6L20 78.6Z"/>
+</svg>
+<div class="pin" style="left:28%;top:34%"><b>1</b><span>Paymint</span></div>
+<div class="pin" style="left:74%;top:18%"><b>2</b><span>Stackwage</span></div>
+<div class="pin is-left is-low" style="left:12%;top:88%"><b>3</b><span>Crewpay</span></div>
+<div class="pin is-right" style="left:88%;top:8%"><b>4</b><span>Harbor HR</span></div>
+<div class="pin" style="left:40%;top:62%"><b>5</b><span>Quillpay</span></div>
+<div class="pin" style="left:22%;top:54%"><b>6</b><span>Ledgerly Payroll</span></div>
+<div class="pin you" style="left:24%;top:76%"><span>Tessellate Payroll</span></div>
+<p class="end t">Payroll plus HR</p>
+<p class="end b">Payroll only</p>
 </div>
-<div class="plot-x"><span>Under 50 staff</span><b>Company size they serve</b><span>Enterprise</span></div>
+<div class="ax-y"><b>How much they bundle</b></div>
+<p class="ax-x"><span>Under 50 staff</span><b>Company size they serve</b><span>Enterprise</span></p>
 </div>
-<p class="plot-note">Placed by Sofia Lindqvist from what each company's own homepage says about who it sells to and how. A position is a reading of how a company sells, not a measurement.</p>
+<p class="map-note">Placed by Sofia Lindqvist from what each company's own homepage says about who it sells to and how. A position is a reading of how a company sells, not a measurement.</p>
 </section>
+</div>
+</div>
+</div>
 <section data-section="positions" class="key">
+<div class="wrap">
 <h2>How each one positions</h2>
-<ol>
-<li><i>1</i><div><b>Paymint</b><small>paymint.example</small><p>Sells payroll with benefits and HR to small businesses, self-serve, and leads with one low monthly price.</p></div></li>
-<li><i>2</i><div><b>Stackwage</b><small>stackwage.example</small><p>Sells a payroll and HR platform to mid-market companies through a sales team, with a PEO option.</p></div></li>
-<li><i>3</i><div><b>Crewpay</b><small>crewpay.example</small><p>Sells contractor payments and invoicing to studios and their freelancers, priced per payment with no subscription.</p></div></li>
-<li><i>4</i><div><b>Harbor HR</b><small>harborhr.example</small><p>Sells a full HR suite with payroll to companies with 100 to 2,000 employees, implemented over eight to twelve weeks.</p></div></li>
-<li><i>5</i><div><b>Quillpay</b><small>quillpay.example</small><p>Sells payroll with tip pooling and scheduling to restaurants and hospitality groups, and leads with rules built for that trade.</p></div></li>
-<li><i>6</i><div><b>Ledgerly Payroll</b><small>ledgerly.example</small><p>Sells an accountant-run payroll service with a bookkeeping add-on to small businesses, and leads with a named person.</p></div></li>
-<li class="you"><i>T</i><div><b>Tessellate Payroll</b><small>where you sit today</small><p>Sells payroll and contractor payments to creative agencies with 10 to 80 staff, and leads with one flat price and going live in a week.</p></div></li>
-</ol>
-</section>
+<table>
+<thead><tr><th scope="col"><span class="vh">Mark on the map</span></th><th scope="col">Company</th><th scope="col">How it sells</th></tr></thead>
+<tbody>
+<tr><td class="sym"><span class="ring">1</span></td><td><b>Paymint</b><small>paymint.example</small></td><td><p class="line">Sells payroll with benefits and HR to small businesses, self-serve, and leads with one low monthly price.</p></td></tr>
+<tr><td class="sym"><span class="ring">2</span></td><td><b>Stackwage</b><small>stackwage.example</small></td><td><p class="line">Sells a payroll and HR platform to mid-market companies through a sales team, with a PEO option.</p></td></tr>
+<tr><td class="sym"><span class="ring">3</span></td><td><b>Crewpay</b><small>crewpay.example</small></td><td><p class="line">Sells contractor payments and invoicing to studios and their freelancers, priced per payment with no subscription.</p></td></tr>
+<tr><td class="sym"><span class="ring">4</span></td><td><b>Harbor HR</b><small>harborhr.example</small></td><td><p class="line">Sells a full HR suite with payroll to companies with 100 to 2,000 employees, implemented over eight to twelve weeks.</p></td></tr>
+<tr><td class="sym"><span class="ring">5</span></td><td><b>Quillpay</b><small>quillpay.example</small></td><td><p class="line">Sells payroll with tip pooling and scheduling to restaurants and hospitality groups, and leads with rules built for that trade.</p></td></tr>
+<tr><td class="sym"><span class="ring">6</span></td><td><b>Ledgerly Payroll</b><small>ledgerly.example</small></td><td><p class="line">Sells an accountant-run payroll service with a bookkeeping add-on to small businesses, and leads with a named person.</p></td></tr>
+<tr class="you"><td class="sym"><svg class="tri" viewBox="0 0 36 32" aria-hidden="true" focusable="false"><path d="M18 3L33 29H3Z"/></svg></td><td><b>Tessellate Payroll</b><small>where you sit today</small></td><td><p class="line">Sells payroll and contractor payments to creative agencies with 10 to 80 staff, and leads with one flat price and going live in a week.</p></td></tr>
+</tbody>
+</table>
 </div>
+</section>
 <section data-section="open_space" class="open-space">
-<div class="box">
-<div><p class="lbl">The open space</p><h2>Agencies that pay staff and freelancers from one place</h2></div>
-<p class="box-why">Crewpay handles freelancers and Paymint handles staff, and nobody does both for an agency that runs a mix. Quillpay shows that a product built for one trade can hold its own against the generalists. Tessellate already pays both kinds of worker for agencies and could claim the space by saying so on every page.</p>
+<div class="wrap">
+<div>
+<svg class="fin" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="11"/><circle cx="20" cy="20" r="17"/></svg>
+<h2>Agencies that pay staff and freelancers from one place</h2>
+</div>
+<p class="why">Crewpay handles freelancers and Paymint handles staff, and nobody does both for an agency that runs a mix. Quillpay shows that a product built for one trade can hold its own against the generalists. Tessellate already pays both kinds of worker for agencies and could claim the space by saying so on every page.</p>
 </div>
 </section>
 <section data-section="cta" class="cta">
-<div class="cta-in">
+<div class="wrap">
 <div>
 <h2>Does the map match what you see?</h2>
 <p>Book 20 minutes and I will move the dots with you: who Tessellate Payroll loses deals to, and whether the open space is worth going after.</p>
@@ -174,10 +249,9 @@ body{font-size:18px}
 <div class="btn"><a class="ken-cta" data-ken-cta="booking" href="#" style="display:inline-block;padding:12px 20px;border-radius:8px;background:#d91c73;color:#fff;text-decoration:none;font-weight:600">Book 20 minutes</a></div>
 <p class="sign">Sofia Lindqvist<span>Growth Lead, Lumen Growth</span></p>
 </div>
-</div>
-</section>
 <p class="foot">Drawn for Tessellate Payroll by Sofia Lindqvist at Lumen Growth. Company names come from company profiles and positions from each company's public website.</p>
 </div>
+</section>
 </main>
 </body>
 </html>

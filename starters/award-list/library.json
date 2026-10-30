@@ -4,8 +4,8 @@
   "tags": ["top 25", "ranked list", "hiring signals", "market", "growth"],
   "featured": false,
   "needs": [],
-  "version": "1.0.0",
-  "updatedAt": "2026-10-29",
+  "version": "1.1.0",
+  "updatedAt": "2026-10-30",
   "samples": [
     { "id": "tollgate", "label": "Tollgate Logistics" },
     { "id": "alder-health-shared", "label": "Shared link (no person): Alder Health Partners" },

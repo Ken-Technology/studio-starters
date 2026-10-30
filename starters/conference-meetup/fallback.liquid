@@ -1,9 +1,6 @@
-{%- assign accent = brand.colors.primary | default: '#0f4c81' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#e3a82b' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Archivo' -%}
-{%- assign font_body = brand.fonts.body | default: 'Archivo' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
+{%- assign accent = brand.colors.primary | default: '#5c6b54' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Barlow Condensed' -%}
+{%- assign font_body = brand.fonts.body | default: 'Barlow' -%}
 {%- assign company = brand.name | default: sender.name | default: 'Our team' -%}
 <!doctype html>
 <html lang="en">
@@ -12,71 +9,63 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>See you at the show</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;700&display=swap">
+{%- if font_head == 'Barlow Condensed' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Barlow' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
+:root{--p:{{ accent | escape }};--on-p:#fff;--bg:#eeecea;--ink:#333231;--muted:#5f5b58;--fh:'{{ font_head | escape }}','Arial Narrow',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--margin:clamp(1rem,2.4vw,2rem)}
+@supports (color:oklch(from red l c h)){:root{--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#f4f5f3;color:#16181d;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.cm{--p:{{ accent }};--s:{{ accent2 }};--ink:#16181d;--mute:#5d646d;--line:#dcdfe2;--card:#fff}
-.cm h1,.cm h2,.cm .sign{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-.015em;line-height:1.1;margin:0}
-.cm p{margin:0 0 .8rem}
-.wrap{max-width:72rem;margin:0 auto;padding:0 1.1rem}
-.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
-.logo{height:26px;width:auto;display:block}
-.brand{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:1rem}
-.hero{display:grid;gap:1.6rem;padding:2rem 0 2rem}
-.for{font-size:.95rem;color:var(--mute);margin:0 0 .7rem}
-.for b{font-weight:500;color:var(--ink)}
-.cm h1{font-size:2.35rem;text-wrap:balance;max-width:16ch}
-.dek{font-size:1.08rem;color:var(--mute);max-width:36rem;margin:1rem 0 0}
-.sign{position:relative;background:var(--p);color:#fff;border-radius:8px;padding:1.3rem 1.3rem 1.2rem;overflow:hidden;align-self:start}
-.sign::before{content:"";position:absolute;left:0;top:0;right:0;height:6px;background:var(--s)}
-.sign-hall{font-size:.95rem;font-weight:500;opacity:.9;margin:.3rem 0 0}
-.sign-num{font-size:4rem;line-height:1;letter-spacing:-.03em;margin:.1rem 0 .3rem}
-.sign-brand{font-size:1.05rem;font-weight:700;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.3)}
-.meet{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1.3rem 1.2rem 1.2rem;margin:0 0 3rem;max-width:40rem}
-.meet h2{font-size:1.35rem;margin:0 0 .5rem}
-.meet .lede{color:var(--mute);margin-bottom:1.1rem}
-.cta{margin:0 0 1.3rem}
-.sig{margin:0;font-size:.95rem}
-.sig b{display:block;font-weight:600}
-.sig span{color:var(--mute);font-size:.88rem}
-@media (min-width:700px){
-body{font-size:17px}
-.wrap{padding:0 2rem}
-.hero{grid-template-columns:minmax(0,1fr) 19rem;gap:3rem;align-items:center;padding:3.4rem 0 2.6rem}
-.cm h1{font-size:3.5rem}
-.sign{padding:1.6rem 1.6rem 1.4rem}
-.meet{padding:1.6rem 1.7rem 1.5rem}
-}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--ink);font:400 1.125rem/1.5 var(--fb);-webkit-font-smoothing:antialiased;padding:1rem var(--margin) 3rem}
+p{margin:0}
+.top{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;font-size:.9375rem;color:var(--muted)}
+.top .co{font-family:var(--fh);font-weight:700;font-size:1.5rem;line-height:1;color:var(--ink)}
+.top img{height:26px;width:auto;display:block}
+.top b{color:var(--ink);font-weight:500}
+.soon{font-family:var(--fh);font-weight:700;text-transform:uppercase;line-height:.82;font-size:clamp(5rem,1rem + 22vw,20rem);margin-top:2rem}
+h1,h2{font-family:var(--fh);font-weight:700;line-height:.95;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.25rem,1rem + 3.6vw,4rem);margin-top:2rem}
+.dek{margin-top:1rem;max-width:44ch}
+.meet{margin-top:4rem;max-width:44rem}
+h2{font-size:clamp(1.75rem,1.3rem + 1.6vw,2.5rem)}
+.lede{margin:.8rem 0 1.4rem;max-width:44ch}
+.ken-cta{background:var(--p)!important;color:var(--on-p)!important;border-radius:0!important}
+.ken-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.sig{margin-top:1.4rem;font-size:.9375rem;color:var(--muted)}
+.sig b{display:block;color:var(--ink);font-weight:600;font-size:1.0625rem}
 </style>
 </head>
 <body>
-<main class="cm">
-<div class="wrap">
+<main>
+<section data-section="hero">
 <header class="top">
-{%- if brand.logo_url %}<img class="logo" src="{{ brand.logo_url | escape }}" alt="{{ company | escape }}">{% else %}<span class="brand">{{ company | escape }}</span>{% endif -%}
+{%- if brand.logo_url %}<img src="{{ brand.logo_url | escape }}" alt="{{ company | escape }}">{% else %}<span class="co">{{ company | escape }}</span>{% endif %}
+<p>{% if person.first_name %}For <b>{{ person.first_name | escape }} {{ person.last_name | escape }}</b> at {{ account.name | escape }}{% else %}For the team at <b>{{ account.name | escape }}</b>{% endif %}</p>
 </header>
-<section data-section="hero" class="hero">
-<div>
-<p class="for">{% if person.first_name %}For <b>{{ person.first_name | escape }} {{ person.last_name | escape }}</b> at {{ account.name | escape }}{% else %}For the team at <b>{{ account.name | escape }}</b>{% endif %}</p>
+<p class="soon" aria-hidden="true">Booth soon</p>
 <h1>See you at the show</h1>
 <p class="dek">Hi {{ person.first_name | default: 'there' | escape }}, this page will show where {{ company | escape }} is at the show, when the team is at the booth, and the side events worth going to. It is not ready yet. The link stays the same, so check back shortly.</p>
-</div>
-<aside class="sign" aria-label="Booth details to follow">
-<p class="sign-hall">Booth</p>
-<p class="sign-num">Soon</p>
-<p class="sign-brand">{{ company | escape }}</p>
-</aside>
 </section>
 <section data-section="meet" class="meet">
 <h2>Rather pick a time now?</h2>
 <p class="lede">Choose a slot and it goes on both calendars. {{ sender.name | default: 'Our team' | escape }} will meet you at the booth or over a coffee nearby.</p>
-<div class="cta">{% render 'ken/cta', label: 'Pick a time at the show', kind: 'booking', color: accent %}</div>
-<p class="sig"><b>{{ sender.name | default: company | escape }}</b><span>{% if sender.title %}{{ sender.title | escape }}, {% endif %}{{ company | escape }}</span></p>
+{% render 'ken/cta', label: 'Pick a time at the show', kind: 'booking', color: accent %}
+<p class="sig"><b>{{ sender.name | default: company | escape }}</b>{% if sender.title %}{{ sender.title | escape }}, {% endif %}{{ company | escape }}</p>
 </section>
-</div>
 </main>
 </body>
 </html>

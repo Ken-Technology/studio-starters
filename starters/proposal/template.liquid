@@ -1,7 +1,7 @@
 {%- comment -%}Brand: validate the two colours, then read how light each one is so text on them stays readable.{%- endcomment -%}
 {%- assign font_head = brand.fonts.heading | default: 'Imbue' -%}
 {%- assign font_body = brand.fonts.body | default: 'Albert Sans' -%}
-{%- assign c1 = brand.colors.primary | default: '#f7941d' | strip | downcase -%}
+{%- assign c1 = brand.colors.primary | default: '#e99f47' | strip | downcase -%}
 {%- assign c2 = brand.colors.secondary | default: '#1f2b4d' | strip | downcase -%}
 {%- assign hexd = '0123456789abcdef' | split: '' -%}
 {%- assign cols = c1 | append: '|' | append: c2 | split: '|' -%}
@@ -45,7 +45,7 @@
 {%- assign lums = lumc | split: '|' -%}
 {%- assign c_primary = c1 -%}
 {%- assign p_lum = lums[0] | plus: 0 -%}
-{%- if oks[0] != 'y' -%}{%- assign c_primary = '#f7941d' -%}{%- assign p_lum = 164035 -%}{%- endif -%}
+{%- if oks[0] != 'y' -%}{%- assign c_primary = '#e99f47' -%}{%- assign p_lum = 171094 -%}{%- endif -%}
 {%- assign c_secondary = c2 -%}
 {%- assign s_lum = lums[1] | plus: 0 -%}
 {%- if oks[1] != 'y' -%}{%- assign c_secondary = '#1f2b4d' -%}{%- assign s_lum = 41190 -%}{%- endif -%}

@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Pick your first automation cell in one day</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap">
 <style>
 :root{
   --p:#e11d48;
@@ -31,8 +33,8 @@
 @supports (color:oklch(from red l c h)){
   :root{
     --ink:oklch(from var(--s) min(l,.28) c h);
-    --on-p:oklch(from var(--p) clamp(.17,(.6 - l) * 1000,1) 0 h);
-    --off-p:oklch(from var(--p) clamp(.17,(l - .6) * 1000,1) 0 h);
+    --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+    --off-p:color(from var(--p) xyz-d65 clamp(0,(y - .18) * 1000000,.9505) clamp(0,(y - .18) * 1000000,1) clamp(0,(y - .18) * 1000000,1.089));
   }
 }
 *{box-sizing:border-box}

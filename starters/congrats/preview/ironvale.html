@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Congratulations on the Series A, Daniel</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@500&display=swap">
 <style>
 :root{
   --p:#1c2b3a;
@@ -21,6 +24,8 @@
   --fb:'Nunito Sans',ui-sans-serif,system-ui,sans-serif;
   --m:clamp(1rem,3.2vw,2.5rem);
 }
+/* text on a brand field: white under luminance .18, black above, so it passes AA for any colour */
+@supports (color:color(from red xyz-d65 x y z)){:root{--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--on-s:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.55 var(--fb);-webkit-font-smoothing:antialiased}

@@ -14,14 +14,20 @@
 {%- if font_head == 'TikTok Sans' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=TikTok+Sans:wdth,wght@100..150,400..800&display=swap">
 {%- else %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;700{% if font_body != font_head %}&family={{ font_body | url_encode }}:wght@400;700{% endif %}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
 {%- endif %}
-{%- if font_head == 'TikTok Sans' and font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;700&display=swap">
+{%- if font_body != font_head %}
+{%- if font_body == 'TikTok Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=TikTok+Sans:wdth,wght@100..150,400..800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{--p:{{ accent | escape }};--on-p:#111;--f3:{% if brand.colors.primary %}color-mix(in srgb,var(--p) 22%,#fff){% else %}#c5f53d{% endif %};--paper:#fbfaf6;--ink:#111;--fh:'{{ font_head | escape }}','Arial Black',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--wide:{% if font_head == 'TikTok Sans' %}150%{% else %}100%{% endif %};--margin:clamp(1rem,2.4vw,2rem)}
-@supports (color:oklch(from red l c h)){:root{--on-p:oklch(from var(--p) clamp(.16,(.64 - l) * 1000,.98) 0 0)}}
+@supports (color:oklch(from red l c h)){:root{--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;background:var(--f3)}
 body{margin:0;color:var(--ink);font:400 clamp(1.0625rem,1rem + .25vw,1.1875rem)/1.45 var(--fb);-webkit-font-smoothing:antialiased}

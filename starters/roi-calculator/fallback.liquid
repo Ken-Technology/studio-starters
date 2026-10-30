@@ -1,10 +1,6 @@
 {%- assign accent = brand.colors.primary | default: '#256f82' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Libre Franklin' -%}
 {%- assign font_body = brand.fonts.body | default: 'Libre Franklin' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
-{%- if font_head == 'Libre Franklin' -%}{%- assign head_w = '400;600;800' -%}{%- else -%}{%- assign head_w = '400;700' -%}{%- endif -%}
-{%- if font_body == 'Libre Franklin' -%}{%- assign body_w = '400;600;800' -%}{%- else -%}{%- assign body_w = '400;700' -%}{%- endif -%}
 {%- assign brand_name = brand.name | default: '' -%}
 <!doctype html>
 <html lang="en">
@@ -13,12 +9,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>What manual work costs {{ account.name | escape }} each year</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q | escape }}:wght@{{ head_w }}&display=swap">
-{%- if body_q != head_q %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q | escape }}:wght@{{ body_w }}&display=swap">
+{%- if font_head == 'Libre Franklin' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Libre Franklin' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
-:root{--p:{{ accent | escape }};--on-p:#fff;--on-p:oklch(from var(--p) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);--fh:'{{ font_head | escape }}','Helvetica Neue',Arial,sans-serif;--fb:'{{ font_body | escape }}','Helvetica Neue',Arial,sans-serif;--bg:#dedad3;--ink:#0a0a0a;--muted:#57534d;--m:clamp(1.125rem,3.2vw,2.5rem)}
+:root{--p:{{ accent | escape }};--on-p:#fff;--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--fh:'{{ font_head | escape }}','Helvetica Neue',Arial,sans-serif;--fb:'{{ font_body | escape }}','Helvetica Neue',Arial,sans-serif;--bg:#dedad3;--ink:#0a0a0a;--muted:#57534d;--m:clamp(1.125rem,3.2vw,2.5rem)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.5 var(--fb);-webkit-font-smoothing:antialiased}

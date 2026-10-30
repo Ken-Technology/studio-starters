@@ -18,10 +18,16 @@
 {%- if font_head == 'Zilla Slab' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;700&display=swap">
 {%- else %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
 {%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;700&display=swap">
+{%- if font_body == 'Zilla Slab' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{--p:{{ accent | escape }};--s:{{ accent2 | escape }};--fh:'{{ font_head | escape }}',ui-serif,Georgia,serif;--fb:'{{ font_body | escape }}',ui-serif,Georgia,serif;--pad:#fbeb98;--ink:#1e2532;--desk:{% if has_brand_colour %}color-mix(in srgb,var(--s) 85%,#000){% else %}var(--s){% endif %};--m:clamp(.5rem,3vw,3rem);--px:clamp(1rem,4vw,3.5rem);--mw:clamp(1.25rem,1rem + 7vw,7.5rem);--gap:clamp(1rem,2.5vw,2.25rem)}

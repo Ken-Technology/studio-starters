@@ -1,7 +1,7 @@
 {%- assign brand_p = brand.colors.primary | default: '#bfb21a' -%}
 {%- assign brand_s = brand.colors.secondary | default: '#181715' -%}
-{%- assign font_head = brand.fonts.heading | default: 'Hanken Grotesk' -%}
-{%- assign font_body = brand.fonts.body | default: 'Hanken Grotesk' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Unbounded' -%}
+{%- assign font_body = brand.fonts.body | default: 'Onest' -%}
 {%- assign bname = brand.name | default: 'Northbeam' -%}
 <!doctype html>
 <html lang="en">
@@ -10,13 +10,24 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>The recording for {{ account.name | default: 'you' | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;500;700&display=swap">
+{%- if font_head == 'Unbounded' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;700&display=swap">
+{%- if font_body == 'Onest' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{--p:{{ brand_p | escape }};--s:{{ brand_s | escape }};--fh:'{{ font_head | escape }}','Helvetica Neue',Arial,sans-serif;--fb:'{{ font_body | escape }}','Helvetica Neue',Arial,sans-serif;--paper:#e8e8e3;--ink:var(--s);--on-p:#181715;--m:clamp(1rem,3vw,2.5rem)}
-@supports (color:oklch(from red l c h)){:root{--ink:oklch(from var(--s) min(l,.24) c h);--on-p:oklch(from var(--p) clamp(.2,(.6 - l) * 1000,1) 0 h)}}
+@supports (color:oklch(from red l c h)){:root{--ink:oklch(from var(--s) min(l,.24) c h);--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:clamp(1.0625rem,1rem + .25vw,1.1875rem);line-height:1.5;-webkit-font-smoothing:antialiased}
@@ -37,6 +48,10 @@ h1{margin-top:clamp(3rem,9vw,7rem);font-size:clamp(2.6rem,10vw,7.5rem);line-heig
 .book p{margin-top:1.2rem;max-width:38ch;font-size:clamp(1.3125rem,1.15rem + .7vw,1.75rem);line-height:1.35}
 .book .btn{margin-top:2rem}
 .book .btn .ken-cta{display:inline-flex!important;align-items:center;min-height:56px;padding:0 1.8rem!important;background:var(--p)!important;color:var(--on-p)!important;border-radius:0!important;font-weight:700}
+{%- if font_head == 'Unbounded' %}
+h1,h2{font-weight:600}
+h1{font-size:clamp(2rem,7.2vw,5.6rem);line-height:1;letter-spacing:-.02em;max-width:14ch}
+{%- endif %}
 </style>
 </head>
 <body>

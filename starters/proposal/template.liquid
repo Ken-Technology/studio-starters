@@ -1,10 +1,6 @@
 {%- comment -%}Brand: validate the two colours, then read how light each one is so text on them stays readable.{%- endcomment -%}
 {%- assign font_head = brand.fonts.heading | default: 'Imbue' -%}
 {%- assign font_body = brand.fonts.body | default: 'Albert Sans' -%}
-{%- assign head_q = ':wght@400;700' -%}
-{%- if font_head == 'Imbue' -%}{%- assign head_q = ':opsz,wght@10..100,500..700' -%}{%- endif -%}
-{%- assign body_q = ':wght@400;700' -%}
-{%- if font_body == 'Albert Sans' -%}{%- assign body_q = ':wght@400;600' -%}{%- endif -%}
 {%- assign c1 = brand.colors.primary | default: '#f7941d' | strip | downcase -%}
 {%- assign c2 = brand.colors.secondary | default: '#1f2b4d' | strip | downcase -%}
 {%- assign hexd = '0123456789abcdef' | split: '' -%}
@@ -54,10 +50,10 @@
 {%- assign s_lum = lums[1] | plus: 0 -%}
 {%- if oks[1] != 'y' -%}{%- assign c_secondary = '#1f2b4d' -%}{%- assign s_lum = 41190 -%}{%- endif -%}
 {%- comment -%}Text on the primary turns dark when the primary is light. A light secondary is darkened before it becomes the ink and the cover field.{%- endcomment -%}
-{%- if p_lum < 110000 -%}
+{%- if p_lum < 118000 -%}
 {%- assign on_p = '#ffffff' -%}
 {%- else -%}
-{%- assign on_p = '#141b30' -%}
+{%- assign on_p = '#000000' -%}
 {%- endif -%}
 {%- if s_lum < 110000 -%}
 {%- assign ink_css = 'var(--brand-secondary)' -%}
@@ -102,9 +98,19 @@
 <meta name="description" content="{{ data.sub | default: 'A proposal and 30-day pilot plan' | escape }}">
 <title>Proposal and pilot plan for {{ acct | escape }}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}{{ head_q }}&amp;display=swap">
+{%- if font_head == 'Imbue' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,500..700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}{{ body_q }}&amp;display=swap">
+{%- if font_body == 'Albert Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{
@@ -130,6 +136,8 @@
   --t-h2:clamp({{ h2_min }},1.6rem + 3.2vw,{{ h2_max }});
   --pad:clamp(1.25rem,4vw,3rem);
 }
+/* text on a brand field: white under luminance .18, black above, so it passes AA for any colour */
+@supports (color:color(from red xyz-d65 x y z)){:root{--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--t-body)/1.55 var(--fb);-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -145,6 +153,7 @@ a:focus-visible,.ken-cta:focus-visible{outline:3px solid var(--p);outline-offset
 .run{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.25rem;font-size:var(--t-small)}
 .brand{display:flex;align-items:center;gap:.6rem;font-weight:600;min-width:0}
 .logo{width:28px;height:28px;display:block;flex:none;object-fit:contain}
+.logo text{fill:var(--on-p)}
 .run .ref{text-align:right}
 .mon-box{container-type:inline-size;padding-block:clamp(2.5rem,8vw,6rem) clamp(1.5rem,4vw,3rem)}
 .mon{font-family:var(--fh);font-weight:600;line-height:.86;letter-spacing:-.025em;overflow-wrap:break-word;font-optical-sizing:auto;font-size:max(min(calc({{ one }}cqi / 10),32vh),min(calc({{ wfit }}cqi / 10),{{ mon_floor }}))}

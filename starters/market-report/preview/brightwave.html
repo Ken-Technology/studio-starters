@@ -35,6 +35,10 @@
   --t-head:clamp(2.25rem,1.3rem + 3vw,3.75rem);
   --t-fig:clamp(4rem,2rem + 7vw,8rem);
 }
+/* text on a brand field: white under luminance .18, black above, so it passes AA for any colour */
+/* the ink is the secondary kept dark, so its text and the greys mixed from it hold on the stone ground */
+@supports (color:oklch(from red l c h)){:root{--ink:oklch(from var(--s) min(l,.33) min(c,.12) h)}}
+@supports (color:color(from red xyz-d65 x y z)){:root{--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--t-body)/1.5 var(--fb);-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -131,7 +135,7 @@ figcaption b{color:var(--ink);font-weight:500}
 .sigs span{max-width:28ch}
 
 .plays-f{background:var(--p);color:var(--on-p);margin-top:clamp(4.5rem,3rem + 8vw,10rem);padding-block:clamp(4rem,3rem + 5vw,8rem)}
-.plays-f .n{color:inherit;opacity:.72}
+.plays-f .n{color:inherit}
 .plays{list-style:none;margin:3rem 0 0;padding:0;display:grid;gap:2.75rem}
 .plays li{display:grid;gap:.8rem}
 .plays h3{font-size:var(--t-sub);line-height:1.05;max-width:24ch}

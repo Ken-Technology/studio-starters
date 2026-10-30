@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#b7c8be' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Jost' -%}
 {%- assign font_body = brand.fonts.body | default: 'Spectral' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign has_brand = false -%}
 {%- if brand.name and brand.name != '' -%}{%- assign has_brand = true -%}{%- endif -%}
 <!doctype html>
@@ -13,13 +11,26 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A partnership idea for {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600&display=swap">
+{%- if font_head == 'Jost' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Spectral' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#a6b3bc;color:#1c1c1c;font-family:'{{ font_body }}',Georgia,'Times New Roman',serif;font-size:1.125rem;line-height:1.55;-webkit-font-smoothing:antialiased}
-.pp{--ink:#1c1c1c;--muted:#38424a;--them:#d6c4b8;--paper:#e6e8e3;--p:{{ accent }};--s:{{ accent2 }};--p-ink:#e3e2da;--p-ink:oklch(from var(--p) clamp(0.2,(0.62 - l) * 1000,0.91) 0.008 100);--m:clamp(1.25rem,3vw,2.5rem);--head:'{{ font_head }}','Futura','Century Gothic',ui-sans-serif,system-ui,sans-serif}
+.pp{--ink:#1c1c1c;--muted:#38424a;--them:#d6c4b8;--paper:#e6e8e3;--p:{{ accent }};--s:{{ accent2 }};--p-ink:#e3e2da;--p-ink:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--m:clamp(1.25rem,3vw,2.5rem);--head:'{{ font_head }}','Futura','Century Gothic',ui-sans-serif,system-ui,sans-serif}
 .pp h1,.pp h2{font-family:var(--head);font-weight:500;letter-spacing:-.03em;margin:0;text-wrap:balance}
 .pp p{margin:0;text-wrap:pretty}
 .pp-wrap{max-width:84rem;margin:0 auto;padding:0 var(--m)}

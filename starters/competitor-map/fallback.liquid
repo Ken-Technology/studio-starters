@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#f9b233' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Overpass' -%}
 {%- assign font_body = brand.fonts.body | default: 'Overpass' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,23 +9,28 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A competitive map for {{ account.name | escape }}</title>
-{%- if font_head == 'Overpass' or font_body == 'Overpass' %}
+{%- if font_head == 'Overpass' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
 {%- endif %}
-{%- if font_head != 'Overpass' %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;700&display=swap">
+{%- if font_body != font_head %}
+{%- if font_body == 'Overpass' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
 {%- endif %}
-{%- if font_body != 'Overpass' and font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;700&display=swap">
 {%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#fff;color:#1d1d1b;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .cm{--a:{{ accent }};--a2:{{ accent2 }};--ink:#1d1d1b;--soft:#4b4f48;--paper:#fff;--grass:#e2efd5;--wood:#cfe5b8;
---mark:{{ accent }};--mark:oklch(from var(--a) min(l,0.55) c h);
---on-a:#fff;--on-a:oklch(from var(--a) clamp(0.2,(0.6 - l) * 1000,0.99) 0.01 h);
---on-a2:#1d1d1b;--on-a2:oklch(from var(--a2) clamp(0.2,(0.6 - l) * 1000,0.99) 0.01 h);
+--mark:{{ accent }};--mark:oklch(from var(--a) min(l,0.48) c h);
+--on-a:#fff;--on-a:color(from var(--a) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--on-a2:#1d1d1b;--on-a2:color(from var(--a2) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
 --m:clamp(1.125rem,3vw,2.5rem);overflow-x:clip}
 .cm h1,.cm h2{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;text-wrap:balance;margin:0}
 .cm p{margin:0}

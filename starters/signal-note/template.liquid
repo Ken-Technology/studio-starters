@@ -34,10 +34,16 @@
 {%- if font_head == 'Zilla Slab' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,700;1,400;1,700&display=swap">
 {%- else %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
 {%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;700&display=swap">
+{%- if font_body == 'Zilla Slab' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{
@@ -50,7 +56,7 @@
   --mute:#4a4636;
 {%- if has_brand_colour %}
   --desk:color-mix(in srgb,var(--s) 85%,#000);
-  --red:color-mix(in srgb,var(--p) 45%,#000);
+  --red:color-mix(in srgb,var(--p) 38%,#000);
 {%- else %}
   --desk:var(--s);
   --red:var(--p);

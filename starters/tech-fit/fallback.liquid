@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#161a17' -%}
 {%- assign font_head = brand.fonts.heading | default: 'STIX Two Text' -%}
 {%- assign font_body = brand.fonts.body | default: 'STIX Two Text' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign us = brand.name | default: 'our product' -%}
 <!doctype html>
 <html lang="en">
@@ -12,22 +10,27 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>How {{ us | escape }} fits the tools {{ account.name | escape }} runs</title>
-{%- if font_head == 'STIX Two Text' or font_body == 'STIX Two Text' %}
+{%- if font_head == 'STIX Two Text' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
 {%- endif %}
-{%- if font_head != 'STIX Two Text' %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;700&display=swap">
+{%- if font_body != font_head %}
+{%- if font_body == 'STIX Two Text' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
 {%- endif %}
-{%- if font_body != 'STIX Two Text' and font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;700&display=swap">
 {%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#f4f5f1;color:#161a17;font-family:'{{ font_body }}',Georgia,'Times New Roman',serif;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .tf{--a:{{ accent }};--a2:{{ accent2 }};--ink:#161a17;--soft:#4a504b;--paper:#f4f5f1;--rule:#c9cec4;
---on-a:#161a17;--on-a:oklch(from var(--a) clamp(0.2,(0.6 - l) * 1000,0.985) 0.01 h);
---on-a2:#f4f5f1;--on-a2:oklch(from var(--a2) clamp(0.2,(0.6 - l) * 1000,0.975) 0.01 h);
+--on-a:#161a17;--on-a:color(from var(--a) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--on-a2:#f4f5f1;--on-a2:color(from var(--a2) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
 --m:clamp(1.125rem,3vw,2.5rem);overflow-x:clip}
 .tf h1,.tf h2,.nm{font-family:'{{ font_head }}',Georgia,'Times New Roman',serif;font-weight:600;letter-spacing:-.01em;line-height:1.1;text-wrap:balance;margin:0}
 .tf p{margin:0}

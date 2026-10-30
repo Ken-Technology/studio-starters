@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Close the books in five days</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
 <style>
 :root{
@@ -31,8 +31,8 @@
 @supports (color:oklch(from red l c h)){
   :root{
     --ink:oklch(from var(--s) min(l,.28) c h);
-    --on-p:oklch(from var(--p) clamp(.17,(.6 - l) * 1000,1) 0 h);
-    --off-p:oklch(from var(--p) clamp(.17,(l - .6) * 1000,1) 0 h);
+    --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+    --off-p:color(from var(--p) xyz-d65 clamp(0,(y - .18) * 1000000,.9505) clamp(0,(y - .18) * 1000000,1) clamp(0,(y - .18) * 1000000,1.089));
   }
 }
 *{box-sizing:border-box}

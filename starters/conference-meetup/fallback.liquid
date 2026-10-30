@@ -1,8 +1,6 @@
 {%- assign accent = brand.colors.primary | default: '#5c6b54' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Barlow Condensed' -%}
 {%- assign font_body = brand.fonts.body | default: 'Barlow' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign company = brand.name | default: sender.name | default: 'Our team' -%}
 <!doctype html>
 <html lang="en">
@@ -11,13 +9,25 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>See you at the show</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@{% if font_head == 'Barlow Condensed' %}700{% else %}400;700{% endif %}&display=swap">
+{%- if font_head == 'Barlow Condensed' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600&display=swap">
+{%- if font_body == 'Barlow' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@600&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{--p:{{ accent | escape }};--on-p:#fff;--bg:#eeecea;--ink:#333231;--muted:#5f5b58;--fh:'{{ font_head | escape }}','Arial Narrow',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--margin:clamp(1rem,2.4vw,2rem)}
-@supports (color:oklch(from red l c h)){:root{--on-p:oklch(from var(--p) clamp(0,(.68 - l) * 1000,1) 0 0)}}
+@supports (color:oklch(from red l c h)){:root{--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html,body{background:var(--bg)}
 body{margin:0;color:var(--ink);font:400 1.125rem/1.5 var(--fb);-webkit-font-smoothing:antialiased;padding:1rem var(--margin) 3rem}

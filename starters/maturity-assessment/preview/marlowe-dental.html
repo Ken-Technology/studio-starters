@@ -5,17 +5,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>How mature are Marlowe&#39;s clinic operations?</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap">
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js"></script>
 <style>
 :root{
   --p:#1f3d36;
   --s:#2b2430;
   --on-p:#0d2a1c;
-  --on-p:oklch(from var(--p) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);
+  --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
   --on-s:#f7f7f7;
-  --on-s:oklch(from var(--s) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);
+  --on-s:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
   --fh:'Fraunces','Helvetica Neue',Arial,sans-serif;
   --fb:'Source Sans 3','Helvetica Neue',Arial,sans-serif;
   --bg:#f7f7f7;

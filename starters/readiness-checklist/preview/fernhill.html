@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Where Fernhill stands on SOC 2 before the first audit</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&display=swap">
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3/dist/cdn.min.js"></script>
 <style>
@@ -13,9 +13,9 @@
   --p:#d7261e;
   --s:#22392f;
   --on-p:#fff;
-  --on-p:oklch(from var(--p) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);
+  --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
   --on-s:#eef0ee;
-  --on-s:oklch(from var(--s) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);
+  --on-s:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
   --fh:'Young Serif',Georgia,serif;
   --fb:'Source Serif 4',Georgia,serif;
   --bg:#eef0ee;

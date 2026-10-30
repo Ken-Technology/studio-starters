@@ -21,10 +21,16 @@
 {%- if font_head == 'TikTok Sans' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=TikTok+Sans:wdth,wght@100..150,400..800&display=swap">
 {%- else %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@400;700{% if font_body != font_head %}&family={{ font_body | url_encode }}:wght@400;700{% endif %}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
 {%- endif %}
-{%- if font_head == 'TikTok Sans' and font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@400;700&display=swap">
+{%- if font_body != font_head %}
+{%- if font_body == 'TikTok Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=TikTok+Sans:wdth,wght@100..150,400..800&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{
@@ -48,8 +54,8 @@
   --margin:clamp(1rem,2.4vw,2rem);
 }
 @supports (color:oklch(from red l c h)){:root{
-  --on-p:oklch(from var(--p) clamp(.16,(.64 - l) * 1000,.98) 0 0);
-  --on-s:oklch(from var(--s) clamp(.16,(.64 - l) * 1000,.98) 0 0);
+  --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+  --on-s:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
 }}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;background:var(--p)}

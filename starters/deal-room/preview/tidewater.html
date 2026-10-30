@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Deal room: Tidewater Health Partners and Cedarline</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@600&display=swap">
 <style>
 :root{
   --bg:#ffffff;
@@ -24,6 +27,8 @@
   --fb:'Source Sans 3',ui-sans-serif,system-ui,sans-serif;
   --m:clamp(1rem,3vw,2.5rem);
 }
+/* text on a brand field: white under luminance .18, black above, so it passes AA for any colour */
+@supports (color:color(from red xyz-d65 x y z)){:root{--on-us:color(from var(--us) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--on-them:color(from var(--them) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.125rem/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}

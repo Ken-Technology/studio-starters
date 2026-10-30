@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#4a4a4a' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Bricolage Grotesque' -%}
 {%- assign font_body = brand.fonts.body | default: 'Bricolage Grotesque' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign hero_keys = 'headline,sub,cta,proof,image' | split: ',' -%}
 {%- assign hero_notes = 0 -%}
 {%- assign section_notes = 0 -%}
@@ -21,12 +19,26 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Your new homepage, sketched: {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;600;700{% if font_body != font_head %}&family={{ body_q }}:wght@400;600{% endif %}&display=swap">
+{%- if font_head == 'Bricolage Grotesque' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Bricolage Grotesque' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#e2e2e2;color:#7d0c14;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:1.125rem;line-height:1.5;-webkit-font-smoothing:antialiased}
-.am{--paper:#e2e2e2;--surface:#d6d6d6;--sheet:#f2f2f2;--a:{{ accent }};--a2:{{ accent2 }};--ink:#7d0c14;--ink:oklch(from var(--a) min(l,0.36) min(c,0.16) h);--muted:#6e3a3e;--muted:color-mix(in oklch,var(--ink) 78%,var(--paper));--f-ink:#e2e2e2;--f-ink:oklch(from var(--a) clamp(0.2,(0.62 - l) * 1000,0.92) 0 0);--m:clamp(1rem,2.4vw,2rem);--head:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;color:var(--ink)}
+.am{--paper:#e2e2e2;--surface:#d6d6d6;--sheet:#f2f2f2;--a:{{ accent }};--a2:{{ accent2 }};--ink:#7d0c14;--ink:oklch(from var(--a) min(l,0.36) min(c,0.16) h);--muted:#6e3a3e;--muted:color-mix(in oklch,var(--ink) 88%,var(--paper));--f-ink:#e2e2e2;--f-ink:color(from var(--a) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--m:clamp(1rem,2.4vw,2rem);--head:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;color:var(--ink)}
 .am h1,.am h2,.am h3{font-family:var(--head);font-weight:700;line-height:1;letter-spacing:-.03em;margin:0;text-wrap:balance}
 .am p{margin:0;text-wrap:pretty}
 .am ol,.am ul{margin:0;padding:0;list-style:none}

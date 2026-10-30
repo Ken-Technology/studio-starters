@@ -5,16 +5,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Where Corbel stands among the six distributors it sells against</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap">
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#fff;color:#1d1d1b;font-family:'Source Sans 3',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .cm{--a:#1f2a44;--a2:#c8a24a;--ink:#1d1d1b;--soft:#4b4f48;--paper:#fff;--grass:#e2efd5;--wood:#cfe5b8;
---mark:#1f2a44;--mark:oklch(from var(--a) min(l,0.55) c h);
---on-a:#fff;--on-a:oklch(from var(--a) clamp(0.2,(0.6 - l) * 1000,0.99) 0.01 h);
---on-a2:#1d1d1b;--on-a2:oklch(from var(--a2) clamp(0.2,(0.6 - l) * 1000,0.99) 0.01 h);
+--mark:#1f2a44;--mark:oklch(from var(--a) min(l,0.48) c h);
+--on-a:#fff;--on-a:color(from var(--a) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--on-a2:#1d1d1b;--on-a2:color(from var(--a2) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
 --m:clamp(1.125rem,3vw,2.5rem);overflow-x:clip}
 .cm h1,.cm h2,.cm-fig{font-family:'Newsreader',ui-sans-serif,system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;text-wrap:balance;margin:0}
 .cm p{margin:0}
@@ -60,6 +62,7 @@ body{margin:0;background:#fff;color:#1d1d1b;font-family:'Source Sans 3',ui-sans-
 .pin{position:absolute;width:0;height:0}
 .pin b{position:absolute;left:calc(2.5cqw + 2px);top:calc(-2.5cqw - 1rem);font-size:1rem;font-weight:800;color:var(--mark);line-height:1;white-space:nowrap}
 .pin span{display:none;position:absolute;left:0;top:calc(3.4cqw + 4px);transform:translateX(-50%);font-size:.875rem;font-weight:600;line-height:1.15;white-space:nowrap;color:var(--ink)}
+.pin b,.pin span{background:var(--paper);padding:.12em .3em}
 .pin.is-left span{transform:none;left:-8px}
 .pin.is-right span{transform:none;left:auto;right:-8px}
 .pin.is-low span{top:auto;bottom:calc(3.4cqw + 4px)}

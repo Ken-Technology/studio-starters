@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#232323' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Funnel Display' -%}
 {%- assign font_body = brand.fonts.body | default: 'Funnel Sans' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign us_name = brand.name | default: '' -%}
 {%- assign us_label = us_name | default: 'Our team' -%}
 {%- comment -%} Is a brand color light? Brightness is (299 r + 587 g + 114 b) / 1000 of a hex color; 110 or more takes dark text. {%- endcomment -%}
@@ -68,8 +66,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Deal room: {{ account.name | escape }}{% if us_name != '' %} and {{ us_name | escape }}{% endif %}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600&display=swap">
+{%- if font_head == 'Funnel Display' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Funnel Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 :root{
   --bg:#ffffff;
@@ -99,6 +110,8 @@
   --fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;
   --m:clamp(1rem,3vw,2.5rem);
 }
+/* text on a brand field: white under luminance .18, black above, so it passes AA for any colour */
+@supports (color:color(from red xyz-d65 x y z)){:root{--on-us:color(from var(--us) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--on-them:color(from var(--them) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.125rem/1.55 var(--fb);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}

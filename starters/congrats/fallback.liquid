@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#ffd249' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Josefin Sans' -%}
 {%- assign font_body = brand.fonts.body | default: 'Karla' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,8 +9,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>A note for {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500&display=swap">
+{%- if font_head == 'Josefin Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Karla' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@500&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 :root{--p:{{ accent }};--s:{{ accent2 }};--ink:#0a0a0a;--paper:#ffffff;--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--m:clamp(1rem,3.2vw,2.5rem)}
 *{box-sizing:border-box}

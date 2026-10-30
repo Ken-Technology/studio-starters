@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#232323' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Funnel Display' -%}
 {%- assign font_body = brand.fonts.body | default: 'Funnel Sans' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign us_name = brand.name | default: '' -%}
 <!doctype html>
 <html lang="en">
@@ -12,8 +10,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Deal room: {{ account.name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;600&display=swap">
+{%- if font_head == 'Funnel Display' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+{%- if font_body == 'Funnel Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@400;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@600&display=swap">
+{%- endif %}
+{%- endif %}
 <style>
 :root{--bg:#fff;--ink:#111;--them:color-mix(in srgb,{{ accent2 }} 75%,#000);--us:color-mix(in srgb,{{ accent }} 45%,#fff);--g:2.5rem;--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--m:clamp(1rem,3vw,2.5rem)}
 *{box-sizing:border-box}
@@ -22,7 +33,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:400 1.125rem/1.55 var(-
 p{margin:0}
 h1,h2{font-family:var(--fh);font-weight:600;margin:0;letter-spacing:-.015em;line-height:1.02}
 .f{position:relative;padding:2.5rem var(--m);display:grid;gap:1.5rem}
-.them{background:var(--them);color:#fff}
+.them{background:var(--them);color:#fff;color:color(from var(--them) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}
 .them h1{font-size:clamp(2.5rem,5.4vw,5.25rem);max-width:14ch;text-wrap:balance}
 .them p{font-size:1.5rem;line-height:1.4;max-width:30em}
 .us{background:var(--us);padding-top:3.5rem}

@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#cdc3b6' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Barlow Condensed' -%}
 {%- assign font_body = brand.fonts.body | default: 'Barlow' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign company = brand.name | default: sender.name | default: 'Our team' -%}
 {%- assign sender_first = sender.name | default: 'us' | split: ' ' | first -%}
 {%- assign has_talk = false -%}
@@ -22,9 +20,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>See you at {{ data.conference_name | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@{% if font_head == 'Barlow Condensed' %}600;700{% else %}400;500;700{% endif %}&display=swap">
+{%- if font_head == 'Barlow Condensed' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- if font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500;600&display=swap">
+{%- if font_body == 'Barlow' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@600&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 :root{
@@ -46,8 +56,8 @@
   --margin:clamp(1rem,2.4vw,2rem);
 }
 @supports (color:oklch(from red l c h)){:root{
-  --on-p:oklch(from var(--p) clamp(0,(.68 - l) * 1000,1) 0 0);
-  --on-s:oklch(from var(--s) clamp(.2,(.68 - l) * 1000,.98) 0 0);
+  --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+  --on-s:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
 }}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;background:var(--bg)}
@@ -60,19 +70,23 @@ a:focus-visible,.btn:focus-visible,.ken-cta:focus-visible{outline:3px solid var(
 .frame{padding-left:var(--margin);padding-right:var(--margin);max-width:100rem;margin:0 auto}
 .sign{font-family:var(--fh);font-weight:700;text-transform:uppercase;line-height:.82;letter-spacing:-.01em}
 
-/* first screen: the hall top-left, the booth number bottom-right, the page between them */
+/* first screen: the hall's aisle sign hangs on two cables, the hall on its top line and the booth number filling the plate */
 .hero{display:grid;grid-template-areas:"top" "sign" "lead";padding-top:1rem;overflow:hidden}
 .top{grid-area:top;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;font-size:var(--step-small)}
 .top .co{font-family:var(--fh);font-weight:700;font-size:var(--step-lead);line-height:1;letter-spacing:0}
 .top img{height:26px;width:auto;display:block}
 .top .for{text-align:right;color:var(--muted);max-width:28rem}
-.signage{grid-area:sign;display:flex;flex-direction:column;margin-top:1.6rem}
-.hall{font-size:clamp(3rem,1rem + 8vw,8rem)}
-.num{align-self:flex-end;text-align:right;margin:.2em -.04em 0 0;white-space:nowrap}
-.num.b3{font-size:50vw}
-.num.b4{font-size:40vw}
-.num.b5{font-size:31vw}
-.num.b7{font-size:17vw}
+.signage{grid-area:sign;--hang:2rem;display:flex;flex-direction:column;justify-content:center;padding-top:var(--hang);margin-top:1.25rem;overflow:hidden}
+.board{position:relative;display:flex;flex-direction:column;gap:.5rem;padding:1rem 1.1rem 1.15rem;background:var(--p);color:var(--on-p)}
+.board::before,.board::after{content:"";position:absolute;bottom:100%;width:4px;height:60rem;background:var(--ink)}
+.board::before{left:16%}
+.board::after{right:16%}
+.hall{position:relative;z-index:1;font-size:clamp(2rem,1rem + 4vw,4.5rem)}
+.num{align-self:flex-end;text-align:right;margin:0 -.03em -.04em 0;white-space:nowrap}
+.num.b3{font-size:46vw}
+.num.b4{font-size:36vw}
+.num.b5{font-size:28vw}
+.num.b7{font-size:15vw}
 .lead-in{grid-area:lead;padding:2.2rem 0 1rem;max-width:44rem;position:relative;z-index:1}
 .top .for b{color:var(--ink);font-weight:500}
 .hero h1{font-size:clamp(2.125rem,.9rem + 3.9vw,4rem);max-width:22ch}
@@ -82,8 +96,8 @@ a:focus-visible,.btn:focus-visible,.ken-cta:focus-visible{outline:3px solid var(
 .btn{display:inline-flex;align-items:center;min-height:3rem;padding:.75rem 1.4rem;background:var(--p);color:var(--on-p);font-weight:600;text-decoration:none}
 .btn:hover{background:color-mix(in srgb,var(--p) 86%,#000)}
 .go span{color:var(--muted);font-size:var(--step-small);max-width:24rem}
-@keyframes rise{from{transform:translateY(18%)}to{transform:none}}
-.num{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+@keyframes hang{from{transform:translateY(-1.25rem)}to{transform:none}}
+.board{animation:hang .9s cubic-bezier(.2,.7,.2,1) both}
 
 /* the note: heading left, the line right */
 .note{display:grid;gap:1.4rem;padding-top:4.5rem}
@@ -157,36 +171,39 @@ a:focus-visible,.btn:focus-visible,.ken-cta:focus-visible{outline:3px solid var(
 @media (min-width:1000px){
   .hero{padding-top:1.5rem;padding-bottom:1.5rem;min-height:min(100svh,50rem);grid-template-columns:minmax(0,6fr) minmax(0,6fr);grid-template-rows:auto 1fr;grid-template-areas:"top top" "lead sign";column-gap:3rem}
   .lead-in{align-self:center;padding:2rem 0}
-  .signage{margin-top:1rem;justify-content:space-between}
-  .num.b3{font-size:min(31vw,30rem)}
-  .num.b4{font-size:min(24vw,23rem)}
-  .num.b5{font-size:min(19vw,18rem)}
-  .num.b7{font-size:min(11vw,10.5rem)}
+  .signage{--hang:3rem;margin-top:2rem;align-self:stretch}
+  .board{padding:1.4rem 1.6rem 1.6rem}
+  .num.b3{font-size:min(26vw,25rem)}
+  .num.b4{font-size:min(20vw,19rem)}
+  .num.b5{font-size:min(16vw,15rem)}
+  .num.b7{font-size:min(9.5vw,9rem)}
 }
 @media (min-width:760px) and (max-width:999px){
-  .num.b3{font-size:40vw}
-  .num.b4{font-size:32vw}
-  .num.b5{font-size:25vw}
-  .num.b7{font-size:14vw}
+  .signage{--hang:3rem}
+  .num.b3{font-size:36vw}
+  .num.b4{font-size:28vw}
+  .num.b5{font-size:22vw}
+  .num.b7{font-size:12vw}
 }
 /* a brand heading face is usually wider than the condensed default: the signage steps down */
 .wide .hero h1{font-size:clamp(1.875rem,.8rem + 2.8vw,3rem)}
 .wide .hero h1.long{font-size:clamp(1.625rem,.8rem + 2.2vw,2.5rem)}
 .wide .days .d,.wide .plate .when{font-size:clamp(1.75rem,.6rem + 4.2vw,4.25rem)}
-.wide .hall,.wide .off h2,.wide .foot .sign{font-size:clamp(2.5rem,1rem + 6vw,6rem)}
+.wide .off h2,.wide .foot .sign{font-size:clamp(2.5rem,1rem + 6vw,6rem)}
+.wide .hall{font-size:clamp(1.75rem,1rem + 3vw,3.5rem)}
 .wide .rows li{font-size:clamp(1.625rem,1rem + 2.4vw,3rem)}
-.wide .num.b3{font-size:40vw}
-.wide .num.b4{font-size:31vw}
-.wide .num.b5{font-size:24vw}
-.wide .num.b7{font-size:13vw}
+.wide .num.b3{font-size:36vw}
+.wide .num.b4{font-size:28vw}
+.wide .num.b5{font-size:22vw}
+.wide .num.b7{font-size:12vw}
 @media (min-width:1000px){
-  .wide .num.b3{font-size:min(25vw,24rem)}
-  .wide .num.b4{font-size:min(19vw,18rem)}
-  .wide .num.b5{font-size:min(15vw,14rem)}
-  .wide .num.b7{font-size:min(8.5vw,8rem)}
+  .wide .num.b3{font-size:min(20vw,19rem)}
+  .wide .num.b4{font-size:min(15vw,14rem)}
+  .wide .num.b5{font-size:min(12vw,11.5rem)}
+  .wide .num.b7{font-size:min(7vw,6.75rem)}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.num{animation:none}}
-@media print{.num{animation:none}.group h3{position:static}.btn{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.board{animation:none}}
+@media print{.board{animation:none}.group h3{position:static}.btn{display:none}}
 </style>
 </head>
 <body{% unless font_head == 'Barlow Condensed' %} class="wide"{% endunless %}>
@@ -202,8 +219,10 @@ a:focus-visible,.btn:focus-visible,.ken-cta:focus-visible{outline:3px solid var(
     <div class="go"><a class="btn" href="#meet">Pick a time at the show</a><span>20 minutes at the booth, or a coffee nearby. {{ sender_first | escape }} holds the slot.</span></div>
   </div>
   <div class="signage" aria-label="Booth {{ data.booth | escape }} in {{ data.hall | escape }}">
-    <p class="hall sign">{{ data.hall | escape }}</p>
-    <p class="num sign {{ booth_size }}" aria-hidden="true">{{ data.booth | escape }}</p>
+    <div class="board">
+      <p class="hall sign">{{ data.hall | escape }}</p>
+      <p class="num sign {{ booth_size }}" aria-hidden="true">{{ data.booth | escape }}</p>
+    </div>
   </div>
 </section>
 

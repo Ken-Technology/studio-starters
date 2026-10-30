@@ -2,9 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#0c0a08' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Work Sans' -%}
 {%- assign font_body = brand.fonts.body | default: font_head -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
-{%- if brand.fonts.heading -%}{%- assign head_w = 'wght@400;700' -%}{%- else -%}{%- assign head_w = 'wght@300;400;500' -%}{%- endif -%}
 {%- assign sender_name = sender.name | default: 'Our team' -%}
 {%- assign sender_parts = sender_name | split: ' ' -%}
 {%- assign sender_first = sender_parts | first -%}
@@ -21,9 +18,16 @@
 {%- if data.ps and data.ps != '' -%}{%- assign has_ps = true -%}{%- endif -%}
 {%- assign kind = data.resource.kind | default: 'resource' -%}
 {%- assign open_label = 'Open the ' | append: kind -%}
-{%- comment %} The h1 is "Monthly brief for" over the account name, sized to the longer of the two lines so it holds two lines in the reading column. {% endcomment -%}
-{%- assign h_len = account.name.size | at_least: 17 -%}
-{%- assign h_fit = 1700 | divided_by: h_len | divided_by: 10.0 -%}
+{%- comment %} The h1 is "Monthly brief for" set small over the account name set large. The name is sized to its own line length: one line when it is short, otherwise half its length or its longest word, so it breaks onto two lines at most and stays large. {% endcomment -%}
+{%- assign n_len = account.name.size -%}
+{%- assign n_cpl = n_len -%}
+{%- if n_len > 13 -%}
+{%- assign n_cpl = n_len | plus: 1 | divided_by: 2 | plus: 2 -%}
+{%- assign n_words = account.name | split: ' ' -%}
+{%- for w in n_words -%}{%- if w.size > n_cpl -%}{%- assign n_cpl = w.size -%}{%- endif -%}{%- endfor -%}
+{%- endif -%}
+{%- assign n_cpl = n_cpl | at_least: 9 -%}
+{%- assign h_fit = 1600 | divided_by: n_cpl | divided_by: 10.0 -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,15 +35,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ data.headline | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:{{ head_w }}&amp;display=swap">
-{%- if body_q != head_q %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;500&amp;display=swap">
+{%- if font_head == 'Work Sans' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@500&display=swap">
 {%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:#e7e5e1}
-.nb{--p:{{ accent }};--s:{{ accent2 }};--paper:#e7e5e1;--ink:#16140f;--mute:#57544d;--onp:#16140f;--onp:oklch(from var(--p) clamp(0.2, (0.6 - l) * 100, 0.96) min(c, 0.03) h);--ons:#e7e5e1;--ons:oklch(from var(--s) clamp(0.2, (0.6 - l) * 100, 0.92) min(c, 0.02) h);--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--m:clamp(1.25rem,6vw,3rem);background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+.nb{--p:{{ accent }};--s:{{ accent2 }};--paper:#e7e5e1;--ink:#16140f;--mute:#57544d;--onp:#16140f;--onp:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--ons:#e7e5e1;--ons:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--m:clamp(1.25rem,6vw,3rem);background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.6;-webkit-font-smoothing:antialiased}
 .nb p{margin:0}
 .nb h1,.nb h2,.nb h3{font-family:var(--fh);font-weight:500;margin:0;text-wrap:balance}
 .nb a{color:inherit;text-decoration-thickness:.07em;text-underline-offset:.2em}
@@ -64,7 +74,9 @@ body{margin:0;background:#e7e5e1}
 .inside{margin-top:1.75rem!important;max-width:32rem;font-size:.875rem;line-height:1.7}
 .read{padding:3rem var(--m) 4rem}
 .hero{container-type:inline-size}
-.nb h1{font-size:clamp(1.75rem,{{ h_fit }}cqi,6.5rem);line-height:1;letter-spacing:-.035em;text-wrap:wrap}
+.nb h1{line-height:1;letter-spacing:-.035em}
+.nb h1 .pre{display:block;font-size:clamp(1.375rem,4.4cqi,2.25rem);letter-spacing:-.015em;line-height:1.2;margin-bottom:.35em}
+.nb h1 .who{display:block;font-size:clamp(2rem,{{ h_fit }}cqi,7.5rem);text-wrap:balance}
 .headline{font-family:var(--fh);font-weight:400;font-size:1.5rem;line-height:1.25;letter-spacing:-.015em;margin-top:2rem!important;max-width:30ch}
 .hi{font-family:var(--fh);font-size:1.375rem;margin-top:2.5rem!important}
 .intro{margin-top:.5rem!important;max-width:42rem}
@@ -77,12 +89,12 @@ body{margin:0;background:#e7e5e1}
 .step{margin-top:1.75rem;max-width:42rem;padding:1.25rem 1.4rem;background:color-mix(in oklab,var(--p) 26%,var(--paper))}
 .slip{background:var(--s);color:var(--ons);padding:1.6rem 1.5rem 1.75rem;max-width:42rem}
 .slip-title{font-family:var(--fh);font-size:1.375rem;line-height:1.25;letter-spacing:-.015em;margin-bottom:.75rem!important}
-.slip-kind{margin-top:1rem!important;font-size:.875rem;opacity:.85}
+.slip-kind{margin-top:1rem!important;font-size:.875rem}
 .cta{margin-top:1.5rem}
 .cta .ken-cta{display:inline-block!important;min-height:52px;padding:15px 26px!important;border-radius:2px!important;background:var(--p)!important;color:var(--onp)!important;font-family:var(--fh);font-weight:500!important;font-size:1.125rem;line-height:22px}
 .cta .ken-cta:focus-visible{outline:3px solid currentColor;outline-offset:3px}
 .muted{color:var(--mute);margin-top:1rem!important}
-.slip .muted{color:inherit;opacity:.85}
+.slip .muted{color:inherit}
 .reply{background:var(--s);color:var(--ons);padding:4rem var(--m) 3rem}
 .reply-in{max-width:44rem}
 .nb .reply h2{font-size:clamp(2rem,6vw,3.5rem);line-height:1;letter-spacing:-.035em;max-width:14ch;margin-bottom:1.5rem}
@@ -91,7 +103,7 @@ body{margin:0;background:#e7e5e1}
 .sign b{display:block;font-weight:500;font-size:1.25rem}
 .ps{margin-top:2rem!important;max-width:38rem}
 .ps b{font-weight:500;margin-right:.4rem}
-.foot{margin-top:3.5rem!important;font-size:.875rem;opacity:.8;max-width:38rem}
+.foot{margin-top:3.5rem!important;font-size:.875rem;max-width:38rem}
 @media (prefers-reduced-motion:no-preference){
 .stamp{animation:land .55s cubic-bezier(.3,1.3,.5,1) .35s both}
 .mark{animation:post .3s ease-out .8s both}
@@ -144,7 +156,7 @@ body{margin:0;background:#e7e5e1}
 </aside>
 <div class="read">
 <section data-section="hero" class="hero">
-<h1>Monthly brief for<br>{{ account.name | escape }}</h1>
+<h1><span class="pre">Monthly brief for</span> <span class="who">{{ account.name | escape }}</span></h1>
 <p class="headline">{{ data.headline | escape }}</p>
 <p class="hi">Hi {{ person.first_name | default: 'there' | escape }},</p>
 <p class="intro">{{ data.intro | escape }}</p>

@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Contracts in the last week of the quarter: a live session for Dana Whitfield</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap">
 <style>
 :root{
   --p:#1b2a49;
@@ -27,10 +29,10 @@
 @supports (color:oklch(from red l c h)){
   :root{
     --ink:oklch(from var(--s) min(l,.3) c h);
-    --on-p:oklch(from var(--p) clamp(.2,(.6 - l) * 1000,1) 0 h);
-    --off-p:oklch(from var(--p) clamp(.2,(l - .6) * 1000,1) 0 h);
-    --on-mustard:oklch(from var(--mustard) clamp(.2,(.6 - l) * 1000,1) 0 h);
-    --on-slate:oklch(from var(--slate) clamp(.2,(.6 - l) * 1000,1) 0 h);
+    --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+    --off-p:color(from var(--p) xyz-d65 clamp(0,(y - .18) * 1000000,.9505) clamp(0,(y - .18) * 1000000,1) clamp(0,(y - .18) * 1000000,1.089));
+    --on-mustard:color(from var(--mustard) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+    --on-slate:color(from var(--slate) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
   }
 }
 *{box-sizing:border-box}

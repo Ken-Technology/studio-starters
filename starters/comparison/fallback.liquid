@@ -2,8 +2,6 @@
 {%- assign accent2 = brand.colors.secondary | default: '#121316' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Alfa Slab One' -%}
 {%- assign font_body = brand.fonts.body | default: 'Golos Text' -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
 {%- assign us = brand.name | default: 'Us' -%}
 <!doctype html>
 <html lang="en">
@@ -15,20 +13,24 @@
 {%- if font_head == 'Alfa Slab One' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap">
 {%- else %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
 {%- endif %}
+{%- if font_body != font_head %}
 {%- if font_body == 'Golos Text' %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;800&display=swap">
-{%- elsif font_body != font_head %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
+{%- endif %}
 {%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#f2f2ef;color:#121316;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .vs{--a:{{ accent }};--a2:{{ accent2 }};--hw:{% if font_head == 'Alfa Slab One' %}400{% else %}700{% endif %};--ink:#121316;--soft:#4a4c52;--paper:#f2f2ef;
---on-a:#fff;--on-a:oklch(from var(--a) clamp(0.2,(0.6 - l) * 1000,0.99) 0.01 h);
---on-a2:#f2f2ef;--on-a2:oklch(from var(--a2) clamp(0.2,(0.6 - l) * 1000,0.97) 0.01 h);
+--on-a:#fff;--on-a:color(from var(--a) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--on-a2:#f2f2ef;--on-a2:color(from var(--a2) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
 --m:clamp(1.125rem,3vw,2.5rem);overflow-x:clip}
 .vs h1,.vs h2,.c-name,.disc{font-family:'{{ font_head }}',Rockwell,Georgia,serif;font-weight:var(--hw);letter-spacing:-.005em;line-height:1.02;text-wrap:balance;margin:0}
 .vs p{margin:0}

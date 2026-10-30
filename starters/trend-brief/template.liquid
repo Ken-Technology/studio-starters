@@ -3,9 +3,6 @@
 {%- if brand.colors.secondary -%}{%- assign ground_mix = '22%' -%}{%- else -%}{%- assign ground_mix = '100%' -%}{%- endif -%}
 {%- assign font_head = brand.fonts.heading | default: 'Brygada 1918' -%}
 {%- assign font_body = brand.fonts.body | default: font_head -%}
-{%- assign head_q = font_head | replace: ' ', '+' -%}
-{%- assign body_q = font_body | replace: ' ', '+' -%}
-{%- if brand.fonts.heading -%}{%- assign head_w = 'wght@400;700' -%}{%- else -%}{%- assign head_w = 'wght@400;600;700' -%}{%- endif -%}
 {%- assign short_name = account.name | split: ' - ' | first | split: ' | ' | first | strip | default: account.name -%}
 {%- assign industry = account.industry | default: 'your industry' -%}
 {%- assign base = data.counts[0].value | default: 0 -%}
@@ -36,15 +33,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>{{ data.headline | escape }}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ head_q }}:{{ head_w }}&amp;display=swap">
-{%- if body_q != head_q %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ body_q }}:wght@400;700&amp;display=swap">
+{%- if font_head == 'Brygada 1918' %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;600;700&display=swap">
+{%- else %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_head | url_encode }}:wght@700&display=swap">
+{%- endif %}
+{%- if font_body != font_head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font_body | url_encode }}:wght@700&display=swap">
 {%- endif %}
 <style>
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#edccbe;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.tb{--p:{{ accent }};--s:{{ accent2 }};--g:color-mix(in oklab,var(--s) {{ ground_mix }},#fff);--ink:#2a1422;--ink:oklch(from var(--p) min(l, 0.28) min(c, 0.06) h);--soft:color-mix(in oklab,var(--ink) 80%,var(--g));--on:#efd9cf;--on:oklch(from var(--p) clamp(0.2, (0.6 - l) * 100, 0.9) 0.035 h);--track:color-mix(in oklab,var(--p) 16%,var(--g));--fh:'{{ font_head }}',Georgia,'Times New Roman',serif;--fb:'{{ font_body }}',Georgia,'Times New Roman',serif;--m:clamp(1.25rem,2.6vw,2.5rem);background:var(--g);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.55;-webkit-font-smoothing:antialiased;font-variant-numeric:lining-nums tabular-nums}
+.tb{--p:{{ accent }};--s:{{ accent2 }};--g:color-mix(in oklab,var(--s) {{ ground_mix }},#fff);--ink:#2a1422;--ink:oklch(from var(--p) min(l, 0.28) min(c, 0.06) h);--soft:color-mix(in oklab,var(--ink) 80%,var(--g));--on:#efd9cf;--on:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--track:color-mix(in oklab,var(--p) 16%,var(--g));--fh:'{{ font_head }}',Georgia,'Times New Roman',serif;--fb:'{{ font_body }}',Georgia,'Times New Roman',serif;--m:clamp(1.25rem,2.6vw,2.5rem);background:var(--g);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.55;-webkit-font-smoothing:antialiased;font-variant-numeric:lining-nums tabular-nums}
 .tb p{margin:0}
 .tb h1,.tb h2,.tb h3{font-family:var(--fh);margin:0;text-wrap:balance}
 .tb a{color:inherit;text-decoration-thickness:.07em;text-underline-offset:.18em}

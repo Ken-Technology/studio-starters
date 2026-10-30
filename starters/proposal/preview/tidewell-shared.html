@@ -7,8 +7,10 @@
 <meta name="description" content="A 30-day pilot at the Riverside and Eastgate clinics, the criteria it has to meet, and what a year-one rollout would involve. Written to be forwarded to operations leadership and compliance.">
 <title>Proposal and pilot plan for Tidewell Dental Group</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700&display=swap">
 <style>
 :root{
   --brand-primary:#1b2f5e;
@@ -33,6 +35,8 @@
   --t-h2:clamp(2rem,1.6rem + 3.2vw,3.75rem);
   --pad:clamp(1.25rem,4vw,3rem);
 }
+/* text on a brand field: white under luminance .18, black above, so it passes AA for any colour */
+@supports (color:color(from red xyz-d65 x y z)){:root{--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--t-body)/1.55 var(--fb);-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -48,6 +52,7 @@ a:focus-visible,.ken-cta:focus-visible{outline:3px solid var(--p);outline-offset
 .run{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.25rem;font-size:var(--t-small)}
 .brand{display:flex;align-items:center;gap:.6rem;font-weight:600;min-width:0}
 .logo{width:28px;height:28px;display:block;flex:none;object-fit:contain}
+.logo text{fill:var(--on-p)}
 .run .ref{text-align:right}
 .mon-box{container-type:inline-size;padding-block:clamp(2.5rem,8vw,6rem) clamp(1.5rem,4vw,3rem)}
 .mon{font-family:var(--fh);font-weight:600;line-height:.86;letter-spacing:-.025em;overflow-wrap:break-word;font-optical-sizing:auto;font-size:max(min(calc(76.19047619047619cqi / 10),32vh),min(calc(200cqi / 10),2.5rem))}

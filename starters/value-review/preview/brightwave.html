@@ -7,8 +7,8 @@
 <meta name="description" content="A quarterly value review for Brightwave Logistics: usage against last quarter, adoption by team, wins, the plan for next quarter and the renewal timeline.">
 <title>Q3 2026 value review for Brightwave Logistics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&display=swap">
 <style>
 :root{
   --brand-primary:#06525c;
@@ -35,6 +35,8 @@
   --t-fig:clamp(3.5rem,2rem + 4.6vw,6rem);
   --qr:clamp(4rem,2rem + 6vw,8rem);
 }
+/* text on a brand field: white under luminance .18, black above, so it passes AA for any colour */
+@supports (color:color(from red xyz-d65 x y z)){:root{--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--t-body)/1.5 var(--fb);-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}

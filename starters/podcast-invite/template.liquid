@@ -1,5 +1,5 @@
-{%- assign accent = brand.colors.primary | default: '#ff8126' -%}
-{%- assign accent2 = brand.colors.secondary | default: '#4db3ff' -%}
+{%- assign accent = brand.colors.primary | default: '#f4a98c' -%}
+{%- assign accent2 = brand.colors.secondary | default: '#7ab5e4' -%}
 {%- assign font_head = brand.fonts.heading | default: 'TikTok Sans' -%}
 {%- assign font_body = brand.fonts.body | default: 'TikTok Sans' -%}
 {%- assign first = person.first_name | default: '' -%}
@@ -40,7 +40,7 @@
   --fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;
   --wide:{% if font_head == 'TikTok Sans' %}150%{% else %}100%{% endif %};
   /* flat fields at full strength: the poster (primary), the questions (secondary), the show, one black band */
-  --f3:{% if brand.colors.primary %}color-mix(in srgb,var(--p) 22%,#fff){% else %}#c5f53d{% endif %};
+  --f3:{% if brand.colors.primary %}color-mix(in srgb,var(--p) 22%,#fff){% else %}#d4eda7{% endif %};
   --black:#161615;
   --paper:#fbfaf6;
   --ink:#111;

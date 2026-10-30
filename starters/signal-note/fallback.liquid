@@ -1,4 +1,4 @@
-{%- assign accent = brand.colors.primary | default: '#c42f3c' -%}
+{%- assign accent = brand.colors.primary | default: '#a94245' -%}
 {%- assign accent2 = brand.colors.secondary | default: '#3d4750' -%}
 {%- assign font_head = brand.fonts.heading | default: 'Zilla Slab' -%}
 {%- assign font_body = brand.fonts.body | default: 'Zilla Slab' -%}
@@ -30,7 +30,7 @@
 {%- endif %}
 {%- endif %}
 <style>
-:root{--p:{{ accent | escape }};--s:{{ accent2 | escape }};--fh:'{{ font_head | escape }}',ui-serif,Georgia,serif;--fb:'{{ font_body | escape }}',ui-serif,Georgia,serif;--pad:#fbeb98;--ink:#1e2532;--desk:{% if has_brand_colour %}color-mix(in srgb,var(--s) 85%,#000){% else %}var(--s){% endif %};--m:clamp(.5rem,3vw,3rem);--px:clamp(1rem,4vw,3.5rem);--mw:clamp(1.25rem,1rem + 7vw,7.5rem);--gap:clamp(1rem,2.5vw,2.25rem)}
+:root{--p:{{ accent | escape }};--s:{{ accent2 | escape }};--fh:'{{ font_head | escape }}',ui-serif,Georgia,serif;--fb:'{{ font_body | escape }}',ui-serif,Georgia,serif;--pad:#f8e99f;--ink:#1e2532;--desk:{% if has_brand_colour %}color-mix(in srgb,var(--s) 85%,#000){% else %}var(--s){% endif %};--m:clamp(.5rem,3vw,3rem);--px:clamp(1rem,4vw,3.5rem);--mw:clamp(1.25rem,1rem + 7vw,7.5rem);--gap:clamp(1rem,2.5vw,2.25rem)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;min-height:100svh;font:400 clamp(1.0625rem,1rem + .3vw,1.25rem)/1.55 var(--fb);-webkit-font-smoothing:antialiased;overflow-wrap:break-word;background:var(--desk);color:#fff;color:rgb(from var(--desk) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255) clamp(0,(12800 - (r * r * .2126 + g * g * .7152 + b * b * .0722)) * 999,255))}

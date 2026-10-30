@@ -40,7 +40,7 @@ h1,h2{font-family:var(--fh);font-weight:var(--hw);text-transform:var(--hc);margi
 .letter{font-size:clamp(1.25rem,1.1rem + .6vw,1.5rem);line-height:1.5}
 .sig b{display:block;font-weight:600}
 .sig span{color:var(--muted)}
-.next{background:color-mix(in srgb,{{ accent2 }} 70%,#000);color:#fff;padding:4rem var(--m) 5rem;display:grid;gap:1.6rem}
+.next{background:color-mix(in srgb,{{ accent2 }} 70%,#000);color:#fff;color:color(from color-mix(in srgb,{{ accent2 }} 70%,#000) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));padding:4rem var(--m) 5rem;display:grid;gap:1.6rem}
 .next h2{font-size:clamp(2.5rem,6vw,5rem);max-width:12ch}
 .next p{font-size:1.25rem;max-width:30em}
 .ken-cta{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 1.8rem;background:var(--bg);color:var(--ink);font-weight:600;font-size:1.0625rem;text-decoration:none;border-radius:0}

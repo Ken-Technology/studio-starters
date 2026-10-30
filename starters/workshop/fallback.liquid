@@ -28,7 +28,7 @@
 {%- endif %}
 <style>
 :root{--p:{{ accent | escape }};--s:{{ accent2 | escape }};--fh:'{{ font_head | escape }}','Arial Narrow',Arial,sans-serif;--fb:'{{ font_body | escape }}',Georgia,serif;--paper:#ffffff;--ink:var(--s);--on-p:#050f16;--k:{% if caps %}1{% else %}.7{% endif %};--m:clamp(1rem,3vw,2.25rem);--pad:clamp(1.5rem,4vw,3rem)}
-@supports (color:oklch(from red l c h)){:root{--ink:oklch(from var(--s) min(l,.28) c h);--on-p:oklch(from var(--p) clamp(.17,(.6 - l) * 1000,1) 0 h)}}
+@supports (color:oklch(from red l c h)){:root{--ink:oklch(from var(--s) min(l,.28) c h);--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--p);color:var(--on-p);font-family:var(--fb);font-size:clamp(1.125rem,1.06rem + .25vw,1.25rem);line-height:1.45;-webkit-font-smoothing:antialiased}

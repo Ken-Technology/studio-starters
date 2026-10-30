@@ -50,10 +50,10 @@
 {%- assign s_lum = lums[1] | plus: 0 -%}
 {%- if oks[1] != 'y' -%}{%- assign c_secondary = '#1f2b4d' -%}{%- assign s_lum = 41190 -%}{%- endif -%}
 {%- comment -%}Text on the primary turns dark when the primary is light. A light secondary is darkened before it becomes the ink and the cover field.{%- endcomment -%}
-{%- if p_lum < 110000 -%}
+{%- if p_lum < 118000 -%}
 {%- assign on_p = '#ffffff' -%}
 {%- else -%}
-{%- assign on_p = '#141b30' -%}
+{%- assign on_p = '#000000' -%}
 {%- endif -%}
 {%- if s_lum < 110000 -%}
 {%- assign ink_css = 'var(--brand-secondary)' -%}
@@ -136,6 +136,8 @@
   --t-h2:clamp({{ h2_min }},1.6rem + 3.2vw,{{ h2_max }});
   --pad:clamp(1.25rem,4vw,3rem);
 }
+/* text on a brand field: white under luminance .18, black above, so it passes AA for any colour */
+@supports (color:color(from red xyz-d65 x y z)){:root{--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--t-body)/1.55 var(--fb);-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -151,6 +153,7 @@ a:focus-visible,.ken-cta:focus-visible{outline:3px solid var(--p);outline-offset
 .run{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.25rem;font-size:var(--t-small)}
 .brand{display:flex;align-items:center;gap:.6rem;font-weight:600;min-width:0}
 .logo{width:28px;height:28px;display:block;flex:none;object-fit:contain}
+.logo text{fill:var(--on-p)}
 .run .ref{text-align:right}
 .mon-box{container-type:inline-size;padding-block:clamp(2.5rem,8vw,6rem) clamp(1.5rem,4vw,3rem)}
 .mon{font-family:var(--fh);font-weight:600;line-height:.86;letter-spacing:-.025em;overflow-wrap:break-word;font-optical-sizing:auto;font-size:max(min(calc({{ one }}cqi / 10),32vh),min(calc({{ wfit }}cqi / 10),{{ mon_floor }}))}

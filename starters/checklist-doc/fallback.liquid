@@ -31,7 +31,7 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 html,body{margin:0;background:#ff87ab}
-.ck{--p:{{ accent }};--s:{{ accent2 }};--bg:#ff87ab;--ink:#0a0a0a;--mute:#6b1f3a;--hw:600;--tw:500;{% if font_head == 'Stack Sans Headline' %}--hw:300;--tw:300;{% endif %}--onp:#0a0a0a;--onp:oklch(from var(--p) clamp(0.2, (0.6 - l) * 100, 0.97) min(c, 0.03) h);--ons:#ff87ab;--ons:oklch(from var(--s) clamp(0.2, (0.6 - l) * 100, 0.93) min(c, 0.02) h);--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--m:clamp(1.25rem,3vw,3rem);min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.5;-webkit-font-smoothing:antialiased}
+.ck{--p:{{ accent }};--s:{{ accent2 }};--bg:#ff87ab;--ink:#0a0a0a;--mute:#6b1f3a;--hw:600;--tw:500;{% if font_head == 'Stack Sans Headline' %}--hw:300;--tw:300;{% endif %}--onp:#0a0a0a;--onp:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--ons:#ff87ab;--ons:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--m:clamp(1.25rem,3vw,3rem);min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:1.125rem;line-height:1.5;-webkit-font-smoothing:antialiased}
 .ck p{margin:0}
 .ck h1,.ck h2{font-family:var(--fh);font-weight:var(--hw);margin:0;text-wrap:balance}
 .wrap{max-width:86rem;margin:0 auto;padding:0 var(--m)}

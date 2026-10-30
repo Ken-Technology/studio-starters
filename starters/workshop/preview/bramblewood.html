@@ -31,8 +31,8 @@
 @supports (color:oklch(from red l c h)){
   :root{
     --ink:oklch(from var(--s) min(l,.28) c h);
-    --on-p:oklch(from var(--p) clamp(.17,(.6 - l) * 1000,1) 0 h);
-    --off-p:oklch(from var(--p) clamp(.17,(l - .6) * 1000,1) 0 h);
+    --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+    --off-p:color(from var(--p) xyz-d65 clamp(0,(y - .18) * 1000000,.9505) clamp(0,(y - .18) * 1000000,1) clamp(0,(y - .18) * 1000000,1.089));
   }
 }
 *{box-sizing:border-box}

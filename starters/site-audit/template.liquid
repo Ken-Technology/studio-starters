@@ -107,6 +107,7 @@ mark{background:var(--hl);color:var(--ink);padding:.04em .12em;-webkit-box-decor
 .criteria{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;align-items:end;min-height:clamp(16rem,40vh,22rem)}
 .criteria li{display:flex;flex-direction:column;justify-content:flex-end;height:100%}
 .criteria .bar{display:flex;align-items:flex-start;height:calc(var(--n) * 10%);min-height:2.5rem;padding:.5rem .6rem;background:currentColor}
+.pins{fill:#000;fill:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}
 .criteria .val{font:900 var(--step-lead)/1 var(--fh);color:var(--f);color:rgb(from currentColor calc(255 - r) calc(255 - g) calc(255 - b))}
 .criteria .val small{font:700 var(--step-small)/1 var(--fh)}
 .criteria .name{display:block;font-weight:700;font-size:var(--step-small);line-height:1.25;padding:.6rem 0 0;min-height:3.6rem}
@@ -320,7 +321,7 @@ blockquote cite{display:block;font:400 var(--step-small)/1.4 var(--fb);font-styl
         <rect x="216" y="218" width="48" height="12" fill="color-mix(in srgb,var(--ink) 18%,var(--tint))"/>
         <rect x="276" y="218" width="48" height="12" fill="color-mix(in srgb,var(--ink) 18%,var(--tint))"/>
         <rect x="336" y="218" width="36" height="12" fill="color-mix(in srgb,var(--ink) 18%,var(--tint))"/>
-        <g font-family="var(--fh)" font-weight="900" font-size="11" fill="var(--ink)" text-anchor="middle">
+        <g class="pins" font-family="var(--fh)" font-weight="900" font-size="11" fill="var(--ink)" text-anchor="middle">
           <circle cx="206" cy="72" r="10" fill="var(--p)"/><text x="206" y="76">1</text>
           <circle cx="206" cy="122" r="10" fill="var(--p)"/><text x="206" y="126">2</text>
           <circle cx="187" cy="163" r="10" fill="var(--p)"/><text x="187" y="167">3</text>

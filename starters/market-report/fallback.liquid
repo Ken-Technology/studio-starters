@@ -27,6 +27,7 @@
 {%- endif %}
 <style>
 :root{--p:{{ accent }};--s:{{ accent2 }};--fh:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;--ink:color-mix(in srgb,var(--s) 70%,#1d1916)}
+@supports (color:oklch(from red l c h)){:root{--ink:oklch(from color-mix(in srgb,var(--s) 70%,#1d1916) min(l,.3) c h)}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#ebe5e3;color:var(--ink);font:16px/1.6 var(--fb);-webkit-font-smoothing:antialiased;padding-bottom:4rem}
@@ -34,14 +35,14 @@ body{margin:0;background:#ebe5e3;color:var(--ink);font:16px/1.6 var(--fb);-webki
 h1{font-family:var(--fh);font-weight:900;letter-spacing:-.01em;margin:0 0 1.25rem;font-size:clamp(2.4rem,8vw,3.8rem);line-height:1;max-width:14ch;text-wrap:balance}
 p{margin:0 0 1rem}
 .brandline{display:flex;align-items:center;gap:.6rem;padding:1rem 0 3rem;font-size:.9rem}
-.logo{width:28px;height:28px;display:block;flex:none;border-radius:0;background:var(--p);color:#fff;font:700 15px/28px var(--fh);text-align:center}
+.logo{width:28px;height:28px;display:block;flex:none;border-radius:0;background:var(--p);color:#fff;color:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));font:700 15px/28px var(--fh);text-align:center}
 .logo-img{height:28px;width:auto;max-width:9rem;display:block;flex:none}
 .bname{font-weight:600}
 .meta{margin-left:auto}
 .cover{padding:1rem 0 1.5rem}
 .stand{font-size:1.25rem;line-height:1.45;max-width:34rem}
 .next{padding-top:2rem;max-width:34rem}
-.ken-cta{min-height:48px;line-height:20px;border-radius:0!important}
+.ken-cta{min-height:48px;line-height:20px;border-radius:0!important;background:var(--p)!important;color:#fff!important;color:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))!important}
 .sign{font-size:.95rem;margin:1.5rem 0 0}
 .sign b{display:block;font-weight:600}
 @media (min-width:760px){.doc{padding:0 2.5rem}.cover{padding:1rem 0 2.5rem}}

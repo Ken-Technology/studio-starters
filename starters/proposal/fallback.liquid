@@ -28,6 +28,7 @@
 {%- endif %}
 <style>
 :root{--p:{{ c_primary }};--ink:color-mix(in srgb,{{ c_secondary }} 45%,#141b30);--fh:'{{ font_head }}',Georgia,serif;--fb:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif}
+@supports (color:oklch(from red l c h)){:root{--ink:oklch(from color-mix(in srgb,{{ c_secondary }} 45%,#141b30) min(l,.32) c h)}}
 *{box-sizing:border-box}
 body{margin:0;background:#fff;color:var(--ink);font:400 1.0625rem/1.55 var(--fb);-webkit-font-smoothing:antialiased}
 p{margin:0}

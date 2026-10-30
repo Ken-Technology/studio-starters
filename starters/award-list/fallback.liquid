@@ -28,8 +28,8 @@
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#efefec;color:#16181d;font-family:'{{ font_body }}',ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .al{--a:{{ accent }};--a2:{{ accent2 }};--wd:{% if font_head == 'Saira' %}75%{% else %}normal{% endif %};--ink:#16181d;--soft:#4a4d55;--paper:#efefec;
---on-a:#16181d;--on-a:oklch(from var(--a) clamp(0.2,(0.6 - l) * 1000,0.985) 0.01 h);
---on-a2:#efefec;--on-a2:oklch(from var(--a2) clamp(0.2,(0.6 - l) * 1000,0.975) 0.01 h);
+--on-a:#16181d;--on-a:color(from var(--a) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
+--on-a2:#efefec;--on-a2:color(from var(--a2) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
 --m:clamp(1.125rem,3.2vw,2.5rem);overflow-x:clip}
 .al h1,.al h2,.al-no{font-family:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif;font-stretch:var(--wd);letter-spacing:-.01em}
 .al p{margin:0}

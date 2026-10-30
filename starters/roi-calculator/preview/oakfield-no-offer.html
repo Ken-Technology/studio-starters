@@ -11,9 +11,9 @@
   --p:#0f766e;
   --s:#1f2a24;
   --on-p:#fff;
-  --on-p:oklch(from var(--p) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);
+  --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
   --on-s:#fff;
-  --on-s:oklch(from var(--s) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);
+  --on-s:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
   --fh:'Libre Franklin','Helvetica Neue',Arial,sans-serif;
   --fb:'Libre Franklin','Helvetica Neue',Arial,sans-serif;
   --bg:#dedad3;
@@ -97,12 +97,12 @@ button,input{font:inherit}
 .chart figcaption{display:grid;gap:.6rem}
 .chart figcaption p{max-width:44ch}
 .chart h2{font-size:clamp(1.75rem,1.3rem + 2.2vw,3.25rem)}
-.chart figcaption p{font-size:var(--body);color:color-mix(in srgb,var(--on-s) 80%,var(--s))}
+.chart figcaption p{font-size:var(--body)}
 .chart svg{display:block;width:100%;height:auto;overflow:visible}
 .chart .pos{fill:color-mix(in srgb,var(--on-s) 90%,var(--s))}
 .chart .neg{fill:color-mix(in srgb,var(--on-s) 32%,var(--s))}
 .chart .base{stroke:var(--on-s);stroke-width:2}
-.chart text{font-family:var(--fb);fill:color-mix(in srgb,var(--on-s) 80%,var(--s));font-size:15px}
+.chart text{font-family:var(--fb);fill:var(--on-s);font-size:15px}
 .chart text.v{fill:var(--on-s);font-weight:600;font-family:var(--fh)}
 .chart .pb{stroke:var(--p);stroke-width:4}
 .chart text.pbl{fill:var(--on-s);font-weight:600}

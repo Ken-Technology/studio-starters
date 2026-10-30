@@ -30,7 +30,7 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#e3e2da;color:#161c1a;font-family:'{{ font_body }}',ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:1.125rem;line-height:1.5;-webkit-font-smoothing:antialiased}
-.vp{--paper:#e3e2da;--ink:#161c1a;--a:{{ accent }};--stage:{{ stage }};--a-ink:#161c1a;--a-ink:oklch(from var(--a) clamp(0.22,(0.62 - l) * 1000,0.91) 0.008 160);--s-ink:#e3e2da;--s-ink:oklch(from var(--stage) clamp(0.22,(0.62 - l) * 1000,0.91) 0.008 160);--m:clamp(1.25rem,3.4vw,3rem);--head:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif}
+.vp{--paper:#e3e2da;--ink:#161c1a;--a:{{ accent }};--stage:{{ stage }};--a-ink:#161c1a;--a-ink:color(from var(--a) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--s-ink:#e3e2da;--s-ink:color(from var(--stage) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--m:clamp(1.25rem,3.4vw,3rem);--head:'{{ font_head }}',ui-sans-serif,system-ui,sans-serif}
 .vp h1,.vp h2{font-family:var(--head);font-weight:400;letter-spacing:-.03em;line-height:1.02;text-wrap:balance;margin:0}
 .vp p{margin:0;text-wrap:pretty}
 .vp a:focus-visible,.vp .ken-cta:focus-visible{outline:3px solid var(--a);outline-offset:3px}

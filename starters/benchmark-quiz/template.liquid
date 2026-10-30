@@ -59,9 +59,9 @@ the colour itself (CSS relative colour). brand.fonts.heading and .body replace E
   --p:{{ accent | escape }};
   --s:{{ accent2 | escape }};
   --on-p:#0f0f0f;
-  --on-p:oklch(from var(--p) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);
+  --on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
   --on-s:#e4e2dc;
-  --on-s:oklch(from var(--s) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);
+  --on-s:color(from var(--s) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));
   --fh:'{{ font_head | escape }}','Helvetica Neue',Arial,sans-serif;
   --fb:'{{ font_body | escape }}','Helvetica Neue',Arial,sans-serif;
   --bg:#e4e2dc;

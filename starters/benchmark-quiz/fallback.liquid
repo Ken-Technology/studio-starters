@@ -26,7 +26,7 @@
 {%- endif %}
 {%- endif %}
 <style>
-:root{--p:{{ accent | escape }};--on-p:#0f0f0f;--on-p:oklch(from var(--p) clamp(0.16,(0.6 - l) * 1000,0.99) 0 0);--fh:'{{ font_head | escape }}','Helvetica Neue',Arial,sans-serif;--fb:'{{ font_body | escape }}','Helvetica Neue',Arial,sans-serif;--bg:#e4e2dc;--ink:#1a1a1a;--muted:#4a4740;--m:clamp(1.125rem,3vw,2.75rem)}
+:root{--p:{{ accent | escape }};--on-p:#0f0f0f;--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089));--fh:'{{ font_head | escape }}','Helvetica Neue',Arial,sans-serif;--fb:'{{ font_body | escape }}','Helvetica Neue',Arial,sans-serif;--bg:#e4e2dc;--ink:#1a1a1a;--muted:#4a4740;--m:clamp(1.125rem,3vw,2.75rem)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.125rem/1.5 var(--fb);-webkit-font-smoothing:antialiased}

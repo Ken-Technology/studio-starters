@@ -172,7 +172,7 @@ Ken supplies these. Recipes never fill them. `knowledge`, `defaults`, `account.d
 | `account.signals` | Recipe steps only: news on the account, a list of `{type, title, date, source_url}`, `date` as `YYYY-MM-DD`, newest first, at most 10, empty when there is none. Pass it to a prompt, or bind it to an array `data.*` slot and loop over that slot in the template. Needs ken-backend DEV-5732 deployed |
 | `person` | `first_name`, `last_name`, `title`. **Null on the shared link**, so always write `{{ person.first_name \| default: 'there' }}`. On a recruiting page also `current_title`, `current_company`, `location`, `skills`, `experience_summary` and `linkedin_url`, set while the page fills too |
 | `sender` | `name`, `title`, `signature_html` |
-| `brand` | `name`, `logo_url`, `colors.primary`, `colors.secondary`, `fonts.heading`, `fonts.body` |
+| `brand` | `name`, `logo_url`, `icon_url`, `colors.primary`, `colors.accent`, `colors.secondary`, `fonts.heading`, `fonts.body`. See Brand kit |
 | `link` | `booking_url`, `refresh_url`, `page_url` |
 | `asset_url` | Base URL for `assets/` |
 | `role` | Recruiting pages only: `title`, `company`, `location`, `remote_policy` (`onsite`, `hybrid` or `remote`), `pay_range` (like "$150k-$180k a year", empty when the role has no pay), `description`, `highlights` (the must-haves), `job_url`, `booking_url` |
@@ -180,9 +180,35 @@ Ken supplies these. Recipes never fill them. `knowledge`, `defaults`, `account.d
 | `knowledge` | Recipe steps only: `stable` (workspace-wide items such as instructions, company files and the offer) and `scoped` (the account's own files, signals and facts, such as call notes and transcripts), each a list of `{citationId, kind, title, text}` |
 | `defaults.<slot>` | Recipe steps only: the slot's `fallback` as the page would render it, a string fallback rendered as Liquid over the Ken variables and any other fallback as is. Absent for a slot with no fallback. Use it in prompts for details the owner sets, such as an event's name, date and agenda. Needs ken-backend DEV-5800 deployed |
 
-`brand.colors`, `brand.fonts` and `sender.title` are empty today, so every starter sets a default for them.
+`brand.colors`, `brand.fonts` and `sender.title` can be empty, so every starter sets a default for them.
 
 A recruiting page (type `recruiting`, behind the workspace's `recruiting` flag) belongs to one candidate on a recruiting campaign, not to an account, so `account` is empty there. Its samples set `"account": null` and carry `role` and `roles`.
+
+### Brand kit
+
+Starters read the workspace's brand kit from `brand.*` and keep today's look as the default, so a workspace with no brand kit renders exactly as before. Every variable can be null, so each use needs `| default:`:
+
+| Variable | Value |
+|---|---|
+| `brand.name` | Brand name |
+| `brand.logo_url` | Wide logo, else the icon |
+| `brand.icon_url` | Square icon |
+| `brand.colors.primary` | Main accent |
+| `brand.colors.accent` | Second accent |
+| `brand.colors.secondary` | Same value as `accent` |
+| `brand.fonts.heading` | Google Fonts family name |
+| `brand.fonts.body` | Google Fonts family name |
+
+Put one `assign` per brand color and font at the top of the template, with the starter's own value as the default, and use the variable everywhere after it:
+
+```liquid
+{%- assign accent = brand.colors.primary | default: '#2b3a67' -%}
+{%- assign accent2 = brand.colors.accent | default: '#e0a100' -%}
+{%- assign font_head = brand.fonts.heading | default: 'Fraunces' -%}
+{%- assign font_body = brand.fonts.body | default: 'Inter' -%}
+```
+
+Load the fonts with `{{ font_head | replace: ' ', '+' }}` in the Google Fonts `<link>`. Neutral colors (text, borders, backgrounds) stay hard-coded. Show a logo only where the starter already has one, guarded by `{%- if brand.logo_url %}`.
 
 ### Kit snippets
 

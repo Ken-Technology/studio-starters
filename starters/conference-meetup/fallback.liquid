@@ -27,7 +27,7 @@
 {%- endif %}
 <style>
 :root{--p:{{ accent | escape }};--on-p:#fff;--bg:#eeecea;--ink:#333231;--muted:#5f5b58;--fh:'{{ font_head | escape }}','Arial Narrow',ui-sans-serif,system-ui,sans-serif;--fb:'{{ font_body | escape }}',ui-sans-serif,system-ui,sans-serif;--margin:clamp(1rem,2.4vw,2rem)}
-@supports (color:oklch(from red l c h)){:root{--on-p:oklch(from var(--p) clamp(0,(.68 - l) * 1000,1) 0 0)}}
+@supports (color:oklch(from red l c h)){:root{--on-p:color(from var(--p) xyz-d65 clamp(0,(.18 - y) * 1000000,.9505) clamp(0,(.18 - y) * 1000000,1) clamp(0,(.18 - y) * 1000000,1.089))}}
 *{box-sizing:border-box}
 html,body{background:var(--bg)}
 body{margin:0;color:var(--ink);font:400 1.125rem/1.5 var(--fb);-webkit-font-smoothing:antialiased;padding:1rem var(--margin) 3rem}

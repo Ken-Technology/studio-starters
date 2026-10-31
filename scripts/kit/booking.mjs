@@ -1,4 +1,4 @@
-// `{% render 'ken/booking' %}` as a preview. A live page shows Ken's scheduler or the sender's booking page in a frame
+// `{% render 'ken/booking' %}` as a preview. A live page shows Kenso's scheduler or the sender's booking page in a frame
 // (ken-backend Ken.Redirector.Edge/src/studio/kit/booking.ts); a preview has neither, so this draws a calendar-shaped
 // placeholder the size of that frame, with the booking CTA under it. `height` and `title` work as on the edge.
 import { DEFAULT_CTA_COLOR, renderCta } from './cta.mjs';

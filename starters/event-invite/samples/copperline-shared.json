@@ -12,7 +12,7 @@
   "person": null,
   "sender": { "name": "Morgan Hale", "title": null, "signature_html": null },
   "brand": {
-    "name": "Ken",
+    "name": "Kenso",
     "logo_url": null,
     "colors": { "primary": "#12355b", "accent": "#d99a00", "secondary": "#d99a00" },
     "fonts": { "heading": "Young Serif", "body": "Figtree" }

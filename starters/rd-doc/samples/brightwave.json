@@ -11,9 +11,9 @@
   },
   "person": { "first_name": "Leo", "last_name": "Park", "title": "VP of Sales" },
   "sender": { "name": "Morgan Hale", "title": null, "signature_html": null },
-  "brand": { "name": "Ken", "logo_url": null, "colors": null, "fonts": null },
+  "brand": { "name": "Kenso", "logo_url": null, "colors": null, "fonts": null },
   "data": {
-    "offer": "Ken can run this whole plan for you: research, segments, copy, sending and follow-ups, done for you from $597 a month. Same motion you see here, we just operate it.",
+    "offer": "Kenso can run this whole plan for you: research, segments, copy, sending and follow-ups, done for you from $597 a month. Same motion you see here, we just operate it.",
     "strategy": {
       "intro": "Brightwave wins when a finance leader sees next quarter's churn before the board does. So the campaign goes after the people who own the revenue forecast at SaaS companies that bill through Stripe, and leads with the 60-day warning instead of the dashboard.",
       "audience": "CFOs, VPs of Finance and heads of revenue operations at B2B SaaS companies with 50 to 500 people. We skip companies on annual contracts only, since their churn shows up once a year and the warning matters less.",

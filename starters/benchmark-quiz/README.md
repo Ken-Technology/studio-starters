@@ -17,11 +17,11 @@ When no row matches the account's industry, or any of the five questions has no 
 
 ## The CSV
 
-Upload it to the template as a dataset named `peer-answers` (or rename it and change `"dataset"` in the `peers` step). One row is one question for one industry. `samples/peer-answers.csv` is a working example with made-up numbers for three industries. The `peers` slot declares these exact column names, so Ken maps each column onto the property of the same name.
+Upload it to the template as a dataset named `peer-answers` (or rename it and change `"dataset"` in the `peers` step). One row is one question for one industry. `samples/peer-answers.csv` is a working example with made-up numbers for three industries. The `peers` slot declares these exact column names, so Kenso maps each column onto the property of the same name.
 
 | Column | Type | Required | Example | What it means |
 |---|---|---|---|---|
-| `industry` | text | yes | `construction` | The peer group's industry, written the way Ken writes `account.industry`: lowercase LinkedIn industries. The `where` filter matches it against the account, ignoring case. |
+| `industry` | text | yes | `construction` | The peer group's industry, written the way Kenso writes `account.industry`: lowercase LinkedIn industries. The `where` filter matches it against the account, ignoring case. |
 | `question` | text | yes | `dispatch` | The `key` of the question in the `questions` slot. Every one of the five keys needs a row per industry, or the comparison hides for that industry. |
 | `n_1` | integer | yes | `14` | How many peers picked the first option. Options are in the order the template lists them, weakest first. |
 | `n_2` | integer | yes | `22` | How many picked the second option. |
@@ -34,7 +34,7 @@ Rules that keep the page right:
 - Write counts, not percentages, as plain integers. The page turns them into shares and rounds them.
 - Order the four options of every question from the weakest answer to the strongest, in `studio.json` and in the CSV alike. The whole comparison reads left to right on that order.
 - One row per `(industry, question)`. Keep an industry's rows to groups large enough to publish; a group of five is a story, not a benchmark.
-- No email addresses or phone numbers anywhere in the CSV. Ken rejects filled pages that contain them.
+- No email addresses or phone numbers anywhere in the CSV. Kenso rejects filled pages that contain them.
 - No em dashes or en dashes. Quote any value that contains a comma, as the sample does for the source.
 
 ### Changing the questions
@@ -43,7 +43,7 @@ Rules that keep the page right:
 
 ### Changing the filter
 
-`where` is a list of `{column, op, value}`. `value` may be a Ken variable (`account.industry`, `account.size_band`) or a literal. To add a size band to the peer group, add a `size_band` column to the CSV and a second condition `{"column": "size_band", "op": "eq", "value": "account.size_band"}`.
+`where` is a list of `{column, op, value}`. `value` may be a Kenso variable (`account.industry`, `account.size_band`) or a literal. To add a size band to the peer group, add a `size_band` column to the CSV and a second condition `{"column": "size_band", "op": "eq", "value": "account.size_band"}`.
 
 ## Samples
 

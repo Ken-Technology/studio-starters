@@ -20,11 +20,11 @@ The next steps are ranked by area score, lowest first, with ties going to the ea
 
 ## The CSV
 
-Upload it to the template as a dataset named `peers` (or rename it and change `"dataset"` in the `peer_scores` step). One row is one peer group, and the page reads the first matching row, so keep one row per industry. `samples/peers.csv` is a working example with made-up numbers for seven industries. The `peers` slot declares these exact column names and types, so Ken maps each CSV column onto the property of the same name.
+Upload it to the template as a dataset named `peers` (or rename it and change `"dataset"` in the `peer_scores` step). One row is one peer group, and the page reads the first matching row, so keep one row per industry. `samples/peers.csv` is a working example with made-up numbers for seven industries. The `peers` slot declares these exact column names and types, so Kenso maps each CSV column onto the property of the same name.
 
 | Column | Type | Required | What it means |
 |---|---|---|---|
-| `industry` | text | yes | The peer group's industry, written the way Ken writes `account.industry`: lowercase LinkedIn industries such as `construction` or `hospitals and health care`. The `where` filter matches it against the account, ignoring case. |
+| `industry` | text | yes | The peer group's industry, written the way Kenso writes `account.industry`: lowercase LinkedIn industries such as `construction` or `hospitals and health care`. The `where` filter matches it against the account, ignoring case. |
 | `peer_group` | text | yes | The group in plain words, as it should read after "assessments by", such as `logistics companies between 200 and 1,000 people`. Shown on the start view and in the source note. Under 120 characters. |
 | `assessments` | integer | yes | How many companies answered, such as `64`. Shown as "64 assessments" and "64 companies". |
 | `score_1` | number | yes | The group's average for the first area (Process by default), from 1 to 4. |
@@ -35,7 +35,7 @@ Upload it to the template as a dataset named `peers` (or rename it and change `"
 
 Rules that keep the page right:
 
-- Write plain numbers with a dot for decimals and no thousands separators: `2.6`, not `2,6`, and `1200`, not `1,200`. Ken drops a row whose number it cannot read. Scores run from 1 to 4, the same scale as the answers.
+- Write plain numbers with a dot for decimals and no thousands separators: `2.6`, not `2,6`, and `1200`, not `1,200`. Kenso drops a row whose number it cannot read. Scores run from 1 to 4, the same scale as the answers.
 - The score columns follow the order of the `dimensions` slot. If you rename or reorder the areas, reorder the columns to match.
 - Use only figures you collected. The page shows them as given and never fills a gap.
 - Quote any value that contains a comma, as `samples/peers.csv` does.
@@ -43,7 +43,7 @@ Rules that keep the page right:
 
 ### Changing the filter
 
-`where` is a list of `{column, op, value}`. `value` may be a Ken variable (`account.industry`, `account.size_band`) or a literal. To pick a group by size as well, add a `size_band` column and a second condition, and keep one row for each combination.
+`where` is a list of `{column, op, value}`. `value` may be a Kenso variable (`account.industry`, `account.size_band`) or a literal. To pick a group by size as well, add a `size_band` column and a second condition, and keep one row for each combination.
 
 ## Samples
 

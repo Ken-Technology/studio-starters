@@ -4,7 +4,7 @@
 //   node scripts/check.mjs            check everything, exit 1 on any error
 //   node scripts/check.mjs rd-doc     check one bundle (index.json is still checked)
 //
-// It covers the rules a static scan can prove. Ken's validator runs the full set (Liquid parse,
+// It covers the rules a static scan can prove. Kenso's validator runs the full set (Liquid parse,
 // filled-data rules, Web Risk) when a bundle is pushed; this script catches the common mistakes first.
 // A Library template (a folder with library.json) also gets its library.json, preview/ and index.json entry checked.
 import fs from 'node:fs';
@@ -17,7 +17,7 @@ const STARTERS = path.join(ROOT, 'starters');
 const TYPES = ['reverse_demo', 'landing_page', 'audit', 'report', 'event', 'calculator', 'recruiting', 'other'];
 const FORMATS = ['page', 'doc'];
 const SLOT_TYPES = ['string', 'number', 'integer', 'boolean', 'array', 'object'];
-// description and title are notes for the template's author; Ken accepts them and checks nothing in them.
+// description and title are notes for the template's author; Kenso accepts them and checks nothing in them.
 const SLOT_KEYWORDS = new Set(['type', 'properties', 'required', 'items', 'minLength', 'maxLength', 'minItems', 'maxItems', 'enum', 'format', 'fallback', 'description', 'title']);
 const KEN_ROOTS = ['account', 'person', 'sender', 'brand', 'link', 'asset_url', 'data', 'role', 'roles'];
 const BIND_FROM = ['account.', 'person.', 'role.', 'knowledge.', 'defaults.'];
@@ -37,7 +37,7 @@ const STEP_FIELDS = {
   webhook: { required: ['url', 'to'], optional: ['headers', 'timeout_s', 'requires'] },
   dataset: { required: ['dataset', 'to'], optional: ['where', 'limit', 'requires'] },
 };
-// A grade step's `checks` (ken-backend recipe-grade-checks): string rules Ken runs on the graded slots before the judge.
+// A grade step's `checks` (ken-backend recipe-grade-checks): string rules Kenso runs on the graded slots before the judge.
 const GRADE_CHECKS = ['no_placeholders', 'no_dashes', 'no_prices', 'no_test_noun', 'no_real_emphasis', 'no_signoff'];
 const KIT = ['ken/cta', 'ken/chart', 'ken/booking', 'ken/form'];
 // The Studio validator's script sources (csp.scriptSources in ken-backend Ken.Redirector.Edge/src/studio/policy.json),
@@ -253,9 +253,9 @@ function scanLiquid(text, file, { err, warn }, { allowData }) {
     for (const f of filters) {
       if (!LIQUID_FILTERS.has(f)) err(file, `line ${lineOf(text, e.index)}: filter "${f}" is not in the portable filter list`);
     }
-    // Ken's validator parses Liquid with Scriban, which fails on a negative first argument followed by more (slice: -3, 3).
+    // Kenso's validator parses Liquid with Scriban, which fails on a negative first argument followed by more (slice: -3, 3).
     const negative = body.match(/\|\s*([a-z_][a-z0-9_]*)\s*:\s*-\s*\d[\d.]*\s*,/i)?.[1];
-    if (negative) err(file, `line ${lineOf(text, e.index)}: ${negative} takes a negative first argument and more after it, which Ken's Liquid parse rejects; use a start of 0 or more, like | plus: 1000 | slice: 1, 3 for the last three digits`);
+    if (negative) err(file, `line ${lineOf(text, e.index)}: ${negative} takes a negative first argument and more after it, which Kenso's Liquid parse rejects; use a start of 0 or more, like | plus: 1000 | slice: 1, 3 for the last three digits`);
     // The edge escapes every {{ }} output again, so the <br /> that newline_to_br adds shows as text unless the output ends in raw.
     if (e.output && (filters.includes('newline_to_br') || withBr.has(root)) && filters.at(-1) !== 'raw') {
       err(file, `line ${lineOf(text, e.index)}: newline_to_br output is escaped at render, so <br /> shows as text; end it with | raw after | escape`);
@@ -270,8 +270,8 @@ function scanLiquid(text, file, { err, warn }, { allowData }) {
     const roots = [...body.replace(/\|\s*[a-z_][a-z0-9_]*(\s*:)?/g, ' ').matchAll(/(?<![\w.'"-])([a-z_][\w]*)(?=[.\[\s,)]|$)/gi)].map((m) => m[1]);
     for (const r of roots) {
       if (['and', 'or', 'contains', 'in', 'limit', 'offset', 'reversed', 'true', 'false', 'nil', 'null', 'empty', 'blank', 'with', 'as', 'else'].includes(r)) continue;
-      if (r === 'data' && !allowData) err(file, `line ${lineOf(text, e.index)}: fallback Liquid may not read data.*; use Ken variables only`);
-      if (!KEN_ROOTS.includes(r) && !locals.has(r)) warn(file, `line ${lineOf(text, e.index)}: variable "${r}" is not a Ken variable or a local`);
+      if (r === 'data' && !allowData) err(file, `line ${lineOf(text, e.index)}: fallback Liquid may not read data.*; use Kenso variables only`);
+      if (!KEN_ROOTS.includes(r) && !locals.has(r)) warn(file, `line ${lineOf(text, e.index)}: variable "${r}" is not a Kenso variable or a local`);
     }
   }
 }
@@ -292,10 +292,10 @@ function scanHtml(text, file, { err }) {
   const plain = text.replace(/\{%-?\s*comment\s*-?%\}[\s\S]*?\{%-?\s*endcomment\s*-?%\}/g, '');
   for (const m of plain.matchAll(/<script\b[^>]*>/gi)) {
     const src = attr(m[0], 'src');
-    // Only Ken's own scripts run inline (csp-inline-script, ken-backend DEV-3699). A JSON data block never runs.
+    // Only Kenso's own scripts run inline (csp-inline-script, ken-backend DEV-3699). A JSON data block never runs.
     const dataBlock = ['application/json', 'application/ld+json'].includes((attr(m[0], 'type') ?? '').trim().toLowerCase());
     if (src === undefined && !dataBlock) {
-      err(file, `line ${lineOf(plain, m.index)}: inline <script> is not allowed; Studio pages run only Ken's scripts. Use the kit, CSS or Alpine directives`);
+      err(file, `line ${lineOf(plain, m.index)}: inline <script> is not allowed; Studio pages run only Kenso's scripts. Use the kit, CSS or Alpine directives`);
     }
     if (src !== undefined && !scriptAllowed(src)) {
       err(file, `line ${lineOf(plain, m.index)}: script src "${src}" is not on the CDN allow-list (${SCRIPT_CDNS.join(', ')})`);
@@ -331,7 +331,7 @@ function scanHtml(text, file, { err }) {
   }
   for (const m of plain.matchAll(/url\(\s*['"]?(https?:[^'")]+)/gi)) {
     if (!STYLE_HOSTS.some((h) => m[1].startsWith(h)) && !m[1].startsWith('https://fonts.gstatic.com/')) {
-      err(file, `line ${lineOf(plain, m.index)}: CSS url(${m[1]}) loads from outside Ken; use {{ asset_url }}`);
+      err(file, `line ${lineOf(plain, m.index)}: CSS url(${m[1]}) loads from outside Kenso; use {{ asset_url }}`);
     }
   }
   for (const m of plain.matchAll(/javascript:/gi)) err(file, `line ${lineOf(plain, m.index)}: javascript: URLs are not allowed`);
@@ -488,13 +488,13 @@ function checkBundle(slug, indexEntry) {
   for (const r of slots?.required ?? []) {
     if (props[r] && !('fallback' in props[r]) && !hasFallbackLiquid) err('studio.json', `required slot "${r}" needs a fallback, or the bundle needs fallback.liquid`);
   }
-  // Ken checks every fallback against its own slot (ken-backend slot-fallback-invalid). A Liquid string renders first,
+  // Kenso checks every fallback against its own slot (ken-backend slot-fallback-invalid). A Liquid string renders first,
   // so only its type is checked; a null or blank fallback is no value.
   for (const [name, s] of Object.entries(props)) {
     if (!('fallback' in s)) continue;
     const fb = s.fallback;
     if (typeof fb === 'string' && /\{[{%]/.test(fb)) {
-      if (/\{[{%][^}]*\bdata\b/.test(fb)) err('studio.json', `slot "${name}" fallback reads data.*; fallbacks use Ken variables only`);
+      if (/\{[{%][^}]*\bdata\b/.test(fb)) err('studio.json', `slot "${name}" fallback reads data.*; fallbacks use Kenso variables only`);
       if (s.type && s.type !== 'string') err('studio.json', `slot "${name}" fallback is a Liquid string but the slot is type ${s.type}; use a static JSON fallback`);
       continue;
     }
@@ -588,7 +588,7 @@ function checkBundle(slug, indexEntry) {
         if (root === 'defaults') {
           const problem = defaultsProblem(input);
           if (problem) err('studio.json', `${where}: input ${problem}`);
-        } else if (!s && !KEN_ROOTS.includes(root) && !String(input).startsWith('knowledge.')) err('studio.json', `${where}: input "${input}" is not a Ken variable, knowledge.*, defaults.<slot> or data.<slot>`);
+        } else if (!s && !KEN_ROOTS.includes(root) && !String(input).startsWith('knowledge.')) err('studio.json', `${where}: input "${input}" is not a Kenso variable, knowledge.*, defaults.<slot> or data.<slot>`);
       }
       if ((step.to && (Array.isArray(step.to) ? step.to : [step.to]).some((t) => !slotOf(t)))) err('studio.json', `${where}: prompt writes only data.*`);
     }
@@ -643,7 +643,7 @@ function checkBundle(slug, indexEntry) {
     if (new Set(found).size !== found.length) err('template.liquid', 'a data-section id appears more than once');
     scanLiquid(text, 'template.liquid', c, { allowData: true });
     scanHtml(text, 'template.liquid', c);
-    if (!/<\/body>/i.test(text)) err('template.liquid', 'the template is a full HTML document with </body> (Ken injects the tracking script before it)');
+    if (!/<\/body>/i.test(text)) err('template.liquid', 'the template is a full HTML document with </body> (Kenso injects the tracking script before it)');
     if (m.format === 'doc') markdownSyntax(text, 'template.liquid', c);
     for (const ref of text.matchAll(/data\.([a-zA-Z0-9_]+)/g)) if (!props[ref[1]]) err('template.liquid', `line ${lineOf(text, ref.index)}: data.${ref[1]} is not a declared slot`);
   }

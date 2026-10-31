@@ -1,6 +1,6 @@
 # Personal video page
 
-One page per account with the sender's video on top, three reasons the page was made for that account, and a booking block. The video is one recording for the whole campaign, or one per account from a CSV. Ken writes the three reasons and the intro from what it knows about the account.
+One page per account with the sender's video on top, three reasons the page was made for that account, and a booking block. The video is one recording for the whole campaign, or one per account from a CSV. Kenso writes the three reasons and the intro from what it knows about the account.
 
 ## How it fills
 
@@ -37,7 +37,7 @@ Upload it to the template as a dataset named `videos` (or rename it and change `
 
 | Column | Required | What it means |
 |---|---|---|
-| `domain` | yes | The account's domain the way Ken writes `account.domain`, such as `cobaltstreet.example`. The step matches it ignoring case. |
+| `domain` | yes | The account's domain the way Kenso writes `account.domain`, such as `cobaltstreet.example`. The step matches it ignoring case. |
 | `video_url` | yes | The video link for that account, in one of the forms above. |
 
 Keep it to accounts that have their own recording. Every other account gets the campaign video.

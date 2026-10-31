@@ -4,15 +4,15 @@ A one-page result for one account: your product runs on the account's own data, 
 
 ## How the recipe runs
 
-1. `run` (`webhook`): Ken POSTs the account to your endpoint. Your JSON answer fills `metric`, `findings`, `chart`, `chart_title`, `scope` and `report_url`.
-2. `explain` (`prompt`): writes `headline` and `meaning` ("What this means for {account}") from your result and Ken's research on the account. Every number it writes has to come from your result. It `requires` `metric` and `findings`, so it runs only when your endpoint answered.
+1. `run` (`webhook`): Kenso POSTs the account to your endpoint. Your JSON answer fills `metric`, `findings`, `chart`, `chart_title`, `scope` and `report_url`.
+2. `explain` (`prompt`): writes `headline` and `meaning` ("What this means for {account}") from your result and Kenso's research on the account. Every number it writes has to come from your result. It `requires` `metric` and `findings`, so it runs only when your endpoint answered.
 3. `check` (`grade`): rejects a narrative with numbers or claims that are not in your result, and retries once. It `requires` `headline` and `meaning`, so it is skipped with `explain`.
 
 To use it, replace `https://api.your-product.example/ken/studio` in `studio.json` with your endpoint, change the copy in `template.liquid` that talks about the check, and keep the slot schema and this README in sync if you rename anything.
 
 ## Request
 
-Ken sends one `POST` per account, with `Content-Type: application/json`.
+Kenso sends one `POST` per account, with `Content-Type: application/json`.
 
 Headers (Standard Webhooks):
 
@@ -46,14 +46,14 @@ Body:
 
 | Field | Notes |
 |---|---|
-| `account` | Ken's account variables. `domain` is what most products need. Any field except `name` can be null. |
+| `account` | Kenso's account variables. `domain` is what most products need. Any field except `name` can be null. |
 | `person` | `null` or `{first_name, last_name, title}`. Answers are cached per account, so do not make the result depend on the person. |
 | `data` | Slots filled by earlier recipe steps. Empty in this starter, because the webhook runs first. Move a `bind` step above it to send more. |
 | `template`, `assetId` | Ids for your logs. |
 
 ## Response
 
-Return `200` with a JSON object of at most 256 KB. Its top-level keys are the slot names in the step's `to` list. Ken takes those keys, ignores any others, and checks each one against its slot schema in `studio.json`.
+Return `200` with a JSON object of at most 256 KB. Its top-level keys are the slot names in the step's `to` list. Kenso takes those keys, ignores any others, and checks each one against its slot schema in `studio.json`.
 
 | Key | Type | Required | Limits | On the page |
 |---|---|---|---|---|
@@ -110,7 +110,7 @@ Example:
 }
 ```
 
-Content rules Ken enforces on every filled value: no email addresses or phone numbers of anyone, and no Liquid (`{{` or `{%`). Write labels short instead of relying on truncation.
+Content rules Kenso enforces on every filled value: no email addresses or phone numbers of anyone, and no Liquid (`{{` or `{%`). Write labels short instead of relying on truncation.
 
 ## Timeouts, retries and caching
 
@@ -121,7 +121,7 @@ Content rules Ken enforces on every filled value: no email addresses or phone nu
 
 ## Checking the signature
 
-Checking it is optional. Ken signs every call the Standard Webhooks way, so any Standard Webhooks or Svix library can verify it with your template's secret (`whsec_...`), which you read from `GET /v1/asset-templates/{templateId}/webhook-secret`.
+Checking it is optional. Kenso signs every call the Standard Webhooks way, so any Standard Webhooks or Svix library can verify it with your template's secret (`whsec_...`), which you read from `GET /v1/asset-templates/{templateId}/webhook-secret`.
 
 The signed content is `{webhook-id}.{webhook-timestamp}.{raw body}`. The key is the base64-decoded part of the secret after `whsec_`. Verify against the raw request body, before any JSON parsing.
 
@@ -151,7 +151,7 @@ from standardwebhooks.webhooks import Webhook
 Webhook(secret).verify(raw_body, headers)  # raises if the signature is wrong
 ```
 
-If you would rather check a shared token, add a static header to the step, for example `"headers": {"Authorization": "Bearer {{ secret.PAGEPACE_TOKEN }}"}`. Ken fills `{{ secret.NAME }}` from your workspace secrets. Never put a raw token in `studio.json`.
+If you would rather check a shared token, add a static header to the step, for example `"headers": {"Authorization": "Bearer {{ secret.PAGEPACE_TOKEN }}"}`. Kenso fills `{{ secret.NAME }}` from your workspace secrets. Never put a raw token in `studio.json`.
 
 ## Samples
 

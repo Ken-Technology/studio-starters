@@ -91,7 +91,7 @@ test('a preview links to "#", reads assets from main and keeps the template defa
   assert.match(globex, /<rect x="210" y="8" width="360" height="26" rx="4" fill="#7a2e1c"\/>/);
 });
 
-test('an empty slot takes its fallback, rendered over the Ken variables', () => {
+test('an empty slot takes its fallback, rendered over the Kenso variables', () => {
   assert.match(render(SAMPLES['initech-partial']), /<h1>A short brief for Initech<\/h1>/);
 });
 

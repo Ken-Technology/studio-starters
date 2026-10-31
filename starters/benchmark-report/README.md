@@ -12,12 +12,12 @@ Section 2 of the page is drawn straight from `data.benchmarks`: one line per row
 
 ## The CSV
 
-Upload it to the template as a dataset named `peers` (or rename it and change `"dataset"` in the `peers` step). One row is one metric for one peer group. `samples/peers.csv` is a working example with made-up numbers: three industries, three size bands and six outbound metrics, 54 rows. The `benchmarks` slot declares these exact column names and types, so Ken maps each CSV column onto the property of the same name. `metric`, `p25`, `median` and `p75` are required on every row.
+Upload it to the template as a dataset named `peers` (or rename it and change `"dataset"` in the `peers` step). One row is one metric for one peer group. `samples/peers.csv` is a working example with made-up numbers: three industries, three size bands and six outbound metrics, 54 rows. The `benchmarks` slot declares these exact column names and types, so Kenso maps each CSV column onto the property of the same name. `metric`, `p25`, `median` and `p75` are required on every row.
 
 | Column | Type | What it means |
 |---|---|---|
-| `industry` | text | The peer group's industry. Use the same values Ken has for accounts, which are lowercase LinkedIn industries such as `software development` or `financial services`. The `where` filter matches it against `account.industry`, ignoring case. |
-| `size_band` | text | The peer group's employee band, written the way Ken writes `account.size_band`, such as `11-50`, `51-200` or `201-500`. The `where` filter matches it against `account.size_band`. |
+| `industry` | text | The peer group's industry. Use the same values Kenso has for accounts, which are lowercase LinkedIn industries such as `software development` or `financial services`. The `where` filter matches it against `account.industry`, ignoring case. |
+| `size_band` | text | The peer group's employee band, written the way Kenso writes `account.size_band`, such as `11-50`, `51-200` or `201-500`. The `where` filter matches it against `account.size_band`. |
 | `metric` | text | The metric name as a reader should see it, such as `Cold email reply rate`. Keep it under 40 characters. |
 | `unit` | text | `%` for percentages (the page adds the % sign to each number). Anything else, such as `days` or `meetings`, is shown in the line under the metric name. |
 | `better` | text | `higher` or `lower`: which direction is good. The page says so under each metric, and the prompt uses it to tell the strong end from the weak one. |
@@ -37,7 +37,7 @@ Rules that keep the report right:
 
 ### Changing the filter
 
-`where` is a list of `{column, op, value}`. `value` may be a Ken variable (`account.industry`, `account.size_band`) or a literal. To compare against every size band in the industry instead, drop the `size_band` filter and raise `limit`; to fix the peer group for a campaign, use a literal such as `{"column": "size_band", "op": "eq", "value": "51-200"}`. `op` can also be `in` (a list of values) or `between` (two numbers).
+`where` is a list of `{column, op, value}`. `value` may be a Kenso variable (`account.industry`, `account.size_band`) or a literal. To compare against every size band in the industry instead, drop the `size_band` filter and raise `limit`; to fix the peer group for a campaign, use a literal such as `{"column": "size_band", "op": "eq", "value": "51-200"}`. `op` can also be `in` (a list of values) or `between` (two numbers).
 
 ## Samples
 

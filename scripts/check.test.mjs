@@ -86,10 +86,10 @@ test('raw on a local built from unescaped data fails', () => {
   assert.match(out, /\| raw prints the value unescaped/);
 });
 
-test('role and roles are Ken variables', () => {
+test('role and roles are Kenso variables', () => {
   const { status, out } = check();
   assert.equal(status, 0, out);
-  assert.doesNotMatch(out, /variable "roles?" is not a Ken variable/);
+  assert.doesNotMatch(out, /variable "roles?" is not a Kenso variable/);
 });
 
 test('a recruiting sample without role.title fails', () => {
@@ -466,7 +466,7 @@ test('account.signals in template.liquid or fallback.liquid fails and points at 
 test('a filter with a negative first argument and more after it fails; one negative argument passes', () => {
   const bad = checkLibrary(editFile('template.liquid', '<p>Hi {{', "<p>{{ account.name | prepend: '000' | slice: -3, 3 }}</p>\n<p>Hi {{"));
   assert.equal(bad.status, 1, bad.out);
-  assert.match(bad.out, /template\.liquid: line \d+: slice takes a negative first argument and more after it, which Ken's Liquid parse rejects/);
+  assert.match(bad.out, /template\.liquid: line \d+: slice takes a negative first argument and more after it, which Kenso's Liquid parse rejects/);
   const ok = checkLibrary(editFile('template.liquid', '<p>Hi {{', '<p>{{ account.name | slice: -1 | escape }}{{ account.name | slice: 1, 3 | escape }}</p>\n<p>Hi {{'));
   assert.equal(ok.status, 0, ok.out);
 });

@@ -308,7 +308,7 @@
         "scrape.page",
         "ken/cta"
       ],
-      "description": "The account's market on a 2x2: about six competitors from Ken Search, one line on how each one sells, and the open space the account could own.",
+      "description": "The account's market on a 2x2: about six competitors from Search, one line on how each one sells, and the open space the account could own.",
       "category": "prospecting",
       "tags": [
         "competitors",
@@ -608,7 +608,7 @@
         "ken/cta",
         "doc"
       ],
-      "description": "A printable market report on one account's segment: company counts by segment and region, buyer roles, growth signals and three plays, all counted in Ken Search.",
+      "description": "A printable market report on one account's segment: company counts by segment and region, buyer roles, growth signals and three plays, all counted in Search.",
       "category": "prospecting",
       "tags": [
         "market report",
@@ -1220,7 +1220,7 @@
         "ken/cta",
         "doc"
       ],
-      "description": "A short brief on three trends in the account's industry, each backed by a Ken Search company count, with what each one means for them. Prints to PDF.",
+      "description": "A short brief on three trends in the account's industry, each backed by a Search company count, with what each one means for them. Prints to PDF.",
       "category": "content",
       "tags": [
         "trends",

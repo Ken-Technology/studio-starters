@@ -1,6 +1,6 @@
 # Us vs what you use today
 
-One page per account that puts your product next to the tool the account most likely uses today, one row per criterion, with your own verdict on each row. The rows come from a comparison CSV you upload. Ken reads the account's site to work out which tool to compare against, says why it thinks so, and writes a short framing. The page ends with a booking button.
+One page per account that puts your product next to the tool the account most likely uses today, one row per criterion, with your own verdict on each row. The rows come from a comparison CSV you upload. Kenso reads the account's site to work out which tool to compare against, says why it thinks so, and writes a short framing. The page ends with a booking button.
 
 ## How it fills
 
@@ -15,12 +15,12 @@ When the catalog is empty, `pick` does not run, and the page shows its fallback 
 
 ## The CSV
 
-Upload it to the template as a dataset named `comparison` (or rename it and change `"dataset"` in both dataset steps). One row is one criterion for one competitor. `samples/comparison.csv` is a working example: a made-up dispatch tool for trades contractors, compared against three made-up tools and against spreadsheets. The `catalog` and `rows` slots declare these exact column names, so Ken maps each CSV column onto the property of the same name.
+Upload it to the template as a dataset named `comparison` (or rename it and change `"dataset"` in both dataset steps). One row is one criterion for one competitor. `samples/comparison.csv` is a working example: a made-up dispatch tool for trades contractors, compared against three made-up tools and against spreadsheets. The `catalog` and `rows` slots declare these exact column names, so Kenso maps each CSV column onto the property of the same name.
 
 | Column | Type | Required | What it means |
 |---|---|---|---|
 | `competitor` | text | yes | The tool's name as people say it, such as `Routeboard`. Spell it the same on every row of that tool. A non-product works too: `Spreadsheets and a whiteboard`. Under 40 characters. |
-| `clues` | text | no | What on a company's site or in its industry points to this tool, such as `Careers pages that ask for Routeboard experience; shops with fewer than 20 technicians`. Fill it on one row per tool; blank cells are fine. Ken reads it only to pick the tool. |
+| `clues` | text | no | What on a company's site or in its industry points to this tool, such as `Careers pages that ask for Routeboard experience; shops with fewer than 20 technicians`. Fill it on one row per tool; blank cells are fine. Kenso reads it only to pick the tool. |
 | `criterion` | text | yes | The thing being compared, such as `Dispatch board` or `Getting set up`. Under 48 characters. It is printed as the row heading. |
 | `us` | text | yes | How your product handles it, in one or two plain sentences. Under 240 characters. |
 | `them` | text | yes | How the competitor handles it, in one or two plain sentences, written fairly. Under 240 characters. |
@@ -31,14 +31,14 @@ Rules that keep the page right:
 
 - Cover every tool you want the page to compare against, with the same criteria for each. Six to eight criteria per tool read well.
 - Include the tool a prospect uses when they use nothing, such as `Spreadsheets and a whiteboard`, so the pick step always has a fair option.
-- No email addresses or phone numbers anywhere in the CSV. Ken rejects filled pages that contain them.
+- No email addresses or phone numbers anywhere in the CSV. Kenso rejects filled pages that contain them.
 - No em dashes or en dashes, and no exclamation marks. The page prints the cells word for word.
 - Quote any value that contains a comma, as the sample does.
 - Give the other tool rows where it wins. A page where every row goes to you reads like an advert, and the fit section says so plainly when no row goes the other way.
 
 ### Changing the filters
 
-`rows` filters on `competitor` with the value Ken picked (`data.current_tool`). To compare on a second key, such as `plan` or `region`, add the column to the CSV and to both slots' item properties, then add a `where` entry.
+`rows` filters on `competitor` with the value Kenso picked (`data.current_tool`). To compare on a second key, such as `plan` or `region`, add the column to the CSV and to both slots' item properties, then add a `where` entry.
 
 ## Samples
 

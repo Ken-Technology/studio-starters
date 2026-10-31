@@ -1,6 +1,6 @@
 # Fits your stack
 
-One page per account on how your product plugs into the tools that account likely runs. Ken reads the account's website and careers page, guesses the tools they mention, and marks every one as a guess. Each guessed tool that is in your integration list gets a block with what the integration does, what moves, how it is set up, and what changes for the people who use that tool. The page ends with a booking button.
+One page per account on how your product plugs into the tools that account likely runs. Kenso reads the account's website and careers page, guesses the tools they mention, and marks every one as a guess. Each guessed tool that is in your integration list gets a block with what the integration does, what moves, how it is set up, and what changes for the people who use that tool. The page ends with a booking button.
 
 ## How it fills
 
@@ -19,7 +19,7 @@ What the page shows with thin data:
 
 ## The CSV
 
-Upload it to the template as a dataset named `integrations` (or rename it and change `"dataset"` in the `catalog` step). One row is one integration. `samples/integrations.csv` is a working example with 21 made-up integrations for a made-up contract management product. The `integrations` slot declares these exact column names, so Ken maps each CSV column onto the property of the same name.
+Upload it to the template as a dataset named `integrations` (or rename it and change `"dataset"` in the `catalog` step). One row is one integration. `samples/integrations.csv` is a working example with 21 made-up integrations for a made-up contract management product. The `integrations` slot declares these exact column names, so Kenso maps each CSV column onto the property of the same name.
 
 | Column | Type | Example | Required | What it means |
 |---|---|---|---|---|
@@ -35,7 +35,7 @@ Upload it to the template as a dataset named `integrations` (or rename it and ch
 Rules that keep the page right:
 
 - One row per tool. Keep it to integrations that work today; the page says "connects to today".
-- No email addresses or phone numbers anywhere in the CSV. Ken rejects filled pages that contain them.
+- No email addresses or phone numbers anywhere in the CSV. Kenso rejects filled pages that contain them.
 - No em dashes or en dashes, and no exclamation marks; the page prints cells as written.
 - Quote any cell that contains a comma, as the sample does for `Native, two-way`.
 - Keep `summary` to things a buyer can check in your docs. The grader fails a "what changes" line that claims more than the row says.

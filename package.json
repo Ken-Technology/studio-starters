@@ -1,7 +1,7 @@
 {
   "name": "studio-starters",
   "private": true,
-  "description": "Ken Studio Library templates and the scripts that check, index and preview them.",
+  "description": "Kenso Studio Library templates and the scripts that check, index and preview them.",
   "license": "MIT",
   "scripts": {
     "render": "node scripts/render.mjs",

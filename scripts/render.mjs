@@ -54,7 +54,7 @@ function engine(templates, outputEscape) {
 }
 
 // The edge also escapes {% echo %} and {% cycle %}. They are left out here because check.mjs rejects both tags.
-// `{% render 'ken/chart', ... %}` resolves to a one-tag partial whose tag reads the render arguments and the Ken globals.
+// `{% render 'ken/chart', ... %}` resolves to a one-tag partial whose tag reads the render arguments and the Kenso globals.
 const pageEngine = engine(Object.fromEntries(Object.keys(KIT).map((name) => [`ken/${name}`, `{% ken_kit "${name}" %}`])), escapeOutput);
 pageEngine.registerTag('ken_kit', {
   parse(token) {
@@ -64,7 +64,7 @@ pageEngine.registerTag('ken_kit', {
     return KIT[this.kit]?.({ get: (p) => context.getSync([...p]) }) ?? '';
   },
 });
-// Slot fallbacks: Liquid over Ken variables only, not escaped here; the page escapes the slot where it prints it.
+// Slot fallbacks: Liquid over Kenso variables only, not escaped here; the page escapes the slot where it prints it.
 const textEngine = engine({});
 
 function escapedKen(value) {

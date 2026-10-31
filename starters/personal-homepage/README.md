@@ -17,7 +17,7 @@ Upload it to the template as a dataset named `customer-stories`. One row is one 
 | Column | What it means |
 |---|---|
 | `customer` | The customer's name |
-| `industry` | Matched against `account.industry`, ignoring case. Use Ken's lowercase LinkedIn industries |
+| `industry` | Matched against `account.industry`, ignoring case. Use Kenso's lowercase LinkedIn industries |
 | `size_band` | Employee band, like `51-200` |
 | `city` | Optional |
 | `summary` | One or two sentences on who they are and what they did. The page retells this |

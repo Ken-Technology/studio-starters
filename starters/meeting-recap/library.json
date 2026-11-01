@@ -4,8 +4,8 @@
   "tags": ["recap", "call notes", "next steps", "follow up", "deal"],
   "featured": false,
   "needs": ["knowledge"],
-  "version": "1.1.0",
-  "updatedAt": "2026-10-30",
+  "version": "1.1.1",
+  "updatedAt": "2026-11-01",
   "samples": [
     { "id": "marlowe-finch", "label": "Marlowe & Finch" },
     { "id": "pinecrest-shared", "label": "Shared link (no person)" },

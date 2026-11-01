@@ -4,8 +4,8 @@
   "tags": ["assessment", "maturity", "benchmark", "quiz", "scorecard"],
   "featured": true,
   "needs": ["dataset"],
-  "version": "1.1.0",
-  "updatedAt": "2026-10-30",
+  "version": "1.1.1",
+  "updatedAt": "2026-11-01",
   "samples": [
     { "id": "brightwave", "label": "Brightwave Logistics, filled for one person" },
     { "id": "marlowe-dental", "label": "Marlowe Dental Partners, dark brand with a serif" },

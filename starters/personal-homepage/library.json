@@ -4,8 +4,8 @@
   "tags": ["homepage", "landing page", "account-based", "personalized"],
   "featured": true,
   "needs": [],
-  "version": "1.1.0",
-  "updatedAt": "2026-10-30",
+  "version": "1.1.1",
+  "updatedAt": "2026-11-01",
   "samples": [
     { "id": "brightwave", "label": "Brightwave Logistics" },
     { "id": "cedar-hollow-shared", "label": "Cedar Hollow Veterinary, shared link (no person)" },

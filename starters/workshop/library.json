@@ -4,8 +4,8 @@
   "tags": ["workshop", "event", "invitation", "training", "seat form"],
   "featured": false,
   "needs": [],
-  "version": "1.1.0",
-  "updatedAt": "2026-10-30",
+  "version": "1.1.1",
+  "updatedAt": "2026-11-01",
   "samples": [
     { "id": "bramblewood", "label": "Bramblewood Foods" },
     { "id": "lakeshore-shared", "label": "Lakeshore Dental Partners, shared link (no person)" },

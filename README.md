@@ -30,7 +30,7 @@ starters/<slug>/
     <sampleId>.html  each listed sample rendered to a full HTML page
 ```
 
-Kenso copies only `studio.json`, `template.liquid`, `fallback.liquid`, `assets/` and `samples/` into a workspace, so never put preview files under `assets/` or `samples/`.
+Kenso copies only `studio.json`, `template.liquid`, `fallback.liquid`, `brief.md`, `ideas.md`, `assets/` and `samples/` into a workspace, so never put preview files under `assets/` or `samples/`.
 
 ### library.json
 
@@ -84,7 +84,7 @@ Rendering reads no clock and no random values, so the same inputs give the same 
 ```bash
 npm ci                               # LiquidJS, Playwright and sharp
 npx playwright install chromium      # the browser for the cover
-# write starters/<slug>/: studio.json, template.liquid, assets/, samples/ and library.json
+# write starters/<slug>/: studio.json, template.liquid, brief.md, ideas.md, assets/, samples/ and library.json
 npm run render -- <slug>             # preview/<id>.html and preview/cover.png
 npm run build-index                  # index.json
 npm run check                        # bundles, library.json, preview/ and index.json
@@ -107,11 +107,63 @@ starters/<slug>/
   template.liquid    a full HTML document, for both formats (see Pages and docs); CSS is an inline <style> block here
   fallback.liquid    shown when the fill is not ready; Kenso variables only
   README.md          optional notes, such as a webhook or CSV contract
+  brief.md           the plan: who it is for, the one ask, sections, variables and sources
+  ideas.md           three ways to adapt the template, shown as idea cards
   assets/            images and other files, referenced as {{ asset_url }}/name.svg; never CSS
   samples/           sample data for previews: <name>.json = {account, person, sender, brand, data}
 ```
 
 Limits: `template.liquid` 256 KB, each asset 5 MB, a bundle 20 MB. This repo keeps starters smaller (assets under 200 KB, a bundle under 1 MB).
+
+### The plan
+
+Every template ships its plan: `brief.md` and `ideas.md`. The Kenso Studio builder shows `brief.md` on the Plan page and in the Brief step, and `ideas.md` as idea cards. A fork copies both, and when Ken adapts a fork it updates `brief.md` so the plan stays true.
+
+`brief.md`:
+
+```markdown
+# <studio.json name>
+Type: <type> · Format: <format> · Library template: <slug>
+## Goal
+What the page does for the reader, in one or two sentences.
+## Who reads it
+Who opens the link, and what a shared link (no person) shows.
+## The one ask
+The one thing the page asks the reader to do.
+## Sections
+1. <label of the first section> - what it shows
+2. <label of the second section> - what it shows
+## Variables and sources
+- `data.<slot>`: where the value comes from (a recipe step, a bind, a fallback)
+## Tone
+How the copy reads.
+## Open questions
+- What the workspace still has to decide (optional)
+```
+
+- Line 1 is `# ` and the `name` from `studio.json`. Line 2 is exactly `Type: <type> · Format: <format> · Library template: <slug>`, with the `type` and `format` from `studio.json`, the folder name as `<slug>`, and a middle dot (`·`, U+00B7) with one space each side.
+- The `##` headings are `Goal`, `Who reads it`, `The one ask`, `Sections`, `Variables and sources` and `Tone`, in that order, optionally followed by `Open questions`. No other `##` headings.
+- `## Sections` has one numbered line per `studio.json` `sections` entry, in order, each starting with that section's `label`.
+
+`ideas.md`:
+
+```markdown
+# Ideas
+## 1. <title>
+Starts from: <slug>
+Fills: `data.<slot>`, `data.<slot>`
+Why it gets a reply: <one line>
+What to change, in a sentence or two.
+## 2. <title>
+...
+## 3. <title>
+...
+```
+
+- Line 1 is `# Ideas`, followed by exactly three ideas headed `## 1. `, `## 2. ` and `## 3. ` with a title.
+- Each idea has a `Starts from: <slug>` line naming this template's folder, a `Fills: ` line and a `Why it gets a reply: ` line.
+
+Neither file may hold an em or en dash. `check.mjs` fails a bundle without either file, or with one that breaks these rules.
 
 ### studio.json
 
@@ -267,7 +319,7 @@ node scripts/check.mjs rd-doc     # one bundle
 node --test scripts/check.test.mjs   # tests for check.mjs itself
 ```
 
-`check.mjs` has no dependencies (Node 20 or newer) and runs on every push and pull request. It checks the manifest fields, the slot schema subset, fallbacks (each one against its own slot), the recipe (known kinds and tools, `to` targets, tool args written as a bare path, recipe text and inputs that read only slots earlier steps write, `defaults.<slot>` only for slots with a fallback, https webhooks, timeouts), `data-section` against `sections`, the HTML rules above, the portable Liquid tags and filters, no negative first filter argument followed by more, no `account.dossier` or `account.signals` in the page, sizes, asset types, dashes, and that each sample has `account.name` (`role.title` on a recruiting starter), matches the slot schema and holds no contact details. Kenso's validator runs the full set when you push a bundle, including a Liquid parse and the filled-data rules.
+`check.mjs` has no dependencies (Node 20 or newer) and runs on every push and pull request. It checks the manifest fields, the slot schema subset, fallbacks (each one against its own slot), the recipe (known kinds and tools, `to` targets, tool args written as a bare path, recipe text and inputs that read only slots earlier steps write, `defaults.<slot>` only for slots with a fallback, https webhooks, timeouts), `data-section` against `sections`, the HTML rules above, the portable Liquid tags and filters, no negative first filter argument followed by more, no `account.dossier` or `account.signals` in the page, `brief.md` and `ideas.md` (see The plan), sizes, asset types, dashes, and that each sample has `account.name` (`role.title` on a recruiting starter), matches the slot schema and holds no contact details. Kenso's validator runs the full set when you push a bundle, including a Liquid parse and the filled-data rules.
 
 To see a Library template rendered, render its samples and open the output:
 
@@ -280,7 +332,7 @@ Each `preview/<sampleId>.html` is the HTML the edge serves for that sample, befo
 
 ## Contributing
 
-Add or change a folder under `starters/`, give it at least three samples (one with `"person": null` for the shared link), bump its `version` in `index.json`, and make sure `node scripts/check.mjs` passes.
+Add or change a folder under `starters/`, give it at least three samples (one with `"person": null` for the shared link) and its `brief.md` and `ideas.md` (see The plan), bump its `version` in `index.json`, and make sure `node scripts/check.mjs` passes.
 
 ## License
 

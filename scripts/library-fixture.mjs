@@ -1,7 +1,8 @@
 // A small Library template for the tests of check.mjs, build-index.mjs and render.mjs. Zero dependencies.
 //
 // writeLibrary(root) writes starters/demo-library/ under root: a bundle that passes check.mjs, with library.json,
-// three samples (one with "person": null) and preview/ (a blank 1280x800 cover and placeholder sample pages).
+// brief.md and ideas.md, three samples (one with "person": null) and preview/ (a blank 1280x800 cover and
+// placeholder sample pages).
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
@@ -168,6 +169,31 @@ export const SAMPLES = {
   },
 };
 
+// The plan (README "The plan") for a bundle in folder `slug` with manifest `studio`.
+export const brief = (studio, slug) => `# ${studio.name}
+Type: ${studio.type} · Format: ${studio.format} · Library template: ${slug}
+## Goal
+Show one account its latest news and how many companies look like it, so the reader wants to talk.
+## Who reads it
+A head of sales at the account, greeted by first name. A shared link opens with "Hi there".
+## The one ask
+Book 20 minutes.
+## Sections
+${(studio.sections ?? []).map((s, i) => `${i + 1}. ${s.label} - what this section shows`).join('\n')}
+## Variables and sources
+- \`data.signals\`: bind from \`account.signals\`
+## Tone
+Plain and specific.
+`;
+
+export const ideas = (slug) => `# Ideas
+${[1, 2, 3].map((n) => `## ${n}. Idea ${n}
+Starts from: ${slug}
+Fills: \`data.headline\`
+Why it gets a reply: it names something true about the account.
+One line on how to adapt the template.`).join('\n')}
+`;
+
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
 // Writes the bundle to <root>/starters/<slug>. Pass `studio`, `template` or `library` to write a variant.
@@ -179,6 +205,8 @@ export function writeLibrary(root, { slug = SLUG, studio = STUDIO, template = TE
   fs.writeFileSync(path.join(dir, 'template.liquid'), template);
   fs.writeFileSync(path.join(dir, 'fallback.liquid'), FALLBACK);
   fs.writeFileSync(path.join(dir, 'library.json'), json(library));
+  fs.writeFileSync(path.join(dir, 'brief.md'), brief(studio, slug));
+  fs.writeFileSync(path.join(dir, 'ideas.md'), ideas(slug));
   for (const [id, sample] of Object.entries(SAMPLES)) {
     fs.writeFileSync(path.join(dir, 'samples', `${id}.json`), json(sample));
     fs.writeFileSync(path.join(dir, 'preview', `${id}.html`), `<!doctype html><title>${id}</title>\n`);

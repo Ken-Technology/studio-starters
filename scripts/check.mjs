@@ -64,7 +64,9 @@ const LIQUID_FILTERS = new Set(['default', 'escape', 'escape_once', 'upcase', 'd
   'strip_html', 'strip_newlines', 'newline_to_br', 'replace', 'replace_first', 'remove', 'remove_first', 'append',
   'prepend', 'url_encode', 'raw']);
 const ASSET_EXT = new Set(['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.woff', '.woff2', '.csv', '.pdf']);
-const BUNDLE_FILES = new Set(['studio.json', 'template.liquid', 'fallback.liquid', 'README.md', 'assets', 'samples']);
+const BUNDLE_FILES = new Set(['studio.json', 'template.liquid', 'fallback.liquid', 'README.md', 'brief.md', 'ideas.md', 'assets', 'samples']);
+// The ## headings of brief.md, in order; ## Open questions may follow them (README "The plan").
+const BRIEF_HEADINGS = ['Goal', 'Who reads it', 'The one ask', 'Sections', 'Variables and sources', 'Tone'];
 const SAMPLE_KEYS = new Set(['account', 'person', 'sender', 'brand', 'data', 'role', 'roles']);
 const LIMITS = { template: 256 * 1024, asset: 200 * 1024, bundle: 1024 * 1024 };
 const EMAIL = /[\w.+-]+@[\w-]+\.[\w.-]+/;
@@ -449,6 +451,54 @@ function checkLibrary(slug, dir, { err }) {
   }
 }
 
+// --- the plan --------------------------------------------------------------------------------
+
+// brief.md and ideas.md (README "The plan"). The builder's Plan page and Brief step show them, and a fork copies both.
+// Dashes are caught by the text rules in checkBundle, which cover every .md file.
+function checkPlan(slug, dir, m, { err }) {
+  const lines = (name) => {
+    const file = path.join(dir, name);
+    if (fs.existsSync(file)) return fs.readFileSync(file, 'utf8').split('\n');
+    err(name, 'missing; every template ships its plan, brief.md and ideas.md (README "The plan")');
+    return null;
+  };
+
+  const brief = lines('brief.md');
+  if (brief) {
+    if (brief[0] !== `# ${m.name}`) err('brief.md', `line 1 must be "# ${m.name}", the studio.json name`);
+    const typeLine = `Type: ${m.type} · Format: ${m.format} · Library template: ${slug}`;
+    if (brief[1] !== typeLine) err('brief.md', `line 2 must be "${typeLine}"`);
+    const headings = brief.filter((l) => l.startsWith('## ')).map((l) => l.slice(3));
+    if (headings.at(-1) === 'Open questions') headings.pop();
+    if (headings.join('\n') !== BRIEF_HEADINGS.join('\n')) err('brief.md', `headings must be ${BRIEF_HEADINGS.map((h) => `## ${h}`).join(', ')} in that order, then an optional ## Open questions`);
+    const start = brief.indexOf('## Sections');
+    if (start >= 0) {
+      const end = brief.findIndex((l, i) => i > start && l.startsWith('## '));
+      const listed = brief.slice(start + 1, end < 0 ? undefined : end).filter((l) => /^\d+\.\s/.test(l));
+      const sections = Array.isArray(m.sections) ? m.sections : [];
+      if (listed.length !== sections.length) err('brief.md', `## Sections has ${listed.length} numbered lines, studio.json has ${sections.length} sections; list each one, in order`);
+      sections.forEach((s, i) => {
+        const want = `${i + 1}. ${s?.label}`;
+        const line = listed[i];
+        if (line !== undefined && line !== want && !line.startsWith(`${want} `)) err('brief.md', `## Sections line ${i + 1} must start with "${want}", the label of section "${s?.id}"`);
+      });
+    }
+  }
+
+  const ideas = lines('ideas.md');
+  if (ideas) {
+    if (ideas[0] !== '# Ideas') err('ideas.md', 'line 1 must be "# Ideas"');
+    const heads = ideas.flatMap((l, i) => (l.startsWith('## ') ? [i] : []));
+    if (heads.length !== 3 || heads.some((at, k) => !new RegExp(`^## ${k + 1}\\. \\S`).test(ideas[at]))) err('ideas.md', 'must hold exactly three ideas, headed "## 1. ", "## 2. " and "## 3. " with a title');
+    heads.forEach((at, k) => {
+      const body = ideas.slice(at + 1, heads[k + 1]);
+      const value = (field) => body.find((l) => l.startsWith(`${field}: `))?.slice(field.length + 2).trim();
+      if (value('Starts from') !== slug) err('ideas.md', `idea ${k + 1} needs a "Starts from: ${slug}" line`);
+      for (const field of ['Fills', 'Why it gets a reply']) if (!value(field)) err('ideas.md', `idea ${k + 1} needs a "${field}: ..." line`);
+    });
+  }
+}
+
 // --- bundle ----------------------------------------------------------------------------------
 
 function checkBundle(slug, indexEntry) {
@@ -459,7 +509,7 @@ function checkBundle(slug, indexEntry) {
   const isLibrary = fs.existsSync(path.join(dir, 'library.json'));
   for (const name of fs.readdirSync(dir)) {
     if (isLibrary && (name === 'library.json' || name === 'preview')) continue;
-    if (!BUNDLE_FILES.has(name)) err(name, 'unexpected file; a bundle holds studio.json, template.liquid, fallback.liquid, README.md, assets/ and samples/');
+    if (!BUNDLE_FILES.has(name)) err(name, 'unexpected file; a bundle holds studio.json, template.liquid, fallback.liquid, README.md, brief.md, ideas.md, assets/ and samples/');
   }
   if (isLibrary) checkLibrary(slug, dir, c);
 
@@ -630,6 +680,8 @@ function checkBundle(slug, indexEntry) {
     if (!s?.id || !/^[a-z0-9_-]+$/.test(s.id) || !s.label) err('studio.json', `section ${JSON.stringify(s)} needs a lowercase id and a label`);
   }
   if (new Set(declared).size !== declared.length) err('studio.json', 'section ids must be unique');
+
+  checkPlan(slug, dir, m, c);
 
   // templates
   const templatePath = path.join(dir, 'template.liquid');

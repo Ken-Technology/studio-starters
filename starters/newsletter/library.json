@@ -4,8 +4,8 @@
   "tags": ["newsletter", "monthly brief", "nurture", "industry note"],
   "featured": false,
   "needs": [],
-  "version": "1.1.0",
-  "updatedAt": "2026-10-29",
+  "version": "1.1.1",
+  "updatedAt": "2026-11-01",
   "samples": [
     { "id": "coastline", "label": "Coastline Produce" },
     { "id": "ashgrove-shared", "label": "Ashgrove Health Clinics, Shared link (no person)" },

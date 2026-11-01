@@ -476,3 +476,70 @@ test('account.dossier in template.liquid fails and points at a slot', () => {
   assert.equal(status, 1, out);
   assert.match(out, /template\.liquid: line \d+: account\.dossier is empty on a published page and in previews[^\n]*bind the field to a data\.\* slot/);
 });
+
+// --- the plan: brief.md and ideas.md (DEV-6953) ----------------------------------------------
+
+const plan = (name, change) => (bundle) => {
+  const file = path.join(bundle, name);
+  const text = fs.readFileSync(file, 'utf8');
+  const changed = change(text);
+  assert.notEqual(changed, text, `the edit should change ${name}`);
+  fs.writeFileSync(file, changed);
+};
+
+test('a template with its brief and ideas passes, with or without ## Open questions', () => {
+  const ok = checkLibrary();
+  assert.equal(ok.status, 0, ok.out);
+  assert.doesNotMatch(ok.out, /brief\.md|ideas\.md/);
+  const open = checkLibrary(plan('brief.md', (t) => `${t}## Open questions\n- Who sends it\n`));
+  assert.equal(open.status, 0, open.out);
+});
+
+for (const name of ['brief.md', 'ideas.md']) {
+  test(`a template without ${name} fails`, () => {
+    const { status, out } = checkLibrary((bundle) => fs.rmSync(path.join(bundle, name)));
+    assert.equal(status, 1, out);
+    assert.match(out, new RegExp(`${name.replace('.', '\\.')}: missing; every template ships its plan, brief\\.md and ideas\\.md \\(README "The plan"\\)`));
+  });
+}
+
+test('a starter folder without library.json still needs a true brief', () => {
+  const { status, out } = check([['event-invite/brief.md', '# Dinner or webinar invite', '# Dinner invite']]);
+  assert.equal(status, 1, out);
+  assert.match(out, /FAIL event-invite[\s\S]*brief\.md: line 1 must be "# Dinner or webinar invite", the studio\.json name/);
+});
+
+test('renaming a section in studio.json without the brief fails', () => {
+  const { status, out } = check([['event-invite/studio.json', '"label": "Details"', '"label": "When and where"']]);
+  assert.equal(status, 1, out);
+  assert.match(out, /brief\.md: ## Sections line 2 must start with "2\. When and where", the label of section "details"/);
+});
+
+const PLAN_INVALID = [
+  ['a title other than the studio.json name', 'brief.md', (t) => t.replace('# Signals brief', '# Signal brief'), /brief\.md: line 1 must be "# Signals brief", the studio\.json name/],
+  ['the wrong type', 'brief.md', (t) => t.replace('Type: report', 'Type: audit'), /brief\.md: line 2 must be "Type: report \u00b7 Format: page \u00b7 Library template: demo-library"/],
+  ['a hyphen for the middle dot', 'brief.md', (t) => t.replace('page \u00b7 Library', 'page - Library'), /brief\.md: line 2 must be "Type: report/],
+  ['another folder in the type line', 'brief.md', (t) => t.replace('Library template: demo-library', 'Library template: signals-brief'), /brief\.md: line 2 must be "[^"]*Library template: demo-library"/],
+  ['no ## Tone', 'brief.md', (t) => t.replace('## Tone\n', ''), /brief\.md: headings must be ## Goal, ## Who reads it, ## The one ask, ## Sections, ## Variables and sources, ## Tone in that order, then an optional ## Open questions/],
+  ['headings out of order', 'brief.md', (t) => t.replace('## Goal', '## X').replace('## Who reads it', '## Goal').replace('## X', '## Who reads it'), /brief\.md: headings must be/],
+  ['## Open questions before ## Tone', 'brief.md', (t) => t.replace('## Tone', '## Open questions\n- Who sends it\n## Tone'), /brief\.md: headings must be/],
+  ['a section missing', 'brief.md', (t) => t.replace('2. Market - what this section shows\n', ''), /brief\.md: ## Sections has 1 numbered lines, studio\.json has 2 sections; list each one, in order/],
+  ['a label that is not the section label', 'brief.md', (t) => t.replace('2. Market', '2. Markets'), /brief\.md: ## Sections line 2 must start with "2\. Market", the label of section "market"/],
+  ['sections out of order', 'brief.md', (t) => t.replace('1. Intro', '1. Market').replace('2. Market', '2. Intro'), /brief\.md: ## Sections line 1 must start with "1\. Intro", the label of section "intro"/],
+  ['an em dash', 'brief.md', (t) => t.replace('Plain and specific.', 'Plain \u2014 specific.'), /brief\.md: line \d+: em or en dash; use a period or a comma/],
+  ['another first line', 'ideas.md', (t) => t.replace('# Ideas', '# Idea cards'), /ideas\.md: line 1 must be "# Ideas"/],
+  ['two ideas', 'ideas.md', (t) => t.replace(/## 3\.[\s\S]*$/, ''), /ideas\.md: must hold exactly three ideas, headed "## 1\. ", "## 2\. " and "## 3\. " with a title/],
+  ['an idea numbered out of order', 'ideas.md', (t) => t.replace('## 3. Idea 3', '## 4. Idea 3'), /ideas\.md: must hold exactly three ideas/],
+  ['an idea from another template', 'ideas.md', (t) => t.replace('## 2. Idea 2\nStarts from: demo-library', '## 2. Idea 2\nStarts from: rd-doc'), /ideas\.md: idea 2 needs a "Starts from: demo-library" line/],
+  ['an idea with no Why it gets a reply', 'ideas.md', (t) => t.replace(/(## 3\.[\s\S]*?)Why it gets a reply: [^\n]*\n/, '$1'), /ideas\.md: idea 3 needs a "Why it gets a reply: \.\.\." line/],
+  ['an idea with an empty Fills', 'ideas.md', (t) => t.replace('Fills: `data.headline`', 'Fills: '), /ideas\.md: idea 1 needs a "Fills: \.\.\." line/],
+  ['an en dash', 'ideas.md', (t) => t.replace('One line', 'One \u2013 line'), /ideas\.md: line \d+: em or en dash; use a period or a comma/],
+];
+
+for (const [name, file, change, message] of PLAN_INVALID) {
+  test(`${file} with ${name} fails`, () => {
+    const { status, out } = checkLibrary(plan(file, change));
+    assert.equal(status, 1, out);
+    assert.match(out, message);
+  });
+}

@@ -448,7 +448,7 @@ figcaption b{color:var(--ink);font-weight:500}
 <figure>
 <div class="stack" role="img" aria-label="Share of companies by region, one stacked bar">
 {%- for r in regs %}
-<span class="r{{ forloop.index | at_most: 6 }}" style="flex:{{ r.value }} 1 0"></span>
+<span class="r{{ forloop.index | at_most: 6 }}" style="flex:{{ r.value | plus: 0 }} 1 0"></span>
 {%- endfor %}
 </div>
 <ul class="regs" style="--nr:{{ regs.size | at_most: 6 }}">

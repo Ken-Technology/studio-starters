@@ -15,14 +15,14 @@ bar and the payback marker follows the sliders.
 {%- assign sender_first = sender.name | default: '' | split: ' ' | first -%}
 
 {%- comment %} Inputs, and the assumptions that come from the offer in Knowledge {%- endcomment -%}
-{%- assign team = data.team_size | default: 0 -%}
-{%- assign hours = data.hours_per_week | default: 0 -%}
-{%- assign rate = data.hourly_cost | default: 0 -%}
-{%- assign tools = data.tool_spend | default: 0 -%}
-{%- assign seat = data.offer.seat_price | default: 0 -%}
-{%- assign setup = data.offer.setup_fee | default: 0 -%}
-{%- assign share = data.offer.recovered_share | default: 40 -%}
-{%- assign tshare = data.offer.tool_replaced_share | default: 50 -%}
+{%- assign team = data.team_size | default: 0 | plus: 0 -%}
+{%- assign hours = data.hours_per_week | default: 0 | plus: 0 -%}
+{%- assign rate = data.hourly_cost | default: 0 | plus: 0 -%}
+{%- assign tools = data.tool_spend | default: 0 | plus: 0 -%}
+{%- assign seat = data.offer.seat_price | default: 0 | plus: 0 -%}
+{%- assign setup = data.offer.setup_fee | default: 0 | plus: 0 -%}
+{%- assign share = data.offer.recovered_share | default: 40 | plus: 0 -%}
+{%- assign tshare = data.offer.tool_replaced_share | default: 50 | plus: 0 -%}
 {%- assign ramp = data.offer.ramp_months | default: 6 | at_least: 1 | at_most: 9 -%}
 {%- assign weeks = 48 -%}
 {%- assign has_price = false -%}

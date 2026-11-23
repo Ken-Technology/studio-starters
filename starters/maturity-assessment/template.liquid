@@ -11,7 +11,7 @@ reads. brand.fonts.heading and .body replace Hanken Grotesk.
 {%- assign peer = data.peers | first -%}
 {%- assign has_peers = false -%}
 {%- if peer.score_1 and peer.score_2 and peer.score_3 and peer.score_4 -%}{%- assign has_peers = true -%}{%- endif -%}
-{%- assign qcount = data.questions | size -%}
+{%- assign qcount = data.questions | size | plus: 0 -%}
 {%- assign last_q = qcount | minus: 1 -%}
 {%- assign sender_first = sender.name | split: ' ' | first -%}
 {%- assign h_len = data.headline | size | at_least: 1 -%}

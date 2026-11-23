@@ -241,7 +241,7 @@ blockquote cite{display:block;font:400 var(--step-small)/1.4 var(--fb);font-styl
   </div>
   <ol class="criteria" aria-label="Six criteria scored out of 10">
     {%- for c in data.criteria %}
-    <li style="--n:{{ c.score }}"><span class="bar"><span class="val">{{ c.score }}<small>/10</small></span></span><span class="name">{{ c.name | escape }}</span><span class="verdict">{% if c.score <= 4 %}Weak{% elsif c.score <= 6 %}Fair{% else %}Strong{% endif %}</span></li>
+    <li style="--n:{{ c.score | plus: 0 }}"><span class="bar"><span class="val">{{ c.score }}<small>/10</small></span></span><span class="name">{{ c.name | escape }}</span><span class="verdict">{% if c.score <= 4 %}Weak{% elsif c.score <= 6 %}Fair{% else %}Strong{% endif %}</span></li>
     {%- endfor %}
   </ol>
 </section>
@@ -253,7 +253,7 @@ blockquote cite{display:block;font:400 var(--step-small)/1.4 var(--fb);font-styl
   </div>
   {%- for c in data.criteria %}
   <article class="f row">
-    <div class="fh"><h3>{{ c.name | escape }}</h3><span class="tn"><span class="meter" style="--n:{{ c.score }}" aria-hidden="true"><i></i></span><span><b>{{ c.score }}</b> of 10</span></span></div>
+    <div class="fh"><h3>{{ c.name | escape }}</h3><span class="tn"><span class="meter" style="--n:{{ c.score | plus: 0 }}" aria-hidden="true"><i></i></span><span><b>{{ c.score }}</b> of 10</span></span></div>
     <div class="fb">
       <blockquote><mark>&ldquo;{{ c.quote | escape }}&rdquo;</mark><cite>{{ c.where | escape }}</cite></blockquote>
       <p class="cost">{{ c.cost | escape }}</p>
